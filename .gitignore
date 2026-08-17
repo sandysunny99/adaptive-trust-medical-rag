@@ -1,0 +1,156 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments — NEVER commit
+.venv/
+venv/
+env/
+ENV/
+.env.local
+.env.*.local
+
+# Environment variable files — NEVER commit actual values
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Secrets and credentials — NEVER commit
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_ed25519
+*.secret
+secrets.yaml
+secrets.json
+credentials.json
+service_account*.json
+*_token.txt
+*_key.txt
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.sql.bak
+pg_dump_*.sql
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+nosetests.xml
+pytest-*.log
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Node / Next.js (Phase 23+)
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json.bak
+
+# Logs — never commit application logs
+logs/
+*.log
+*.log.*
+audit_logs/
+*.audit
+
+# ML / Research artifacts — large files, not in Git
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.bin
+*.onnx
+*.safetensors
+models/
+checkpoints/
+embeddings/
+vectors/
+*.npy
+*.npz
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Evaluation — CRITICAL leakage prevention
+# The final test set is committed but must never be indexed
+# evaluation/ IS committed to Git (it's version-controlled data)
+# But these runtime outputs are not:
+evaluation/results/
+evaluation/tmp/
+
+# Research outputs (generated, not committed)
+research/results/
+research/figures/
+research/tables/
+
+# Backup
+.antigravity-backup/
+
+# Temporary
+tmp/
+temp/
+scratch/
+
+# Trivy / Security scan outputs
+*.sarif
+sbom.*.json
+trivy-report.json
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+# OS
+Desktop.ini
+ehthumbs.db

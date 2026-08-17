@@ -1,0 +1,42 @@
+# Git line-ending policy for cross-platform consistency
+# Normalize LF in the repository; Windows checkouts get CRLF for text files.
+
+* text=auto
+
+# Python — always LF
+*.py text eol=lf
+
+# Markdown — always LF
+*.md text eol=lf
+
+# TOML / YAML / JSON — always LF
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml  text eol=lf
+*.json text eol=lf
+
+# Shell scripts — always LF
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Windows batch — CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files — do not touch
+*.pkl binary
+*.joblib binary
+*.pt binary
+*.pth binary
+*.bin binary
+*.npy binary
+*.npz binary
+*.onnx binary
+*.safetensors binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.ico binary

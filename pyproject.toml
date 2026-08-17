@@ -1,0 +1,60 @@
+[project]
+name = "adaptive-trust-medical-rag"
+version = "0.1.0"
+description = "Adaptive Trust-Aware Medical RAG: Mitigating Prompt Injection and Retrieval Hallucinations"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+
+# ============================================================
+# Dependencies are added incrementally using: uv add <pkg>==<ver>
+# NEVER install directly with pip into the project environment.
+# ALL installs go through uv to maintain uv.lock reproducibility.
+# ============================================================
+dependencies = []
+
+# Phase 3:  uv add fastapi==0.141.1 pydantic==2.13.4 pydantic-settings==2.15.0
+# Phase 3:  uv add sqlalchemy==2.0.49 alembic asyncpg psycopg2-binary
+# Phase 3:  uv add python-dotenv==1.0.1 httpx==0.28.1 uvicorn==0.30.1
+# Phase 4:  uv add bandit semgrep (dev only)
+# Phase 7:  uv add pgvector
+# Phase 8:  uv add google-genai==2.18.0 openai==2.31.0
+# Phase 9:  uv add rank_bm25
+# Phase 10: uv add sentence-transformers
+# Phase 7:  uv add spacy scispacy
+# Phase 20: uv add ragas==0.4.3 deepeval==4.1.5
+# Phase 20: uv add mlflow
+# Phase 22: uv add garak==0.16.0
+# Phase 19: uv add neo4j
+
+[project.optional-dependencies]
+dev = [
+    # Added at Phase 4 via: uv add --dev bandit ruff pytest pytest-asyncio
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+# Isolated virtual environment — never install into global Python
+dev-dependencies = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+select = ["E", "W", "F", "I", "N", "S", "B", "A"]
+ignore = ["S101"]  # Allow assert in tests
+
+[tool.ruff.per-file-ignores]
+"tests/**" = ["S", "N"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+log_cli = true
+log_cli_level = "INFO"
+
+[tool.bandit]
+exclude_dirs = [".venv", "tests", "evaluation"]
+skips = ["B101"]
