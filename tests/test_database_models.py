@@ -3,9 +3,6 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timezone
-
-import pytest
 
 from adaptive_trust_medical_rag.database.models import (
     AuditEvent,

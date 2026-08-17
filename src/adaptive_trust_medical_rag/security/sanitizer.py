@@ -68,7 +68,10 @@ _HARD_REJECT_PATTERNS: list[re.Pattern[str]] = [
 _PHI_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     ("SSN", re.compile(r"\b\d{3}-\d{2}-\d{4}\b")),
     ("MRN", re.compile(r"\bMRN\s*[:#]?\s*\d{5,10}\b", re.IGNORECASE)),
-    ("DOB", re.compile(r"\b(?:DOB|Date\s+of\s+Birth)\s*[:#]?\s*\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b", re.IGNORECASE)),
+    ("DOB", re.compile(
+        r"\b(?:DOB|Date\s+of\s+Birth)\s*[:#]?\s*\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b",
+        re.IGNORECASE,
+    )),
     ("PHONE", re.compile(r"\b\d{3}[-.]\d{3}[-.]\d{4}\b")),
     ("NPI", re.compile(r"\bNPI\s*[:#]?\s*\d{10}\b", re.IGNORECASE)),
 ]
@@ -98,7 +101,11 @@ class SanitizationResult:
 
     @property
     def is_clean(self) -> bool:
-        return not self.rejected and not self.injection_markers_found and not self.phi_patterns_found
+        return (
+            not self.rejected
+            and not self.injection_markers_found
+            and not self.phi_patterns_found
+        )
 
 
 def strip_injection_markers(text: str) -> tuple[str, list[str]]:

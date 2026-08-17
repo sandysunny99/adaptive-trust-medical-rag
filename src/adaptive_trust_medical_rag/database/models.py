@@ -91,10 +91,10 @@ class AuditEventType(str, PyEnum):
     query_received = "query_received"
     risk_classified = "risk_classified"
     retrieval_complete = "retrieval_complete"
-    evidence_gate_pass = "evidence_gate_pass"
+    evidence_gate_pass = "evidence_gate_pass"  # noqa: S105  # not a password; audit event name
     evidence_gate_fail = "evidence_gate_fail"
     answer_generated = "answer_generated"
-    answer_gate_pass = "answer_gate_pass"
+    answer_gate_pass = "answer_gate_pass"  # noqa: S105  # not a password; audit event name
     answer_gate_fail = "answer_gate_fail"
     abstention = "abstention"
     injection_detected = "injection_detected"

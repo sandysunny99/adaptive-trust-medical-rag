@@ -5,13 +5,11 @@ from __future__ import annotations
 import pytest
 
 from adaptive_trust_medical_rag.security.sanitizer import (
-    SanitizationResult,
     detect_phi,
     sanitize_document_chunk,
     sanitize_query,
     strip_injection_markers,
 )
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Clean input — must pass through unchanged

@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   lint-and-scan:
-    name: Ruff Lint + Secret Scan
+    name: Ruff Lint + Secret Scan + Unit Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -26,7 +26,17 @@ jobs:
         with:
           python-version: '3.12'
 
-      # ── Secret Scanning ──────────────────────────────────────────────────
+      # ── Install uv ───────────────────────────────────────────────────────────
+      - name: Install uv
+        uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb  # v5.4.1
+        with:
+          version: "0.12.5"
+          enable-cache: true
+
+      - name: Install project dependencies (locked)
+        run: uv sync --frozen
+
+      # ── Secret Scanning ──────────────────────────────────────────────────────
       - name: Install Gitleaks
         run: |
           curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz \
@@ -34,16 +44,23 @@ jobs:
           gitleaks version
 
       - name: Gitleaks secret scan
-        run: gitleaks detect --source . --no-git --redact --exit-code 1
+        # Uses .gitleaks.toml to exclude .venv/ and other FP-prone paths
+        run: gitleaks detect --source . --no-git --config .gitleaks.toml --redact --exit-code 1
 
-      # ── Python Linting ───────────────────────────────────────────────────
-      - name: Install ruff
-        run: pip install ruff==0.16.3
+      # ── Python Linting (full repo) ───────────────────────────────────────────
+      - name: Ruff lint — agents scripts
+        run: uv run ruff check .agents/scripts/
 
-      - name: Ruff lint
-        run: ruff check .agents/scripts/
+      - name: Ruff lint — src & tests
+        run: uv run ruff check src/ tests/ alembic/
 
-      # ── Hook script smoke tests ──────────────────────────────────────────
+      # ── Unit Tests ───────────────────────────────────────────────────────────
+      - name: Run unit tests
+        env:
+          DATABASE_URL: "postgresql+asyncpg://u:p@localhost/db"
+        run: uv run pytest tests/ -v --tb=short
+
+      # ── Hook script smoke tests ──────────────────────────────────────────────
       - name: Test inject_medical_context.py
         run: |
           output=$(echo '{}' | python .agents/scripts/inject_medical_context.py)

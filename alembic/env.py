@@ -5,11 +5,11 @@ from __future__ import annotations
 import asyncio
 from logging.config import fileConfig
 
-from alembic import context
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from adaptive_trust_medical_rag.core.config import settings
 from adaptive_trust_medical_rag.database.models import Base
+from alembic import context
 
 # ── Alembic Config object ────────────────────────────────────────────────────
 config = context.config

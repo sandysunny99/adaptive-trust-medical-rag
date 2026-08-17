@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock
 
 import pytest
 
@@ -14,7 +13,6 @@ from adaptive_trust_medical_rag.normalization.drug_normalizer import (
     RxNormClient,
 )
 from adaptive_trust_medical_rag.normalization.entity_cache import EntityCache
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # EntityCache tests
