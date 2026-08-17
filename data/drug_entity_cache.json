@@ -1,0 +1,158 @@
+{
+  "warfarin": {
+    "generic_name": "warfarin",
+    "rxcui": "11289",
+    "brand_name": "Coumadin",
+    "formulation": null
+  },
+  "coumadin": {
+    "generic_name": "warfarin",
+    "rxcui": "11289",
+    "brand_name": "Coumadin",
+    "formulation": null
+  },
+  "ibuprofen": {
+    "generic_name": "ibuprofen",
+    "rxcui": "5640",
+    "brand_name": "Advil",
+    "formulation": null
+  },
+  "advil": {
+    "generic_name": "ibuprofen",
+    "rxcui": "5640",
+    "brand_name": "Advil",
+    "formulation": null
+  },
+  "metoprolol tartrate": {
+    "generic_name": "metoprolol tartrate",
+    "rxcui": "866514",
+    "brand_name": "Lopressor",
+    "formulation": "tartrate"
+  },
+  "metoprolol succinate": {
+    "generic_name": "metoprolol succinate",
+    "rxcui": "866508",
+    "brand_name": "Toprol-XL",
+    "formulation": "succinate"
+  },
+  "lopressor": {
+    "generic_name": "metoprolol tartrate",
+    "rxcui": "866514",
+    "brand_name": "Lopressor",
+    "formulation": "tartrate"
+  },
+  "lisinopril": {
+    "generic_name": "lisinopril",
+    "rxcui": "29046",
+    "brand_name": "Prinivil",
+    "formulation": null
+  },
+  "prinivil": {
+    "generic_name": "lisinopril",
+    "rxcui": "29046",
+    "brand_name": "Prinivil",
+    "formulation": null
+  },
+  "atorvastatin": {
+    "generic_name": "atorvastatin",
+    "rxcui": "83367",
+    "brand_name": "Lipitor",
+    "formulation": null
+  },
+  "lipitor": {
+    "generic_name": "atorvastatin",
+    "rxcui": "83367",
+    "brand_name": "Lipitor",
+    "formulation": null
+  },
+  "amoxicillin": {
+    "generic_name": "amoxicillin",
+    "rxcui": "723",
+    "brand_name": "Amoxil",
+    "formulation": null
+  },
+  "metformin": {
+    "generic_name": "metformin",
+    "rxcui": "6809",
+    "brand_name": "Glucophage",
+    "formulation": null
+  },
+  "glucophage": {
+    "generic_name": "metformin",
+    "rxcui": "6809",
+    "brand_name": "Glucophage",
+    "formulation": null
+  },
+  "aspirin": {
+    "generic_name": "aspirin",
+    "rxcui": "1191",
+    "brand_name": "Bayer Aspirin",
+    "formulation": null
+  },
+  "clopidogrel": {
+    "generic_name": "clopidogrel",
+    "rxcui": "32968",
+    "brand_name": "Plavix",
+    "formulation": null
+  },
+  "plavix": {
+    "generic_name": "clopidogrel",
+    "rxcui": "32968",
+    "brand_name": "Plavix",
+    "formulation": null
+  },
+  "levothyroxine": {
+    "generic_name": "levothyroxine",
+    "rxcui": "10582",
+    "brand_name": "Synthroid",
+    "formulation": null
+  },
+  "synthroid": {
+    "generic_name": "levothyroxine",
+    "rxcui": "10582",
+    "brand_name": "Synthroid",
+    "formulation": null
+  },
+  "omeprazole": {
+    "generic_name": "omeprazole",
+    "rxcui": "7646",
+    "brand_name": "Prilosec",
+    "formulation": null
+  },
+  "prilosec": {
+    "generic_name": "omeprazole",
+    "rxcui": "7646",
+    "brand_name": "Prilosec",
+    "formulation": null
+  },
+  "amlodipine": {
+    "generic_name": "amlodipine",
+    "rxcui": "17767",
+    "brand_name": "Norvasc",
+    "formulation": null
+  },
+  "norvasc": {
+    "generic_name": "amlodipine",
+    "rxcui": "17767",
+    "brand_name": "Norvasc",
+    "formulation": null
+  },
+  "sertraline": {
+    "generic_name": "sertraline",
+    "rxcui": "36437",
+    "brand_name": "Zoloft",
+    "formulation": null
+  },
+  "zoloft": {
+    "generic_name": "sertraline",
+    "rxcui": "36437",
+    "brand_name": "Zoloft",
+    "formulation": null
+  },
+  "methotrexate": {
+    "generic_name": "methotrexate",
+    "rxcui": "7052",
+    "brand_name": "Trexall",
+    "formulation": null
+  }
+}
