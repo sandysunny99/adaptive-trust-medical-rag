@@ -29,7 +29,16 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Pinned to exact versions from uv.lock — guaranteed to match local env
+      # ── Debug info ─────────────────────────────────────────────────────────
+      - name: Debug — environment info
+        run: |
+          echo "=== Python version ===" && python --version
+          echo "=== pip version ===" && pip --version
+          echo "=== uname ===" && uname -a
+          echo "=== Available disk ===" && df -h /
+          echo "=== PATH ===" && echo "$PATH"
+
+      # ── Install dependencies ────────────────────────────────────────────────
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
@@ -41,7 +50,7 @@ jobs:
             "asyncpg==0.31.0" \
             "fastapi==0.141.1" \
             "python-dotenv==1.2.3" \
-            "pyyaml==6.0.3" \
+            "pyyaml==6.0.2" \
             "httpx==0.28.1" \
             "pgvector==0.5.0" \
             "pytest==9.1.1" \
@@ -49,6 +58,10 @@ jobs:
             "anyio==4.14.2" \
             "ruff==0.16.3"
 
+      - name: Debug — installed packages
+        run: pip list
+
+      # ── Gitleaks ───────────────────────────────────────────────────────────
       - name: Install Gitleaks
         run: |
           curl -sSfL \
@@ -58,39 +71,47 @@ jobs:
       - name: Gitleaks secret scan
         run: gitleaks detect --source . --no-git --config .gitleaks.toml --redact --exit-code 1
 
+      # ── Ruff ──────────────────────────────────────────────────────────────
       - name: Ruff lint
         run: python -m ruff check src/ tests/ alembic/ .agents/scripts/
 
+      # ── Tests ─────────────────────────────────────────────────────────────
       - name: Unit tests
-        run: python -m pytest tests/ -v --tb=short
+        run: python -m pytest tests/ -v --tb=long
 
+      # ── Hook scripts ──────────────────────────────────────────────────────
       - name: Hook — inject_medical_context
         run: |
           out=$(echo '{}' | python .agents/scripts/inject_medical_context.py)
-          echo "$out" | python -c "import sys,json; assert 'injectSteps' in json.load(sys.stdin)"
+          echo "Output: $out"
+          echo "$out" | python -c "import sys,json; assert 'injectSteps' in json.load(sys.stdin), 'FAIL'"
           echo "OK"
 
       - name: Hook — check_dangerous_cmd allow
         run: |
           r=$(echo '{"CommandLine":"git status"}' | python .agents/scripts/check_dangerous_cmd.py)
-          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
+          echo "Result: $r"
+          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow', 'FAIL'"
           echo "OK"
 
       - name: Hook — check_dangerous_cmd deny
         run: |
           r=$(printf '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
-          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
+          echo "Result: $r"
+          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny', 'FAIL'"
           echo "OK"
 
       - name: Hook — pre_commit_secret_scan allow
         run: |
           r=$(echo '{"CodeContent":"x = 1 + 2"}' | python .agents/scripts/pre_commit_secret_scan.py)
-          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
+          echo "Result: $r"
+          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow', 'FAIL'"
           echo "OK"
 
       - name: Hook — pre_commit_secret_scan deny token
         run: |
           p=$(python -c 'import json; print(json.dumps({"CodeContent":"token = "+"ghp_"+"0"*36}))')
           r=$(echo "$p" | python .agents/scripts/pre_commit_secret_scan.py)
-          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
+          echo "Result: $r"
+          echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny', 'FAIL'"
           echo "OK"
