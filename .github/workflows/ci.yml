@@ -29,23 +29,25 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      # Pinned to exact versions from uv.lock — guaranteed to match local env
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install \
-            "pydantic>=2.0" \
-            "pydantic-settings>=2.0" \
-            "sqlalchemy[asyncio]>=2.0" \
-            "alembic>=1.0" \
-            "asyncpg>=0.28" \
-            "fastapi>=0.100" \
-            "python-dotenv>=1.0" \
-            "pyyaml>=6.0" \
-            "httpx>=0.24" \
-            "pgvector>=0.2" \
-            "pytest>=7.0" \
-            "pytest-asyncio>=0.21" \
-            "ruff>=0.1"
+            "pydantic==2.13.4" \
+            "pydantic-settings==2.15.0" \
+            "sqlalchemy[asyncio]==2.0.52" \
+            "alembic==1.19.1" \
+            "asyncpg==0.31.0" \
+            "fastapi==0.141.1" \
+            "python-dotenv==1.2.3" \
+            "pyyaml==6.0.3" \
+            "httpx==0.28.1" \
+            "pgvector==0.5.0" \
+            "pytest==9.1.1" \
+            "pytest-asyncio==1.4.0" \
+            "anyio==4.14.2" \
+            "ruff==0.16.3"
 
       - name: Install Gitleaks
         run: |
@@ -76,7 +78,7 @@ jobs:
 
       - name: Hook — check_dangerous_cmd deny
         run: |
-          r=$(echo '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
+          r=$(printf '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
           echo "OK"
 
