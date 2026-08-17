@@ -18,7 +18,6 @@ import json
 import re
 import sys
 
-
 # ──────────────────────────────────────────────
 # DENY — Block outright. Require manual execution.
 # ──────────────────────────────────────────────
@@ -92,27 +91,36 @@ def main() -> None:
     # Check DENY list first
     for pattern, label in DENY_PATTERNS:
         if re.search(pattern, cmd, re.IGNORECASE):
-            sys.stdout.write(json.dumps({
-                "decision": "deny",
-                "reason": (
-                    f"BLOCKED — Dangerous operation detected: [{label}] in command: "
-                    f"'{cmd[:120]}'. "
-                    "This command requires explicit human review and manual execution. "
-                    "If intentional, run the command manually in a terminal after careful review."
+            sys.stdout.write(
+                json.dumps(
+                    {
+                        "decision": "deny",
+                        "reason": (
+                            f"BLOCKED — Dangerous operation detected: [{label}] in command: "
+                            f"'{cmd[:120]}'. "
+                            "This command requires explicit human review and manual execution. "
+                            "If intentional, run the command manually in a terminal "
+                            "after careful review."
+                        ),
+                    }
                 )
-            }))
+            )
             return
 
     # Check ASK list
     for pattern, label in ASK_PATTERNS:
         if re.search(pattern, cmd, re.IGNORECASE):
-            sys.stdout.write(json.dumps({
-                "decision": "ask",
-                "reason": (
-                    f"Sensitive operation requires approval: [{label}] "
-                    f"in command: '{cmd[:120]}'"
+            sys.stdout.write(
+                json.dumps(
+                    {
+                        "decision": "ask",
+                        "reason": (
+                            f"Sensitive operation requires approval: [{label}] "
+                            f"in command: '{cmd[:120]}'"
+                        ),
+                    }
                 )
-            }))
+            )
             return
 
     # Default: allow

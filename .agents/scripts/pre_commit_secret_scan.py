@@ -31,19 +31,19 @@ SECRET_PATTERNS = [
     (r'(?i)(api[_-]?key|apikey)\s*=\s*["\'][A-Za-z0-9_\-]{16,}["\']', "Hardcoded API key"),
     (r'(?i)(secret|token|auth)\s*=\s*["\'][A-Za-z0-9_\-]{16,}["\']', "Hardcoded secret/token"),
     # Well-known token formats
-    (r'ghp_[A-Za-z0-9]{36,}', "GitHub PAT (ghp_)"),
-    (r'ghs_[A-Za-z0-9]{36,}', "GitHub App token (ghs_)"),
-    (r'github_pat_[A-Za-z0-9_]{82}', "GitHub fine-grained PAT"),
-    (r'sk-[A-Za-z0-9]{32,}', "OpenAI-style secret key (sk-)"),
-    (r'AIza[0-9A-Za-z\-_]{35}', "Google API key (AIza)"),
-    (r'AKIA[0-9A-Z]{16}', "AWS Access Key ID"),
-    (r'(?i)-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY', "Private key block"),
+    (r"ghp_[A-Za-z0-9]{36,}", "GitHub PAT (ghp_)"),
+    (r"ghs_[A-Za-z0-9]{36,}", "GitHub App token (ghs_)"),
+    (r"github_pat_[A-Za-z0-9_]{82}", "GitHub fine-grained PAT"),
+    (r"sk-[A-Za-z0-9]{32,}", "OpenAI-style secret key (sk-)"),
+    (r"AIza[0-9A-Za-z\-_]{35}", "Google API key (AIza)"),
+    (r"AKIA[0-9A-Z]{16}", "AWS Access Key ID"),
+    (r"(?i)-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY", "Private key block"),
     # Connection strings with embedded credentials
-    (r'(?i)postgres(?:ql)?://[^:@\s]+:[^@\s]{4,}@', "PostgreSQL DSN with credentials"),
-    (r'(?i)mysql://[^:@\s]+:[^@\s]{4,}@', "MySQL DSN with credentials"),
-    (r'(?i)mongodb(\+srv)?://[^:@\s]+:[^@\s]{4,}@', "MongoDB DSN with credentials"),
-    (r'(?i)redis://:([^@\s]{4,})@', "Redis DSN with credentials"),
-    (r'(?i)amqp://[^:@\s]+:[^@\s]{4,}@', "AMQP DSN with credentials"),
+    (r"(?i)postgres(?:ql)?://[^:@\s]+:[^@\s]{4,}@", "PostgreSQL DSN with credentials"),
+    (r"(?i)mysql://[^:@\s]+:[^@\s]{4,}@", "MySQL DSN with credentials"),
+    (r"(?i)mongodb(\+srv)?://[^:@\s]+:[^@\s]{4,}@", "MongoDB DSN with credentials"),
+    (r"(?i)redis://:([^@\s]{4,})@", "Redis DSN with credentials"),
+    (r"(?i)amqp://[^:@\s]+:[^@\s]{4,}@", "AMQP DSN with credentials"),
 ]
 
 # Paths that are exempt from scanning (test fixtures with SYNTHETIC data)
@@ -56,20 +56,20 @@ EXEMPT_PATH_PATTERNS = [
 
 # Patterns that indicate the value is a variable reference, not a literal secret
 SAFE_VALUE_PATTERNS = [
-    r'\$\{[A-Z_]+\}',     # ${ENV_VAR}
-    r'\$[A-Z_]+\b',       # $ENV_VAR
-    r'os\.environ',        # os.environ["KEY"]
-    r'os\.getenv',         # os.getenv("KEY")
-    r'settings\.',         # settings.secret
-    r'config\.',           # config.secret
-    r'<[A-Z_]+>',          # <PLACEHOLDER>
-    r'YOUR_.*HERE',        # YOUR_KEY_HERE
-    r'REPLACE_ME',
-    r'example\.',
-    r'test_secret',
-    r'fake_',
-    r'dummy_',
-    r'mock_',
+    r"\$\{[A-Z_]+\}",  # ${ENV_VAR}
+    r"\$[A-Z_]+\b",  # $ENV_VAR
+    r"os\.environ",  # os.environ["KEY"]
+    r"os\.getenv",  # os.getenv("KEY")
+    r"settings\.",  # settings.secret
+    r"config\.",  # config.secret
+    r"<[A-Z_]+>",  # <PLACEHOLDER>
+    r"YOUR_.*HERE",  # YOUR_KEY_HERE
+    r"REPLACE_ME",
+    r"example\.",
+    r"test_secret",
+    r"fake_",
+    r"dummy_",
+    r"mock_",
 ]
 
 
@@ -102,17 +102,20 @@ def scan_with_regex(content: str) -> list[str]:
 
 def scan_with_gitleaks(content: str) -> list[str]:
     """Run Gitleaks on the content if available (Phase 4+)."""
-    if not shutil.which("gitleaks"):
-        return []  # Gitleaks not installed yet — skip
+    gitleaks_bin = shutil.which("gitleaks")
+    if not gitleaks_bin:
+        return []  # Gitleaks not installed — skip
     try:
         with tempfile.NamedTemporaryFile(
             mode="w", suffix=".txt", delete=False, encoding="utf-8"
         ) as f:
             f.write(content)
             tmp_path = f.name
-        result = subprocess.run(
-            ["gitleaks", "detect", "--source", tmp_path, "--no-git", "--quiet"],
-            capture_output=True, text=True, timeout=20
+        result = subprocess.run(  # nosec B603
+            [gitleaks_bin, "detect", "--source", tmp_path, "--no-git", "--quiet"],
+            capture_output=True,
+            text=True,
+            timeout=20,
         )
         Path(tmp_path).unlink(missing_ok=True)
         if result.returncode != 0:
@@ -132,21 +135,13 @@ def main() -> None:
     args = data.get("toolCall", {}).get("args", {}) or data.get("args", {}) or data
 
     # Extract target file path for exemption check
-    target_file = (
-        args.get("TargetFile", "")
-        or args.get("AbsolutePath", "")
-        or ""
-    )
+    target_file = args.get("TargetFile", "") or args.get("AbsolutePath", "") or ""
     if target_file and is_exempt_path(target_file):
         sys.stdout.write(json.dumps({"decision": "allow"}))
         return
 
     # Extract content from any file-write tool
-    content = (
-        args.get("CodeContent", "")
-        or args.get("ReplacementContent", "")
-        or ""
-    )
+    content = args.get("CodeContent", "") or args.get("ReplacementContent", "") or ""
     if not content or not isinstance(content, str):
         sys.stdout.write(json.dumps({"decision": "allow"}))
         return
@@ -161,15 +156,19 @@ def main() -> None:
 
     if all_findings:
         unique = list(dict.fromkeys(all_findings))  # Deduplicate, preserve order
-        sys.stdout.write(json.dumps({
-            "decision": "deny",
-            "reason": (
-                f"SECRET DETECTED — file write blocked. "
-                f"Findings: {'; '.join(unique)}. "
-                "Use environment variables instead of hardcoded credentials. "
-                "See AGENTS.md security rules. The file has NOT been written."
+        sys.stdout.write(
+            json.dumps(
+                {
+                    "decision": "deny",
+                    "reason": (
+                        f"SECRET DETECTED — file write blocked. "
+                        f"Findings: {'; '.join(unique)}. "
+                        "Use environment variables instead of hardcoded credentials. "
+                        "See AGENTS.md security rules. The file has NOT been written."
+                    ),
+                }
             )
-        }))
+        )
         return
 
     sys.stdout.write(json.dumps({"decision": "allow"}))

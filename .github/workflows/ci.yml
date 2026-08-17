@@ -70,6 +70,7 @@ jobs:
 
       - name: Test pre_commit_secret_scan.py — deny hardcoded token
         run: |
-          result=$(echo '{"CodeContent": "token = ghp_abcdefghijklmnopqrstuvwxyz1234567890"}' | python .agents/scripts/pre_commit_secret_scan.py)
+          dummy_payload=$(python -c 'import json; print(json.dumps({"CodeContent": "token = " + "ghp_" + "0" * 36}))')
+          result=$(echo "$dummy_payload" | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='deny', f'Expected deny, got: {d}'"
           echo "pre_commit_secret_scan.py deny OK"

@@ -58,11 +58,7 @@ Full rules: AGENTS.md | .agents/plugins/medical-rag-security/rules/
 
 
 def main() -> None:
-    sys.stdout.write(json.dumps({
-        "injectSteps": [
-            {"ephemeralMessage": MEDICAL_CONTEXT}
-        ]
-    }))
+    sys.stdout.write(json.dumps({"injectSteps": [{"ephemeralMessage": MEDICAL_CONTEXT}]}))
 
 
 if __name__ == "__main__":
