@@ -36,9 +36,20 @@ dev = [
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+# Hatchling build config — stub project (no src/ directory yet)
+# src/adaptive_trust_medical_rag/ will be created at Phase 8
+[tool.hatch.build.targets.wheel]
+packages = ["src/adaptive_trust_medical_rag"]
+
 [tool.uv]
-# Isolated virtual environment — never install into global Python
-dev-dependencies = []
+# Do not try to install this project as editable until Phase 8
+# when src/adaptive_trust_medical_rag/ package directory exists.
+package = false
+
+[dependency-groups]
+dev = [
+    # Added at Phase 4 via: uv add --group dev bandit ruff pytest pytest-asyncio
+]
 
 [tool.ruff]
 line-length = 100
