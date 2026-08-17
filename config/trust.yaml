@@ -1,0 +1,72 @@
+# Trust Scoring Weight Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+# Source: adaptive-trust-scoring SKILL.md
+#
+# Each risk class (R0–R3) defines a weight vector over 9 trust factors.
+# Weights MUST sum to exactly 1.0 per risk class.
+#
+# Factor definitions:
+#   source_authority  — Tiered authority score (0.0–1.0) from source_validator
+#   query_relevance   — Semantic similarity / cross-encoder score
+#   evidence_quality  — Study design quality, sample size, or regulatory label
+#   freshness         — Exponential freshness decay score
+#   consistency       — Cross-source consensus score
+#   entity_match      — Exact RxCUI / entity alignment
+#   population_match  — Patient cohort alignment
+#   anti_poisoning    — 1 − anomaly/poisoning score
+#   anti_injection    — 1 − indirect injection score
+#
+# Thresholds (eligibility gate):
+#   R0 ≥ 0.30 | R1 ≥ 0.45 | R2 ≥ 0.60 | R3 ≥ 0.75
+# ─────────────────────────────────────────────────────────────────────────────
+
+thresholds:
+  R0: 0.30
+  R1: 0.45
+  R2: 0.60
+  R3: 0.75
+
+weights:
+  R0:
+    source_authority: 0.15
+    query_relevance:  0.20
+    evidence_quality: 0.10
+    freshness:        0.10
+    consistency:      0.15
+    entity_match:     0.10
+    population_match: 0.05
+    anti_poisoning:   0.10
+    anti_injection:   0.05
+
+  R1:
+    source_authority: 0.20
+    query_relevance:  0.20
+    evidence_quality: 0.15
+    freshness:        0.10
+    consistency:      0.10
+    entity_match:     0.10
+    population_match: 0.05
+    anti_poisoning:   0.05
+    anti_injection:   0.05
+
+  R2:
+    source_authority: 0.25
+    query_relevance:  0.15
+    evidence_quality: 0.20
+    freshness:        0.10
+    consistency:      0.10
+    entity_match:     0.10
+    population_match: 0.05
+    anti_poisoning:   0.03
+    anti_injection:   0.02
+
+  R3:
+    source_authority: 0.30
+    query_relevance:  0.10
+    evidence_quality: 0.25
+    freshness:        0.10
+    consistency:      0.10
+    entity_match:     0.10
+    population_match: 0.03
+    anti_poisoning:   0.01
+    anti_injection:   0.01
