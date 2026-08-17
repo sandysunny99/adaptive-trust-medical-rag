@@ -1,0 +1,33 @@
+# Commit message template for Adaptive Trust-Aware Medical RAG
+#
+# Format: <type>(<scope>): <short summary>
+#
+# Types:
+#   feat      — New feature or pipeline component
+#   fix       — Bug fix
+#   chore     — Build, config, or infrastructure changes
+#   docs      — Documentation only
+#   test      — Adding or updating tests
+#   refactor  — Code change that is not a fix or feature
+#   perf      — Performance improvement
+#   security  — Security hardening or vulnerability fix
+#   eval      — Evaluation dataset, metrics, or experiment tracking
+#   data      — Data ingestion, provenance, or schema changes
+#
+# Scopes (examples):
+#   ingestion, trust-engine, retrieval, gates, normalization,
+#   evaluation, hooks, rules, skills, schema, api, frontend
+#
+# Security checklist (complete before committing):
+#   [ ] No hardcoded API keys, passwords, or tokens
+#   [ ] No real patient data (PHI/PII)
+#   [ ] No .venv, .env, or cache files
+#   [ ] Gitleaks passed (Phase 4+)
+#   [ ] Bandit passed (Phase 4+)
+#
+# Example:
+#   feat(trust-engine): add adaptive weighting for R3 risk tier
+#
+#   Implements per-risk-class weight configuration via config/trust.yaml.
+#   Adds unit tests for all four risk tiers.
+#   Closes #12
