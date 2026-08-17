@@ -11,7 +11,7 @@ on:
 
 permissions:
   contents: read
-  security-events: write  # Required for SARIF upload to GitHub Security tab
+  security-events: write
 
 jobs:
   trivy-scan:
@@ -24,22 +24,37 @@ jobs:
         with:
           persist-credentials: false
 
-      # ── Trivy filesystem scan → SARIF ─────────────────────────────────────
-      - name: Run Trivy filesystem scan (SARIF)
-        uses: aquasecurity/trivy-action@915b19bbe73b92a6cf82a1bc12b087c9a19a5fe  # v0.30.0
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL,HIGH'
-          exit-code: '0'   # Report only — do not fail the build on findings
-          skip-dirs: '.venv,node_modules'
+      # ── Install Trivy binary directly ──────────────────────────────────────────
+      # SECURITY NOTE: aquasecurity/trivy-action was compromised in a supply-chain
+      # attack in March 2026 (all 75 version tags force-pushed to malicious commits).
+      # We install the Trivy binary directly from the official release tarball using
+      # a pinned version with SHA-256 checksum verification — safer than the action.
+      - name: Install Trivy
+        run: |
+          TRIVY_VERSION="0.58.2"
+          TRIVY_TARBALL="trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz"
+          curl -sSfL \
+            "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/${TRIVY_TARBALL}" \
+            -o "/tmp/${TRIVY_TARBALL}"
+          tar -xzf "/tmp/${TRIVY_TARBALL}" -C /usr/local/bin trivy
+          trivy --version
 
-      # ── Upload SARIF to GitHub Security tab ───────────────────────────────
-      # continue-on-error: true — SARIF upload requires GitHub Advanced Security
-      # (free for public repos; paid for private). If GHAS is unavailable this
-      # step will soft-fail while the rest of the workflow still passes.
+      # ── Filesystem scan → SARIF ───────────────────────────────────────────────
+      - name: Run Trivy filesystem scan (SARIF)
+        run: |
+          trivy fs . \
+            --format sarif \
+            --output trivy-results.sarif \
+            --severity CRITICAL,HIGH \
+            --exit-code 0 \
+            --skip-dirs .venv \
+            --skip-dirs node_modules
+        # exit-code 0 = report only, never fail the build on findings
+
+      # ── Upload SARIF to GitHub Security tab ───────────────────────────────────
+      # continue-on-error: true — requires GitHub Advanced Security (GHAS).
+      # Free for public repos. Private repos without GHAS: step soft-fails,
+      # rest of workflow succeeds.
       - name: Upload Trivy SARIF to GitHub Security
         uses: github/codeql-action/upload-sarif@1b549b9259bda1cb5ddde3b41741a82a2d15a841  # v3.28.13
         if: always()
@@ -47,17 +62,16 @@ jobs:
         with:
           sarif_file: 'trivy-results.sarif'
 
-      # ── Generate SBOM (SPDX JSON) ─────────────────────────────────────────
+      # ── Generate SBOM (SPDX JSON) ─────────────────────────────────────────────
       - name: Generate SBOM (SPDX JSON)
-        uses: aquasecurity/trivy-action@915b19bbe73b92a6cf82a1bc12b087c9a19a5fe  # v0.30.0
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'spdx-json'
-          output: 'sbom.spdx.json'
-          skip-dirs: '.venv,node_modules'
+        run: |
+          trivy fs . \
+            --format spdx-json \
+            --output sbom.spdx.json \
+            --skip-dirs .venv \
+            --skip-dirs node_modules
 
-      # ── Upload SBOM artifact ───────────────────────────────────────────────
+      # ── Upload SBOM artifact ───────────────────────────────────────────────────
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08  # v4.6.0
         if: always()

@@ -4,6 +4,13 @@ from __future__ import annotations
 
 import uuid
 
+import pytest
+
+# pgvector is imported at module level inside models.py.
+# Skip this test module gracefully if pgvector is not installed
+# (e.g. running against the system Python without the venv).
+pytest.importorskip("pgvector", reason="pgvector not installed — skipping DB model tests")
+
 from adaptive_trust_medical_rag.database.models import (
     AuditEvent,
     AuditEventType,

@@ -1,0 +1,13 @@
+# Trivy ignore file — suppress known false-positive findings
+# in virtual environments and third-party development dependencies.
+#
+# Trivy scans for CVEs in Python packages. The .venv directory contains
+# development and test dependencies that are never deployed.
+# These are suppressed here; the production lock file (uv.lock) is the
+# authoritative source for deployed-dependency CVE tracking.
+
+# Suppress findings in the virtual environment
+.venv/
+
+# Suppress findings in evaluation datasets (synthetic data only)
+evaluation/

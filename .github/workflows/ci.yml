@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Used by pytest and alembic — no real DB needed for unit tests
+      # Stub DATABASE_URL — unit tests mock DB; no real connection made
       DATABASE_URL: "postgresql+asyncpg://u:p@localhost/db"
-      # Ensures src/ package is importable everywhere in this job
+      # Add src/ to Python path so 'adaptive_trust_medical_rag' package resolves
       PYTHONPATH: "src"
 
     steps:
@@ -28,75 +28,93 @@ jobs:
         with:
           persist-credentials: false
 
-      # ── Python setup ─────────────────────────────────────────────────────────
+      # ── Python 3.12 ───────────────────────────────────────────────────────────
       - name: Set up Python 3.12
         uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2f  # v5.3.0
         with:
           python-version: '3.12'
+          cache: pip
 
-      # ── System dependencies (required by psycopg2-binary source build) ───────
-      - name: Install system dependencies
-        run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends libpq-dev
-
-      # ── uv: install via pip (avoids action-hash pinning issues) ──────────────
-      - name: Install uv
-        run: pip install uv==0.12.5
-
-      - name: Install project dependencies (locked)
-        run: uv sync --frozen --group dev
+      # ── Install all required packages ─────────────────────────────────────────
+      # Audited third-party imports across src/ and tests/ (Aug 2026):
+      #   httpx, pgvector, pydantic, pydantic-settings, pytest, sqlalchemy, pyyaml
+      # Additional runtime deps (alembic, asyncpg, fastapi, python-dotenv)
+      # kept in sync with pyproject.toml.
+      # NOTE: semgrep intentionally excluded from CI — it is a heavy CLI tool
+      # (~400MB) that runs separately via the DevSecOps audit script locally.
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install \
+            httpx \
+            pgvector \
+            "pydantic>=2.0" \
+            "pydantic-settings>=2.0" \
+            python-dotenv \
+            "sqlalchemy[asyncio]" \
+            alembic \
+            asyncpg \
+            fastapi \
+            pyyaml \
+            pytest \
+            pytest-asyncio \
+            ruff==0.16.3 \
+            bandit
+          # psycopg2-binary — pre-built wheel, no system libpq-dev needed
+          pip install psycopg2-binary || echo "::warning::psycopg2-binary wheel unavailable on this runner; skipping (asyncpg used at runtime)"
 
       # ── Secret Scanning ───────────────────────────────────────────────────────
       - name: Install Gitleaks
         run: |
-          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz \
+          curl -sSfL \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz \
             | tar -xz -C /usr/local/bin gitleaks
           gitleaks version
 
       - name: Gitleaks secret scan
-        # Uses .gitleaks.toml to exclude .venv/ and other FP-prone paths
+        # .gitleaks.toml excludes .venv/, uv.lock, SBOM outputs
         run: gitleaks detect --source . --no-git --config .gitleaks.toml --redact --exit-code 1
 
       # ── Python Linting ────────────────────────────────────────────────────────
       - name: Ruff lint — agents scripts
-        run: uv run ruff check .agents/scripts/
+        run: ruff check .agents/scripts/
 
       - name: Ruff lint — src, tests, alembic
-        run: uv run ruff check src/ tests/ alembic/
+        run: ruff check src/ tests/ alembic/
 
       # ── Unit Tests ────────────────────────────────────────────────────────────
       - name: Run unit tests
-        run: uv run pytest tests/ -v --tb=short
+        run: pytest tests/ -v --tb=short
 
       # ── Hook script smoke tests ───────────────────────────────────────────────
-      # These scripts use stdlib only (json, sys, re, shutil) — safe to run with
-      # the venv Python to ensure the correct interpreter version is used.
-      - name: Test inject_medical_context.py
+      # All hook scripts use stdlib only (json, sys, re, shutil) — safe with system Python
+      - name: Hook — inject_medical_context.py
         run: |
-          output=$(echo '{}' | uv run python .agents/scripts/inject_medical_context.py)
-          echo "$output" | python -c "import sys,json; d=json.load(sys.stdin); assert 'injectSteps' in d, 'Missing injectSteps'"
-          echo "inject_medical_context.py OK"
+          output=$(echo '{}' | python .agents/scripts/inject_medical_context.py)
+          echo "$output" | python -c "import sys,json; d=json.load(sys.stdin); assert 'injectSteps' in d"
+          echo "OK"
 
-      - name: Test check_dangerous_cmd.py — allow safe command
+      - name: Hook — check_dangerous_cmd.py allow
         run: |
-          result=$(echo '{"CommandLine": "git status"}' | uv run python .agents/scripts/check_dangerous_cmd.py)
-          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='allow', f'Expected allow, got: {d}'"
-          echo "check_dangerous_cmd.py allow OK"
+          result=$(echo '{"CommandLine": "git status"}' | python .agents/scripts/check_dangerous_cmd.py)
+          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='allow'"
+          echo "OK"
 
-      - name: Test check_dangerous_cmd.py — deny destructive command
+      - name: Hook — check_dangerous_cmd.py deny
         run: |
-          result=$(echo '{"CommandLine": "rm -rf /"}' | uv run python .agents/scripts/check_dangerous_cmd.py)
-          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='deny', f'Expected deny, got: {d}'"
-          echo "check_dangerous_cmd.py deny OK"
+          result=$(echo '{"CommandLine": "rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
+          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='deny'"
+          echo "OK"
 
-      - name: Test pre_commit_secret_scan.py — allow safe content
+      - name: Hook — pre_commit_secret_scan.py allow
         run: |
-          result=$(echo '{"CodeContent": "x = 1 + 2"}' | uv run python .agents/scripts/pre_commit_secret_scan.py)
-          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='allow', f'Expected allow, got: {d}'"
-          echo "pre_commit_secret_scan.py allow OK"
+          result=$(echo '{"CodeContent": "x = 1 + 2"}' | python .agents/scripts/pre_commit_secret_scan.py)
+          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='allow'"
+          echo "OK"
 
-      - name: Test pre_commit_secret_scan.py — deny hardcoded token
+      - name: Hook — pre_commit_secret_scan.py deny token
         run: |
-          dummy_payload=$(python -c 'import json; print(json.dumps({"CodeContent": "token = " + "ghp_" + "0" * 36}))')
-          result=$(echo "$dummy_payload" | uv run python .agents/scripts/pre_commit_secret_scan.py)
-          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='deny', f'Expected deny, got: {d}'"
-          echo "pre_commit_secret_scan.py deny OK"
+          payload=$(python -c 'import json; print(json.dumps({"CodeContent": "token = " + "ghp_" + "0" * 36}))')
+          result=$(echo "$payload" | python .agents/scripts/pre_commit_secret_scan.py)
+          echo "$result" | python -c "import sys,json; d=json.load(sys.stdin); assert d['decision']=='deny'"
+          echo "OK"
