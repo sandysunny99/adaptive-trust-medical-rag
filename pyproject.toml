@@ -11,21 +11,24 @@ license = { text = "MIT" }
 # NEVER install directly with pip into the project environment.
 # ALL installs go through uv to maintain uv.lock reproducibility.
 # ============================================================
-dependencies = []
+dependencies = [
+    "fastapi>=0.141.1",
+    "pydantic>=2.13.4",
+    "pydantic-settings>=2.15.0",
+    "python-dotenv>=1.2.3",
+    "sqlalchemy[asyncio]>=2.0.52",
+    "alembic>=1.19.1",
+    "asyncpg>=0.31.0",
+    "psycopg2-binary>=2.9.12",
+    "pgvector>=0.5.0",
+]
 
-# Phase 3:  uv add fastapi==0.141.1 pydantic==2.13.4 pydantic-settings==2.15.0
-# Phase 3:  uv add sqlalchemy==2.0.49 alembic asyncpg psycopg2-binary
-# Phase 3:  uv add python-dotenv==1.0.1 httpx==0.28.1 uvicorn==0.30.1
-# Phase 4:  uv add bandit semgrep (dev only)
-# Phase 7:  uv add pgvector
-# Phase 8:  uv add google-genai==2.18.0 openai==2.31.0
+# Phase 8:  uv add google-genai openai
 # Phase 9:  uv add rank_bm25
-# Phase 10: uv add sentence-transformers
-# Phase 7:  uv add spacy scispacy
-# Phase 20: uv add ragas==0.4.3 deepeval==4.1.5
-# Phase 20: uv add mlflow
-# Phase 22: uv add garak==0.16.0
+# Phase 10: uv add sentence-transformers spacy scispacy
 # Phase 19: uv add neo4j
+# Phase 20: uv add ragas deepeval mlflow
+# Phase 22: uv add garak
 
 [project.optional-dependencies]
 dev = [
@@ -42,8 +45,6 @@ build-backend = "hatchling.build"
 packages = ["src/adaptive_trust_medical_rag"]
 
 [tool.uv]
-# Do not try to install this project as editable until Phase 8
-# when src/adaptive_trust_medical_rag/ package directory exists.
 package = false
 
 [dependency-groups]
@@ -70,6 +71,7 @@ ignore = ["S101", "S603", "S607"]  # S101: assert; S603/S607: controlled subproc
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+pythonpath = ["src"]
 log_cli = true
 log_cli_level = "INFO"
 
