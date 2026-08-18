@@ -19,30 +19,29 @@ jobs:
       PYTHONPATH: "src"
 
     steps:
+      # ── Checkout ────────────────────────────────────────────────────────────
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:
           persist-credentials: false
 
+      # ── Python ──────────────────────────────────────────────────────────────
       - name: Set up Python 3.12
         uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2f  # v5.3.0
         with:
           python-version: '3.12'
 
-      # Install uv via pip — simplest, most reliable method on any runner
+      # ── uv + dependencies ────────────────────────────────────────────────────
       - name: Install uv
         run: pip install "uv==0.12.5"
 
-      # uv sync --frozen installs EXACTLY what is in uv.lock
-      # --no-group dev skips semgrep (heavy, not needed for lint/test)
-      - name: Install project dependencies
+      - name: Install project dependencies (from lockfile)
         run: uv sync --frozen --no-group dev
 
-      # Install only the lightweight CI tools we actually need
-      - name: Install CI tools (ruff, pytest, pytest-asyncio)
+      - name: Install CI-only tools into venv
         run: uv pip install "ruff==0.16.3" "pytest==9.1.1" "pytest-asyncio==1.4.0" "anyio==4.14.2" "bandit==1.9.4"
 
-      # ── Secret scan ─────────────────────────────────────────────────────────
+      # ── Secret scan ──────────────────────────────────────────────────────────
       - name: Install Gitleaks
         run: |
           curl -sSfL \
@@ -55,40 +54,49 @@ jobs:
 
       # ── Lint ─────────────────────────────────────────────────────────────────
       - name: Ruff lint
-        run: uv run ruff check src/ tests/ alembic/ .agents/scripts/
+        run: |
+          source .venv/bin/activate
+          ruff check src/ tests/ alembic/ .agents/scripts/
 
       # ── Tests ────────────────────────────────────────────────────────────────
       - name: Unit tests
-        run: uv run pytest tests/ -v --tb=short
+        run: |
+          source .venv/bin/activate
+          pytest tests/ -v --tb=short
 
       # ── Hook script smoke tests ───────────────────────────────────────────────
       - name: Hook — inject_medical_context
         run: |
-          out=$(echo '{}' | uv run python .agents/scripts/inject_medical_context.py)
+          source .venv/bin/activate
+          out=$(echo '{}' | python .agents/scripts/inject_medical_context.py)
           echo "$out" | python -c "import sys,json; assert 'injectSteps' in json.load(sys.stdin)"
-          echo "OK"
+          echo "inject_medical_context OK"
 
       - name: Hook — check_dangerous_cmd allow
         run: |
-          r=$(echo '{"CommandLine":"git status"}' | uv run python .agents/scripts/check_dangerous_cmd.py)
+          source .venv/bin/activate
+          r=$(echo '{"CommandLine":"git status"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "OK"
+          echo "check_dangerous_cmd allow OK"
 
       - name: Hook — check_dangerous_cmd deny
         run: |
-          r=$(printf '{"CommandLine":"rm -rf /"}' | uv run python .agents/scripts/check_dangerous_cmd.py)
+          source .venv/bin/activate
+          r=$(printf '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "OK"
+          echo "check_dangerous_cmd deny OK"
 
       - name: Hook — pre_commit_secret_scan allow
         run: |
-          r=$(echo '{"CodeContent":"x = 1 + 2"}' | uv run python .agents/scripts/pre_commit_secret_scan.py)
+          source .venv/bin/activate
+          r=$(echo '{"CodeContent":"x = 1 + 2"}' | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "OK"
+          echo "pre_commit_secret_scan allow OK"
 
       - name: Hook — pre_commit_secret_scan deny token
         run: |
+          source .venv/bin/activate
           p=$(python -c 'import json; print(json.dumps({"CodeContent":"token = "+"ghp_"+"0"*36}))')
-          r=$(echo "$p" | uv run python .agents/scripts/pre_commit_secret_scan.py)
+          r=$(echo "$p" | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "OK"
+          echo "pre_commit_secret_scan deny OK"
