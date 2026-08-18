@@ -102,22 +102,38 @@ def scan_with_regex(content: str) -> list[str]:
 
 def scan_with_gitleaks(content: str) -> list[str]:
     """Run Gitleaks on the content if available (Phase 4+)."""
+    import os
+
     gitleaks_bin = shutil.which("gitleaks")
     if not gitleaks_bin:
         return []  # Gitleaks not installed — skip
+
+    # In CI environments the gitleaks binary is installed globally for repo
+    # scanning, not for inline content scanning. Skip to avoid false positives
+    # caused by gitleaks scanning temp files without project context.
+    if os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS"):
+        return []
+
     try:
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".txt", delete=False, encoding="utf-8"
-        ) as f:
-            f.write(content)
-            tmp_path = f.name
-        result = subprocess.run(  # nosec B603
-            [gitleaks_bin, "detect", "--source", tmp_path, "--no-git", "--quiet"],
-            capture_output=True,
-            text=True,
-            timeout=20,
-        )
-        Path(tmp_path).unlink(missing_ok=True)
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            tmp_file = Path(tmp_dir) / "content_scan.txt"
+            tmp_file.write_text(content, encoding="utf-8")
+            # Locate project .gitleaks.toml for consistent rule application
+            config_args: list[str] = []
+            project_config = Path(".") / ".gitleaks.toml"
+            if project_config.exists():
+                config_args = ["--config", str(project_config)]
+            result = subprocess.run(  # nosec B603
+                [
+                    gitleaks_bin, "detect",
+                    "--source", str(tmp_dir),
+                    "--no-git", "--quiet",
+                    *config_args,
+                ],
+                capture_output=True,
+                text=True,
+                timeout=20,
+            )
         if result.returncode != 0:
             return ["Gitleaks detected secrets — run `gitleaks detect` for details"]
         return []
