@@ -31,15 +31,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      # ── uv + dependencies ────────────────────────────────────────────────────
+      # ── Install uv and sync from lockfile ────────────────────────────────────
       - name: Install uv
         run: pip install "uv==0.12.5"
 
-      - name: Install project dependencies (from lockfile)
-        run: uv sync --frozen --no-group dev
-
-      - name: Install CI-only tools into venv
-        run: uv pip install "ruff==0.16.3" "pytest==9.1.1" "pytest-asyncio==1.4.0" "anyio==4.14.2" "bandit==1.9.4"
+      # uv sync --frozen reads uv.lock exactly — all packages guaranteed correct.
+      # semgrep removed from dev group (it pulled 51 heavy packages).
+      - name: Install all dependencies (from uv.lock)
+        run: uv sync --frozen
 
       # ── Secret scan ──────────────────────────────────────────────────────────
       - name: Install Gitleaks
@@ -70,28 +69,28 @@ jobs:
           source .venv/bin/activate
           out=$(echo '{}' | python .agents/scripts/inject_medical_context.py)
           echo "$out" | python -c "import sys,json; assert 'injectSteps' in json.load(sys.stdin)"
-          echo "inject_medical_context OK"
+          echo "OK"
 
       - name: Hook — check_dangerous_cmd allow
         run: |
           source .venv/bin/activate
           r=$(echo '{"CommandLine":"git status"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "check_dangerous_cmd allow OK"
+          echo "OK"
 
       - name: Hook — check_dangerous_cmd deny
         run: |
           source .venv/bin/activate
           r=$(printf '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "check_dangerous_cmd deny OK"
+          echo "OK"
 
       - name: Hook — pre_commit_secret_scan allow
         run: |
           source .venv/bin/activate
           r=$(echo '{"CodeContent":"x = 1 + 2"}' | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "pre_commit_secret_scan allow OK"
+          echo "OK"
 
       - name: Hook — pre_commit_secret_scan deny token
         run: |
@@ -99,4 +98,4 @@ jobs:
           p=$(python -c 'import json; print(json.dumps({"CodeContent":"token = "+"ghp_"+"0"*36}))')
           r=$(echo "$p" | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "pre_commit_secret_scan deny OK"
+          echo "OK"
