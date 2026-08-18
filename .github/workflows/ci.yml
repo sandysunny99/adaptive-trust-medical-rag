@@ -1,4 +1,4 @@
-name: CI — Lint & Secret Scan
+name: CI
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   lint-and-scan:
-    name: Lint + Secrets + Tests
+    name: Lint and Test
     runs-on: ubuntu-latest
 
     env:
@@ -19,83 +19,66 @@ jobs:
       PYTHONPATH: "src"
 
     steps:
-      # ── Checkout ────────────────────────────────────────────────────────────
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
 
-      # ── Python ──────────────────────────────────────────────────────────────
       - name: Set up Python 3.12
-        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2f  # v5.3.0
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2f
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
-      # ── Install uv and sync from lockfile ────────────────────────────────────
       - name: Install uv
-        run: pip install "uv==0.12.5"
+        run: pip install uv==0.12.5
 
-      # uv sync --frozen reads uv.lock exactly — all packages guaranteed correct.
-      # semgrep removed from dev group (it pulled 51 heavy packages).
-      - name: Install all dependencies (from uv.lock)
+      - name: Install dependencies
         run: uv sync --frozen
 
-      # ── Secret scan ──────────────────────────────────────────────────────────
       - name: Install Gitleaks
         run: |
-          curl -sSfL \
-            https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz \
-            | tar -xz -C /usr/local/bin gitleaks
-          gitleaks version
+          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz -C /usr/local/bin gitleaks
 
       - name: Gitleaks secret scan
         run: gitleaks detect --source . --no-git --config .gitleaks.toml --redact --exit-code 1
 
-      # ── Lint ─────────────────────────────────────────────────────────────────
       - name: Ruff lint
         run: |
           source .venv/bin/activate
           ruff check src/ tests/ alembic/ .agents/scripts/
 
-      # ── Tests ────────────────────────────────────────────────────────────────
       - name: Unit tests
         run: |
           source .venv/bin/activate
           pytest tests/ -v --tb=short
 
-      # ── Hook script smoke tests ───────────────────────────────────────────────
-      - name: Hook — inject_medical_context
+      - name: Hook inject_medical_context
         run: |
           source .venv/bin/activate
           out=$(echo '{}' | python .agents/scripts/inject_medical_context.py)
           echo "$out" | python -c "import sys,json; assert 'injectSteps' in json.load(sys.stdin)"
-          echo "OK"
 
-      - name: Hook — check_dangerous_cmd allow
+      - name: Hook check_dangerous_cmd allow
         run: |
           source .venv/bin/activate
           r=$(echo '{"CommandLine":"git status"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "OK"
 
-      - name: Hook — check_dangerous_cmd deny
+      - name: Hook check_dangerous_cmd deny
         run: |
           source .venv/bin/activate
           r=$(printf '{"CommandLine":"rm -rf /"}' | python .agents/scripts/check_dangerous_cmd.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "OK"
 
-      - name: Hook — pre_commit_secret_scan allow
+      - name: Hook pre_commit_secret_scan allow
         run: |
           source .venv/bin/activate
           r=$(echo '{"CodeContent":"x = 1 + 2"}' | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='allow'"
-          echo "OK"
 
-      - name: Hook — pre_commit_secret_scan deny token
+      - name: Hook pre_commit_secret_scan deny
         run: |
           source .venv/bin/activate
           p=$(python -c 'import json; print(json.dumps({"CodeContent":"token = "+"ghp_"+"0"*36}))')
           r=$(echo "$p" | python .agents/scripts/pre_commit_secret_scan.py)
           echo "$r" | python -c "import sys,json; assert json.load(sys.stdin)['decision']=='deny'"
-          echo "OK"
