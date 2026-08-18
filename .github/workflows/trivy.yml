@@ -1,13 +1,9 @@
 name: Trivy Supply Chain Scan
 
 on:
-  # INTENTIONALLY no 'push' trigger — runs only on schedule and manual dispatch.
-  # Reason: trivy-action supply chain compromise (March 2026) means we install
-  # the binary directly; removing push trigger stops failure-alert emails on
-  # every commit while we stabilise the workflow.
   schedule:
-    - cron: '0 2 * * 1'   # Weekly Monday 02:00 UTC
-  workflow_dispatch:        # Manual trigger from Actions tab
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,23 +11,18 @@ permissions:
 
 jobs:
   trivy-scan:
-    name: Trivy SBOM + Vulnerability Scan
+    name: Trivy SBOM and Vulnerability Scan
     runs-on: ubuntu-latest
-    # continue-on-error at job level: if trivy scan itself has issues,
-    # the overall workflow is still marked SUCCESS (no failure emails).
     continue-on-error: true
 
     steps:
       - name: Checkout
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
-      # Install Trivy binary directly — avoids the compromised trivy-action
-      # (supply chain attack March 2026 affected all 75 version tags).
       - name: Install Trivy
         run: |
-          # Detect latest Trivy release dynamically to avoid version drift
           LATEST=$(curl -sSf https://api.github.com/repos/aquasecurity/trivy/releases/latest \
             | python3 -c "import sys,json; print(json.load(sys.stdin)['tag_name'].lstrip('v'))")
           echo "Installing Trivy v${LATEST}"
@@ -41,7 +32,7 @@ jobs:
           tar -xzf /tmp/trivy.tar.gz -C /usr/local/bin trivy
           trivy --version
 
-      - name: Trivy filesystem scan (SARIF)
+      - name: Trivy filesystem scan
         run: |
           trivy fs . \
             --format sarif \
@@ -52,13 +43,13 @@ jobs:
             --skip-dirs node_modules
 
       - name: Upload SARIF to GitHub Security
-        uses: github/codeql-action/upload-sarif@1b549b9259bda1cb5ddde3b41741a82a2d15a841  # v3.28.13
+        uses: github/codeql-action/upload-sarif@v3
         if: always()
         continue-on-error: true
         with:
           sarif_file: trivy-results.sarif
 
-      - name: Generate SBOM (SPDX JSON)
+      - name: Generate SBOM
         run: |
           trivy fs . \
             --format spdx-json \
@@ -67,7 +58,7 @@ jobs:
             --skip-dirs node_modules
 
       - name: Upload SBOM artifact
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08  # v4.6.0
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: sbom-spdx
