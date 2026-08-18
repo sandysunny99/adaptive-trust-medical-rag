@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "medical-rag": {
+      "command": "python",
+      "args": [".agents/scripts/mcp_server.py"],
+      "description": "Adaptive Trust-Aware Medical RAG MCP server. Exposes pipeline tools: query, ingest_document, get_trust_score, check_evidence_eligibility.",
+      "env": {
+        "PYTHONPATH": "src"
+      }
+    }
+  }
+}

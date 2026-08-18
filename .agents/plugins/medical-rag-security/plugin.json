@@ -1,3 +1,24 @@
 {
-  "name": "medical-rag-security"
+  "name": "medical-rag-security",
+  "version": "1.0.0",
+  "description": "Adaptive Trust-Aware Medical RAG security plugin. Enforces prompt-injection defense, retrieval poisoning guards, claim verification, controlled abstention, and PHI-zero policies.",
+  "hooks": "hooks.json",
+  "mcp": "mcp_config.json",
+  "rules": [
+    "rules/development.md",
+    "rules/medical-safety.md",
+    "rules/privacy.md",
+    "rules/rag-integrity.md",
+    "rules/security.md"
+  ],
+  "skills": [
+    "skills/adaptive-trust-scoring",
+    "skills/claim-verification",
+    "skills/drug-entity-normalization",
+    "skills/hybrid-retrieval",
+    "skills/medical-evidence-ingestion",
+    "skills/medical-rag-architecture",
+    "skills/medical-rag-evaluation",
+    "skills/medical-source-validation"
+  ]
 }

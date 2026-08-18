@@ -45,7 +45,8 @@ jobs:
       - name: Ruff lint
         run: |
           source .venv/bin/activate
-          ruff check src/ tests/ alembic/ .agents/scripts/
+          ruff check src/ tests/ .agents/scripts/
+          if [ -d alembic ]; then ruff check alembic/; fi
 
       - name: Unit tests
         run: |
