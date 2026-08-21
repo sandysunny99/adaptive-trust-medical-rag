@@ -1,5 +1,12 @@
 ﻿"""Evaluation package for adaptive-trust-medical-rag."""
 
+from adaptive_trust_medical_rag.evaluation.ablation_runner import (
+    AblationReport,
+    AblationRunConfig,
+    AblationRunner,
+    MockVariantPipeline,
+    make_mock_run_configs,
+)
 from adaptive_trust_medical_rag.evaluation.evaluator import (
     BOOTSTRAP_N,
     CI_LEVEL,
@@ -29,6 +36,12 @@ from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
 )
 
 __all__ = [
+    # ablation_runner
+    "AblationReport",
+    "AblationRunConfig",
+    "AblationRunner",
+    "MockVariantPipeline",
+    "make_mock_run_configs",
     # evaluator
     "BOOTSTRAP_N",
     "CI_LEVEL",
