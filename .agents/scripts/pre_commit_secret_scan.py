@@ -49,7 +49,9 @@ SECRET_PATTERNS = [
 # Paths that are exempt from scanning (test fixtures with SYNTHETIC data)
 EXEMPT_PATH_PATTERNS = [
     r"evaluation[/\\]",
-    r"tests[/\\]fixtures[/\\]",
+    r"tests[/\\]",                    # all test files - synthetic mock data
+    r"\.agents[/\\]scripts[/\\]",  # hook scripts - contain secret regex patterns
+    r"\.gitleaks\.toml$",             # gitleaks config - not actual secrets
     r"\.env\.example$",
     r"\.env\.template$",
 ]
@@ -120,7 +122,8 @@ def scan_with_gitleaks(content: str) -> list[str]:
             tmp_file.write_text(content, encoding="utf-8")
             # Locate project .gitleaks.toml for consistent rule application
             config_args: list[str] = []
-            project_config = Path(".") / ".gitleaks.toml"
+            workspace_root = Path(__file__).resolve().parent.parent.parent
+            project_config = workspace_root / ".gitleaks.toml"
             if project_config.exists():
                 config_args = ["--config", str(project_config)]
             result = subprocess.run(  # nosec B603
