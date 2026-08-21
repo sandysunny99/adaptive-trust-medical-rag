@@ -7,6 +7,12 @@ from adaptive_trust_medical_rag.evaluation.ablation_runner import (
     MockVariantPipeline,
     make_mock_run_configs,
 )
+from adaptive_trust_medical_rag.evaluation.dataset_generator import (
+    generate_dataset,
+    load_dataset,
+    save_dataset,
+    verify_no_phi,
+)
 from adaptive_trust_medical_rag.evaluation.evaluator import (
     BOOTSTRAP_N,
     CI_LEVEL,
@@ -42,6 +48,11 @@ __all__ = [
     "AblationRunner",
     "MockVariantPipeline",
     "make_mock_run_configs",
+    # dataset_generator
+    "generate_dataset",
+    "load_dataset",
+    "save_dataset",
+    "verify_no_phi",
     # evaluator
     "BOOTSTRAP_N",
     "CI_LEVEL",
