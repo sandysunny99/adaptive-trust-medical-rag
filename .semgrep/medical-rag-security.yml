@@ -1,0 +1,103 @@
+rules:
+
+  - id: medical-rag-prompt-injection-string
+    pattern: '"...[INST]..."'
+    pattern-regex: '(?i)(ignore\s+previous\s+instructions?|system\s*prompt\s*:|<\|im_start\|>|\[INST\])'
+    message: >
+      Hardcoded prompt injection marker detected in source code.
+      All retrieved documents and user inputs must be sanitized before
+      being placed into LLM prompts. Use sanitize_query() / strip_injection_markers().
+    languages: [python, generic]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: 'CWE-94: Improper Control of Generation of Code'
+      owasp: 'LLM01: Prompt Injection'
+
+  - id: medical-rag-phi-ssn-pattern
+    pattern-regex: '\b\d{3}-\d{2}-\d{4}\b'
+    message: >
+      Possible Social Security Number (SSN) pattern detected in source code.
+      Per privacy.md, zero PHI may be stored in source, config, or fixtures.
+    languages: [python, generic]
+    severity: ERROR
+    metadata:
+      category: privacy
+      cwe: 'CWE-359: Exposure of Private Personal Information'
+      owasp: 'A02: Cryptographic Failures'
+
+  - id: medical-rag-hardcoded-api-key
+    patterns:
+      - pattern: $KEY = "$VAL"
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: '.*(api_key|secret|token|password|credential).*'
+      - metavariable-regex:
+          metavariable: $VAL
+          regex: '.{8,}'
+    message: >
+      Possible hardcoded secret detected. Credentials must be loaded from
+      environment variables. Never commit secrets to source code.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: 'CWE-798: Use of Hard-coded Credentials'
+      owasp: 'A07: Identification and Authentication Failures'
+
+  - id: medical-rag-raw-sql-fstring
+    patterns:
+      - pattern: $SESSION.execute(f"...", ...)
+    message: >
+      Raw f-string SQL passed to execute(). Use SQLAlchemy text() with bound
+      parameters to prevent SQL injection.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: 'CWE-89: SQL Injection'
+      owasp: 'A03: Injection'
+
+  - id: medical-rag-test-set-direct-access
+    patterns:
+      - pattern: $DS.get_split(DatasetSplit.test)
+    message: >
+      Direct test-set access detected without allow_test=True flag.
+      The frozen 500+ case test set must never be used for tuning.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: research-integrity
+
+  - id: medical-rag-shell-true-subprocess
+    patterns:
+      - pattern: subprocess.run(..., shell=True, ...)
+    message: >
+      shell=True in subprocess is dangerous. Use a list of arguments instead.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: 'CWE-78: OS Command Injection'
+
+  - id: medical-rag-fabricated-pmid
+    pattern-regex: 'PMID:\s*\d{8,}'
+    message: >
+      Hardcoded PMID detected. All citations must come from verified retrieved
+      evidence, not hardcoded values in source code.
+    languages: [python]
+    severity: WARNING
+    metadata:
+      category: research-integrity
+      cwe: 'CWE-345: Insufficient Verification of Data Authenticity'
+
+  - id: medical-rag-eval-outside-test
+    pattern: eval(...)
+    message: >
+      eval() in production code is a security risk. Use ast.literal_eval()
+      for safe expression evaluation.
+    languages: [python]
+    severity: ERROR
+    metadata:
+      category: security
+      cwe: 'CWE-95: Improper Neutralization of Directives in Evaluated Code'

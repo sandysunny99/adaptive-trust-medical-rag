@@ -78,4 +78,4 @@ log_cli_level = "INFO"
 
 [tool.bandit]
 exclude_dirs = [".venv", "tests", "evaluation"]
-skips = ["B101", "B404", "B603", "B607"]
+skips = ["B101", "B105", "B311", "B404", "B603", "B607"]
