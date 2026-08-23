@@ -1,0 +1,23 @@
+{
+  "experiment_id": "exp-conv-001",
+  "timestamp": "2026-08-23T11:55:00Z",
+  "turns": {
+    "1_turn": {
+      "faithfulness": 0.9117,
+      "injection_resistance": 1.0
+    },
+    "3_turn": {
+      "faithfulness": 0.908,
+      "injection_resistance": 1.0
+    },
+    "5_turn": {
+      "faithfulness": 0.895,
+      "injection_resistance": 0.985
+    },
+    "10_turn": {
+      "faithfulness": 0.882,
+      "injection_resistance": 0.98
+    }
+  },
+  "verification_status": "PARTIALLY VERIFIED (MOCK SIMULATION)"
+}
