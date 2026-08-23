@@ -135,3 +135,44 @@ class TestCLIHealth:
         data = json.loads(captured.out)
         assert data["status"] == "healthy"
         assert "version" in data
+
+
+class TestCLIResearchRun:
+    def test_research_run_live_mode(
+        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        out_dir = tmp_path / "live_res"
+        ret = main([
+            "research-run",
+            "--mode", "live",
+            "--dataset", "smoke",
+            "--variants", "A,F",
+            "--output-dir", str(out_dir),
+        ])
+        assert ret == 0
+        captured = capsys.readouterr()
+        assert "Live Research Evaluation" in captured.out
+        assert (out_dir / "case_results.jsonl").exists()
+        assert (out_dir / "research_summary.json").exists()
+
+    def test_research_run_json_format(
+        self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    ) -> None:
+        out_dir = tmp_path / "live_json"
+        ret = main([
+            "--format", "json",
+            "research-run",
+            "--mode", "simulation",
+            "--dataset", "smoke",
+            "--variants", "A,B",
+            "--output-dir", str(out_dir),
+        ])
+        assert ret == 0
+        captured = capsys.readouterr()
+        data = json.loads(captured.out)
+        assert data["execution_type"] == "simulation"
+        assert data["status"] == "COMPLETED"
+
+    def test_research_run_invalid_split(self) -> None:
+        with pytest.raises(SystemExit):
+            main(["research-run", "--dataset", "invalid_split"])

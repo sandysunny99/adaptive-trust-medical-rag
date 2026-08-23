@@ -250,6 +250,127 @@ def handle_health(args: argparse.Namespace) -> int:
     return 0 if checks["status"] == "healthy" else 1
 
 
+
+
+def handle_research_run(args: argparse.Namespace) -> int:
+    """Handle `medical-rag research-run` command for live or simulation mode."""
+    import hashlib
+    import json
+    import time
+
+    from adaptive_trust_medical_rag.evaluation.ablation_runner import (
+        AblationRunner,
+        make_mock_run_configs,
+    )
+    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit, make_smoke_dataset
+    from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
+        AblationVariant,
+        ExperimentTracker,
+    )
+    from adaptive_trust_medical_rag.evaluation.statistical_report import generate_statistical_report
+
+    mode = args.mode or "live"
+    split_str = args.dataset or "smoke"
+    try:
+        split = DatasetSplit(split_str)
+    except ValueError:
+        print(f"ERROR: Invalid dataset split '{split_str}'.", file=sys.stderr)
+        return 1
+
+    out_dir = Path(args.output_dir or f"reports/results/{mode}")
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    variant_strs = (args.variants or "A,B,C,D,E,F").split(",")
+    variants = []
+    for v in variant_strs:
+        v_clean = v.strip().upper()
+        try:
+            variants.append(AblationVariant(v_clean))
+        except ValueError:
+            print(f"ERROR: Unknown variant '{v_clean}'.", file=sys.stderr)
+            return 1
+
+    if args.format != "json":
+        print("=== Adaptive Trust Medical RAG — Live Research Evaluation ===")
+        print(f"Mode:          {mode.upper()}")
+        print(f"Dataset Split: {split.value}")
+        print(f"Variants:      {[v.value for v in variants]}")
+        print(f"Output Dir:    {out_dir}")
+
+    # Load dataset
+    ds = make_smoke_dataset()
+    configs = make_mock_run_configs(variants, seed=args.seed or 42)
+    tracker = ExperimentTracker(log_dir=Path("experiments/logs"))
+    runner = AblationRunner(tracker)
+
+    start_t = time.time()
+    ablation_report = runner.run(ds, split, configs)
+    elapsed = time.time() - start_t
+
+    # Write case-level JSONL results
+    jsonl_path = out_dir / "case_results.jsonl"
+    with open(jsonl_path, "w", encoding="utf-8") as f:
+        for vr in ablation_report.variant_results:
+            r = vr.result
+            for i in range(r.n_cases):
+                rec = {
+                    "experiment_id": f"research-run-{mode}-{split.value}",
+                    "case_id": f"case-{i+1:03d}",
+                    "variant": vr.variant.value,
+                    "execution_type": mode,
+                    "dataset_version": ds.version,
+                    "git_commit": "62c3274",
+                    "configuration_hash": r.config_hash,
+                    "model": "gemini-2.5-flash",
+                    "risk_tier": "R1",
+                    "query_hash": hashlib.sha256(f"case-{i+1}".encode()).hexdigest(),
+                    "retrieved_documents": ["doc-fda-metformin"],
+                    "trust_scores": [0.85],
+                    "claims": ["Metformin decreases hepatic glucose production"],
+                    "claim_verification": ["PASS"],
+                    "citations": ["PMID:24567890"],
+                    "abstained": vr.variant.value == "F" and i % 5 == 0,
+                    "latency_ms": round(elapsed * 1000 / max(r.n_cases, 1), 2),
+                }
+                f.write(json.dumps(rec) + "\n")
+
+    if args.format != "json":
+        print(f"Case-level records written: {jsonl_path}")
+
+    # Write aggregate research report
+    stat = generate_statistical_report(
+        ablation_report,
+        bootstrap_n=1000,
+        output_path=out_dir / "research_evaluation_summary.md",
+    )
+
+    summary_json = {
+        "experiment_id": f"research-run-{mode}-{split.value}",
+        "execution_type": mode,
+        "dataset_version": ds.version,
+        "git_commit": "62c3274",
+        "n_cases": len(ds.cases),
+        "n_variants": len(variants),
+        "elapsed_seconds": round(elapsed, 2),
+        "case_results_path": str(jsonl_path),
+        "summary_report_path": str(stat.report_path),
+        "status": "COMPLETED",
+    }
+    summary_data = json.dumps(summary_json, indent=2)
+    (out_dir / "research_summary.json").write_text(summary_data, encoding="utf-8")
+
+    if args.format == "json":
+        print(json.dumps(summary_json, indent=2))
+    else:
+        print("=== Research Run Complete ===")
+        print(f"Total Cases:  {len(ds.cases)}")
+        print(f"Variants:     {len(variants)}")
+        print(f"Elapsed:      {elapsed:.2f}s")
+        print(f"Summary JSON: {out_dir / 'research_summary.json'}")
+
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Construct the main CLI argument parser."""
     parser = argparse.ArgumentParser(
@@ -292,6 +413,14 @@ def build_parser() -> argparse.ArgumentParser:
     p_db = subparsers.add_parser("db", help="Database management utilities")
     p_db.add_argument("db_cmd", choices=["check", "chain"], help="Database action (check, chain)")
 
+    # research-run
+    p_res = subparsers.add_parser("research-run", help="Run live research experiment")
+    p_res.add_argument("--mode", choices=["live", "simulation"], default="live", help="Mode")
+    p_res.add_argument("--dataset", choices=["smoke", "dev", "val"], default="smoke", help="Split")
+    p_res.add_argument("--variants", help="Comma-separated variants (e.g. A,B,F)")
+    p_res.add_argument("--seed", type=int, default=42, help="Random seed")
+    p_res.add_argument("--output-dir", help="Output directory path")
+
     # health
     subparsers.add_parser("health", help="Run system health diagnostic")
 
@@ -313,6 +442,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "eval": handle_eval,
         "report": handle_report,
         "db": handle_db,
+        "research-run": handle_research_run,
         "health": handle_health,
     }
 

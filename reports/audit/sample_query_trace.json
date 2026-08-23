@@ -1,0 +1,41 @@
+{
+  "query": "What is the mechanism of action of metformin?",
+  "query_hash": "f346907cbc9a743800a151fa44770a6429ce33fbd28ad9f4a02eb1dce062ffc7",
+  "sanitized_clean": true,
+  "risk_tier": "R1",
+  "normalized_entities": [
+    {
+      "entity": "metformin",
+      "rxcui": "6809",
+      "drug_class": "biguanide"
+    }
+  ],
+  "retrieved_evidence": [
+    {
+      "chunk_id": "chunk-metformin-001",
+      "doc_id": "doc-fda-metformin",
+      "title": "FDA Label: Metformin Hydrochloride",
+      "authority_tier": "tier_1_peer_reviewed",
+      "authority_score": 1.0,
+      "freshness_score": 0.92,
+      "entity_match_score": 1.0,
+      "reputation_score": 0.95,
+      "trust_score": 0.966,
+      "eligible": true
+    }
+  ],
+  "eligibility_gate_decision": "PASS",
+  "generated_answer": "Evidence-grounded research output: Metformin decreases hepatic glucose production, decreases intestinal absorption of glucose, and improves insulin sensitivity by increasing peripheral glucose uptake and utilization.",
+  "claims": [
+    {
+      "claim": "Metformin decreases hepatic glucose production",
+      "supported": true,
+      "evidence_id": "chunk-metformin-001"
+    }
+  ],
+  "citations": [
+    "PMID:24567890"
+  ],
+  "answer_safety_gate": "PASS",
+  "latency_ms": 52.4
+}

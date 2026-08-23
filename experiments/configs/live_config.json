@@ -1,0 +1,45 @@
+{
+  "experiment_id": "live-exp-001",
+  "timestamp": "2026-08-23T07:47:22Z",
+  "model": {
+    "provider": "google-genai",
+    "name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_tokens": 1024
+  },
+  "embedding": {
+    "provider": "huggingface",
+    "name": "sentence-transformers/all-mpnet-base-v2",
+    "dimension": 768
+  },
+  "database": {
+    "engine": "postgresql+asyncpg",
+    "vector_extension": "pgvector",
+    "index_type": "ivfflat"
+  },
+  "retrieval": {
+    "top_k": 5,
+    "bm25_k1": 1.5,
+    "bm25_b": 0.75,
+    "rrf_k": 60,
+    "graph_max_depth": 2
+  },
+  "trust_scoring": {
+    "weights": {
+      "authority": 0.35,
+      "freshness": 0.2,
+      "entity_match": 0.3,
+      "reputation": 0.15
+    },
+    "freshness_half_life_years": 5.0,
+    "thresholds": {
+      "R0": 0.3,
+      "R1": 0.45,
+      "R2": 0.6,
+      "R3": 0.75
+    }
+  },
+  "prompt_version": "v1.2",
+  "context_template_version": "v1.0",
+  "configuration_hash": "c8e1a00ab6b0bdad0a42f73ac3341993cda457b4ef2732c31e78f85a37cef0c2"
+}
