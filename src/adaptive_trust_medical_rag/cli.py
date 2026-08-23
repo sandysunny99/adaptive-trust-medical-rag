@@ -322,22 +322,30 @@ def handle_research_run(args: argparse.Namespace) -> int:
     # Load dataset
     ds = _get_dataset_for_split(split)
     tracker = ExperimentTracker(log_dir=Path("experiments/logs"))
-    start_t = time.time()
+    start_t = time.perf_counter()
     jsonl_path = out_dir / "case_results.jsonl"
 
     if mode == "live":
         from adaptive_trust_medical_rag.evaluation.live_variants import RealVariantRunner
 
         real_runner = RealVariantRunner()
+        ds_raw = json.dumps(
+            [{"case_id": c.case_id, "query": c.query} for c in ds.cases], sort_keys=True
+        )
+        ds_sha256 = hashlib.sha256(ds_raw.encode("utf-8")).hexdigest()
+
         records = []
-        for case in ds.cases:
+        cases_to_run = ds.cases[: args.limit] if hasattr(args, "limit") and args.limit else ds.cases
+
+        for case in cases_to_run:
             for var in variants:
                 res = real_runner.run_case(
                     case, var, experiment_id=f"research-run-live-{split.value}"
                 )
+                res.dataset_sha256 = ds_sha256
                 records.append(res.to_dict())
 
-        elapsed = time.time() - start_t
+        elapsed = round(time.perf_counter() - start_t, 3)
         with open(jsonl_path, "w", encoding="utf-8") as f:
             for rec in records:
                 f.write(json.dumps(rec) + "\n")
@@ -352,7 +360,7 @@ def handle_research_run(args: argparse.Namespace) -> int:
         configs = make_mock_run_configs(variants, seed=args.seed or 42)
         ablation_runner = AblationRunner(tracker)
         ablation_report = ablation_runner.run(ds, split, configs)
-        elapsed = time.time() - start_t
+        elapsed = round(time.perf_counter() - start_t, 3)
 
         records = []
         for vr in ablation_report.variant_results:
@@ -366,16 +374,16 @@ def handle_research_run(args: argparse.Namespace) -> int:
                     "execution_backend": "mock",
                     "runtime_verified": False,
                     "dataset_version": ds.version,
-                    "git_commit": "67d0d2d",
+                    "git_commit": "unresolved_git_commit",
                     "configuration_hash": r.config_hash,
                     "model": "gemini-2.5-flash",
                     "risk_tier": "R1",
                     "query_hash": hashlib.sha256(f"case-{i + 1}".encode()).hexdigest(),
-                    "retrieved_documents": ["doc-fda-metformin"],
-                    "trust_scores": [0.85],
-                    "claims": ["Metformin decreases hepatic glucose production"],
-                    "claim_verification": ["PASS"],
-                    "citations": ["PMID:24567890"],
+                    "retrieved_documents": [],
+                    "trust_scores": [],
+                    "claims": [],
+                    "claim_verification": [],
+                    "citations": [],
                     "abstained": vr.variant.value == "F" and i % 5 == 0,
                     "latency_ms": round(elapsed * 1000 / max(r.n_cases, 1), 2),
                     "llm_execution": {"called": False, "provider": "mock", "model": "mock"},
@@ -423,8 +431,8 @@ def handle_research_run(args: argparse.Namespace) -> int:
         "execution_backend": "real_rag_pipeline" if mode == "live" else "mock",
         "runtime_verified": mode == "live",
         "dataset_version": ds.version,
-        "git_commit": "67d0d2d",
-        "n_cases": len(ds.cases),
+        "git_commit": records[0].get("git_commit", "unresolved") if records else "unresolved",
+        "n_cases": len(records) // max(len(variants), 1),
         "n_variants": len(variants),
         "elapsed_seconds": round(elapsed, 2),
         "case_results_path": str(jsonl_path),
@@ -434,11 +442,19 @@ def handle_research_run(args: argparse.Namespace) -> int:
     summary_data = json.dumps(summary_json, indent=2)
     (out_dir / "research_summary.json").write_text(summary_data, encoding="utf-8")
 
+    # If --limit 1 was passed, also save one_case_trace.json
+    if hasattr(args, "limit") and args.limit == 1 and records:
+        (out_dir / "one_case_trace.json").write_text(
+            json.dumps(records[0], indent=2), encoding="utf-8"
+        )
+        if args.format != "json":
+            print(f"One-case trace written: {out_dir / 'one_case_trace.json'}")
+
     if args.format == "json":
         print(json.dumps(summary_json, indent=2))
     else:
         print("=== Research Run Complete ===")
-        print(f"Total Cases:  {len(ds.cases)}")
+        print(f"Total Cases:  {len(records) // max(len(variants), 1)}")
         print(f"Variants:     {len(variants)}")
         print(f"Elapsed:      {elapsed:.2f}s")
         print(f"Summary JSON: {out_dir / 'research_summary.json'}")
@@ -515,6 +531,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_res.add_argument("--dataset", choices=["smoke", "dev", "val"], default="smoke", help="Split")
     p_res.add_argument("--variants", help="Comma-separated variants (e.g. A,B,C,D,E,F)")
     p_res.add_argument("--seed", type=int, default=42, help="Random seed")
+    p_res.add_argument("--limit", type=int, default=None, help="Limit number of cases")
     p_res.add_argument("--output-dir", help="Output directory path")
     p_res.set_defaults(func=handle_research_run)
 

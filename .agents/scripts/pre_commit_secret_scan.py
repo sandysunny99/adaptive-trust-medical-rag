@@ -54,6 +54,7 @@ EXEMPT_PATH_PATTERNS = [
     r"\.gitleaks\.toml$",  # gitleaks config - not actual secrets
     r"\.env\.example$",
     r"\.env\.template$",
+    r"antigravity[/\\]brain[/\\]",  # artifact files / plans
 ]
 
 # Patterns that indicate the value is a variable reference, not a literal secret
