@@ -1,0 +1,80 @@
+{
+  "corpus_version": "1.0.0",
+  "total_documents": 4,
+  "documents": [
+    {
+      "document_id": "doc-fda-metformin",
+      "title": "FDA Prescribing Information: Metformin Hydrochloride",
+      "source": "FDA Label",
+      "source_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/metformin.pdf",
+      "authority_tier": "tier_1_peer_reviewed",
+      "authority_score": 1.0,
+      "publication_date": "2023-01-15",
+      "reputation_score": 0.98,
+      "poisoning_score": 0.0,
+      "chunk_id": "chunk-metformin-001",
+      "text": "Metformin decreases hepatic glucose production, decreases intestinal absorption of glucose, and improves insulin sensitivity by increasing peripheral glucose uptake and utilization.",
+      "entity_ids": [
+        "RxCUI:6809",
+        "metformin"
+      ]
+    },
+    {
+      "document_id": "doc-guideline-warfarin-aspirin",
+      "title": "ACCP Clinical Practice Guideline: Antithrombotic Therapy",
+      "source": "American College of Chest Physicians",
+      "source_url": "https://journal.chestnet.org/article/S0012-3692(16)00001-2/fulltext",
+      "authority_tier": "tier_1_peer_reviewed",
+      "authority_score": 0.95,
+      "publication_date": "2022-08-10",
+      "reputation_score": 0.95,
+      "poisoning_score": 0.0,
+      "chunk_id": "chunk-warfarin-001",
+      "text": "Co-administration of warfarin and aspirin significantly increases the risk of major gastrointestinal and intracranial bleeding. Combination therapy requires close INR monitoring and risk-benefit evaluation.",
+      "entity_ids": [
+        "RxCUI:11289",
+        "RxCUI:1191",
+        "warfarin",
+        "aspirin"
+      ]
+    },
+    {
+      "document_id": "doc-fda-haloperidol",
+      "title": "FDA Safety Alert: Haloperidol and Azithromycin Co-administration",
+      "source": "FDA Drug Safety Communication",
+      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-qt-prolongation",
+      "authority_tier": "tier_1_peer_reviewed",
+      "authority_score": 0.98,
+      "publication_date": "2023-05-20",
+      "reputation_score": 0.96,
+      "poisoning_score": 0.0,
+      "chunk_id": "chunk-haloperidol-001",
+      "text": "Combining haloperidol with azithromycin causes additive QTc interval prolongation, increasing the risk of life-threatening ventricular arrhythmias including Torsades de Pointes.",
+      "entity_ids": [
+        "RxCUI:5093",
+        "RxCUI:18631",
+        "haloperidol",
+        "azithromycin"
+      ]
+    },
+    {
+      "document_id": "doc-fda-spironolactone",
+      "title": "FDA Black Box Warning: Spironolactone Hyperkalemia Risk",
+      "source": "FDA Prescribing Information",
+      "source_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/spironolactone.pdf",
+      "authority_tier": "tier_1_peer_reviewed",
+      "authority_score": 1.0,
+      "publication_date": "2023-11-01",
+      "reputation_score": 0.99,
+      "poisoning_score": 0.0,
+      "chunk_id": "chunk-spironolactone-001",
+      "text": "Spironolactone can cause severe hyperkalemia, which can lead to cardiac arrhythmias and sudden death. Concomitant administration with potassium supplements or potassium-sparing diuretics is strictly contraindicated.",
+      "entity_ids": [
+        "RxCUI:9997",
+        "spironolactone",
+        "potassium"
+      ]
+    }
+  ],
+  "manifest_sha256": "43ac6bb45c7010f6296f9f958d731fdd2a0bee2959e58aa2e3bb77a0290fa5cd"
+}

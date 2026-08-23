@@ -442,13 +442,29 @@ def handle_research_run(args: argparse.Namespace) -> int:
     summary_data = json.dumps(summary_json, indent=2)
     (out_dir / "research_summary.json").write_text(summary_data, encoding="utf-8")
 
-    # If --limit 1 was passed, also save one_case_trace.json
+    # Check for canonical R1 metformin trace
+    canonical_record = None
+    if records:
+        for rec in records:
+            if (
+                rec.get("case_id") == "canonical-r1-metformin"
+                or "metformin" in str(rec.get("query", "")).lower()
+            ):
+                canonical_record = rec
+                break
+        if not canonical_record:
+            canonical_record = records[0]
+
+    (out_dir / "canonical_r1_trace.json").write_text(
+        json.dumps(canonical_record, indent=2), encoding="utf-8"
+    )
     if hasattr(args, "limit") and args.limit == 1 and records:
         (out_dir / "one_case_trace.json").write_text(
             json.dumps(records[0], indent=2), encoding="utf-8"
         )
         if args.format != "json":
             print(f"One-case trace written: {out_dir / 'one_case_trace.json'}")
+            print(f"Canonical R1 trace written: {out_dir / 'canonical_r1_trace.json'}")
 
     if args.format == "json":
         print(json.dumps(summary_json, indent=2))

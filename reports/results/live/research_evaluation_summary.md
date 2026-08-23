@@ -1,8 +1,8 @@
 # Adaptive Trust Medical RAG - Ablation Statistical Report
 
 **Report version:** 1.0  
-**Generated:** 2026-08-23T09:05:04Z  
-**Experiment:** `<adaptive_trust_medical_rag.evaluation.experiment_tracker.ExperimentTracker object at 0x000001C83C4E1D30>`  
+**Generated:** 2026-08-23T09:20:28Z  
+**Experiment:** `<adaptive_trust_medical_rag.evaluation.experiment_tracker.ExperimentTracker object at 0x00000122A1031A30>`  
 **Dataset split:** `smoke`  
 **Cases:** 20  
 **Variants:** 1  

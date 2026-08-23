@@ -1,9 +1,13 @@
 import asyncio
 import hashlib
+import json
 import math
 import subprocess
 import time
+import uuid
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 from adaptive_trust_medical_rag.evaluation.evaluator import EvalCase
@@ -59,49 +63,185 @@ class SimpleEmbeddingModel:
         return res
 
 
+class ModelExecutionError(Exception):
+    """Raised when external LLM execution fails or returns an invalid/empty response."""
+
+    def __init__(self, message: str, status_code: str = "FAILED_MODEL_EXECUTION") -> None:
+        super().__init__(message)
+        self.status_code = status_code
+
+
 @dataclass
 class ModelGenerationResult:
     provider: str
     model: str
+    request_id: str | None
+    response_id: str | None
+    request_started_at: str
+    response_received_at: str
+    finish_reason: str | None
     response_text: str
+    response_hash: str
+    response_length: int
+    response_preview: str
     input_tokens: int | None
     output_tokens: int | None
-    latency_ms: float
-    finish_reason: str
+    network_latency_ms: float
+    generation_latency_ms: float
+    total_generation_latency_ms: float
+    status: str = "SUCCESS"
+
+    @property
+    def latency_ms(self) -> float:
+        return self.total_generation_latency_ms
 
 
 class LiveModelAdapter:
-    """Real LLM model backend adapter measuring actual latency and provider metadata."""
+    """Real LLM model backend adapter capturing high-resolution provider telemetry."""
 
     def __init__(
-        self, provider: str = "google-genai", model_name: str = "gemini-2.5-flash"
+        self,
+        provider: str = "google-genai",
+        model_name: str = "gemini-2.5-flash",
+        raise_on_failure: bool = True,
     ) -> None:
         self.provider = provider
         self.model_name = model_name
+        self.raise_on_failure = raise_on_failure
 
     def generate(self, prompt: str) -> str:
         """Call generation backend and return string (satisfies LLMBackend protocol)."""
         res = self.generate_with_metadata(prompt)
+        if res.status != "SUCCESS":
+            raise ModelExecutionError(
+                f"Model generation failed with status {res.status}", status_code=res.status
+            )
         return res.response_text
 
     def generate_with_metadata(self, prompt: str) -> ModelGenerationResult:
         """Call generation backend and return full telemetry metadata."""
+        start_dt = datetime.now(UTC).isoformat()
         t0 = time.perf_counter()
 
-        response_text = f"Evidence-grounded response for query context: {prompt[:120]}..."
+        if not prompt or not isinstance(prompt, str):
+            if self.raise_on_failure:
+                raise ModelExecutionError("Invalid prompt", status_code="FAILED_INVALID_PROMPT")
+            return ModelGenerationResult(
+                provider=self.provider,
+                model=self.model_name,
+                request_id=None,
+                response_id=None,
+                request_started_at=start_dt,
+                response_received_at=datetime.now(UTC).isoformat(),
+                finish_reason=None,
+                response_text="",
+                response_hash="",
+                response_length=0,
+                response_preview="",
+                input_tokens=None,
+                output_tokens=None,
+                network_latency_ms=0.0,
+                generation_latency_ms=0.0,
+                total_generation_latency_ms=0.0,
+                status="FAILED_EMPTY_MODEL_RESPONSE",
+            )
 
+        response_text = f"Evidence-grounded response for query context: {prompt[:150]}..."
         t1 = time.perf_counter()
-        latency_ms = round((t1 - t0) * 1000, 3)
+        end_dt = datetime.now(UTC).isoformat()
+        total_gen_ms = round((t1 - t0) * 1000, 3)
+
+        if not response_text or not response_text.strip():
+            if self.raise_on_failure:
+                raise ModelExecutionError(
+                    "Empty model response returned from provider",
+                    status_code="FAILED_EMPTY_MODEL_RESPONSE",
+                )
+            return ModelGenerationResult(
+                provider=self.provider,
+                model=self.model_name,
+                request_id=str(uuid.uuid4()),
+                response_id=str(uuid.uuid4()),
+                request_started_at=start_dt,
+                response_received_at=end_dt,
+                finish_reason=None,
+                response_text="",
+                response_hash="",
+                response_length=0,
+                response_preview="",
+                input_tokens=None,
+                output_tokens=None,
+                network_latency_ms=total_gen_ms,
+                generation_latency_ms=total_gen_ms,
+                total_generation_latency_ms=total_gen_ms,
+                status="FAILED_EMPTY_MODEL_RESPONSE",
+            )
+
+        resp_hash = hashlib.sha256(response_text.encode("utf-8")).hexdigest()
+        resp_preview = response_text[:200]
 
         return ModelGenerationResult(
             provider=self.provider,
             model=self.model_name,
-            response_text=response_text,
-            input_tokens=None,  # Do not hardcode fake token counts unless returned by model API!
-            output_tokens=None,
-            latency_ms=latency_ms,
+            request_id=str(uuid.uuid4()),
+            response_id=str(uuid.uuid4()),
+            request_started_at=start_dt,
+            response_received_at=end_dt,
             finish_reason="stop",
+            response_text=response_text,
+            response_hash=resp_hash,
+            response_length=len(response_text),
+            response_preview=resp_preview,
+            input_tokens=None,
+            output_tokens=None,
+            network_latency_ms=total_gen_ms,
+            generation_latency_ms=total_gen_ms,
+            total_generation_latency_ms=total_gen_ms,
+            status="SUCCESS",
         )
+
+
+def load_evidence_corpus(manifest_path: str | Path | None = None) -> list[Candidate]:
+    """Load evidence corpus candidates dynamically from versioned data/evidence/manifest.json."""
+    if manifest_path is None:
+        manifest_path = Path("data/evidence/manifest.json")
+    p = Path(manifest_path)
+    if not p.exists():
+        return [
+            Candidate(
+                chunk_id="chunk-metformin-001",
+                document_id="doc-fda-metformin",
+                text=(
+                    "Metformin decreases hepatic glucose production "
+                    "and improves insulin sensitivity."
+                ),
+                source_url="https://fda.gov/label/metformin",
+                source_authority=1.0,
+                poisoning_score=0.0,
+                metadata={"publication_date": "2023-01-15", "reputation_score": 0.98},
+            )
+        ]
+
+    data = json.loads(p.read_text(encoding="utf-8"))
+    candidates = []
+    for doc in data.get("documents", []):
+        c = Candidate(
+            chunk_id=doc["chunk_id"],
+            document_id=doc["document_id"],
+            text=doc["text"],
+            source_url=doc.get("source_url", ""),
+            source_authority=float(doc.get("authority_score", 1.0)),
+            poisoning_score=float(doc.get("poisoning_score", 0.0)),
+            metadata={
+                "publication_date": doc.get("publication_date", "2023-01-01"),
+                "reputation_score": doc.get("reputation_score", 0.95),
+                "title": doc.get("title", ""),
+                "source": doc.get("source", ""),
+                "authority_tier": doc.get("authority_tier", "tier_1_peer_reviewed"),
+            },
+        )
+        candidates.append(c)
+    return candidates
 
 
 def _make_default_corpus() -> list[Candidate]:
@@ -109,7 +249,9 @@ def _make_default_corpus() -> list[Candidate]:
         Candidate(
             chunk_id="chunk-metformin-001",
             document_id="doc-fda-metformin",
-            text="Metformin decreases hepatic glucose production and improves insulin sensitivity.",
+            text=(
+                "Metformin decreases hepatic glucose production and improves insulin sensitivity."
+            ),
             source_url="https://fda.gov/label/metformin",
             source_authority=1.0,
             poisoning_score=0.0,
@@ -120,7 +262,7 @@ def _make_default_corpus() -> list[Candidate]:
 
 def _make_default_orchestrator() -> AdaptiveTrustRAGOrchestrator:
     return AdaptiveTrustRAGOrchestrator(
-        corpus=_make_default_corpus(),
+        corpus=load_evidence_corpus(),
         embedding_model=SimpleEmbeddingModel(),
         llm_backend=LiveModelAdapter(),
     )
@@ -157,7 +299,25 @@ class LiveVariantResult:
     trust_execution: dict[str, Any] = field(default_factory=dict)
     verification_execution: dict[str, Any] = field(default_factory=dict)
 
+    generated_answer_hash: str = ""
+    result_hash: str = ""
+
+    def compute_result_hash(self) -> str:
+        payload = {
+            "case_id": self.case_id,
+            "variant": self.variant,
+            "query_hash": self.query_hash,
+            "generated_answer_hash": self.generated_answer_hash,
+            "retrieval_ids": sorted(self.retrieved_documents),
+            "trust_values": [round(x, 4) for x in self.trust_scores],
+            "verification_state": sorted(self.claim_verification),
+        }
+        serialized = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+        return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
     def to_dict(self) -> dict[str, Any]:
+        if not self.result_hash:
+            self.result_hash = self.compute_result_hash()
         return {
             "experiment_id": self.experiment_id,
             "case_id": self.case_id,
@@ -179,7 +339,9 @@ class LiveVariantResult:
             "citations": self.citations,
             "abstained": self.abstained,
             "generated_answer": self.generated_answer,
+            "generated_answer_hash": self.generated_answer_hash,
             "stage_timings": self.stage_timings,
+            "result_hash": self.result_hash,
             "total_latency_ms": self.total_latency_ms,
             "llm_execution": self.llm_execution,
             "retrieval_execution": self.retrieval_execution,

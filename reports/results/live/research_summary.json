@@ -4,10 +4,10 @@
   "execution_backend": "real_rag_pipeline",
   "runtime_verified": true,
   "dataset_version": "1.0",
-  "git_commit": "ea9735570ff7e40e6e03e441df6b59dcd4ab05f2",
+  "git_commit": "01b430568acd4283ac28aa3c24c259855e58d516",
   "n_cases": 1,
   "n_variants": 1,
-  "elapsed_seconds": 0.21,
+  "elapsed_seconds": 0.22,
   "case_results_path": "reports\\results\\live\\case_results.jsonl",
   "summary_report_path": "reports\\results\\live\\research_evaluation_summary.md",
   "status": "COMPLETED"
