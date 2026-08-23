@@ -146,9 +146,7 @@ class TestAlignClaimsToEvidence:
         )
 
     def test_grounded_claim_scores_above_threshold(self) -> None:
-        claim = self._make_claim(
-            "Warfarin is contraindicated in patients with active bleeding."
-        )
+        claim = self._make_claim("Warfarin is contraindicated in patients with active bleeding.")
         results = align_claims_to_evidence([claim], ALL_EVIDENCE)
         assert results[0].alignment_score >= ALIGNMENT_THRESHOLD
 

@@ -1,4 +1,4 @@
-﻿"""FastAPI HTTP layer for Adaptive Trust Medical RAG."""
+"""FastAPI HTTP layer for Adaptive Trust Medical RAG."""
 
 from adaptive_trust_medical_rag.api.app import create_app
 from adaptive_trust_medical_rag.api.schemas import (

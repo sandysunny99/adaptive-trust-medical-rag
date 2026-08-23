@@ -186,12 +186,16 @@ class TestEvalDataset:
     def test_leakage_detection(self) -> None:
         shared_id = "shared-case-id-x"
         smoke = EvalCase(
-            case_id=shared_id, query="q-smoke",
-            split=DatasetSplit.smoke, query_type=QueryType.factual,
+            case_id=shared_id,
+            query="q-smoke",
+            split=DatasetSplit.smoke,
+            query_type=QueryType.factual,
         )
         test = EvalCase(
-            case_id=shared_id, query="q-test",
-            split=DatasetSplit.test, query_type=QueryType.factual,
+            case_id=shared_id,
+            query="q-test",
+            split=DatasetSplit.test,
+            query_type=QueryType.factual,
         )
         with pytest.raises(ValueError, match="LEAKAGE"):
             EvalDataset(name="leaky", cases=[smoke, test])
@@ -219,6 +223,7 @@ class TestBootstrapCI:
 
     def test_ci_lower_le_mean_le_upper(self) -> None:
         import random
+
         vals = [random.Random(0).random() for _ in range(50)]
         ci = _bootstrap_ci(vals, n=200)
         assert ci.lower <= ci.mean <= ci.upper
@@ -232,6 +237,7 @@ class TestBootstrapCI:
 
     def test_wider_ci_for_small_sample(self) -> None:
         import random
+
         rng = random.Random(42)
         small = [rng.gauss(0.7, 0.1) for _ in range(10)]
         large = [rng.gauss(0.7, 0.1) for _ in range(200)]
@@ -251,6 +257,7 @@ class TestPairedTtest:
 
     def test_clearly_different_significant(self) -> None:
         import random
+
         rng = random.Random(2)
         a = [0.3 + rng.gauss(0, 0.01) for _ in range(50)]
         b = [0.9 + rng.gauss(0, 0.01) for _ in range(50)]
@@ -259,6 +266,7 @@ class TestPairedTtest:
 
     def test_cohen_d_sign(self) -> None:
         import random
+
         rng = random.Random(1)
         a = [0.9 + rng.gauss(0, 0.01) for _ in range(30)]
         b = [0.5 + rng.gauss(0, 0.01) for _ in range(30)]
@@ -297,6 +305,7 @@ class TestMakeSmokeDataset:
 
     def test_no_phi_in_queries(self) -> None:
         import re
+
         phi_patterns = [r"\b\d{3}-\d{2}-\d{4}\b", r"\bMRN\s*#?\d+\b", r"\b\d{10,}\b"]
         for case in make_smoke_dataset().cases:
             for pat in phi_patterns:
@@ -332,9 +341,12 @@ class TestRAGEvaluator:
     def test_metrics_in_range(self) -> None:
         r = self._run()
         for attr in [
-            "mean_hallucination_rate", "mean_faithfulness",
-            "mean_citation_precision", "mean_citation_recall",
-            "mean_entity_attribution_acc", "mean_robustness_score",
+            "mean_hallucination_rate",
+            "mean_faithfulness",
+            "mean_citation_precision",
+            "mean_citation_recall",
+            "mean_entity_attribution_acc",
+            "mean_robustness_score",
         ]:
             val = getattr(r, attr)
             assert 0.0 <= val <= 1.0, f"{attr}={val}"
@@ -362,20 +374,17 @@ class TestRAGEvaluator:
 
     def test_test_split_blocked(self) -> None:
         with pytest.raises(PermissionError, match="FROZEN"):
-            RAGEvaluator(MockPipeline(), "t").evaluate(
-                _make_dataset(n_test=5), DatasetSplit.test
-            )
+            RAGEvaluator(MockPipeline(), "t").evaluate(_make_dataset(n_test=5), DatasetSplit.test)
 
     def test_errors_counted(self) -> None:
         def broken(_: RAGRequest) -> RAGResponse:
             raise RuntimeError("LLM down")
+
         r = RAGEvaluator(broken, "broken").evaluate(self._ds(), DatasetSplit.smoke)
         assert r.n_errors == 20
 
     def test_experiment_name_stored(self) -> None:
-        r = RAGEvaluator(MockPipeline(), "my-exp").evaluate(
-            self._ds(), DatasetSplit.smoke
-        )
+        r = RAGEvaluator(MockPipeline(), "my-exp").evaluate(self._ds(), DatasetSplit.smoke)
         assert r.experiment_name == "my-exp"
 
     def test_timestamp_set(self) -> None:
@@ -390,7 +399,5 @@ class TestRAGEvaluator:
     def test_always_abstain_scores_perfectly_on_abstain_cases(self) -> None:
         abstain_cases = [c for c in self._ds().cases if c.expected_abstain]
         ds = EvalDataset(name="abstain-only", cases=abstain_cases)
-        r = RAGEvaluator(MockPipeline(always_abstain=True), "t").evaluate(
-            ds, DatasetSplit.smoke
-        )
+        r = RAGEvaluator(MockPipeline(always_abstain=True), "t").evaluate(ds, DatasetSplit.smoke)
         assert r.f1_abstain == 1.0

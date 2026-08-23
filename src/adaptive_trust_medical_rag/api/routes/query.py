@@ -1,4 +1,4 @@
-﻿"""POST /query route handler."""
+"""POST /query route handler."""
 
 from __future__ import annotations
 
@@ -86,9 +86,7 @@ async def post_query(
         CitationItem(
             chunk_id=cid,
             source_name=f"Source {i + 1}",
-            trust_score=rag_response.trust_scores[i]
-            if i < len(rag_response.trust_scores)
-            else 0.0,
+            trust_score=rag_response.trust_scores[i] if i < len(rag_response.trust_scores) else 0.0,
             retrieval_method="hybrid-rrk",
         )
         for i, cid in enumerate(rag_response.retrieved_chunk_ids)

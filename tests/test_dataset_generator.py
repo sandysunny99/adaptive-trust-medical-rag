@@ -1,4 +1,4 @@
-﻿"""
+"""
 Tests for Phase 16 - Synthetic Dataset Generator & Loader.
 
 Covers: generate_dataset (dev/val), PHI verification, save/load
@@ -163,6 +163,7 @@ class TestVerifyNoPhi:
 
     def test_detects_ssn_pattern(self) -> None:
         from adaptive_trust_medical_rag.evaluation.evaluator import EvalCase
+
         bad_case = EvalCase(
             case_id="test001",
             query="Patient SSN: 123-45-6789",
@@ -297,6 +298,7 @@ class TestFrozenFixtures:
         dev_ids = {c.case_id for c in dev.cases}
         # No overlap with smoke (make_smoke_dataset)
         from adaptive_trust_medical_rag.evaluation.evaluator import make_smoke_dataset
+
         smoke = make_smoke_dataset()
         smoke_ids = {c.case_id for c in smoke.cases}
         assert dev_ids.isdisjoint(smoke_ids), "Dev/smoke overlap detected!"

@@ -1,4 +1,4 @@
-﻿"""
+"""
 FastAPI middleware for the Medical RAG API.
 
 Middleware stack (applied in order):
@@ -57,9 +57,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         self._limit = limit
         self._window = window
         # {ip: (count, window_start)}
-        self._buckets: dict[str, tuple[int, float]] = defaultdict(
-            lambda: (0, time.monotonic())
-        )
+        self._buckets: dict[str, tuple[int, float]] = defaultdict(lambda: (0, time.monotonic()))
 
     def _get_client_ip(self, request: Request) -> str:
         forwarded = request.headers.get("X-Forwarded-For")

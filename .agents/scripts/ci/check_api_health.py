@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Smoke test the FastAPI /health endpoint."""
+
 import sys
 
 sys.path.insert(0, "src")

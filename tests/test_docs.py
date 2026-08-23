@@ -1,6 +1,7 @@
 """
 Tests for Phase 24 - Documentation Integrity & Research Artifacts (test_docs.py).
 """
+
 from __future__ import annotations
 
 import re
@@ -44,8 +45,12 @@ class TestReadmeIntegrity:
     def test_readme_contains_all_ablation_variants(self, readme_path: Path) -> None:
         content = readme_path.read_text(encoding="utf-8")
         variants = [
-            "Vanilla LLM", "Standard Semantic RAG", "Hybrid RAG",
-            "Entity-Attributed RAG", "Trust-Scored RAG", "Full Architecture"
+            "Vanilla LLM",
+            "Standard Semantic RAG",
+            "Hybrid RAG",
+            "Entity-Attributed RAG",
+            "Trust-Scored RAG",
+            "Full Architecture",
         ]
         for var in variants:
             assert var in content, f"Missing variant in README.md: {var}"

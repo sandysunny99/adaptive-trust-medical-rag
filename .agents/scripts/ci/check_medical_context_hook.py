@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Verify inject_medical_context hook returns injectSteps."""
+
 import json
 import subprocess
 import sys

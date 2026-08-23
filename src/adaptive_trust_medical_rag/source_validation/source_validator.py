@@ -34,12 +34,12 @@ from enum import IntEnum
 class AuthorityTier(IntEnum):
     """Numeric authority tier (higher = more authoritative)."""
 
-    DISALLOWED = 0   # Unverified web / forums
-    PREPRINT = 1     # bioRxiv, medRxiv
+    DISALLOWED = 0  # Unverified web / forums
+    PREPRINT = 1  # bioRxiv, medRxiv
     OBSERVATIONAL = 2  # Specialty journals, case series
-    PRIMARY = 3      # NEJM, Lancet, JAMA, BMJ
-    GUIDELINE = 4    # Cochrane, USPSTF, NICE, AHA/ACC
-    REGULATORY = 5   # FDA DailyMed, EMA SmPC
+    PRIMARY = 3  # NEJM, Lancet, JAMA, BMJ
+    GUIDELINE = 4  # Cochrane, USPSTF, NICE, AHA/ACC
+    REGULATORY = 5  # FDA DailyMed, EMA SmPC
 
 
 # Base authority scores from the skill specification
@@ -92,7 +92,7 @@ DOMAIN_TIER_MAP: dict[str, AuthorityTier] = {
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Half-lives in days
-HALF_LIFE_GENERAL_DAYS: int = 1825   # 5 years — general clinical literature
+HALF_LIFE_GENERAL_DAYS: int = 1825  # 5 years — general clinical literature
 HALF_LIFE_FAST_EVOLVING_DAYS: int = 1095  # 3 years — pharmacology / ADE research
 
 # Black-box / safety communication recency window
@@ -270,8 +270,7 @@ class SourceValidator:
             0.0
             if (is_superseded or not is_allowed or is_quarantined)
             else round(
-                authority_score * self._authority_weight
-                + freshness_score * self._freshness_weight,
+                authority_score * self._authority_weight + freshness_score * self._freshness_weight,
                 4,
             )
         )

@@ -41,12 +41,12 @@ def _indexes_in_upgrade(text: str) -> list[str]:
 
 def _columns_in_table(text: str, table: str) -> list[str]:
     """Extract column names from a create_table block."""
-    block = re.search(
-        rf'create_table\(\s*["\'{table}"\']', text
-    )
+    block = re.search(rf'create_table\(\s*["\'{table}"\']', text)
     if not block:
         return []
-    return re.findall(r'sa\.Column\(\s*["\']([^"\']+)["\']', text[block.start():block.start()+3000])
+    return re.findall(
+        r'sa\.Column\(\s*["\']([^"\']+)["\']', text[block.start() : block.start() + 3000]
+    )
 
 
 class TestMigrationFile:
@@ -98,8 +98,7 @@ class TestTablesCreated:
         text = _migration_text()
         tables = set(_tables_in_upgrade(text))
         assert self.EXPECTED_TABLES == tables, (
-            f"Missing: {self.EXPECTED_TABLES - tables}, "
-            f"Extra: {tables - self.EXPECTED_TABLES}"
+            f"Missing: {self.EXPECTED_TABLES - tables}, Extra: {tables - self.EXPECTED_TABLES}"
         )
 
     def test_evidence_sources_created(self) -> None:
@@ -139,7 +138,7 @@ class TestColumnsAndConstraints:
         audit_block_start = text.find('"audit_events"')
         if audit_block_start == -1:
             audit_block_start = text.find("'audit_events'")
-        audit_block = text[audit_block_start:audit_block_start + 2000]
+        audit_block = text[audit_block_start : audit_block_start + 2000]
         cols = re.findall(r'sa\.Column\(\s*["\']([^"\']+)["\']', audit_block)
         assert "query" not in cols, "audit_events must not store raw query text"
 
@@ -174,7 +173,7 @@ class TestColumnsAndConstraints:
         audit_block_start = text.find('"audit_events"')
         if audit_block_start == -1:
             audit_block_start = text.find("'audit_events'")
-        audit_block = text[audit_block_start:audit_block_start + 2000]
+        audit_block = text[audit_block_start : audit_block_start + 2000]
         cols = re.findall(r'sa\.Column\(\s*["\']([^"\']+)["\']', audit_block)
         assert "answer" not in cols, "Must not store raw answer text"
 
@@ -233,24 +232,24 @@ class TestDowngrade:
 
     def test_downgrade_drops_evidence_chunks(self) -> None:
         text = _migration_text()
-        assert "evidence_chunks" in text[text.find("def downgrade()"):]
+        assert "evidence_chunks" in text[text.find("def downgrade()") :]
 
     def test_downgrade_drops_documents(self) -> None:
         text = _migration_text()
-        assert "documents" in text[text.find("def downgrade()"):]
+        assert "documents" in text[text.find("def downgrade()") :]
 
     def test_downgrade_drops_evidence_sources(self) -> None:
         text = _migration_text()
-        assert "evidence_sources" in text[text.find("def downgrade()"):]
+        assert "evidence_sources" in text[text.find("def downgrade()") :]
 
     def test_downgrade_drops_enums(self) -> None:
         text = _migration_text()
-        down_block = text[text.find("def downgrade()"):]
+        down_block = text[text.find("def downgrade()") :]
         assert "DROP TYPE" in down_block
 
     def test_downgrade_drops_vector_extension(self) -> None:
         text = _migration_text()
-        assert "DROP EXTENSION" in text[text.find("def downgrade()"):]
+        assert "DROP EXTENSION" in text[text.find("def downgrade()") :]
 
 
 class TestMigrationUtils:

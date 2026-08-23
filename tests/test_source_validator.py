@@ -103,9 +103,7 @@ def test_freshness_score_monotonically_decreasing() -> None:
     """Older documents must have lower freshness scores."""
     reference = date(2025, 1, 1)
     scores = [
-        calculate_freshness_score(
-            reference - timedelta(days=d), reference_date=reference
-        )
+        calculate_freshness_score(reference - timedelta(days=d), reference_date=reference)
         for d in [0, 365, 730, 1825, 3650]
     ]
     assert scores == sorted(scores, reverse=True)

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Verify Alembic migration chain has no gaps or cycles."""
+
 import sys
 
 sys.path.insert(0, "src")

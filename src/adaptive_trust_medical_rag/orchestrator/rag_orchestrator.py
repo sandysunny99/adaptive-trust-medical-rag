@@ -79,8 +79,7 @@ ABSTENTION_TEMPLATE = (
     "for risk tier {risk_tier} (threshold: {threshold:.0%}).\n\n"
     "**Reason:** {reason}\n\n"
     "Please consult authoritative clinical resources (e.g., FDA label, "
-    "clinical pharmacist) for this query."
-    + RESEARCH_DISCLAIMER
+    "clinical pharmacist) for this query." + RESEARCH_DISCLAIMER
 )
 
 
@@ -128,7 +127,7 @@ class RAGRequest:
 
     query: str
     session_id: str = field(default_factory=lambda: str(uuid.uuid4()))
-    risk_tier_override: str | None = None   # override auto-classification if needed
+    risk_tier_override: str | None = None  # override auto-classification if needed
     top_k: int = 10
 
 
@@ -137,7 +136,7 @@ class RAGResponse:
     """Final structured response from the RAG pipeline."""
 
     session_id: str
-    query_hash: str              # SHA-256 of sanitized query (audit log — no raw PII)
+    query_hash: str  # SHA-256 of sanitized query (audit log — no raw PII)
     risk_tier: str
     status: PipelineStatus
     answer: str
@@ -339,7 +338,7 @@ class AdaptiveTrustRAGOrchestrator:
 
         # Retrieval engine — add knowledge graph edges if provided
         self._retrieval = HybridRetrievalEngine(corpus, embedding_model)
-        for rel in (drug_relationships or []):
+        for rel in drug_relationships or []:
             self._retrieval.graph.add_relationship(rel)
 
         self._llm = llm_backend
@@ -370,11 +369,14 @@ class AdaptiveTrustRAGOrchestrator:
         query_hash = hashlib.sha256(sanitized_query.encode()).hexdigest()
         injection_check = inspect_for_poisoning(request.query)
 
-        _log("sanitization", {
-            "query_hash": query_hash,
-            "injection_score": injection_check.score,
-            "injection_findings": injection_check.findings,
-        })
+        _log(
+            "sanitization",
+            {
+                "query_hash": query_hash,
+                "injection_score": injection_check.score,
+                "injection_findings": injection_check.findings,
+            },
+        )
 
         if injection_check.is_quarantined:
             _log("injection_gate", {"decision": "abstain", "reason": "Query flagged as injection"})
@@ -383,8 +385,7 @@ class AdaptiveTrustRAGOrchestrator:
                 query_hash=query_hash,
                 risk_tier="R3",
                 reason=(
-                    f"Query contains prompt-injection signals "
-                    f"(score={injection_check.score:.2f})."
+                    f"Query contains prompt-injection signals (score={injection_check.score:.2f})."
                 ),
                 audit=audit,
             )
@@ -414,18 +415,19 @@ class AdaptiveTrustRAGOrchestrator:
             top_k=request.top_k,
         )
 
-        _log("retrieval", {
-            "candidate_count": len(candidates),
-            "chunk_ids": [sc.candidate.chunk_id for sc in candidates],
-        })
+        _log(
+            "retrieval",
+            {
+                "candidate_count": len(candidates),
+                "chunk_ids": [sc.candidate.chunk_id for sc in candidates],
+            },
+        )
 
         # ── Step 5: Adaptive trust scoring ───────────────────────────────────
         trust_scores: dict[str, float] = {}
         for sc in candidates:
             cand = sc.candidate
-            entity_match = 1.0 if any(
-                d in cand.text.lower() for d in query_drugs
-            ) else 0.5
+            entity_match = 1.0 if any(d in cand.text.lower() for d in query_drugs) else 0.5
             factors = TrustFactorScores(
                 source_authority=cand.source_authority,
                 entity_match=entity_match,
@@ -441,19 +443,25 @@ class AdaptiveTrustRAGOrchestrator:
             )
             trust_scores[cand.chunk_id] = result.trust_score
 
-        _log("trust_scoring", {
-            "scores": {cid: round(s, 4) for cid, s in trust_scores.items()},
-        })
+        _log(
+            "trust_scoring",
+            {
+                "scores": {cid: round(s, 4) for cid, s in trust_scores.items()},
+            },
+        )
 
         # ── Step 6: Evidence eligibility gate (pre-generation) ───────────────
         eligibility = self._eligibility_gate.evaluate(candidates, risk_tier, trust_scores)
 
-        _log("evidence_eligibility_gate", {
-            "passed": eligibility.passed,
-            "eligible_count": len(eligibility.eligible_chunks),
-            "rejected_ids": eligibility.rejected_chunk_ids,
-            "reason": eligibility.reason,
-        })
+        _log(
+            "evidence_eligibility_gate",
+            {
+                "passed": eligibility.passed,
+                "eligible_count": len(eligibility.eligible_chunks),
+                "rejected_ids": eligibility.rejected_chunk_ids,
+                "reason": eligibility.reason,
+            },
+        )
 
         if not eligibility.passed:
             return self._abstain(
@@ -486,13 +494,16 @@ class AdaptiveTrustRAGOrchestrator:
         safety_gate = AnswerSafetyGate(risk_tier=risk_tier)
         verification = safety_gate.verify(raw_answer, evidence_chunks)
 
-        _log("answer_safety_gate", {
-            "decision": verification.decision.value,
-            "confidence": verification.confidence,
-            "grounding_ratio": verification.grounding_ratio,
-            "contradiction_score": verification.contradiction_score,
-            "explanation": verification.explanation,
-        })
+        _log(
+            "answer_safety_gate",
+            {
+                "decision": verification.decision.value,
+                "confidence": verification.confidence,
+                "grounding_ratio": verification.grounding_ratio,
+                "contradiction_score": verification.contradiction_score,
+                "explanation": verification.explanation,
+            },
+        )
 
         # ── Step 9: Final answer formatting ──────────────────────────────────
 

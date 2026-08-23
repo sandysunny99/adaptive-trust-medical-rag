@@ -29,33 +29,30 @@ def list_migration_versions() -> list[dict[str, Any]]:
 
         # Handle both  revision = "x"  and  revision: str = "x"
         rev_match = re.search(
-            r'^revision(?:\s*:\s*\S+)?\s*=\s*["\']([^"\']+)["\']',
-            text, re.MULTILINE
+            r'^revision(?:\s*:\s*\S+)?\s*=\s*["\']([^"\']+)["\']', text, re.MULTILINE
         )
         down_match = re.search(
-            r'^down_revision(?:\s*:\s*\S+(?:\[.*?\])?)?\s*=\s*(.+)$',
-            text, re.MULTILINE
+            r"^down_revision(?:\s*:\s*\S+(?:\[.*?\])?)?\s*=\s*(.+)$", text, re.MULTILINE
         )
 
         revision = rev_match.group(1) if rev_match else "unknown"
         down_raw = down_match.group(1).strip() if down_match else "None"
         # Strip type hints from down_revision value  e.g.  None  or  "abc123"
-        down_raw_clean = re.sub(r'#.*$', '', down_raw).strip()
-        down_revision = (
-            None if down_raw_clean in ("None", "null")
-            else down_raw_clean.strip('"\'')
-        )
+        down_raw_clean = re.sub(r"#.*$", "", down_raw).strip()
+        down_revision = None if down_raw_clean in ("None", "null") else down_raw_clean.strip("\"'")
 
         # Extract tables created by op.create_table calls
         tables = re.findall(r'op\.create_table\(\s*["\']([^"\']+)["\']', text)
 
-        versions.append({
-            "revision": revision,
-            "down_revision": down_revision,
-            "path": str(py_file),
-            "tables_created": tables,
-            "filename": py_file.name,
-        })
+        versions.append(
+            {
+                "revision": revision,
+                "down_revision": down_revision,
+                "path": str(py_file),
+                "tables_created": tables,
+                "filename": py_file.name,
+            }
+        )
 
     return sorted(versions, key=lambda v: v["revision"])
 
@@ -94,10 +91,7 @@ def verify_migration_chain() -> list[str]:
     for v in versions:
         dr = v["down_revision"]
         if dr is not None and dr not in revisions:
-            errors.append(
-                f"Migration {v['revision']} references missing "
-                f"down_revision: {dr}"
-            )
+            errors.append(f"Migration {v['revision']} references missing down_revision: {dr}")
 
     # Detect cycles
     chain = get_migration_chain()
@@ -122,10 +116,15 @@ def generate_offline_sql(revision: str = "head") -> str:
     try:
         import subprocess
         import sys
+
         result = subprocess.run(
             [
-                sys.executable, "-m", "alembic",
-                "upgrade", revision, "--sql",
+                sys.executable,
+                "-m",
+                "alembic",
+                "upgrade",
+                revision,
+                "--sql",
             ],
             capture_output=True,
             text=True,

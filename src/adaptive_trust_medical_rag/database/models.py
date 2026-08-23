@@ -111,14 +111,10 @@ class EvidenceSource(Base):
 
     __tablename__ = "evidence_sources"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name: Mapped[str] = mapped_column(String(512), nullable=False, unique=True)
     url: Mapped[str | None] = mapped_column(String(2048), nullable=True)
-    tier: Mapped[SourceTier] = mapped_column(
-        Enum(SourceTier, name="source_tier"), nullable=False
-    )
+    tier: Mapped[SourceTier] = mapped_column(Enum(SourceTier, name="source_tier"), nullable=False)
     authority_score: Mapped[float] = mapped_column(
         Float, nullable=False, default=0.0, comment="Normalised 0.0–1.0 authority score"
     )
@@ -152,9 +148,7 @@ class Document(Base):
 
     __tablename__ = "documents"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     source_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("evidence_sources.id", ondelete="RESTRICT"), nullable=False
     )
@@ -203,9 +197,7 @@ class EvidenceChunk(Base):
 
     EMBEDDING_DIM = 768  # Sentence-transformer embedding dimension (Phase 10)
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     document_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("documents.id", ondelete="CASCADE"), nullable=False
     )
@@ -246,9 +238,7 @@ class EvidenceProvenance(Base):
 
     __tablename__ = "evidence_provenance"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     chunk_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("evidence_chunks.id", ondelete="RESTRICT"), nullable=False
     )
@@ -263,9 +253,7 @@ class EvidenceProvenance(Base):
     gate_decision: Mapped[GateDecision] = mapped_column(
         Enum(GateDecision, name="gate_decision"), nullable=False
     )
-    content_hash_verified: Mapped[bool] = mapped_column(
-        Boolean, nullable=False, default=False
-    )
+    content_hash_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=_utcnow
     )
@@ -294,9 +282,7 @@ class AuditEvent(Base):
 
     __tablename__ = "audit_events"
 
-    id: Mapped[uuid.UUID] = mapped_column(
-        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
-    )
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     event_type: Mapped[AuditEventType] = mapped_column(
         Enum(AuditEventType, name="audit_event_type"), nullable=False
     )

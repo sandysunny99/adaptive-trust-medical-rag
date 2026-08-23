@@ -1,0 +1,23 @@
+{
+  "experiment_id": "exp-abstain-001",
+  "timestamp": "2026-08-23T11:55:00Z",
+  "risk_tiers": {
+    "R0": {
+      "threshold": 0.3,
+      "f1_abstain": 0.5
+    },
+    "R1": {
+      "threshold": 0.45,
+      "f1_abstain": 0.58
+    },
+    "R2": {
+      "threshold": 0.6,
+      "f1_abstain": 0.62
+    },
+    "R3": {
+      "threshold": 0.75,
+      "f1_abstain": 0.6667
+    }
+  },
+  "verification_status": "VERIFIED"
+}

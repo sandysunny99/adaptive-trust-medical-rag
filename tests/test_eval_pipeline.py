@@ -1,4 +1,4 @@
-﻿"""
+"""
 Tests for Phase 17 - End-to-End Evaluation Pipeline.
 
 All tests use MockVariantPipeline + smoke/dev fixtures - no live LLM.
@@ -71,6 +71,7 @@ class TestRunEvaluationSmoke:
 
     def test_run_timestamp_format(self, tmp_path: Path) -> None:
         import re
+
         result = _run(tmp_path)
         assert re.match(r"\d{8}T\d{6}Z", result.run_timestamp)
 
@@ -207,6 +208,7 @@ class TestGuards:
         # Directly test verify_no_phi integration
         from adaptive_trust_medical_rag.evaluation.dataset_generator import verify_no_phi
         from adaptive_trust_medical_rag.evaluation.evaluator import EvalCase, EvalDataset, QueryType
+
         bad_case = EvalCase(
             case_id="phi-test-1",
             query="Patient SSN: 123-45-6789 needs warfarin",
@@ -261,5 +263,6 @@ class TestLoadOrGenerate:
 
     def test_dev_phi_free(self) -> None:
         from adaptive_trust_medical_rag.evaluation.dataset_generator import verify_no_phi
+
         ds = _load_or_generate(DatasetSplit.dev)
         assert verify_no_phi(ds) == []

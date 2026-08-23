@@ -32,8 +32,16 @@ class MockEmbeddingModel:
     """Deterministic bag-of-words TF mock embedder."""
 
     _VOCAB = [
-        "warfarin", "metformin", "aspirin", "bleeding", "contraindication",
-        "dosage", "lactic", "acidosis", "renal", "interaction",
+        "warfarin",
+        "metformin",
+        "aspirin",
+        "bleeding",
+        "contraindication",
+        "dosage",
+        "lactic",
+        "acidosis",
+        "renal",
+        "interaction",
     ]
 
     def encode(self, texts: list[str]) -> list[list[float]]:
@@ -203,7 +211,8 @@ class TestBuildGroundedPrompt:
 
     def test_prompt_contains_query(self) -> None:
         prompt = build_grounded_prompt(
-            "warfarin aspirin interaction", "R2",
+            "warfarin aspirin interaction",
+            "R2",
             [self._make_scored(WARFARIN_CHUNK)],
         )
         assert "warfarin aspirin interaction" in prompt
@@ -241,8 +250,11 @@ class TestRAGOrchestratorIntegration:
         orch = _make_orchestrator()
         req = RAGRequest(query="warfarin bleeding risk aspirin interaction")
         resp = orch.query(req)
-        assert resp.status in (PipelineStatus.released, PipelineStatus.qualified,
-                               PipelineStatus.abstained)
+        assert resp.status in (
+            PipelineStatus.released,
+            PipelineStatus.qualified,
+            PipelineStatus.abstained,
+        )
 
     def test_response_has_session_id(self) -> None:
         orch = _make_orchestrator()
@@ -253,7 +265,7 @@ class TestRAGOrchestratorIntegration:
     def test_response_has_query_hash(self) -> None:
         orch = _make_orchestrator()
         resp = orch.query(RAGRequest(query="warfarin dosage"))
-        assert len(resp.query_hash) == 64   # SHA-256 hex
+        assert len(resp.query_hash) == 64  # SHA-256 hex
 
     def test_risk_tier_in_response(self) -> None:
         orch = _make_orchestrator()
@@ -322,6 +334,7 @@ class TestRAGOrchestratorIntegration:
 
     def test_response_is_rag_response_type(self) -> None:
         from adaptive_trust_medical_rag.orchestrator.rag_orchestrator import RAGResponse
+
         orch = _make_orchestrator()
         resp = orch.query(RAGRequest(query="warfarin"))
         assert isinstance(resp, RAGResponse)

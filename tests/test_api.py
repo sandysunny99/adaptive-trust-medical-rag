@@ -1,4 +1,4 @@
-﻿"""
+"""
 Tests for Phase 19 - FastAPI HTTP Layer.
 
 Uses httpx AsyncClient with the TestClient pattern (no live DB/LLM).
@@ -24,6 +24,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier import (
 )
 
 # ── Test doubles ──────────────────────────────────────────────────────────────
+
 
 def _make_rag_response(
     status: PipelineStatus = PipelineStatus.released,
@@ -83,6 +84,7 @@ def _make_client(
 
 # ── POST /query ───────────────────────────────────────────────────────────────
 
+
 class TestQueryEndpoint:
     def test_valid_query_returns_200(self) -> None:
         client = _make_client(MockPipeline())
@@ -93,8 +95,16 @@ class TestQueryEndpoint:
         client = _make_client(MockPipeline())
         resp = client.post("/query", json={"query": "What is the mechanism of warfarin?"})
         data = resp.json()
-        for field in ["session_id", "query_hash", "risk_tier", "status", "answer",
-                      "confidence", "gate_decision", "disclaimer"]:
+        for field in [
+            "session_id",
+            "query_hash",
+            "risk_tier",
+            "status",
+            "answer",
+            "confidence",
+            "gate_decision",
+            "disclaimer",
+        ]:
             assert field in data, f"Missing field: {field}"
 
     def test_disclaimer_always_present(self) -> None:
@@ -111,8 +121,9 @@ class TestQueryEndpoint:
 
     def test_abstained_response_has_reason(self) -> None:
         abstained = _make_rag_response(
-            status=PipelineStatus.abstained, confidence=0.0,
-            answer="[SYSTEM ABSTENTION: insufficient evidence]"
+            status=PipelineStatus.abstained,
+            confidence=0.0,
+            answer="[SYSTEM ABSTENTION: insufficient evidence]",
         )
         client = _make_client(MockPipeline(abstained))
         resp = client.post("/query", json={"query": "What is the mechanism of warfarin?"})
@@ -149,10 +160,10 @@ class TestQueryEndpoint:
     def test_session_id_forwarded(self) -> None:
         mp = MockPipeline()
         client = _make_client(mp)
-        resp = client.post("/query", json={
-            "query": "What is the mechanism of warfarin?",
-            "session_id": "my-session-abc"
-        })
+        resp = client.post(
+            "/query",
+            json={"query": "What is the mechanism of warfarin?", "session_id": "my-session-abc"},
+        )
         assert resp.status_code == 200
         assert len(mp.calls) == 1
         assert mp.calls[0].session_id == "my-session-abc"
@@ -160,19 +171,18 @@ class TestQueryEndpoint:
     def test_risk_tier_override_forwarded(self) -> None:
         mp = MockPipeline()
         client = _make_client(mp)
-        resp = client.post("/query", json={
-            "query": "What is the mechanism of warfarin?",
-            "risk_tier_override": "R3"
-        })
+        resp = client.post(
+            "/query",
+            json={"query": "What is the mechanism of warfarin?", "risk_tier_override": "R3"},
+        )
         assert resp.status_code == 200
         assert mp.calls[0].risk_tier_override == "R3"
 
     def test_invalid_risk_tier_override_422(self) -> None:
         client = _make_client(MockPipeline())
-        resp = client.post("/query", json={
-            "query": "What is warfarin?",
-            "risk_tier_override": "R9"
-        })
+        resp = client.post(
+            "/query", json={"query": "What is warfarin?", "risk_tier_override": "R9"}
+        )
         assert resp.status_code == 422
 
     def test_request_id_header_returned(self) -> None:
@@ -189,6 +199,7 @@ class TestQueryEndpoint:
 
 
 # ── POST /ingest ──────────────────────────────────────────────────────────────
+
 
 class TestIngestEndpoint:
     def _ingest_body(self) -> dict:
@@ -254,6 +265,7 @@ class TestIngestEndpoint:
 
 # ── GET /health ───────────────────────────────────────────────────────────────
 
+
 class TestHealthEndpoint:
     def test_health_returns_200(self) -> None:
         client = _make_client()
@@ -286,6 +298,7 @@ class TestHealthEndpoint:
     def test_health_with_mock_db_checker_ok(self) -> None:
         async def checker():
             return {"db": True, "pgvector": True}
+
         app = create_app(db_health_checker=checker)
         client = TestClient(app)
         data = client.get("/health").json()
@@ -296,6 +309,7 @@ class TestHealthEndpoint:
     def test_health_with_degraded_db(self) -> None:
         async def checker():
             return {"db": True, "pgvector": False}
+
         app = create_app(db_health_checker=checker)
         client = TestClient(app)
         data = client.get("/health").json()
@@ -303,6 +317,7 @@ class TestHealthEndpoint:
 
 
 # ── GET /audit ────────────────────────────────────────────────────────────────
+
 
 class TestAuditEndpoint:
     def test_audit_returns_200_no_store(self) -> None:
@@ -334,16 +349,19 @@ class TestAuditEndpoint:
     def test_audit_with_mock_store(self) -> None:
         class MockAuditStore:
             async def get_events(self, session_id: str) -> list[dict]:
-                return [{
-                    "event_id": "evt-001",
-                    "session_id": session_id,
-                    "query_hash": "abc123",
-                    "risk_class": "R1",
-                    "gate_decision": "release",
-                    "trust_score": 0.85,
-                    "confidence": 0.90,
-                    "created_at": "2026-08-21T10:00:00Z",
-                }]
+                return [
+                    {
+                        "event_id": "evt-001",
+                        "session_id": session_id,
+                        "query_hash": "abc123",
+                        "risk_class": "R1",
+                        "gate_decision": "release",
+                        "trust_score": 0.85,
+                        "confidence": 0.90,
+                        "created_at": "2026-08-21T10:00:00Z",
+                    }
+                ]
+
         app = create_app(audit_store=MockAuditStore())
         client = TestClient(app)
         data = client.get("/audit/test-session").json()
@@ -352,6 +370,7 @@ class TestAuditEndpoint:
 
 
 # ── Rate limiting ─────────────────────────────────────────────────────────────
+
 
 class TestRateLimiting:
     def test_rate_limit_triggers_429(self) -> None:

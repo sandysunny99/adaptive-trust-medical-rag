@@ -1,4 +1,4 @@
-﻿"""
+"""
 Phase 14 - MLflow Experiment Tracker.
 
 Records every evaluation run with full reproducibility metadata
@@ -37,6 +37,7 @@ class AblationVariant(str, Enum):
     Six pipeline configurations for the ablation study.
     Matches the medical-rag-evaluation skill Ablation Study Matrix exactly.
     """
+
     A = "A"  # Baseline: Vanilla LLM (direct prompting, no retrieval)
     B = "B"  # Baseline: Standard Semantic RAG (dense vector, no trust, no gates)
     C = "C"  # Ablation: BM25 + Vector Hybrid Retrieval (no trust scoring)
@@ -111,9 +112,7 @@ class ExperimentConfig:
             "dataset_version": self.dataset_version,
             "dataset_split": self.dataset_split,
             "ablation_variant": self.ablation_variant,
-            "ablation_description": ABLATION_DESCRIPTIONS.get(
-                self.ablation_variant, "custom"
-            ),
+            "ablation_description": ABLATION_DESCRIPTIONS.get(self.ablation_variant, "custom"),
             "prompt_version": self.prompt_version,
             "config_hash": self.compute_hash(),
             **{f"trust_weight_{k}": str(v) for k, v in self.trust_weights.items()},
@@ -257,9 +256,7 @@ class ExperimentTracker:
     ) -> None:
         self._experiment_name = experiment_name
         self._tracking_uri = (
-            tracking_uri
-            or os.environ.get("MLFLOW_TRACKING_URI")
-            or self._DEFAULT_TRACKING_URI
+            tracking_uri or os.environ.get("MLFLOW_TRACKING_URI") or self._DEFAULT_TRACKING_URI
         )
         self._log_dir = log_dir or Path("experiments") / "logs"
         self._mlflow_available = self._check_mlflow()
@@ -267,6 +264,7 @@ class ExperimentTracker:
 
         if self._mlflow_available:
             import mlflow  # type: ignore[import-untyped]
+
             mlflow.set_tracking_uri(self._tracking_uri)
             mlflow.set_experiment(self._experiment_name)
             log.info(
@@ -338,6 +336,7 @@ class ExperimentTracker:
     def _check_mlflow() -> bool:
         try:
             import mlflow  # type: ignore[import-untyped]  # noqa: F401
+
             return True
         except ImportError:
             return False
@@ -380,26 +379,24 @@ class ExperimentTracker:
             ci_robustness_upper=_hi(result.ci_robustness_score),
         )
 
-    def _log_to_mlflow(
-        self, snapshot: MetricSnapshot, params: dict[str, str]
-    ) -> str:
+    def _log_to_mlflow(self, snapshot: MetricSnapshot, params: dict[str, str]) -> str:
         import mlflow  # type: ignore[import-untyped]
 
         with mlflow.start_run(run_name=snapshot.experiment_name) as run:
-            mlflow.set_tags({
-                "ablation_variant": snapshot.ablation_variant,
-                "config_hash": snapshot.config_hash,
-                "dataset_split": snapshot.dataset_split,
-            })
+            mlflow.set_tags(
+                {
+                    "ablation_variant": snapshot.ablation_variant,
+                    "config_hash": snapshot.config_hash,
+                    "dataset_split": snapshot.dataset_split,
+                }
+            )
             mlflow.log_params(params)
             mlflow.log_metrics(snapshot.to_mlflow_metrics())
             run_id = run.info.run_id
             log.info("MLflow run logged: %s", run_id)
             return run_id
 
-    def _log_comparison_to_mlflow(
-        self, parent_run_id: str, record: dict[str, Any]
-    ) -> None:
+    def _log_comparison_to_mlflow(self, parent_run_id: str, record: dict[str, Any]) -> None:
         import mlflow  # type: ignore[import-untyped]
 
         with mlflow.start_run(
@@ -407,16 +404,10 @@ class ExperimentTracker:
             nested=True,
             tags={"parent_run_id": parent_run_id, "type": "paired_comparison"},
         ):
-            mlflow.log_metrics({
-                k: float(v)
-                for k, v in record.items()
-                if isinstance(v, (int, float))
-            })
-            mlflow.log_params({
-                k: str(v)
-                for k, v in record.items()
-                if isinstance(v, (str, bool))
-            })
+            mlflow.log_metrics(
+                {k: float(v) for k, v in record.items() if isinstance(v, (int, float))}
+            )
+            mlflow.log_params({k: str(v) for k, v in record.items() if isinstance(v, (str, bool))})
 
 
 def make_experiment_config(

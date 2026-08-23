@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Run smoke ablation evaluation (Variants B + F) and assert F > B faithfulness."""
+
 import sys
 from pathlib import Path
 

@@ -113,16 +113,14 @@ class TrustFactorScores:
     consistency: float = 1.0
     entity_match: float = 0.0
     population_match: float = 1.0
-    anti_poisoning: float = 1.0   # Default: assume clean until poisoning detected
-    anti_injection: float = 1.0   # Default: assume clean until injection detected
+    anti_poisoning: float = 1.0  # Default: assume clean until poisoning detected
+    anti_injection: float = 1.0  # Default: assume clean until injection detected
 
     def __post_init__(self) -> None:
         for fname in TRUST_FACTORS:
             val = getattr(self, fname)
             if not (0.0 <= val <= 1.0):
-                raise ValueError(
-                    f"TrustFactorScores.{fname} = {val} is out of range [0.0, 1.0]"
-                )
+                raise ValueError(f"TrustFactorScores.{fname} = {val} is out of range [0.0, 1.0]")
 
     def as_dict(self) -> dict[str, float]:
         return {f: getattr(self, f) for f in TRUST_FACTORS}
@@ -302,25 +300,57 @@ class AdaptiveTrustScorer:
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Keyword patterns that escalate query risk class
-_R3_KEYWORDS = frozenset({
-    "lethal dose", "ld50", "overdose", "fatal", "death", "suicide",
-    "maximum dose", "toxic dose", "poisoning",
-    "severe drug interaction", "contraindication", "black box warning",
-    "torsades de pointes", "qt prolongation",
-})
+_R3_KEYWORDS = frozenset(
+    {
+        "lethal dose",
+        "ld50",
+        "overdose",
+        "fatal",
+        "death",
+        "suicide",
+        "maximum dose",
+        "toxic dose",
+        "poisoning",
+        "severe drug interaction",
+        "contraindication",
+        "black box warning",
+        "torsades de pointes",
+        "qt prolongation",
+    }
+)
 
-_R2_KEYWORDS = frozenset({
-    "drug interaction", "adverse drug event", "ade", "side effect",
-    "hepatotoxicity", "nephrotoxicity", "cardiotoxicity",
-    "pregnancy", "pediatric dose", "geriatric dose", "renal impairment",
-    "hepatic impairment", "narrow therapeutic index",
-})
+_R2_KEYWORDS = frozenset(
+    {
+        "drug interaction",
+        "adverse drug event",
+        "ade",
+        "side effect",
+        "hepatotoxicity",
+        "nephrotoxicity",
+        "cardiotoxicity",
+        "pregnancy",
+        "pediatric dose",
+        "geriatric dose",
+        "renal impairment",
+        "hepatic impairment",
+        "narrow therapeutic index",
+    }
+)
 
-_R1_KEYWORDS = frozenset({
-    "dose", "dosage", "mechanism of action", "pharmacokinetics",
-    "absorption", "distribution", "metabolism", "excretion",
-    "half life", "bioavailability",
-})
+_R1_KEYWORDS = frozenset(
+    {
+        "dose",
+        "dosage",
+        "mechanism of action",
+        "pharmacokinetics",
+        "absorption",
+        "distribution",
+        "metabolism",
+        "excretion",
+        "half life",
+        "bioavailability",
+    }
+)
 
 
 def classify_query_risk(query: str) -> str:

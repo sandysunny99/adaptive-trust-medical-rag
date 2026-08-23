@@ -1,6 +1,7 @@
 """
 Tests for Phase 22 - Statistical Research Report Generator (statistical_report.py).
 """
+
 from __future__ import annotations
 
 from pathlib import Path

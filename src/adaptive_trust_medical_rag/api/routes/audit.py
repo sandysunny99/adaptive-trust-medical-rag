@@ -1,4 +1,4 @@
-﻿"""GET /audit/{session_id} route handler."""
+"""GET /audit/{session_id} route handler."""
 
 from __future__ import annotations
 

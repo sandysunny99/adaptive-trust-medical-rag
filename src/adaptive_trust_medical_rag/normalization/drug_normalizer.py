@@ -113,9 +113,7 @@ class RxNormClient:
                 resp = await client.get(url, params=params)
                 resp.raise_for_status()
                 data = resp.json()
-                candidates = (
-                    data.get("approximateGroup", {}).get("candidate", [])
-                )
+                candidates = data.get("approximateGroup", {}).get("candidate", [])
                 if candidates:
                     best = candidates[0]
                     return best.get("rxcui"), best.get("name")

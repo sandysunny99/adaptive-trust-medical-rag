@@ -82,6 +82,7 @@ class AblationRunConfig:
             from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
                 ABLATION_DESCRIPTIONS,
             )
+
             self.description = ABLATION_DESCRIPTIONS.get(self.variant.value, "")
 
 
@@ -173,6 +174,7 @@ class AblationReport:
             from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
                 ABLATION_DESCRIPTIONS,
             )
+
             desc = ABLATION_DESCRIPTIONS.get(vr.variant.value, vr.variant.value)
             desc = desc[:42]
             lines.append(
@@ -188,8 +190,9 @@ class AblationReport:
         if self.comparisons:
             lines.append("")
             lines.append("Pairwise Comparisons vs Baseline (B) — Faithfulness:")
-            lines.append(f"{'Variant':>7} | {'t-stat':>8} | {'p-value':>8} | "
-                         f"{'cohen_d':>8} | {'Sig?':>5}")
+            lines.append(
+                f"{'Variant':>7} | {'t-stat':>8} | {'p-value':>8} | {'cohen_d':>8} | {'Sig?':>5}"
+            )
             lines.append("-" * 50)
             for comp in self.comparisons:
                 sig = "YES" if comp.get("significant") else "no"
@@ -294,8 +297,7 @@ class AblationRunner:
         """
         if split == DatasetSplit.test and not allow_test:
             raise PermissionError(
-                "TEST SET IS FROZEN. Set allow_test=True only for the "
-                "final evaluation run."
+                "TEST SET IS FROZEN. Set allow_test=True only for the final evaluation run."
             )
 
         variant_results: list[VariantResult] = []
@@ -339,13 +341,15 @@ class AblationRunner:
             # Log to tracker
             run_id = self._tracker.log_eval_result(result, exp_config)
 
-            variant_results.append(VariantResult(
-                variant=run_cfg.variant,
-                config=exp_config,
-                result=result,
-                run_id=run_id,
-                elapsed_seconds=round(elapsed, 2),
-            ))
+            variant_results.append(
+                VariantResult(
+                    variant=run_cfg.variant,
+                    config=exp_config,
+                    result=result,
+                    run_id=run_id,
+                    elapsed_seconds=round(elapsed, 2),
+                )
+            )
             log.info(
                 "Variant %s done: faithfulness=%.4f, f1_abstain=%.4f (%.1fs)",
                 run_cfg.variant.value,
@@ -408,20 +412,14 @@ class AblationRunner:
         metric_attr = attr_map.get(metric, metric)
 
         baseline_scores = [
-            getattr(m, metric_attr)
-            for m in baseline_vr.result.metrics_list
-            if not m.is_error
+            getattr(m, metric_attr) for m in baseline_vr.result.metrics_list if not m.is_error
         ]
 
         comparisons = []
         for vr in variant_results:
             if vr.variant == baseline_vr.variant:
                 continue
-            scores = [
-                getattr(m, metric_attr)
-                for m in vr.result.metrics_list
-                if not m.is_error
-            ]
+            scores = [getattr(m, metric_attr) for m in vr.result.metrics_list if not m.is_error]
             if len(scores) != len(baseline_scores) or not scores:
                 continue
             try:
@@ -430,9 +428,7 @@ class AblationRunner:
                     "variant_a": baseline_vr.variant.value,
                     "variant_b": vr.variant.value,
                     "metric": metric,
-                    "mean_baseline": round(
-                        sum(baseline_scores) / len(baseline_scores), 4
-                    ),
+                    "mean_baseline": round(sum(baseline_scores) / len(baseline_scores), 4),
                     "mean_variant": round(sum(scores) / len(scores), 4),
                     **stats,
                 }
@@ -488,6 +484,7 @@ class MockVariantPipeline:
         self._variant = variant
         self._profile = self._PROFILES[variant.value]
         import random
+
         self._rng = random.Random(seed)  # noqa: S311 - mock pipeline, not cryptographic
 
     def __call__(self, req: RAGRequest) -> RAGResponse:
@@ -500,10 +497,7 @@ class MockVariantPipeline:
         )
 
         profile = self._profile
-        is_attack = (
-            "ignore previous" in req.query.lower()
-            or "system prompt" in req.query.lower()
-        )
+        is_attack = "ignore previous" in req.query.lower() or "system prompt" in req.query.lower()
 
         # Decide whether to abstain
         should_abstain = is_attack and self._rng.random() < profile["abstain_prob"]
@@ -538,9 +532,7 @@ class MockVariantPipeline:
             trust_scores=[grounding],
             retrieved_chunk_ids=["c-mock"],
             gate_decision=(
-                GateDecision.abstain.value
-                if should_abstain
-                else GateDecision.release.value
+                GateDecision.abstain.value if should_abstain else GateDecision.release.value
             ),
             verification_report=vr,
             audit_log={"variant": self._variant.value},

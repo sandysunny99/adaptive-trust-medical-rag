@@ -34,9 +34,21 @@ class MockEmbeddingModel:
     """
 
     _VOCAB: list[str] = [
-        "warfarin", "metformin", "aspirin", "interaction", "dosage",
-        "contraindication", "lactic", "acidosis", "bleeding", "cyp3a4",
-        "renal", "hepatic", "diabetes", "anticoagulant", "insulin",
+        "warfarin",
+        "metformin",
+        "aspirin",
+        "interaction",
+        "dosage",
+        "contraindication",
+        "lactic",
+        "acidosis",
+        "bleeding",
+        "cyp3a4",
+        "renal",
+        "hepatic",
+        "diabetes",
+        "anticoagulant",
+        "insulin",
     ]
 
     def encode(self, texts: list[str]) -> list[list[float]]:
@@ -232,27 +244,33 @@ class TestVectorRetriever:
 class TestGraphRetriever:
     def _make_graph(self) -> GraphRetriever:
         gr = GraphRetriever(CLEAN_CORPUS)
-        gr.add_relationship(DrugRelationship(
-            source_drug="warfarin",
-            target_drug="aspirin",
-            relationship="interaction",
-            severity="severe",
-            chunk_id="c-warf-001",
-        ))
-        gr.add_relationship(DrugRelationship(
-            source_drug="aspirin",
-            target_drug="warfarin",
-            relationship="interaction",
-            severity="severe",
-            chunk_id="c-asp-001",
-        ))
-        gr.add_relationship(DrugRelationship(
-            source_drug="metformin",
-            target_drug="insulin",
-            relationship="interaction",
-            severity="moderate",
-            chunk_id="c-met-001",
-        ))
+        gr.add_relationship(
+            DrugRelationship(
+                source_drug="warfarin",
+                target_drug="aspirin",
+                relationship="interaction",
+                severity="severe",
+                chunk_id="c-warf-001",
+            )
+        )
+        gr.add_relationship(
+            DrugRelationship(
+                source_drug="aspirin",
+                target_drug="warfarin",
+                relationship="interaction",
+                severity="severe",
+                chunk_id="c-asp-001",
+            )
+        )
+        gr.add_relationship(
+            DrugRelationship(
+                source_drug="metformin",
+                target_drug="insulin",
+                relationship="interaction",
+                severity="moderate",
+                chunk_id="c-met-001",
+            )
+        )
         return gr
 
     def test_direct_relationship_retrieved(self) -> None:
@@ -286,10 +304,15 @@ class TestGraphRetriever:
 
     def test_empty_corpus_returns_empty(self) -> None:
         gr = GraphRetriever([])
-        gr.add_relationship(DrugRelationship(
-            source_drug="warfarin", target_drug="aspirin",
-            relationship="interaction", severity="severe", chunk_id="c-x",
-        ))
+        gr.add_relationship(
+            DrugRelationship(
+                source_drug="warfarin",
+                target_drug="aspirin",
+                relationship="interaction",
+                severity="severe",
+                chunk_id="c-x",
+            )
+        )
         assert gr.retrieve(["warfarin"]) == []
 
 
@@ -381,13 +404,15 @@ class TestHybridRetrievalEngine:
 
     def test_graph_drug_query_augments_results(self) -> None:
         engine = _make_engine(CLEAN_CORPUS)
-        engine.graph.add_relationship(DrugRelationship(
-            source_drug="warfarin",
-            target_drug="aspirin",
-            relationship="interaction",
-            severity="severe",
-            chunk_id="c-warf-001",
-        ))
+        engine.graph.add_relationship(
+            DrugRelationship(
+                source_drug="warfarin",
+                target_drug="aspirin",
+                relationship="interaction",
+                severity="severe",
+                chunk_id="c-warf-001",
+            )
+        )
         results = engine.retrieve("interaction", query_drugs=["warfarin"])
         assert len(results) >= 1
 

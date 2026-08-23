@@ -47,22 +47,34 @@ def upgrade() -> None:
         create_type=True,
     )
     source_validation_status_enum = postgresql.ENUM(
-        "pending", "validated", "quarantined", "rejected",
+        "pending",
+        "validated",
+        "quarantined",
+        "rejected",
         name="sourcevalidationstatus",
         create_type=True,
     )
     document_status_enum = postgresql.ENUM(
-        "pending", "ingested", "chunked", "quarantined", "rejected",
+        "pending",
+        "ingested",
+        "chunked",
+        "quarantined",
+        "rejected",
         name="documentstatus",
         create_type=True,
     )
     risk_class_enum = postgresql.ENUM(
-        "R0", "R1", "R2", "R3",
+        "R0",
+        "R1",
+        "R2",
+        "R3",
         name="riskclass",
         create_type=True,
     )
     gate_decision_enum = postgresql.ENUM(
-        "release", "abstain", "warn",
+        "release",
+        "abstain",
+        "warn",
         name="gatedecision",
         create_type=True,
     )
@@ -261,7 +273,7 @@ def upgrade() -> None:
             sa.ForeignKey("evidence_sources.id", ondelete="CASCADE"),
             nullable=False,
         ),
-        sa.Column("content_hash", sa.String(64), nullable=False),   # SHA-256
+        sa.Column("content_hash", sa.String(64), nullable=False),  # SHA-256
         sa.Column("retrieval_method", sa.String(64), nullable=False),
         sa.Column(
             "retrieval_score",
@@ -290,9 +302,7 @@ def upgrade() -> None:
     )
     op.create_index("ix_evidence_provenance_chunk_id", "evidence_provenance", ["chunk_id"])
     op.create_index("ix_evidence_provenance_source_id", "evidence_provenance", ["source_id"])
-    op.create_index(
-        "ix_evidence_provenance_trust_score", "evidence_provenance", ["trust_score"]
-    )
+    op.create_index("ix_evidence_provenance_trust_score", "evidence_provenance", ["trust_score"])
 
     # ── audit_events ──────────────────────────────────────────────────────────
     op.create_table(

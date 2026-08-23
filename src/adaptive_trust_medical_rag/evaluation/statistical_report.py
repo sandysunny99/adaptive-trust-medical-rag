@@ -4,6 +4,7 @@ Final Statistical Research Report Generator for Adaptive Trust Medical RAG.
 Produces Markdown: exec summary, ablation table, pairwise t-tests,
 Cohen d effect sizes, 95% CIs, metric rankings, integrity attestation.
 """
+
 from __future__ import annotations
 
 import math
@@ -188,9 +189,7 @@ def _cohens_d(mean_a: float, mean_b: float, _n: int) -> tuple[float, str]:
     return round(d, 4), category
 
 
-def _welch_t_approx(
-    mean_a: float, mean_b: float, n_a: int, n_b: int
-) -> tuple[float, bool]:
+def _welch_t_approx(mean_a: float, mean_b: float, n_a: int, n_b: int) -> tuple[float, bool]:
     """Approximate Welch t-test p-value for two proportions."""
     se_a = math.sqrt(max(mean_a * (1 - mean_a) / max(n_a, 1), 1e-9))
     se_b = math.sqrt(max(mean_b * (1 - mean_b) / max(n_b, 1), 1e-9))
@@ -220,18 +219,20 @@ def _build_pairwise(
             delta = round(val_b - val_a, 6)
             d, cat = _cohens_d(val_a, val_b, n_cases)
             p_val, sig = _welch_t_approx(val_a, val_b, n_cases, n_cases)
-            comparisons.append(PairwiseComparison(
-                variant_a=baseline_vr.variant.value,
-                variant_b=vr.variant.value,
-                metric=metric,
-                value_a=round(val_a, 6),
-                value_b=round(val_b, 6),
-                delta=delta,
-                cohens_d=d,
-                effect_category=cat,
-                p_value=p_val,
-                significant=sig,
-            ))
+            comparisons.append(
+                PairwiseComparison(
+                    variant_a=baseline_vr.variant.value,
+                    variant_b=vr.variant.value,
+                    metric=metric,
+                    value_a=round(val_a, 6),
+                    value_b=round(val_b, 6),
+                    delta=delta,
+                    cohens_d=d,
+                    effect_category=cat,
+                    p_value=p_val,
+                    significant=sig,
+                )
+            )
     return comparisons
 
 
@@ -242,11 +243,13 @@ def _build_rankings(results: "list[VariantResult]") -> list[MetricRanking]:
         higher = METRIC_HIGHER_BETTER[metric]
         values = {vr.variant.value: _get_metric(vr.result, metric) for vr in results}
         ranked = sorted(values, key=lambda v: values[v], reverse=higher)
-        rankings.append(MetricRanking(
-            metric=metric,
-            ranked_variants=ranked,
-            values={k: round(v, 4) for k, v in values.items()},
-        ))
+        rankings.append(
+            MetricRanking(
+                metric=metric,
+                ranked_variants=ranked,
+                values={k: round(v, 4) for k, v in values.items()},
+            )
+        )
     return rankings
 
 
@@ -311,7 +314,7 @@ def _render_markdown(  # noqa: PLR0912, PLR0915
         ]
         for vr in variants:
             vals = " | ".join(f"{_get_metric(vr.result, m):.4f}" for m in ALL_METRICS)
-            desc = (getattr(vr.config, 'description', vr.variant.value) or vr.variant.value)[:40]
+            desc = (getattr(vr.config, "description", vr.variant.value) or vr.variant.value)[:40]
             lines.append(f"| {vr.variant.value} | {desc} | {vals} |")
         lines.append("")
 

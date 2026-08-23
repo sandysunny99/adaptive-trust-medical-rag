@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Run Bandit SAST scan on src/ and fail on any medium/high issues."""
+
 import subprocess
 import sys
 

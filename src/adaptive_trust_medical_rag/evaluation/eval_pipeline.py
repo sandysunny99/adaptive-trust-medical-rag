@@ -1,4 +1,4 @@
-﻿"""
+"""
 Phase 17 - End-to-End Evaluation Pipeline.
 
 Orchestrates the complete ablation study evaluation:
@@ -91,6 +91,7 @@ class EvalPipelineResult:
         run_timestamp:    ISO-8601 UTC timestamp of this run.
         summary:          Dict summary (safe to serialize to JSON).
     """
+
     report: AblationReport
     markdown_report: str
     report_path: Path
@@ -143,6 +144,7 @@ def _build_markdown_report(
         from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
             ABLATION_DESCRIPTIONS,
         )
+
         desc = ABLATION_DESCRIPTIONS.get(vr.variant.value, vr.variant.value)[:38]
         r = vr.result
         lines.append(
@@ -282,7 +284,8 @@ def _load_or_generate(split: DatasetSplit, seed: int = 42) -> EvalDataset:
     else:
         log.warning(
             "Fixture not found for %s split, generating fresh (seed=%d)",
-            split.value, seed,
+            split.value,
+            seed,
         )
         ds = generate_dataset(split, seed=seed)
 

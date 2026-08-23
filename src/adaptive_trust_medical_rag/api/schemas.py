@@ -1,4 +1,4 @@
-﻿"""Pydantic request/response models for the Medical RAG HTTP API.
+"""Pydantic request/response models for the Medical RAG HTTP API.
 
 Privacy rules enforced at schema level:
   - QueryRequest.query is sanitized before pipeline entry.
@@ -39,9 +39,9 @@ class QueryRequest(BaseModel):
         import re
 
         phi_patterns = [
-            r"\b\d{3}-\d{2}-\d{4}\b",   # SSN
-            r"\bMRN\s*#?\s*\d+\b",       # MRN
-            r"\bDOB:\s*\d",              # Date of birth marker
+            r"\b\d{3}-\d{2}-\d{4}\b",  # SSN
+            r"\bMRN\s*#?\s*\d+\b",  # MRN
+            r"\bDOB:\s*\d",  # Date of birth marker
         ]
         for pat in phi_patterns:
             if re.search(pat, v, re.IGNORECASE):

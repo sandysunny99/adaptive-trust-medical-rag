@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Verify pre_commit_secret_scan denies code with secrets."""
+
 import json
 import subprocess
 import sys

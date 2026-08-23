@@ -1,4 +1,4 @@
-﻿"""
+"""
 Tests for Phase 20 - CI/CD Pipeline Configuration.
 
 Validates the CI workflow YAML structure, all job steps, and the inline
@@ -61,17 +61,15 @@ class TestCIYamlStructure:
     def test_uv_version_pinned(self) -> None:
         ci = _load_ci()
         job = ci["jobs"]["lint-and-test"]
-        uv_steps = [
-            s for s in job["steps"]
-            if "uv==" in str(s.get("run", ""))
-        ]
+        uv_steps = [s for s in job["steps"] if "uv==" in str(s.get("run", ""))]
         assert len(uv_steps) >= 1
         assert "0.12.5" in uv_steps[0]["run"]
 
     def test_artifact_upload_in_lint_job(self) -> None:
         ci = _load_ci()
         upload_steps = [
-            s for s in ci["jobs"]["lint-and-test"]["steps"]
+            s
+            for s in ci["jobs"]["lint-and-test"]["steps"]
             if "upload-artifact" in str(s.get("uses", ""))
         ]
         assert len(upload_steps) >= 1
@@ -79,7 +77,8 @@ class TestCIYamlStructure:
     def test_smoke_eval_uploads_report(self) -> None:
         ci = _load_ci()
         upload_steps = [
-            s for s in ci["jobs"]["smoke-eval"]["steps"]
+            s
+            for s in ci["jobs"]["smoke-eval"]["steps"]
             if "upload-artifact" in str(s.get("uses", ""))
         ]
         assert len(upload_steps) >= 1
@@ -87,7 +86,8 @@ class TestCIYamlStructure:
     def test_dev_eval_uploads_report_with_sha(self) -> None:
         ci = _load_ci()
         upload_steps = [
-            s for s in ci["jobs"]["dev-eval"]["steps"]
+            s
+            for s in ci["jobs"]["dev-eval"]["steps"]
             if "upload-artifact" in str(s.get("uses", ""))
         ]
         assert len(upload_steps) >= 1
@@ -112,8 +112,10 @@ class TestCIYamlStructure:
     def test_api_health_step(self) -> None:
         ci = _load_ci()
         steps = ci["jobs"]["lint-and-test"]["steps"]
-        assert any("api" in s.get("name", "").lower() or "health" in s.get("name", "").lower()
-                   for s in steps)
+        assert any(
+            "api" in s.get("name", "").lower() or "health" in s.get("name", "").lower()
+            for s in steps
+        )
 
     def test_hook_tests_present(self) -> None:
         ci = _load_ci()
@@ -168,8 +170,11 @@ with tempfile.TemporaryDirectory() as tmp:
             [sys.executable, "-c", script],
             capture_output=True,
             text=True,
-            env={**__import__("os").environ, "PYTHONPATH": "src",
-                 "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db"},
+            env={
+                **__import__("os").environ,
+                "PYTHONPATH": "src",
+                "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db",
+            },
         )
         assert result.returncode == 0, f"Script failed:\n{result.stderr}"
         assert "PASS" in result.stdout
@@ -191,8 +196,11 @@ print("PASS")
             [sys.executable, "-c", script],
             capture_output=True,
             text=True,
-            env={**__import__("os").environ, "PYTHONPATH": "src",
-                 "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db"},
+            env={
+                **__import__("os").environ,
+                "PYTHONPATH": "src",
+                "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db",
+            },
         )
         assert result.returncode == 0, f"Script failed:\n{result.stderr}"
         assert "PASS" in result.stdout
@@ -212,8 +220,11 @@ print("PASS chain:", chain)
             [sys.executable, "-c", script],
             capture_output=True,
             text=True,
-            env={**__import__("os").environ, "PYTHONPATH": "src",
-                 "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db"},
+            env={
+                **__import__("os").environ,
+                "PYTHONPATH": "src",
+                "DATABASE_URL": "postgresql+asyncpg://u:p@localhost/db",
+            },
         )
         assert result.returncode == 0, f"Script failed:\n{result.stderr}"
         assert "PASS" in result.stdout
@@ -229,14 +240,13 @@ print("PASS chain:", chain)
             AblationVariant,
             ExperimentTracker,
         )
+
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
             result = run_evaluation(
                 split=DatasetSplit.smoke,
                 variants=[AblationVariant.B, AblationVariant.F],
-                tracker=ExperimentTracker(
-                    experiment_name="test", log_dir=tmp_path / "logs"
-                ),
+                tracker=ExperimentTracker(experiment_name="test", log_dir=tmp_path / "logs"),
                 reports_dir=tmp_path / "reports",
                 logs_dir=tmp_path / "logs",
                 bootstrap=False,
@@ -257,14 +267,13 @@ print("PASS chain:", chain)
             AblationVariant,
             ExperimentTracker,
         )
+
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)
             result = run_evaluation(
                 split=DatasetSplit.smoke,
                 variants=[AblationVariant.F],
-                tracker=ExperimentTracker(
-                    experiment_name="test", log_dir=tmp_path / "logs"
-                ),
+                tracker=ExperimentTracker(experiment_name="test", log_dir=tmp_path / "logs"),
                 reports_dir=tmp_path / "reports",
                 logs_dir=tmp_path / "logs",
                 bootstrap=False,

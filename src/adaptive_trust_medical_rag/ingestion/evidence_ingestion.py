@@ -165,9 +165,7 @@ def inspect_for_poisoning(content: str) -> PoisoningReport:
     # 2. Invisible / homoglyph character density
     total_chars = max(len(content), 1)
     invisible_count = sum(
-        1
-        for ch in content
-        if unicodedata.category(ch) in _INVISIBLE_CHAR_CATEGORIES
+        1 for ch in content if unicodedata.category(ch) in _INVISIBLE_CHAR_CATEGORIES
     )
     invisible_ratio = invisible_count / total_chars
     if invisible_ratio > 0.01:  # >1% invisible chars is suspicious

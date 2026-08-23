@@ -1,4 +1,4 @@
-﻿"""
+"""
 FastAPI application factory for Adaptive Trust Medical RAG.
 
 Registers all routers, middleware, and startup/shutdown lifecycle events.
@@ -62,6 +62,7 @@ def create_app(
     Returns:
         Configured FastAPI application instance.
     """
+
     @asynccontextmanager
     async def lifespan(app_: FastAPI):  # noqa: ANN001
         log.info("Adaptive Trust Medical RAG API v%s starting up", _APP_VERSION)

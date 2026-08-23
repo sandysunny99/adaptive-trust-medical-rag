@@ -64,9 +64,9 @@ class ScoredCandidate:
     """Candidate annotated with retrieval scores."""
 
     candidate: Candidate
-    bm25_rank: int | None = None       # rank in BM25 results (1-indexed); None if not retrieved
-    vector_rank: int | None = None     # rank in vector results (1-indexed); None if not retrieved
-    graph_rank: int | None = None      # rank in graph results (1-indexed); None if not retrieved
+    bm25_rank: int | None = None  # rank in BM25 results (1-indexed); None if not retrieved
+    vector_rank: int | None = None  # rank in vector results (1-indexed); None if not retrieved
+    graph_rank: int | None = None  # rank in graph results (1-indexed); None if not retrieved
     rrf_score: float = 0.0
     cross_encoder_score: float | None = None
     final_rank: int | None = None
@@ -108,9 +108,7 @@ class BM25Retriever:
         self._doc_lengths = [len(t) for t in self._tokenized]
         self._avg_dl = sum(self._doc_lengths) / max(self._n, 1)
         self._idf: dict[str, float] = self._build_idf()
-        self._tf: list[dict[str, int]] = [
-            self._term_freq(tokens) for tokens in self._tokenized
-        ]
+        self._tf: list[dict[str, int]] = [self._term_freq(tokens) for tokens in self._tokenized]
 
     def _term_freq(self, tokens: list[str]) -> dict[str, int]:
         tf: dict[str, int] = defaultdict(int)
@@ -149,10 +147,7 @@ class BM25Retriever:
         query_tokens = _tokenize(query)
         if not query_tokens:
             return []
-        scores = [
-            (self._corpus[i], self._score(query_tokens, i))
-            for i in range(self._n)
-        ]
+        scores = [(self._corpus[i], self._score(query_tokens, i)) for i in range(self._n)]
         scores.sort(key=lambda x: x[1], reverse=True)
         return [(c, s) for c, s in scores[:top_k] if s > 0]
 
@@ -195,9 +190,7 @@ class VectorRetriever:
         self._model = embedding_model
         # Pre-encode corpus at construction time
         if corpus:
-            self._embeddings: list[list[float]] = embedding_model.encode(
-                [c.text for c in corpus]
-            )
+            self._embeddings: list[list[float]] = embedding_model.encode([c.text for c in corpus])
         else:
             self._embeddings = []
 
@@ -223,11 +216,11 @@ class VectorRetriever:
 class DrugRelationship:
     """A directed drug-drug edge in the knowledge graph."""
 
-    source_drug: str       # normalised drug name / RxCUI
+    source_drug: str  # normalised drug name / RxCUI
     target_drug: str
-    relationship: str      # e.g. 'contraindication', 'interaction', 'cyp3a4_substrate'
-    severity: str = "moderate"   # 'mild' | 'moderate' | 'severe' | 'contraindicated'
-    chunk_id: str = ""     # evidence chunk backing this edge
+    relationship: str  # e.g. 'contraindication', 'interaction', 'cyp3a4_substrate'
+    severity: str = "moderate"  # 'mild' | 'moderate' | 'severe' | 'contraindicated'
+    chunk_id: str = ""  # evidence chunk backing this edge
 
 
 class GraphRetriever:
@@ -241,9 +234,7 @@ class GraphRetriever:
     def __init__(self, corpus: list[Candidate]) -> None:
         self._corpus = corpus
         # chunk_id -> Candidate index for fast lookup
-        self._chunk_index: dict[str, int] = {
-            c.chunk_id: i for i, c in enumerate(corpus)
-        }
+        self._chunk_index: dict[str, int] = {c.chunk_id: i for i, c in enumerate(corpus)}
         # adjacency list: drug_name -> list[DrugRelationship]
         self._graph: dict[str, list[DrugRelationship]] = defaultdict(list)
 

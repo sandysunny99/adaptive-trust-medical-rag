@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """CI: Verify check_dangerous_cmd allows safe commands."""
+
 import json
 import subprocess
 import sys

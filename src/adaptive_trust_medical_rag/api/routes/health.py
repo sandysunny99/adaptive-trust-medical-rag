@@ -1,4 +1,4 @@
-﻿"""GET /health route handler."""
+"""GET /health route handler."""
 
 from __future__ import annotations
 

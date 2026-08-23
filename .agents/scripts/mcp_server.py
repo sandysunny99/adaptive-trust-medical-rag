@@ -54,8 +54,7 @@ TOOLS = [
                 "query": {
                     "type": "string",
                     "description": (
-                        "Clinical pharmacology question "
-                        "(e.g., drug interactions, dosing)."
+                        "Clinical pharmacology question (e.g., drug interactions, dosing)."
                     ),
                 },
                 "risk_tier": {
@@ -151,8 +150,11 @@ TOOLS = [
                 "risk_tier": {"type": "string", "enum": ["R0", "R1", "R2", "R3"]},
             },
             "required": [
-                "chunk_id", "trust_score", "poisoning_score",
-                "source_authority", "risk_tier",
+                "chunk_id",
+                "trust_score",
+                "poisoning_score",
+                "source_authority",
+                "risk_tier",
             ],
         },
     },
@@ -160,6 +162,7 @@ TOOLS = [
 
 
 # ── Tool handlers ──────────────────────────────────────────────────────────
+
 
 def _handle_medical_rag_query(params: dict[str, Any]) -> dict[str, Any]:
     """Handle medical_rag_query tool call."""
@@ -335,7 +338,8 @@ def _make_response(request_id: Any, result: Any) -> dict:
 
 def _make_error(request_id: Any, code: int, message: str) -> dict:
     return {
-        "jsonrpc": JSONRPC_VERSION, "id": request_id,
+        "jsonrpc": JSONRPC_VERSION,
+        "id": request_id,
         "error": {"code": code, "message": message},
     }
 
@@ -350,11 +354,14 @@ def _dispatch(request: dict) -> dict | None:
         return None
 
     if method == "initialize":
-        return _make_response(req_id, {
-            "protocolVersion": MCP_VERSION,
-            "serverInfo": SERVER_INFO,
-            "capabilities": {"tools": {}},
-        })
+        return _make_response(
+            req_id,
+            {
+                "protocolVersion": MCP_VERSION,
+                "serverInfo": SERVER_INFO,
+                "capabilities": {"tools": {}},
+            },
+        )
 
     if method == "tools/list":
         return _make_response(req_id, {"tools": TOOLS})
@@ -367,9 +374,12 @@ def _dispatch(request: dict) -> dict | None:
             return _make_error(req_id, -32601, f"Unknown tool: {tool_name}")
         try:
             result = handler(tool_args)
-            return _make_response(req_id, {
-                "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
-            })
+            return _make_response(
+                req_id,
+                {
+                    "content": [{"type": "text", "text": json.dumps(result, indent=2)}],
+                },
+            )
         except Exception as exc:
             tb = traceback.format_exc()
             return _make_error(req_id, -32603, f"{exc}\n{tb}")
@@ -381,6 +391,7 @@ def _dispatch(request: dict) -> dict | None:
 
 
 # ── stdio main loop ────────────────────────────────────────────────────────
+
 
 def main() -> None:
     """Run MCP server on stdin/stdout (JSON-RPC 2.0 stdio transport)."""

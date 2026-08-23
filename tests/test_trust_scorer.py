@@ -55,9 +55,7 @@ def test_weights_sum_to_one_for_all_risk_classes() -> None:
     cfg = _load_trust_config()
     for rc in RISK_CLASSES:
         total = sum(cfg["weights"][rc].values())
-        assert math.isclose(total, 1.0, abs_tol=1e-6), (
-            f"{rc} weights sum to {total}, expected 1.0"
-        )
+        assert math.isclose(total, 1.0, abs_tol=1e-6), f"{rc} weights sum to {total}, expected 1.0"
 
 
 def test_all_factors_present_in_every_risk_class() -> None:
@@ -213,7 +211,7 @@ def test_manual_r2_score_calculation() -> None:
     cfg = _load_trust_config()
     w = cfg["weights"]["R2"]
     factors = TrustFactorScores(
-        source_authority=0.70,   # Tier 3 (PRIMARY)
+        source_authority=0.70,  # Tier 3 (PRIMARY)
         query_relevance=0.80,
         evidence_quality=0.70,
         freshness=0.85,
@@ -300,14 +298,26 @@ def test_eligible_chunk_above_threshold() -> None:
 def test_poisoning_penalty_reduces_score() -> None:
     scorer = AdaptiveTrustScorer()
     clean = TrustFactorScores(
-        source_authority=0.85, query_relevance=0.80, evidence_quality=0.80,
-        freshness=0.90, consistency=0.80, entity_match=1.0,
-        population_match=0.70, anti_poisoning=1.0, anti_injection=1.0,
+        source_authority=0.85,
+        query_relevance=0.80,
+        evidence_quality=0.80,
+        freshness=0.90,
+        consistency=0.80,
+        entity_match=1.0,
+        population_match=0.70,
+        anti_poisoning=1.0,
+        anti_injection=1.0,
     )
     poisoned = TrustFactorScores(
-        source_authority=0.85, query_relevance=0.80, evidence_quality=0.80,
-        freshness=0.90, consistency=0.80, entity_match=1.0,
-        population_match=0.70, anti_poisoning=0.0, anti_injection=1.0,
+        source_authority=0.85,
+        query_relevance=0.80,
+        evidence_quality=0.80,
+        freshness=0.90,
+        consistency=0.80,
+        entity_match=1.0,
+        population_match=0.70,
+        anti_poisoning=0.0,
+        anti_injection=1.0,
     )
     clean_result = scorer.score("clean", "R1", clean)
     poisoned_result = scorer.score("poisoned", "R1", poisoned)
@@ -317,14 +327,26 @@ def test_poisoning_penalty_reduces_score() -> None:
 def test_injection_penalty_reduces_score() -> None:
     scorer = AdaptiveTrustScorer()
     clean = TrustFactorScores(
-        source_authority=0.85, query_relevance=0.80, evidence_quality=0.80,
-        freshness=0.90, consistency=0.80, entity_match=1.0,
-        population_match=0.70, anti_poisoning=1.0, anti_injection=1.0,
+        source_authority=0.85,
+        query_relevance=0.80,
+        evidence_quality=0.80,
+        freshness=0.90,
+        consistency=0.80,
+        entity_match=1.0,
+        population_match=0.70,
+        anti_poisoning=1.0,
+        anti_injection=1.0,
     )
     injected = TrustFactorScores(
-        source_authority=0.85, query_relevance=0.80, evidence_quality=0.80,
-        freshness=0.90, consistency=0.80, entity_match=1.0,
-        population_match=0.70, anti_poisoning=1.0, anti_injection=0.0,
+        source_authority=0.85,
+        query_relevance=0.80,
+        evidence_quality=0.80,
+        freshness=0.90,
+        consistency=0.80,
+        entity_match=1.0,
+        population_match=0.70,
+        anti_poisoning=1.0,
+        anti_injection=0.0,
     )
     clean_r = scorer.score("clean", "R1", clean)
     injected_r = scorer.score("injected", "R1", injected)
@@ -342,25 +364,43 @@ def test_batch_returns_sorted_descending() -> None:
         {
             "chunk_id": "low",
             "factors": TrustFactorScores(
-                source_authority=0.30, query_relevance=0.30, evidence_quality=0.30,
-                freshness=0.30, consistency=0.30, entity_match=0.30,
-                population_match=0.30, anti_poisoning=0.30, anti_injection=0.30,
+                source_authority=0.30,
+                query_relevance=0.30,
+                evidence_quality=0.30,
+                freshness=0.30,
+                consistency=0.30,
+                entity_match=0.30,
+                population_match=0.30,
+                anti_poisoning=0.30,
+                anti_injection=0.30,
             ),
         },
         {
             "chunk_id": "high",
             "factors": TrustFactorScores(
-                source_authority=1.0, query_relevance=1.0, evidence_quality=1.0,
-                freshness=1.0, consistency=1.0, entity_match=1.0,
-                population_match=1.0, anti_poisoning=1.0, anti_injection=1.0,
+                source_authority=1.0,
+                query_relevance=1.0,
+                evidence_quality=1.0,
+                freshness=1.0,
+                consistency=1.0,
+                entity_match=1.0,
+                population_match=1.0,
+                anti_poisoning=1.0,
+                anti_injection=1.0,
             ),
         },
         {
             "chunk_id": "mid",
             "factors": TrustFactorScores(
-                source_authority=0.70, query_relevance=0.70, evidence_quality=0.70,
-                freshness=0.70, consistency=0.70, entity_match=0.70,
-                population_match=0.70, anti_poisoning=0.70, anti_injection=0.70,
+                source_authority=0.70,
+                query_relevance=0.70,
+                evidence_quality=0.70,
+                freshness=0.70,
+                consistency=0.70,
+                entity_match=0.70,
+                population_match=0.70,
+                anti_poisoning=0.70,
+                anti_injection=0.70,
             ),
         },
     ]
@@ -377,17 +417,29 @@ def test_filter_eligible_removes_low_scoring_chunks() -> None:
         {
             "chunk_id": "pass",
             "factors": TrustFactorScores(
-                source_authority=1.0, query_relevance=1.0, evidence_quality=1.0,
-                freshness=1.0, consistency=1.0, entity_match=1.0,
-                population_match=1.0, anti_poisoning=1.0, anti_injection=1.0,
+                source_authority=1.0,
+                query_relevance=1.0,
+                evidence_quality=1.0,
+                freshness=1.0,
+                consistency=1.0,
+                entity_match=1.0,
+                population_match=1.0,
+                anti_poisoning=1.0,
+                anti_injection=1.0,
             ),
         },
         {
             "chunk_id": "fail",
             "factors": TrustFactorScores(
-                source_authority=0.0, query_relevance=0.0, evidence_quality=0.0,
-                freshness=0.0, consistency=0.0, entity_match=0.0,
-                population_match=0.0, anti_poisoning=0.0, anti_injection=0.0,
+                source_authority=0.0,
+                query_relevance=0.0,
+                evidence_quality=0.0,
+                freshness=0.0,
+                consistency=0.0,
+                entity_match=0.0,
+                population_match=0.0,
+                anti_poisoning=0.0,
+                anti_injection=0.0,
             ),
         },
     ]

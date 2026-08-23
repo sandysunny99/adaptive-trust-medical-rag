@@ -48,8 +48,8 @@ from enum import Enum
 ALIGNMENT_THRESHOLD: float = 0.70
 
 #: Confidence formula weights (skill §5)
-ALPHA: float = 0.4   # grounding ratio weight
-BETA: float = 0.40   # citation trust weight
+ALPHA: float = 0.4  # grounding ratio weight
+BETA: float = 0.40  # citation trust weight
 GAMMA: float = 0.20  # contradiction penalty weight
 
 #: Absolute / unsafe language patterns — high-risk claims if ungrounded
@@ -77,9 +77,9 @@ _DRUG_DOSE_RE = re.compile(
 
 
 class GateDecision(str, Enum):
-    release = "release"     # all claims grounded, confidence meets threshold
-    qualify = "qualify"     # minor issues — strip/qualify and release
-    abstain = "abstain"     # critical ungrounded or contradiction — reject
+    release = "release"  # all claims grounded, confidence meets threshold
+    qualify = "qualify"  # minor issues — strip/qualify and release
+    abstain = "abstain"  # critical ungrounded or contradiction — reject
 
 
 @dataclass(frozen=True)
@@ -89,7 +89,7 @@ class EvidenceChunk:
     chunk_id: str
     text: str
     source_authority: float = 0.8
-    citation_index: int = 0   # 1-based [Source N] index
+    citation_index: int = 0  # 1-based [Source N] index
 
 
 @dataclass
@@ -98,8 +98,8 @@ class AtomicClaim:
 
     text: str
     claim_index: int
-    citation_ids: list[int] = field(default_factory=list)   # parsed [Source N] refs
-    is_critical: bool = False    # True if claim contains absolute/unsafe language
+    citation_ids: list[int] = field(default_factory=list)  # parsed [Source N] refs
+    is_critical: bool = False  # True if claim contains absolute/unsafe language
     drug_entities: list[str] = field(default_factory=list)  # drug names in claim
 
 
@@ -109,10 +109,10 @@ class AlignmentResult:
 
     claim: AtomicClaim
     best_chunk_id: str | None
-    alignment_score: float          # 0.0–1.0
-    is_grounded: bool               # alignment_score >= ALIGNMENT_THRESHOLD
-    citation_valid: bool            # cited source exists & supports claim
-    entity_match: bool              # drug entities consistent with evidence
+    alignment_score: float  # 0.0–1.0
+    is_grounded: bool  # alignment_score >= ALIGNMENT_THRESHOLD
+    citation_valid: bool  # cited source exists & supports claim
+    entity_match: bool  # drug entities consistent with evidence
 
 
 @dataclass
@@ -120,9 +120,9 @@ class ContradictionFlag:
     """A detected contradiction between a claim and evidence or another claim."""
 
     claim_index_a: int
-    claim_index_b: int | None       # None if contradiction is vs evidence
+    claim_index_b: int | None  # None if contradiction is vs evidence
     description: str
-    severity: str                   # 'critical' | 'minor'
+    severity: str  # 'critical' | 'minor'
 
 
 @dataclass
@@ -138,7 +138,7 @@ class VerificationReport:
     confidence: float
     decision: GateDecision
     explanation: str
-    qualified_answer: str | None = None   # set when decision == 'qualify'
+    qualified_answer: str | None = None  # set when decision == 'qualify'
 
     @property
     def ungrounded_claims(self) -> list[AlignmentResult]:
@@ -169,14 +169,37 @@ def _extract_drug_entities(text: str) -> list[str]:
         name = match.group(1).lower()
         # Filter out common English words that match the regex incidentally
         if len(name) >= 5 and name not in {
-            "which", "there", "their", "these", "those", "where",
-            "about", "after", "could", "should", "would", "under",
-            "other", "above", "based", "given", "since", "being",
-            "study", "shown", "found", "known", "used", "risk",
-            "patients", "patient", "increase", "decrease",
+            "which",
+            "there",
+            "their",
+            "these",
+            "those",
+            "where",
+            "about",
+            "after",
+            "could",
+            "should",
+            "would",
+            "under",
+            "other",
+            "above",
+            "based",
+            "given",
+            "since",
+            "being",
+            "study",
+            "shown",
+            "found",
+            "known",
+            "used",
+            "risk",
+            "patients",
+            "patient",
+            "increase",
+            "decrease",
         }:
             entities.append(name)
-    return list(dict.fromkeys(entities))   # deduplicate, preserve order
+    return list(dict.fromkeys(entities))  # deduplicate, preserve order
 
 
 def decompose_into_claims(answer: str) -> list[AtomicClaim]:
@@ -198,13 +221,15 @@ def decompose_into_claims(answer: str) -> list[AtomicClaim]:
         citation_ids = [int(m) for m in _CITATION_RE.findall(sent)]
         drug_entities = _extract_drug_entities(sent)
         is_critical = _is_critical_claim(sent)
-        claims.append(AtomicClaim(
-            text=sent,
-            claim_index=idx,
-            citation_ids=citation_ids,
-            is_critical=is_critical,
-            drug_entities=drug_entities,
-        ))
+        claims.append(
+            AtomicClaim(
+                text=sent,
+                claim_index=idx,
+                citation_ids=citation_ids,
+                is_critical=is_critical,
+                drug_entities=drug_entities,
+            )
+        )
     return claims
 
 
@@ -254,21 +279,20 @@ def align_claims_to_evidence(
     results: list[AlignmentResult] = []
     for claim in claims:
         if not evidence:
-            results.append(AlignmentResult(
-                claim=claim,
-                best_chunk_id=None,
-                alignment_score=0.0,
-                is_grounded=False,
-                citation_valid=False,
-                entity_match=False,
-            ))
+            results.append(
+                AlignmentResult(
+                    claim=claim,
+                    best_chunk_id=None,
+                    alignment_score=0.0,
+                    is_grounded=False,
+                    citation_valid=False,
+                    entity_match=False,
+                )
+            )
             continue
 
         # Find best-matching chunk by alignment score
-        scored = [
-            (chunk, _alignment_score(claim.text, chunk.text))
-            for chunk in evidence
-        ]
+        scored = [(chunk, _alignment_score(claim.text, chunk.text)) for chunk in evidence]
         scored.sort(key=lambda x: x[1], reverse=True)
         best_chunk, best_score = scored[0]
 
@@ -281,7 +305,7 @@ def align_claims_to_evidence(
                     citation_valid = False
                     break
                 cited_score = _alignment_score(claim.text, citation_map[cid].text)
-                if cited_score < ALIGNMENT_THRESHOLD * 0.6:   # cited chunk must loosely support
+                if cited_score < ALIGNMENT_THRESHOLD * 0.6:  # cited chunk must loosely support
                     citation_valid = False
                     break
         # No citation on a grounded claim is acceptable (not fabricated)
@@ -293,14 +317,16 @@ def align_claims_to_evidence(
             # At least one drug entity in the claim must appear in the best chunk
             entity_match = any(ent in chunk_text_lower for ent in claim.drug_entities)
 
-        results.append(AlignmentResult(
-            claim=claim,
-            best_chunk_id=best_chunk.chunk_id,
-            alignment_score=round(best_score, 4),
-            is_grounded=best_score >= ALIGNMENT_THRESHOLD,
-            citation_valid=citation_valid,
-            entity_match=entity_match,
-        ))
+        results.append(
+            AlignmentResult(
+                claim=claim,
+                best_chunk_id=best_chunk.chunk_id,
+                alignment_score=round(best_score, 4),
+                is_grounded=best_score >= ALIGNMENT_THRESHOLD,
+                citation_valid=citation_valid,
+                entity_match=entity_match,
+            )
+        )
 
     return results
 
@@ -335,35 +361,39 @@ def detect_contradictions(
     for claim in claims:
         for pattern in _ABSOLUTE_PATTERNS:
             if re.search(pattern, claim.text, re.IGNORECASE):
-                flags.append(ContradictionFlag(
-                    claim_index_a=claim.claim_index,
-                    claim_index_b=None,
-                    description=(
-                        f"Absolute/unsafe language in claim: "
-                        f"'{re.search(pattern, claim.text, re.IGNORECASE).group()}'"  # type: ignore[union-attr]
-                    ),
-                    severity="critical",
-                ))
+                flags.append(
+                    ContradictionFlag(
+                        claim_index_a=claim.claim_index,
+                        claim_index_b=None,
+                        description=(
+                            f"Absolute/unsafe language in claim: "
+                            f"'{re.search(pattern, claim.text, re.IGNORECASE).group()}'"  # type: ignore[union-attr]
+                        ),
+                        severity="critical",
+                    )
+                )
                 break
 
     # 2. Intra-answer contradiction: check claim pairs for negation conflicts
     for i, claim_a in enumerate(claims):
-        for claim_b in claims[i + 1:]:
+        for claim_b in claims[i + 1 :]:
             for pos_pattern, neg_pattern in _NEGATION_SEEDS:
                 a_pos = bool(re.search(pos_pattern, claim_a.text, re.IGNORECASE))
                 b_neg = bool(re.search(neg_pattern, claim_b.text, re.IGNORECASE))
                 b_pos = bool(re.search(pos_pattern, claim_b.text, re.IGNORECASE))
                 a_neg = bool(re.search(neg_pattern, claim_a.text, re.IGNORECASE))
                 if (a_pos and b_neg) or (b_pos and a_neg):
-                    flags.append(ContradictionFlag(
-                        claim_index_a=claim_a.claim_index,
-                        claim_index_b=claim_b.claim_index,
-                        description=(
-                            f"Intra-answer contradiction detected between "
-                            f"claim {claim_a.claim_index} and claim {claim_b.claim_index}"
-                        ),
-                        severity="critical",
-                    ))
+                    flags.append(
+                        ContradictionFlag(
+                            claim_index_a=claim_a.claim_index,
+                            claim_index_b=claim_b.claim_index,
+                            description=(
+                                f"Intra-answer contradiction detected between "
+                                f"claim {claim_a.claim_index} and claim {claim_b.claim_index}"
+                            ),
+                            severity="critical",
+                        )
+                    )
 
     # 3. Claim vs evidence contradiction
     for claim in claims:
@@ -374,14 +404,14 @@ def detect_contradictions(
                 claim_pos = bool(re.search(pos_pattern, claim_lower))
                 evidence_neg = bool(re.search(neg_pattern, chunk_lower))
                 if claim_pos and evidence_neg:
-                    flags.append(ContradictionFlag(
-                        claim_index_a=claim.claim_index,
-                        claim_index_b=None,
-                        description=(
-                            f"Claim contradicts evidence chunk '{chunk.chunk_id}'"
-                        ),
-                        severity="minor",
-                    ))
+                    flags.append(
+                        ContradictionFlag(
+                            claim_index_a=claim.claim_index,
+                            claim_index_b=None,
+                            description=(f"Claim contradicts evidence chunk '{chunk.chunk_id}'"),
+                            severity="minor",
+                        )
+                    )
 
     # Deduplicate (same pair can match multiple patterns)
     seen: set[tuple] = set()
@@ -411,9 +441,7 @@ def _compute_confidence(
     α=0.4, β=0.4, γ=0.2  (per skill specification)
     """
     return round(
-        ALPHA * grounding_ratio
-        + BETA * mean_citation_trust
-        + GAMMA * (1.0 - contradiction_score),
+        ALPHA * grounding_ratio + BETA * mean_citation_trust + GAMMA * (1.0 - contradiction_score),
         4,
     )
 
@@ -526,25 +554,21 @@ class AnswerSafetyGate:
         grounding_ratio = grounded_count / len(claims)
 
         mean_citation_trust = (
-            sum(c.source_authority for c in evidence) / len(evidence)
-            if evidence else 0.0
+            sum(c.source_authority for c in evidence) / len(evidence) if evidence else 0.0
         )
 
         critical_contradictions = [c for c in contradictions if c.severity == "critical"]
         contradiction_score = min(len(critical_contradictions) / max(len(claims), 1), 1.0)
 
-        confidence = _compute_confidence(
-            grounding_ratio, mean_citation_trust, contradiction_score
-        )
+        confidence = _compute_confidence(grounding_ratio, mean_citation_trust, contradiction_score)
 
         # Stage 5 — Gate decision
         ungrounded = [a for a in alignments if not a.is_grounded]
         critical_ungrounded = [a for a in ungrounded if a.claim.is_critical]
 
         qualified_answer: str | None = None
-        critical_ungrounded_or_low_conf = (
-            critical_ungrounded
-            or (critical_contradictions and confidence < self.confidence_threshold)
+        critical_ungrounded_or_low_conf = critical_ungrounded or (
+            critical_contradictions and confidence < self.confidence_threshold
         )
         if critical_ungrounded_or_low_conf:
             decision = GateDecision.abstain

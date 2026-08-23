@@ -1,4 +1,4 @@
-﻿"""POST /ingest route handler."""
+"""POST /ingest route handler."""
 
 from __future__ import annotations
 

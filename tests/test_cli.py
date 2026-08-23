@@ -1,6 +1,7 @@
 """
 Tests for Phase 23 - Command Line Interface (cli.py).
 """
+
 from __future__ import annotations
 
 import json
@@ -37,9 +38,9 @@ class TestCLIQuery:
         assert "Gate Decision: PASS" in captured.out
 
     def test_query_json_format(self, capsys: pytest.CaptureFixture[str]) -> None:
-        ret = main([
-            "--format", "json", "query", "Is Lisinopril safe in pregnancy?", "--risk-tier", "R3"
-        ])
+        ret = main(
+            ["--format", "json", "query", "Is Lisinopril safe in pregnancy?", "--risk-tier", "R3"]
+        )
         assert ret == 0
         captured = capsys.readouterr()
         data = json.loads(captured.out)
@@ -142,13 +143,19 @@ class TestCLIResearchRun:
         self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
     ) -> None:
         out_dir = tmp_path / "live_res"
-        ret = main([
-            "research-run",
-            "--mode", "live",
-            "--dataset", "smoke",
-            "--variants", "A,F",
-            "--output-dir", str(out_dir),
-        ])
+        ret = main(
+            [
+                "research-run",
+                "--mode",
+                "live",
+                "--dataset",
+                "smoke",
+                "--variants",
+                "A,F",
+                "--output-dir",
+                str(out_dir),
+            ]
+        )
         assert ret == 0
         captured = capsys.readouterr()
         assert "Live Research Evaluation" in captured.out
@@ -159,14 +166,21 @@ class TestCLIResearchRun:
         self, tmp_path: Path, capsys: pytest.CaptureFixture[str]
     ) -> None:
         out_dir = tmp_path / "live_json"
-        ret = main([
-            "--format", "json",
-            "research-run",
-            "--mode", "simulation",
-            "--dataset", "smoke",
-            "--variants", "A,B",
-            "--output-dir", str(out_dir),
-        ])
+        ret = main(
+            [
+                "--format",
+                "json",
+                "research-run",
+                "--mode",
+                "simulation",
+                "--dataset",
+                "smoke",
+                "--variants",
+                "A,B",
+                "--output-dir",
+                str(out_dir),
+            ]
+        )
         assert ret == 0
         captured = capsys.readouterr()
         data = json.loads(captured.out)
