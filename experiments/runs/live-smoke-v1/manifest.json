@@ -1,0 +1,14 @@
+{
+  "experiment_id": "live-smoke-smoke",
+  "execution_type": "live",
+  "git_commit": "unresolved_git_commit",
+  "dataset_version": "1.0",
+  "dataset_sha256": "b3d9c7f0b21694348fc8c97a905ed87711d6ec0c5b6da19191d92b46d051d4d8",
+  "corpus_version": "1.0.0",
+  "total_records": 40,
+  "variants": [
+    "A",
+    "B"
+  ],
+  "executed_at": "2026-08-23T12:30:10.339883+00:00"
+}

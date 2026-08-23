@@ -9,6 +9,7 @@ import pytest
 from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit, EvalCase, QueryType
 from adaptive_trust_medical_rag.evaluation.experiment_tracker import AblationVariant
 from adaptive_trust_medical_rag.evaluation.forensic_verifier import ForensicVerifier
+from adaptive_trust_medical_rag.evaluation.live_result_integrity import LiveResultIntegrityAuditor
 from adaptive_trust_medical_rag.evaluation.live_variants import (
     LiveModelAdapter,
     LiveVariantResult,
@@ -223,3 +224,23 @@ class TestRealLiveVariantExecution:
         assert audit_res["verdict"] == "VERIFIED"
         assert audit_res["checks"]["response_hash_format"] == "PASS"
         assert audit_res["checks"]["result_hash_rematch"] == "PASS"
+
+    def test_live_result_integrity_auditor_pass(self) -> None:
+        runner = RealVariantRunner()
+        c = EvalCase(
+            case_id="auditor-test-case",
+            query="What is the mechanism of action of metformin?",
+            split=DatasetSplit.smoke,
+            query_type=QueryType.factual,
+            risk_tier="R1",
+        )
+        res = runner.run_case(c, AblationVariant.F)
+        records = [res.to_dict()]
+
+        auditor = LiveResultIntegrityAuditor()
+        audit_res = auditor.audit_records(records)
+
+        assert audit_res["verdict"] == "PASS"
+        assert audit_res["failure_rate"] == 0.0
+        assert audit_res["checks"]["no_mock_leakage"] == "PASS"
+        assert audit_res["checks"]["cryptographic_hashes"] == "PASS"

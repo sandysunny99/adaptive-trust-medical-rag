@@ -1,0 +1,14 @@
+{
+  "experiment_id": "research-run-simulation-smoke",
+  "execution_type": "simulation",
+  "execution_backend": "mock",
+  "runtime_verified": false,
+  "dataset_version": "1.0",
+  "git_commit": "unresolved_git_commit",
+  "n_cases": 20,
+  "n_variants": 2,
+  "elapsed_seconds": 0.72,
+  "case_results_path": "C:\\Users\\sunny\\AppData\\Local\\Temp\\pytest-of-sunny\\pytest-89\\test_research_run_json_format0\\live_json\\case_results.jsonl",
+  "summary_report_path": "C:\\Users\\sunny\\AppData\\Local\\Temp\\pytest-of-sunny\\pytest-89\\test_research_run_json_format0\\live_json\\research_evaluation_summary.md",
+  "status": "COMPLETED"
+}

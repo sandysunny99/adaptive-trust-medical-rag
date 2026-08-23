@@ -1,0 +1,12 @@
+{
+  "baseline_id": "pre-smoke-baseline-v1",
+  "git_commit": "0839a66",
+  "configuration_hash": "c8e1a00ab6b0",
+  "dataset_version": "v1.0.0",
+  "dataset_sha256": "b3d9c7f0b21694348fc8c97a905ed87711d6ec0c5b6da19191d92b46d051d4d8",
+  "corpus_version": "1.0.0",
+  "corpus_sha256": "a84e62ff1875cd76e01a89b3f07a9761e12739343bc8a78c187f54c126bc400",
+  "canonical_r1_result_hash": "d8e51fcaa1fb9cb402a4dc998d3733c75de11c82537e3cfaf52797af145162d5",
+  "canonical_r1_response_hash": "4e3ed839fd6f0d7ad294760b1e28f3de3223b627ae4ed43a470e0295dc854fd1",
+  "frozen_timestamp": "2026-08-23T17:35:00Z"
+}

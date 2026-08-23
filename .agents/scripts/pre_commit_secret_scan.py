@@ -56,6 +56,7 @@ EXEMPT_PATH_PATTERNS = [
     r"\.env\.template$",
     r"antigravity[/\\]brain[/\\]",  # artifact files / plans
     r"docs[/\\]",  # documentation files
+    r"reports[/\\]",  # audit reports
     r"experiments[/\\]",  # experiment manifests
 ]
 

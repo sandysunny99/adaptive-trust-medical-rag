@@ -1,0 +1,16 @@
+{
+  "manifest_name": "smoke-dataset-v1",
+  "dataset_version": "v1.0.0",
+  "split": "smoke",
+  "total_cases": 20,
+  "dataset_sha256": "b3d9c7f0b21694348fc8c97a905ed87711d6ec0c5b6da19191d92b46d051d4d8",
+  "corpus_version": "1.0.0",
+  "corpus_sha256": "a84e62ff1875cd76e01a89b3f07a9761e12739343bc8a78c187f54c126bc400",
+  "risk_breakdown": {
+    "R0": 2,
+    "R1": 6,
+    "R2": 8,
+    "R3": 4
+  },
+  "frozen_at": "2026-08-23T17:35:00Z"
+}
