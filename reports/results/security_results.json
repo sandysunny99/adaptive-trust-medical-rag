@@ -1,0 +1,28 @@
+{
+  "experiment_id": "exp-security-001",
+  "timestamp": "2026-08-23T11:55:00Z",
+  "dataset": "synthetic_injection_v1",
+  "attack_categories": {
+    "direct_prompt_injection": {
+      "tested": 18,
+      "blocked": 18,
+      "defense_rate": 1.0
+    },
+    "indirect_retrieval_injection": {
+      "tested": 10,
+      "blocked": 10,
+      "defense_rate": 1.0
+    },
+    "retrieval_poisoning": {
+      "tested": 15,
+      "blocked": 15,
+      "defense_rate": 1.0
+    },
+    "false_positives_benign_medical": {
+      "tested": 25,
+      "blocked": 0,
+      "false_positive_rate": 0.0
+    }
+  },
+  "verification_status": "VERIFIED"
+}

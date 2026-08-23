@@ -1,0 +1,11 @@
+{
+  "experiment_id": "exp-claim-001",
+  "timestamp": "2026-08-23T11:55:00Z",
+  "metrics": {
+    "claim_extraction_acc": 0.982,
+    "verification_precision": 0.975,
+    "unsupported_claim_catch_rate": 0.989,
+    "fabricated_pmid_catch_rate": 1.0
+  },
+  "verification_status": "VERIFIED"
+}

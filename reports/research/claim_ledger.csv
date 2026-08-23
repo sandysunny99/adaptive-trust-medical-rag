@@ -1,0 +1,11 @@
+claim_id,claim,source_file,experiment_id,dataset,metric,value,statistical_test,evidence_path,status
+C-01,Total Unit & Integration Tests,README.md,N/A,pytest,test_count,613,N/A,tests/,VERIFIED
+C-02,Ruff Linter Errors,README.md,N/A,src/,lint_errors,0,N/A,pyproject.toml,VERIFIED
+C-03,Gitleaks Security Leaks,README.md,N/A,repo,leaks,0,N/A,.gitleaks.toml,VERIFIED
+C-04,Bandit SAST Findings,README.md,N/A,src/,sast_issues,0,N/A,.bandit,VERIFIED
+C-05,Direct Prompt Injection Defense,reports/security/prompt_injection_audit.md,exp-security-001,synthetic_injection_v1,defense_rate,1.00,N/A,reports/results/security_results.json,VERIFIED
+C-06,Fabricated PMID Catch Rate,reports/evaluation/claim_verification_results.md,exp-claim-001,claim_fixture_v1,pmid_catch_rate,1.00,N/A,reports/results/claim_results.json,VERIFIED
+C-07,Variant F Faithfulness,README.md,exp-hallucination-001,smoke_dataset_v1,faithfulness,0.9117,Bootstrap CI,reports/results/hallucination_results.json,PARTIALLY VERIFIED (MOCK SIMULATION)
+C-08,Variant F Hallucination Rate,README.md,exp-hallucination-001,smoke_dataset_v1,hallucination_rate,0.0883,Bootstrap CI,reports/results/hallucination_results.json,PARTIALLY VERIFIED (MOCK SIMULATION)
+C-09,Cohen's d Effect Size (F vs A),reports/evaluation/statistical_report.md,exp-stat-001,smoke_dataset_v1,cohens_d,1.84,Welch t-test,reports/results/statistical_results.json,VERIFIED
+C-10,P50 Pipeline Latency,reports/evaluation/performance_results.md,exp-latency-001,smoke_dataset_v1,p50_latency_ms,700,N/A,reports/results/latency_results.json,UNVERIFIED FOR PUBLICATION

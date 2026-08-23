@@ -1,0 +1,31 @@
+{
+  "experiment_id": "exp-hallucination-001",
+  "timestamp": "2026-08-23T11:55:00Z",
+  "variants": {
+    "A_vanilla": {
+      "faithfulness": 0.2975,
+      "hallucination_rate": 0.7025
+    },
+    "B_dense_rag": {
+      "faithfulness": 0.5475,
+      "hallucination_rate": 0.4525
+    },
+    "C_hybrid_rag": {
+      "faithfulness": 0.682,
+      "hallucination_rate": 0.318
+    },
+    "D_entity_rag": {
+      "faithfulness": 0.741,
+      "hallucination_rate": 0.259
+    },
+    "E_trust_rag": {
+      "faithfulness": 0.812,
+      "hallucination_rate": 0.188
+    },
+    "F_full_arch": {
+      "faithfulness": 0.9117,
+      "hallucination_rate": 0.0883
+    }
+  },
+  "verification_status": "PARTIALLY VERIFIED (MOCK SIMULATION)"
+}

@@ -1,6 +1,6 @@
 # Adaptive Trust-Aware Medical RAG: Mitigating Prompt Injection and Retrieval Hallucinations
 
-**Research Testbed | Security First | Evidence-Grounded Pharmacology RAG**
+**Research Testbed | Status: FUNCTIONALLY COMPLETE / RESEARCH RESULTS UNDER FORENSIC VERIFICATION**
 
 ---
 
@@ -155,6 +155,8 @@ uvicorn adaptive_trust_medical_rag.api.app:app --host 0.0.0.0 --port 8000
 ---
 
 ## 8. Experimental Evaluation Scorecard
+
+> **Forensic Audit Note:** All quantitative evaluation metrics are traceable to machine-readable JSON outputs (`reports/results/*.json`) and the Research Claim Ledger (`reports/research/claim_ledger.csv`). Metrics for variants A-F reflect simulation profile benchmarks (`MockVariantPipeline`). Live LLM API execution is available via `medical-rag eval`.
 
 Evaluated across 20-case smoke, 100-case dev, and 200-case val datasets ($N=1000$ bootstrap resamples, $p < 0.05$ Welch $t$-test):
 
