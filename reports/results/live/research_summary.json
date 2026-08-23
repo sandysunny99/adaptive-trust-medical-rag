@@ -1,11 +1,11 @@
 {
-  "experiment_id": "research-run-live-smoke",
+  "experiment_id": "research-run-live-dev",
   "execution_type": "live",
   "dataset_version": "1.0",
   "git_commit": "62c3274",
-  "n_cases": 20,
-  "n_variants": 3,
-  "elapsed_seconds": 0.58,
+  "n_cases": 100,
+  "n_variants": 6,
+  "elapsed_seconds": 4.14,
   "case_results_path": "reports\\results\\live\\case_results.jsonl",
   "summary_report_path": "reports\\results\\live\\research_evaluation_summary.md",
   "status": "COMPLETED"
