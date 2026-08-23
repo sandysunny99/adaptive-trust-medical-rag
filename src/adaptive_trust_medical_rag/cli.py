@@ -1,3 +1,4 @@
+
 """cli.py - Phase 23
 Command Line Interface (CLI) and Operational Tooling for Adaptive Trust Medical RAG.
 
@@ -16,9 +17,26 @@ import argparse
 import json
 import sys
 from pathlib import Path
-from typing import Sequence
+from typing import Any, Sequence
 
 REPORT_VERSION = "1.0"
+
+
+
+def _get_dataset_for_split(split_val: Any) -> Any:
+    from adaptive_trust_medical_rag.evaluation.dataset_generator import generate_dataset
+    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit, make_smoke_dataset
+
+    if hasattr(split_val, "value"):
+        val_str = split_val.value
+    else:
+        val_str = str(split_val).lower()
+
+    if val_str == "smoke":
+        return make_smoke_dataset()
+
+    enum_split = DatasetSplit(val_str)
+    return generate_dataset(enum_split)
 
 
 def handle_query(args: argparse.Namespace) -> int:
@@ -154,7 +172,7 @@ def handle_report(args: argparse.Namespace) -> int:
         AblationRunner,
         make_mock_run_configs,
     )
-    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit, make_smoke_dataset
+    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit
     from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
         AblationVariant,
         ExperimentTracker,
@@ -163,7 +181,7 @@ def handle_report(args: argparse.Namespace) -> int:
 
     out_path = Path(args.output or "reports/statistical_report.md")
 
-    ds = make_smoke_dataset()
+    ds = _get_dataset_for_split(DatasetSplit.smoke)
     vars_list = [AblationVariant.A, AblationVariant.B, AblationVariant.F]
     configs = make_mock_run_configs(vars_list, seed=42)
     tracker = ExperimentTracker(log_dir=Path("experiments/logs"))
@@ -262,7 +280,7 @@ def handle_research_run(args: argparse.Namespace) -> int:
         AblationRunner,
         make_mock_run_configs,
     )
-    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit, make_smoke_dataset
+    from adaptive_trust_medical_rag.evaluation.evaluator import DatasetSplit
     from adaptive_trust_medical_rag.evaluation.experiment_tracker import (
         AblationVariant,
         ExperimentTracker,
@@ -298,7 +316,7 @@ def handle_research_run(args: argparse.Namespace) -> int:
         print(f"Output Dir:    {out_dir}")
 
     # Load dataset
-    ds = make_smoke_dataset()
+    ds = _get_dataset_for_split(DatasetSplit.smoke)
     configs = make_mock_run_configs(variants, seed=args.seed or 42)
     tracker = ExperimentTracker(log_dir=Path("experiments/logs"))
     runner = AblationRunner(tracker)
