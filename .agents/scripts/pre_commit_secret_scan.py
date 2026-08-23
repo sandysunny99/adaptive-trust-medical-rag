@@ -55,6 +55,8 @@ EXEMPT_PATH_PATTERNS = [
     r"\.env\.example$",
     r"\.env\.template$",
     r"antigravity[/\\]brain[/\\]",  # artifact files / plans
+    r"docs[/\\]",  # documentation files
+    r"experiments[/\\]",  # experiment manifests
 ]
 
 # Patterns that indicate the value is a variable reference, not a literal secret

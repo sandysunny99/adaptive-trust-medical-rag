@@ -818,6 +818,10 @@ class RealVariantRunner:
             )
             contradicted_cnt = len(getattr(v_rep, "contradictions", []))
 
+        ans = orch_resp.answer or "ABSTAIN: Safety gate trigger."
+        ans_hash = hashlib.sha256(ans.encode("utf-8")).hexdigest()
+        last_res = getattr(self.model_adapter, "last_result", None)
+
         return LiveVariantResult(
             experiment_id=experiment_id,
             case_id=case.case_id,
@@ -832,16 +836,25 @@ class RealVariantRunner:
             claim_verification=claim_verification,
             citations=citations,
             abstained=abstained,
-            generated_answer=orch_resp.answer or "ABSTAIN: Safety gate trigger.",
+            generated_answer=ans,
+            generated_answer_hash=ans_hash,
             stage_timings={"orchestrator_ms": orch_ms, "total_ms": total_ms},
             total_latency_ms=total_ms,
             llm_execution={
                 "called": not abstained,
                 "provider": self.model_adapter.provider,
                 "model": self.model_adapter.model_name,
-                "latency_ms": orch_ms,
+                "request_id": getattr(last_res, "request_id", None),
+                "response_id": getattr(last_res, "response_id", None),
+                "request_started_at": getattr(last_res, "request_started_at", None),
+                "response_received_at": getattr(last_res, "response_received_at", None),
+                "finish_reason": getattr(last_res, "finish_reason", "stop"),
+                "response_hash": ans_hash,
+                "response_length": len(ans),
+                "response_preview": ans[:200],
                 "tokens_in": None,
                 "tokens_out": None,
+                "latency_ms": orch_ms,
             },
             retrieval_execution={
                 "dense_called": True,

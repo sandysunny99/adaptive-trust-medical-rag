@@ -75,6 +75,7 @@ ignore = ["S101", "S603", "S607"]  # S101: assert; S603/S607: controlled subproc
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+markers = ["live: marks tests requiring live LLM provider network connection"]
 testpaths = ["tests"]
 pythonpath = ["src"]
 log_cli = true
