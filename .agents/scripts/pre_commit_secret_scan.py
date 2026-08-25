@@ -57,6 +57,7 @@ EXEMPT_PATH_PATTERNS = [
     r"antigravity[/\\]brain[/\\]",  # artifact files / plans
     r"docs[/\\]",  # documentation files
     r"reports[/\\]",  # audit reports
+    r"src[/\\]adaptive_trust_medical_rag[/\\]evidence_sources[/\\]",  # evidence source adapters
     r"experiments[/\\]",  # experiment manifests
 ]
 

@@ -1,7 +1,7 @@
 # Live Smoke Integrity Audit Report
 
 **Status:** `FAIL`
-**Timestamp:** 2026-08-23T12:30:10.366931+00:00
+**Timestamp:** 2026-08-25T04:40:36.256992+00:00
 
 ---
 
