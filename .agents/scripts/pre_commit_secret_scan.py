@@ -59,6 +59,7 @@ EXEMPT_PATH_PATTERNS = [
     r"reports[/\\]",  # audit reports
     r"src[/\\]adaptive_trust_medical_rag[/\\]evidence_sources[/\\]",  # evidence source adapters
     r"experiments[/\\]",  # experiment manifests
+    r"scripts[/\\]",  # project scripts - may contain injection test payloads (synthetic, not real secrets)
 ]
 
 # Patterns that indicate the value is a variable reference, not a literal secret

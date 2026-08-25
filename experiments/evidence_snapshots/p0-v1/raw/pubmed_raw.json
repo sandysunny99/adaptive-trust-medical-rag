@@ -1,0 +1,420 @@
+[
+  {
+    "uid": "42636218",
+    "pubdate": "2026",
+    "epubdate": "2026 Aug 24",
+    "source": "PLoS One",
+    "authors": [
+      {
+        "name": "Nasir AB",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Kilani Y",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Aldiabat M",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Abdelghany O",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Hafez Y",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Desai N",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Madi MY",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Wade FG",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Qureshi K",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Frey LJ",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Farmer AD",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Syn WK",
+        "authtype": "Author",
+        "clusterid": ""
+      }
+    ],
+    "lastauthor": "Syn WK",
+    "title": "Antidiabetic medications and risk of cognitive disorders in type 2 diabetes: A retrospective cohort study.",
+    "sorttitle": "antidiabetic medications and risk of cognitive disorders in type 2 diabetes a retrospective cohort study",
+    "volume": "21",
+    "issue": "8",
+    "pages": "e0356138",
+    "lang": [
+      "eng"
+    ],
+    "nlmuniqueid": "101285081",
+    "issn": "",
+    "essn": "1932-6203",
+    "pubtype": [
+      "Journal Article"
+    ],
+    "recordstatus": "PubMed - indexed for MEDLINE",
+    "pubstatus": "258",
+    "articleids": [
+      {
+        "idtype": "pubmed",
+        "idtypen": 1,
+        "value": "42636218"
+      },
+      {
+        "idtype": "doi",
+        "idtypen": 3,
+        "value": "10.1371/journal.pone.0356138"
+      },
+      {
+        "idtype": "pii",
+        "idtypen": 4,
+        "value": "PONE-D-25-60647"
+      }
+    ],
+    "history": [
+      {
+        "pubstatus": "received",
+        "date": "2025/11/10 00:00"
+      },
+      {
+        "pubstatus": "accepted",
+        "date": "2026/07/30 00:00"
+      },
+      {
+        "pubstatus": "medline",
+        "date": "2026/08/24 18:43"
+      },
+      {
+        "pubstatus": "pubmed",
+        "date": "2026/08/24 18:42"
+      },
+      {
+        "pubstatus": "entrez",
+        "date": "2026/08/24 13:34"
+      }
+    ],
+    "references": [],
+    "attributes": [
+      "Has Abstract"
+    ],
+    "pmcrefcount": "",
+    "fulljournalname": "PloS one",
+    "elocationid": "doi: 10.1371/journal.pone.0356138",
+    "doctype": "citation",
+    "srccontriblist": [],
+    "booktitle": "",
+    "medium": "",
+    "edition": "",
+    "publisherlocation": "",
+    "publishername": "",
+    "srcdate": "",
+    "reportnumber": "",
+    "availablefromurl": "",
+    "locationlabel": "",
+    "doccontriblist": [],
+    "docdate": "",
+    "bookname": "",
+    "chapter": "",
+    "sortpubdate": "2026/08/24 00:00",
+    "sortfirstauthor": "Nasir AB",
+    "vernaculartitle": "",
+    "_meta": {
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "request_started_at": "2026-08-25T05:27:54.532793+00:00",
+      "response_received_at": "2026-08-25T05:27:55.456855+00:00",
+      "latency_ms": 923.94,
+      "status_code": 200
+    }
+  },
+  {
+    "uid": "42634086",
+    "pubdate": "2026 Aug 24",
+    "epubdate": "2026 Aug 24",
+    "source": "Sci Rep",
+    "authors": [
+      {
+        "name": "Wang X",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Zhang N",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Wang M",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Liu J",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Tong L",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Liang X",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Li A",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Gu Y",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Song B",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Xie X",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Chen J",
+        "authtype": "Author",
+        "clusterid": ""
+      }
+    ],
+    "lastauthor": "Chen J",
+    "title": "Evodiamine may inhibit insulin resistance in type 2 diabetes through IRS-1/PI3K/AKT/GLUT4 pathway.",
+    "sorttitle": "evodiamine may inhibit insulin resistance in type 2 diabetes through irs 1 pi3k akt glut4 pathway",
+    "volume": "16",
+    "issue": "1",
+    "pages": "",
+    "lang": [
+      "eng"
+    ],
+    "nlmuniqueid": "101563288",
+    "issn": "",
+    "essn": "2045-2322",
+    "pubtype": [
+      "Journal Article"
+    ],
+    "recordstatus": "PubMed - indexed for MEDLINE",
+    "pubstatus": "3",
+    "articleids": [
+      {
+        "idtype": "pubmed",
+        "idtypen": 1,
+        "value": "42634086"
+      },
+      {
+        "idtype": "doi",
+        "idtypen": 3,
+        "value": "10.1038/s41598-026-47326-8"
+      },
+      {
+        "idtype": "pii",
+        "idtypen": 4,
+        "value": "10.1038/s41598-026-47326-8"
+      }
+    ],
+    "history": [
+      {
+        "pubstatus": "received",
+        "date": "2025/09/22 00:00"
+      },
+      {
+        "pubstatus": "accepted",
+        "date": "2026/03/31 00:00"
+      },
+      {
+        "pubstatus": "pubmed",
+        "date": "2026/08/24 06:59"
+      },
+      {
+        "pubstatus": "medline",
+        "date": "2026/08/24 05:35"
+      },
+      {
+        "pubstatus": "entrez",
+        "date": "2026/08/23 23:36"
+      }
+    ],
+    "references": [],
+    "attributes": [
+      "Has Abstract"
+    ],
+    "pmcrefcount": "",
+    "fulljournalname": "Scientific reports",
+    "elocationid": "pii: 26376. doi: 10.1038/s41598-026-47326-8",
+    "doctype": "citation",
+    "srccontriblist": [],
+    "booktitle": "",
+    "medium": "",
+    "edition": "",
+    "publisherlocation": "",
+    "publishername": "",
+    "srcdate": "",
+    "reportnumber": "",
+    "availablefromurl": "",
+    "locationlabel": "",
+    "doccontriblist": [],
+    "docdate": "",
+    "bookname": "",
+    "chapter": "",
+    "sortpubdate": "2026/08/24 00:00",
+    "sortfirstauthor": "Wang X",
+    "vernaculartitle": "",
+    "_meta": {
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "request_started_at": "2026-08-25T05:27:55.807963+00:00",
+      "response_received_at": "2026-08-25T05:27:56.714155+00:00",
+      "latency_ms": 906.47,
+      "status_code": 200
+    }
+  },
+  {
+    "uid": "42632547",
+    "pubdate": "2026 Aug 22",
+    "epubdate": "2026 Aug 22",
+    "source": "Biochem Pharmacol",
+    "authors": [
+      {
+        "name": "Abdelaziz AM",
+        "authtype": "Author",
+        "clusterid": ""
+      },
+      {
+        "name": "Eladawy RM",
+        "authtype": "Author",
+        "clusterid": ""
+      }
+    ],
+    "lastauthor": "Eladawy RM",
+    "title": "Immunopharmacological reprogramming of innate immune memory in Alzheimer's disease: From microglial priming to therapeutic resilience.",
+    "sorttitle": "immunopharmacological reprogramming of innate immune memory in alzheimer s disease from microglial priming to therapeutic resilience",
+    "volume": "",
+    "issue": "",
+    "pages": "118381",
+    "lang": [
+      "eng"
+    ],
+    "nlmuniqueid": "0101032",
+    "issn": "0006-2952",
+    "essn": "1873-2968",
+    "pubtype": [
+      "Journal Article",
+      "Review"
+    ],
+    "recordstatus": "PubMed - as supplied by publisher",
+    "pubstatus": "10",
+    "articleids": [
+      {
+        "idtype": "pubmed",
+        "idtypen": 1,
+        "value": "42632547"
+      },
+      {
+        "idtype": "doi",
+        "idtypen": 3,
+        "value": "10.1016/j.bcp.2026.118381"
+      },
+      {
+        "idtype": "pii",
+        "idtypen": 4,
+        "value": "S0006-2952(26)00720-3"
+      }
+    ],
+    "history": [
+      {
+        "pubstatus": "received",
+        "date": "2026/05/20 00:00"
+      },
+      {
+        "pubstatus": "revised",
+        "date": "2026/07/23 00:00"
+      },
+      {
+        "pubstatus": "accepted",
+        "date": "2026/08/18 00:00"
+      },
+      {
+        "pubstatus": "medline",
+        "date": "2026/08/22 23:43"
+      },
+      {
+        "pubstatus": "pubmed",
+        "date": "2026/08/22 23:43"
+      },
+      {
+        "pubstatus": "entrez",
+        "date": "2026/08/22 19:12"
+      }
+    ],
+    "references": [],
+    "attributes": [
+      "Has Abstract"
+    ],
+    "pmcrefcount": "",
+    "fulljournalname": "Biochemical pharmacology",
+    "elocationid": "doi: 10.1016/j.bcp.2026.118381",
+    "doctype": "citation",
+    "srccontriblist": [],
+    "booktitle": "",
+    "medium": "",
+    "edition": "",
+    "publisherlocation": "",
+    "publishername": "",
+    "srcdate": "",
+    "reportnumber": "",
+    "availablefromurl": "",
+    "locationlabel": "",
+    "doccontriblist": [],
+    "docdate": "",
+    "bookname": "",
+    "chapter": "",
+    "sortpubdate": "2026/08/22 00:00",
+    "sortfirstauthor": "Abdelaziz AM",
+    "vernaculartitle": "",
+    "_meta": {
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "request_started_at": "2026-08-25T05:27:57.065207+00:00",
+      "response_received_at": "2026-08-25T05:27:58.016913+00:00",
+      "latency_ms": 952.24,
+      "status_code": 200
+    }
+  }
+]

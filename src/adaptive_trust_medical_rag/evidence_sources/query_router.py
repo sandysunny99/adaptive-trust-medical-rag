@@ -32,14 +32,65 @@ class EvidenceQueryRouter:
         selected_sources = ["pubmed", "europepmc"]
         preferred_fit = "research_evidence"
 
-        if "adverse" in q_lower or "warning" in q_lower or "label" in q_lower or risk_tier == "R3":
+        # ── FDA / Regulatory label queries ────────────────────────────────────
+        if (
+            "adverse" in q_lower
+            or "warning" in q_lower
+            or "label" in q_lower
+            or "labeling" in q_lower
+            or "fda" in q_lower
+            or "boxed warning" in q_lower
+            or "contraindication" in q_lower
+            or risk_tier == "R3"
+        ):
             selected_sources = ["openfda", "pubmed", "europepmc"]
             preferred_fit = "fda_labeling"
-        elif "trial" in q_lower or "study design" in q_lower or "recruitment" in q_lower:
+
+        # ── Drug normalization / identifier queries ────────────────────────────
+        elif (
+            "identifier" in q_lower
+            or "rxcui" in q_lower
+            or "standardized" in q_lower
+            or "rxnorm" in q_lower
+            or "nomenclature" in q_lower
+            or "generic name" in q_lower
+            or "drug name" in q_lower
+            or "coding" in q_lower
+        ):
+            selected_sources = ["rxnorm", "pubmed"]
+            preferred_fit = "drug_normalization"
+
+        # ── Clinical trial queries ─────────────────────────────────────────────
+        elif (
+            "trial" in q_lower
+            or "study design" in q_lower
+            or "recruitment" in q_lower
+            or "clinical study" in q_lower
+        ):
             selected_sources = ["pubmed", "europepmc"]
             preferred_fit = "trial_status"
-        elif "mechanism" in q_lower or "dose" in q_lower or "indication" in q_lower:
+
+        # ── Mechanism / pharmacology queries (mixed literature) ───────────────
+        elif (
+            "mechanism" in q_lower
+            or "dose" in q_lower
+            or "indication" in q_lower
+            or "pharmacokinetics" in q_lower
+            or "pharmacodynamics" in q_lower
+        ):
             selected_sources = ["rxnorm", "pubmed", "europepmc"]
+            preferred_fit = "research_evidence"
+
+        # ── Recent research / literature queries ──────────────────────────────
+        elif (
+            "research" in q_lower
+            or "study" in q_lower
+            or "cancer" in q_lower
+            or "evidence" in q_lower
+            or "literature" in q_lower
+            or "clinical" in q_lower
+        ):
+            selected_sources = ["pubmed", "europepmc"]
             preferred_fit = "research_evidence"
 
         if claim_type and claim_type in self.CLAIM_SOURCE_FIT_MATRIX:

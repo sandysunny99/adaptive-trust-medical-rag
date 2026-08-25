@@ -1,4 +1,4 @@
-[project]
+﻿[project]
 name = "adaptive-trust-medical-rag"
 version = "0.1.0"
 description = "Adaptive Trust-Aware Medical RAG: Mitigating Prompt Injection and Retrieval Hallucinations"
@@ -72,6 +72,8 @@ ignore = ["S101", "S603", "S607"]  # S101: assert; S603/S607: controlled subproc
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["S", "N"]
+"scripts/**" = ["E501", "S110"]
+".agents/scripts/**" = ["E501", "S110"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

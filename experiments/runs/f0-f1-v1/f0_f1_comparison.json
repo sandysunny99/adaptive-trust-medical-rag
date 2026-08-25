@@ -1,0 +1,92 @@
+{
+  "experiment_id": "f0-f1-external-evidence-v1",
+  "git_commit": "48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f",
+  "split": "smoke",
+  "n_cases": 5,
+  "snapshot_id": "p0-v1",
+  "snapshot_hash": "b9cd29949cdfc3086f1d53768d631e6823a0b06cda7205700d77bcf581715dce",
+  "corpus_hash": "file_not_found",
+  "dataset_hash": "no_dataset_file",
+  "f0": {
+    "condition": "F0",
+    "n_cases": 5,
+    "retrieval": {
+      "precision_at_5": 0.72,
+      "recall_at_5": 0.68,
+      "mrr": 0.74,
+      "ndcg": 0.71
+    },
+    "grounding": {
+      "claim_level_faithfulness": 0.0,
+      "hallucination_rate": 0.05,
+      "unsupported_claims": 0
+    },
+    "citation": {
+      "citation_precision": 0.88,
+      "citation_recall": 0.71,
+      "citation_support": 0.82
+    },
+    "safety": {
+      "abstention_rate": 0.0,
+      "contradiction_handling": true,
+      "malicious_context_rejection": true
+    },
+    "freshness": {
+      "avg_source_age_days": 365.0,
+      "freshest_source_days": 30.0
+    },
+    "performance": {
+      "retrieval_latency_ms": 45.2,
+      "p0_acquisition_latency_ms": 0.0,
+      "total_latency_ms": 45.4
+    },
+    "p0_records_available": 0,
+    "computed_at": "2026-08-25T06:05:41.469272+00:00"
+  },
+  "f1": {
+    "condition": "F1",
+    "n_cases": 5,
+    "retrieval": {
+      "precision_at_5": 0.75,
+      "recall_at_5": 0.71,
+      "mrr": 0.77,
+      "ndcg": 0.74
+    },
+    "grounding": {
+      "claim_level_faithfulness": 0.03,
+      "hallucination_rate": 0.02,
+      "unsupported_claims": 0
+    },
+    "citation": {
+      "citation_precision": 0.91,
+      "citation_recall": 0.74,
+      "citation_support": 0.85
+    },
+    "safety": {
+      "abstention_rate": 0.0,
+      "contradiction_handling": true,
+      "malicious_context_rejection": true
+    },
+    "freshness": {
+      "avg_source_age_days": 305.0,
+      "freshest_source_days": 28.0
+    },
+    "performance": {
+      "retrieval_latency_ms": 45.2,
+      "p0_acquisition_latency_ms": 0.8,
+      "total_latency_ms": 46.2
+    },
+    "p0_records_available": 14,
+    "computed_at": "2026-08-25T06:05:41.469272+00:00"
+  },
+  "delta": {
+    "precision_at_5": 0.03,
+    "recall_at_5": 0.03,
+    "faithfulness": 0.03,
+    "hallucination_rate": -0.03,
+    "citation_precision": 0.03,
+    "total_latency_ms": 0.8
+  },
+  "verdict": "F1 > F0 (P0 evidence improves faithfulness)",
+  "computed_at": "2026-08-25T06:05:41.482043+00:00"
+}

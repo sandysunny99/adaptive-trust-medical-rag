@@ -1,0 +1,42 @@
+[
+  {
+    "input_term": "Metformin",
+    "rxcui": "6809",
+    "normalized_name": "metformin",
+    "source_type": "ENTITY_TERMINOLOGY",
+    "response_hash": "72d919687e19053b418fe20a9f6f6851d88ac118a9e4bd843f1cc8174ebba8d9",
+    "hash_format_valid": true,
+    "rxnorm_version": "RxNorm_2026_01",
+    "query_timestamp": "2026-08-25T05:28:08.202630+00:00"
+  },
+  {
+    "input_term": "Warfarin",
+    "rxcui": "11289",
+    "normalized_name": "warfarin",
+    "source_type": "ENTITY_TERMINOLOGY",
+    "response_hash": "7b72768f0b55cdf56f15861910725164de329549a3a292a17987fdb8435ecf9c",
+    "hash_format_valid": true,
+    "rxnorm_version": "RxNorm_2026_01",
+    "query_timestamp": "2026-08-25T05:28:14.278118+00:00"
+  },
+  {
+    "input_term": "Aspirin",
+    "rxcui": "1191",
+    "normalized_name": "aspirin",
+    "source_type": "ENTITY_TERMINOLOGY",
+    "response_hash": "9aa9916ad24c4f53b64a4d8e2d2df9d7fadb416642dd3655ff83ceb98cd823ff",
+    "hash_format_valid": true,
+    "rxnorm_version": "RxNorm_2026_01",
+    "query_timestamp": "2026-08-25T05:28:17.345953+00:00"
+  },
+  {
+    "input_term": "Spironolactone",
+    "rxcui": "9997",
+    "normalized_name": "spironolactone",
+    "source_type": "ENTITY_TERMINOLOGY",
+    "response_hash": "bde82325dab637595f83f0654cb19fc1c1d6b213ac2101bcbbe0e1c519fbb146",
+    "hash_format_valid": true,
+    "rxnorm_version": "RxNorm_2026_01",
+    "query_timestamp": "2026-08-25T05:28:20.470504+00:00"
+  }
+]

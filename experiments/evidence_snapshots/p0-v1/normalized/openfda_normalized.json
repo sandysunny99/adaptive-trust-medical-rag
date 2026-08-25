@@ -1,0 +1,46 @@
+[
+  {
+    "drug_query": "metformin",
+    "source_id": "19e4bfb8-2ed1-4a6b-adf5-853ad2953362",
+    "title": "FDA Label: Metformin Hydrochloride",
+    "source_type": "PRIMARY_REGULATORY",
+    "rxcui": "861007",
+    "response_hash": "83f0b9022db0f1430cda8d2194c33a3b59fdec0c45c5eea0ce25149d3ed9e693",
+    "hash_format_valid": true,
+    "abstract_excerpt": "INDICATIONS: 1 INDICATIONS & USAGE Metformin hydrochloride tablets are indicated as an adjunct to diet and exercise to improve glycemic control in adults and pediatric patients 10 years of age and old",
+    "query_timestamp": "2026-08-25T05:28:23.910610+00:00"
+  },
+  {
+    "drug_query": "warfarin",
+    "source_id": "b8c33971-54b3-4971-bf7f-1bec66999a29",
+    "title": "FDA Label: Warfarin Sodium",
+    "source_type": "PRIMARY_REGULATORY",
+    "rxcui": "855288",
+    "response_hash": "50bc37ff0dfebcbd1d8446a5869315fcc777aedf0d7bcd352e2d3cc4cd6935dd",
+    "hash_format_valid": true,
+    "abstract_excerpt": "INDICATIONS: 1 INDICATIONS AND USAGE Warfarin sodium tablets are indicated for: Prophylaxis and treatment of venous thrombosis and its extension, pulmonary embolism (PE). Prophylaxis and treatment of ",
+    "query_timestamp": "2026-08-25T05:28:26.009731+00:00"
+  },
+  {
+    "drug_query": "spironolactone",
+    "source_id": "76b5d6ad-0b7b-4781-b990-5ba036cf5a67",
+    "title": "FDA Label: Spironolactone",
+    "source_type": "PRIMARY_REGULATORY",
+    "rxcui": "198222",
+    "response_hash": "f49dc7a9e30ae9afa4d093fdc16968e15c64ee22e7c6e536173ceddcf6b35cfe",
+    "hash_format_valid": true,
+    "abstract_excerpt": "INDICATIONS: 1 INDICATIONS AND USAGE Spironolactone is an aldosterone antagonist indicated for: The treatment of NYHA Class III-IV heart failure and reduced ejection fraction to increase survival, man",
+    "query_timestamp": "2026-08-25T05:28:27.998818+00:00"
+  },
+  {
+    "drug_query": "aspirin",
+    "source_id": "008ee85b-5cac-45a6-a857-a828f8125175",
+    "title": "FDA Label: Low Dose Aspirin",
+    "source_type": "PRIMARY_REGULATORY",
+    "rxcui": "308416",
+    "response_hash": "df96b2bc2e6c6c74fb06c4d8fe72b296f098d9f83a68bdfd30e4730a22cb037a",
+    "hash_format_valid": true,
+    "abstract_excerpt": "INDICATIONS: Uses for the temporary relief of minor aches and pains or as recommended by your doctor. Because of its delayed action, this product will not provide fast relief of headaches or other sym",
+    "query_timestamp": "2026-08-25T05:28:29.813518+00:00"
+  }
+]

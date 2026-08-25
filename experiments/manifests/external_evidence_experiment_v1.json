@@ -1,0 +1,48 @@
+{
+  "experiment_id": "f0-f1-external-evidence-v1",
+  "description": "F0 vs F1 controlled experiment: baseline frozen corpus vs P0-augmented snapshot",
+  "research_question": "Does adding trusted biomedical external evidence (P0 snapshot) improve medical RAG performance and safety while maintaining reproducibility and acceptable latency?",
+  "git_commit": "48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f",
+  "created_at": "2026-08-25T05:30:00Z",
+  "dataset": {
+    "version": "v1.0.0",
+    "smoke_cases": 20,
+    "dev_cases": 100,
+    "val_cases": 200,
+    "test_cases_frozen": 500
+  },
+  "conditions": {
+    "F0": {
+      "label": "F0 — Baseline (frozen corpus only)",
+      "description": "Existing full architecture using current frozen evidence corpus. No external P0 evidence.",
+      "corpus": "data/evidence_corpus.json",
+      "p0_snapshot": null,
+      "ablation_variant": "F",
+      "configuration_hash": "c8e1a00ab6b0"
+    },
+    "F1": {
+      "label": "F1 — P0 Augmented (frozen corpus + P0 snapshot)",
+      "description": "Existing full architecture plus P0 biomedical evidence snapshot. Uses FROZEN_SNAPSHOT_MODE, no live API calls.",
+      "corpus": "data/evidence_corpus.json",
+      "p0_snapshot": "experiments/evidence_snapshots/p0-v1/",
+      "p0_snapshot_manifest": "experiments/manifests/p0_snapshot_v1.json",
+      "ablation_variant": "F1",
+      "configuration_hash": "f1_p0_augmented"
+    }
+  },
+  "metrics": {
+    "retrieval": ["precision_at_5", "recall_at_5", "mrr", "ndcg"],
+    "grounding": ["claim_level_faithfulness", "hallucination_rate", "unsupported_claims"],
+    "citation": ["citation_precision", "citation_recall", "citation_support"],
+    "safety": ["contradiction_handling", "abstention_rate", "malicious_context_rejection"],
+    "freshness": ["source_publication_date", "source_update_date"],
+    "performance": ["retrieval_latency_ms", "total_latency_ms", "p0_acquisition_latency_ms"]
+  },
+  "reproducibility": {
+    "snapshot_id": "p0-v1",
+    "dataset_hash": null,
+    "corpus_hash": null,
+    "configuration_hash": null,
+    "note": "All fields populated at experiment runtime"
+  }
+}

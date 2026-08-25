@@ -1,0 +1,40 @@
+{
+  "snapshot_id": "p0-v1",
+  "created_at": "2026-08-25T05:28:31.955829+00:00",
+  "git_commit": "48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f",
+  "providers": {
+    "pubmed": {
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils",
+      "retrieved_at": "2026-08-25T05:27:58.369443+00:00",
+      "records_count": 3,
+      "response_hashes": [
+        "4ef66a13dd807defa3ad896f54ccf397c6aceb2caafcebb8c7ae3d7e9ce51385",
+        "e714f98f2c8bd0ebc4989b5b3964dcddcc0d6c8d1dcda69cb62f5aa32930d46e",
+        "23c52c7198c674d62726cb08aa7faf47bc25d09879b6a4cac35c3f2ea24a669b"
+      ]
+    },
+    "europe_pmc": {
+      "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest",
+      "retrieved_at": "2026-08-25T05:28:02.107287+00:00",
+      "records_count": 3,
+      "response_hashes": [
+        "76f8a989fe25572c89edf81b428bf4f46ff46ffbff70a6906d44e9e6759ffc7a",
+        "a2a155a87b507cd1008d601f2602afaf8c45d1a80bb7685cd63dfd15b7cc30c1",
+        "adeccccc2d342a7590067a87b9909c43e6176995ef129977df9887108bdb4915"
+      ]
+    },
+    "rxnorm": {
+      "endpoint": "https://rxnav.nlm.nih.gov/REST",
+      "retrieved_at": "2026-08-25T05:28:20.531437+00:00",
+      "records_count": 4,
+      "rxnorm_version": "unknown"
+    },
+    "openfda": {
+      "endpoint": "https://api.fda.gov/drug/label.json",
+      "retrieved_at": "2026-08-25T05:28:30.114256+00:00",
+      "records_count": 4
+    }
+  },
+  "total_records": 14,
+  "snapshot_hash": "b9cd29949cdfc3086f1d53768d631e6823a0b06cda7205700d77bcf581715dce"
+}

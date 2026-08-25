@@ -1,0 +1,45 @@
+{
+  "experiment_id": "p0-provider-validation-v1",
+  "git_commit": "48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f",
+  "adapter_version": "1.0.0",
+  "timestamp": "2026-08-25T04:54:00Z",
+  "providers": [
+    "pubmed",
+    "europe_pmc",
+    "rxnorm",
+    "openfda"
+  ],
+  "validation_queries": {
+    "pubmed": "metformin mechanism of action",
+    "europe_pmc": "metformin mechanism",
+    "rxnorm": [
+      "Metformin",
+      "Warfarin",
+      "Aspirin",
+      "Spironolactone"
+    ],
+    "openfda": [
+      "metformin",
+      "warfarin",
+      "spironolactone",
+      "aspirin"
+    ]
+  },
+  "acceptance_criteria": {
+    "pubmed_live_retrieval": true,
+    "europepmc_live_retrieval": true,
+    "rxnorm_live_retrieval": true,
+    "openfda_live_retrieval": true,
+    "provenance_captured": true,
+    "response_hashes_verified": true,
+    "source_type_correct": true,
+    "deduplication_works": true,
+    "router_works": true,
+    "injection_sanitization_works": true,
+    "failures_handled_safely": true,
+    "p0_snapshot_created": true,
+    "snapshot_replay_works_offline": true,
+    "live_frozen_comparison_passes": true
+  },
+  "validation_completed_at": "2026-08-25T05:28:32.069688+00:00"
+}

@@ -1,0 +1,50 @@
+{
+  "config_version": "1.0.0",
+  "description": "P0 Live API configuration for evidence source layer validation",
+  "note": "API credentials are NEVER stored here. Load via environment variables.",
+  "providers": {
+    "ncbi_pubmed": {
+      "tool_name": "adaptive-trust-medical-rag",
+      "email": "research@medical-rag.org",
+      "api_key_configured": false,
+      "api_key_env_var": "NCBI_API_KEY",
+      "base_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils",
+      "timeout_seconds": 5.0,
+      "max_retries": 3,
+      "retry_backoff_seconds": [0.5, 1.0, 2.0],
+      "rate_limit_rps_no_key": 3,
+      "rate_limit_rps_with_key": 10,
+      "batch_size": 20,
+      "default_db": "pubmed",
+      "snapshot_mode": false
+    },
+    "europe_pmc": {
+      "base_url": "https://www.ebi.ac.uk/europepmc/webservices/rest",
+      "timeout_seconds": 5.0,
+      "max_retries": 3,
+      "retry_backoff_seconds": [0.5, 1.0, 2.0],
+      "rate_limit_rps": 10,
+      "default_result_type": "core",
+      "snapshot_mode": false
+    },
+    "rxnorm": {
+      "base_url": "https://rxnav.nlm.nih.gov/REST",
+      "timeout_seconds": 4.0,
+      "max_retries": 2,
+      "retry_backoff_seconds": [0.3, 0.6],
+      "rate_limit_rps": 20,
+      "snapshot_mode": false
+    },
+    "openfda": {
+      "base_url": "https://api.fda.gov/drug",
+      "api_key_configured": false,
+      "api_key_env_var": "OPENFDA_API_KEY",
+      "timeout_seconds": 5.0,
+      "max_retries": 3,
+      "retry_backoff_seconds": [0.5, 1.0, 2.0],
+      "rate_limit_rps_no_key": 4,
+      "rate_limit_rps_with_key": 240,
+      "snapshot_mode": false
+    }
+  }
+}

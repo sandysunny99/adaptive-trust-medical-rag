@@ -1,0 +1,120 @@
+[
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42636218",
+    "title": "Antidiabetic medications and risk of cognitive disorders in type 2 diabetes: A retrospective cohort study.",
+    "authors": [
+      "Nasir AB",
+      "Kilani Y",
+      "Aldiabat M",
+      "Abdelghany O",
+      "Hafez Y",
+      "Desai N",
+      "Madi MY",
+      "Wade FG",
+      "Qureshi K",
+      "Frey LJ",
+      "Farmer AD",
+      "Syn WK"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42636218/",
+    "abstract": "Antidiabetic medications and risk of cognitive disorders in type 2 diabetes: A retrospective cohort study.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42636218",
+      "pmcid": null,
+      "doi": "10.1371/journal.pone.0356138",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-08-25T05:27:54.532793+00:00",
+      "response_received_at": "2026-08-25T05:27:55.456855+00:00",
+      "latency_ms": 923.94,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-08-25T05:27:55.456855+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "4ef66a13dd807defa3ad896f54ccf397c6aceb2caafcebb8c7ae3d7e9ce51385"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42634086",
+    "title": "Evodiamine may inhibit insulin resistance in type 2 diabetes through IRS-1/PI3K/AKT/GLUT4 pathway.",
+    "authors": [
+      "Wang X",
+      "Zhang N",
+      "Wang M",
+      "Liu J",
+      "Tong L",
+      "Liang X",
+      "Li A",
+      "Gu Y",
+      "Song B",
+      "Xie X",
+      "Chen J"
+    ],
+    "publication_date": "2026 Aug 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42634086/",
+    "abstract": "Evodiamine may inhibit insulin resistance in type 2 diabetes through IRS-1/PI3K/AKT/GLUT4 pathway.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42634086",
+      "pmcid": null,
+      "doi": "10.1038/s41598-026-47326-8",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-08-25T05:27:55.807963+00:00",
+      "response_received_at": "2026-08-25T05:27:56.714155+00:00",
+      "latency_ms": 906.47,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-08-25T05:27:56.714742+00:00",
+    "source_updated_at": "2026 Aug 24",
+    "raw_response_hash": "e714f98f2c8bd0ebc4989b5b3964dcddcc0d6c8d1dcda69cb62f5aa32930d46e"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42632547",
+    "title": "Immunopharmacological reprogramming of innate immune memory in Alzheimer's disease: From microglial priming to therapeutic resilience.",
+    "authors": [
+      "Abdelaziz AM",
+      "Eladawy RM"
+    ],
+    "publication_date": "2026 Aug 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42632547/",
+    "abstract": "Immunopharmacological reprogramming of innate immune memory in Alzheimer's disease: From microglial priming to therapeutic resilience.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42632547",
+      "pmcid": null,
+      "doi": "10.1016/j.bcp.2026.118381",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-08-25T05:27:57.065207+00:00",
+      "response_received_at": "2026-08-25T05:27:58.016913+00:00",
+      "latency_ms": 952.24,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-08-25T05:27:58.017936+00:00",
+    "source_updated_at": "2026 Aug 22",
+    "raw_response_hash": "23c52c7198c674d62726cb08aa7faf47bc25d09879b6a4cac35c3f2ea24a669b"
+  }
+]

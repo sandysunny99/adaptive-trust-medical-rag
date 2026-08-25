@@ -1,0 +1,584 @@
+[
+  {
+    "id": "32375255",
+    "source": "MED",
+    "pmid": "32375255",
+    "pmcid": "PMC7247334",
+    "fullTextIdList": {
+      "fullTextId": [
+        "PMC7247334"
+      ]
+    },
+    "doi": "10.3390/ijms21093240",
+    "title": "The Metformin Mechanism on Gluconeogenesis and AMPK Activation: The Metabolite Perspective.",
+    "authorString": "Agius L, Ford BE, Chachra SS.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Agius L",
+          "firstName": "Loranne",
+          "lastName": "Agius",
+          "initials": "L",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0002-6419-6503"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Biosciences Institute, The Medical School, Newcastle University, Newcastle upon Tyne NE2 4HH, UK."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Ford BE",
+          "firstName": "Brian E",
+          "lastName": "Ford",
+          "initials": "BE",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0003-0543-4978"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Biosciences Institute, The Medical School, Newcastle University, Newcastle upon Tyne NE2 4HH, UK."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Chachra SS",
+          "firstName": "Shruti S",
+          "lastName": "Chachra",
+          "initials": "SS",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Biosciences Institute, The Medical School, Newcastle University, Newcastle upon Tyne NE2 4HH, UK."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0002-6419-6503"
+        },
+        {
+          "type": "ORCID",
+          "value": "0000-0003-0543-4978"
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "altmetrics"
+      ]
+    },
+    "journalInfo": {
+      "issue": "9",
+      "volume": "21",
+      "journalIssueId": 2951458,
+      "dateOfPublication": "2020 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2020,
+      "printPublicationDate": "2020-05-01",
+      "journal": {
+        "title": "International journal of molecular sciences",
+        "medlineAbbreviation": "Int J Mol Sci",
+        "isoabbreviation": "Int J Mol Sci",
+        "nlmid": "101092791",
+        "issn": "1422-0067",
+        "essn": "1422-0067"
+      }
+    },
+    "pubYear": "2020",
+    "pageInfo": "E3240",
+    "abstractText": "Metformin therapy lowers blood glucose in type 2 diabetes by targeting various pathways including hepatic gluconeogenesis. Despite widespread clinical use of metformin the molecular mechanisms by which it inhibits gluconeogenesis either acutely through allosteric and covalent mechanisms or chronically through changes in gene expression remain debated. Proposed mechanisms include: inhibition of Complex 1; activation of AMPK; and mechanisms independent of both Complex 1 inhibition and AMPK. The activation of AMPK by metformin could be consequent to Complex 1 inhibition and raised AMP through the canonical adenine nucleotide pathway or alternatively by activation of the lysosomal AMPK pool by other mechanisms involving the aldolase substrate fructose 1,6-bisphosphate or perturbations in the lysosomal membrane. Here we review current interpretations of the effects of metformin on hepatic intermediates of the gluconeogenic and glycolytic pathway and the candidate mechanistic links to regulation of gluconeogenesis. In conditions of either glucose excess or gluconeogenic substrate excess, metformin lowers hexose monophosphates by mechanisms that are independent of AMPK-activation and most likely mediated by allosteric activation of phosphofructokinase-1 and/or inhibition of fructose bisphosphatase-1. The metabolite changes caused by metformin may also have a prominent role in counteracting G6pc gene regulation in conditions of compromised intracellular homeostasis.",
+    "affiliation": "Biosciences Institute, The Medical School, Newcastle University, Newcastle upon Tyne NE2 4HH, UK.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ]
+    },
+    "grantsList": {
+      "grant": [
+        {
+          "grantId": "13/0004701",
+          "agency": "Diabetes UK",
+          "orderIn": 0
+        },
+        {
+          "grantId": "MR/P002854/1",
+          "agency": "Medical Research Council",
+          "acronym": "MRC_",
+          "orderIn": 0
+        }
+      ]
+    },
+    "meshHeadingList": {
+      "meshHeading": [
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Liver",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "DE",
+                "qualifierName": "drug effects",
+                "majorTopic_YN": "N"
+              },
+              {
+                "abbreviation": "ME",
+                "qualifierName": "metabolism",
+                "majorTopic_YN": "Y"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Animals"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Humans"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Metformin",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "Y"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Protein Kinases",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "ME",
+                "qualifierName": "metabolism",
+                "majorTopic_YN": "Y"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Hypoglycemic Agents",
+          "meshQualifierList": {
+            "meshQualifier": [
+              {
+                "abbreviation": "PD",
+                "qualifierName": "pharmacology",
+                "majorTopic_YN": "Y"
+              }
+            ]
+          }
+        },
+        {
+          "majorTopic_YN": "Y",
+          "descriptorName": "Gluconeogenesis"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "Glycolysis"
+        },
+        {
+          "majorTopic_YN": "N",
+          "descriptorName": "AMP-Activated Protein Kinase Kinases"
+        }
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "gluconeogenesis",
+        "Metformin",
+        "Ampk",
+        "Liver Metabolism",
+        "Phosphofructokinase-1"
+      ]
+    },
+    "chemicalList": {
+      "chemical": [
+        {
+          "name": "Hypoglycemic Agents",
+          "registryNumber": "0"
+        },
+        {
+          "name": "Protein Kinases",
+          "registryNumber": "EC 2.7.-"
+        },
+        {
+          "name": "Metformin",
+          "registryNumber": "9100L32L2N"
+        },
+        {
+          "name": "AMP-Activated Protein Kinase Kinases",
+          "registryNumber": "EC 2.7.11.3"
+        }
+      ]
+    },
+    "subsetList": {
+      "subset": [
+        {
+          "code": "IM",
+          "name": "Index Medicus"
+        }
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Unpaywall",
+          "url": "https://www.mdpi.com/1422-0067/21/9/3240/pdf?version=1588502670"
+        },
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.3390/ijms21093240"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "html",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC7247334"
+        },
+        {
+          "availability": "Open access",
+          "availabilityCode": "OA",
+          "documentStyle": "pdf",
+          "site": "Europe_PMC",
+          "url": "https://europepmc.org/articles/PMC7247334?pdf=render"
+        }
+      ]
+    },
+    "isOpenAccess": "Y",
+    "inEPMC": "Y",
+    "inPMC": "Y",
+    "hasPDF": "Y",
+    "hasBook": "N",
+    "hasSuppl": "N",
+    "citedByCount": 118,
+    "hasData": "N",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "license": "cc by",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCompletion": "2021-01-25",
+    "dateOfCreation": "2020-05-08",
+    "firstIndexDate": "2020-05-12",
+    "fullTextReceivedDate": "2025-02-03",
+    "dateOfRevision": "2025-05-30",
+    "electronicPublicationDate": "2020-05-03",
+    "firstPublicationDate": "2020-05-03",
+    "_meta": {
+      "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+      "request_started_at": "2026-08-25T05:28:00.275742+00:00",
+      "response_received_at": "2026-08-25T05:28:02.104126+00:00",
+      "latency_ms": 1827.07,
+      "status_code": 200
+    }
+  },
+  {
+    "id": "28049772",
+    "source": "MED",
+    "pmid": "28049772",
+    "doi": "10.1126/scisignal.aam6836",
+    "title": "Placing the nuclear pore in the metformin mechanism of action.",
+    "authorString": "Gough NR.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Gough NR",
+          "firstName": "Nancy R",
+          "lastName": "Gough",
+          "initials": "NR",
+          "authorId": {
+            "type": "ORCID",
+            "value": "0000-0001-5179-8890"
+          },
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Science Signaling, AAAS, Washington, DC 20005, USA."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "authorIdList": {
+      "authorId": [
+        {
+          "type": "ORCID",
+          "value": "0000-0001-5179-8890"
+        }
+      ]
+    },
+    "dataLinksTagsList": {
+      "dataLinkstag": [
+        "altmetrics"
+      ]
+    },
+    "journalInfo": {
+      "issue": "460",
+      "volume": "10",
+      "journalIssueId": 2510905,
+      "dateOfPublication": "2017 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2017,
+      "printPublicationDate": "2017-01-01",
+      "journal": {
+        "title": "Science signaling",
+        "medlineAbbreviation": "Sci Signal",
+        "isoabbreviation": "Sci Signal",
+        "nlmid": "101465400",
+        "issn": "1945-0877",
+        "essn": "1937-9145"
+      }
+    },
+    "pubYear": "2017",
+    "pageInfo": "eaam6836",
+    "affiliation": "Science Signaling, AAAS, Washington, DC 20005, USA.",
+    "publicationStatus": "epublish",
+    "language": "eng",
+    "pubModel": "Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.1126/scisignal.aam6836"
+        }
+      ]
+    },
+    "isOpenAccess": "N",
+    "inEPMC": "N",
+    "inPMC": "N",
+    "hasPDF": "N",
+    "hasBook": "N",
+    "hasSuppl": "N",
+    "citedByCount": 2,
+    "hasData": "N",
+    "hasReferences": "Y",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "Y",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCreation": "2017-01-05",
+    "firstIndexDate": "2017-01-05",
+    "dateOfRevision": "2019-11-20",
+    "electronicPublicationDate": "2017-01-03",
+    "firstPublicationDate": "2017-01-03",
+    "_meta": {
+      "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+      "request_started_at": "2026-08-25T05:28:00.275742+00:00",
+      "response_received_at": "2026-08-25T05:28:02.104126+00:00",
+      "latency_ms": 1827.07,
+      "status_code": 200
+    }
+  },
+  {
+    "id": "42570748",
+    "source": "MED",
+    "pmid": "42570748",
+    "doi": "10.1016/j.cellsig.2026.112802",
+    "title": "The effects of Metformin on myocardial ischemia and reperfusion injury in diabetic rats and its potential mechanism.",
+    "authorString": "Ma Y, Jin Z, Wang Y, Ke J, Zheng F.",
+    "authorList": {
+      "author": [
+        {
+          "fullName": "Ma Y",
+          "firstName": "Yunna",
+          "lastName": "Ma",
+          "initials": "Y",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Anesthesiology, kangfu daxue qingdao yiyuan, Qingdao, Shandong, China; Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Jin Z",
+          "firstName": "Zhe",
+          "lastName": "Jin",
+          "initials": "Z",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Wang Y",
+          "firstName": "Yanlin",
+          "lastName": "Wang",
+          "initials": "Y",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Ke J",
+          "firstName": "Jianjuan",
+          "lastName": "Ke",
+          "initials": "J",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China. Electronic address: kejianjuan@whu.edu.cn."
+              }
+            ]
+          }
+        },
+        {
+          "fullName": "Zheng F",
+          "firstName": "Feng",
+          "lastName": "Zheng",
+          "initials": "F",
+          "authorAffiliationDetailsList": {
+            "authorAffiliation": [
+              {
+                "affiliation": "Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China. Electronic address: Zhengfeng@whu.edu.cn."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "journalInfo": {
+      "volume": "148",
+      "journalIssueId": 4238694,
+      "dateOfPublication": "2026 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2026,
+      "printPublicationDate": "2026-08-01",
+      "journal": {
+        "title": "Cellular signalling",
+        "medlineAbbreviation": "Cell Signal",
+        "isoabbreviation": "Cell Signal",
+        "nlmid": "8904683",
+        "issn": "0898-6568",
+        "essn": "1873-3913"
+      }
+    },
+    "pubYear": "2026",
+    "pageInfo": "112802",
+    "abstractText": "Diabetic cardiovascular disease remains the leading cause of mortality in patients with diabetes, underscoring the urgent need for effective therapeutic strategies to improve clinical outcomes and prevent major adverse cardiovascular events in this high-risk population. Metformin, a widely prescribed antihyperglycemic agent, not only lowers blood glucose levels but also modulates multiple intracellular signaling pathways, thereby exerting pleiotropic effects. The present study aimed to evaluate the cardioprotective effects of metformin and elucidate its underlying molecular mechanisms in myocardial ischemia-reperfusion injury. Accordingly, we established in vivo diabetic models and in vitro hyperglycemic conditions to assess the effects of metformin on myocardial tissue in diabetes. The results demonstrated that metformin treatment significantly ameliorated cardiac dysfunction and attenuated myocardial morphological abnormalities in diabetic rats subjected to ischemia-reperfusion, and concurrently improved cardiomyocyte viability under hyperglycemic conditions. Moreover, metformin enhanced autophagy, promoted mitophagic activity, and restored mitochondrial homeostasis-effects that were further validated using compound C in cultured H9c2 cardiomyocytes under hyperglycemic conditions. Collectively, these findings indicate that metformin confers cardioprotection against myocardial ischemia-reperfusion injury (MIRI) through activation of AMP-activated protein kinase (AMPK) and its downstream signaling cascades, thereby regulating mitophagic processes.",
+    "affiliation": "Department of Anesthesiology, kangfu daxue qingdao yiyuan, Qingdao, Shandong, China; Department of Anesthesiology, Zhongnan Hospital of Wuhan University, Wuhan, Hubei, China.",
+    "publicationStatus": "aheadofprint",
+    "language": "eng",
+    "pubModel": "Print-Electronic",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "keywordList": {
+      "keyword": [
+        "Diabetes mellitus",
+        "Metformin",
+        "myocardial ischemia-reperfusion injury",
+        "Mitophagy",
+        "Oxygen\u2013glucose Deprivation And Reoxygenation"
+      ]
+    },
+    "subsetList": {
+      "subset": [
+        {
+          "code": "IM",
+          "name": "Index Medicus"
+        }
+      ]
+    },
+    "fullTextUrlList": {
+      "fullTextUrl": [
+        {
+          "availability": "Subscription required",
+          "availabilityCode": "S",
+          "documentStyle": "doi",
+          "site": "DOI",
+          "url": "https://doi.org/10.1016/j.cellsig.2026.112802"
+        }
+      ]
+    },
+    "isOpenAccess": "N",
+    "inEPMC": "N",
+    "inPMC": "N",
+    "hasPDF": "N",
+    "hasBook": "N",
+    "hasSuppl": "N",
+    "citedByCount": 0,
+    "hasData": "N",
+    "hasReferences": "N",
+    "hasTextMinedTerms": "Y",
+    "hasDbCrossReferences": "N",
+    "hasLabsLinks": "N",
+    "hasEvaluations": "N",
+    "authMan": "N",
+    "epmcAuthMan": "N",
+    "nihAuthMan": "N",
+    "hasTMAccessionNumbers": "N",
+    "dateOfCreation": "2026-08-08",
+    "firstIndexDate": "2026-08-13",
+    "dateOfRevision": "2026-08-10",
+    "electronicPublicationDate": "2026-08-08",
+    "firstPublicationDate": "2026-08-08",
+    "_meta": {
+      "endpoint": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+      "request_started_at": "2026-08-25T05:28:00.275742+00:00",
+      "response_received_at": "2026-08-25T05:28:02.104126+00:00",
+      "latency_ms": 1827.07,
+      "status_code": 200
+    }
+  }
+]
