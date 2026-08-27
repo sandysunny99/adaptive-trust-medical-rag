@@ -1,0 +1,395 @@
+[
+  {
+    "case_id": "b19ee60033808d7c",
+    "variant": "F0",
+    "citation_precision": 0.25,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol",
+      "doc-fda-spironolactone",
+      "doc-fda-metformin"
+    ]
+  },
+  {
+    "case_id": "220cab6f48752456",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-fda-metformin",
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "43603c024e5cb6db",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-fda-spironolactone",
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "45c1ea241ffa6a37",
+    "variant": "F0",
+    "citation_precision": 0.0,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "doc-fda-haloperidol",
+      "doc-fda-metformin"
+    ]
+  },
+  {
+    "case_id": "c2b0a1fc71e86d9c",
+    "variant": "F0",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "d58a8fd988dcff20",
+    "variant": "F0",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "a0a8e5e845626ca8",
+    "variant": "F0",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "8f1e193ee4a65e63",
+    "variant": "F0",
+    "citation_precision": 0.5,
+    "citations": [
+      "doc-fda-metformin",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "0bb541d61f769666",
+    "variant": "F0",
+    "citation_precision": 0.25,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol",
+      "doc-fda-spironolactone",
+      "doc-fda-metformin"
+    ]
+  },
+  {
+    "case_id": "dc074855979f4c8d",
+    "variant": "F0",
+    "citation_precision": 0.5,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "b0bdb6e8112b5f3b",
+    "variant": "F0",
+    "citation_precision": 0.25,
+    "citations": [
+      "doc-fda-metformin",
+      "doc-fda-spironolactone",
+      "doc-fda-haloperidol",
+      "doc-guideline-warfarin-aspirin"
+    ]
+  },
+  {
+    "case_id": "de695852f92fc53a",
+    "variant": "F0",
+    "citation_precision": 0.5,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "e99a75258ebfc4ff",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-haloperidol",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "aa7aa762a3da0e6f",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "235358dcae2ee138",
+    "variant": "F0",
+    "citation_precision": 0.5,
+    "citations": [
+      "doc-fda-metformin",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "f22afdf5f4735480",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "6cb6e095addbaec2",
+    "variant": "F0",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "b0881b25834fc6a0",
+    "variant": "F0",
+    "citation_precision": 1.0,
+    "citations": [
+      "doc-guideline-warfarin-aspirin"
+    ]
+  },
+  {
+    "case_id": "9fec3899803972b7",
+    "variant": "F0",
+    "citation_precision": 0.3333,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-metformin",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "59fb28e10888b60a",
+    "variant": "F0",
+    "citation_precision": 0.5,
+    "citations": [
+      "doc-fda-metformin",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "b19ee60033808d7c",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "EUROPEPMC-28049772",
+      "doc-guideline-warfarin-aspirin",
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "EUROPEPMC-32375255",
+      "EUROPEPMC-42570748"
+    ]
+  },
+  {
+    "case_id": "220cab6f48752456",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "EUROPEPMC-32375255",
+      "doc-fda-metformin",
+      "EUROPEPMC-42570748",
+      "EUROPEPMC-28049772",
+      "P0-19e4bfb8-2ed1-4a6b-adf5-853ad2953362"
+    ]
+  },
+  {
+    "case_id": "43603c024e5cb6db",
+    "variant": "F1",
+    "citation_precision": 0.6,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "45c1ea241ffa6a37",
+    "variant": "F1",
+    "citation_precision": 0.0,
+    "citations": [
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "EUROPEPMC-28049772",
+      "EUROPEPMC-32375255",
+      "EUROPEPMC-42570748",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "c2b0a1fc71e86d9c",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "d58a8fd988dcff20",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "a0a8e5e845626ca8",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "8f1e193ee4a65e63",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "EUROPEPMC-28049772",
+      "doc-fda-metformin",
+      "P0-19e4bfb8-2ed1-4a6b-adf5-853ad2953362",
+      "EUROPEPMC-42570748",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "0bb541d61f769666",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "doc-fda-haloperidol",
+      "EUROPEPMC-28049772",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "dc074855979f4c8d",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "PUBMED-42636218",
+      "EUROPEPMC-42570748",
+      "doc-fda-haloperidol"
+    ]
+  },
+  {
+    "case_id": "b0bdb6e8112b5f3b",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "EUROPEPMC-28049772",
+      "doc-fda-metformin",
+      "EUROPEPMC-42570748",
+      "P0-19e4bfb8-2ed1-4a6b-adf5-853ad2953362",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "de695852f92fc53a",
+    "variant": "F1",
+    "citation_precision": 0.5,
+    "citations": [
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "e99a75258ebfc4ff",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "doc-guideline-warfarin-aspirin",
+      "EUROPEPMC-42570748",
+      "doc-fda-haloperidol",
+      "doc-fda-spironolactone"
+    ]
+  },
+  {
+    "case_id": "aa7aa762a3da0e6f",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "doc-guideline-warfarin-aspirin",
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "doc-fda-spironolactone",
+      "EUROPEPMC-28049772"
+    ]
+  },
+  {
+    "case_id": "235358dcae2ee138",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "EUROPEPMC-28049772",
+      "EUROPEPMC-42570748",
+      "doc-fda-metformin",
+      "P0-19e4bfb8-2ed1-4a6b-adf5-853ad2953362",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "f22afdf5f4735480",
+    "variant": "F1",
+    "citation_precision": 0.4,
+    "citations": [
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "doc-guideline-warfarin-aspirin",
+      "doc-fda-spironolactone",
+      "doc-fda-haloperidol",
+      "EUROPEPMC-32375255"
+    ]
+  },
+  {
+    "case_id": "6cb6e095addbaec2",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": []
+  },
+  {
+    "case_id": "b0881b25834fc6a0",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "doc-guideline-warfarin-aspirin"
+    ]
+  },
+  {
+    "case_id": "9fec3899803972b7",
+    "variant": "F1",
+    "citation_precision": 0.6,
+    "citations": [
+      "doc-guideline-warfarin-aspirin",
+      "P0-b8c33971-54b3-4971-bf7f-1bec66999a29",
+      "P0-008ee85b-5cac-45a6-a857-a828f8125175",
+      "EUROPEPMC-32375255",
+      "doc-fda-metformin"
+    ]
+  },
+  {
+    "case_id": "59fb28e10888b60a",
+    "variant": "F1",
+    "citation_precision": 1.0,
+    "citations": [
+      "EUROPEPMC-28049772",
+      "EUROPEPMC-42570748",
+      "doc-fda-metformin",
+      "P0-19e4bfb8-2ed1-4a6b-adf5-853ad2953362",
+      "EUROPEPMC-32375255"
+    ]
+  }
+]

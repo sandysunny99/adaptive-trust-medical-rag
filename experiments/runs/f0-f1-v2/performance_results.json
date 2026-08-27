@@ -1,0 +1,242 @@
+[
+  {
+    "case_id": "b19ee60033808d7c",
+    "variant": "F0",
+    "latency_ms": 0.942,
+    "retrieval_latency_ms": 0.206
+  },
+  {
+    "case_id": "220cab6f48752456",
+    "variant": "F0",
+    "latency_ms": 0.383,
+    "retrieval_latency_ms": 0.12
+  },
+  {
+    "case_id": "43603c024e5cb6db",
+    "variant": "F0",
+    "latency_ms": 0.388,
+    "retrieval_latency_ms": 0.113
+  },
+  {
+    "case_id": "45c1ea241ffa6a37",
+    "variant": "F0",
+    "latency_ms": 0.755,
+    "retrieval_latency_ms": 0.234
+  },
+  {
+    "case_id": "c2b0a1fc71e86d9c",
+    "variant": "F0",
+    "latency_ms": 0.151,
+    "retrieval_latency_ms": 0.122
+  },
+  {
+    "case_id": "d58a8fd988dcff20",
+    "variant": "F0",
+    "latency_ms": 0.114,
+    "retrieval_latency_ms": 0.107
+  },
+  {
+    "case_id": "a0a8e5e845626ca8",
+    "variant": "F0",
+    "latency_ms": 0.127,
+    "retrieval_latency_ms": 0.105
+  },
+  {
+    "case_id": "8f1e193ee4a65e63",
+    "variant": "F0",
+    "latency_ms": 0.3,
+    "retrieval_latency_ms": 0.111
+  },
+  {
+    "case_id": "0bb541d61f769666",
+    "variant": "F0",
+    "latency_ms": 0.44,
+    "retrieval_latency_ms": 0.118
+  },
+  {
+    "case_id": "dc074855979f4c8d",
+    "variant": "F0",
+    "latency_ms": 0.3,
+    "retrieval_latency_ms": 0.12
+  },
+  {
+    "case_id": "b0bdb6e8112b5f3b",
+    "variant": "F0",
+    "latency_ms": 0.465,
+    "retrieval_latency_ms": 0.141
+  },
+  {
+    "case_id": "de695852f92fc53a",
+    "variant": "F0",
+    "latency_ms": 0.296,
+    "retrieval_latency_ms": 0.109
+  },
+  {
+    "case_id": "e99a75258ebfc4ff",
+    "variant": "F0",
+    "latency_ms": 0.385,
+    "retrieval_latency_ms": 0.113
+  },
+  {
+    "case_id": "aa7aa762a3da0e6f",
+    "variant": "F0",
+    "latency_ms": 0.682,
+    "retrieval_latency_ms": 0.246
+  },
+  {
+    "case_id": "235358dcae2ee138",
+    "variant": "F0",
+    "latency_ms": 0.285,
+    "retrieval_latency_ms": 0.114
+  },
+  {
+    "case_id": "f22afdf5f4735480",
+    "variant": "F0",
+    "latency_ms": 0.389,
+    "retrieval_latency_ms": 0.122
+  },
+  {
+    "case_id": "6cb6e095addbaec2",
+    "variant": "F0",
+    "latency_ms": 0.155,
+    "retrieval_latency_ms": 0.123
+  },
+  {
+    "case_id": "b0881b25834fc6a0",
+    "variant": "F0",
+    "latency_ms": 0.205,
+    "retrieval_latency_ms": 0.101
+  },
+  {
+    "case_id": "9fec3899803972b7",
+    "variant": "F0",
+    "latency_ms": 0.375,
+    "retrieval_latency_ms": 0.12
+  },
+  {
+    "case_id": "59fb28e10888b60a",
+    "variant": "F0",
+    "latency_ms": 0.274,
+    "retrieval_latency_ms": 0.105
+  },
+  {
+    "case_id": "b19ee60033808d7c",
+    "variant": "F1",
+    "latency_ms": 1.6,
+    "retrieval_latency_ms": 0.465
+  },
+  {
+    "case_id": "220cab6f48752456",
+    "variant": "F1",
+    "latency_ms": 1.573,
+    "retrieval_latency_ms": 0.448
+  },
+  {
+    "case_id": "43603c024e5cb6db",
+    "variant": "F1",
+    "latency_ms": 2.119,
+    "retrieval_latency_ms": 1.153
+  },
+  {
+    "case_id": "45c1ea241ffa6a37",
+    "variant": "F1",
+    "latency_ms": 1.652,
+    "retrieval_latency_ms": 0.495
+  },
+  {
+    "case_id": "c2b0a1fc71e86d9c",
+    "variant": "F1",
+    "latency_ms": 0.483,
+    "retrieval_latency_ms": 0.425
+  },
+  {
+    "case_id": "d58a8fd988dcff20",
+    "variant": "F1",
+    "latency_ms": 0.404,
+    "retrieval_latency_ms": 0.398
+  },
+  {
+    "case_id": "a0a8e5e845626ca8",
+    "variant": "F1",
+    "latency_ms": 0.457,
+    "retrieval_latency_ms": 0.424
+  },
+  {
+    "case_id": "8f1e193ee4a65e63",
+    "variant": "F1",
+    "latency_ms": 1.538,
+    "retrieval_latency_ms": 0.426
+  },
+  {
+    "case_id": "0bb541d61f769666",
+    "variant": "F1",
+    "latency_ms": 1.128,
+    "retrieval_latency_ms": 0.426
+  },
+  {
+    "case_id": "dc074855979f4c8d",
+    "variant": "F1",
+    "latency_ms": 1.429,
+    "retrieval_latency_ms": 0.435
+  },
+  {
+    "case_id": "b0bdb6e8112b5f3b",
+    "variant": "F1",
+    "latency_ms": 1.525,
+    "retrieval_latency_ms": 0.415
+  },
+  {
+    "case_id": "de695852f92fc53a",
+    "variant": "F1",
+    "latency_ms": 1.082,
+    "retrieval_latency_ms": 0.393
+  },
+  {
+    "case_id": "e99a75258ebfc4ff",
+    "variant": "F1",
+    "latency_ms": 3.185,
+    "retrieval_latency_ms": 1.318
+  },
+  {
+    "case_id": "aa7aa762a3da0e6f",
+    "variant": "F1",
+    "latency_ms": 1.183,
+    "retrieval_latency_ms": 0.867
+  },
+  {
+    "case_id": "235358dcae2ee138",
+    "variant": "F1",
+    "latency_ms": 1.656,
+    "retrieval_latency_ms": 0.536
+  },
+  {
+    "case_id": "f22afdf5f4735480",
+    "variant": "F1",
+    "latency_ms": 1.305,
+    "retrieval_latency_ms": 0.423
+  },
+  {
+    "case_id": "6cb6e095addbaec2",
+    "variant": "F1",
+    "latency_ms": 0.463,
+    "retrieval_latency_ms": 0.423
+  },
+  {
+    "case_id": "b0881b25834fc6a0",
+    "variant": "F1",
+    "latency_ms": 0.524,
+    "retrieval_latency_ms": 0.392
+  },
+  {
+    "case_id": "9fec3899803972b7",
+    "variant": "F1",
+    "latency_ms": 1.101,
+    "retrieval_latency_ms": 0.401
+  },
+  {
+    "case_id": "59fb28e10888b60a",
+    "variant": "F1",
+    "latency_ms": 1.518,
+    "retrieval_latency_ms": 0.416
+  }
+]

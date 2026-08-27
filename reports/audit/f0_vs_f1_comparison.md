@@ -1,68 +1,27 @@
-# F0 vs F1 External Evidence Contribution Report
+# F0 vs F1 Empirical Evidence Contribution Report (v2)
 
-**Research Question:** Does adding trusted biomedical external evidence (P0 snapshot) improve medical RAG performance and safety?  
-**Verdict:** `F1 > F0 (P0 evidence improves faithfulness)`  
-**Split:** `smoke` (5 cases)  
-**Git Commit:** `48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f`  
-**Snapshot ID:** `p0-v1`  
-**Snapshot Hash:** `b9cd29949cdfc3086f1d53768d631e68...`  
-**Corpus Hash:** `file_not_found...`  
-**Timestamp:** `2026-08-25T06:05:41.482043+00:00`  
+**Experiment:** `f0-f1-v2`  
+**Pipeline Mode:** `DETERMINISTIC-MOCK`  
+**Git Commit:** `97d070cbc9e4b06ed6e1d32a9c2d706109b2a48f`  
+**Evaluated Cases:** `20` paired cases  
 
-> [!NOTE]
-> This is a research experiment. Results are reported for scientific completeness.
-> F1 > F0, F1 approx F0, and F1 < F0 are all valid scientific outcomes.
+> [!IMPORTANT]
+> This experiment evaluates the retrieval and evidence contribution difference under deterministic mock execution.
+> It does NOT make claims regarding live LLM answer generation quality.
 
-## Retrieval Metrics
+## Empirical Metric Comparison
 
-| Metric | F0 | F1 | Delta |
-| :--- | :---: | :---: | :---: |
-| Precision@5 | `0.72` | `0.75` | `^ +0.03` |
-| Recall@5 | `0.68` | `0.71` | `^ +0.03` |
-| MRR | `0.74` | `0.77` | — |
-| nDCG | `0.71` | `0.74` | — |
+| Metric | F0 (Base Corpus) | F1 (Base + P0 Snapshot) | Delta | Wilcoxon p | Cohen's dz | 95% Bootstrap CI |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Precision@5 | `0.2400` | `0.6100` | `+0.3700` | `0.0003` | `1.3338` | `[0.2600, 0.5000]` |
+| Recall@5 | `0.8250` | `0.9000` | `+0.0750` | `0.2871` | `0.4094` | `[0.0000, 0.1500]` |
+| Claim Faithfulness | `0.3917` | `0.3543` | `-0.0373` | `0.1416` | `-0.4344` | `[-0.0727, -0.0001]` |
+| Hallucination Rate | `0.6083` | `0.6457` | `+0.0373` | `0.1416` | `0.4344` | `[0.0001, 0.0727]` |
+| Citation Precision | `0.5125` | `0.7050` | `+0.1925` | `0.0062` | `0.7577` | `[0.0892, 0.3017]` |
+| Citation Recall | `0.8750` | `0.9500` | `+0.0750` | `0.2871` | `0.4094` | `[0.0000, 0.1500]` |
+| Total Latency (ms) | `0.37` | `1.30` | `+0.93` | — | — | — |
 
-## Grounding Metrics
+## P0 Snapshot Utilization in F1
 
-| Metric | F0 | F1 | Delta |
-| :--- | :---: | :---: | :---: |
-| Claim Faithfulness | `0.0` | `0.03` | `^ +0.03` |
-| Hallucination Rate | `0.05` | `0.02` | `^ -0.03` |
-
-## Citation Metrics
-
-| Metric | F0 | F1 | Delta |
-| :--- | :---: | :---: | :---: |
-| Citation Precision | `0.88` | `0.91` | `^ +0.03` |
-| Citation Recall | `0.71` | `0.74` | — |
-
-## Safety
-
-| Attribute | F0 | F1 |
-| :--- | :---: | :---: |
-| Abstention Rate | `0.0` | `0.0` |
-| Contradiction Handling | Yes | Yes |
-| Malicious Context Rejection | Yes | Yes |
-
-## Performance
-
-| Metric | F0 | F1 |
-| :--- | :---: | :---: |
-| Retrieval Latency | `45.2 ms` | `45.2 ms` |
-| P0 Acquisition Latency | `0 ms (N/A)` | `0.8 ms` |
-| Total Latency | `45.4 ms` | `46.2 ms` |
-
-## P0 Records Available
-- **F0:** 0 (frozen corpus only)
-- **F1:** 14 (from P0 snapshot `p0-v1`)
-
-## Reproducibility Manifest
-```json
-{
-  "snapshot_id": "p0-v1",
-  "snapshot_hash": "b9cd29949cdfc3086f1d53768d631e6823a0b06cda7205700d77bcf581715dce",
-  "dataset_hash": "no_dataset_file",
-  "corpus_hash": "file_not_found",
-  "git_commit": "48ddad2a077bf4dab7fcc047a2cab20de2d7ee4f"
-}
-```
+- **P0 Chunks Retrieved per Case (Mean):** `2.90`
+- **P0 Chunks Eligible/Accepted (Mean):** `2.90`

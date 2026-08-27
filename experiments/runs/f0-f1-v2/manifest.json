@@ -1,0 +1,11 @@
+{
+  "experiment_id": "f0-f1-v2",
+  "pipeline_mode": "DETERMINISTIC-MOCK",
+  "dataset_split": "smoke",
+  "case_count": 20,
+  "total_rows": 40,
+  "git_commit": "97d070cbc9e4b06ed6e1d32a9c2d706109b2a48f",
+  "base_corpus_size": 4,
+  "p0_snapshot_records": 14,
+  "created_at": "2026-08-25T06:40:11.901647+00:00"
+}

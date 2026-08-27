@@ -1,4 +1,4 @@
-﻿[project]
+[project]
 name = "adaptive-trust-medical-rag"
 version = "0.1.0"
 description = "Adaptive Trust-Aware Medical RAG: Mitigating Prompt Injection and Retrieval Hallucinations"

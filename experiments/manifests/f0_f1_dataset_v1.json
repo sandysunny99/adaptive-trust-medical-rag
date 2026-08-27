@@ -1,0 +1,63 @@
+{
+  "experiment_id": "f0-f1-v2",
+  "experiment_name": "f0-f1-real-case-evidence-v2",
+  "dataset_version": "1.0.0",
+  "dataset_split": "smoke",
+  "case_count": 20,
+  "paired_design": true,
+  "variants": [
+    "F0",
+    "F1"
+  ],
+  "pipeline_mode": "DETERMINISTIC_MOCK",
+  "base_corpus": {
+    "version": "1.0.0",
+    "path": "data/evidence/manifest.json",
+    "sha256": "43ac6bb45c7010f6296f9f958d731fdd2a0bee2959e58aa2e3bb77a0290fa5cd",
+    "documents_count": 4
+  },
+  "p0_snapshot": {
+    "snapshot_id": "p0-v1",
+    "path": "experiments/evidence_snapshots/p0-v1/manifest.json",
+    "snapshot_hash": "b9cd29949cdfc3086f1d53768d631e6823a0b06cda7205700d77bcf581715dce",
+    "total_records": 14,
+    "providers": [
+      "pubmed",
+      "europe_pmc",
+      "rxnorm",
+      "openfda"
+    ]
+  },
+  "conditions": {
+    "F0": {
+      "label": "F0: Base Corpus Evidence",
+      "evidence_backend": "BASE_CORPUS",
+      "description": "Full trust-aware medical RAG using curated base evidence corpus only."
+    },
+    "F1": {
+      "label": "F1: Base Corpus + P0 Snapshot Evidence",
+      "evidence_backend": "BASE_CORPUS_PLUS_P0",
+      "description": "Full trust-aware medical RAG using base corpus + frozen P0 biomedical evidence snapshot."
+    }
+  },
+  "metrics_evaluated": [
+    "retrieval_precision_at_5",
+    "retrieval_recall_at_5",
+    "mean_reciprocal_rank",
+    "ndcg_at_5",
+    "claim_level_faithfulness",
+    "hallucination_rate",
+    "citation_precision",
+    "citation_recall",
+    "p0_candidate_retrieval_rate",
+    "p0_claim_support_rate",
+    "latency_ms"
+  ],
+  "statistical_testing": {
+    "paired_method": "wilcoxon_signed_rank",
+    "effect_size_metric": "cohen_dz",
+    "confidence_intervals": "paired_bootstrap_95_ci",
+    "bootstrap_resamples": 1000
+  },
+  "created_at": "2026-08-25T11:58:00Z"
+}
