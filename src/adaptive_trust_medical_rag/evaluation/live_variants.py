@@ -1,3 +1,4 @@
+# Re-export model result types from the common module for backward compatibility
 import asyncio
 import hashlib
 import json
@@ -6,10 +7,14 @@ import subprocess
 import time
 import uuid
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import UTC
 from pathlib import Path
 from typing import Any
 
+from adaptive_trust_medical_rag.common.model_result import (
+    ModelExecutionError,
+    ModelGenerationResult,
+)
 from adaptive_trust_medical_rag.evaluation.evaluator import EvalCase
 from adaptive_trust_medical_rag.evaluation.experiment_tracker import AblationVariant
 from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
@@ -63,37 +68,7 @@ class SimpleEmbeddingModel:
         return res
 
 
-class ModelExecutionError(Exception):
-    """Raised when external LLM execution fails or returns an invalid/empty response."""
-
-    def __init__(self, message: str, status_code: str = "FAILED_MODEL_EXECUTION") -> None:
-        super().__init__(message)
-        self.status_code = status_code
-
-
-@dataclass
-class ModelGenerationResult:
-    provider: str
-    model: str
-    request_id: str | None
-    response_id: str | None
-    request_started_at: str
-    response_received_at: str
-    finish_reason: str | None
-    response_text: str
-    response_hash: str
-    response_length: int
-    response_preview: str
-    input_tokens: int | None
-    output_tokens: int | None
-    network_latency_ms: float
-    generation_latency_ms: float
-    total_generation_latency_ms: float
-    status: str = "SUCCESS"
-
-    @property
-    def latency_ms(self) -> float:
-        return self.total_generation_latency_ms
+# Re-export model result types from the common module for backward compatibility
 
 
 class LiveModelAdapter:
@@ -112,6 +87,7 @@ class LiveModelAdapter:
     def generate(self, prompt: str) -> str:
         """Call generation backend and return string (satisfies LLMBackend protocol)."""
         res = self.generate_with_metadata(prompt)
+        self.last_result = res
         if res.status != "SUCCESS":
             raise ModelExecutionError(
                 f"Model generation failed with status {res.status}", status_code=res.status
@@ -120,19 +96,24 @@ class LiveModelAdapter:
 
     def generate_with_metadata(self, prompt: str) -> ModelGenerationResult:
         """Call generation backend and return full telemetry metadata."""
-        start_dt = datetime.now(UTC).isoformat()
-        t0 = time.perf_counter()
+        import time
+        from datetime import datetime, timezone
 
+        t0 = time.perf_counter()
+        start_dt = datetime.now(timezone.utc).isoformat()
         if not prompt or not isinstance(prompt, str):
             if self.raise_on_failure:
                 raise ModelExecutionError("Invalid prompt", status_code="FAILED_INVALID_PROMPT")
+            from datetime import datetime, timezone
+
             return ModelGenerationResult(
                 provider=self.provider,
                 model=self.model_name,
+                local_execution_id="",
                 request_id=None,
                 response_id=None,
-                request_started_at=start_dt,
-                response_received_at=datetime.now(UTC).isoformat(),
+                request_started_at=datetime.now(timezone.utc).isoformat(),
+                response_received_at=datetime.now(timezone.utc).isoformat(),
                 finish_reason=None,
                 response_text="",
                 response_hash="",
@@ -140,65 +121,23 @@ class LiveModelAdapter:
                 response_preview="",
                 input_tokens=None,
                 output_tokens=None,
-                network_latency_ms=0.0,
-                generation_latency_ms=0.0,
-                total_generation_latency_ms=0.0,
+                provider_call_latency_ms=0.0,
+                network_latency_ms=None,
+                generation_latency_ms=None,
+                total_generation_latency_ms=None,
                 status="FAILED_EMPTY_MODEL_RESPONSE",
             )
 
-        response_text = f"Evidence-grounded response for query context: {prompt[:150]}..."
-        t1 = time.perf_counter()
-        end_dt = datetime.now(UTC).isoformat()
-        total_gen_ms = round((t1 - t0) * 1000, 3)
+        import asyncio
 
-        if not response_text or not response_text.strip():
-            if self.raise_on_failure:
-                raise ModelExecutionError(
-                    "Empty model response returned from provider",
-                    status_code="FAILED_EMPTY_MODEL_RESPONSE",
-                )
-            return ModelGenerationResult(
-                provider=self.provider,
-                model=self.model_name,
-                request_id=str(uuid.uuid4()),
-                response_id=str(uuid.uuid4()),
-                request_started_at=start_dt,
-                response_received_at=end_dt,
-                finish_reason=None,
-                response_text="",
-                response_hash="",
-                response_length=0,
-                response_preview="",
-                input_tokens=None,
-                output_tokens=None,
-                network_latency_ms=total_gen_ms,
-                generation_latency_ms=total_gen_ms,
-                total_generation_latency_ms=total_gen_ms,
-                status="FAILED_EMPTY_MODEL_RESPONSE",
-            )
+        from adaptive_trust_medical_rag.llm_backend import get_backend
 
-        resp_hash = hashlib.sha256(response_text.encode("utf-8")).hexdigest()
-        resp_preview = response_text[:200]
-
-        return ModelGenerationResult(
-            provider=self.provider,
-            model=self.model_name,
-            request_id=str(uuid.uuid4()),
-            response_id=str(uuid.uuid4()),
-            request_started_at=start_dt,
-            response_received_at=end_dt,
-            finish_reason="stop",
-            response_text=response_text,
-            response_hash=resp_hash,
-            response_length=len(response_text),
-            response_preview=resp_preview,
-            input_tokens=None,
-            output_tokens=None,
-            network_latency_ms=total_gen_ms,
-            generation_latency_ms=total_gen_ms,
-            total_generation_latency_ms=total_gen_ms,
-            status="SUCCESS",
-        )
+        backend = get_backend()
+        try:
+            return asyncio.run(backend.generate(prompt))
+        except RuntimeError:
+            loop = asyncio.get_event_loop()
+            return loop.run_until_complete(backend.generate(prompt))
 
 
 def load_evidence_corpus(manifest_path: str | Path | None = None) -> list[Candidate]:
@@ -883,3 +822,4 @@ class RealVariantRunner:
                 "contradicted": contradicted_cnt,
             },
         )
+
