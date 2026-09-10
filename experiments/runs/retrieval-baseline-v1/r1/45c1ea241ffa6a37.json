@@ -1,0 +1,29 @@
+{
+  "case_id": "45c1ea241ffa6a37",
+  "variant": "R1",
+  "query_hash": "add63c2f1eea91a9e98c3504383332c3ca1e8a0d72382ed76a7ed8e32b2ceb29",
+  "risk_tier": "R3",
+  "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+  "retrieved_document_ids": [],
+  "retrieved_chunk_ids": [],
+  "retrieval_scores": [],
+  "source_types": [],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.04199999966658652,
+  "channels": [
+    "vector"
+  ]
+}

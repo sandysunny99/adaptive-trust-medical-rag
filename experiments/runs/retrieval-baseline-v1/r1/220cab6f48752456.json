@@ -1,0 +1,37 @@
+{
+  "case_id": "220cab6f48752456",
+  "variant": "R1",
+  "query_hash": "71ece2c406e5a947091b70bbd06499d172f06f5c7b36198ab40d58560d2fd91a",
+  "risk_tier": "R1",
+  "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+  "retrieved_document_ids": [
+    "doc-fda-metformin"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-metformin-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082
+  ],
+  "source_types": [
+    "FDA Label"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.05600001895800233,
+  "channels": [
+    "vector"
+  ]
+}

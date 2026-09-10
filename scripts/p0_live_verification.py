@@ -112,9 +112,7 @@ def _check_hash_format(h: str) -> bool:
 def verify_pubmed(live: bool) -> dict[str, Any]:
     """Verify PubMed adapter live connectivity and normalize returned records."""
     mode = AdapterExecutionMode.LIVE_API_MODE if live else AdapterExecutionMode.FROZEN_SNAPSHOT_MODE
-    adapter = PubMedAdapter(
-        mode=mode, api_key=NCBI_API_KEY, email=NCBI_EMAIL, tool=NCBI_TOOL
-    )
+    adapter = PubMedAdapter(mode=mode, api_key=NCBI_API_KEY, email=NCBI_EMAIL, tool=NCBI_TOOL)
 
     t0 = time.perf_counter()
     healthy = adapter.health_check()
@@ -216,14 +214,10 @@ def verify_rxnorm(live: bool) -> dict[str, Any]:
         try:
             import httpx as _httpx
 
-            ver_resp = _httpx.get(
-                f"{RxNormAdapter.BASE_URL}/version.json", timeout=4.0
-            )
+            ver_resp = _httpx.get(f"{RxNormAdapter.BASE_URL}/version.json", timeout=4.0)
             if ver_resp.status_code == 200:
                 vdata = ver_resp.json()
-                rxnorm_version = (
-                    vdata.get("rxnormdata", {}).get("rxnormVersion", "unknown")
-                )
+                rxnorm_version = vdata.get("rxnormdata", {}).get("rxnormVersion", "unknown")
         except Exception:
             pass
 
@@ -360,9 +354,7 @@ def verify_router() -> dict[str, Any]:
     results = []
     for t in tests:
         route = router.route_query(t["query"], risk_tier=t["risk_tier"])
-        fit = router.calculate_claim_source_fit(
-            "BIOMEDICAL_LITERATURE", "research_evidence"
-        )
+        fit = router.calculate_claim_source_fit("BIOMEDICAL_LITERATURE", "research_evidence")
         results.append(
             {
                 "query": t["query"],
@@ -374,7 +366,8 @@ def verify_router() -> dict[str, Any]:
                 "routing_correct": t["expected_primary"] in route["selected_sources"],
                 "claim_source_fit_score": fit,
                 "sources_not_selected": [
-                    s for s in ["pubmed", "europepmc", "rxnorm", "openfda"]
+                    s
+                    for s in ["pubmed", "europepmc", "rxnorm", "openfda"]
                     if s not in route["selected_sources"]
                 ],
             }
@@ -488,8 +481,14 @@ def create_snapshot(
         ("rxnorm", rxnorm_rep),
         ("openfda", openfda_rep),
     ]:
-        _write_json(SNAPSHOT_RAW_DIR / f"{label}_raw.json", rep.get("raw_records", rep.get("drug_results", [])))
-        _write_json(SNAPSHOT_NORM_DIR / f"{label}_normalized.json", rep.get("normalized_records", rep.get("drug_results", [])))
+        _write_json(
+            SNAPSHOT_RAW_DIR / f"{label}_raw.json",
+            rep.get("raw_records", rep.get("drug_results", [])),
+        )
+        _write_json(
+            SNAPSHOT_NORM_DIR / f"{label}_normalized.json",
+            rep.get("normalized_records", rep.get("drug_results", [])),
+        )
 
     # Build flat record list for snapshot hash
     all_norm: list[dict[str, Any]] = []
@@ -777,7 +776,8 @@ def update_p0_manifest_acceptance(
             "pubmed_live_retrieval": pubmed_rep["healthy"] and pubmed_rep["records_fetched"] > 0,
             "europepmc_live_retrieval": epmc_rep["healthy"] and epmc_rep["records_fetched"] > 0,
             "rxnorm_live_retrieval": rxnorm_rep["healthy"] and rxnorm_rep["records_normalized"] > 0,
-            "openfda_live_retrieval": openfda_rep["healthy"] and openfda_rep["records_normalized"] > 0,
+            "openfda_live_retrieval": openfda_rep["healthy"]
+            and openfda_rep["records_normalized"] > 0,
             "provenance_captured": True,
             "response_hashes_verified": (
                 pubmed_rep["hash_format_valid"]
@@ -806,14 +806,18 @@ def update_p0_manifest_acceptance(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="P0 Live API Verification & Snapshot")
-    parser.add_argument("--no-live", action="store_true", help="Skip live API calls, use frozen mode")
-    parser.add_argument("--replay-only", action="store_true", help="Only run replay from existing snapshot")
+    parser.add_argument(
+        "--no-live", action="store_true", help="Skip live API calls, use frozen mode"
+    )
+    parser.add_argument(
+        "--replay-only", action="store_true", help="Only run replay from existing snapshot"
+    )
     args = parser.parse_args()
 
     live = not args.no_live and not args.replay_only
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"P0 Biomedical API Verification  (mode: {'LIVE' if live else 'FROZEN/REPLAY'})")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     if args.replay_only:
         # Reload existing snapshot and verify replay only
@@ -829,24 +833,34 @@ def main() -> int:
     # Step 1: Live provider verification
     print("[1/9] Verifying PubMed...")
     pubmed_rep = verify_pubmed(live)
-    print(f"  Healthy={pubmed_rep['healthy']} | Records={pubmed_rep['records_fetched']} | HashOK={pubmed_rep['hash_format_valid']}")
+    print(
+        f"  Healthy={pubmed_rep['healthy']} | Records={pubmed_rep['records_fetched']} | HashOK={pubmed_rep['hash_format_valid']}"
+    )
 
     print("[2/9] Verifying Europe PMC...")
     epmc_rep = verify_europepmc(live)
-    print(f"  Healthy={epmc_rep['healthy']} | Records={epmc_rep['records_fetched']} | HashOK={epmc_rep['hash_format_valid']}")
+    print(
+        f"  Healthy={epmc_rep['healthy']} | Records={epmc_rep['records_fetched']} | HashOK={epmc_rep['hash_format_valid']}"
+    )
 
     print("[3/9] Verifying RxNorm...")
     rxnorm_rep = verify_rxnorm(live)
-    print(f"  Healthy={rxnorm_rep['healthy']} | Records={rxnorm_rep['records_normalized']} | Version={rxnorm_rep['rxnorm_version']}")
+    print(
+        f"  Healthy={rxnorm_rep['healthy']} | Records={rxnorm_rep['records_normalized']} | Version={rxnorm_rep['rxnorm_version']}"
+    )
 
     print("[4/9] Verifying openFDA...")
     openfda_rep = verify_openfda(live)
-    print(f"  Healthy={openfda_rep['healthy']} | Records={openfda_rep['records_normalized']} | HashOK={openfda_rep['hash_format_valid']}")
+    print(
+        f"  Healthy={openfda_rep['healthy']} | Records={openfda_rep['records_normalized']} | HashOK={openfda_rep['hash_format_valid']}"
+    )
 
     # Step 2: Cross-source deduplication
     print("[5/9] Cross-source deduplication...")
     dedup_res = verify_deduplication(pubmed_rep, epmc_rep)
-    print(f"  Input={dedup_res['total_input_records']} -> Deduped={dedup_res['deduplicated_records']}")
+    print(
+        f"  Input={dedup_res['total_input_records']} -> Deduped={dedup_res['deduplicated_records']}"
+    )
 
     # Step 3: Router efficiency
     print("[6/9] Query router efficiency audit...")
@@ -873,14 +887,27 @@ def main() -> int:
     # Step 7: Write all reports
     write_provider_reports(pubmed_rep, epmc_rep, rxnorm_rep, openfda_rep, live)
     write_validation_summary(
-        pubmed_rep, epmc_rep, rxnorm_rep, openfda_rep,
-        dedup_res, router_res, injection_res, failure_res, replay_res,
+        pubmed_rep,
+        epmc_rep,
+        rxnorm_rep,
+        openfda_rep,
+        dedup_res,
+        router_res,
+        injection_res,
+        failure_res,
+        replay_res,
     )
     write_live_vs_frozen_report(snapshot_manifest, replay_res)
     update_reproducibility_report(replay_res)
     update_p0_manifest_acceptance(
-        router_res, injection_res, failure_res, replay_res,
-        pubmed_rep, epmc_rep, rxnorm_rep, openfda_rep,
+        router_res,
+        injection_res,
+        failure_res,
+        replay_res,
+        pubmed_rep,
+        epmc_rep,
+        rxnorm_rep,
+        openfda_rep,
     )
 
     all_ok = (
@@ -894,9 +921,11 @@ def main() -> int:
         and router_res["all_routing_correct"]
     )
 
-    print(f"\n{'='*60}")
-    print(f"P0 ACCEPTANCE GATE: {'✅ PASS' if all_ok else '❌ FAIL (see reports/audit/p0_provider_validation.md)'}")
-    print(f"{'='*60}\n")
+    print(f"\n{'=' * 60}")
+    print(
+        f"P0 ACCEPTANCE GATE: {'✅ PASS' if all_ok else '❌ FAIL (see reports/audit/p0_provider_validation.md)'}"
+    )
+    print(f"{'=' * 60}\n")
     return 0 if all_ok else 1
 
 

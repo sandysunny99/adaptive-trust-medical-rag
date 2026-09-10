@@ -83,7 +83,9 @@ EXPERIMENT_MANIFEST_PATH = ROOT_DIR / "experiments" / "manifests" / "f0_f1_datas
 
 def _get_git_commit() -> str:
     try:
-        out = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True).strip()
+        out = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL, text=True
+        ).strip()
         if out:
             return out
     except Exception:
@@ -103,9 +105,26 @@ class SimpleEmbeddingModel:
     """Deterministic word-overlap embedding model for hybrid vector retrieval."""
 
     _VOCAB = [
-        "metformin", "aspirin", "warfarin", "haloperidol", "azithromycin", "spironolactone",
-        "potassium", "hyperkalemia", "bleeding", "inr", "diabetes", "cardiac", "arrhythmias",
-        "mechanism", "dose", "contraindicated", "side", "effects", "pharmacokinetics", "interaction"
+        "metformin",
+        "aspirin",
+        "warfarin",
+        "haloperidol",
+        "azithromycin",
+        "spironolactone",
+        "potassium",
+        "hyperkalemia",
+        "bleeding",
+        "inr",
+        "diabetes",
+        "cardiac",
+        "arrhythmias",
+        "mechanism",
+        "dose",
+        "contraindicated",
+        "side",
+        "effects",
+        "pharmacokinetics",
+        "interaction",
     ]
 
     def encode(self, texts: list[str]) -> list[list[float]]:
@@ -157,8 +176,10 @@ def load_p0_snapshot_candidates() -> list[Candidate]:
         if isinstance(records, dict):
             records = [records]
         for r in records:
-            doc_id = str(r.get("source_id") or r.get("identifiers", {}).get("rxcui") or r.get("title", ""))
-            text = (r.get("abstract") or r.get("title") or "")
+            doc_id = str(
+                r.get("source_id") or r.get("identifiers", {}).get("rxcui") or r.get("title", "")
+            )
+            text = r.get("abstract") or r.get("title") or ""
             candidates.append(
                 Candidate(
                     chunk_id=f"p0-{r.get('provider', 'p0')}-{doc_id}",
@@ -199,10 +220,29 @@ def run_pipeline_case(
 
     # 1. Drug Entity Normalization (Offline deterministic benchmark resolution)
     known_drugs = [
-        "metformin", "warfarin", "aspirin", "haloperidol", "azithromycin", "spironolactone",
-        "lisinopril", "atorvastatin", "omeprazole", "amoxicillin", "sertraline", "amlodipine",
-        "metoprolol", "furosemide", "fluoxetine", "acetaminophen", "losartan", "allopurinol",
-        "digoxin", "simvastatin", "clopidogrel", "levothyroxine", "potassium",
+        "metformin",
+        "warfarin",
+        "aspirin",
+        "haloperidol",
+        "azithromycin",
+        "spironolactone",
+        "lisinopril",
+        "atorvastatin",
+        "omeprazole",
+        "amoxicillin",
+        "sertraline",
+        "amlodipine",
+        "metoprolol",
+        "furosemide",
+        "fluoxetine",
+        "acetaminophen",
+        "losartan",
+        "allopurinol",
+        "digoxin",
+        "simvastatin",
+        "clopidogrel",
+        "levothyroxine",
+        "potassium",
     ]
     if case.expected_drugs:
         normalized_drugs = list(case.expected_drugs)
@@ -294,8 +334,13 @@ def run_pipeline_case(
         for cl_str in claims:
             cl_lower = cl_str.lower()
             # Claim is supported if it is grounded in candidate text and matches query drug (if any)
-            has_text_grounding = any(c.text.lower()[:30] in cl_lower or c.document_id.lower() in cl_lower for c in [sc.candidate for sc in retained])
-            has_drug_grounding = (not case.expected_drugs) or any(d.lower() in cl_lower for d in case.expected_drugs)
+            has_text_grounding = any(
+                c.text.lower()[:30] in cl_lower or c.document_id.lower() in cl_lower
+                for c in [sc.candidate for sc in retained]
+            )
+            has_drug_grounding = (not case.expected_drugs) or any(
+                d.lower() in cl_lower for d in case.expected_drugs
+            )
 
             if has_text_grounding and has_drug_grounding:
                 claim_verification.append("SUPPORTED")
@@ -309,23 +354,45 @@ def run_pipeline_case(
 
         # Valid citations are those whose documents match the query topic/drug
         valid_citations = sum(
-            1 for doc_id in citations
-            if (not case.expected_drugs) or any(d.lower() in doc_id.lower() or any(d.lower() in c.candidate.text.lower() for c in retained if c.candidate.document_id == doc_id) for d in case.expected_drugs)
+            1
+            for doc_id in citations
+            if (not case.expected_drugs)
+            or any(
+                d.lower() in doc_id.lower()
+                or any(
+                    d.lower() in c.candidate.text.lower()
+                    for c in retained
+                    if c.candidate.document_id == doc_id
+                )
+                for d in case.expected_drugs
+            )
         )
         citation_precision = round(valid_citations / max(len(citations), 1), 4)
         citation_recall = round(valid_citations / max(len(case.expected_drugs or [1]), 1), 4)
         citation_recall = min(1.0, citation_recall)
 
         p0_cited = len(p0_doc_ids)
-        p0_claim_support = sum(1 for c_str in claims if any(p0_id.lower() in c_str.lower() for p0_id in p0_doc_ids))
+        p0_claim_support = sum(
+            1 for c_str in claims if any(p0_id.lower() in c_str.lower() for p0_id in p0_doc_ids)
+        )
 
     total_latency_ms = round((time.perf_counter() - start_t) * 1000, 3)
     ans_hash = _sha256_text(answer)
 
     # Retrieval metrics calculation
     relevant_retrieved = sum(
-        1 for doc_id in retained_doc_ids
-        if (not case.expected_drugs) or any(d.lower() in doc_id.lower() or any(d.lower() in c.candidate.text.lower() for c in retained if c.candidate.document_id == doc_id) for d in case.expected_drugs)
+        1
+        for doc_id in retained_doc_ids
+        if (not case.expected_drugs)
+        or any(
+            d.lower() in doc_id.lower()
+            or any(
+                d.lower() in c.candidate.text.lower()
+                for c in retained
+                if c.candidate.document_id == doc_id
+            )
+            for d in case.expected_drugs
+        )
     )
     p_at_5 = round(relevant_retrieved / 5.0, 4)
     r_at_5 = round(relevant_retrieved / max(len(case.expected_drugs or [1]), 1), 4)
@@ -353,7 +420,10 @@ def run_pipeline_case(
         "p0_claim_support_count": p0_claim_support,
         "retrieval_scores": [round(sc.rrf_score, 4) for sc in scored_candidates],
         "trust_scores": trust_scores,
-        "evidence_eligibility": [c.chunk_id in [r.candidate.chunk_id for r in retained] for c in [sc.candidate for sc in scored_candidates]],
+        "evidence_eligibility": [
+            c.chunk_id in [r.candidate.chunk_id for r in retained]
+            for c in [sc.candidate for sc in scored_candidates]
+        ],
         "generated_answer": answer,
         "generated_answer_hash": ans_hash,
         "claims": claims,
@@ -373,7 +443,9 @@ def run_pipeline_case(
     }
 
 
-def compute_paired_statistics(f0_cases: list[dict], f1_cases: list[dict], metric_key: str) -> dict[str, Any]:
+def compute_paired_statistics(
+    f0_cases: list[dict], f1_cases: list[dict], metric_key: str
+) -> dict[str, Any]:
     """Compute paired Wilcoxon signed-rank test, Cohen's dz, and bootstrap 95% CI."""
     f0_map = {c["case_id"]: c[metric_key] for c in f0_cases}
     f1_map = {c["case_id"]: c[metric_key] for c in f1_cases}
@@ -402,7 +474,10 @@ def compute_paired_statistics(f0_cases: list[dict], f1_cases: list[dict], metric
     if n_nz >= 3:
         try:
             import scipy.stats
-            res = scipy.stats.wilcoxon(f1_vals, f0_vals, alternative="two-sided", zero_method="wilcox")
+
+            res = scipy.stats.wilcoxon(
+                f1_vals, f0_vals, alternative="two-sided", zero_method="wilcox"
+            )
             wilcoxon_p = float(res.pvalue)
         except Exception:
             # Pure-Python Wilcoxon rank-sum normal approximation
@@ -425,7 +500,14 @@ def compute_paired_statistics(f0_cases: list[dict], f1_cases: list[dict], metric
             if var_w > 0:
                 z = (w_stat - mean_w + 0.5) / math.sqrt(var_w)
                 t_val = 1.0 / (1.0 + 0.3275911 * abs(z))
-                poly = t_val * (0.254829592 + t_val * (-0.284496736 + t_val * (1.421413741 + t_val * (-1.453152027 + t_val * 1.061405429))))
+                poly = t_val * (
+                    0.254829592
+                    + t_val
+                    * (
+                        -0.284496736
+                        + t_val * (1.421413741 + t_val * (-1.453152027 + t_val * 1.061405429))
+                    )
+                )
                 wilcoxon_p = float(2.0 * poly * math.exp(-z * z / 2.0))
 
     # Paired bootstrap 95% CI (1000 resamples)
@@ -455,10 +537,24 @@ def compute_paired_statistics(f0_cases: list[dict], f1_cases: list[dict], metric
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="F0 vs F1 Real Case-Level Evidence Contribution Experiment")
-    parser.add_argument("--dataset", choices=["smoke", "dev", "val"], default="smoke", help="Evaluation dataset split")
-    parser.add_argument("--mode", choices=["deterministic-mock", "live"], default="deterministic-mock", help="Pipeline execution mode")
-    parser.add_argument("--output", default="experiments/runs/f0-f1-v2", help="Output directory for experiment run")
+    parser = argparse.ArgumentParser(
+        description="F0 vs F1 Real Case-Level Evidence Contribution Experiment"
+    )
+    parser.add_argument(
+        "--dataset",
+        choices=["smoke", "dev", "val"],
+        default="smoke",
+        help="Evaluation dataset split",
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["deterministic-mock", "live"],
+        default="deterministic-mock",
+        help="Pipeline execution mode",
+    )
+    parser.add_argument(
+        "--output", default="experiments/runs/f0-f1-v2", help="Output directory for experiment run"
+    )
     args = parser.parse_args()
 
     out_dir = ROOT_DIR / Path(args.output)
@@ -489,7 +585,9 @@ def main() -> int:
     f1_corpus = base_candidates + p0_candidates
 
     print(f"[CORPUS] F0 Base Corpus Candidates: {len(f0_corpus)}")
-    print(f"[CORPUS] F1 Augmented Corpus Candidates: {len(f1_corpus)} ({len(p0_candidates)} P0 records)")
+    print(
+        f"[CORPUS] F1 Augmented Corpus Candidates: {len(f1_corpus)} ({len(p0_candidates)} P0 records)"
+    )
 
     # 3. Initialize Shared Components
     embedding_model = SimpleEmbeddingModel()
@@ -585,27 +683,85 @@ def main() -> int:
         "statistics": statistics_results,
     }
     (out_dir / "summary.json").write_text(json.dumps(summary_data, indent=2), encoding="utf-8")
-    (out_dir / "statistics.json").write_text(json.dumps(statistics_results, indent=2), encoding="utf-8")
+    (out_dir / "statistics.json").write_text(
+        json.dumps(statistics_results, indent=2), encoding="utf-8"
+    )
 
     # Detailed partitioned reports
     (out_dir / "retrieval_results.json").write_text(
-        json.dumps([{"case_id": r["case_id"], "variant": r["variant"], "precision_at_5": r["precision_at_5"], "recall_at_5": r["recall_at_5"], "p0_retrieved": r["p0_retrieved_count"]} for r in f0_results + f1_results], indent=2),
+        json.dumps(
+            [
+                {
+                    "case_id": r["case_id"],
+                    "variant": r["variant"],
+                    "precision_at_5": r["precision_at_5"],
+                    "recall_at_5": r["recall_at_5"],
+                    "p0_retrieved": r["p0_retrieved_count"],
+                }
+                for r in f0_results + f1_results
+            ],
+            indent=2,
+        ),
         encoding="utf-8",
     )
     (out_dir / "generation_results.json").write_text(
-        json.dumps([{"case_id": r["case_id"], "variant": r["variant"], "answer_hash": r["generated_answer_hash"], "abstained": r["abstained"]} for r in f0_results + f1_results], indent=2),
+        json.dumps(
+            [
+                {
+                    "case_id": r["case_id"],
+                    "variant": r["variant"],
+                    "answer_hash": r["generated_answer_hash"],
+                    "abstained": r["abstained"],
+                }
+                for r in f0_results + f1_results
+            ],
+            indent=2,
+        ),
         encoding="utf-8",
     )
     (out_dir / "verification_results.json").write_text(
-        json.dumps([{"case_id": r["case_id"], "variant": r["variant"], "faithfulness": r["faithfulness"], "hallucination_rate": r["hallucination_rate"]} for r in f0_results + f1_results], indent=2),
+        json.dumps(
+            [
+                {
+                    "case_id": r["case_id"],
+                    "variant": r["variant"],
+                    "faithfulness": r["faithfulness"],
+                    "hallucination_rate": r["hallucination_rate"],
+                }
+                for r in f0_results + f1_results
+            ],
+            indent=2,
+        ),
         encoding="utf-8",
     )
     (out_dir / "citation_results.json").write_text(
-        json.dumps([{"case_id": r["case_id"], "variant": r["variant"], "citation_precision": r["citation_precision"], "citations": r["citations"]} for r in f0_results + f1_results], indent=2),
+        json.dumps(
+            [
+                {
+                    "case_id": r["case_id"],
+                    "variant": r["variant"],
+                    "citation_precision": r["citation_precision"],
+                    "citations": r["citations"],
+                }
+                for r in f0_results + f1_results
+            ],
+            indent=2,
+        ),
         encoding="utf-8",
     )
     (out_dir / "performance_results.json").write_text(
-        json.dumps([{"case_id": r["case_id"], "variant": r["variant"], "latency_ms": r["latency_ms"], "retrieval_latency_ms": r["retrieval_latency_ms"]} for r in f0_results + f1_results], indent=2),
+        json.dumps(
+            [
+                {
+                    "case_id": r["case_id"],
+                    "variant": r["variant"],
+                    "latency_ms": r["latency_ms"],
+                    "retrieval_latency_ms": r["retrieval_latency_ms"],
+                }
+                for r in f0_results + f1_results
+            ],
+            indent=2,
+        ),
         encoding="utf-8",
     )
 
@@ -619,7 +775,7 @@ def main() -> int:
     auditor = F0F1IntegrityAuditor()
     audit_report = auditor.audit_run_directory(out_dir)
 
-    print(f"\n{'='*70}")
+    print(f"\n{'=' * 70}")
     print(f"F0/F1 INTEGRITY AUDIT VERDICT: {audit_report.verdict}")
     print(f"Paired cases verified: {audit_report.paired_cases}/{len(cases)}")
     print(f"Evidence difference verified: {audit_report.evidence_difference_verified}")

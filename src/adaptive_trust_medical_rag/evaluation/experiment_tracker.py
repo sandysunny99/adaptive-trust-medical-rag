@@ -82,6 +82,12 @@ class ExperimentConfig:
     ablation_variant: str
     prompt_version: str = "v1.0"
     retriever_config: dict[str, Any] = field(default_factory=dict)
+
+    # Phase 8: Research Harness Integration
+    gate_results: dict[str, Any] = field(default_factory=dict)
+    approval_state: str = "PENDING"
+    run_manifest_id: str | None = None
+
     extra: dict[str, Any] = field(default_factory=dict)
 
     def compute_hash(self) -> str:
@@ -115,6 +121,8 @@ class ExperimentConfig:
             "ablation_description": ABLATION_DESCRIPTIONS.get(self.ablation_variant, "custom"),
             "prompt_version": self.prompt_version,
             "config_hash": self.compute_hash(),
+            "approval_state": self.approval_state,
+            "run_manifest_id": self.run_manifest_id or "NONE",
             **{f"trust_weight_{k}": str(v) for k, v in self.trust_weights.items()},
             **{f"retriever_{k}": str(v) for k, v in self.retriever_config.items()},
         }
@@ -319,6 +327,24 @@ class ExperimentTracker:
             self._log_comparison_to_mlflow(parent_run_id, record)
         else:
             self._fallback.log_comparison(parent_run_id, record)
+
+
+    def log_run_manifest(self, manifest: 'RunManifest') -> None:
+        """
+        Phase 8: Save a structured RunManifest alongside the experiment log.
+        """
+        manifest_path = self._log_dir / f"manifest_{manifest.run_id}.json"
+        self._log_dir.mkdir(parents=True, exist_ok=True)
+        manifest_path.write_text(manifest.to_json(), encoding='utf-8')
+
+        if self._mlflow_available:
+            import mlflow  # type: ignore[import-untyped]
+            try:
+                # Log as an artifact if an active run exists
+                if mlflow.active_run():
+                    mlflow.log_artifact(str(manifest_path))
+            except Exception as e:
+                log.warning("Could not log manifest to MLflow artifact store: %s", e)
 
     def load_run_history(self) -> list[dict[str, Any]]:
         """Load all runs from JSONL fallback. Returns [] when MLflow is used."""

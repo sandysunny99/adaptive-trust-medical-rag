@@ -1,0 +1,75 @@
+{
+  "case_id": "e-03",
+  "variant": "R3",
+  "query_hash": "0dfc41e7b877016bf418717f8627256df9335fffa2d9dc0fe6757cc0eabd5a42",
+  "risk_tier": "R2",
+  "claim_type": "Pharmacology",
+  "retrieved_document_ids": [
+    "42678303",
+    "42436620",
+    "42062777",
+    "42096382",
+    "42589388",
+    "42595037",
+    "41840835",
+    "42652867",
+    "42497636",
+    "42667590"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-42678303-001",
+    "chunk-42436620-001",
+    "chunk-42062777-001",
+    "chunk-42096382-001",
+    "chunk-42589388-001",
+    "chunk-42595037-001",
+    "chunk-41840835-001",
+    "chunk-42652867-001",
+    "chunk-42497636-001",
+    "chunk-42667590-001"
+  ],
+  "retrieval_scores": [
+    0.032266458495966696,
+    0.03131881575727918,
+    0.030621785881252923,
+    0.028958333333333336,
+    0.028373015873015873,
+    0.02803379416282642,
+    0.027777777777777776,
+    0.02701252236135957,
+    0.02668564312399929,
+    0.023058884835852007
+  ],
+  "source_types": [
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 93.70180001133122,
+  "channels": [
+    "bm25",
+    "vector",
+    "graph"
+  ]
+}

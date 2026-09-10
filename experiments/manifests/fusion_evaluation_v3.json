@@ -1,0 +1,7 @@
+{
+  "experiment": "Phase 2E Biomedical Reranker Evaluation",
+  "benchmark": "v2.1",
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "cross_encoder_model": "ncbi/MedCPT-Cross-Encoder",
+  "candidate_pool_size": 20
+}

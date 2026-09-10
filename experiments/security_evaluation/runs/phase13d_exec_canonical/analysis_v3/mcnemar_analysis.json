@@ -1,0 +1,11 @@
+{
+  "n00": 0,
+  "n01": 0,
+  "n10": 10,
+  "n11": 10,
+  "discordant_pairs": 10,
+  "exact_p_value": 0.001953125,
+  "test": "Exact two-sided McNemar",
+  "null_hypothesis": "P(BASELINE=UAR, HARDENED=non-UAR) == P(BASELINE=non-UAR, HARDENED=UAR)",
+  "alternative_hypothesis": "The two discordant probabilities differ."
+}

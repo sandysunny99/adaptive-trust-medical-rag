@@ -1,0 +1,160 @@
+[
+  {
+    "case_id": "e-06",
+    "difficulty": "CYP_DDI",
+    "expected": [
+      "42591558"
+    ],
+    "dense_first_rank": 1,
+    "fusion": {
+      "F0": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W1": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W2": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W3": {
+        "rank": 1,
+        "r5": 1.0
+      }
+    }
+  },
+  {
+    "case_id": "e-09",
+    "difficulty": "PARAPHRASE",
+    "expected": [
+      "42438581",
+      "41109285"
+    ],
+    "dense_first_rank": 1,
+    "fusion": {
+      "F0": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W1": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W2": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W3": {
+        "rank": 1,
+        "r5": 1.0
+      }
+    }
+  },
+  {
+    "case_id": "e-12",
+    "difficulty": "MECHANISM",
+    "expected": [
+      "42326111"
+    ],
+    "dense_first_rank": 1,
+    "fusion": {
+      "F0": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W1": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W2": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W3": {
+        "rank": Infinity,
+        "r5": 0.0
+      }
+    }
+  },
+  {
+    "case_id": "e-13",
+    "difficulty": "SYNONYM",
+    "expected": [
+      "42466914",
+      "42528583"
+    ],
+    "dense_first_rank": 1,
+    "fusion": {
+      "F0": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W1": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W2": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W3": {
+        "rank": 1,
+        "r5": 1.0
+      }
+    }
+  },
+  {
+    "case_id": "e-14",
+    "difficulty": "MULTI_ENTITY",
+    "expected": [
+      "42670540"
+    ],
+    "dense_first_rank": 5,
+    "fusion": {
+      "F0": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W1": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W2": {
+        "rank": Infinity,
+        "r5": 0.0
+      },
+      "W3": {
+        "rank": Infinity,
+        "r5": 0.0
+      }
+    }
+  },
+  {
+    "case_id": "e-18",
+    "difficulty": "PARAPHRASE",
+    "expected": [
+      "41711272"
+    ],
+    "dense_first_rank": 1,
+    "fusion": {
+      "F0": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W1": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W2": {
+        "rank": 1,
+        "r5": 1.0
+      },
+      "W3": {
+        "rank": 1,
+        "r5": 1.0
+      }
+    }
+  }
+]

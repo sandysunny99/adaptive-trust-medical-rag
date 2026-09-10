@@ -1,0 +1,1253 @@
+[
+  {
+    "case_id": "r-01",
+    "query": "How does metformin lower blood glucose?",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions metformin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-02",
+    "query": "Does aspirin increase bleeding risk with warfarin?",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-03",
+    "query": "Metabolism of fluconazole via CYP2C9",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-04",
+    "query": "Spironolactone causing high potassium levels",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions spironolactone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-05",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-06",
+    "query": "Lisinopril dosing in renal impairment GFR < 30",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-07",
+    "query": "Role of CYP2C19 in omeprazole clearance",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-08",
+    "query": "Omeprazole interaction with clopidogrel",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-09",
+    "query": "Levothyroxine and iron sulfate co-administration",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42438581",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions levothyroxine and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-10",
+    "query": "ECG monitoring for citalopram",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42326111",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41748094",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41004670",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "40978465",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-11",
+    "query": "Doxorubicin risk for heart failure",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42670540",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42665114",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42663921",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42660303",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-12",
+    "query": "Amiodarone induced interstitial pneumonitis",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42466914",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42359186",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42332214",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42128899",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "41808861",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-13",
+    "query": "Isotretinoin use in females of childbearing age",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-14",
+    "query": "Hepatotoxicity of acetaminophen",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42678243",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42638417",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42631638",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-15",
+    "query": "Monitoring for digoxin toxicity",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42610101",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "42489609",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "40406172",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-16",
+    "query": "Esophageal ulceration risk with alendronate",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "38832136",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      },
+      {
+        "document_id": "27956102",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-17",
+    "query": "Pantoprazole and clopidogrel combination",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-18",
+    "query": "Fluoxetine inhibition of CYP2D6",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-19",
+    "query": "Sertraline safety during pregnancy",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42596979",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions sertraline and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-20",
+    "query": "Gabapentin induced sedation",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42437608",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions gabapentin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-21",
+    "query": "Seizure risk with tramadol",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "41158891",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "41061201",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "40242084",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "38006536",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-22",
+    "query": "Cardiovascular risk of celecoxib",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-23",
+    "query": "Antidote for bleeding caused by rivaroxaban",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-24",
+    "query": "Apixaban dosing in renal impairment",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions apixaban and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-25",
+    "query": "Reversal agent for dabigatran",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-26",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions metformin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-27",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-28",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-29",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions spironolactone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-30",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-31",
+    "query": "Lisinopril dosing in renal impairment GFR < 30 in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-32",
+    "query": "Role of CYP2C19 in omeprazole clearance in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-33",
+    "query": "Omeprazole interaction with clopidogrel in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-34",
+    "query": "Levothyroxine and iron sulfate co-administration in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42438581",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions levothyroxine and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-35",
+    "query": "ECG monitoring for citalopram in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42326111",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41748094",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41004670",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "40978465",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-36",
+    "query": "Doxorubicin risk for heart failure in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42670540",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42665114",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42663921",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42660303",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-37",
+    "query": "Amiodarone induced interstitial pneumonitis in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42466914",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42359186",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42332214",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42128899",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "41808861",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-38",
+    "query": "Isotretinoin use in females of childbearing age in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-39",
+    "query": "Hepatotoxicity of acetaminophen in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42678243",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42638417",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42631638",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-40",
+    "query": "Monitoring for digoxin toxicity in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42610101",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "42489609",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "40406172",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-41",
+    "query": "Esophageal ulceration risk with alendronate in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "38832136",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      },
+      {
+        "document_id": "27956102",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-42",
+    "query": "Pantoprazole and clopidogrel combination in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-43",
+    "query": "Fluoxetine inhibition of CYP2D6 in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-44",
+    "query": "Sertraline safety during pregnancy in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42596979",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions sertraline and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-45",
+    "query": "Gabapentin induced sedation in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42437608",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions gabapentin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-46",
+    "query": "Seizure risk with tramadol in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "41158891",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "41061201",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "40242084",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "38006536",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-47",
+    "query": "Cardiovascular risk of celecoxib in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-48",
+    "query": "Antidote for bleeding caused by rivaroxaban in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-49",
+    "query": "Apixaban dosing in renal impairment in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions apixaban and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-50",
+    "query": "Reversal agent for dabigatran in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-51",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions metformin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-52",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-53",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-54",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions spironolactone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-55",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-56",
+    "query": "Lisinopril dosing in renal impairment GFR < 30 in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-57",
+    "query": "Role of CYP2C19 in omeprazole clearance in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-58",
+    "query": "Omeprazole interaction with clopidogrel in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-59",
+    "query": "Levothyroxine and iron sulfate co-administration in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42438581",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions levothyroxine and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-60",
+    "query": "ECG monitoring for citalopram in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42326111",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41748094",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "41004670",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      },
+      {
+        "document_id": "40978465",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions citalopram and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-61",
+    "query": "Doxorubicin risk for heart failure in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42670540",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42665114",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42663921",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      },
+      {
+        "document_id": "42660303",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions doxorubicin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-62",
+    "query": "Amiodarone induced interstitial pneumonitis in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42466914",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42359186",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42332214",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "42128899",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      },
+      {
+        "document_id": "41808861",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions amiodarone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-63",
+    "query": "Isotretinoin use in females of childbearing age in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-64",
+    "query": "Hepatotoxicity of acetaminophen in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42678243",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42638417",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      },
+      {
+        "document_id": "42631638",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions acetaminophen and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-65",
+    "query": "Monitoring for digoxin toxicity in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42610101",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "42489609",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      },
+      {
+        "document_id": "40406172",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions digoxin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-66",
+    "query": "Esophageal ulceration risk with alendronate in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "38832136",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      },
+      {
+        "document_id": "27956102",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions alendronate and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-67",
+    "query": "Pantoprazole and clopidogrel combination in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-68",
+    "query": "Fluoxetine inhibition of CYP2D6 in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-69",
+    "query": "Sertraline safety during pregnancy in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42596979",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions sertraline and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-70",
+    "query": "Gabapentin induced sedation in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42437608",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions gabapentin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-71",
+    "query": "Seizure risk with tramadol in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "41158891",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "41061201",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "40242084",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      },
+      {
+        "document_id": "38006536",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions tramadol and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-72",
+    "query": "Cardiovascular risk of celecoxib in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-73",
+    "query": "Antidote for bleeding caused by rivaroxaban in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-74",
+    "query": "Apixaban dosing in renal impairment in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions apixaban and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-75",
+    "query": "Reversal agent for dabigatran in clinical settings",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-76",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions metformin and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-77",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-78",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r-79",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PubMed_Central",
+        "evidence_note": "Mentions spironolactone and related terms."
+      }
+    ]
+  },
+  {
+    "case_id": "r-80",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  }
+]

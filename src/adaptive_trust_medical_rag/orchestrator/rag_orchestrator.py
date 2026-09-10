@@ -31,6 +31,12 @@ import hashlib
 import re
 import uuid
 from dataclasses import dataclass, field
+from adaptive_trust_medical_rag.security.security_context import SecurityDecision, SecurityState, SecurityContext
+from adaptive_trust_medical_rag.security_extensions.injection_detector import PromptInjectionDetector
+from adaptive_trust_medical_rag.security_extensions.poisoning_detector import RetrievalPoisoningDetector
+from adaptive_trust_medical_rag.security_extensions.boundary_enforcer import AuthorizationBoundary, EntityDomain, ActionType
+from adaptive_trust_medical_rag.security.agent_action import parse_action_request, ActionParseError, AgentActionRequest
+from adaptive_trust_medical_rag.security.tool_executor import ToolExecutor
 from datetime import UTC, datetime
 from enum import Enum
 from typing import Protocol, runtime_checkable
@@ -146,6 +152,7 @@ class RAGResponse:
     gate_decision: str
     verification_report: VerificationReport | None
     audit_log: dict
+    security_events: list[SecurityDecision] = field(default_factory=list)
     generated_at: datetime = field(default_factory=lambda: datetime.now(UTC))
 
     @property
@@ -251,6 +258,7 @@ class EvidenceEligibilityGate:
         candidates: list[ScoredCandidate],
         risk_tier: str,
         trust_scores: dict[str, float],
+        retrieval_security_states: dict[str, SecurityDecision] | None = None,
     ) -> EvidenceEligibilityResult:
         """
         Evaluate candidates and return eligible + rejected sets.
@@ -272,6 +280,12 @@ class EvidenceEligibilityGate:
             if cand.poisoning_score > 0.4:
                 rejected_ids.append(cand.chunk_id)
                 continue
+            # Security gate
+            if retrieval_security_states and cand.chunk_id in retrieval_security_states:
+                sec_state = retrieval_security_states[cand.chunk_id].decision
+                if sec_state == SecurityState.BLOCK:
+                    rejected_ids.append(cand.chunk_id)
+                    continue
             # Trust gate
             if trust < threshold:
                 rejected_ids.append(cand.chunk_id)
@@ -334,6 +348,10 @@ class AdaptiveTrustRAGOrchestrator:
         drug_relationships: list[DrugRelationship] | None = None,
     ) -> None:
         self._trust_scorer = AdaptiveTrustScorer()
+        self._prompt_detector = PromptInjectionDetector()
+        self._poisoning_detector = RetrievalPoisoningDetector()
+        self._auth_boundary = AuthorizationBoundary()
+        self._tool_executor = ToolExecutor()
         self._eligibility_gate = EvidenceEligibilityGate()
 
         # Retrieval engine — add knowledge graph edges if provided
@@ -348,59 +366,68 @@ class AdaptiveTrustRAGOrchestrator:
 
     def query(self, request: RAGRequest) -> RAGResponse:
         """
-        Process a clinical query through the full 12-step pipeline.
-
-        Returns a RAGResponse with answer, confidence, and audit log.
-        All audit fields are PHI-free (query stored as hash only).
+        Execute the end-to-end Adaptive Trust-Aware RAG pipeline.
         """
-        session_id = request.session_id
-        audit: dict = {
-            "session_id": session_id,
-            "pipeline_version": "12.0",
-            "steps": [],
-        }
+        import uuid
+        session_id = request.session_id or f"sess_{uuid.uuid4().hex[:8]}"
+        request_id = f"req_{uuid.uuid4().hex[:8]}"
+        
+        security_context = SecurityContext(
+            request_id=request_id,
+            session_id=session_id,
+            principal="USER"
+        )
+        
+        audit: list[dict[str, Any]] = []
 
         def _log(step: str, detail: dict) -> None:
-            audit["steps"].append({"step": step, "ts": datetime.now(UTC).isoformat(), **detail})
+            audit.append({"step": step, "detail": detail})
 
-        # ── Step 1: Input sanitization & injection defense ────────────────────
-        sanitized_result = sanitize_query(request.query)
-        sanitized_query = sanitized_result.sanitized
+        _log("session_start", {"session_id": session_id})
+
+        # Phase 14: Step 1.5 - Prompt Injection Detection (BEFORE processing)
+        # Using simple query, not yet sanitized, for injection detection
+        injection_decision = self._prompt_detector.inspect(request.query, request_id)
+        security_context.injection_status = injection_decision
+        security_context.add_decision(injection_decision)
+        _log("prompt_injection_detection", {"decision": injection_decision.decision.value, "reason": injection_decision.reason_code})
+        
+        if injection_decision.decision == SecurityState.BLOCK:
+            return self._abstain(
+                session_id=session_id,
+                query_hash=hashlib.sha256(request.query.encode()).hexdigest(),
+                risk_tier="R3",  # default high risk for malicious requests
+                reason="Query blocked due to security policy (Prompt Injection).",
+                audit=audit,
+                security_context=security_context
+            )
+
+        # 🚀 Step 1: Input sanitization
+        sanitization_result = sanitize_query(request.query)
+        sanitized_query = sanitization_result.sanitized
+
         query_hash = hashlib.sha256(sanitized_query.encode()).hexdigest()
-        injection_check = inspect_for_poisoning(request.query)
+        _log("sanitization", {"query_hash": query_hash})
 
-        _log(
-            "sanitization",
-            {
-                "query_hash": query_hash,
-                "injection_score": injection_check.score,
-                "injection_findings": injection_check.findings,
-            },
-        )
-
-        if injection_check.is_quarantined:
-            _log("injection_gate", {"decision": "abstain", "reason": "Query flagged as injection"})
+        if sanitization_result.rejected:
+            # Re-evaluate with injection detector explicitly logging block
             return self._abstain(
                 session_id=session_id,
                 query_hash=query_hash,
-                risk_tier="R3",
-                reason=(
-                    f"Query contains prompt-injection signals (score={injection_check.score:.2f})."
-                ),
+                risk_tier="R0",
+                reason="Query rejected by security sanitizer.",
                 audit=audit,
+                security_context=security_context
             )
 
-        # ── Step 2: Drug entity normalization ────────────────────────────────
-        query_drugs: list[str] = []
+        # 🚀 Step 2: Drug entity normalization
         if self._drug_normalizer:
             query_drugs = self._drug_normalizer.normalize(sanitized_query)
         else:
-            # Fallback: simple pattern extraction from query
             query_drugs = self._extract_drugs_simple(sanitized_query)
+        _log("entity_normalization", {"drugs": query_drugs})
 
-        _log("drug_normalization", {"normalized_drugs": query_drugs})
-
-        # ── Step 3: Risk classification ───────────────────────────────────────
+        # 🚀 Step 3: Query risk classification
         if request.risk_tier_override:
             risk_tier = request.risk_tier_override
         else:
@@ -408,7 +435,7 @@ class AdaptiveTrustRAGOrchestrator:
 
         _log("risk_classification", {"risk_tier": risk_tier})
 
-        # ── Step 4: Hybrid retrieval (BM25 + Vector + Graph + RRF) ───────────
+        # 🚀 Step 4: Hybrid retrieval
         candidates = self._retrieval.retrieve(
             query=sanitized_query,
             query_drugs=query_drugs,
@@ -422,8 +449,17 @@ class AdaptiveTrustRAGOrchestrator:
                 "chunk_ids": [sc.candidate.chunk_id for sc in candidates],
             },
         )
+        
+        # Phase 14: Step 4.5 - Retrieval Poisoning Detection
+        retrieval_security_states = {}
+        for sc in candidates:
+            cand = sc.candidate
+            poison_dec = self._poisoning_detector.inspect_provenance(cand.metadata.get("provenance", {}), cand.chunk_id, request_id)
+            retrieval_security_states[cand.chunk_id] = poison_dec
+            security_context.add_decision(poison_dec)
+        security_context.retrieval_security_states = retrieval_security_states
 
-        # ── Step 5: Adaptive trust scoring ───────────────────────────────────
+        # 🚀 Step 5: Adaptive trust scoring
         trust_scores: dict[str, float] = {}
         for sc in candidates:
             cand = sc.candidate
@@ -450,8 +486,8 @@ class AdaptiveTrustRAGOrchestrator:
             },
         )
 
-        # ── Step 6: Evidence eligibility gate (pre-generation) ───────────────
-        eligibility = self._eligibility_gate.evaluate(candidates, risk_tier, trust_scores)
+        # 🚀 Step 6: Evidence eligibility gate (pre-generation)
+        eligibility = self._eligibility_gate.evaluate(candidates, risk_tier, trust_scores, retrieval_security_states)
 
         _log(
             "evidence_eligibility_gate",
@@ -470,17 +506,91 @@ class AdaptiveTrustRAGOrchestrator:
                 risk_tier=risk_tier,
                 reason=eligibility.reason or "Evidence eligibility gate failed.",
                 audit=audit,
+                security_context=security_context
             )
 
         eligible_candidates = eligibility.eligible_chunks
 
-        # ── Step 7: Grounded LLM generation ──────────────────────────────────
+
+
+        # 🚀 Step 7: Grounded LLM generation
         prompt = build_grounded_prompt(sanitized_query, risk_tier, eligible_candidates)
         raw_answer = self._llm.generate(prompt)
 
         _log("llm_generation", {"prompt_length": len(prompt), "answer_length": len(raw_answer)})
 
-        # ── Step 8: Answer safety gate (post-generation) ─────────────────────
+        # 🚀 Step 7.5: Classify Output (Claim vs Action)
+        # FAIL-CLOSED: malformed/unknown actions -> controlled abstention, never fallback
+        try:
+            action_request = parse_action_request(
+                llm_output=raw_answer,
+                principal=security_context.principal,
+                request_id=request_id,
+            )
+        except ActionParseError as e:
+            _log("action_parse_error", {"error": str(e)})
+            return self._abstain(
+                session_id=session_id,
+                query_hash=query_hash,
+                risk_tier=risk_tier,
+                reason=f"Invalid action request in LLM output: {e}",
+                audit=audit,
+                security_context=security_context
+            )
+        
+        if action_request is not None:
+            _log("action_request_parsed", {
+                "action_type": action_request.action_type.value,
+                "domain": action_request.entity_domain.value,
+                "principal": action_request.principal,
+            })
+            
+            auth_decision = self._auth_boundary.authorize(
+                domain=action_request.entity_domain,
+                action=action_request.action_type,
+                request_id=request_id,
+                principal=action_request.principal
+            )
+            security_context.authorization_states.append(auth_decision)
+            security_context.add_decision(auth_decision)
+            _log("authorization_decision", {
+                "decision": auth_decision.decision.value,
+                "reason": auth_decision.reason_code,
+            })
+            
+            if auth_decision.decision == SecurityState.UNAUTHORIZED_ACTION_REJECTED:
+                return self._abstain(
+                    session_id=session_id,
+                    query_hash=query_hash,
+                    risk_tier=risk_tier,
+                    reason=f"Authorization Boundary Blocked Action: {action_request.action_type.value} on {action_request.entity_domain.value}.",
+                    audit=audit,
+                    security_context=security_context
+                )
+            
+            # Authorized — execute via controlled executor
+            exec_record = self._tool_executor.execute(action_request)
+            _log("tool_execution", {
+                "action_type": exec_record.action_type,
+                "domain": exec_record.entity_domain,
+                "success": exec_record.success,
+            })
+            return RAGResponse(
+                session_id=session_id,
+                query_hash=query_hash,
+                risk_tier=risk_tier,
+                status=PipelineStatus.released,
+                answer=f"Tool {exec_record.action_type} executed on {exec_record.entity_domain}.",
+                confidence=1.0,
+                trust_scores=list(trust_scores.values()),
+                retrieved_chunk_ids=[sc.candidate.chunk_id for sc in eligible_candidates],
+                gate_decision="tool_executed",
+                verification_report=None,
+                audit_log=audit,
+                security_events=security_context.cumulative_decisions
+            )
+
+        # 🚀 Step 8: Answer safety gate (post-generation)
         evidence_chunks = [
             EvidenceChunk(
                 chunk_id=sc.candidate.chunk_id,
@@ -505,7 +615,7 @@ class AdaptiveTrustRAGOrchestrator:
             },
         )
 
-        # ── Step 9: Final answer formatting ──────────────────────────────────
+        # 🚀 Step 9: Final answer formatting
 
         if verification.decision == GateDecision.abstain:
             return self._abstain(
@@ -517,6 +627,7 @@ class AdaptiveTrustRAGOrchestrator:
                 verification=verification,
                 trust_scores=list(trust_scores.values()),
                 chunk_ids=[sc.candidate.chunk_id for sc in eligible_candidates],
+                security_context=security_context
             )
 
         final_answer = (
@@ -543,7 +654,10 @@ class AdaptiveTrustRAGOrchestrator:
             gate_decision=verification.decision.value,
             verification_report=verification,
             audit_log=audit,
+            security_events=security_context.cumulative_decisions
         )
+
+
 
     # ── Internal helpers ──────────────────────────────────────────────────────
 
@@ -558,6 +672,7 @@ class AdaptiveTrustRAGOrchestrator:
         verification: VerificationReport | None = None,
         trust_scores: list[float] | None = None,
         chunk_ids: list[str] | None = None,
+        security_context: SecurityContext | None = None,
     ) -> RAGResponse:
         """Return a structured abstention response."""
         threshold = EvidenceEligibilityGate.TIER_THRESHOLDS.get(risk_tier, 0.45)
@@ -578,6 +693,7 @@ class AdaptiveTrustRAGOrchestrator:
             gate_decision="abstain",
             verification_report=verification,
             audit_log=audit,
+            security_events=security_context.cumulative_decisions if security_context else []
         )
 
     @staticmethod

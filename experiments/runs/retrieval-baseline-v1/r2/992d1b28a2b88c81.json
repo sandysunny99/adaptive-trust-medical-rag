@@ -1,0 +1,42 @@
+{
+  "case_id": "992d1b28a2b88c81",
+  "variant": "R2",
+  "query_hash": "dummy_hash",
+  "risk_tier": "R3",
+  "claim_type": "DDI_ADE",
+  "retrieved_document_ids": [
+    "chunk-metformin-001"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-metformin-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082
+  ],
+  "source_types": [
+    "unknown"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "chunk-metformin-001"
+  ],
+  "relevant_retrieved_ids": [
+    "chunk-metformin-001"
+  ],
+  "first_relevant_rank": 1,
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "precision_at_5": 1.0,
+    "mrr": 1.0,
+    "ndcg_at_5": 1.0,
+    "drug_entity_recall": 0.0,
+    "interaction_evidence_recall": 0.0,
+    "ade_evidence_recall": 0.0,
+    "high_risk_evidence_recall": 0.0,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 10.0
+}

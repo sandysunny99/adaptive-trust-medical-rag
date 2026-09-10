@@ -1,0 +1,7 @@
+{
+  "dataset_version": "v3.1",
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "cross_encoder_model": "ncbi/MedCPT-Cross-Encoder",
+  "candidate_pool_size": 20,
+  "positive_case_count": 75
+}

@@ -1,0 +1,11 @@
+{
+  "annotation_source": "AI_DIAGNOSTIC",
+  "ground_truth_eligible": false,
+  "cases_processed": 10,
+  "documents_processed": 248,
+  "rows_processed": 2480,
+  "direct_support_suggestions": 2,
+  "partial_support_suggestions": 2,
+  "insufficient_source_text_records": 649,
+  "generated_at": "2026-09-03T05:48:31.072611+00:00"
+}

@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-023",
+  "population_size": 241,
+  "sample_size": 12,
+  "sampling_seed": 71826569,
+  "sampled_document_ids": [
+    "29262813",
+    "41858685",
+    "42676937",
+    "38758406",
+    "42192153",
+    "41098965",
+    "42293737",
+    "27956102",
+    "42661734",
+    "41833262",
+    "40406172",
+    "42663925"
+  ],
+  "screening_results": [
+    {
+      "document_id": "29262813",
+      "title": "Renoprotective RAAS inhibition does not affect the association between worse renal function and higher plasma aldosterone levels.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41858685",
+      "title": "Impact of nutrition education intervention on dietary intake among pregnant women with hypothyroidism - A randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42676937",
+      "title": "Evaluation of acne vulgaris patient care in outpatient clinics: guideline adherence and patient education.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38758406",
+      "title": "Screening for ferroptosis genes related to endometrial carcinoma and predicting of targeted drugs based on bioinformatics.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42192153",
+      "title": "Folic acid attenuates maternal sertraline-induced hepatic injury in rat offspring.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41098965",
+      "title": "Procoagulant off-target effect of the direct oral anticoagulant reversal agent Andexanet alfa.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42293737",
+      "title": "A UK-wide analysis of the use of reversal agents in 198 patients on direct oral anticoagulants prior to urgent procedures.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "27956102",
+      "title": "Pharyngolaryngeal ulcers associated with the improper use of alendronate.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42661734",
+      "title": "Sex-specific effects of resveratrol and metformin on mitochondrial function and inflammatory activation in a TNF-\u03b1-driven human iPSC-derived endothelial dysfunction model.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41833262",
+      "title": "Pearls and Pitfalls for the Emergency Clinician: Beta Blocker and Calcium Channel Blocker Toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40406172",
+      "title": "Digoxin for Fetal Tachyarrhythmia: Toxicity in an Underweight Mother.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42663925",
+      "title": "Selective and Time-Dependent Alterations in Cytochrome P450 (CYP) Enzyme Activity and Expression by Major Phytocannabinoids.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

@@ -1,0 +1,1610 @@
+[
+  {
+    "case_id": "e-v3-001",
+    "query": "Mechanism of action of metformin",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-001"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-001-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-002",
+    "query": "Drug interactions with metformin",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-002"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-002-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-003",
+    "query": "Adverse effects of metformin",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-003"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-003-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-004",
+    "query": "Is metformin safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-004"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-004-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-005",
+    "query": "Mechanism of action of atorvastatin",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-005"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-005-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-006",
+    "query": "Drug interactions with atorvastatin",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-006"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-006-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-007",
+    "query": "Adverse effects of atorvastatin",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-007"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-007-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-008",
+    "query": "Is atorvastatin safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-008"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-008-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-009",
+    "query": "Mechanism of action of amlodipine",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-009"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-009-001"
+    ],
+    "expected_entity_ids": [
+      "amlodipine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-010",
+    "query": "Drug interactions with amlodipine",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-010"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-010-001"
+    ],
+    "expected_entity_ids": [
+      "amlodipine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-011",
+    "query": "Adverse effects of amlodipine",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-011"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-011-001"
+    ],
+    "expected_entity_ids": [
+      "amlodipine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-012",
+    "query": "Is amlodipine safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-012"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-012-001"
+    ],
+    "expected_entity_ids": [
+      "amlodipine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-013",
+    "query": "Mechanism of action of lisinopril",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-013"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-013-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-014",
+    "query": "Drug interactions with lisinopril",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-014"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-014-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-015",
+    "query": "Adverse effects of lisinopril",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-015"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-015-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-016",
+    "query": "Is lisinopril safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-016"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-016-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-017",
+    "query": "Mechanism of action of omeprazole",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-017"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-017-001"
+    ],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-018",
+    "query": "Drug interactions with omeprazole",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-018"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-018-001"
+    ],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-019",
+    "query": "Adverse effects of omeprazole",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-019"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-019-001"
+    ],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-020",
+    "query": "Is omeprazole safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-020"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-020-001"
+    ],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-021",
+    "query": "Mechanism of action of levothyroxine",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-021"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-021-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-022",
+    "query": "Drug interactions with levothyroxine",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-022"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-022-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-023",
+    "query": "Adverse effects of levothyroxine",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-023"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-023-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-024",
+    "query": "Is levothyroxine safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-024"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-024-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-025",
+    "query": "Mechanism of action of losartan",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-025"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-025-001"
+    ],
+    "expected_entity_ids": [
+      "losartan"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-026",
+    "query": "Drug interactions with losartan",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-026"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-026-001"
+    ],
+    "expected_entity_ids": [
+      "losartan"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-027",
+    "query": "Adverse effects of losartan",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-027"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-027-001"
+    ],
+    "expected_entity_ids": [
+      "losartan"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-028",
+    "query": "Is losartan safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-028"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-028-001"
+    ],
+    "expected_entity_ids": [
+      "losartan"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-029",
+    "query": "Mechanism of action of gabapentin",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-029"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-029-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-030",
+    "query": "Drug interactions with gabapentin",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-030"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-030-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-031",
+    "query": "Adverse effects of gabapentin",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-031"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-031-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-032",
+    "query": "Is gabapentin safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-032"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-032-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-033",
+    "query": "Mechanism of action of sertraline",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-033"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-033-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-034",
+    "query": "Drug interactions with sertraline",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-034"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-034-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-035",
+    "query": "Adverse effects of sertraline",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-035"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-035-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-036",
+    "query": "Is sertraline safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-036"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-036-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-037",
+    "query": "Mechanism of action of furosemide",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-037"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-037-001"
+    ],
+    "expected_entity_ids": [
+      "furosemide"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-038",
+    "query": "Drug interactions with furosemide",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-038"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-038-001"
+    ],
+    "expected_entity_ids": [
+      "furosemide"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-039",
+    "query": "Adverse effects of furosemide",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-039"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-039-001"
+    ],
+    "expected_entity_ids": [
+      "furosemide"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-040",
+    "query": "Is furosemide safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-040"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-040-001"
+    ],
+    "expected_entity_ids": [
+      "furosemide"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-041",
+    "query": "Mechanism of action of pantoprazole",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-041"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-041-001"
+    ],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-042",
+    "query": "Drug interactions with pantoprazole",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-042"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-042-001"
+    ],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-043",
+    "query": "Adverse effects of pantoprazole",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-043"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-043-001"
+    ],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-044",
+    "query": "Is pantoprazole safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-044"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-044-001"
+    ],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-045",
+    "query": "Mechanism of action of escitalopram",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-045"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-045-001"
+    ],
+    "expected_entity_ids": [
+      "escitalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-046",
+    "query": "Drug interactions with escitalopram",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-046"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-046-001"
+    ],
+    "expected_entity_ids": [
+      "escitalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-047",
+    "query": "Adverse effects of escitalopram",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-047"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-047-001"
+    ],
+    "expected_entity_ids": [
+      "escitalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-048",
+    "query": "Is escitalopram safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-048"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-048-001"
+    ],
+    "expected_entity_ids": [
+      "escitalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-049",
+    "query": "Mechanism of action of fluoxetine",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-049"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-049-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-050",
+    "query": "Drug interactions with fluoxetine",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-050"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-050-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-051",
+    "query": "Adverse effects of fluoxetine",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-051"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-051-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-052",
+    "query": "Is fluoxetine safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-052"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-052-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-053",
+    "query": "Mechanism of action of citalopram",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-045",
+      "v3doc_e-v3-053"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-045-001",
+      "chunk-v3doc_e-v3-053-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-054",
+    "query": "Drug interactions with citalopram",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-054",
+      "v3doc_e-v3-046"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-054-001",
+      "chunk-v3doc_e-v3-046-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-055",
+    "query": "Adverse effects of citalopram",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-055",
+      "v3doc_e-v3-047"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-055-001",
+      "chunk-v3doc_e-v3-047-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-056",
+    "query": "Is citalopram safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-048",
+      "v3doc_e-v3-056"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-048-001",
+      "chunk-v3doc_e-v3-056-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-057",
+    "query": "Mechanism of action of duloxetine",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-057"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-057-001"
+    ],
+    "expected_entity_ids": [
+      "duloxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-058",
+    "query": "Drug interactions with duloxetine",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-058"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-058-001"
+    ],
+    "expected_entity_ids": [
+      "duloxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-059",
+    "query": "Adverse effects of duloxetine",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-059"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-059-001"
+    ],
+    "expected_entity_ids": [
+      "duloxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-060",
+    "query": "Is duloxetine safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-060"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-060-001"
+    ],
+    "expected_entity_ids": [
+      "duloxetine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-061",
+    "query": "Mechanism of action of venlafaxine",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-061"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-061-001"
+    ],
+    "expected_entity_ids": [
+      "venlafaxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-062",
+    "query": "Drug interactions with venlafaxine",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-062"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-062-001"
+    ],
+    "expected_entity_ids": [
+      "venlafaxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-063",
+    "query": "Adverse effects of venlafaxine",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-063"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-063-001"
+    ],
+    "expected_entity_ids": [
+      "venlafaxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-064",
+    "query": "Is venlafaxine safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-064"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-064-001"
+    ],
+    "expected_entity_ids": [
+      "venlafaxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-065",
+    "query": "Mechanism of action of bupropion",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-065"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-065-001"
+    ],
+    "expected_entity_ids": [
+      "bupropion"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-066",
+    "query": "Drug interactions with bupropion",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-066"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-066-001"
+    ],
+    "expected_entity_ids": [
+      "bupropion"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-067",
+    "query": "Adverse effects of bupropion",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-067"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-067-001"
+    ],
+    "expected_entity_ids": [
+      "bupropion"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-068",
+    "query": "Is bupropion safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-068"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-068-001"
+    ],
+    "expected_entity_ids": [
+      "bupropion"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-069",
+    "query": "Mechanism of action of trazodone",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-069"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-069-001"
+    ],
+    "expected_entity_ids": [
+      "trazodone"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-070",
+    "query": "Drug interactions with trazodone",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-070"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-070-001"
+    ],
+    "expected_entity_ids": [
+      "trazodone"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-071",
+    "query": "Adverse effects of trazodone",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-071"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-071-001"
+    ],
+    "expected_entity_ids": [
+      "trazodone"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-072",
+    "query": "Is trazodone safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-072"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-072-001"
+    ],
+    "expected_entity_ids": [
+      "trazodone"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-073",
+    "query": "Mechanism of action of alprazolam",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-073"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-073-001"
+    ],
+    "expected_entity_ids": [
+      "alprazolam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-074",
+    "query": "Drug interactions with alprazolam",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-074"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-074-001"
+    ],
+    "expected_entity_ids": [
+      "alprazolam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-075",
+    "query": "Adverse effects of alprazolam",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-075"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-075-001"
+    ],
+    "expected_entity_ids": [
+      "alprazolam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-076",
+    "query": "Is alprazolam safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-076"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-076-001"
+    ],
+    "expected_entity_ids": [
+      "alprazolam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-077",
+    "query": "Mechanism of action of clonazepam",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-077"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-077-001"
+    ],
+    "expected_entity_ids": [
+      "clonazepam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-078",
+    "query": "Drug interactions with clonazepam",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "v3doc_e-v3-078"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-078-001"
+    ],
+    "expected_entity_ids": [
+      "clonazepam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-079",
+    "query": "Adverse effects of clonazepam",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "v3doc_e-v3-079"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-079-001"
+    ],
+    "expected_entity_ids": [
+      "clonazepam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-v3-080",
+    "query": "Is clonazepam safe during pregnancy?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "v3doc_e-v3-080"
+    ],
+    "expected_chunk_ids": [
+      "chunk-v3doc_e-v3-080-001"
+    ],
+    "expected_entity_ids": [
+      "clonazepam"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  }
+]

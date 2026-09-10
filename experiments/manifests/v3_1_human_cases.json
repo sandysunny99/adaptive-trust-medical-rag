@@ -1,0 +1,907 @@
+[
+  {
+    "case_id": "v3.1h-001",
+    "query": "How does metformin inhibit hepatic gluconeogenesis?",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "metformin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-002",
+    "query": "Clearance pathway for lisinopril",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "lisinopril"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-003",
+    "query": "CYP enzyme responsible for omeprazole metabolism",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "omeprazole"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-004",
+    "query": "Is levothyroxine absorbed better on an empty stomach?",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "levothyroxine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-005",
+    "query": "Half-life of citalopram",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "citalopram"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-006",
+    "query": "Mechanism of doxorubicin intercalating DNA",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R2",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "doxorubicin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-007",
+    "query": "Amiodarone distribution in adipose tissue",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "amiodarone"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-008",
+    "query": "Isotretinoin mechanism in acne",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "isotretinoin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-009",
+    "query": "Acetaminophen toxic metabolite NAPQI",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R2",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "acetaminophen"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-010",
+    "query": "Digoxin inhibition of Na-K ATPase",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "digoxin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-011",
+    "query": "Alendronate bone resorption inhibition",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "alendronate"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-012",
+    "query": "Pantoprazole proton pump inhibition",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "pantoprazole"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-013",
+    "query": "Fluoxetine active metabolite norfluoxetine",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "fluoxetine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-014",
+    "query": "Sertraline serotonin reuptake blockade",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "sertraline"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-015",
+    "query": "Gabapentin binding to voltage-gated calcium channels",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "gabapentin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-016",
+    "query": "Tramadol mu-opioid receptor affinity",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "tramadol"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-017",
+    "query": "Celecoxib selective COX-2 inhibition",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "celecoxib"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-018",
+    "query": "Rivaroxaban Factor Xa inhibition",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "rivaroxaban"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-019",
+    "query": "Apixaban pharmacokinetics in renal failure",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "apixaban"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-020",
+    "query": "What is the primary mechanism of action for atorvastatin?",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "atorvastatin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-021",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "warfarin",
+      "aspirin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-022",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "fluconazole",
+      "warfarin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-023",
+    "query": "Spironolactone and lisinopril combination risks",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "spironolactone",
+      "lisinopril"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-024",
+    "query": "Omeprazole reducing clopidogrel efficacy",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "omeprazole",
+      "clopidogrel"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-025",
+    "query": "Iron sulfate decreasing levothyroxine absorption",
+    "claim_type": "DDI",
+    "risk_tier": "R2",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "levothyroxine",
+      "iron"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-026",
+    "query": "Pantoprazole interaction with levothyroxine",
+    "claim_type": "DDI",
+    "risk_tier": "R2",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "pantoprazole",
+      "levothyroxine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-027",
+    "query": "Celecoxib and myocardial infarction risk with NSAIDs",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "celecoxib",
+      "nsaid"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-028",
+    "query": "Clopidogrel and naproxen GI bleeding",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "clopidogrel",
+      "naproxen"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-029",
+    "query": "Isotretinoin and tetracycline pseudotumor cerebri",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "isotretinoin",
+      "tetracycline"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-030",
+    "query": "Digoxin and macrolide toxicity",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "digoxin",
+      "macrolide"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-031",
+    "query": "Acetaminophen and warfarin INR prolongation",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "acetaminophen",
+      "warfarin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-032",
+    "query": "Citalopram and omeprazole QT prolongation",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "citalopram",
+      "omeprazole"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-033",
+    "query": "Sildenafil contraindication with nitrates",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "sildenafil",
+      "nitrate"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-034",
+    "query": "Simvastatin and amlodipine myopathy risk",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "simvastatin",
+      "amlodipine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-035",
+    "query": "Dabigatran and verapamil bleeding risk",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "dabigatran",
+      "verapamil"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-036",
+    "query": "Fluoxetine and MAOI serotonin syndrome",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "fluoxetine",
+      "maoi"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-037",
+    "query": "Lithium and thiazide diuretic toxicity",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "lithium",
+      "thiazide"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-038",
+    "query": "Carbamazepine autoinduction and oral contraceptives",
+    "claim_type": "DDI",
+    "risk_tier": "R2",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "carbamazepine",
+      "contraceptive"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-039",
+    "query": "Methotrexate and trimethoprim pancytopenia",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "methotrexate",
+      "trimethoprim"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-040",
+    "query": "Valproate and lamotrigine rash risk",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "valproate",
+      "lamotrigine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-041",
+    "query": "Clarithromycin and colchicine toxicity",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "clarithromycin",
+      "colchicine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-042",
+    "query": "Rifampin reducing apixaban efficacy",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "rifampin",
+      "apixaban"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-043",
+    "query": "St John Wort and sertraline interaction",
+    "claim_type": "DDI",
+    "risk_tier": "R2",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "john",
+      "sertraline"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-044",
+    "query": "Grapefruit juice and atorvastatin interaction",
+    "claim_type": "DDI",
+    "risk_tier": "R2",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "grapefruit",
+      "atorvastatin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-045",
+    "query": "Verapamil and beta blocker heart block",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "verapamil",
+      "beta"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-046",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "liver"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-047",
+    "query": "Spironolactone induced hyperkalemia",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "spironolactone"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-048",
+    "query": "Atorvastatin causing rhabdomyolysis",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "atorvastatin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-049",
+    "query": "Citalopram and dose dependent QT prolongation",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "citalopram"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-050",
+    "query": "Doxorubicin associated heart failure",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "doxorubicin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-051",
+    "query": "Amiodarone induced pulmonary fibrosis",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "amiodarone"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-052",
+    "query": "Isotretinoin causing severe birth defects",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "isotretinoin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-053",
+    "query": "Acetaminophen overdose hepatotoxicity",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "acetaminophen"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-054",
+    "query": "Alendronate causing esophageal ulceration",
+    "claim_type": "ADE",
+    "risk_tier": "R2",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "alendronate"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-055",
+    "query": "Fluoxetine increasing suicidal ideation",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "fluoxetine"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-056",
+    "query": "Gabapentin causing excessive somnolence",
+    "claim_type": "ADE",
+    "risk_tier": "R1",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "gabapentin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-057",
+    "query": "Tramadol lowering seizure threshold",
+    "claim_type": "ADE",
+    "risk_tier": "R2",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "tramadol"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-058",
+    "query": "Rivaroxaban associated major bleeding",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "rivaroxaban"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-059",
+    "query": "Apixaban associated gastrointestinal bleeding",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "apixaban"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-060",
+    "query": "Dabigatran causing dyspepsia",
+    "claim_type": "ADE",
+    "risk_tier": "R1",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "dabigatran"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-061",
+    "query": "Spironolactone causing gynecomastia",
+    "claim_type": "ADE",
+    "risk_tier": "R1",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "spironolactone"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-062",
+    "query": "Ibuprofen induced gastric ulcer",
+    "claim_type": "ADE",
+    "risk_tier": "R2",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "ibuprofen"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-063",
+    "query": "Salbutamol causing tachycardia",
+    "claim_type": "ADE",
+    "risk_tier": "R1",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "salbutamol"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-064",
+    "query": "Lithium toxicity tremor",
+    "claim_type": "ADE",
+    "risk_tier": "R2",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "lithium"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-065",
+    "query": "Valproate induced neural tube defects",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "valproate"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-066",
+    "query": "Metformin contraindication in severe renal disease",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "metformin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-067",
+    "query": "Warfarin target INR monitoring",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "warfarin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-068",
+    "query": "Genetic testing for CYP2C9 variants before prescribing",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R2",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "cyp2c9"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-069",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "hepatotoxicity"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-070",
+    "query": "Lisinopril dosing in renal impairment GFR < 30",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "lisinopril"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-071",
+    "query": "Monitoring for digoxin toxicity",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R2",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "digoxin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-072",
+    "query": "Sertraline safety during pregnancy",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R2",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "sertraline"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-073",
+    "query": "Reversal agent for dabigatran",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "dabigatran"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-074",
+    "query": "Management of severe bleeding on warfarin",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "warfarin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-075",
+    "query": "Renal dosing adjustments for metformin",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "metformin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-076",
+    "query": "What monitoring is required for amiodarone liver toxicity?",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R2",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "amiodarone"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-077",
+    "query": "Lisinopril contraindicated in angioedema",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "lisinopril"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-078",
+    "query": "Penicillin anaphylaxis management",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "penicillin"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-079",
+    "query": "Methotrexate folic acid supplementation",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R2",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "methotrexate"
+    ],
+    "annotation_status": "PENDING"
+  },
+  {
+    "case_id": "v3.1h-080",
+    "query": "Clozapine agranulocytosis monitoring",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "clozapine"
+    ],
+    "annotation_status": "PENDING"
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "case_id": "e99a75258ebfc4ff",
+  "variant": "R1",
+  "query_hash": "e8ea1aa663aeb3ef02e1ac63cbb0268e704ad9fd811312fc97b888687998a6e1",
+  "risk_tier": "R2",
+  "claim_type": "DDI",
+  "retrieved_document_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-warfarin-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082
+  ],
+  "source_types": [
+    "American College of Chest Physicians"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "relevant_retrieved_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "first_relevant_rank": 1,
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "precision_at_5": 1.0,
+    "mrr": 1.0,
+    "ndcg_at_5": 1.0,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.03200001083314419,
+  "channels": [
+    "vector"
+  ]
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "description": "Wraps DrugNormalizer to resolve raw drug mentions into canonical RxNorm entities.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.drug_entity_resolution.skill.run",
+    "name": "Drug Entity Resolution",
+    "path": "src/adaptive_trust_medical_rag/skills/drug_entity_resolution",
+    "skill_id": "drug-entity-resolution",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps EvidenceQueryRouter to classify and route pharmacological queries.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.pharmacology_query.skill.run",
+    "name": "Pharmacology Query Routing",
+    "path": "src/adaptive_trust_medical_rag/skills/pharmacology_query",
+    "skill_id": "pharmacology-query",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps PubMed and EuropePMC adapters for structured evidence retrieval.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.literature_retrieval.skill.run",
+    "name": "Literature Retrieval",
+    "path": "src/adaptive_trust_medical_rag/skills/literature_retrieval",
+    "skill_id": "literature-retrieval",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps SourceValidator to determine evidence authority, freshness, and provenance.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.source_validation.skill.run",
+    "name": "Source Validation",
+    "path": "src/adaptive_trust_medical_rag/skills/source_validation",
+    "skill_id": "source-validation",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps AdaptiveTrustScorer to calculate dynamic trust scores for retrieved evidence.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.trust_analysis.skill.run",
+    "name": "Adaptive Trust Analysis",
+    "path": "src/adaptive_trust_medical_rag/skills/trust_analysis",
+    "skill_id": "trust-analysis",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps AnswerSafetyGate to verify LLM claims against retrieved evidence.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.claim_verification.skill.run",
+    "name": "Claim Verification",
+    "path": "src/adaptive_trust_medical_rag/skills/claim_verification",
+    "skill_id": "claim-verification",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps detect_contradictions to identify conflicting pharmacological evidence.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.contradiction_analysis.skill.run",
+    "name": "Contradiction Analysis",
+    "path": "src/adaptive_trust_medical_rag/skills/contradiction_analysis",
+    "skill_id": "contradiction-analysis",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps EvidenceEligibilityGate to enforce system abstention thresholds.",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.abstention.skill.run",
+    "name": "Controlled Abstention",
+    "path": "src/adaptive_trust_medical_rag/skills/abstention",
+    "skill_id": "abstention",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  },
+  {
+    "description": "Wraps evaluation framework (RAGEvaluator, AblationRunner, StatisticalReport).",
+    "entrypoint": "src.adaptive_trust_medical_rag.skills.experiment_analysis.skill.run",
+    "name": "Experiment Analysis",
+    "path": "src/adaptive_trust_medical_rag/skills/experiment_analysis",
+    "skill_id": "experiment-analysis",
+    "status": "DEVELOPED",
+    "version": "1.0.0"
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "case_id": "8f1e193ee4a65e63",
+  "variant": "R2",
+  "query_hash": "8b80189d3089d80ab7453756b1d9a6531b415cf714ecc51f2c2f8ed20b4e2f22",
+  "risk_tier": "R2",
+  "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+  "retrieved_document_ids": [
+    "doc-fda-metformin",
+    "doc-fda-spironolactone"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-metformin-001",
+    "chunk-spironolactone-001"
+  ],
+  "retrieval_scores": [
+    0.03252247488101534,
+    0.01639344262295082
+  ],
+  "source_types": [
+    "FDA Label",
+    "FDA Prescribing Information"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.06620000931434333,
+  "channels": [
+    "bm25",
+    "vector"
+  ]
+}

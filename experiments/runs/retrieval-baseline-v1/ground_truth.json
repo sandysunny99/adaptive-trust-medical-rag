@@ -1,0 +1,122 @@
+{
+  "9836bc3f564128df": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "992d1b28a2b88c81": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "bad2fc87a5f4595e": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "576b93f6c522a4f2": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "55c79e5c95050b21": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "517176968f2c9331": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "30895007c8cd4a56": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "ea52bc3469ecc900": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "d30afa9eafcd1b11": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "729f79bbed63facf": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "9d31894b3c784f47": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "b246c46ac80fed07": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "5c503ca882e2ff5d": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "6765f005506ab021": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "cbc4733ce86173e9": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "555bfa83219152d8": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "PHARMACOLOGY"
+  },
+  "47d5f84a723d4662": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "9a5d24729498bf14": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "a0e34b697a934bdf": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  },
+  "53799cca9af45d25": {
+    "expected_document_ids": [
+      "chunk-metformin-001"
+    ],
+    "claim_type": "DDI_ADE"
+  }
+}

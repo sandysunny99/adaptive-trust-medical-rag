@@ -1,0 +1,115 @@
+{
+  "manifest_id": "phase14_freeze",
+  "timestamp": "2026-09-07T18:59:41.987131Z",
+  "phase": "14",
+  "artifacts": [
+    {
+      "path": "experiments/phase14/PHASE14_ACTUAL_EXECUTION_GRAPH.md",
+      "sha256": "3a6a77347c11bec2a3ec67810c5b8318c7c58bd230bb7cc1933eb06762cbe401",
+      "size_bytes": 4634,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_AUTHORIZATION_SEMANTICS.md",
+      "sha256": "db26bbd8faf7a9436ebe397dcf432c60c0e8e37aad8ae325002d98a52fed2c85",
+      "size_bytes": 2348,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_INTEGRATION_TEST_MATRIX.md",
+      "sha256": "6a863117fcc0242b19ea76b78a327a4b2449d052d6e9f8f7d586e007d084d36e",
+      "size_bytes": 1156,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/ARCHITECTURE_CODE_CONFORMANCE.md",
+      "sha256": "dbb08a4d82bc67833777ad7a814ab7d537fd8ab73eb8a5dc61bd820b2c685106",
+      "size_bytes": 3299,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_SECURITY_EXECUTION_TRACE.md",
+      "sha256": "c2c7822ed3cd7128550e6feb442e38628fcd563e3053c0297a7491685d4fa919",
+      "size_bytes": 801,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_ROADMAP_STATUS.md",
+      "sha256": "0cd35caf573fb8774fe4ac491df1ac16a018bd8418071e47baac89d4712f4f27",
+      "size_bytes": 508,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_INTEGRATION_STATUS.md",
+      "sha256": "2f8d1fd2859584e4352735898fe643d8c8324edc1b46e3ee8cbe2c4202c0f58e",
+      "size_bytes": 622,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_FINAL_GATE_REPORT.md",
+      "sha256": "9a1ae41b184a5cf17023f88251fea03b61800506674709092d6ef5c90a5a481e",
+      "size_bytes": 2241,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_TEST_CHANGE_AUDIT.md",
+      "sha256": "cddbdb9af40df57db97ac90eeb73ca935666404f45da83b695319fa71de0c7fa",
+      "size_bytes": 2141,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_IMPLEMENTATION_REPORT.md",
+      "sha256": "41d13cfe3f0c227661e37417cdf5b569a263a5201791ea02bb013e0548ef7c40",
+      "size_bytes": 3088,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_SECURITY_INTEGRATION_TEST_REPORT.md",
+      "sha256": "ec28a60e6bfd8ccafd96f5174e64ef6149e9dff6de5cecafccb97a8c920931eb",
+      "size_bytes": 2314,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_THREAT_MODEL.md",
+      "sha256": "fcfab183c5eb14d1ba58a8f73b45df6b856e742829b2c387fd0d1fd4760032fd",
+      "size_bytes": 2616,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_ARCHITECTURE.md",
+      "sha256": "319475cf58e2e055095d8b62f735246499d3b4da801798946aa17c6d338ec2ad",
+      "size_bytes": 2923,
+      "status": "frozen"
+    },
+    {
+      "path": "experiments/phase14/PHASE14_SECURITY_CONTRACTS.md",
+      "sha256": "984b93bc0fe65d8e58f09078567adb60f99f399432fb9d41d0283dd12334d402",
+      "size_bytes": 2540,
+      "status": "frozen"
+    },
+    {
+      "path": "src/adaptive_trust_medical_rag/security/agent_action.py",
+      "sha256": "996e1ad690c52923ff48a1807c605e29dc67c9f11197e5a7e32f9b689a1131f4",
+      "size_bytes": 2182,
+      "status": "frozen"
+    },
+    {
+      "path": "src/adaptive_trust_medical_rag/security/tool_executor.py",
+      "sha256": "0a17bb24607f09baef486c4f1dde24b82a2cc589258fdaeb9d57fa60896d5f0e",
+      "size_bytes": 1356,
+      "status": "frozen"
+    },
+    {
+      "path": "src/adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py",
+      "sha256": "86e4564b6c3e8b45954d7020326fc30e8d0369c0de6d61b86ae410711e08783c",
+      "size_bytes": 27430,
+      "status": "frozen"
+    },
+    {
+      "path": "tests/security/test_phase14_integration.py",
+      "sha256": "5b10cf98d48d7f9ed582dd3b18523b5f800f5a20c23a187ebf93e22a7024ba7a",
+      "size_bytes": 17990,
+      "status": "frozen"
+    }
+  ]
+}

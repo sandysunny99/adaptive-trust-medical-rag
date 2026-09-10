@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-021",
+  "population_size": 237,
+  "sample_size": 12,
+  "sampling_seed": 2268368,
+  "sampled_document_ids": [
+    "42595240",
+    "42663925",
+    "41085374",
+    "42645604",
+    "42663921",
+    "42431357",
+    "40845290",
+    "42654342",
+    "42125454",
+    "39114562",
+    "40149400",
+    "38006536"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42595240",
+      "title": "Xenobiotic-Induced Liver Injury in the United States: A 25-Year Retrospective Analysis of National Poison Data System.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42663925",
+      "title": "Selective and Time-Dependent Alterations in Cytochrome P450 (CYP) Enzyme Activity and Expression by Major Phytocannabinoids.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41085374",
+      "title": "Assessing Impact of Concomitant Use of Proton Pump Inhibitors and Clopidogrel on Incidence of Major Adverse Cardiovascular Events: A Retrospective Cohort Study.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42645604",
+      "title": "Berberine-associated lipid-inflammatory regulation in atherosclerosis: an integrative transcriptomic, single-cell, and in vivo study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42663921",
+      "title": "Qishen Yiqi Dripping Pills ameliorate doxorubicin-induced cardiotoxicity: a study based on bioinformatics and experimental verification.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42431357",
+      "title": "Oral use of anxiolytic, sedative, and anaesthetic medications in domestic cats (Felis catus): A scoping review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40845290",
+      "title": "The Effects of a Semester of Preprofessional Dance Training on Biomarkers and Performance Variables in Elite Adolescent Ballet Dancers.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42654342",
+      "title": "Therapeutic Potential of Anti-Obesity Drugs in Obesity-Associated Female Reproductive Dysfunction: Translating Mechanistic Evidence into Personalized Clinical Strategies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42125454",
+      "title": "Milnacipran continuation during pregnancy in a patient with severe post-traumatic stress disorder and psychotic depression: a case report with 3-year pediatric follow-up.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "39114562",
+      "title": "A network meta-analysis: evaluating the efficacy and safety of concurrent proton pump inhibitors and clopidogrel therapy in post-PCI patients.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40149400",
+      "title": "The Association Between Statin Drugs and Rhabdomyolysis: An Analysis of FDA Adverse Event Reporting System (FAERS) Data and Transcriptomic Profiles.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38006536",
+      "title": "Clinical and Laboratory Factors Related to Seizure and Serotonin Toxicity in Tramadol Intoxication: An Egyptian Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "41085374"
+  ],
+  "human_final_decisions": {
+    "41085374": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns proton pump inhibitor and clopidogrel use and cardiovascular events, and does not provide evidence about the specific warfarin-plus-aspirin bleeding risk queried.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

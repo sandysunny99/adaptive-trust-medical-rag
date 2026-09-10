@@ -1,0 +1,9 @@
+{
+  "dataset_hash": "313e9489a1f1bffe2f7cfd394189c2018585cdf689e3b0e01b24524eeb5a0c7b",
+  "review_hash": "15c537e77ca198f6ca66cead2aa1049516dd6f725693e22526cd54ecb93b1d68",
+  "protocol_hash": "4bfb621220bf70784e98c6cea8a6fd90f5809e80e3cb428552d65c7d1daf28aa",
+  "case_level_results.jsonl": "6fe2343fd70d5ea8983d29dbcf1ae8359748127bc2a59e60be66fddf6b2ae006",
+  "paired_results.json": "c129f9fb0720526040d569149a810104eb7aa5e226f3383b79f4afb1c80285db",
+  "statistical_results.json": "bf82cb58cfd6231b0f7d0ffe7d0fe172f152150f088772b33705211578903b47",
+  "run_manifest.json": "8ac5ecc867b905a5a031a3842b7f036ad6e64a6efe30f1f2d67321a386542444"
+}

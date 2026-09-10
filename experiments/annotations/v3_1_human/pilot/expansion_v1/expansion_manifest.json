@@ -1,0 +1,106 @@
+{
+  "phase": "2F.5B-Prep",
+  "created_at": "2026-09-03T15:33:24.947708+00:00",
+  "canonical_run_task": "task-9881",
+  "canonical_runner_sha256": "774c9d65cae1b6e83a945d5c773d8fc07ff0043c806975428d8b4e5ddc13f9a5",
+  "f0_results_sha256": "15b19e54b03ddbd2bc513cac3800a73303dac11408db8d6484b62829b4c0846a",
+  "corpus_sha256": "e4346ad15ec1f74af9ecc010ef822503eb44638f1020e7f0fcb51ad5c58f42f7",
+  "expansion_positions": 530,
+  "existing_labelled_positions": 70,
+  "total_f0_pool": 600,
+  "reviewer_A_file": "reviewer_A_expansion.csv",
+  "reviewer_A_sha256": "ba2f138874b93a8864efa9005b0eaf2a8e924d7d8b159977a6c9d87daa0c5b59",
+  "reviewer_B_file": "reviewer_B_expansion.csv",
+  "reviewer_B_sha256": "ba2f138874b93a8864efa9005b0eaf2a8e924d7d8b159977a6c9d87daa0c5b59",
+  "metadata_file": "expansion_metadata.csv",
+  "metadata_sha256": "6941357ef67be12aeea3f5fa8be7c051d65ce57879c020fcb8d6f8ecd7c20c2e",
+  "rank_blinded": true,
+  "annotator_visible_fields": [
+    "case_id",
+    "document_id",
+    "query",
+    "document_title",
+    "document_text"
+  ],
+  "annotator_hidden_fields": [
+    "f0_rank",
+    "f3_rank",
+    "medcpt_score"
+  ],
+  "label_taxonomy": [
+    "DIRECT_SUPPORT",
+    "PARTIAL_SUPPORT",
+    "INDIRECT_SUPPORT",
+    "NOT_RELEVANT",
+    "NO_EVIDENCE"
+  ],
+  "iaa_target": "Cohen kappa >= 0.60 on overlap positions",
+  "status": "OPEN \u2014 awaiting annotation (all four locks applied)",
+  "methodological_locks": {
+    "lock_1_relevance_endpoint": {
+      "description": "Pre-defined binary relevance endpoint \u2014 fixed before any annotation is read",
+      "positive_labels": [
+        "DIRECT_SUPPORT",
+        "PARTIAL_SUPPORT",
+        "INDIRECT_SUPPORT"
+      ],
+      "non_positive_labels": [
+        "NO_EVIDENCE",
+        "NOT_RELEVANT"
+      ],
+      "primary_metric_basis": "binary",
+      "secondary_analysis": "5-class label distribution retained",
+      "rule": "This definition is LOCKED and cannot be changed after annotation starts"
+    },
+    "lock_2_iaa": {
+      "description": "Both binary and 5-class Cohen kappa reported",
+      "primary_iaa": "binary Cohen kappa (positive vs non-positive)",
+      "secondary_iaa": "5-class Cohen kappa (all five labels)",
+      "minimum_kappa_to_proceed": 0.6,
+      "kappa_applies_to": "predefined overlap positions \u2014 no selective removal of disagreements"
+    },
+    "lock_3_evidence_span": {
+      "DIRECT_SUPPORT": "evidence_span REQUIRED",
+      "PARTIAL_SUPPORT": "evidence_span REQUIRED",
+      "INDIRECT_SUPPORT": "evidence_span REQUIRED",
+      "NO_EVIDENCE": "evidence_span OPTIONAL",
+      "NOT_RELEVANT": "evidence_span BLANK",
+      "rule": "Any positive label with missing evidence_span is flagged incomplete and requires re-review before consensus merge"
+    },
+    "lock_4_rank_blindness": {
+      "reviewer_visible_fields": [
+        "case_id",
+        "document_id",
+        "query",
+        "document_title",
+        "document_text"
+      ],
+      "reviewer_hidden_fields": [
+        "f0_rank",
+        "f3_rank",
+        "medcpt_score",
+        "ai_label",
+        "other_reviewer_decision"
+      ],
+      "rank_storage": "expansion_metadata.csv (backend only)",
+      "verification": "Rank blindness must be confirmed by annotators signing off before consensus merge"
+    }
+  },
+  "phase_2f5b_gate_criteria": {
+    "COVERAGE": "600 / 600 positions labelled",
+    "CONSENSUS_LABELS": "600 / 600 consensus labels produced",
+    "BINARY_COHEN_KAPPA": ">= 0.60",
+    "FIVE_CLASS_AGREEMENT_REPORTED": "YES",
+    "POSITIVE_EVIDENCE_SPANS_COMPLETE": "YES \u2014 all positive labels have non-empty evidence_span",
+    "ANNOTATOR_PROVENANCE_COMPLETE": "YES \u2014 all labels have annotator_id and timestamp",
+    "RANK_BLINDNESS": "VERIFIED \u2014 signed off by both annotators",
+    "F0_F3_OUTPUTS_UNCHANGED": "YES \u2014 SHA256 must match canonical run hashes",
+    "CORPUS_UNCHANGED": "YES",
+    "RETRIEVAL_RERUN_DURING_ANNOTATION": "NO",
+    "ZERO_POSITIVE_CASE_DIAGNOSIS": "10 / 10 \u2014 each zero-positive case has A/B/C diagnosis recorded"
+  },
+  "locks_applied_at": "2026-09-03T15:37:00.499580+00:00",
+  "completion_protocol_file": "ANNOTATION_COMPLETION_PROTOCOL.md",
+  "completion_protocol_sha256": "7690a7a768c50ae3479e3854612aa732cb3722d0eb56f95314697edf5fe99a67",
+  "completion_protocol_locked_at": "2026-09-03T18:00:39.046953+00:00"
+}

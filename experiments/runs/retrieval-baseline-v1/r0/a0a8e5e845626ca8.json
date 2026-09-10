@@ -1,0 +1,41 @@
+{
+  "case_id": "a0a8e5e845626ca8",
+  "variant": "R0",
+  "query_hash": "fc925a0a75fc56ebc149841fc5ae7d870b9f8a4fb4fbe44cc256153904c9b788",
+  "risk_tier": "R2",
+  "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+  "retrieved_document_ids": [
+    "doc-fda-haloperidol",
+    "doc-fda-spironolactone"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-haloperidol-001",
+    "chunk-spironolactone-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082,
+    0.016129032258064516
+  ],
+  "source_types": [
+    "FDA Drug Safety Communication",
+    "FDA Prescribing Information"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.027099973522126675,
+  "channels": [
+    "bm25"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-069",
+  "population_size": 245,
+  "sample_size": 12,
+  "sampling_seed": 94744049,
+  "sampled_document_ids": [
+    "27148747",
+    "42293737",
+    "42128899",
+    "42128628",
+    "42670540",
+    "42638417",
+    "42462752",
+    "42598366",
+    "41977337",
+    "42366486",
+    "40915652",
+    "42295720"
+  ],
+  "screening_results": [
+    {
+      "document_id": "27148747",
+      "title": "Alendronate Sodium as Enteric Coated Solid Lipid Nanoparticles; Preparation, Optimization, and In Vivo Evaluation to Enhance Its Oral Bioavailability.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42293737",
+      "title": "A UK-wide analysis of the use of reversal agents in 198 patients on direct oral anticoagulants prior to urgent procedures.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42128899",
+      "title": "Cilostazol mitigates amiodarone-induced pulmonary toxicity and fibrosis by regulating the cAMP/TGF-\u03b21 pathway-mediated epithelial-to-mesenchymal transition in rats.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42128628",
+      "title": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670540",
+      "title": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42638417",
+      "title": "The Bacterial Metabolite Lndole-3-Propionic Acid Alleviates Acetaminophen-Induced Acute Liver Injury Partly through the Aryl Hydrocarbon Receptor Pathway.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42462752",
+      "title": "Risk of fracture with gabapentinoid treatment in older adults: a multinational population-based study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42598366",
+      "title": "A 76-Year-Old Man With Hemorrhagic Stroke, Recurrent Thromboembolic Events, and Atrial Fibrillation Under Optimal Medical Treatment: When Anticoagulants Fail.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41977337",
+      "title": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42366486",
+      "title": "Finerenone and Cardiorenal Outcomes: A Narrative Review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40915652",
+      "title": "Nonsteroidal Anti-Inflammatory Drugs and Risk of Gastrointestinal Bleeding: A Systematic Review and Meta-Analysis.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42295720",
+      "title": "Continuous alternate day vs intermittent daily fixed doses of oral isotretinoin in grade 2 acne vulgaris.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "40915652"
+  ],
+  "human_final_decisions": {
+    "40915652": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns gastrointestinal bleeding associated with NSAIDs and does not provide evidence about the diagnosis of drug-induced hepatotoxicity.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

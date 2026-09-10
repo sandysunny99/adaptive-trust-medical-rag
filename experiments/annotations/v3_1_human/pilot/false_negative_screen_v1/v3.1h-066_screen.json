@@ -1,0 +1,112 @@
+{
+  "case_id": "v3.1h-066",
+  "population_size": 233,
+  "sample_size": 12,
+  "sampling_seed": 1283786429937964238,
+  "sampled_document_ids": [
+    "42667072",
+    "42618000",
+    "41397500",
+    "30626809",
+    "42658230",
+    "42590087",
+    "42497636",
+    "42034022",
+    "41141842",
+    "41977337",
+    "42662112",
+    "42580175"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42667072",
+      "title": "Unlocking the brain: Biodistribution insights into tween 80 nanoliposomes in healthy brains.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42618000",
+      "title": "Pipamperone metabolism by various recombinant cytochrome preparations.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41397500",
+      "title": "Exploring the link between antipsychotic and antidepressant use and severe QT prolongation: Impacts on ventricular arrhythmias and sudden cardiac death.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "30626809",
+      "title": "Symptoms and Upper Gastrointestinal Mucosal Injury Associated with Bisphosphonate Therapy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42658230",
+      "title": "Supratherapeutic Digoxin Levels in Children with Cardiac Disease.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42590087",
+      "title": "Digoxin Dosing Errors, Drug Interactions and Off-Label Risks: Insights from an EudraVigilance Disproportionality Analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42497636",
+      "title": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42034022",
+      "title": "Lower dosing of Loxoprofen in type two diabetics with bone fractures/surgeries; Distinction from common NSAIDs.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41141842",
+      "title": "Andexanet alfa for the reversal of the low-molecular-weight heparin enoxaparin.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41977337",
+      "title": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42662112",
+      "title": "A Comparative Study to Evaluate the Renoprotective Effect of Antidiabetic Drugs in Patients With Type 2 Diabetes Mellitus.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42580175",
+      "title": "Iodine excess in relation to decreased free thyroxine levels during pregnancy in an iodine-sufficient region, and potential interactions with iron and selenium.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "41397500",
+    "42658230"
+  ],
+  "human_final_decisions": {
+    "41397500": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns QT prolongation associated with antipsychotic and antidepressant use and does not provide evidence about metformin contraindication in severe renal disease.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    },
+    "42658230": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns supratherapeutic digoxin levels in children with cardiac disease and does not provide evidence about metformin contraindication in severe renal disease.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

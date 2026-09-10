@@ -1,0 +1,112 @@
+{
+  "case_id": "v3.1h-046",
+  "population_size": 236,
+  "sample_size": 12,
+  "sampling_seed": 12686623,
+  "sampled_document_ids": [
+    "41225655",
+    "42663925",
+    "42584699",
+    "42055120",
+    "40272900",
+    "42670801",
+    "42484991",
+    "41496228",
+    "41976898",
+    "30626809",
+    "41463106",
+    "42394350"
+  ],
+  "screening_results": [
+    {
+      "document_id": "41225655",
+      "title": "TNF-\u03b1 inhibitor etanercept improves cerebrovascular function in elderly RA patients: findings from a randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42663925",
+      "title": "Selective and Time-Dependent Alterations in Cytochrome P450 (CYP) Enzyme Activity and Expression by Major Phytocannabinoids.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42584699",
+      "title": "The \"obesity paradox\" in dosing: a comprehensive analytical review of cockcroft-gault versus CKD-EPI for predicting clearance of narrow-therapeutic-index drugs in patients with BMI\u2009>\u200940\u00a0kg/m\u00b2.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42055120",
+      "title": "Impact of Fluoxetine Brain Concentrations, Plasma Exposure, and Neurometabolism on Depressive and Anxiety Symptoms in Adolescents: A Multimodal Fluorine and Proton Magnetic Resonance Spectroscopy Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40272900",
+      "title": "In vitro seizure risk assessment using a microelectrode array and comparison with an in vivo rat study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670801",
+      "title": "Therapeutic Potential of Nanocurcumin in Mitigating Duloxetine-Induced Hepatic Damage: Biochemical and Histopathological Insights.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42484991",
+      "title": "Budget Impact of Eplerenone for Heart Failure with Reduced Ejection Fraction: National Perspective and Regional Implications in Italy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41496228",
+      "title": "The impact of prenatal maternal-fetal metal levels and placental transfer efficiency of metals on neonatal thyroid function: The modulatory role of maternal vitamin D levels in pregnancy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41976898",
+      "title": "Anticoagulation Stewardship Program in the DOAC Era.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "30626809",
+      "title": "Symptoms and Upper Gastrointestinal Mucosal Injury Associated with Bisphosphonate Therapy.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "41463106",
+      "title": "Reconsidering Digoxin in Atrial Fibrillation: From Historical Controversy to Physiologically Guided and Personalized Rate Control.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42394350",
+      "title": "The DOAC-FRAIL Study-Same Dose, Different Story: Prevalence of Deviant Direct Oral Anticoagulant Levels in Nursing Home Residents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "42584699",
+    "30626809"
+  ],
+  "human_final_decisions": {
+    "42584699": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns methods for predicting drug clearance in patients with obesity and does not provide evidence about mechanisms of idiosyncratic drug-induced liver injury.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    },
+    "30626809": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns upper gastrointestinal mucosal injury associated with bisphosphonate therapy and does not provide evidence about mechanisms of idiosyncratic drug-induced liver injury.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

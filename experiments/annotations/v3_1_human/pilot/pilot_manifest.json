@@ -1,0 +1,8 @@
+{
+  "pilot_version": "V3.1-HUMAN-PILOT-1",
+  "case_count": 10,
+  "annotation_mode": "SINGLE_REVIEWER",
+  "status": "PENDING_HUMAN_REVIEW",
+  "corpus": "retrieval-v3-real",
+  "retrieval_evaluation_locked": true
+}

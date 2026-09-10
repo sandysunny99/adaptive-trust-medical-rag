@@ -1,0 +1,18 @@
+{
+  "experiment_name": "phase2f5-diagnostic-v1",
+  "objective": "Diagnostic comparison of F0 vs F3 on AI-assisted pilot evidence",
+  "corpus_hash": "e4346ad15ec1f74af9ecc010ef822503eb44638f1020e7f0fcb51ad5c58f42f7",
+  "annotation_dataset_hash": "07f1420cfbce67c16c27ae0b3fe478ad4ed6b9d7f04719fe3a63718eb950fdc0",
+  "v2_screening_manifest_hash": "92a2f72e43a5d4b2e7f7645c4e4987b00faf7153e2adc12ae0913e3bafd88e72",
+  "f0_configuration": "BM25 + S-PubMedBERT + Graph + RRF",
+  "f3_configuration": "F0 + MedCPT Cross-Encoder Reranking",
+  "medcpt_model_identifier": "ncbi/MedCPT-Cross-Encoder",
+  "bm25_configuration": "default",
+  "rrf_k_value": 60,
+  "graph_configuration": "neo4j_entity_cooccurrence",
+  "top_k_values": [
+    5,
+    10,
+    20
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "case_id": "e-03",
+  "variant": "R1",
+  "query_hash": "0dfc41e7b877016bf418717f8627256df9335fffa2d9dc0fe6757cc0eabd5a42",
+  "risk_tier": "R2",
+  "claim_type": "Pharmacology",
+  "retrieved_document_ids": [],
+  "retrieved_chunk_ids": [],
+  "retrieval_scores": [],
+  "source_types": [],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.3766999871004373,
+  "channels": [
+    "vector"
+  ]
+}

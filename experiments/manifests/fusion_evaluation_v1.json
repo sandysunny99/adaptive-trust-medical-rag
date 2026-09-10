@@ -1,0 +1,27 @@
+{
+  "experiment": "Phase 2D Fusion Evaluation",
+  "benchmark": "v2.1",
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "variants": {
+    "F0": {
+      "w_bm25": 1.0,
+      "w_dense": 1.0,
+      "w_graph": 1.0
+    },
+    "W1": {
+      "w_bm25": 1.0,
+      "w_dense": 1.5,
+      "w_graph": 1.0
+    },
+    "W2": {
+      "w_bm25": 0.75,
+      "w_dense": 1.5,
+      "w_graph": 1.0
+    },
+    "W3": {
+      "w_bm25": 1.0,
+      "w_dense": 2.0,
+      "w_graph": 1.0
+    }
+  }
+}

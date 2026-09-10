@@ -1,0 +1,591 @@
+[
+  {
+    "case_id": "q-01",
+    "query": "mechanism of action of metformin",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-02",
+    "query": "warfarin interaction with aspirin",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin",
+      "aspirin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-03",
+    "query": "hyperkalemia spironolactone",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42643702"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42643702-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-04",
+    "query": "CYP2C9 inhibition by fluconazole",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [
+      "42591558"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42591558-001"
+    ],
+    "expected_entity_ids": [
+      "fluconazole"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-05",
+    "query": "drug-induced liver injury acetaminophen",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-06",
+    "query": "atorvastatin pharmacokinetics",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-07",
+    "query": "lisinopril renal impairment dose adjustment",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-08",
+    "query": "omeprazole CYP2C19",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [
+      "42584807"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42584807-001"
+    ],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-09",
+    "query": "amoxicillin contraindication penicillin allergy",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "amoxicillin",
+      "penicillin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-10",
+    "query": "sertraline serotonin syndrome risk",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "sertraline"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-11",
+    "query": "citalopram QTc prolongation",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42326111"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-12",
+    "query": "gabapentin withdrawal seizures",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [
+      "41693038",
+      "42366702"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41693038-001",
+      "chunk-42366702-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-13",
+    "query": "clopidogrel omeprazole interaction",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "clopidogrel",
+      "omeprazole"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-14",
+    "query": "lithium toxicity dehydration",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [
+      "42589388",
+      "41570215",
+      "30000212"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42589388-001",
+      "chunk-41570215-001",
+      "chunk-30000212-001"
+    ],
+    "expected_entity_ids": [
+      "lithium"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-15",
+    "query": "levothyroxine absorption iron",
+    "risk_tier": "R1",
+    "claim_type": "DDI",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine",
+      "iron"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-16",
+    "query": "rivaroxaban reversal agent",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-17",
+    "query": "methotrexate toxicity folic acid",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "methotrexate",
+      "folic acid"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-18",
+    "query": "azithromycin cardiovascular death",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [
+      "42351625"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42351625-001"
+    ],
+    "expected_entity_ids": [
+      "azithromycin"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-19",
+    "query": "digoxin therapeutic range",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42678303"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678303-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-20",
+    "query": "valproic acid teratogenicity pregnancy",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [
+      "42587047",
+      "42396864"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42587047-001",
+      "chunk-42396864-001"
+    ],
+    "expected_entity_ids": [
+      "valproic acid"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-21",
+    "query": "ciprofloxacin tendon rupture",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "ciprofloxacin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-22",
+    "query": "isotretinoin pregnancy prevention",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-23",
+    "query": "doxorubicin cardiotoxicity",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42670540",
+      "42676526"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001",
+      "chunk-42676526-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-24",
+    "query": "tramadol seizure threshold",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [
+      "40242084",
+      "36660072"
+    ],
+    "expected_chunk_ids": [
+      "chunk-40242084-001",
+      "chunk-36660072-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-25",
+    "query": "linezolid MAOI interaction",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "HIGH_RISK_SAFETY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "linezolid",
+      "MAOI"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-26",
+    "query": "amiodarone pulmonary toxicity",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42466914",
+      "42528583"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42528583-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-27",
+    "query": "pantoprazole absorption calcium",
+    "risk_tier": "R1",
+    "claim_type": "DDI",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole",
+      "calcium"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-28",
+    "query": "trazodone priapism",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "42075483",
+      "42629597"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42075483-001",
+      "chunk-42629597-001"
+    ],
+    "expected_entity_ids": [
+      "trazodone"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "q-29",
+    "query": "alendronate esophagitis",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "alendronate"
+    ],
+    "expected_source_types": [],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "q-30",
+    "query": "metronidazole disulfiram-like reaction",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "EASY_EXACT",
+    "expected_document_ids": [
+      "41577777",
+      "41366815"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41577777-001",
+      "chunk-41366815-001"
+    ],
+    "expected_entity_ids": [
+      "metronidazole"
+    ],
+    "expected_source_types": [
+      "BIOMEDICAL_LITERATURE",
+      "BIOMEDICAL_LITERATURE"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  }
+]

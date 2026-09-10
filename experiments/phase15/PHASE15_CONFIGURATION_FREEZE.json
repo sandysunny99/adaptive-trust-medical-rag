@@ -1,0 +1,38 @@
+{
+  "repository_commit_hash": "0c1842efb82ce7b9413e237f1fcda742f5376dcd",
+  "python_version": "3.12.10",
+  "temperature": 0.0,
+  "random_seeds": {
+    "general": 42,
+    "retrieval": 42
+  },
+  "retrieval_configuration": {
+    "top_k": 5,
+    "rrf_k": 60,
+    "bm25_weight": 0.3
+  },
+  "timeout_policy": {
+    "llm_timeout": 30,
+    "retrieval_timeout": 10
+  },
+  "status": "FROZEN",
+  "timestamp": "2026-09-08T05:54:07.940620Z",
+  "generation_parameters": {
+    "temperature": 0.0,
+    "seed": 42,
+    "max_output_tokens": 4096,
+    "structured_output_settings": "Enabled"
+  },
+  "retry_policy": {
+    "max_retries": 3,
+    "backoff_factor": 2.0
+  },
+  "api_configuration_identifier": "Production Gateway",
+  "execution_environment": "Isolated Test Runner",
+  "model": {
+    "provider": "Google Gemini API",
+    "model_id": "gemini-3.1-pro-preview",
+    "lifecycle_status": "PREVIEW"
+  },
+  "sdk_api_version": "google-generativeai==0.8.2"
+}

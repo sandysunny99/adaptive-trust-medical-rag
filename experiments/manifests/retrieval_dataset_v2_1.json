@@ -1,0 +1,295 @@
+[
+  {
+    "case_id": "e-01",
+    "query": "How does metformin lower blood glucose?",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "metformin"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-02",
+    "query": "Is atorvastatin's half-life long enough for alternate day dosing?",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-03",
+    "query": "Monitoring requirements for patients on digoxin",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "digoxin"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-04",
+    "query": "Role of cytochrome P450 2C19 in omeprazole clearance",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-05",
+    "query": "Does concomitant aspirin increase bleeding risk in patients receiving warfarin?",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-06",
+    "query": "How does fluconazole alter metabolism mediated by CYP2C9?",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [
+      "42591558"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42591558-001"
+    ],
+    "expected_entity_ids": [
+      "fluconazole"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-07",
+    "query": "Can clopidogrel and omeprazole be safely co-administered?",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "clopidogrel"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-08",
+    "query": "Should pantoprazole and calcium carbonate be taken together?",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-09",
+    "query": "Does ferrous sulfate decrease the efficacy of levothyroxine?",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42438581",
+      "41109285"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42438581-001",
+      "chunk-41109285-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-10",
+    "query": "What potassium-related adverse effect is associated with spironolactone?",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "spironolactone"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-11",
+    "query": "Can paracetamol cause acute hepatic failure?",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-12",
+    "query": "Is electrocardiogram monitoring required for citalopram?",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [
+      "42326111"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-13",
+    "query": "Does amiodarone cause interstitial pneumonitis?",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "42466914",
+      "42528583"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42528583-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-14",
+    "query": "Heart failure risk following anthracycline therapy",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "42670540"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-15",
+    "query": "Risk of esophageal ulceration with Fosamax",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "alendronate"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-16",
+    "query": "Lisinopril dosing in patients with GFR < 30",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lisinopril"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-17",
+    "query": "Is Accutane contraindicated in females of childbearing potential?",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ],
+    "evidence_labels": {}
+  },
+  {
+    "case_id": "e-18",
+    "query": "Use of amoxicillin in patients with IgE-mediated penicillin hypersensitivity",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41711272"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41711272-001"
+    ],
+    "expected_entity_ids": [
+      "amoxicillin"
+    ],
+    "evidence_labels": {
+      "relevant": true,
+      "authority": "Tier 1"
+    }
+  },
+  {
+    "case_id": "e-19",
+    "query": "Antidote for Xarelto-induced major bleeding",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ],
+    "evidence_labels": {}
+  }
+]

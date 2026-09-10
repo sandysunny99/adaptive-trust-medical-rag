@@ -1,0 +1,31 @@
+{
+  "dataset_version": "v3.1-DIAGNOSTIC",
+  "annotation_method": "AUTOMATED_ANNOTATION",
+  "benchmark_status": "DIAGNOSTIC_ONLY",
+  "corpus_version": "v3.0-real-frozen",
+  "document_count": 248,
+  "case_count": 75,
+  "positive_case_count": 59,
+  "no_evidence_case_count": 16,
+  "domain_distribution": {
+    "Pharmacology": 24,
+    "Medication_Safety": 15,
+    "DDI": 12,
+    "ADE": 24
+  },
+  "difficulty_distribution": {
+    "MECHANISM": 24,
+    "PARAPHRASE": 12,
+    "MULTI_ENTITY": 13,
+    "CYP_DDI": 2,
+    "SYNONYM": 24
+  },
+  "risk_distribution": {
+    "R1": 27,
+    "R3": 35,
+    "R2": 13
+  },
+  "corpus_sha256": "cd7491f687d290a384e9d03b3868a725b14f528ee2a06a32718c5593609ad1e2",
+  "dataset_sha256": "caae96c0b0b1e049cb2db4611766f4110547b93d68c3613dc477a84d36f4551b",
+  "ground_truth_sha256": "7e1f4bc4e0e404207e22609b8b552262acbe1ea8e62058803e621466eaccb79e"
+}

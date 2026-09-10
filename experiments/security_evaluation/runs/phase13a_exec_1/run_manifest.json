@@ -1,0 +1,56 @@
+{
+  "approval_state": "COMPLETED",
+  "artifact_hashes": {
+    "results.jsonl": "620afcd0556a5266f6360d9943766f43864dc40abccf0b6f19e61f4d666991d3"
+  },
+  "artifacts": [
+    "experiments\\security_evaluation\\runs\\phase13a_exec_1\\results.jsonl"
+  ],
+  "code_version": "1.0.0",
+  "configuration": {
+    "baseline": true,
+    "case_set_hash": "6ccb73afb06efb967e753f09e1d1812bb8b2ba8ef85fadf9ceb9653926e39f36",
+    "hardened": true
+  },
+  "environment": {
+    "python": "3.12"
+  },
+  "experiment_id": "phase13a",
+  "gate_results": {},
+  "inputs": {
+    "cases_path": "experiments/security_evaluation/security_cases_v1.jsonl",
+    "num_cases": 7
+  },
+  "metrics": {
+    "baseline": {
+      "ABR": "0.0000",
+      "ADR": "0.0000",
+      "FPR": "0.0000",
+      "PPR": "0.6667",
+      "UAR": "1.0000"
+    },
+    "hardened": {
+      "ABR": "0.2000",
+      "ADR": "0.6000",
+      "FPR": "0.0000",
+      "PPR": "0.6667",
+      "UAR": "0.0000"
+    },
+    "stats": {
+      "mcnemar_chi2": "0.0000",
+      "n00": 4,
+      "n01": 1,
+      "n10": 0,
+      "n11": 0,
+      "n_attacks": 5
+    }
+  },
+  "notes": "Phase 13A Execution",
+  "outputs": {
+    "baseline_results": 7,
+    "hardened_results": 7
+  },
+  "run_id": "phase13a_exec_1",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-05T13:04:23Z"
+}

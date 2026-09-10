@@ -1,0 +1,10 @@
+{
+  "runner_sha256": "774c9d65cae1b6e83a945d5c773d8fc07ff0043c806975428d8b4e5ddc13f9a5",
+  "command": "uv run python runner_real_hardened.py",
+  "working_directory": "C:\\Users\\sunny\\Downloads\\CASE STUDY",
+  "timestamp": "2026-09-03T13:36:01.886887Z",
+  "output_hashes_path": "experiments\\runs\\retrieval-diagnostic-phase2f5-real-reproduced\\output_hashes.json",
+  "debug_records_path": "experiments\\runs\\retrieval-diagnostic-phase2f5-real-reproduced\\debug_records.jsonl",
+  "f0_results_path": "experiments\\runs\\retrieval-diagnostic-phase2f5-real-reproduced\\f0_results.jsonl",
+  "f3_results_path": "experiments\\runs\\retrieval-diagnostic-phase2f5-real-reproduced\\f3_results.jsonl"
+}

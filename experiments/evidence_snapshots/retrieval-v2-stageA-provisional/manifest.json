@@ -1,0 +1,9 @@
+{
+  "dataset_version": "v2",
+  "corpus_version": "v2",
+  "document_count": 77,
+  "chunk_count": 77,
+  "case_count": 30,
+  "positive_case_count": 15,
+  "creation_timestamp": "2026-09-02T23:09:00.686707"
+}

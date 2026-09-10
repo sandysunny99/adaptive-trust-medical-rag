@@ -1,0 +1,49 @@
+{
+  "case_id": "9fec3899803972b7",
+  "variant": "R0",
+  "query_hash": "4e58d595363e8a60005944138be523af99feb4a396f55f9ba3ab9652cbefba22",
+  "risk_tier": "R2",
+  "claim_type": "DDI",
+  "retrieved_document_ids": [
+    "doc-guideline-warfarin-aspirin",
+    "doc-fda-metformin",
+    "doc-fda-spironolactone"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-warfarin-001",
+    "chunk-metformin-001",
+    "chunk-spironolactone-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082,
+    0.016129032258064516,
+    0.015873015873015872
+  ],
+  "source_types": [
+    "American College of Chest Physicians",
+    "FDA Label",
+    "FDA Prescribing Information"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "relevant_retrieved_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "first_relevant_rank": 1,
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "precision_at_5": 0.3333333333333333,
+    "mrr": 1.0,
+    "ndcg_at_5": 1.0,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.03860000288113952,
+  "channels": [
+    "bm25"
+  ]
+}

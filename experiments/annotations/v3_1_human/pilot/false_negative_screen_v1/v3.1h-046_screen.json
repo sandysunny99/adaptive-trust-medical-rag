@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-046",
+  "population_size": 236,
+  "sample_size": 12,
+  "sampling_seed": -3624075488694408149,
+  "sampled_document_ids": [
+    "40978465",
+    "42647165",
+    "41406988",
+    "42598366",
+    "42662112",
+    "40828441",
+    "41109285",
+    "42546121",
+    "33986677",
+    "29856752",
+    "42675497",
+    "40618353"
+  ],
+  "screening_results": [
+    {
+      "document_id": "40978465",
+      "title": "Abnormal Ca(2+) handling and reduced I(to) contribute to citalopram-induced QT prolongation and cardiac arrhythmias.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42647165",
+      "title": "Pharmacotherapeutic considerations for the treatment of post-traumatic stress disorder during and after pregnancy: an update.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41406988",
+      "title": "Trends and variation in the use of andexanet alfa for the reversal of direct oral anticoagulants in NHS trusts in England.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42598366",
+      "title": "A 76-Year-Old Man With Hemorrhagic Stroke, Recurrent Thromboembolic Events, and Atrial Fibrillation Under Optimal Medical Treatment: When Anticoagulants Fail.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42662112",
+      "title": "A Comparative Study to Evaluate the Renoprotective Effect of Antidiabetic Drugs in Patients With Type 2 Diabetes Mellitus.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "40828441",
+      "title": "Oral anticoagulants-related bleeding: what happens in the emergency room? The Galeno study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41109285",
+      "title": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42546121",
+      "title": "Direct Oral Anticoagulants for Atrial Fibrillation in Patients Receiving Hemodialysis: A Review and Discussion of Evidence.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "33986677",
+      "title": "Radiation Increases Bioavailability of Lisinopril, a Mitigator of Radiation-Induced Toxicities.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "29856752",
+      "title": "Quality by design approach to optimize the formulation variables influencing the characteristics of biodegradable intramuscular in-situ gel loaded with alendronate sodium for osteoporosis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42675497",
+      "title": "Delayed ischemic stroke ten days after aluminum phosphide ingestion in a previously healthy 21-year-old Ethiopian woman: a case report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40618353",
+      "title": "[Management of emergencies in direct oral anticoagulant-treated patients: practice pearls].",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "42662112"
+  ],
+  "human_final_decisions": {
+    "42662112": {
+      "human_final_label": "NO_EVIDENCE",
+      "human_annotation_reason": "The document concerns renoprotective effects of antidiabetic drugs in patients with type 2 diabetes and is potentially relevant to medication safety and renal function, but the available title-only source does not establish the mechanisms of idiosyncratic drug-induced liver injury.",
+      "human_confidence": "LOW",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

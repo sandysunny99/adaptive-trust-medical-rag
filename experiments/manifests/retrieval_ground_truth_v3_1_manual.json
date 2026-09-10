@@ -1,0 +1,2785 @@
+[
+  {
+    "case_id": "r3.1-manual-001",
+    "query": "How does metformin inhibit hepatic gluconeogenesis?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "chunk_id": "chunk-41177211-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin decreases hepatic glucose production and decreases intestinal absorption of glucose.",
+        "evidence_text_hash": "f5061b00a2547a22ccee757112664bf09cd1e38a16f76fa992b9f4907c8ed7fc",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42661734",
+        "chunk_id": "chunk-42661734-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-specific effects of resveratrol and metformin on mitochondrial function and inflammatory activation in a TNF-\u03b1-driven human iPSC-derived endothelial dysfunction model.",
+        "evidence_text_hash": "13730dda60f29dc82fc16e712621d00be0d78f08d7e5c99d313629be93a104d6",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "32699722",
+        "chunk_id": "chunk-32699722-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin Associated Lactic Acidosis in the Intensive Care Unit: A Rare Condition Mimicking Sepsis.",
+        "evidence_text_hash": "4e159ef3e527fe5d71cceedac01cce7081417e3a386a76fbeaa71a47c8ec7224",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-002",
+    "query": "Metformin contraindication in severe renal disease",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42661734",
+        "chunk_id": "chunk-42661734-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-specific effects of resveratrol and metformin on mitochondrial function and inflammatory activation in a TNF-\u03b1-driven human iPSC-derived endothelial dysfunction model.",
+        "evidence_text_hash": "13730dda60f29dc82fc16e712621d00be0d78f08d7e5c99d313629be93a104d6",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "32699722",
+        "chunk_id": "chunk-32699722-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin Associated Lactic Acidosis in the Intensive Care Unit: A Rare Condition Mimicking Sepsis.",
+        "evidence_text_hash": "4e159ef3e527fe5d71cceedac01cce7081417e3a386a76fbeaa71a47c8ec7224",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41177211",
+        "chunk_id": "chunk-41177211-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin decreases hepatic glucose production and decreases intestinal absorption of glucose.",
+        "evidence_text_hash": "f5061b00a2547a22ccee757112664bf09cd1e38a16f76fa992b9f4907c8ed7fc",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-003",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-004",
+    "query": "Warfarin target INR monitoring",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-005",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "claim_type": "DDI",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42591558",
+        "chunk_id": "chunk-42591558-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Physiologically based pharmacokinetic modeling of fluconazole: interpretation of gender-dependent pharmacokinetics and cytochrome P450 inhibition.",
+        "evidence_text_hash": "5755c5b7a6b10a0b2eea92676e9f63fac5b0d41e961866c403ed75bd59241bf0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-006",
+    "query": "Genetic testing for CYP2C9 variants before prescribing",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42580545",
+        "chunk_id": "chunk-42580545-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Non-steroidal anti-inflammatory drugs and CYP2C9 - Impacts of genetics and phenoconversion on the risk of adverse effects.",
+        "evidence_text_hash": "15529fd4681ead6e812c50d09a43b4a9d5bc597756a293f8781827406acb1fdd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "28520369",
+        "chunk_id": "chunk-28520369-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Celecoxib Therapy and CYP2C9 Genotype.",
+        "evidence_text_hash": "46e59f8ea1fe2ef34eeadb8e6abeab7ef45ede668ab65613abe94f746aecf721",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-007",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "claim_type": "ADE",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42674049",
+        "chunk_id": "chunk-42674049-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "A Near-Infrared Fluorescent Probe for Imaging Nitroxyl Dynamics in Ferroptosis-Associated Drug-Induced Liver Injury.",
+        "evidence_text_hash": "91b928394000260d9bff43e17fe80701c11d113f5de7482ea8dd70102d31481a",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "42678243",
+        "chunk_id": "chunk-42678243-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+        "evidence_text_hash": "0c3a9245464d97e0ec1d385efedf85a056461fc5206b9913faa6137159da4dc3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42638417",
+        "chunk_id": "chunk-42638417-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The Bacterial Metabolite Lndole-3-Propionic Acid Alleviates Acetaminophen-Induced Acute Liver Injury Partly through the Aryl Hydrocarbon Receptor Pathway.",
+        "evidence_text_hash": "dca1a958bb74e91648cca3cdbd48dbbcd5ad9e67d9acf934628f8f84b21dec14",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42631638",
+        "chunk_id": "chunk-42631638-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions liver but lower relevance score."
+      },
+      {
+        "document_id": "42595240",
+        "chunk_id": "chunk-42595240-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions liver but lower relevance score."
+      },
+      {
+        "document_id": "42679743",
+        "chunk_id": "chunk-42679743-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions liver but lower relevance score."
+      },
+      {
+        "document_id": "42680287",
+        "chunk_id": "chunk-42680287-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions liver but lower relevance score."
+      },
+      {
+        "document_id": "42662744",
+        "chunk_id": "chunk-42662744-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions liver but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-008",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42633086",
+        "chunk_id": "chunk-42633086-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nivolumab after recurrent pembrolizumab-associated hepatotoxicity in PD-L1-high metastatic squamous non-small cell lung cancer: a case report.",
+        "evidence_text_hash": "627f5607a502a0baa23a27babc92c9d130538ad476a203473c740122101026c7",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-009",
+    "query": "Spironolactone induced hyperkalemia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "chunk_id": "chunk-42374912-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Risk of Hyperkalemia in Patients with Heart Failure Treated with Spironolactone in Combination with Sacubitril/Valsartan vs.",
+        "evidence_text_hash": "9a88fa2b872f6d19575f480549b430076b3c4b50d4e7c8181aa54f3f49a95705",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42643702",
+        "chunk_id": "chunk-42643702-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+        "evidence_text_hash": "a3ab60c3815a2096ded988b68ced24de3bca84ff78fc18156d3ac9b8c41abc06",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-010",
+    "query": "Spironolactone and lisinopril combination risks",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "chunk_id": "chunk-42374912-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Risk of Hyperkalemia in Patients with Heart Failure Treated with Spironolactone in Combination with Sacubitril/Valsartan vs.",
+        "evidence_text_hash": "9a88fa2b872f6d19575f480549b430076b3c4b50d4e7c8181aa54f3f49a95705",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42643702",
+        "chunk_id": "chunk-42643702-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+        "evidence_text_hash": "a3ab60c3815a2096ded988b68ced24de3bca84ff78fc18156d3ac9b8c41abc06",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-011",
+    "query": "What is the primary mechanism of action for atorvastatin?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42653071",
+        "chunk_id": "chunk-42653071-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Safety and Efficacy Assessment of Cannabis Plant Compared to Atorvastatin for Lipid Lowering in Diabetic and Obese Wistar Male Rats.",
+        "evidence_text_hash": "dbc3abc88303afce541cb80fbf9c14e94aa48a52819ecb9b16a56967d90427de",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42636576",
+        "chunk_id": "chunk-42636576-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Real-world variability and factors associated with individual low-density-lipoprotein cholesterol response to different doses of atorvastatin, rosuvastatin, and simvastatin in 28,647 Chinese patients.",
+        "evidence_text_hash": "9b26b6e487c4e48aecdbeca2f71de560ae228497b8c49cd7f983392afb64dfa2",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42667336",
+        "chunk_id": "chunk-42667336-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Atorvastatin Exerts Context-Dependent Metabolic and Beneficial Effects on Behavior and Apoptotic Signaling in a Cafeteria Diet-Induced Metabolic Dysfunction Model.",
+        "evidence_text_hash": "0a702c7df3d6bd553c2ba67890dabe9421c4ecb1066b08eb124b863e7753a3ca",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-012",
+    "query": "Atorvastatin causing rhabdomyolysis",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42667336",
+        "chunk_id": "chunk-42667336-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Atorvastatin Exerts Context-Dependent Metabolic and Beneficial Effects on Behavior and Apoptotic Signaling in a Cafeteria Diet-Induced Metabolic Dysfunction Model.",
+        "evidence_text_hash": "0a702c7df3d6bd553c2ba67890dabe9421c4ecb1066b08eb124b863e7753a3ca",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42653071",
+        "chunk_id": "chunk-42653071-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Safety and Efficacy Assessment of Cannabis Plant Compared to Atorvastatin for Lipid Lowering in Diabetic and Obese Wistar Male Rats.",
+        "evidence_text_hash": "dbc3abc88303afce541cb80fbf9c14e94aa48a52819ecb9b16a56967d90427de",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42636576",
+        "chunk_id": "chunk-42636576-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Real-world variability and factors associated with individual low-density-lipoprotein cholesterol response to different doses of atorvastatin, rosuvastatin, and simvastatin in 28,647 Chinese patients.",
+        "evidence_text_hash": "9b26b6e487c4e48aecdbeca2f71de560ae228497b8c49cd7f983392afb64dfa2",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-013",
+    "query": "Clearance pathway for lisinopril",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "38710058",
+        "chunk_id": "chunk-38710058-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The Salutary Effects of Diminazene, Lisinopril or Valsartan on Cisplatin - Induced Acute Kidney Injury in Rats: A Comparative Study.",
+        "evidence_text_hash": "34624403ebe94d19f26d566fa2986dd7e6664bd592104dcbcd88383be35ba6bd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "33986677",
+        "chunk_id": "chunk-33986677-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Radiation Increases Bioavailability of Lisinopril, a Mitigator of Radiation-Induced Toxicities.",
+        "evidence_text_hash": "aaf77561336c81e716d893736e7e0d5094780713a33175e98ad10c26d53d6b1b",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "33048477",
+        "chunk_id": "chunk-33048477-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Impact of Green Tea Catechin Ingestion on the Pharmacokinetics of Lisinopril in Healthy Volunteers.",
+        "evidence_text_hash": "0d0034f8fa6a71c4f0b357443c9afd8f525b3a95ae838f255b9b31b67341787c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-014",
+    "query": "Lisinopril dosing in renal impairment GFR < 30",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "38710058",
+        "chunk_id": "chunk-38710058-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The Salutary Effects of Diminazene, Lisinopril or Valsartan on Cisplatin - Induced Acute Kidney Injury in Rats: A Comparative Study.",
+        "evidence_text_hash": "34624403ebe94d19f26d566fa2986dd7e6664bd592104dcbcd88383be35ba6bd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "33048477",
+        "chunk_id": "chunk-33048477-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Impact of Green Tea Catechin Ingestion on the Pharmacokinetics of Lisinopril in Healthy Volunteers.",
+        "evidence_text_hash": "0d0034f8fa6a71c4f0b357443c9afd8f525b3a95ae838f255b9b31b67341787c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "33986677",
+        "chunk_id": "chunk-33986677-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Radiation Increases Bioavailability of Lisinopril, a Mitigator of Radiation-Induced Toxicities.",
+        "evidence_text_hash": "aaf77561336c81e716d893736e7e0d5094780713a33175e98ad10c26d53d6b1b",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-015",
+    "query": "CYP enzyme responsible for omeprazole metabolism",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-016",
+    "query": "Omeprazole reducing clopidogrel efficacy",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-017",
+    "query": "Is levothyroxine absorbed better on an empty stomach?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42438581",
+        "chunk_id": "chunk-42438581-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+        "evidence_text_hash": "5df69eb07eafdd830e816b652d1a73f6cc6bb57b4867c43fb1a3b3463eebb588",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41109285",
+        "chunk_id": "chunk-41109285-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+        "evidence_text_hash": "82bd05d4f6062231089bd697aaaa2b15cb004a5094c8f8a1e768ae2e8658705d",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-018",
+    "query": "Iron sulfate decreasing levothyroxine absorption",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42438581",
+        "chunk_id": "chunk-42438581-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+        "evidence_text_hash": "5df69eb07eafdd830e816b652d1a73f6cc6bb57b4867c43fb1a3b3463eebb588",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41109285",
+        "chunk_id": "chunk-41109285-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+        "evidence_text_hash": "82bd05d4f6062231089bd697aaaa2b15cb004a5094c8f8a1e768ae2e8658705d",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-019",
+    "query": "Half-life of citalopram",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "40978465",
+        "chunk_id": "chunk-40978465-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Abnormal Ca(2+) handling and reduced I(to) contribute to citalopram-induced QT prolongation and cardiac arrhythmias.",
+        "evidence_text_hash": "083df2fad93fde3a8d6bd16c96ae67af9e34a865b07b8f72f3e0f7a054605703",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42326111",
+        "chunk_id": "chunk-42326111-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+        "evidence_text_hash": "2a88a15759562650b6b70a7abde85e12a959465ce8290dba0ce0817e341a040f",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (0) containing primary entity."
+      },
+      {
+        "document_id": "41748094",
+        "chunk_id": "chunk-41748094-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Heart Rate-Corrected QT Interval Dynamics Following Antidepressant Switching from Escitalopram to High-Dose Venlafaxine: Cardiac Safety Insights from the Early Medication Change Cohort.",
+        "evidence_text_hash": "67c3003c5993ff94759aca41199c251bc25b7b9755e694743de43a67c0a5b602",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (0) containing primary entity."
+      },
+      {
+        "document_id": "41452043",
+        "chunk_id": "chunk-41452043-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-020",
+    "query": "Citalopram and dose dependent QT prolongation",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "40978465",
+        "chunk_id": "chunk-40978465-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Abnormal Ca(2+) handling and reduced I(to) contribute to citalopram-induced QT prolongation and cardiac arrhythmias.",
+        "evidence_text_hash": "083df2fad93fde3a8d6bd16c96ae67af9e34a865b07b8f72f3e0f7a054605703",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "42326111",
+        "chunk_id": "chunk-42326111-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+        "evidence_text_hash": "2a88a15759562650b6b70a7abde85e12a959465ce8290dba0ce0817e341a040f",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41748094",
+        "chunk_id": "chunk-41748094-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Heart Rate-Corrected QT Interval Dynamics Following Antidepressant Switching from Escitalopram to High-Dose Venlafaxine: Cardiac Safety Insights from the Early Medication Change Cohort.",
+        "evidence_text_hash": "67c3003c5993ff94759aca41199c251bc25b7b9755e694743de43a67c0a5b602",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      },
+      {
+        "document_id": "41452043",
+        "chunk_id": "chunk-41452043-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-021",
+    "query": "Mechanism of doxorubicin intercalating DNA",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "38053572",
+        "chunk_id": "chunk-38053572-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nephroprotective effects of diminazene on doxorubicin-induced acute kidney injury in rats.",
+        "evidence_text_hash": "4a37666daca31d518257c6c0d867912057d3b0628f846ddf1189c9dc260e371e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42670540",
+        "chunk_id": "chunk-42670540-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+        "evidence_text_hash": "67c3a4375fb520fb023731069b6cecb33792b4759b3a5779396ce911c2a88970",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42660303",
+        "chunk_id": "chunk-42660303-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cardioprotective effects of natural phytochemicals from traditional medicinal plants against doxorubicin-induced cardiotoxicity: A meta-analysis of preclinical studies.",
+        "evidence_text_hash": "5b55799719261d1a52cbe4c54662e172770dd232cdb51cf510f72d2c7e55d9f9",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42676526",
+        "chunk_id": "chunk-42676526-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42665114",
+        "chunk_id": "chunk-42665114-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42663921",
+        "chunk_id": "chunk-42663921-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42662904",
+        "chunk_id": "chunk-42662904-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42662744",
+        "chunk_id": "chunk-42662744-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-022",
+    "query": "Doxorubicin associated heart failure",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "38053572",
+        "chunk_id": "chunk-38053572-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nephroprotective effects of diminazene on doxorubicin-induced acute kidney injury in rats.",
+        "evidence_text_hash": "4a37666daca31d518257c6c0d867912057d3b0628f846ddf1189c9dc260e371e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42676526",
+        "chunk_id": "chunk-42676526-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Tricholoma matsutake polypeptide modulates cardiac metabolism and restores autophagic flux to mitigate doxorubicin-induced senescence.",
+        "evidence_text_hash": "7d529e2a1a5636944b2dee3af776abb9b404625a5719282d60a8e7ff3dc902f8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42670540",
+        "chunk_id": "chunk-42670540-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+        "evidence_text_hash": "67c3a4375fb520fb023731069b6cecb33792b4759b3a5779396ce911c2a88970",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42665114",
+        "chunk_id": "chunk-42665114-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42663921",
+        "chunk_id": "chunk-42663921-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42662904",
+        "chunk_id": "chunk-42662904-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42662744",
+        "chunk_id": "chunk-42662744-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      },
+      {
+        "document_id": "42660303",
+        "chunk_id": "chunk-42660303-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions doxorubicin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-023",
+    "query": "Amiodarone distribution in adipose tissue",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42128899",
+        "chunk_id": "chunk-42128899-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cilostazol mitigates amiodarone-induced pulmonary toxicity and fibrosis by regulating the cAMP/TGF-\u03b21 pathway-mediated epithelial-to-mesenchymal transition in rats.",
+        "evidence_text_hash": "72d00bb781844aeacb5d99e6bd4f6f10dbc3f54e096ff500a476904ce9770a78",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42528583",
+        "chunk_id": "chunk-42528583-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Amiodarone-induced granulomatous lung injury mimicking organizing pneumonia: a case report.",
+        "evidence_text_hash": "7c85232834ff6fab1f9433d016d3d676d20bb1b369296e6b7d57bb150a373a41",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42466914",
+        "chunk_id": "chunk-42466914-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+        "evidence_text_hash": "5efdaf1ac267ae366bb90aba1b7fa2f3850be2933bc631eae2272f878a7e68f0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42359186",
+        "chunk_id": "chunk-42359186-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "42332214",
+        "chunk_id": "chunk-42332214-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "41808861",
+        "chunk_id": "chunk-41808861-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-024",
+    "query": "Amiodarone induced pulmonary fibrosis",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128899",
+        "chunk_id": "chunk-42128899-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cilostazol mitigates amiodarone-induced pulmonary toxicity and fibrosis by regulating the cAMP/TGF-\u03b21 pathway-mediated epithelial-to-mesenchymal transition in rats.",
+        "evidence_text_hash": "72d00bb781844aeacb5d99e6bd4f6f10dbc3f54e096ff500a476904ce9770a78",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "41808861",
+        "chunk_id": "chunk-41808861-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Network toxicology reveals key genes of amiodarone induced pulmonary fibrosis: based on machine learning and SHAP analysis.",
+        "evidence_text_hash": "f45f2168a7af8966d908d83f0eb09a4d7d453aed751658f0fc8173c4e03dfade",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "42466914",
+        "chunk_id": "chunk-42466914-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+        "evidence_text_hash": "5efdaf1ac267ae366bb90aba1b7fa2f3850be2933bc631eae2272f878a7e68f0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42528583",
+        "chunk_id": "chunk-42528583-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "42359186",
+        "chunk_id": "chunk-42359186-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "42332214",
+        "chunk_id": "chunk-42332214-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-025",
+    "query": "Isotretinoin mechanism in acne",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42295720",
+        "chunk_id": "chunk-42295720-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Continuous alternate day vs intermittent daily fixed doses of oral isotretinoin in grade 2 acne vulgaris.",
+        "evidence_text_hash": "be71148cda9b299f5a86a4e847fc6ac7ada4e8953a1961a740dc374175099a3d",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42246839",
+        "chunk_id": "chunk-42246839-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Routine blood monitoring in acne vulgaris patients on isotretinoin: Is reassessment warranted?",
+        "evidence_text_hash": "136acc79b3f6fa3ccf85fa780e9a30447fbdbe74caf6762a90cdac9e583aa963",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42669317",
+        "chunk_id": "chunk-42669317-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Ethical considerations in suspected isotretinoin nonadherence and/or diversion.",
+        "evidence_text_hash": "d898d8599ba29a50aa12a40401aaed794c07148544f8de3997680cd9cca30e5e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42522519",
+        "chunk_id": "chunk-42522519-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42349978",
+        "chunk_id": "chunk-42349978-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42461919",
+        "chunk_id": "chunk-42461919-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-026",
+    "query": "Isotretinoin causing severe birth defects",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42669317",
+        "chunk_id": "chunk-42669317-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Ethical considerations in suspected isotretinoin nonadherence and/or diversion.",
+        "evidence_text_hash": "d898d8599ba29a50aa12a40401aaed794c07148544f8de3997680cd9cca30e5e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42522519",
+        "chunk_id": "chunk-42522519-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Examining the safety of dermatological and surgical procedures in patients undergoing systemic isotretinoin therapy: An updated review.",
+        "evidence_text_hash": "00c4d7772ce6ed94d41acd57eadb47d59651d2a5b0d7d77ceeabd03779b095d0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42461919",
+        "chunk_id": "chunk-42461919-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Signal mining and analysis of adverse events associated with Isotretinoin: A 20-Year real-world pharmacovigilance study based on FAERS and EudraVigilance databases.",
+        "evidence_text_hash": "7d5ab7530e9de32fe2e685c6a8e79256ca279eed3a2812ecb679dc992779f047",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42349978",
+        "chunk_id": "chunk-42349978-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42295720",
+        "chunk_id": "chunk-42295720-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42246839",
+        "chunk_id": "chunk-42246839-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-027",
+    "query": "Acetaminophen toxic metabolite NAPQI",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42638417",
+        "chunk_id": "chunk-42638417-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The Bacterial Metabolite Lndole-3-Propionic Acid Alleviates Acetaminophen-Induced Acute Liver Injury Partly through the Aryl Hydrocarbon Receptor Pathway.",
+        "evidence_text_hash": "dca1a958bb74e91648cca3cdbd48dbbcd5ad9e67d9acf934628f8f84b21dec14",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42678243",
+        "chunk_id": "chunk-42678243-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+        "evidence_text_hash": "0c3a9245464d97e0ec1d385efedf85a056461fc5206b9913faa6137159da4dc3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42665174",
+        "chunk_id": "chunk-42665174-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Acetaminophen-induced developmental neurobehavioral and sensory organ toxicity in zebrafish.",
+        "evidence_text_hash": "746d5c0b94387f43609033cd0b9056bb960c40157bc8a877e2a2c335e97173ca",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42663261",
+        "chunk_id": "chunk-42663261-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42631638",
+        "chunk_id": "chunk-42631638-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42628776",
+        "chunk_id": "chunk-42628776-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-028",
+    "query": "Acetaminophen overdose hepatotoxicity",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42663261",
+        "chunk_id": "chunk-42663261-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Clinical outcomes of \"massive\" acetaminophen overdose treated with standard vs.",
+        "evidence_text_hash": "312289d3552efa11bf79212f166b7bbfe289ab0de60c5392a7ff4e3b523b3ffd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42678243",
+        "chunk_id": "chunk-42678243-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+        "evidence_text_hash": "0c3a9245464d97e0ec1d385efedf85a056461fc5206b9913faa6137159da4dc3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42665174",
+        "chunk_id": "chunk-42665174-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Acetaminophen-induced developmental neurobehavioral and sensory organ toxicity in zebrafish.",
+        "evidence_text_hash": "746d5c0b94387f43609033cd0b9056bb960c40157bc8a877e2a2c335e97173ca",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42638417",
+        "chunk_id": "chunk-42638417-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42631638",
+        "chunk_id": "chunk-42631638-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42628776",
+        "chunk_id": "chunk-42628776-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-029",
+    "query": "Digoxin inhibition of Na-K ATPase",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42610101",
+        "chunk_id": "chunk-42610101-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+        "evidence_text_hash": "de43a9bff94f57b34fc5c49b637eed8256231de7ca3f75713fce56e400b011b9",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41811250",
+        "chunk_id": "chunk-41811250-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Influence of transporter polymorphisms on digoxin serum concentrations: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c109f5da79bc2491fbbf9e36336dc8c401bf322e8d6ff9e71b006e0962f5dde8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42658230",
+        "chunk_id": "chunk-42658230-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Supratherapeutic Digoxin Levels in Children with Cardiac Disease.",
+        "evidence_text_hash": "5136968cfa59b13c78ed079bea4d9d0cec3a8be2d7d86f38d132a999ab61c8ed",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42590087",
+        "chunk_id": "chunk-42590087-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "42489609",
+        "chunk_id": "chunk-42489609-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "41463106",
+        "chunk_id": "chunk-41463106-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "40406172",
+        "chunk_id": "chunk-40406172-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-030",
+    "query": "Monitoring for digoxin toxicity",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "40406172",
+        "chunk_id": "chunk-40406172-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Digoxin for Fetal Tachyarrhythmia: Toxicity in an Underweight Mother.",
+        "evidence_text_hash": "fc10975b40fdf3785ad5a9d6b8cd1539861789259687a57e3442a697cce2c691",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42610101",
+        "chunk_id": "chunk-42610101-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+        "evidence_text_hash": "de43a9bff94f57b34fc5c49b637eed8256231de7ca3f75713fce56e400b011b9",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42489609",
+        "chunk_id": "chunk-42489609-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cilostazol-Induced Digoxin Toxicity Presenting as Accelerated Idioventricular Rhythm and Recurrent Syncope.",
+        "evidence_text_hash": "2f3a97dcbaa111bb7ebafa64a0f980234f4ea7df94b8ef682d3be64686167462",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42658230",
+        "chunk_id": "chunk-42658230-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "42590087",
+        "chunk_id": "chunk-42590087-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "41811250",
+        "chunk_id": "chunk-41811250-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "41463106",
+        "chunk_id": "chunk-41463106-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-031",
+    "query": "Alendronate bone resorption inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "38832136",
+        "chunk_id": "chunk-38832136-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "From pill to pain: Alendronate-induced esophageal injury-A case report and review.",
+        "evidence_text_hash": "add52c7711da2ace15aa1754870976a22b17f84568f3d0beeb1edcfbfa5e4037",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "34258506",
+        "chunk_id": "chunk-34258506-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "A Prospective Open-Label Observational Study of a Buffered Soluble 70\u2009mg Alendronate Effervescent Tablet on Upper Gastrointestinal Safety and Medication Errors: The GastroPASS Study.",
+        "evidence_text_hash": "5bd874c155b91a28d487d87dca03c8738afe2d8fb3c6c19b4d93ea213ef2db6a",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "29856752",
+        "chunk_id": "chunk-29856752-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Quality by design approach to optimize the formulation variables influencing the characteristics of biodegradable intramuscular in-situ gel loaded with alendronate sodium for osteoporosis.",
+        "evidence_text_hash": "b17670699391a9204abb20e8d02664445550aff88d9338173ebe370a548c9962",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "27956102",
+        "chunk_id": "chunk-27956102-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions alendronate but lower relevance score."
+      },
+      {
+        "document_id": "27148747",
+        "chunk_id": "chunk-27148747-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions alendronate but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-032",
+    "query": "Alendronate causing esophageal ulceration",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "38832136",
+        "chunk_id": "chunk-38832136-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "From pill to pain: Alendronate-induced esophageal injury-A case report and review.",
+        "evidence_text_hash": "add52c7711da2ace15aa1754870976a22b17f84568f3d0beeb1edcfbfa5e4037",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "34258506",
+        "chunk_id": "chunk-34258506-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "A Prospective Open-Label Observational Study of a Buffered Soluble 70\u2009mg Alendronate Effervescent Tablet on Upper Gastrointestinal Safety and Medication Errors: The GastroPASS Study.",
+        "evidence_text_hash": "5bd874c155b91a28d487d87dca03c8738afe2d8fb3c6c19b4d93ea213ef2db6a",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "29856752",
+        "chunk_id": "chunk-29856752-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Quality by design approach to optimize the formulation variables influencing the characteristics of biodegradable intramuscular in-situ gel loaded with alendronate sodium for osteoporosis.",
+        "evidence_text_hash": "b17670699391a9204abb20e8d02664445550aff88d9338173ebe370a548c9962",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "27956102",
+        "chunk_id": "chunk-27956102-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions alendronate but lower relevance score."
+      },
+      {
+        "document_id": "27148747",
+        "chunk_id": "chunk-27148747-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions alendronate but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-033",
+    "query": "Pantoprazole proton pump inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-034",
+    "query": "Pantoprazole interaction with levothyroxine",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-035",
+    "query": "Fluoxetine active metabolite norfluoxetine",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42571795",
+        "chunk_id": "chunk-42571795-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Mechanistic insights into cytochrome P450 inhibition by progesterone and its impact on fluoxetine pharmacokinetics.",
+        "evidence_text_hash": "bb686399f7eafd41286f172cf606bf4220bf51d47a4169d5e4a1294a627dd638",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+        "evidence_text_hash": "f9283d6fe7530efc602370edbb08ab2a38870eef8dc020ed2ae9b8d280ff32b8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42631653",
+        "chunk_id": "chunk-42631653-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Application of Physiologically Based Pharmacokinetic Modeling to Optimize Assessment of Age-Related Fluoxetine Accumulation in the Elderly.",
+        "evidence_text_hash": "d47a04d67ac881217a22a983ec9ed446b385258b2e1429aec48d9a5d9d72dbcb",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42267072",
+        "chunk_id": "chunk-42267072-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions fluoxetine but lower relevance score."
+      },
+      {
+        "document_id": "42055120",
+        "chunk_id": "chunk-42055120-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions fluoxetine but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-036",
+    "query": "Fluoxetine increasing suicidal ideation",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42571795",
+        "chunk_id": "chunk-42571795-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Mechanistic insights into cytochrome P450 inhibition by progesterone and its impact on fluoxetine pharmacokinetics.",
+        "evidence_text_hash": "bb686399f7eafd41286f172cf606bf4220bf51d47a4169d5e4a1294a627dd638",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+        "evidence_text_hash": "f9283d6fe7530efc602370edbb08ab2a38870eef8dc020ed2ae9b8d280ff32b8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42631653",
+        "chunk_id": "chunk-42631653-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Application of Physiologically Based Pharmacokinetic Modeling to Optimize Assessment of Age-Related Fluoxetine Accumulation in the Elderly.",
+        "evidence_text_hash": "d47a04d67ac881217a22a983ec9ed446b385258b2e1429aec48d9a5d9d72dbcb",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42267072",
+        "chunk_id": "chunk-42267072-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions fluoxetine but lower relevance score."
+      },
+      {
+        "document_id": "42055120",
+        "chunk_id": "chunk-42055120-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions fluoxetine but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-037",
+    "query": "Sertraline serotonin reuptake blockade",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+        "evidence_text_hash": "f9283d6fe7530efc602370edbb08ab2a38870eef8dc020ed2ae9b8d280ff32b8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42662351",
+        "chunk_id": "chunk-42662351-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sertraline-induced fetotoxicity in mice: Protective effects of vitamin E on foetal growth and organ histology.",
+        "evidence_text_hash": "42cf680a4c686f57759ad005a0ec28411f10b5f82fb65b2075e5e165080aa3f0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42596979",
+        "chunk_id": "chunk-42596979-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sertraline use in pregnancy and placental transfer: A pharmacokinetic prospective cohort study.",
+        "evidence_text_hash": "c1ca5b963469b278d906ca3309fe00ef94602a30b6809a289811627952e86fc6",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42192153",
+        "chunk_id": "chunk-42192153-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions sertraline but lower relevance score."
+      },
+      {
+        "document_id": "42181774",
+        "chunk_id": "chunk-42181774-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions sertraline but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-038",
+    "query": "Sertraline safety during pregnancy",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42596979",
+        "chunk_id": "chunk-42596979-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sertraline use in pregnancy and placental transfer: A pharmacokinetic prospective cohort study.",
+        "evidence_text_hash": "c1ca5b963469b278d906ca3309fe00ef94602a30b6809a289811627952e86fc6",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+        "evidence_text_hash": "f9283d6fe7530efc602370edbb08ab2a38870eef8dc020ed2ae9b8d280ff32b8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42662351",
+        "chunk_id": "chunk-42662351-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sertraline-induced fetotoxicity in mice: Protective effects of vitamin E on foetal growth and organ histology.",
+        "evidence_text_hash": "42cf680a4c686f57759ad005a0ec28411f10b5f82fb65b2075e5e165080aa3f0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42192153",
+        "chunk_id": "chunk-42192153-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions sertraline but lower relevance score."
+      },
+      {
+        "document_id": "42181774",
+        "chunk_id": "chunk-42181774-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions sertraline but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-039",
+    "query": "Gabapentin binding to voltage-gated calcium channels",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42371403",
+        "chunk_id": "chunk-42371403-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Does gabapentin add value to multimodal analgesia in thoracic surgery?",
+        "evidence_text_hash": "21d50c73b187f35ebcaa4aec09f9ea32f4e3e30b154ba67294a0e2e85123f5d8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42666410",
+        "chunk_id": "chunk-42666410-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Preoperative Gabapentin in Pediatric Anterior Cruciate Ligament Reconstruction With Peripheral Nerve Blockade: A Retrospective Cohort Study.",
+        "evidence_text_hash": "95776ccfa9a97fd0ecd97e7777569989cb90efbd976a6b0d4ff85c64718e7193",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42665888",
+        "chunk_id": "chunk-42665888-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "EXPRESS: Effect of oral gabapentin administered in-hospital on behavioral stress, compliance, and physiologic stress markers: a randomized, double-blind, placebo-controlled trial.",
+        "evidence_text_hash": "0e18a3813b5170b401a6be4777e92ae42651d3a74cb87c2ad8c56f445e91feb3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42527260",
+        "chunk_id": "chunk-42527260-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      },
+      {
+        "document_id": "42437608",
+        "chunk_id": "chunk-42437608-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      },
+      {
+        "document_id": "42462752",
+        "chunk_id": "chunk-42462752-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-040",
+    "query": "Gabapentin causing excessive somnolence",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42666410",
+        "chunk_id": "chunk-42666410-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Preoperative Gabapentin in Pediatric Anterior Cruciate Ligament Reconstruction With Peripheral Nerve Blockade: A Retrospective Cohort Study.",
+        "evidence_text_hash": "95776ccfa9a97fd0ecd97e7777569989cb90efbd976a6b0d4ff85c64718e7193",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42665888",
+        "chunk_id": "chunk-42665888-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "EXPRESS: Effect of oral gabapentin administered in-hospital on behavioral stress, compliance, and physiologic stress markers: a randomized, double-blind, placebo-controlled trial.",
+        "evidence_text_hash": "0e18a3813b5170b401a6be4777e92ae42651d3a74cb87c2ad8c56f445e91feb3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42527260",
+        "chunk_id": "chunk-42527260-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Gabapentin for Postoperative Analgesia in Cardiac Surgery via Sternotomy: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+        "evidence_text_hash": "f4f7bfd628a473ba85c5d8da97b6a753e4d9e1d5d4baf09d6d37005bd7ee9b3c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42437608",
+        "chunk_id": "chunk-42437608-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      },
+      {
+        "document_id": "42371403",
+        "chunk_id": "chunk-42371403-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      },
+      {
+        "document_id": "42462752",
+        "chunk_id": "chunk-42462752-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions gabapentin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-041",
+    "query": "Tramadol mu-opioid receptor affinity",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41323006",
+        "chunk_id": "chunk-41323006-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Randomized, Double-Blind, Placebo-Controlled, Dose-Ranging Comparison of the Analgesic Efficacy and Safety of Intravenous Ketoprofen, Tramadol, and Morphine After Bony Impacted Mandibular Third Molar Surgery.",
+        "evidence_text_hash": "02577cb16cd24c800eda755c22e06e73c78216b2f77963d527526bcb8b8bb093",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41158891",
+        "chunk_id": "chunk-41158891-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Seizures Following Single-Dose Intravenous Tramadol for Postsurgical Pain: A Report of Two Cases.",
+        "evidence_text_hash": "250da0b19260af9bd4fb611930921ef61e75cc126431e97267ec47ef32a4cd06",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41061201",
+        "chunk_id": "chunk-41061201-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Risk of Seizure Associated With Concomitant Use of Tramadol and Antidepressants in Older Nursing Home Residents.",
+        "evidence_text_hash": "399e63531b243d9a080157d04a5ed07588136172141c2011f15e93a9321f3f2e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "40242084",
+        "chunk_id": "chunk-40242084-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions tramadol but lower relevance score."
+      },
+      {
+        "document_id": "38006536",
+        "chunk_id": "chunk-38006536-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions tramadol but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-042",
+    "query": "Tramadol lowering seizure threshold",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "41061201",
+        "chunk_id": "chunk-41061201-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Risk of Seizure Associated With Concomitant Use of Tramadol and Antidepressants in Older Nursing Home Residents.",
+        "evidence_text_hash": "399e63531b243d9a080157d04a5ed07588136172141c2011f15e93a9321f3f2e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "40242084",
+        "chunk_id": "chunk-40242084-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Tramadol use and risk of seizure: A report of two cases and a review of recent literature.",
+        "evidence_text_hash": "4583a360f8a5344c8cb936caf71b79851b49345682a2f2684cfab28d06162eb7",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "38006536",
+        "chunk_id": "chunk-38006536-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Clinical and Laboratory Factors Related to Seizure and Serotonin Toxicity in Tramadol Intoxication: An Egyptian Study.",
+        "evidence_text_hash": "431c86583f11006ef5ae8cdad59986111e46c54a7587d34c749f048d88171199",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41323006",
+        "chunk_id": "chunk-41323006-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions tramadol but lower relevance score."
+      },
+      {
+        "document_id": "41158891",
+        "chunk_id": "chunk-41158891-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions tramadol but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-043",
+    "query": "Celecoxib selective COX-2 inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41733550",
+        "chunk_id": "chunk-41733550-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cyclooxygenase-2 Inhibition and Anti-Platelet Aggregation Activity of Astaxanthin-Hydrogel in Comparison to Celecoxib Against Rheumatoid Arthritis in Wistar Rat Model.",
+        "evidence_text_hash": "56fad55918db207a748ad98140d7fee522a688cc78922e4c77002bd3028d82a4",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "28520369",
+        "chunk_id": "chunk-28520369-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Celecoxib Therapy and CYP2C9 Genotype.",
+        "evidence_text_hash": "46e59f8ea1fe2ef34eeadb8e6abeab7ef45ede668ab65613abe94f746aecf721",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-044",
+    "query": "Celecoxib and myocardial infarction risk",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "28520369",
+        "chunk_id": "chunk-28520369-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Celecoxib Therapy and CYP2C9 Genotype.",
+        "evidence_text_hash": "46e59f8ea1fe2ef34eeadb8e6abeab7ef45ede668ab65613abe94f746aecf721",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41733550",
+        "chunk_id": "chunk-41733550-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cyclooxygenase-2 Inhibition and Anti-Platelet Aggregation Activity of Astaxanthin-Hydrogel in Comparison to Celecoxib Against Rheumatoid Arthritis in Wistar Rat Model.",
+        "evidence_text_hash": "56fad55918db207a748ad98140d7fee522a688cc78922e4c77002bd3028d82a4",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-045",
+    "query": "Rivaroxaban Factor Xa inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41776019",
+        "chunk_id": "chunk-41776019-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Andexanet\u00a0alfa Reduces Hematoma Expansion Following Controlled Cortical Impact in Mice Pretreated with Rivaroxaban.",
+        "evidence_text_hash": "cb2dea5a1503e6ed8fb9803f40ebdc38b307b965b41e517e9b4ffae20a51dd97",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-046",
+    "query": "Rivaroxaban associated major bleeding",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "41776019",
+        "chunk_id": "chunk-41776019-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Andexanet\u00a0alfa Reduces Hematoma Expansion Following Controlled Cortical Impact in Mice Pretreated with Rivaroxaban.",
+        "evidence_text_hash": "cb2dea5a1503e6ed8fb9803f40ebdc38b307b965b41e517e9b4ffae20a51dd97",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-047",
+    "query": "Apixaban pharmacokinetics in renal failure",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42670022",
+        "chunk_id": "chunk-42670022-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Apixaban Dose Selection in Kidney Failure: Reconciling Pharmacokinetics and Clinical Outcomes.",
+        "evidence_text_hash": "f1cfc8c2e5515c4951f047e1eeb324cd65e360f403f9b66a229a9fd247fcdb4c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "42216360",
+        "chunk_id": "chunk-42216360-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Real-world off-label apixaban dosing and clinical outcomes in patients with heart failure and end-stage kidney disease.",
+        "evidence_text_hash": "2c073d94a5a5f343fcb0884718bfbb2c0bedc8fc3a594d6aaad6da8d50d9fddd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-048",
+    "query": "Apixaban associated gastrointestinal bleeding",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42670022",
+        "chunk_id": "chunk-42670022-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Apixaban Dose Selection in Kidney Failure: Reconciling Pharmacokinetics and Clinical Outcomes.",
+        "evidence_text_hash": "f1cfc8c2e5515c4951f047e1eeb324cd65e360f403f9b66a229a9fd247fcdb4c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42216360",
+        "chunk_id": "chunk-42216360-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Real-world off-label apixaban dosing and clinical outcomes in patients with heart failure and end-stage kidney disease.",
+        "evidence_text_hash": "2c073d94a5a5f343fcb0884718bfbb2c0bedc8fc3a594d6aaad6da8d50d9fddd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-049",
+    "query": "Reversal agent for dabigatran",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42654146",
+        "chunk_id": "chunk-42654146-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Moxifloxacin-Mediated Downregulation of Intestinal P-Glycoprotein Alters the Pharmacokinetics of Dabigatran Etexilate: Mechanistic Insights in Rats and PBPK Model-Informed Dose Optimization.",
+        "evidence_text_hash": "7eb2bccc23c3589c34c934691e90fa04a7297d08a2c9487e2ac2d993acc1c63a",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41818114",
+        "chunk_id": "chunk-41818114-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Dabigatran-induced Gastrointestinal Bleed Treated by 4-factor Prothrombin Complex Concentrate in a Tertiary Care Hospital in Sikkim.",
+        "evidence_text_hash": "31dea2003c47864a4f17ab252d3fcf9db4c445fb6a5404232770212c551434e7",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-050",
+    "query": "Dabigatran causing dyspepsia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42654146",
+        "chunk_id": "chunk-42654146-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Moxifloxacin-Mediated Downregulation of Intestinal P-Glycoprotein Alters the Pharmacokinetics of Dabigatran Etexilate: Mechanistic Insights in Rats and PBPK Model-Informed Dose Optimization.",
+        "evidence_text_hash": "7eb2bccc23c3589c34c934691e90fa04a7297d08a2c9487e2ac2d993acc1c63a",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41818114",
+        "chunk_id": "chunk-41818114-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Dabigatran-induced Gastrointestinal Bleed Treated by 4-factor Prothrombin Complex Concentrate in a Tertiary Care Hospital in Sikkim.",
+        "evidence_text_hash": "31dea2003c47864a4f17ab252d3fcf9db4c445fb6a5404232770212c551434e7",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-051",
+    "query": "Management of severe bleeding on warfarin",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42128628",
+        "chunk_id": "chunk-42128628-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+        "evidence_text_hash": "c531c3008ef71fa7e1b7c44748091f65caefaae77eecd7731ae8895b0f4c8241",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-052",
+    "query": "Renal dosing adjustments for metformin",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42661734",
+        "chunk_id": "chunk-42661734-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-specific effects of resveratrol and metformin on mitochondrial function and inflammatory activation in a TNF-\u03b1-driven human iPSC-derived endothelial dysfunction model.",
+        "evidence_text_hash": "13730dda60f29dc82fc16e712621d00be0d78f08d7e5c99d313629be93a104d6",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "41177211",
+        "chunk_id": "chunk-41177211-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin decreases hepatic glucose production and decreases intestinal absorption of glucose.",
+        "evidence_text_hash": "f5061b00a2547a22ccee757112664bf09cd1e38a16f76fa992b9f4907c8ed7fc",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "32699722",
+        "chunk_id": "chunk-32699722-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metformin Associated Lactic Acidosis in the Intensive Care Unit: A Rare Condition Mimicking Sepsis.",
+        "evidence_text_hash": "4e159ef3e527fe5d71cceedac01cce7081417e3a386a76fbeaa71a47c8ec7224",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-053",
+    "query": "Clopidogrel and naproxen GI bleeding",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "41766537",
+        "chunk_id": "chunk-41766537-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Increased Risk of Ischemic Events in Patients With Stroke Treated With Clopidogrel and a P-CAB or PPI.",
+        "evidence_text_hash": "857e5a70fbef40fba7e090e8beb8fb99299a6f2a5593bbaf606323d53983516e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41085374",
+        "chunk_id": "chunk-41085374-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Assessing Impact of Concomitant Use of Proton Pump Inhibitors and Clopidogrel on Incidence of Major Adverse Cardiovascular Events: A Retrospective Cohort Study.",
+        "evidence_text_hash": "a654739d93c85937b65413176f1947eef6611a2e1cf90e9c11f54b237ad10188",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41077316",
+        "chunk_id": "chunk-41077316-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Metabolic enzyme-mediated pharmacokinetic and pharmacodynamic interactions between Danshen Yin and clopidogrel in normal and acute myocardial infarction rats.",
+        "evidence_text_hash": "e441acf050d0c673721cc5a3177c04722168d8afa064e4cf6b6927c76fa7ee5f",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "40685887",
+        "chunk_id": "chunk-40685887-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions clopidogrel but lower relevance score."
+      },
+      {
+        "document_id": "42622073",
+        "chunk_id": "chunk-42622073-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions clopidogrel but lower relevance score."
+      },
+      {
+        "document_id": "39817374",
+        "chunk_id": "chunk-39817374-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions clopidogrel but lower relevance score."
+      },
+      {
+        "document_id": "39114562",
+        "chunk_id": "chunk-39114562-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions clopidogrel but lower relevance score."
+      },
+      {
+        "document_id": "42481856",
+        "chunk_id": "chunk-42481856-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions clopidogrel but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-054",
+    "query": "What monitoring is required for amiodarone liver toxicity?",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "42466914",
+        "chunk_id": "chunk-42466914-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+        "evidence_text_hash": "5efdaf1ac267ae366bb90aba1b7fa2f3850be2933bc631eae2272f878a7e68f0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42359186",
+        "chunk_id": "chunk-42359186-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Early-Onset Amiodarone Pulmonary Toxicity at a Standard Maintenance Dose Masquerading as Decompensated Heart Failure: A Case Report and Literature Review.",
+        "evidence_text_hash": "6a1ae47c2284a6b9959c31203318c4024882bbf922e04ef022ea922398fd6d99",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42332214",
+        "chunk_id": "chunk-42332214-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Optimizing Amiodarone Maintenance Dose to Minimize N-Desethylamiodarone Accumulation and Pulmonary Toxicity: Insights from Machine Learning and Pharmacokinetic Simulation.",
+        "evidence_text_hash": "961ce7961e590b87976ac6654c65929b01fcc9e798c25f2bbe2262fbe3f983e3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42128899",
+        "chunk_id": "chunk-42128899-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "42528583",
+        "chunk_id": "chunk-42528583-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      },
+      {
+        "document_id": "41808861",
+        "chunk_id": "chunk-41808861-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions amiodarone but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-055",
+    "query": "Isotretinoin and tetracycline pseudotumor cerebri",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42669317",
+        "chunk_id": "chunk-42669317-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Ethical considerations in suspected isotretinoin nonadherence and/or diversion.",
+        "evidence_text_hash": "d898d8599ba29a50aa12a40401aaed794c07148544f8de3997680cd9cca30e5e",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42522519",
+        "chunk_id": "chunk-42522519-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Examining the safety of dermatological and surgical procedures in patients undergoing systemic isotretinoin therapy: An updated review.",
+        "evidence_text_hash": "00c4d7772ce6ed94d41acd57eadb47d59651d2a5b0d7d77ceeabd03779b095d0",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42461919",
+        "chunk_id": "chunk-42461919-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Signal mining and analysis of adverse events associated with Isotretinoin: A 20-Year real-world pharmacovigilance study based on FAERS and EudraVigilance databases.",
+        "evidence_text_hash": "7d5ab7530e9de32fe2e685c6a8e79256ca279eed3a2812ecb679dc992779f047",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42349978",
+        "chunk_id": "chunk-42349978-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42295720",
+        "chunk_id": "chunk-42295720-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      },
+      {
+        "document_id": "42246839",
+        "chunk_id": "chunk-42246839-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions isotretinoin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-056",
+    "query": "Digoxin and macrolide toxicity",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42489609",
+        "chunk_id": "chunk-42489609-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Cilostazol-Induced Digoxin Toxicity Presenting as Accelerated Idioventricular Rhythm and Recurrent Syncope.",
+        "evidence_text_hash": "2f3a97dcbaa111bb7ebafa64a0f980234f4ea7df94b8ef682d3be64686167462",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (3) containing primary entity."
+      },
+      {
+        "document_id": "42610101",
+        "chunk_id": "chunk-42610101-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+        "evidence_text_hash": "de43a9bff94f57b34fc5c49b637eed8256231de7ca3f75713fce56e400b011b9",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42590087",
+        "chunk_id": "chunk-42590087-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Digoxin Dosing Errors, Drug Interactions and Off-Label Risks: Insights from an EudraVigilance Disproportionality Analysis.",
+        "evidence_text_hash": "ab4ff178ef77821bf3c6f39f97cd31d23744f5fbb94e0ed3603ac1b9a10dac8b",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41811250",
+        "chunk_id": "chunk-41811250-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "41463106",
+        "chunk_id": "chunk-41463106-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "40406172",
+        "chunk_id": "chunk-40406172-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      },
+      {
+        "document_id": "42658230",
+        "chunk_id": "chunk-42658230-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions digoxin but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-057",
+    "query": "Acetaminophen and warfarin INR prolongation",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42665174",
+        "chunk_id": "chunk-42665174-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Acetaminophen-induced developmental neurobehavioral and sensory organ toxicity in zebrafish.",
+        "evidence_text_hash": "746d5c0b94387f43609033cd0b9056bb960c40157bc8a877e2a2c335e97173ca",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42628776",
+        "chunk_id": "chunk-42628776-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Differentiating hepatic and renal toxicity reveals CYP-independent mechanisms of acetaminophen-induced acute kidney injury.",
+        "evidence_text_hash": "d698d50fc27445e8fbfcd7ad6b1b7c5f920fa106c32b7240e12afd53b5a9b927",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "42678243",
+        "chunk_id": "chunk-42678243-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+        "evidence_text_hash": "0c3a9245464d97e0ec1d385efedf85a056461fc5206b9913faa6137159da4dc3",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42663261",
+        "chunk_id": "chunk-42663261-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42638417",
+        "chunk_id": "chunk-42638417-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      },
+      {
+        "document_id": "42631638",
+        "chunk_id": "chunk-42631638-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions acetaminophen but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-058",
+    "query": "Citalopram and omeprazole QT prolongation",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "40978465",
+        "chunk_id": "chunk-40978465-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Abnormal Ca(2+) handling and reduced I(to) contribute to citalopram-induced QT prolongation and cardiac arrhythmias.",
+        "evidence_text_hash": "083df2fad93fde3a8d6bd16c96ae67af9e34a865b07b8f72f3e0f7a054605703",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (4) containing primary entity."
+      },
+      {
+        "document_id": "42326111",
+        "chunk_id": "chunk-42326111-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+        "evidence_text_hash": "2a88a15759562650b6b70a7abde85e12a959465ce8290dba0ce0817e341a040f",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41004670",
+        "chunk_id": "chunk-41004670-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+        "evidence_text_hash": "f9283d6fe7530efc602370edbb08ab2a38870eef8dc020ed2ae9b8d280ff32b8",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "41748094",
+        "chunk_id": "chunk-41748094-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      },
+      {
+        "document_id": "41452043",
+        "chunk_id": "chunk-41452043-001",
+        "relevance": "NOT_RELEVANT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "",
+        "evidence_text_hash": "",
+        "annotation_reason": "AUTOMATED_ANNOTATION HARD NEGATIVE: Mentions citalopram but lower relevance score."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-059",
+    "query": "Spironolactone causing gynecomastia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "42643702",
+        "chunk_id": "chunk-42643702-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+        "evidence_text_hash": "a3ab60c3815a2096ded988b68ced24de3bca84ff78fc18156d3ac9b8c41abc06",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      },
+      {
+        "document_id": "42374912",
+        "chunk_id": "chunk-42374912-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Risk of Hyperkalemia in Patients with Heart Failure Treated with Spironolactone in Combination with Sacubitril/Valsartan vs.",
+        "evidence_text_hash": "9a88fa2b872f6d19575f480549b430076b3c4b50d4e7c8181aa54f3f49a95705",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-060",
+    "query": "Lisinopril contraindicated in angioedema",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "38710058",
+        "chunk_id": "chunk-38710058-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The Salutary Effects of Diminazene, Lisinopril or Valsartan on Cisplatin - Induced Acute Kidney Injury in Rats: A Comparative Study.",
+        "evidence_text_hash": "34624403ebe94d19f26d566fa2986dd7e6664bd592104dcbcd88383be35ba6bd",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "33048477",
+        "chunk_id": "chunk-33048477-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Impact of Green Tea Catechin Ingestion on the Pharmacokinetics of Lisinopril in Healthy Volunteers.",
+        "evidence_text_hash": "0d0034f8fa6a71c4f0b357443c9afd8f525b3a95ae838f255b9b31b67341787c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (2) containing primary entity."
+      },
+      {
+        "document_id": "33986677",
+        "chunk_id": "chunk-33986677-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Radiation Increases Bioavailability of Lisinopril, a Mitigator of Radiation-Induced Toxicities.",
+        "evidence_text_hash": "aaf77561336c81e716d893736e7e0d5094780713a33175e98ad10c26d53d6b1b",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-061",
+    "query": "Penicillin anaphylaxis management",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-062",
+    "query": "Amoxicillin and clavulanate dosing",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-063",
+    "query": "Sildenafil contraindication with nitrates",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-064",
+    "query": "Ibuprofen induced gastric ulcer",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": [
+      {
+        "document_id": "41489241",
+        "chunk_id": "chunk-41489241-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "The role of a fixed combination of ibuprofen/paracetamol in the management of acute pain: an Italian expert narrative review.",
+        "evidence_text_hash": "fea8687461db6b5a9c4d250114944afeda062c142222b56e90a5772d648d0530",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-065",
+    "query": "Salbutamol causing tachycardia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-066",
+    "query": "Omalizumab injection site reaction",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-067",
+    "query": "Methotrexate folic acid supplementation",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-068",
+    "query": "Lithium toxicity tremor",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-069",
+    "query": "Clozapine agranulocytosis monitoring",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-070",
+    "query": "Valproate induced neural tube defects",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-071",
+    "query": "Lamotrigine Stevens-Johnson syndrome risk",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-072",
+    "query": "Sumatriptan mechanism for migraines",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "r3.1-manual-073",
+    "query": "Ketamine NMDA antagonism",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": [
+      {
+        "document_id": "41924710",
+        "chunk_id": "chunk-41924710-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "DXM, CYP2D6-inhibiting antidepressants, piracetam, and glutamine: proposing a ketamine-class antidepressant regimen with existing drugs.",
+        "evidence_text_hash": "213ed4d5e513ea1d8079f90cb09c6fdb2dec2e0aa8b23360259ef602c457864c",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-074",
+    "query": "Propofol infusion syndrome",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "relevant_documents": [
+      {
+        "document_id": "42437608",
+        "chunk_id": "chunk-42437608-001",
+        "relevance": "DIRECT_SUPPORT",
+        "authority_tier": "PEER_REVIEWED_PUBMED",
+        "evidence_span": "Influence of prior administration of gabapentin and integrative practices on sedation scores, physiological parameters, and propofol requirement in cats sedated with dexmedetomidine.",
+        "evidence_text_hash": "f5ec7beb1163cceb03458d1089252317fae5e9dcd2d3e629cf0eafe9257fdb0b",
+        "annotation_reason": "AUTOMATED_ANNOTATION: Top deterministic overlap (1) containing primary entity."
+      }
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-075",
+    "query": "Buprenorphine ceiling effect",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "relevant_documents": []
+  }
+]

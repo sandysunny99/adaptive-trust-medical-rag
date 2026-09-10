@@ -1,0 +1,2 @@
+# Provenance Note on Timestamps
+For the AI-assisted human annotation workflow (Phase 2F.2D), the `human_review_timestamp` values recorded in the workspace CSV represent the system-execution time when the Human Decision Helper script recorded the accepted human decision into the file, rather than the exact real-time moment the human reviewer originally conceived the decision. This applies to all automated script insertions during this phase.

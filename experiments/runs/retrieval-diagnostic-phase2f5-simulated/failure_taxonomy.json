@@ -1,0 +1,488 @@
+[
+  {
+    "type": "Beneficial Promotion",
+    "cid": "v3.1h-001",
+    "did": "41177211",
+    "desc": "Promoted relevant evidence by 26 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-001",
+    "did": "42661734",
+    "desc": "Promoted unrelated document by 6 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42679743",
+    "desc": "Demoted unrelated document by 15 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42678243",
+    "desc": "Demoted unrelated document by 26 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42674049",
+    "desc": "Demoted unrelated document by 14 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42680287",
+    "desc": "Demoted unrelated document by 4 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42632694",
+    "desc": "Demoted unrelated document by 23 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42662744",
+    "desc": "Demoted unrelated document by 4 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42652369",
+    "desc": "Demoted unrelated document by 22 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42631638",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "42595240",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-001",
+    "did": "41085374",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-002",
+    "did": "33048477",
+    "desc": "Promoted unrelated document by 11 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "42591558",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "42571795",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "38710058",
+    "desc": "Demoted unrelated document by 18 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-002",
+    "did": "33986677",
+    "desc": "Promoted unrelated document by 11 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "40771914",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "39430173",
+    "desc": "Demoted unrelated document by 18 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-002",
+    "did": "42670022",
+    "desc": "Demoted unrelated document by 22 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "40915652",
+    "desc": "Demoted unrelated document by 23 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "41112691",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "40289797",
+    "desc": "Demoted unrelated document by 15 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "42128628",
+    "desc": "Demoted unrelated document by 4 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-021",
+    "did": "42269153",
+    "desc": "Promoted unrelated document by 8 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "42206096",
+    "desc": "Demoted unrelated document by 5 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "42087312",
+    "desc": "Demoted unrelated document by 8 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "41976898",
+    "desc": "Demoted unrelated document by 8 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-021",
+    "did": "41085374",
+    "desc": "Demoted unrelated document by 12 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42618000",
+    "desc": "Demoted unrelated document by 20 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42591558",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42676526",
+    "desc": "Demoted unrelated document by 27 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42055120",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "28520369",
+    "desc": "Demoted unrelated document by 11 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-022",
+    "did": "42128628",
+    "desc": "Promoted unrelated document by 7 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42438581",
+    "desc": "Demoted unrelated document by 10 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-022",
+    "did": "42653808",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-023",
+    "did": "42374912",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-023",
+    "did": "40825054",
+    "desc": "Promoted unrelated document by 6 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-023",
+    "did": "42643702",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-023",
+    "did": "38710058",
+    "desc": "Demoted unrelated document by 10 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-023",
+    "did": "33986677",
+    "desc": "Demoted unrelated document by 10 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-023",
+    "did": "33048477",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42667784",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42661734",
+    "desc": "Demoted unrelated document by 12 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42653808",
+    "desc": "Demoted unrelated document by 7 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42653173",
+    "desc": "Demoted unrelated document by 12 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42677663",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-046",
+    "did": "42674049",
+    "desc": "Promoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42678094",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42681676",
+    "desc": "Demoted unrelated document by 19 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42670540",
+    "desc": "Demoted unrelated document by 22 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42628776",
+    "desc": "Demoted unrelated document by 32 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "42584699",
+    "desc": "Demoted unrelated document by 17 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-046",
+    "did": "30626809",
+    "desc": "Demoted unrelated document by 4 positions."
+  },
+  {
+    "type": "Beneficial Promotion",
+    "cid": "v3.1h-047",
+    "did": "42374912",
+    "desc": "Promoted relevant evidence by 16 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "42499456",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "42643702",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "42484991",
+    "desc": "Demoted unrelated document by 4 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "29262813",
+    "desc": "Demoted unrelated document by 18 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "42359186",
+    "desc": "Demoted unrelated document by 11 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-047",
+    "did": "42398817",
+    "desc": "Demoted unrelated document by 33 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42661734",
+    "desc": "Demoted unrelated document by 3 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "41177211",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42636576",
+    "desc": "Demoted unrelated document by 7 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42475421",
+    "desc": "Demoted unrelated document by 11 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42438581",
+    "desc": "Demoted unrelated document by 29 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42359186",
+    "desc": "Demoted unrelated document by 9 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42332214",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42295720",
+    "desc": "Demoted unrelated document by 32 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "42663261",
+    "desc": "Demoted unrelated document by 24 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-066",
+    "did": "41158891",
+    "desc": "Demoted unrelated document by 10 positions."
+  },
+  {
+    "type": "lexical false positive",
+    "cid": "v3.1h-066",
+    "did": "42394350",
+    "desc": "Promoted unrelated document by 6 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-067",
+    "did": "42246839",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-067",
+    "did": "42121128",
+    "desc": "Demoted unrelated document by 8 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-067",
+    "did": "42128628",
+    "desc": "Demoted unrelated document by 32 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-067",
+    "did": "38758406",
+    "desc": "Demoted unrelated document by 1 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-069",
+    "did": "42679743",
+    "desc": "Demoted unrelated document by 8 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-069",
+    "did": "42674049",
+    "desc": "Demoted unrelated document by 10 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-069",
+    "did": "42633086",
+    "desc": "Demoted unrelated document by 13 positions."
+  },
+  {
+    "type": "Beneficial Demotion",
+    "cid": "v3.1h-069",
+    "did": "40915652",
+    "desc": "Demoted unrelated document by 3 positions."
+  }
+]

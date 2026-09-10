@@ -1,0 +1,47 @@
+{
+  "PROMPT_INJECTION": {
+    "N": 35,
+    "baseline_detected": 0,
+    "hardened_detected": 0,
+    "baseline_blocked": 0,
+    "hardened_blocked": 0,
+    "baseline_fp": 0,
+    "hardened_fp": 0
+  },
+  "RETRIEVAL_POISONING": {
+    "N": 25,
+    "baseline_detected": 0,
+    "hardened_detected": 1,
+    "baseline_blocked": 0,
+    "hardened_blocked": 1,
+    "baseline_fp": 0,
+    "hardened_fp": 0
+  },
+  "BOUNDARY_VIOLATION": {
+    "N": 20,
+    "baseline_detected": 0,
+    "hardened_detected": 10,
+    "baseline_blocked": 0,
+    "hardened_blocked": 10,
+    "baseline_fp": 0,
+    "hardened_fp": 0
+  },
+  "PROVENANCE_ATTACK": {
+    "N": 10,
+    "baseline_detected": 0,
+    "hardened_detected": 0,
+    "baseline_blocked": 0,
+    "hardened_blocked": 0,
+    "baseline_fp": 0,
+    "hardened_fp": 0
+  },
+  "BENIGN_CONTROL": {
+    "N": 20,
+    "baseline_detected": 0,
+    "hardened_detected": 0,
+    "baseline_blocked": 0,
+    "hardened_blocked": 0,
+    "baseline_fp": 0,
+    "hardened_fp": 0
+  }
+}

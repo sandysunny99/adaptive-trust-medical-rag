@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-023",
+  "population_size": 241,
+  "sample_size": 12,
+  "sampling_seed": -1836529552541119450,
+  "sampled_document_ids": [
+    "41061201",
+    "40910969",
+    "41089323",
+    "42645604",
+    "42675227",
+    "42666410",
+    "42647165",
+    "42631638",
+    "42349978",
+    "38758406",
+    "42571795",
+    "41828566"
+  ],
+  "screening_results": [
+    {
+      "document_id": "41061201",
+      "title": "Risk of Seizure Associated With Concomitant Use of Tramadol and Antidepressants in Older Nursing Home Residents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40910969",
+      "title": "The Risk of Breakthrough Cardiac Events Associated With Psychiatric Medications in Patients With Diagnosed and Clinically Treated Long QT Syndrome.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41089323",
+      "title": "Arrhythmic events pertinent with antidepressants: a Bayesian disproportional analysis mining the FDA Adverse Event Reporting System database.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42645604",
+      "title": "Berberine-associated lipid-inflammatory regulation in atherosclerosis: an integrative transcriptomic, single-cell, and in vivo study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42675227",
+      "title": "Stevioside promotes hepatocyte proliferation via YAP signaling in cholestatic disease.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42666410",
+      "title": "Preoperative Gabapentin in Pediatric Anterior Cruciate Ligament Reconstruction With Peripheral Nerve Blockade: A Retrospective Cohort Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42647165",
+      "title": "Pharmacotherapeutic considerations for the treatment of post-traumatic stress disorder during and after pregnancy: an update.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42631638",
+      "title": "Diallyl trisulfide ameliorates acetaminophen-induced acute liver injury through the oxidative modification of CYP2E1 cysteine residues.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42349978",
+      "title": "New Agents for Acne Treatment and Updates to Isotretinoin Guidelines.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38758406",
+      "title": "Screening for ferroptosis genes related to endometrial carcinoma and predicting of targeted drugs based on bioinformatics.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42571795",
+      "title": "Mechanistic insights into cytochrome P450 inhibition by progesterone and its impact on fluoxetine pharmacokinetics.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41828566",
+      "title": "Integrating Network Toxicology, Machine Learning, and Molecular Dynamics to Explore the Molecular Network of Triclosan-Induced Acute Myocardial Infarction.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

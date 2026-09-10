@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-067",
+  "population_size": 244,
+  "sample_size": 12,
+  "sampling_seed": 57230832,
+  "sampled_document_ids": [
+    "42603144",
+    "42678094",
+    "42628776",
+    "38676494",
+    "42558881",
+    "41858685",
+    "42527260",
+    "38758406",
+    "42497636",
+    "29856752",
+    "38374855",
+    "41406988"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42603144",
+      "title": "Differential Quantification of Cutibacterium acnes Phylotypes IA and IB/II on Healthy and Acne-Prone Human Skin.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42678094",
+      "title": "Deciphering the Mechanisms of Statin-Ezetimibe Drug Combinations Using Boolean Logical Modeling and Transcriptomic Data.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42628776",
+      "title": "Differentiating hepatic and renal toxicity reveals CYP-independent mechanisms of acetaminophen-induced acute kidney injury.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38676494",
+      "title": "A Review of the Association between Infections, Seizures, and Drugs.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42558881",
+      "title": "Drug-associated psoriasis: a pharmacovigilance study based on the FAERS database.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41858685",
+      "title": "Impact of nutrition education intervention on dietary intake among pregnant women with hypothyroidism - A randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42527260",
+      "title": "Gabapentin for Postoperative Analgesia in Cardiac Surgery via Sternotomy: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38758406",
+      "title": "Screening for ferroptosis genes related to endometrial carcinoma and predicting of targeted drugs based on bioinformatics.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42497636",
+      "title": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "29856752",
+      "title": "Quality by design approach to optimize the formulation variables influencing the characteristics of biodegradable intramuscular in-situ gel loaded with alendronate sodium for osteoporosis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38374855",
+      "title": "An Unusual Presentation of Cobblestone Esophagus From Bisphosphonate Use.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41406988",
+      "title": "Trends and variation in the use of andexanet alfa for the reversal of direct oral anticoagulants in NHS trusts in England.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "38758406"
+  ],
+  "human_final_decisions": {
+    "38758406": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns ferroptosis-related genes in endometrial carcinoma and does not provide evidence about warfarin target INR monitoring.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

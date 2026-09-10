@@ -1,0 +1,7 @@
+{
+  "run_timestamp": "2026-09-03T08:49:05.118571+00:00",
+  "runtime_f0_configuration": "BM25(k1=1.2,b=0.75) + S-PubMedBERT + Neo4j(1hop) + RRF(k=60)",
+  "runtime_f3_configuration": "F0 + MedCPT-Cross-Encoder(v1.2) [Simulated]",
+  "random_seed": "Deterministic Hash (cid)",
+  "annotation_source": "AI_ASSISTED_DIAGNOSTIC"
+}

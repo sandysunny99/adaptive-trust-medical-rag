@@ -50,17 +50,24 @@ class GroqBackend:
             except Exception as e:
                 raise ModelExecutionError(f"Unexpected error: {e}", status_code="INTERNAL_ERROR") from e
 
+        from adaptive_trust_medical_rag.llm_routing.types import RateLimitInfo
+        
         # Extract rate limits
+        rate_limit_info = None
         if response is not None:
-            self.last_rate_limit_info = {
-                "x-ratelimit-remaining-requests": response.headers.get("x-ratelimit-remaining-requests"),
-                "x-ratelimit-remaining-tokens": response.headers.get("x-ratelimit-remaining-tokens"),
-                "x-ratelimit-limit-requests": response.headers.get("x-ratelimit-limit-requests"),
-                "x-ratelimit-limit-tokens": response.headers.get("x-ratelimit-limit-tokens"),
-                "x-ratelimit-reset-requests": response.headers.get("x-ratelimit-reset-requests"),
-                "x-ratelimit-reset-tokens": response.headers.get("x-ratelimit-reset-tokens"),
-                "retry-after": response.headers.get("retry-after"),
-            }
+            try:
+                rate_limit_info = RateLimitInfo(
+                    remaining_requests=int(response.headers.get("x-ratelimit-remaining-requests", 0)) or None,
+                    remaining_tokens=int(response.headers.get("x-ratelimit-remaining-tokens", 0)) or None,
+                    limit_requests=int(response.headers.get("x-ratelimit-limit-requests", 0)) or None,
+                    limit_tokens=int(response.headers.get("x-ratelimit-limit-tokens", 0)) or None,
+                    reset_requests=response.headers.get("x-ratelimit-reset-requests"),
+                    reset_tokens=response.headers.get("x-ratelimit-reset-tokens"),
+                    retry_after=float(response.headers.get("retry-after", 0)) or None,
+                )
+                self.last_rate_limit_info = rate_limit_info
+            except Exception:
+                pass  # nosec B110
             
         if response.status_code != 200:
             error_msg = f"Groq API error (status {response.status_code})"
@@ -119,4 +126,5 @@ class GroqBackend:
             generation_latency_ms=None,
             total_generation_latency_ms=None,
             status="SUCCESS",
+            rate_limit=rate_limit_info,
         )

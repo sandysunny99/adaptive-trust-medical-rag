@@ -1,0 +1,17 @@
+{
+  "DDI_Evidence_Recall_at_5": {
+    "F0": 1.0,
+    "F3": 1.0,
+    "n": 2
+  },
+  "ADE_Evidence_Recall_at_5": {
+    "F0": 0.3333333333333333,
+    "F3": 1.0,
+    "n": 3
+  },
+  "Medication_Safety_Recall_at_5": {
+    "F0": 1.0,
+    "F3": 1.0,
+    "n": 1
+  }
+}

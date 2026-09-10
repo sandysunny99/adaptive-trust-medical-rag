@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-047",
+  "population_size": 240,
+  "sample_size": 12,
+  "sampling_seed": 4635999835622621640,
+  "sampled_document_ids": [
+    "42636556",
+    "33777146",
+    "42670801",
+    "40357791",
+    "40272900",
+    "40406172",
+    "42590087",
+    "42515713",
+    "42666410",
+    "42679743",
+    "42603144",
+    "42610101"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42636556",
+      "title": "Multicenter Evaluation of Opioid Prescribing After Minimally Invasive Repair of Pectus Excavatum Before The 2024 American Academy of Pediatrics Guideline: Room to Improve.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "33777146",
+      "title": "Severe Oral Mucosal Ulceration Associated with Oral Bisphosphonate Use: The Importance of Imparting Proper Instructions on Medication Administration and Intake.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670801",
+      "title": "Therapeutic Potential of Nanocurcumin in Mitigating Duloxetine-Induced Hepatic Damage: Biochemical and Histopathological Insights.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40357791",
+      "title": "Antiplatelet-Proton Pump Inhibitor Interactions and Arterial Thrombotic Events: A Pharmacovigilance Assessment using Disproportionality and Interaction Analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40272900",
+      "title": "In vitro seizure risk assessment using a microelectrode array and comparison with an in vivo rat study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40406172",
+      "title": "Digoxin for Fetal Tachyarrhythmia: Toxicity in an Underweight Mother.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42590087",
+      "title": "Digoxin Dosing Errors, Drug Interactions and Off-Label Risks: Insights from an EudraVigilance Disproportionality Analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42515713",
+      "title": "CYP2D6 Metabolizer Phenotype Is Associated with Early Antidepressant Discontinuation in the UK Biobank.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42666410",
+      "title": "Preoperative Gabapentin in Pediatric Anterior Cruciate Ligament Reconstruction With Peripheral Nerve Blockade: A Retrospective Cohort Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42679743",
+      "title": "Dual-response mitochondria-targeted fluorescent probe for Hypochlorous acid and viscosity: Applications in liver injury diagnosis and environmental monitoring.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42603144",
+      "title": "Differential Quantification of Cutibacterium acnes Phylotypes IA and IB/II on Healthy and Acne-Prone Human Skin.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42610101",
+      "title": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

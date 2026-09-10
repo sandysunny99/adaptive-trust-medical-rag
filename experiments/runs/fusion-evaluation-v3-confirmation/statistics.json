@@ -1,0 +1,31 @@
+{
+  "Candidate_Pool_Recall@20": 1.0,
+  "Delta_Recall@5": 0.0,
+  "Delta_MRR": -0.012499999999999845,
+  "Delta_nDCG@5": -0.010509171003526996,
+  "F0": {
+    "Recall@5": 1.0,
+    "MRR": 0.8479166666666667,
+    "nDCG@5": 0.8869528646661264
+  },
+  "F3": {
+    "Recall@5": 1.0,
+    "MRR": 0.8354166666666668,
+    "nDCG@5": 0.8764436936625994
+  },
+  "p_values": {
+    "Recall@5_McNemar": 1.0,
+    "MRR_Wilcoxon": 0.11943216320053596,
+    "nDCG@5_Wilcoxon": 0.11943216320053596
+  },
+  "Rank_Changes": {
+    "Recovered": 0,
+    "Regressed": 0,
+    "Unchanged": 80
+  },
+  "Latency_ms": {
+    "pool": 89.15695000068808,
+    "reranker": 1224.3303225004638,
+    "total": 1313.487272501152
+  }
+}

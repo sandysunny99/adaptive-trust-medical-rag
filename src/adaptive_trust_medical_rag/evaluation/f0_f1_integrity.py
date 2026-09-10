@@ -163,8 +163,7 @@ class F0F1IntegrityAuditor:
         hard_coded_delta = False
         faith_deltas = [
             round(
-                f1_cases[cid].get("faithfulness", 0.0)
-                - f0_cases[cid].get("faithfulness", 0.0),
+                f1_cases[cid].get("faithfulness", 0.0) - f0_cases[cid].get("faithfulness", 0.0),
                 5,
             )
             for cid in paired_ids

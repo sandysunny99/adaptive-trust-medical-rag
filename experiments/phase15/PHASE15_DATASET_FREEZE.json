@@ -1,0 +1,23 @@
+{
+  "dataset_path": "experiments/phase15/phase15_cases.jsonl",
+  "N": 200,
+  "family_counts": {
+    "PROMPT_INJECTION": 35,
+    "RETRIEVAL_POISONING": 35,
+    "BOUNDARY_VIOLATION": 35,
+    "UNSUPPORTED_CLAIM": 35,
+    "CONTRADICTION": 30,
+    "BENIGN_CONTROL": 30
+  },
+  "dataset_sha256": "af71c70d36081b1b68316b5ff8636969c8b964c9655f752b41112694ebc02c48",
+  "construction_provenance": "curated synthetic/adversarial benchmark",
+  "validation_status": "PASS (automated structural/diversity/subtype audits)",
+  "adjudication_status": "RESEARCH_PROXY_ADJUDICATION_COMPLETE",
+  "adjudication_artifact_references": [
+    "experiments/phase15/PHASE15_DATASET_REVIEW.csv",
+    "experiments/phase15/PHASE15_FINAL_DATASET_REVIEW.md"
+  ],
+  "amendment_identifier": "PA-001",
+  "frozen": true,
+  "freeze_timestamp": "2026-09-08T09:01:07.473055Z"
+}

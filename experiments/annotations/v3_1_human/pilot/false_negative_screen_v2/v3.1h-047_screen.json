@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-047",
+  "population_size": 240,
+  "sample_size": 12,
+  "sampling_seed": 98872382,
+  "sampled_document_ids": [
+    "42295720",
+    "42448258",
+    "42461919",
+    "41463106",
+    "40828441",
+    "40910969",
+    "42497636",
+    "42663925",
+    "31583609",
+    "42327596",
+    "42438581",
+    "42630019"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42295720",
+      "title": "Continuous alternate day vs intermittent daily fixed doses of oral isotretinoin in grade 2 acne vulgaris.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42448258",
+      "title": "Anticoagulant Regimen for Nonvalvular Atrial Fibrillation in the Elderly and Frail Population.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42461919",
+      "title": "Signal mining and analysis of adverse events associated with Isotretinoin: A 20-Year real-world pharmacovigilance study based on FAERS and EudraVigilance databases.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41463106",
+      "title": "Reconsidering Digoxin in Atrial Fibrillation: From Historical Controversy to Physiologically Guided and Personalized Rate Control.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40828441",
+      "title": "Oral anticoagulants-related bleeding: what happens in the emergency room? The Galeno study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40910969",
+      "title": "The Risk of Breakthrough Cardiac Events Associated With Psychiatric Medications in Patients With Diagnosed and Clinically Treated Long QT Syndrome.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42497636",
+      "title": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42663925",
+      "title": "Selective and Time-Dependent Alterations in Cytochrome P450 (CYP) Enzyme Activity and Expression by Major Phytocannabinoids.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "31583609",
+      "title": "Physiologically Based Pharmacokinetic Modelling to Identify Pharmacokinetic Parameters Driving Drug Exposure Changes in the Elderly.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42327596",
+      "title": "Thrombosis and Survival after Prothrombin Complex Concentrate Use to treat Oral Anticoagulant Associated Haemorrhage.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42438581",
+      "title": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42630019",
+      "title": "Pharmacogenomics in Dentistry: From CYP-Mediated Drug Response to Precision Prescribing in Oral Healthcare.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

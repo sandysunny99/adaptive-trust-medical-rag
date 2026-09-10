@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-001",
+  "population_size": 234,
+  "sample_size": 12,
+  "sampling_seed": -2441126318005533696,
+  "sampled_document_ids": [
+    "42621983",
+    "38053572",
+    "41225655",
+    "41075377",
+    "42128628",
+    "42645604",
+    "42665114",
+    "42394350",
+    "41748094",
+    "40910969",
+    "42665174",
+    "42007940"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42621983",
+      "title": "Mass-Forming NSAID-Associated Colopathy Mimicking Right-Sided Colon Cancer: A Case Report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38053572",
+      "title": "Nephroprotective effects of diminazene on doxorubicin-induced acute kidney injury in rats.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41225655",
+      "title": "TNF-\u03b1 inhibitor etanercept improves cerebrovascular function in elderly RA patients: findings from a randomized controlled trial.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "41075377",
+      "title": "Interpretation of the association between thyroid peroxidase antibodies and thyroid function during pregnancy: An individual participant data meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42128628",
+      "title": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42645604",
+      "title": "Berberine-associated lipid-inflammatory regulation in atherosclerosis: an integrative transcriptomic, single-cell, and in vivo study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42665114",
+      "title": "Doxorubicin-induced Cardiotoxicity is Propagated by Paracrine Signaling through Small Extracellular Vesicles.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42394350",
+      "title": "The DOAC-FRAIL Study-Same Dose, Different Story: Prevalence of Deviant Direct Oral Anticoagulant Levels in Nursing Home Residents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41748094",
+      "title": "Heart Rate-Corrected QT Interval Dynamics Following Antidepressant Switching from Escitalopram to High-Dose Venlafaxine: Cardiac Safety Insights from the Early Medication Change Cohort.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40910969",
+      "title": "The Risk of Breakthrough Cardiac Events Associated With Psychiatric Medications in Patients With Diagnosed and Clinically Treated Long QT Syndrome.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42665174",
+      "title": "Acetaminophen-induced developmental neurobehavioral and sensory organ toxicity in zebrafish.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42007940",
+      "title": "Acute pharmaceutical poisoning as a cause of seizure events: a database analysis (2011-2023).",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "41225655"
+  ],
+  "human_final_decisions": {
+    "41225655": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns etanercept and cerebrovascular function in elderly rheumatoid arthritis patients and does not provide evidence about metformin inhibition of hepatic gluconeogenesis.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

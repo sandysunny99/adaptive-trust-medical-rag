@@ -1,0 +1,32 @@
+{
+  "dataset_version": "v3.1",
+  "corpus_version": "v3.1",
+  "document_count": 248,
+  "chunk_count": 248,
+  "case_count": 81,
+  "positive_case_count": 75,
+  "source_distribution": {
+    "PubMed": 248
+  },
+  "domain_distribution": {
+    "Pharmacology": 20,
+    "Medication_Safety": 21,
+    "DDI": 19,
+    "ADE": 21
+  },
+  "difficulty_distribution": {
+    "MECHANISM": 20,
+    "PARAPHRASE": 18,
+    "MULTI_ENTITY": 18,
+    "CYP_DDI": 3,
+    "SYNONYM": 22
+  },
+  "risk_distribution": {
+    "R1": 24,
+    "R3": 39,
+    "R2": 18
+  },
+  "corpus_sha256": "cd7491f687d290a384e9d03b3868a725b14f528ee2a06a32718c5593609ad1e2",
+  "dataset_sha256": "96182b063b562615da45632264d3fa015e7618c0f67f7c1d893fe4ef323345e0",
+  "ground_truth_sha256": "296e4a0f050e07ef594b3ad96adfe984f6d2d4aa089740732f1ecac8ac6666e1"
+}

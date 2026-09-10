@@ -1,0 +1,32 @@
+{
+  "case_id": "e-13",
+  "variant": "R1",
+  "query_hash": "e3fc2284e1018520171260e00e697c08fe1f6b4d879ed9150f1aa1f52622f87a",
+  "risk_tier": "R3",
+  "claim_type": "ADE",
+  "retrieved_document_ids": [],
+  "retrieved_chunk_ids": [],
+  "retrieval_scores": [],
+  "source_types": [],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "42466914",
+    "42528583"
+  ],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": 0.0,
+    "recall_at_3": 0.0,
+    "recall_at_5": 0.0,
+    "recall_at_10": 0.0,
+    "precision_at_5": 0.0,
+    "mrr": 0.0,
+    "ndcg_at_5": 0.0,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 1.0764000180643052,
+  "channels": [
+    "vector"
+  ]
+}

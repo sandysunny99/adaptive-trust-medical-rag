@@ -1,0 +1,11 @@
+case_id,query,n_labelled,n_positive,f0_first_hit_rank,f3_first_hit_rank,f0_hits@5,f0_hits@10,f0_hits@20,f3_hits@5,f3_hits@10,f3_hits@20,delta_hits@5,delta_hits@10,delta_hits@20
+v3.1h-001,How does metformin inhibit hepatic gluconeogenesis?,15,1,1,1,1,1,1,1,1,1,0,0,0
+v3.1h-002,Clearance pathway for lisinopril,9,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-021,Concomitant use of warfarin and aspirin bleeding risk,12,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-022,CYP2C9 interaction between fluconazole and warfarin,9,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-023,Lisinopril and spironolactone interaction hyperkalemia risk,7,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-046,Idiosyncratic drug induced liver injury mechanisms,14,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-047,Risk of hyperkalemia in patients treated with spironolactone,8,1,1,1,1,1,1,1,1,1,0,0,0
+v3.1h-066,Metformin contraindication in severe renal disease,15,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-067,Warfarin target INR monitoring,5,0,,,0,0,0,0,0,0,0,0,0
+v3.1h-069,Diagnosis of drug induced hepatotoxicity,4,0,,,0,0,0,0,0,0,0,0,0

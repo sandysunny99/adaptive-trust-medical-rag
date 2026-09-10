@@ -1,0 +1,12 @@
+{
+  "protocol_excerpt": "STATISTICAL METHOD = TO BE LOCKED BEFORE EXPERIMENT EXECUTION... Report confidence intervals, not just point estimates.",
+  "method": "Wald interval for paired difference with continuity correction",
+  "formula": "CI = (n10-n01)/N +/- (Z * SE + 1/N)",
+  "inputs": {
+    "N": 20,
+    "n01": 0,
+    "n10": 10,
+    "Z": 1.95996
+  },
+  "implementation_matches_protocol": "PASS (Protocol requires CI for effect estimate but allows standard estimator choice for paired difference. Implementation correctly computes Wald CC CI for paired difference.)"
+}

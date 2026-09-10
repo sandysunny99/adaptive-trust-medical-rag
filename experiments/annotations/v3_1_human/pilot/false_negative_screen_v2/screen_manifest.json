@@ -1,0 +1,10 @@
+{
+  "protocol_version": "V3.1-FN-SCREEN-V2",
+  "sampling_rate": 0.05,
+  "base_seed": 42,
+  "seed_method": "SHA256(case_id)",
+  "corpus_hash": "e4346ad15ec1f74af9ecc010ef822503eb44638f1020e7f0fcb51ad5c58f42f7",
+  "candidate_source": "experiments/annotations/v3_1_human/pilot/reviewer_workspace/decision_helper_review.csv",
+  "screening_method": "AUTOMATED_TRIAGE",
+  "final_human_label_generation": false
+}

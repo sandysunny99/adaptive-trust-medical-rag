@@ -1,0 +1,37 @@
+{
+  "dataset_version": "v2",
+  "case_count_target": 100,
+  "document_count_target": 250,
+  "source_distribution": {
+    "PubMed": 0.40,
+    "EuropePMC": 0.30,
+    "openFDA": 0.20,
+    "RxNorm": 0.10
+  },
+  "risk_distribution": {
+    "R0": 0.15,
+    "R1": 0.35,
+    "R2": 0.30,
+    "R3": 0.20
+  },
+  "claim_type_distribution": {
+    "Pharmacology": 0.35,
+    "DDI": 0.30,
+    "ADE": 0.20,
+    "Medication_Safety": 0.15
+  },
+  "query_category_distribution": {
+    "EASY_EXACT": 0.20,
+    "LEXICAL_VARIANT": 0.20,
+    "SYNONYM": 0.15,
+    "PARAPHRASE": 0.15,
+    "MULTI_ENTITY": 0.15,
+    "MECHANISM": 0.05,
+    "CYP_DDI": 0.05,
+    "HIGH_RISK_SAFETY": 0.05
+  },
+  "ground_truth_policy": "Independently curated. Must have at least 1 primary relevant evidence item and 1 supporting evidence item for higher-risk cases. Relevance and authority are kept strictly separate.",
+  "deduplication_policy": "Hierarchical deduplication: 1. Strong Identifier (PMID, PMCID, DOI), 2. Normalized Title, 3. Content Hash. Retain provenance for merged records.",
+  "provenance_policy": "Every document must preserve document_id, chunk_id, source, source_type, source_identifier, PMID, PMCID, DOI, RxCUI, publication_date, authority_tier, provenance, content_hash.",
+  "snapshot_policy": "Staged acquisition. Stage A (100 documents) -> Validate -> Stage B (250 documents) -> Validate. Documents will be chunked honoring section context and frozen in experiments/evidence_snapshots/retrieval-v2/."
+}

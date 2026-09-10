@@ -1,0 +1,44 @@
+{
+  "status": "PHASE_13C_FROZEN",
+  "timestamp": "2026-09-06T13:41:55.563164+00:00",
+  "freeze_gate_assertions": {
+    "manifest_created_during_freeze_gate": true,
+    "dataset_modified_during_freeze_gate": false,
+    "review_record_modified_during_freeze_gate": false,
+    "integrity_statement": "Dataset and review artifacts were not modified during freeze gate: PASS"
+  },
+  "dataset": {
+    "path": "experiments/security_evaluation/security_cases_v2_reviewed_r1.jsonl",
+    "sha256": "313e9489a1f1bffe2f7cfd394189c2018585cdf689e3b0e01b24524eeb5a0c7b",
+    "case_count": 110
+  },
+  "review_record": {
+    "path": "experiments/security_evaluation/CASESET_HUMAN_REVIEW_V2_ENRICHED.csv",
+    "sha256": "15c537e77ca198f6ca66cead2aa1049516dd6f725693e22526cd54ecb93b1d68"
+  },
+  "protocol": {
+    "version": "2.0",
+    "artifact": "experiments/security_evaluation/SECURITY_EVALUATION_PROTOCOL.md",
+    "sha256": "4bfb621220bf70784e98c6cea8a6fd90f5809e80e3cb428552d65c7d1daf28aa"
+  },
+  "adjudication_summary": {
+    "final_accept": 110,
+    "final_revise": 0,
+    "final_reject": 0,
+    "historical_revisions_applied": 15
+  },
+  "outcome_distribution": {
+    "BLOCK": 43,
+    "FLAG": 28,
+    "ALLOW": 20,
+    "UNAUTHORIZED_ACTION_REJECTED": 19
+  },
+  "regression_test_status": "PASSED (736 tests)",
+  "phase_13d_status": "BLOCKED",
+  "protocol_provenance": {
+    "previously_misattributed_hash": "7690a7a768c50ae3479e3854612aa732cb3722d0eb56f95314697edf5fe99a67",
+    "previous_hash_artifact": "experiments/annotations/v3_1_human/pilot/expansion_v1/ANNOTATION_COMPLETION_PROTOCOL.md",
+    "previous_hash_phase": "2F.5B-Prep",
+    "misattribution_status": "RETIRED"
+  }
+}

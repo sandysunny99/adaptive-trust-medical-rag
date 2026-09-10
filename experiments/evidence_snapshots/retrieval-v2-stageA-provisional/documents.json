@@ -1,0 +1,3074 @@
+[
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42677064",
+    "title": "Targeting Novel Pathways in Pulmonary Arterial Hypertension: A Systematic Review and Meta-Analysis of New Therapeutic Agents.",
+    "authors": [
+      "Meel A",
+      "Udawat D",
+      "Bansal A",
+      "Meel B"
+    ],
+    "publication_date": "2026 Jul-Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42677064/",
+    "abstract": "Targeting Novel Pathways in Pulmonary Arterial Hypertension: A Systematic Review and Meta-Analysis of New Therapeutic Agents.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13527792/",
+    "identifiers": {
+      "pmid": "42677064",
+      "pmcid": "PMC13527792",
+      "doi": null,
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:49.055155+00:00",
+      "response_received_at": "2026-09-02T17:36:50.013669+00:00",
+      "latency_ms": 958.63,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:50.014671+00:00",
+    "source_updated_at": "2026 Jul-Aug",
+    "raw_response_hash": "329b388aa3b444dfd01651dab842e89e5a535cd9d86166e97a66b97fcd1554d5",
+    "document_id": "42677064",
+    "text": "Targeting Novel Pathways in Pulmonary Arterial Hypertension: A Systematic Review and Meta-Analysis of New Therapeutic Agents.",
+    "chunk_id": "chunk-42677064-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42675994",
+    "title": "An Adaptive, Time-Informed, Phenotype-Guided Pharmacological Framework for Severe Traumatic Brain Injury : A Hypothesis-Driven Narrative Review.",
+    "authors": [
+      "Choi JM",
+      "Jo KW"
+    ],
+    "publication_date": "2026 Sep 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42675994/",
+    "abstract": "An Adaptive, Time-Informed, Phenotype-Guided Pharmacological Framework for Severe Traumatic Brain Injury : A Hypothesis-Driven Narrative Review.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42675994",
+      "pmcid": null,
+      "doi": "10.3340/jkns.2026.0187",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:50.014671+00:00",
+      "response_received_at": "2026-09-02T17:36:50.992822+00:00",
+      "latency_ms": 977.96,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:50.993821+00:00",
+    "source_updated_at": "2026 Sep 1",
+    "raw_response_hash": "c5061353b24960b60bc1aa5d27b12abdbccca571b17a05aa2604eb086c3c76d9",
+    "document_id": "42675994",
+    "text": "An Adaptive, Time-Informed, Phenotype-Guided Pharmacological Framework for Severe Traumatic Brain Injury : A Hypothesis-Driven Narrative Review.",
+    "chunk_id": "chunk-42675994-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42674100",
+    "title": "Drug Repurposing Signals for Abdominal Aortic Aneurysms.",
+    "authors": [
+      "Skovbo JS",
+      "Hallas J",
+      "Stubbe J",
+      "Sabater-Lleal M",
+      "Obel LM",
+      "Lindholt JS"
+    ],
+    "publication_date": "2026 Aug 31",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42674100/",
+    "abstract": "Drug Repurposing Signals for Abdominal Aortic Aneurysms.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42674100",
+      "pmcid": null,
+      "doi": "10.1016/j.ejvs.2026.08.035",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:50.993821+00:00",
+      "response_received_at": "2026-09-02T17:36:52.576071+00:00",
+      "latency_ms": 1582.62,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:52.576071+00:00",
+    "source_updated_at": "2026 Aug 31",
+    "raw_response_hash": "618874f42acc8c6f3a637d9f89483e7d14e7fe8f67d96e9c5a16676446114235",
+    "document_id": "42674100",
+    "text": "Drug Repurposing Signals for Abdominal Aortic Aneurysms.",
+    "chunk_id": "chunk-42674100-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42598366",
+    "title": "A 76-Year-Old Man With Hemorrhagic Stroke, Recurrent Thromboembolic Events, and Atrial Fibrillation Under Optimal Medical Treatment: When Anticoagulants Fail.",
+    "authors": [
+      "Siopi SA",
+      "Dimitriadis G",
+      "Dimitriadis D"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42598366/",
+    "abstract": "A 76-Year-Old Man With Hemorrhagic Stroke, Recurrent Thromboembolic Events, and Atrial Fibrillation Under Optimal Medical Treatment: When Anticoagulants Fail.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13472656/",
+    "identifiers": {
+      "pmid": "42598366",
+      "pmcid": "PMC13472656",
+      "doi": "10.7759/cureus.112669",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:53.661429+00:00",
+      "response_received_at": "2026-09-02T17:36:55.189797+00:00",
+      "latency_ms": 1528.3,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:55.189797+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "421e378fbbeb5ad8080195e64fb69f8cd4115efde722bef7f18bf8c043d22f70",
+    "document_id": "42598366",
+    "text": "A 76-Year-Old Man With Hemorrhagic Stroke, Recurrent Thromboembolic Events, and Atrial Fibrillation Under Optimal Medical Treatment: When Anticoagulants Fail.",
+    "chunk_id": "chunk-42598366-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41977337",
+    "title": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+    "authors": [
+      "Mogielnicki A"
+    ],
+    "publication_date": "2026 Mar 30",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41977337/",
+    "abstract": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13073125/",
+    "identifiers": {
+      "pmid": "41977337",
+      "pmcid": "PMC13073125",
+      "doi": "10.3390/ijms27073151",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:55.189797+00:00",
+      "response_received_at": "2026-09-02T17:36:56.813404+00:00",
+      "latency_ms": 1623.69,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:56.814397+00:00",
+    "source_updated_at": "2026 Mar 30",
+    "raw_response_hash": "ecdbaad3c051b177f353adf3e7b0bc5beb8b970e37d67700b552c25178875bae",
+    "document_id": "41977337",
+    "text": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+    "chunk_id": "chunk-41977337-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41846702",
+    "title": "Acute Myocardial Infarction Secondary to Triple Vessel Coronary Artery Disease in a 31-year-old Female with Systemic Lupus Erythematosus: Case Report and Review of Literature.",
+    "authors": [
+      "Mulles AFC",
+      "Gonzales JRM",
+      "Uy MNAR",
+      "Fermin AMA",
+      "Osio-Salido E"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41846702/",
+    "abstract": "Acute Myocardial Infarction Secondary to Triple Vessel Coronary Artery Disease in a 31-year-old Female with Systemic Lupus Erythematosus: Case Report and Review of Literature.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12990927/",
+    "identifiers": {
+      "pmid": "41846702",
+      "pmcid": "PMC12990927",
+      "doi": "10.47895/amp.vi0.12952",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:36:56.814397+00:00",
+      "response_received_at": "2026-09-02T17:36:58.666639+00:00",
+      "latency_ms": 1852.39,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:36:58.667637+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "fc3ae5ea923ff287f5d46905ec07788774b00b5f8b8a05f616d2f0539c657899",
+    "document_id": "41846702",
+    "text": "Acute Myocardial Infarction Secondary to Triple Vessel Coronary Artery Disease in a 31-year-old Female with Systemic Lupus Erythematosus: Case Report and Review of Literature.",
+    "chunk_id": "chunk-41846702-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42682722",
+    "title": "PRO/CON debate: nonsteroidal versus steroidal mineralocorticoid receptor antagonists in chronic kidney disease: progress, pragmatism, and remaining uncertainties.",
+    "authors": [
+      "Agarwal R",
+      "Vogt L",
+      "Floege J",
+      "Zoccali C"
+    ],
+    "publication_date": "2026 Sep",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42682722/",
+    "abstract": "PRO/CON debate: nonsteroidal versus steroidal mineralocorticoid receptor antagonists in chronic kidney disease: progress, pragmatism, and remaining uncertainties.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13529819/",
+    "identifiers": {
+      "pmid": "42682722",
+      "pmcid": "PMC13529819",
+      "doi": "10.1093/ckj/sfag280",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:00.344843+00:00",
+      "response_received_at": "2026-09-02T17:37:02.102601+00:00",
+      "latency_ms": 1757.35,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:02.102601+00:00",
+    "source_updated_at": "2026 Sep",
+    "raw_response_hash": "e95a757212d2708036c39c280adc7a359f9de66b489495773191ee87b1a6b3b8",
+    "document_id": "42682722",
+    "text": "PRO/CON debate: nonsteroidal versus steroidal mineralocorticoid receptor antagonists in chronic kidney disease: progress, pragmatism, and remaining uncertainties.",
+    "chunk_id": "chunk-42682722-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42643702",
+    "title": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+    "authors": [
+      "Singla A",
+      "Singh G",
+      "Kaur G",
+      "Luthra S",
+      "Lodha C",
+      "Malik MS",
+      "Kalsoom S",
+      "Alo MS",
+      "Ali SS",
+      "Zulqarnain M"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42643702/",
+    "abstract": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13503989/",
+    "identifiers": {
+      "pmid": "42643702",
+      "pmcid": "PMC13503989",
+      "doi": "10.7759/cureus.113379",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:02.102601+00:00",
+      "response_received_at": "2026-09-02T17:37:03.192611+00:00",
+      "latency_ms": 1089.58,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:03.193628+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "ecb052fae064372c410209d684491c762e220b8508aef4b9cda7828a6155a2d1",
+    "document_id": "42643702",
+    "text": "Sex-Specific Safety Signals of Finerenone Versus Spironolactone: Insights From the FDA Adverse Event Reporting System.",
+    "chunk_id": "chunk-42643702-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42595037",
+    "title": "Evidence for the Use of Steroidal Aldosterone Antagonists in Patients With Kidney Failure.",
+    "authors": [
+      "Georgianos PI",
+      "Kollias A",
+      "Roumeliotis A",
+      "Liakopoulos V"
+    ],
+    "publication_date": "2026 Aug 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42595037/",
+    "abstract": "Evidence for the Use of Steroidal Aldosterone Antagonists in Patients With Kidney Failure.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42595037",
+      "pmcid": null,
+      "doi": "10.1053/j.ajkd.2026.04.020",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:03.193628+00:00",
+      "response_received_at": "2026-09-02T17:37:04.356021+00:00",
+      "latency_ms": 1162.93,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:04.357022+00:00",
+    "source_updated_at": "2026 Aug 13",
+    "raw_response_hash": "0adee4f89672464e8ed226b26d8dbc1c8f5a4c06501f062d558b7d64ae4037e0",
+    "document_id": "42595037",
+    "text": "Evidence for the Use of Steroidal Aldosterone Antagonists in Patients With Kidney Failure.",
+    "chunk_id": "chunk-42595037-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42591558",
+    "title": "Physiologically based pharmacokinetic modeling of fluconazole: interpretation of gender-dependent pharmacokinetics and cytochrome P450 inhibition.",
+    "authors": [
+      "Ishida K",
+      "Tanna RS",
+      "Yang J",
+      "Lai Y"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42591558/",
+    "abstract": "Physiologically based pharmacokinetic modeling of fluconazole: interpretation of gender-dependent pharmacokinetics and cytochrome P450 inhibition.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13462044/",
+    "identifiers": {
+      "pmid": "42591558",
+      "pmcid": "PMC13462044",
+      "doi": "10.3389/fphar.2026.1849886",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:05.305264+00:00",
+      "response_received_at": "2026-09-02T17:37:06.266403+00:00",
+      "latency_ms": 961.05,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:06.266403+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "7d32c50f1af4c8fca9459bbcf1ba19408c6f0d2041ec0f962ac2bd4dd221e1a0",
+    "document_id": "42591558",
+    "text": "Physiologically based pharmacokinetic modeling of fluconazole: interpretation of gender-dependent pharmacokinetics and cytochrome P450 inhibition.",
+    "chunk_id": "chunk-42591558-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42008658",
+    "title": "Evaluation of the cytochrome P450-mediated drug interaction profile of olorofim.",
+    "authors": [
+      "Cornelissen K",
+      "Rex JH",
+      "Zinzi D",
+      "Law D",
+      "Upcott Gill R",
+      "Jones HM",
+      "Maertens J",
+      "Chen SC-A",
+      "Br\u00fcggemann R"
+    ],
+    "publication_date": "2026 Jun 3",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42008658/",
+    "abstract": "Evaluation of the cytochrome P450-mediated drug interaction profile of olorofim.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13231911/",
+    "identifiers": {
+      "pmid": "42008658",
+      "pmcid": "PMC13231911",
+      "doi": "10.1128/aac.01745-25",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:06.266403+00:00",
+      "response_received_at": "2026-09-02T17:37:07.869218+00:00",
+      "latency_ms": 1602.7,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:07.870218+00:00",
+    "source_updated_at": "2026 Jun 3",
+    "raw_response_hash": "728c4c2055be01b41041275f72e7306bb08dafb2578b1dae296284e0a759207e",
+    "document_id": "42008658",
+    "text": "Evaluation of the cytochrome P450-mediated drug interaction profile of olorofim.",
+    "chunk_id": "chunk-42008658-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41784061",
+    "title": "Clinical Evaluation of Drug-Drug Interactions With Aficamten.",
+    "authors": [
+      "Maharao N",
+      "Xu D",
+      "Divanji P",
+      "Simkins TJ",
+      "Li J",
+      "Dumitrescu C",
+      "Solanki P",
+      "Griffith A",
+      "Heitner SB",
+      "Kupfer S",
+      "German P",
+      "Lutz JD"
+    ],
+    "publication_date": "2026 Mar",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41784061/",
+    "abstract": "Clinical Evaluation of Drug-Drug Interactions With Aficamten.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12961628/",
+    "identifiers": {
+      "pmid": "41784061",
+      "pmcid": "PMC12961628",
+      "doi": "10.1111/cts.70514",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:07.870218+00:00",
+      "response_received_at": "2026-09-02T17:37:09.492833+00:00",
+      "latency_ms": 1623.03,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:09.493825+00:00",
+    "source_updated_at": "2026 Mar",
+    "raw_response_hash": "b97695afa338a985ce1f8d6ce0b908799f5fb62d2b9770147ded1a4bb3ae3462",
+    "document_id": "41784061",
+    "text": "Clinical Evaluation of Drug-Drug Interactions With Aficamten.",
+    "chunk_id": "chunk-41784061-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42632694",
+    "title": "Oral co-delivery of quercetin and anthocyanins via dual-ligand nanoparticles alleviate obesity and associated metabolic disorders.",
+    "authors": [
+      "Zhang H",
+      "Liu C",
+      "Yang J",
+      "Li S",
+      "Yang M",
+      "Liu J",
+      "Zhang T",
+      "Li Y"
+    ],
+    "publication_date": "2026 Oct 31",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42632694/",
+    "abstract": "Oral co-delivery of quercetin and anthocyanins via dual-ligand nanoparticles alleviate obesity and associated metabolic disorders.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42632694",
+      "pmcid": null,
+      "doi": "10.1016/j.foodres.2026.119945",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:12.206295+00:00",
+      "response_received_at": "2026-09-02T17:37:13.197399+00:00",
+      "latency_ms": 990.78,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:13.198395+00:00",
+    "source_updated_at": "2026 Oct 31",
+    "raw_response_hash": "91517c9b699d16b0d60252b5c70142b7600a2098f3a380065d5f355c01bc546d",
+    "document_id": "42632694",
+    "text": "Oral co-delivery of quercetin and anthocyanins via dual-ligand nanoparticles alleviate obesity and associated metabolic disorders.",
+    "chunk_id": "chunk-42632694-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42582297",
+    "title": "Coproporphyrin I PBPK model in the open systems pharmacology suite enables precise prediction of OATP 1B- mediated drug interactions through calibrated In vivo inhibition constants.",
+    "authors": [
+      "Kanacher T",
+      "Pellowe M",
+      "Kovar C",
+      "Eriksson J",
+      "Wu J",
+      "Busse D",
+      "G\u00f3mez-Mantilla JD",
+      "Stopfer P",
+      "Ince I",
+      "Huang F"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42582297/",
+    "abstract": "Coproporphyrin I PBPK model in the open systems pharmacology suite enables precise prediction of OATP 1B- mediated drug interactions through calibrated In vivo inhibition constants.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13457544/",
+    "identifiers": {
+      "pmid": "42582297",
+      "pmcid": "PMC13457544",
+      "doi": "10.3389/fphar.2026.1828033",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:13.198395+00:00",
+      "response_received_at": "2026-09-02T17:37:15.008598+00:00",
+      "latency_ms": 1810.91,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:15.010597+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "e4be5cffc039212ff89e32216174fbade7b549f8b79e780e0420540de674ad18",
+    "document_id": "42582297",
+    "text": "Coproporphyrin I PBPK model in the open systems pharmacology suite enables precise prediction of OATP 1B- mediated drug interactions through calibrated In vivo inhibition constants.",
+    "chunk_id": "chunk-42582297-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42557676",
+    "title": "Harnessing Repurposed Drugs to Enhance Temozolomide Efficacy in Glioblastoma.",
+    "authors": [
+      "Nakhaei A",
+      "Taghavi A",
+      "Afshari AR",
+      "Davoudi F",
+      "Gheybi E",
+      "Jalili-Nik M"
+    ],
+    "publication_date": "2026 Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42557676/",
+    "abstract": "Harnessing Repurposed Drugs to Enhance Temozolomide Efficacy in Glioblastoma.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13442923/",
+    "identifiers": {
+      "pmid": "42557676",
+      "pmcid": "PMC13442923",
+      "doi": "10.1002/cnr2.70643",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:15.010597+00:00",
+      "response_received_at": "2026-09-02T17:37:16.136452+00:00",
+      "latency_ms": 1126.11,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:16.136452+00:00",
+    "source_updated_at": "2026 Aug",
+    "raw_response_hash": "a852373c691a7bfa09c174c1e13d611589d66b22bc3d82ab339fdf01ea768eee",
+    "document_id": "42557676",
+    "text": "Harnessing Repurposed Drugs to Enhance Temozolomide Efficacy in Glioblastoma.",
+    "chunk_id": "chunk-42557676-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42667590",
+    "title": "Effect of Rivoceranib 200 mg Once Daily on the Pharmacokinetics of a Cocktail Probe Substrate of Cytochrome P450 Enzymes: A Phase I Trial in Healthy Volunteers.",
+    "authors": [
+      "Nguyen D",
+      "Wei XT",
+      "Meng X",
+      "Alexander L",
+      "Ryan K",
+      "Jang S"
+    ],
+    "publication_date": "2026 Aug 29",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42667590/",
+    "abstract": "Effect of Rivoceranib 200 mg Once Daily on the Pharmacokinetics of a Cocktail Probe Substrate of Cytochrome P450 Enzymes: A Phase I Trial in Healthy Volunteers.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42667590",
+      "pmcid": null,
+      "doi": "10.1007/s40262-026-01686-6",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:18.776996+00:00",
+      "response_received_at": "2026-09-02T17:37:19.817295+00:00",
+      "latency_ms": 1040.22,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:19.818295+00:00",
+    "source_updated_at": "2026 Aug 29",
+    "raw_response_hash": "cfa1f98d799d4f923e880cdeac850dc9759745977a18c1d8305d0d519e6aa652",
+    "document_id": "42667590",
+    "text": "Effect of Rivoceranib 200 mg Once Daily on the Pharmacokinetics of a Cocktail Probe Substrate of Cytochrome P450 Enzymes: A Phase I Trial in Healthy Volunteers.",
+    "chunk_id": "chunk-42667590-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42584807",
+    "title": "PBPK Modeling of Esomeprazole to Support Adolescent Pharmacokinetic Extrapolation and Label Extension in Chinese Patients With Gastroesophageal Reflux Disease (GERD).",
+    "authors": [
+      "Jin Y",
+      "Ding J",
+      "Hua X",
+      "Duan W",
+      "Chen M",
+      "Zhou Z",
+      "Pandherpur RV",
+      "Dong J",
+      "Pradeep S",
+      "Ma P",
+      "Tang W",
+      "Zhou D"
+    ],
+    "publication_date": "2026 Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42584807/",
+    "abstract": "PBPK Modeling of Esomeprazole to Support Adolescent Pharmacokinetic Extrapolation and Label Extension in Chinese Patients With Gastroesophageal Reflux Disease (GERD).",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13464514/",
+    "identifiers": {
+      "pmid": "42584807",
+      "pmcid": "PMC13464514",
+      "doi": "10.1002/jcph.70255",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:20.844494+00:00",
+      "response_received_at": "2026-09-02T17:37:22.358898+00:00",
+      "latency_ms": 1514.19,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:22.359898+00:00",
+    "source_updated_at": "2026 Aug",
+    "raw_response_hash": "310df9c69e211ca6af19eefedeecd3eb3dceefa7595368f1e8d49298026c34fb",
+    "document_id": "42584807",
+    "text": "PBPK Modeling of Esomeprazole to Support Adolescent Pharmacokinetic Extrapolation and Label Extension in Chinese Patients With Gastroesophageal Reflux Disease (GERD).",
+    "chunk_id": "chunk-42584807-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41711272",
+    "title": "Successful Application of the Mast Cell Activation Test in Immediate Hypersensitivity to Amoxicillin.",
+    "authors": [
+      "C\u00e9spedes JA",
+      "Lebr\u00f3n-Mart\u00edn C",
+      "Vallecillos-Azor L",
+      "Torres P",
+      "Ayane AT",
+      "Bogas G",
+      "Salas M",
+      "Ariza A",
+      "Monta\u00f1ez MI",
+      "Torres MJ",
+      "Aranda CJ",
+      "Mayorga C"
+    ],
+    "publication_date": "2026 Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41711272/",
+    "abstract": "Successful Application of the Mast Cell Activation Test in Immediate Hypersensitivity to Amoxicillin.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13465986/",
+    "identifiers": {
+      "pmid": "41711272",
+      "pmcid": "PMC13465986",
+      "doi": "10.1111/all.70267",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:23.390711+00:00",
+      "response_received_at": "2026-09-02T17:37:24.392746+00:00",
+      "latency_ms": 1001.72,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:24.392746+00:00",
+    "source_updated_at": "2026 Aug",
+    "raw_response_hash": "b57c71a23abebf47aef1dae0e732930f1e26e6ab31781820d466197bf8ee3cb1",
+    "document_id": "41711272",
+    "text": "Successful Application of the Mast Cell Activation Test in Immediate Hypersensitivity to Amoxicillin.",
+    "chunk_id": "chunk-41711272-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41037695",
+    "title": "[Anaphylaxis to ceftriaxone in pediatric patients: Challenges and management].",
+    "authors": [
+      "L\u00f3pez-Forte MR",
+      "Perea-Valle P"
+    ],
+    "publication_date": "2025 Sep 30",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41037695/",
+    "abstract": "[Anaphylaxis to ceftriaxone in pediatric patients: Challenges and management].",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41037695",
+      "pmcid": null,
+      "doi": "10.29262/ram.v72i3.1492",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:24.392746+00:00",
+      "response_received_at": "2026-09-02T17:37:25.270102+00:00",
+      "latency_ms": 877.39,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:25.270102+00:00",
+    "source_updated_at": "2025 Sep 30",
+    "raw_response_hash": "1ba3605dfb30fcdc07df92fecb9cb59134d7b735af8fcdb21239ae266b80f8b8",
+    "document_id": "41037695",
+    "text": "[Anaphylaxis to ceftriaxone in pediatric patients: Challenges and management].",
+    "chunk_id": "chunk-41037695-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "39496923",
+    "title": "What role does antibiotic resistance play in secondary endodontic infections?",
+    "authors": [
+      "Nehra A",
+      "Sin M"
+    ],
+    "publication_date": "2024 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39496923/",
+    "abstract": "What role does antibiotic resistance play in secondary endodontic infections?",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "39496923",
+      "pmcid": null,
+      "doi": "10.1038/s41432-024-01079-3",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:25.270102+00:00",
+      "response_received_at": "2026-09-02T17:37:26.274075+00:00",
+      "latency_ms": 1003.83,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:26.275071+00:00",
+    "source_updated_at": "2024 Dec",
+    "raw_response_hash": "f9473653c1b283c4ada7709842f7702e1d6fb1a0f49442d31fb95ae3e48e110b",
+    "document_id": "39496923",
+    "text": "What role does antibiotic resistance play in secondary endodontic infections?",
+    "chunk_id": "chunk-39496923-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42317468",
+    "title": "Detection of clinically significant drug-drug interactions in serotonin syndrome: a multisource real-world data and pharmacovigilance study.",
+    "authors": [
+      "Xu S",
+      "Song Z",
+      "Wang D",
+      "Li Y",
+      "Wang E",
+      "Bai J",
+      "Wang X"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42317468/",
+    "abstract": "Detection of clinically significant drug-drug interactions in serotonin syndrome: a multisource real-world data and pharmacovigilance study.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13272858/",
+    "identifiers": {
+      "pmid": "42317468",
+      "pmcid": "PMC13272858",
+      "doi": "10.1177/20420986261456115",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:28.502251+00:00",
+      "response_received_at": "2026-09-02T17:37:29.431455+00:00",
+      "latency_ms": 929.64,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:29.432488+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "f574ecc5ed18d41acbdd9a80de3872530f654ccfd6e78d5e1a307fc1cbc06c52",
+    "document_id": "42317468",
+    "text": "Detection of clinically significant drug-drug interactions in serotonin syndrome: a multisource real-world data and pharmacovigilance study.",
+    "chunk_id": "chunk-42317468-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41798543",
+    "title": "Efficacy of Selective Serotonin Reuptake Inhibitors for the Treatment of Chronic Pain and Comorbid Depression in Individuals With Fibromyalgia: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+    "authors": [
+      "Alfawaz S",
+      "Aljeshi Z",
+      "Aldandan J",
+      "Alharthi M",
+      "Alnefaie M",
+      "Babelli N",
+      "Alshehri N",
+      "Alsenaidi S",
+      "Albalawi W",
+      "Alghamdi G",
+      "Alsufyani S",
+      "Alfeeli A"
+    ],
+    "publication_date": "2026 Feb",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41798543/",
+    "abstract": "Efficacy of Selective Serotonin Reuptake Inhibitors for the Treatment of Chronic Pain and Comorbid Depression in Individuals With Fibromyalgia: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12966770/",
+    "identifiers": {
+      "pmid": "41798543",
+      "pmcid": "PMC12966770",
+      "doi": "10.7759/cureus.102998",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:29.432488+00:00",
+      "response_received_at": "2026-09-02T17:37:30.419336+00:00",
+      "latency_ms": 986.38,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:30.420334+00:00",
+    "source_updated_at": "2026 Feb",
+    "raw_response_hash": "fc2179420fa02d50d627c7f775b551354e07cab26908cbba7f8b439d8849ae3d",
+    "document_id": "41798543",
+    "text": "Efficacy of Selective Serotonin Reuptake Inhibitors for the Treatment of Chronic Pain and Comorbid Depression in Individuals With Fibromyalgia: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+    "chunk_id": "chunk-41798543-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41510438",
+    "title": "Comparative Real-World Safety Profiles of Six Selective Serotonin Reuptake Inhibitors: A Global Pharmacovigilance Analysis.",
+    "authors": [
+      "Chan ACY"
+    ],
+    "publication_date": "2025 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41510438/",
+    "abstract": "Comparative Real-World Safety Profiles of Six Selective Serotonin Reuptake Inhibitors: A Global Pharmacovigilance Analysis.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12775886/",
+    "identifiers": {
+      "pmid": "41510438",
+      "pmcid": "PMC12775886",
+      "doi": "10.7759/cureus.98677",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:30.420334+00:00",
+      "response_received_at": "2026-09-02T17:37:31.693025+00:00",
+      "latency_ms": 1273.22,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:31.694025+00:00",
+    "source_updated_at": "2025 Dec",
+    "raw_response_hash": "d4a0d7af5520aefcc9139d6d1650730df13cefee67dfac740b0bef7ac060892e",
+    "document_id": "41510438",
+    "text": "Comparative Real-World Safety Profiles of Six Selective Serotonin Reuptake Inhibitors: A Global Pharmacovigilance Analysis.",
+    "chunk_id": "chunk-41510438-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42647942",
+    "title": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+    "authors": [
+      "Wu AHB",
+      "Alamillo M",
+      "Kendrick K"
+    ],
+    "publication_date": "2026 Aug",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42647942/",
+    "abstract": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13517987/",
+    "identifiers": {
+      "pmid": "42647942",
+      "pmcid": "PMC13517987",
+      "doi": "10.5811/cpcem.48764",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:32.971698+00:00",
+      "response_received_at": "2026-09-02T17:37:33.735047+00:00",
+      "latency_ms": 762.59,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:33.735047+00:00",
+    "source_updated_at": "2026 Aug",
+    "raw_response_hash": "10b1204f7a40af849f615ad0d7abbc451c75e47a7dae8d8e8a9291b79273b6e4",
+    "document_id": "42647942",
+    "text": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+    "chunk_id": "chunk-42647942-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42326111",
+    "title": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+    "authors": [
+      "Koide T",
+      "Ito H",
+      "Ohashi R",
+      "Maekawa E",
+      "Ito K"
+    ],
+    "publication_date": "2026 May",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42326111/",
+    "abstract": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13282142/",
+    "identifiers": {
+      "pmid": "42326111",
+      "pmcid": "PMC13282142",
+      "doi": "10.7759/cureus.109291",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:33.735047+00:00",
+      "response_received_at": "2026-09-02T17:37:35.106211+00:00",
+      "latency_ms": 1370.51,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:35.107211+00:00",
+    "source_updated_at": "2026 May",
+    "raw_response_hash": "32839afcbdffa31bf590b9527b7c02a938261fb56b036e71315f4e295f66d2fd",
+    "document_id": "42326111",
+    "text": "Lascufloxacin-Induced QT Prolongation in an Elderly Patient Treated With Escitalopram: A Case Report.",
+    "chunk_id": "chunk-42326111-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42292838",
+    "title": "Pharmacological pitfalls in inpatient lung transplant care and management of medication risks.",
+    "authors": [
+      "Dieterich R",
+      "Hage R",
+      "Schuurmans MM",
+      "Bonzon J"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42292838/",
+    "abstract": "Pharmacological pitfalls in inpatient lung transplant care and management of medication risks.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13259792/",
+    "identifiers": {
+      "pmid": "42292838",
+      "pmcid": "PMC13259792",
+      "doi": "10.3389/fphar.2026.1794658",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:35.107211+00:00",
+      "response_received_at": "2026-09-02T17:37:36.106779+00:00",
+      "latency_ms": 999.62,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:36.106779+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "60ab6940cc9da3a2b98eb3e9295ff7de34d50bc6763eacc110a9c522f9806667",
+    "document_id": "42292838",
+    "text": "Pharmacological pitfalls in inpatient lung transplant care and management of medication risks.",
+    "chunk_id": "chunk-42292838-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42366702",
+    "title": "Specialist Inpatient Detoxification from Gabapentinoids: Clinical and Demographic Characteristics and Predictors of Outcome.",
+    "authors": [
+      "Priyam A",
+      "Hill A",
+      "Abdellatif M",
+      "Ann S",
+      "Ravindrarajah R",
+      "Myo N",
+      "Ko N",
+      "Daly C",
+      "Kaar SJ"
+    ],
+    "publication_date": "2026 Jun 28",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42366702/",
+    "abstract": "Specialist Inpatient Detoxification from Gabapentinoids: Clinical and Demographic Characteristics and Predictors of Outcome.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42366702",
+      "pmcid": null,
+      "doi": "10.1080/02791072.2026.2689035",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:37.118903+00:00",
+      "response_received_at": "2026-09-02T17:37:38.252544+00:00",
+      "latency_ms": 1132.97,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:38.252544+00:00",
+    "source_updated_at": "2026 Jun 28",
+    "raw_response_hash": "35f84d9ea925dce1fff7fdcb4962e88a4d9945d52a0fff59d2e9e378068ae2ab",
+    "document_id": "42366702",
+    "text": "Specialist Inpatient Detoxification from Gabapentinoids: Clinical and Demographic Characteristics and Predictors of Outcome.",
+    "chunk_id": "chunk-42366702-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42239832",
+    "title": "Utilization of adjunctive anti-seizure medications to facilitate chronic benzodiazepine discontinuation.",
+    "authors": [
+      "Dueno MR",
+      "Howington GT",
+      "Ryan M"
+    ],
+    "publication_date": "2026 Jun",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42239832/",
+    "abstract": "Utilization of adjunctive anti-seizure medications to facilitate chronic benzodiazepine discontinuation.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13229532/",
+    "identifiers": {
+      "pmid": "42239832",
+      "pmcid": "PMC13229532",
+      "doi": "10.9740/mhc.2026.06.141",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:38.252544+00:00",
+      "response_received_at": "2026-09-02T17:37:39.247206+00:00",
+      "latency_ms": 994.46,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:39.248205+00:00",
+    "source_updated_at": "2026 Jun",
+    "raw_response_hash": "42eedfb39234f07b47c79aaa7b94bd0f078e11b553a6942aba85c7bb3d232586",
+    "document_id": "42239832",
+    "text": "Utilization of adjunctive anti-seizure medications to facilitate chronic benzodiazepine discontinuation.",
+    "chunk_id": "chunk-42239832-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41693038",
+    "title": "When a Withdrawal Aid Mimics a Brainstem Lesion: Gabapentin-associated Transient Ophthalmoplegia.",
+    "authors": [
+      "Soltani M"
+    ],
+    "publication_date": "2026 Feb 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41693038/",
+    "abstract": "When a Withdrawal Aid Mimics a Brainstem Lesion: Gabapentin-associated Transient Ophthalmoplegia.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41693038",
+      "pmcid": null,
+      "doi": "10.1097/ADM.0000000000001668",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:39.248205+00:00",
+      "response_received_at": "2026-09-02T17:37:40.193510+00:00",
+      "latency_ms": 946.48,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:40.193510+00:00",
+    "source_updated_at": "2026 Feb 16",
+    "raw_response_hash": "420e64b87d654318dbc12824b13b799b865691fa4c1eb61ee6e0419d23a9a406",
+    "document_id": "41693038",
+    "text": "When a Withdrawal Aid Mimics a Brainstem Lesion: Gabapentin-associated Transient Ophthalmoplegia.",
+    "chunk_id": "chunk-41693038-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42436620",
+    "title": "Research on drug interactions and efficacy optimization of combined medication for elderly patients with ischemic cerebrovascular disease in Guangxi Zhuang Autonomous Region.",
+    "authors": [
+      "Chen J",
+      "Li W",
+      "Pan N",
+      "Liu Z",
+      "Cai Z"
+    ],
+    "publication_date": "2026 Sep",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42436620/",
+    "abstract": "Research on drug interactions and efficacy optimization of combined medication for elderly patients with ischemic cerebrovascular disease in Guangxi Zhuang Autonomous Region.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42436620",
+      "pmcid": null,
+      "doi": "10.36721/PJPS.2026.39.9.246.1",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:41.675172+00:00",
+      "response_received_at": "2026-09-02T17:37:42.601553+00:00",
+      "latency_ms": 926.3,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:42.601553+00:00",
+    "source_updated_at": "2026 Sep",
+    "raw_response_hash": "61d678ffbdb518aedc20a7649a688fa597273a0fba31cf26f96ef21a30fa11e2",
+    "document_id": "42436620",
+    "text": "Research on drug interactions and efficacy optimization of combined medication for elderly patients with ischemic cerebrovascular disease in Guangxi Zhuang Autonomous Region.",
+    "chunk_id": "chunk-42436620-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42063765",
+    "title": "Evaluation of community pharmacists' knowledge and real-world practices in drug interaction management: a cross-sectional study.",
+    "authors": [
+      "Alhazmi AF",
+      "Alghuthmi FA",
+      "Hamoh MA",
+      "Almasari KA",
+      "Zagzoug AM",
+      "Kenkar MM",
+      "Tayeb SM",
+      "Aldurdunji MM",
+      "Alsheikh EO",
+      "Almuzaini OK",
+      "Wali SM"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42063765/",
+    "abstract": "Evaluation of community pharmacists' knowledge and real-world practices in drug interaction management: a cross-sectional study.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13124542/",
+    "identifiers": {
+      "pmid": "42063765",
+      "pmcid": "PMC13124542",
+      "doi": "10.3389/fmed.2026.1771828",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:42.601553+00:00",
+      "response_received_at": "2026-09-02T17:37:43.564275+00:00",
+      "latency_ms": 962.16,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:43.565273+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "b3a3853cf5785c80d5baba041281ba5a6754f408d5336795bf6a31abdda6d82a",
+    "document_id": "42063765",
+    "text": "Evaluation of community pharmacists' knowledge and real-world practices in drug interaction management: a cross-sectional study.",
+    "chunk_id": "chunk-42063765-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41766537",
+    "title": "Increased Risk of Ischemic Events in Patients With Stroke Treated With Clopidogrel and a P-CAB or PPI.",
+    "authors": [
+      "Hong JH",
+      "Park SH",
+      "Park KY",
+      "Kim EY"
+    ],
+    "publication_date": "2026 May",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41766537/",
+    "abstract": "Increased Risk of Ischemic Events in Patients With Stroke Treated With Clopidogrel and a P-CAB or PPI.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41766537",
+      "pmcid": null,
+      "doi": "10.1161/STROKEAHA.125.053616",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:43.565273+00:00",
+      "response_received_at": "2026-09-02T17:37:44.549335+00:00",
+      "latency_ms": 983.77,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:44.549335+00:00",
+    "source_updated_at": "2026 May",
+    "raw_response_hash": "fe5e4defba863b1d235e15ebec13334a074e950a96f5c198366d91dfb7e75db3",
+    "document_id": "41766537",
+    "text": "Increased Risk of Ischemic Events in Patients With Stroke Treated With Clopidogrel and a P-CAB or PPI.",
+    "chunk_id": "chunk-41766537-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42589388",
+    "title": "Lithium in Bipolar Disorder: Renal Mechanisms, Nephrotoxicity Phenotypes, and a Shared-Care Pathway for Clinical Practice.",
+    "authors": [
+      "Rijavec N",
+      "Ve\u010deri\u0107-Haler \u017d"
+    ],
+    "publication_date": "2026 Jul 28",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42589388/",
+    "abstract": "Lithium in Bipolar Disorder: Renal Mechanisms, Nephrotoxicity Phenotypes, and a Shared-Care Pathway for Clinical Practice.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13467549/",
+    "identifiers": {
+      "pmid": "42589388",
+      "pmcid": "PMC13467549",
+      "doi": "10.3390/ijms27156730",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:45.585085+00:00",
+      "response_received_at": "2026-09-02T17:37:47.043031+00:00",
+      "latency_ms": 1458.03,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:47.044034+00:00",
+    "source_updated_at": "2026 Jul 28",
+    "raw_response_hash": "4a3e30cb5bd14a0137af38fa14d7bea696afe93aeb14ab836359d3e5d0a152c0",
+    "document_id": "42589388",
+    "text": "Lithium in Bipolar Disorder: Renal Mechanisms, Nephrotoxicity Phenotypes, and a Shared-Care Pathway for Clinical Practice.",
+    "chunk_id": "chunk-42589388-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "30000212",
+    "title": "Lithium.",
+    "authors": [],
+    "publication_date": "2006",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/30000212/",
+    "abstract": "Lithium.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "30000212",
+      "pmcid": null,
+      "doi": null,
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:47.044034+00:00",
+      "response_received_at": "2026-09-02T17:37:48.082579+00:00",
+      "latency_ms": 1038.6,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:48.083580+00:00",
+    "source_updated_at": "2006",
+    "raw_response_hash": "d87adb93e61cbaf9a8fbb9761c0d567bac12dc69bf9981f61e0cf87d5c76c892",
+    "document_id": "30000212",
+    "text": "Lithium.",
+    "chunk_id": "chunk-30000212-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41570215",
+    "title": "Synergistic risks: Lamotrigine induced rash potentiating lithium toxicity.",
+    "authors": [
+      "Kumari S",
+      "Narasimha VL",
+      "Nath S",
+      "Kumar R",
+      "Sahoo M"
+    ],
+    "publication_date": "2025 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41570215/",
+    "abstract": "Synergistic risks: Lamotrigine induced rash potentiating lithium toxicity.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41570215",
+      "pmcid": null,
+      "doi": "10.24869/psyd.2025.499",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:48.083580+00:00",
+      "response_received_at": "2026-09-02T17:37:49.393356+00:00",
+      "latency_ms": 1310.64,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:49.394357+00:00",
+    "source_updated_at": "2025 Dec",
+    "raw_response_hash": "66aece54ba3ea5df73079e5c82a12a27599b17716047305411429758b633b6ae",
+    "document_id": "41570215",
+    "text": "Synergistic risks: Lamotrigine induced rash potentiating lithium toxicity.",
+    "chunk_id": "chunk-41570215-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42438581",
+    "title": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+    "authors": [
+      "Ei ZP",
+      "Soe TT",
+      "Kyaw KH",
+      "Phyo HW",
+      "Lin NT"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42438581/",
+    "abstract": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13356924/",
+    "identifiers": {
+      "pmid": "42438581",
+      "pmcid": "PMC13356924",
+      "doi": "10.7759/cureus.112442",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:50.384445+00:00",
+      "response_received_at": "2026-09-02T17:37:51.843708+00:00",
+      "latency_ms": 1459.39,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:51.843708+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "1d57fcd2415f135c95ffb8f5d92fb95786388abf2d9f33b0c772b12c070594ee",
+    "document_id": "42438581",
+    "text": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+    "chunk_id": "chunk-42438581-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41109285",
+    "title": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+    "authors": [
+      "Mana DL",
+      "Rizzo LFL"
+    ],
+    "publication_date": "2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41109285/",
+    "abstract": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41109285",
+      "pmcid": null,
+      "doi": null,
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:51.843708+00:00",
+      "response_received_at": "2026-09-02T17:37:52.758523+00:00",
+      "latency_ms": 914.17,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:52.759547+00:00",
+    "source_updated_at": "2025",
+    "raw_response_hash": "2a736a176322a38787272c430a4f9cda690c40bc0162a370356f30a696505acc",
+    "document_id": "41109285",
+    "text": "Challenges in the treatment of hypothyroidism: malabsorption and pseudo-malabsorption of levothyroxine.",
+    "chunk_id": "chunk-41109285-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "39911218",
+    "title": "Associations of combined exposure to selected metal mixtures with thyroid hormones in children: a cross-sectional study in China.",
+    "authors": [
+      "Cao Y",
+      "Xiang S",
+      "Du Y",
+      "Chen M",
+      "Xue R",
+      "Li Q",
+      "Qiu J",
+      "Duan Y"
+    ],
+    "publication_date": "2025",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39911218/",
+    "abstract": "Associations of combined exposure to selected metal mixtures with thyroid hormones in children: a cross-sectional study in China.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11794202/",
+    "identifiers": {
+      "pmid": "39911218",
+      "pmcid": "PMC11794202",
+      "doi": "10.3389/fpubh.2025.1387702",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:52.759547+00:00",
+      "response_received_at": "2026-09-02T17:37:54.329331+00:00",
+      "latency_ms": 1570.64,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:54.330336+00:00",
+    "source_updated_at": "2025",
+    "raw_response_hash": "694be5faefc436cc80d63c9cb2264d6f3993d327b84983d5636e80a7beeda7c7",
+    "document_id": "39911218",
+    "text": "Associations of combined exposure to selected metal mixtures with thyroid hormones in children: a cross-sectional study in China.",
+    "chunk_id": "chunk-39911218-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42432791",
+    "title": "Assessment of community pharmacists' knowledge, attitudes, awareness, and practice-related responses regarding oral anticoagulants in the Northern West Bank, Palestine: a cross-sectional study.",
+    "authors": [
+      "Alayyad HM",
+      "Abu Arqoub SW",
+      "Abuobaid MA",
+      "Amer LH",
+      "Koni AA",
+      "Abuhalima D",
+      "Al-Jabi SW",
+      "Aiesh BM",
+      "Zyoud SH"
+    ],
+    "publication_date": "2026 Jul 11",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42432791/",
+    "abstract": "Assessment of community pharmacists' knowledge, attitudes, awareness, and practice-related responses regarding oral anticoagulants in the Northern West Bank, Palestine: a cross-sectional study.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42432791",
+      "pmcid": null,
+      "doi": "10.1186/s40780-026-00607-w",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:55.459037+00:00",
+      "response_received_at": "2026-09-02T17:37:57.006017+00:00",
+      "latency_ms": 1546.54,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:57.007218+00:00",
+    "source_updated_at": "2026 Jul 11",
+    "raw_response_hash": "c0f2060b9f34c10a4f4aa86b74a8181d87c900d30e77b81b476d9bedc51f0f73",
+    "document_id": "42432791",
+    "text": "Assessment of community pharmacists' knowledge, attitudes, awareness, and practice-related responses regarding oral anticoagulants in the Northern West Bank, Palestine: a cross-sectional study.",
+    "chunk_id": "chunk-42432791-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42327596",
+    "title": "Thrombosis and Survival after Prothrombin Complex Concentrate Use to treat Oral Anticoagulant Associated Haemorrhage.",
+    "authors": [
+      "O'Kane A",
+      "Cullen R",
+      "Toner P",
+      "Benson G"
+    ],
+    "publication_date": "2026 Jun",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42327596/",
+    "abstract": "Thrombosis and Survival after Prothrombin Complex Concentrate Use to treat Oral Anticoagulant Associated Haemorrhage.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13278053/",
+    "identifiers": {
+      "pmid": "42327596",
+      "pmcid": "PMC13278053",
+      "doi": null,
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:57.007218+00:00",
+      "response_received_at": "2026-09-02T17:37:58.344113+00:00",
+      "latency_ms": 1337.38,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:58.345109+00:00",
+    "source_updated_at": "2026 Jun",
+    "raw_response_hash": "e090078c8b1465e2792b613bfd8483d69b648ed8a97a1fb585c3e6fb49b8bb9e",
+    "document_id": "42327596",
+    "text": "Thrombosis and Survival after Prothrombin Complex Concentrate Use to treat Oral Anticoagulant Associated Haemorrhage.",
+    "chunk_id": "chunk-42327596-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42304278",
+    "title": "Practice patterns of pulmonologists regarding extended anticoagulation therapy after pulmonary embolism.",
+    "authors": [
+      "Erdem T\u00fcre E",
+      "Kurt HG"
+    ],
+    "publication_date": "2026 Jun 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42304278/",
+    "abstract": "Practice patterns of pulmonologists regarding extended anticoagulation therapy after pulmonary embolism.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13505085/",
+    "identifiers": {
+      "pmid": "42304278",
+      "pmcid": "PMC13505085",
+      "doi": "10.1186/s12890-026-04416-7",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:37:58.345109+00:00",
+      "response_received_at": "2026-09-02T17:37:59.357417+00:00",
+      "latency_ms": 1012.45,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:37:59.357417+00:00",
+    "source_updated_at": "2026 Jun 16",
+    "raw_response_hash": "0f6fe821a557223915f6550b465c0dbfb3d9d04848a626132bdc8ed46c516523",
+    "document_id": "42304278",
+    "text": "Practice patterns of pulmonologists regarding extended anticoagulation therapy after pulmonary embolism.",
+    "chunk_id": "chunk-42304278-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42629702",
+    "title": "Fatal intoxication caused by conventional-dose methotrexate in an elderly patient with end-stage renal disease: A cautionary case report.",
+    "authors": [
+      "He Q",
+      "Huang X"
+    ],
+    "publication_date": "2026 Aug 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42629702/",
+    "abstract": "Fatal intoxication caused by conventional-dose methotrexate in an elderly patient with end-stage renal disease: A cautionary case report.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13502829/",
+    "identifiers": {
+      "pmid": "42629702",
+      "pmcid": "PMC13502829",
+      "doi": "10.1097/MD.0000000000050331",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:01.476705+00:00",
+      "response_received_at": "2026-09-02T17:38:02.418840+00:00",
+      "latency_ms": 941.4,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:02.418840+00:00",
+    "source_updated_at": "2026 Aug 21",
+    "raw_response_hash": "0192aa982ad989ef71c8ca94d29927a33646c143122e740261853da9bbfe977e",
+    "document_id": "42629702",
+    "text": "Fatal intoxication caused by conventional-dose methotrexate in an elderly patient with end-stage renal disease: A cautionary case report.",
+    "chunk_id": "chunk-42629702-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42536436",
+    "title": "HopeFOL, or FOL of problems? Leucovorin for autistic symptoms.",
+    "authors": [
+      "Holle LM",
+      "Kratz J",
+      "Dow-Hillgartner EN",
+      "Patel MA",
+      "Deming D",
+      "Uboha N",
+      "Lubner S",
+      "LoConte NK"
+    ],
+    "publication_date": "2026 Aug 6",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42536436/",
+    "abstract": "HopeFOL, or FOL of problems? Leucovorin for autistic symptoms.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13476073/",
+    "identifiers": {
+      "pmid": "42536436",
+      "pmcid": "PMC13476073",
+      "doi": "10.1093/oncolo/oyag304",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:02.418840+00:00",
+      "response_received_at": "2026-09-02T17:38:03.484712+00:00",
+      "latency_ms": 1065.93,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:03.485708+00:00",
+    "source_updated_at": "2026 Aug 6",
+    "raw_response_hash": "57e38f829a876a2e6550e11b79caa54b0e79d5e67f46e087494671f1b8b39c0c",
+    "document_id": "42536436",
+    "text": "HopeFOL, or FOL of problems? Leucovorin for autistic symptoms.",
+    "chunk_id": "chunk-42536436-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42402988",
+    "title": "Agmatine Attenuates Methotrexate-Induced Hepatotoxicity: Targeting Oxidative Stress, Inflammation, and Apoptotic Pathways.",
+    "authors": [
+      "Sewilam HM",
+      "El-Kashef DH",
+      "Abouelezz HM"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42402988/",
+    "abstract": "Agmatine Attenuates Methotrexate-Induced Hepatotoxicity: Targeting Oxidative Stress, Inflammation, and Apoptotic Pathways.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42402988",
+      "pmcid": null,
+      "doi": "10.1002/jbt.71009",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:03.485708+00:00",
+      "response_received_at": "2026-09-02T17:38:04.448855+00:00",
+      "latency_ms": 962.87,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:04.448855+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "641bbe76d429c9b4b62f709bcf77a93c8aed62460b7b06a027ee335774d697a6",
+    "document_id": "42402988",
+    "text": "Agmatine Attenuates Methotrexate-Induced Hepatotoxicity: Targeting Oxidative Stress, Inflammation, and Apoptotic Pathways.",
+    "chunk_id": "chunk-42402988-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42652867",
+    "title": "Infective Endocarditis on Aortic Valve: From Diagnosis to Cardiac Surgical Intervention-Narrative Review.",
+    "authors": [
+      "Loreni F",
+      "Fortuni F",
+      "Affronti A",
+      "Pantanella R",
+      "Perticoni S",
+      "Di Lazzaro D",
+      "Nenna A",
+      "Barbato R",
+      "Mastroianni C",
+      "Lusini M",
+      "Chello M",
+      "Carluccio E",
+      "Bergonzini M"
+    ],
+    "publication_date": "2026 Aug 20",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42652867/",
+    "abstract": "Infective Endocarditis on Aortic Valve: From Diagnosis to Cardiac Surgical Intervention-Narrative Review.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13514560/",
+    "identifiers": {
+      "pmid": "42652867",
+      "pmcid": "PMC13514560",
+      "doi": "10.3390/jcm15166463",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:05.505447+00:00",
+      "response_received_at": "2026-09-02T17:38:07.022061+00:00",
+      "latency_ms": 1517.38,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:07.023086+00:00",
+    "source_updated_at": "2026 Aug 20",
+    "raw_response_hash": "c4cb408d4dbf4e93143b8ee7e33ec8314f9ea57bae0d69492becec8d8a73fccb",
+    "document_id": "42652867",
+    "text": "Infective Endocarditis on Aortic Valve: From Diagnosis to Cardiac Surgical Intervention-Narrative Review.",
+    "chunk_id": "chunk-42652867-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42351625",
+    "title": "Risk of Mortality and Cardiovascular Events in Patients with Chronic Obstructive Pulmonary Disease Treated with Azithromycin, Roxithromycin, Clarithromycin and Amoxicillin in Primary and Secondary Care.",
+    "authors": [
+      "Alispahic IA",
+      "Ekl\u00f6f J",
+      "Sivapalan P",
+      "Jordan AR",
+      "Harboe ZB",
+      "Biering-S\u00f8rensen T",
+      "Leth-M\u00f8ller KB",
+      "Linneberg A",
+      "Jensen JS"
+    ],
+    "publication_date": "2026 May 25",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42351625/",
+    "abstract": "Risk of Mortality and Cardiovascular Events in Patients with Chronic Obstructive Pulmonary Disease Treated with Azithromycin, Roxithromycin, Clarithromycin and Amoxicillin in Primary and Secondary Care.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13295917/",
+    "identifiers": {
+      "pmid": "42351625",
+      "pmcid": "PMC13295917",
+      "doi": "10.3390/biomedicines14061197",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:07.023086+00:00",
+      "response_received_at": "2026-09-02T17:38:08.664761+00:00",
+      "latency_ms": 1641.82,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:08.665764+00:00",
+    "source_updated_at": "2026 May 25",
+    "raw_response_hash": "2de492b006857b8bc30687d0a028044321ea3fd4a66764911d35f4892bc7c41f",
+    "document_id": "42351625",
+    "text": "Risk of Mortality and Cardiovascular Events in Patients with Chronic Obstructive Pulmonary Disease Treated with Azithromycin, Roxithromycin, Clarithromycin and Amoxicillin in Primary and Secondary Care.",
+    "chunk_id": "chunk-42351625-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42351610",
+    "title": "Antibiotic-Induced Pulmonary Fibrosis: National Database Analysis.",
+    "authors": [
+      "Butranova O",
+      "Kustov Y",
+      "Abramova A",
+      "Zyryanov S",
+      "Asetskaya I",
+      "Terekhina E",
+      "Polivanov V"
+    ],
+    "publication_date": "2026 May 22",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42351610/",
+    "abstract": "Antibiotic-Induced Pulmonary Fibrosis: National Database Analysis.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13296167/",
+    "identifiers": {
+      "pmid": "42351610",
+      "pmcid": "PMC13296167",
+      "doi": "10.3390/biomedicines14061182",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:08.665764+00:00",
+      "response_received_at": "2026-09-02T17:38:09.586852+00:00",
+      "latency_ms": 921.28,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:09.586852+00:00",
+    "source_updated_at": "2026 May 22",
+    "raw_response_hash": "91081a92853410003497eb3dc955ea5cd34cf0b8489b9ed2b1ecd5add1df010f",
+    "document_id": "42351610",
+    "text": "Antibiotic-Induced Pulmonary Fibrosis: National Database Analysis.",
+    "chunk_id": "chunk-42351610-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42678303",
+    "title": "Safety of Intra-Amniotic and Intra-Fetal Digoxin Administration in Late Second-Trimester Abortion by Dilation and Evacuation.",
+    "authors": [
+      "Drey EA",
+      "Goldschlager N",
+      "Benowitz NL",
+      "Sokoloff A",
+      "Jackson RA"
+    ],
+    "publication_date": "2026 Sep 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42678303/",
+    "abstract": "Safety of Intra-Amniotic and Intra-Fetal Digoxin Administration in Late Second-Trimester Abortion by Dilation and Evacuation.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42678303",
+      "pmcid": null,
+      "doi": "10.1111/psrh.70081",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:10.611267+00:00",
+      "response_received_at": "2026-09-02T17:38:11.583758+00:00",
+      "latency_ms": 972.68,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:11.584756+00:00",
+    "source_updated_at": "2026 Sep 1",
+    "raw_response_hash": "c9511e3cc14903eabd6b2e740cf1bd0c4dad5ccd412d1c3e50b605048342528a",
+    "document_id": "42678303",
+    "text": "Safety of Intra-Amniotic and Intra-Fetal Digoxin Administration in Late Second-Trimester Abortion by Dilation and Evacuation.",
+    "chunk_id": "chunk-42678303-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42096382",
+    "title": "Spatiotemporal Pathway Control for Targeted Drug Delivery: A unified Waveform Modulation in Molecular Communication.",
+    "authors": [
+      "Tan M",
+      "Sun Y",
+      "Xiao H",
+      "Chen Y"
+    ],
+    "publication_date": "2026 May 7",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42096382/",
+    "abstract": "Spatiotemporal Pathway Control for Targeted Drug Delivery: A unified Waveform Modulation in Molecular Communication.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42096382",
+      "pmcid": null,
+      "doi": "10.1109/TNB.2026.3691099",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:11.584756+00:00",
+      "response_received_at": "2026-09-02T17:38:12.554877+00:00",
+      "latency_ms": 970.09,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:12.554877+00:00",
+    "source_updated_at": "2026 May 7",
+    "raw_response_hash": "a0073eb28b48d3645dd3941b43b339ac8130f5201a87c31496f1a8d3a1fc20f4",
+    "document_id": "42096382",
+    "text": "Spatiotemporal Pathway Control for Targeted Drug Delivery: A unified Waveform Modulation in Molecular Communication.",
+    "chunk_id": "chunk-42096382-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42062777",
+    "title": "Drug Critical Limits for Urgent Physician Notification.",
+    "authors": [
+      "Kuang E",
+      "Ibrahim Y",
+      "Cheng K",
+      "Kost GJ"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42062777/",
+    "abstract": "Drug Critical Limits for Urgent Physician Notification.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13264467/",
+    "identifiers": {
+      "pmid": "42062777",
+      "pmcid": "PMC13264467",
+      "doi": "10.1002/cpt.70277",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:12.554877+00:00",
+      "response_received_at": "2026-09-02T17:38:13.784892+00:00",
+      "latency_ms": 1229.67,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:13.785886+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "e4b4c6373b2f9dc88acd8414ae619fa0a1989d708619e8d7f36add11b29d69c9",
+    "document_id": "42062777",
+    "text": "Drug Critical Limits for Urgent Physician Notification.",
+    "chunk_id": "chunk-42062777-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42643218",
+    "title": "Treatment patterns and access among people with epilepsy of childbearing potential in Peru.",
+    "authors": [
+      "Allen SE",
+      "Wardle MT",
+      "Moyano LM",
+      "Vilchez P",
+      "Bustos JA",
+      "Garcia HH",
+      "O'Neal SE"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42643218/",
+    "abstract": "Treatment patterns and access among people with epilepsy of childbearing potential in Peru.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13503225/",
+    "identifiers": {
+      "pmid": "42643218",
+      "pmcid": "PMC13503225",
+      "doi": "10.3389/fneur.2026.1916569",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:15.425243+00:00",
+      "response_received_at": "2026-09-02T17:38:16.449388+00:00",
+      "latency_ms": 1023.61,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:16.450385+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "d110d56da77ff67ae6f0d8fa878e239f4fb154d78a42f168bedf2e67ee374cf6",
+    "document_id": "42643218",
+    "text": "Treatment patterns and access among people with epilepsy of childbearing potential in Peru.",
+    "chunk_id": "chunk-42643218-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42587047",
+    "title": "Evaluation of colostrum-coated ZnO nanoparticles (C-ZnONPs) in attenuating valproic acid-induced prenatal toxicity.",
+    "authors": [
+      "Kaur K",
+      "Gupta R",
+      "Verma N",
+      "Ghosh NS"
+    ],
+    "publication_date": "2026 Aug 13",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42587047/",
+    "abstract": "Evaluation of colostrum-coated ZnO nanoparticles (C-ZnONPs) in attenuating valproic acid-induced prenatal toxicity.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42587047",
+      "pmcid": null,
+      "doi": "10.1007/s00210-026-05795-8",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:16.450385+00:00",
+      "response_received_at": "2026-09-02T17:38:17.577919+00:00",
+      "latency_ms": 1128.47,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:17.580178+00:00",
+    "source_updated_at": "2026 Aug 13",
+    "raw_response_hash": "b29c6bfa48d5910d573f32d132a70c124de5db0588e2ed3f97bb5b7571f3cf62",
+    "document_id": "42587047",
+    "text": "Evaluation of colostrum-coated ZnO nanoparticles (C-ZnONPs) in attenuating valproic acid-induced prenatal toxicity.",
+    "chunk_id": "chunk-42587047-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42396864",
+    "title": "The Ameliorative Effect of Spirulina platensis as Add-On Therapy to Risperidone on Valproic Acid-Induced Autism in Rat Pups: Implication of Oxidative Stress, Inflammatory, and ERK-1/2 Signaling Pathway.",
+    "authors": [
+      "Dehkhodaei S",
+      "Angaji A",
+      "Khosravipour N",
+      "Karamali F",
+      "Pashaee M",
+      "Taherkhani S",
+      "Hajisoltani R"
+    ],
+    "publication_date": "2026 Jul",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42396864/",
+    "abstract": "The Ameliorative Effect of Spirulina platensis as Add-On Therapy to Risperidone on Valproic Acid-Induced Autism in Rat Pups: Implication of Oxidative Stress, Inflammatory, and ERK-1/2 Signaling Pathway.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42396864",
+      "pmcid": null,
+      "doi": "10.1002/dneu.70052",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:17.580178+00:00",
+      "response_received_at": "2026-09-02T17:38:19.212517+00:00",
+      "latency_ms": 1631.84,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:19.212517+00:00",
+    "source_updated_at": "2026 Jul",
+    "raw_response_hash": "0b8e0491c6e7be016c2cb37c792b11398ed03c7fb97347c8c55522a8b0f7096e",
+    "document_id": "42396864",
+    "text": "The Ameliorative Effect of Spirulina platensis as Add-On Therapy to Risperidone on Valproic Acid-Induced Autism in Rat Pups: Implication of Oxidative Stress, Inflammatory, and ERK-1/2 Signaling Pathway.",
+    "chunk_id": "chunk-42396864-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42681676",
+    "title": "Targeting breast cancer stem cells by restoring RBM38 function: mechanism and protein delivery therapy.",
+    "authors": [
+      "Yin J",
+      "Wang T",
+      "Han X",
+      "Chen Y",
+      "Yang Y",
+      "Yang Y",
+      "Zhang Y",
+      "Lu Y",
+      "Niu M",
+      "Xu S",
+      "Rong H",
+      "Huang L",
+      "Xiang C",
+      "Li X",
+      "Zheng L"
+    ],
+    "publication_date": "2026 Aug 10",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42681676/",
+    "abstract": "Targeting breast cancer stem cells by restoring RBM38 function: mechanism and protein delivery therapy.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42681676",
+      "pmcid": null,
+      "doi": "10.1186/s40364-026-00984-2",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:23.614102+00:00",
+      "response_received_at": "2026-09-02T17:38:25.253041+00:00",
+      "latency_ms": 1640.03,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:25.254825+00:00",
+    "source_updated_at": "2026 Aug 10",
+    "raw_response_hash": "134e598253e8a8a25c8f22067375880ccf40e35e98c83e61cbd09da12a1a7986",
+    "document_id": "42681676",
+    "text": "Targeting breast cancer stem cells by restoring RBM38 function: mechanism and protein delivery therapy.",
+    "chunk_id": "chunk-42681676-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42676526",
+    "title": "Tricholoma matsutake polypeptide modulates cardiac metabolism and restores autophagic flux to mitigate doxorubicin-induced senescence.",
+    "authors": [
+      "Ye T",
+      "Wang QS",
+      "Ge QW",
+      "Li MJ",
+      "Yuan Y",
+      "Sun WS",
+      "Xing DM"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42676526/",
+    "abstract": "Tricholoma matsutake polypeptide modulates cardiac metabolism and restores autophagic flux to mitigate doxorubicin-induced senescence.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13526593/",
+    "identifiers": {
+      "pmid": "42676526",
+      "pmcid": "PMC13526593",
+      "doi": "10.3389/fphar.2026.1842003",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:25.254825+00:00",
+      "response_received_at": "2026-09-02T17:38:26.268279+00:00",
+      "latency_ms": 1014.25,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:26.269273+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "ce32617c81374ad1cdd1cc5e0c976e3f1eca737ef2df91d0222a4f6e9cf6718b",
+    "document_id": "42676526",
+    "text": "Tricholoma matsutake polypeptide modulates cardiac metabolism and restores autophagic flux to mitigate doxorubicin-induced senescence.",
+    "chunk_id": "chunk-42676526-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42670540",
+    "title": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+    "authors": [
+      "Zhao B",
+      "Tang M",
+      "Zhou J",
+      "Liu H",
+      "He H",
+      "Lv J"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42670540/",
+    "abstract": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13526393/",
+    "identifiers": {
+      "pmid": "42670540",
+      "pmcid": "PMC13526393",
+      "doi": "10.2147/IJGM.S623230",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:26.269273+00:00",
+      "response_received_at": "2026-09-02T17:38:27.512547+00:00",
+      "latency_ms": 1242.93,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:27.514547+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "f7525a81fea93827ad0a58885b2cd6758ada002cd8529e8a7c1cc00f8c6a7a31",
+    "document_id": "42670540",
+    "text": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+    "chunk_id": "chunk-42670540-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "40272900",
+    "title": "In vitro seizure risk assessment using a microelectrode array and comparison with an in vivo rat study.",
+    "authors": [
+      "Seki Y",
+      "Mikamoto M",
+      "Ojima A",
+      "Mihara I",
+      "Iwamoto M",
+      "Odawara A",
+      "Goto Y",
+      "Taniguchi T",
+      "Shiotani M",
+      "Yoshinaga T",
+      "Asakura S",
+      "Ishibashi Y",
+      "Matsuda N",
+      "Suzuki I",
+      "Miyamoto N"
+    ],
+    "publication_date": "2025 Jul 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40272900/",
+    "abstract": "In vitro seizure risk assessment using a microelectrode array and comparison with an in vivo rat study.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "40272900",
+      "pmcid": null,
+      "doi": "10.1093/toxsci/kfaf056",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:28.427959+00:00",
+      "response_received_at": "2026-09-02T17:38:29.964559+00:00",
+      "latency_ms": 1536.38,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:29.965558+00:00",
+    "source_updated_at": "2025 Jul 1",
+    "raw_response_hash": "ba0e5916f0b16e73028faf018fd61e518ddf137185c73f4b279a7c11d48a62b3",
+    "document_id": "40272900",
+    "text": "In vitro seizure risk assessment using a microelectrode array and comparison with an in vivo rat study.",
+    "chunk_id": "chunk-40272900-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "40242084",
+    "title": "Tramadol use and risk of seizure: A report of two cases and a review of recent literature.",
+    "authors": [
+      "Dolan E",
+      "Delanty N"
+    ],
+    "publication_date": "2025 Jun",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40242084/",
+    "abstract": "Tramadol use and risk of seizure: A report of two cases and a review of recent literature.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12002874/",
+    "identifiers": {
+      "pmid": "40242084",
+      "pmcid": "PMC12002874",
+      "doi": "10.1016/j.ebr.2025.100763",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:29.965558+00:00",
+      "response_received_at": "2026-09-02T17:38:30.985514+00:00",
+      "latency_ms": 1020.01,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:30.985514+00:00",
+    "source_updated_at": "2025 Jun",
+    "raw_response_hash": "fe8c5f678424a5bf8d01b289464739ccd5376c8a5d069fbca3743411a5c3fd20",
+    "document_id": "40242084",
+    "text": "Tramadol use and risk of seizure: A report of two cases and a review of recent literature.",
+    "chunk_id": "chunk-40242084-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "36660072",
+    "title": "Pharmacological evidence for the possible involvement of the NMDA receptor pathway in the anticonvulsant effect of tramadol in mice.",
+    "authors": [
+      "Zahir M",
+      "Rashidian A",
+      "Hoseini M",
+      "Akbarian R",
+      "Chamanara M"
+    ],
+    "publication_date": "2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/36660072/",
+    "abstract": "Pharmacological evidence for the possible involvement of the NMDA receptor pathway in the anticonvulsant effect of tramadol in mice.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9826747/",
+    "identifiers": {
+      "pmid": "36660072",
+      "pmcid": "PMC9826747",
+      "doi": "10.3934/Neuroscience.2022024",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:30.985514+00:00",
+      "response_received_at": "2026-09-02T17:38:32.021545+00:00",
+      "latency_ms": 1036.08,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:32.022594+00:00",
+    "source_updated_at": "2022",
+    "raw_response_hash": "411c41a290308b032ee5158a5943a18fba1cbb8feb20819815ad64ea984899fd",
+    "document_id": "36660072",
+    "text": "Pharmacological evidence for the possible involvement of the NMDA receptor pathway in the anticonvulsant effect of tramadol in mice.",
+    "chunk_id": "chunk-36660072-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "36988981",
+    "title": "Serotonin Syndrome in an Infant Associated With Linezolid and Opioid Use.",
+    "authors": [
+      "Essakow J",
+      "Jin L",
+      "Marupudi N",
+      "Wattier R",
+      "McQuillen P",
+      "Franzon D"
+    ],
+    "publication_date": "2022",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/36988981/",
+    "abstract": "Serotonin Syndrome in an Infant Associated With Linezolid and Opioid Use.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9400179/",
+    "identifiers": {
+      "pmid": "36988981",
+      "pmcid": "PMC9400179",
+      "doi": "10.5863/1551-6776-27.6.564",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:33.129705+00:00",
+      "response_received_at": "2026-09-02T17:38:34.267835+00:00",
+      "latency_ms": 1137.91,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:34.268833+00:00",
+    "source_updated_at": "2022",
+    "raw_response_hash": "15453ce5775357d252d4d4dbb056f49a1d8765ae0ebeda31ae4a10be2381d0c8",
+    "document_id": "36988981",
+    "text": "Serotonin Syndrome in an Infant Associated With Linezolid and Opioid Use.",
+    "chunk_id": "chunk-36988981-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "34551662",
+    "title": "Impact of chronic medications in the perioperative period: mechanisms of action and adverse drug effects (Part I).",
+    "authors": [
+      "Elvir-Lazo OL",
+      "White PF",
+      "Cruz Eng H",
+      "Yumul F",
+      "Chua R",
+      "Yumul R"
+    ],
+    "publication_date": "2021 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34551662/",
+    "abstract": "Impact of chronic medications in the perioperative period: mechanisms of action and adverse drug effects (Part I).",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "34551662",
+      "pmcid": null,
+      "doi": "10.1080/00325481.2021.1982297",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:34.268833+00:00",
+      "response_received_at": "2026-09-02T17:38:35.741086+00:00",
+      "latency_ms": 1472.44,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:35.741086+00:00",
+    "source_updated_at": "2021 Nov",
+    "raw_response_hash": "92d1cd6496a5891addf1ca3eddbfcadffd515ce8670398beaad5ba69054957dc",
+    "document_id": "34551662",
+    "text": "Impact of chronic medications in the perioperative period: mechanisms of action and adverse drug effects (Part I).",
+    "chunk_id": "chunk-34551662-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "34551658",
+    "title": "Impact of chronic medications in the perioperative period -anesthetic implications (Part II).",
+    "authors": [
+      "Elvir-Lazo OL",
+      "White PF",
+      "Cruz Eng H",
+      "Yumul F",
+      "Chua R",
+      "Yumul R"
+    ],
+    "publication_date": "2021 Nov",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34551658/",
+    "abstract": "Impact of chronic medications in the perioperative period -anesthetic implications (Part II).",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "34551658",
+      "pmcid": null,
+      "doi": "10.1080/00325481.2021.1982298",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:35.741086+00:00",
+      "response_received_at": "2026-09-02T17:38:37.454044+00:00",
+      "latency_ms": 1712.73,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:37.455052+00:00",
+    "source_updated_at": "2021 Nov",
+    "raw_response_hash": "6c207a3304f8a169a855cc8be6f25c335b7c82f95672d8871120d5580fec1481",
+    "document_id": "34551658",
+    "text": "Impact of chronic medications in the perioperative period -anesthetic implications (Part II).",
+    "chunk_id": "chunk-34551658-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42528583",
+    "title": "Amiodarone-induced granulomatous lung injury mimicking organizing pneumonia: a case report.",
+    "authors": [
+      "Aili A",
+      "Deng H",
+      "Zhang H",
+      "Wang W",
+      "Pan L"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42528583/",
+    "abstract": "Amiodarone-induced granulomatous lung injury mimicking organizing pneumonia: a case report.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13414136/",
+    "identifiers": {
+      "pmid": "42528583",
+      "pmcid": "PMC13414136",
+      "doi": "10.3389/fphar.2026.1848041",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:38.467528+00:00",
+      "response_received_at": "2026-09-02T17:38:39.451162+00:00",
+      "latency_ms": 983.57,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:39.452168+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "d71e39dac7fec0b4b1b5a9998f5331292987713ac47e75a63dbf26c1962d1efc",
+    "document_id": "42528583",
+    "text": "Amiodarone-induced granulomatous lung injury mimicking organizing pneumonia: a case report.",
+    "chunk_id": "chunk-42528583-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42497636",
+    "title": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+    "authors": [
+      "He H",
+      "Jiang Y",
+      "Zhang Y",
+      "Pang X",
+      "Jiang Q",
+      "He Z",
+      "Zhong Y",
+      "Liu Y",
+      "Sheng Z",
+      "Han Z",
+      "Li C",
+      "Wu W"
+    ],
+    "publication_date": "2026 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42497636/",
+    "abstract": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42497636",
+      "pmcid": null,
+      "doi": "10.1016/j.bioadv.2026.215077",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:39.452168+00:00",
+      "response_received_at": "2026-09-02T17:38:40.336331+00:00",
+      "latency_ms": 884.13,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:40.337331+00:00",
+    "source_updated_at": "2026 Dec",
+    "raw_response_hash": "051918811eb7ad36853709254cc4ba723fa8f7483d632015d64144d445ecbfcd",
+    "document_id": "42497636",
+    "text": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+    "chunk_id": "chunk-42497636-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42466914",
+    "title": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+    "authors": [
+      "Zag\u00e0 V",
+      "Al-Suhaim A",
+      "Khoj L",
+      "Fantin A",
+      "Cecchini MJ",
+      "Zompatori M",
+      "Mura M"
+    ],
+    "publication_date": "2026 Jul 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42466914/",
+    "abstract": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42466914",
+      "pmcid": null,
+      "doi": "10.4081/monaldi.2026.3936",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:40.337331+00:00",
+      "response_received_at": "2026-09-02T17:38:41.319824+00:00",
+      "latency_ms": 982.48,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:41.320825+00:00",
+    "source_updated_at": "2026 Jul 16",
+    "raw_response_hash": "aaba8c8132b9ddb3b5ebbc0f2495d52360cfd8bfc2ca92dd2ca0e4cb38882100",
+    "document_id": "42466914",
+    "text": "Amiodarone-induced pulmonary toxicity: case series and review of clinical-radiological correlations.",
+    "chunk_id": "chunk-42466914-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42064495",
+    "title": "Association of Long-Term Proton Pump Inhibitor Use With Nutrient Deficiencies: A Retrospective Cross-Sectional Study.",
+    "authors": [
+      "Nafea S",
+      "Iguh C",
+      "Waseem F",
+      "Babar T",
+      "Masood MH",
+      "Ali MA",
+      "Bashir Ahmed F",
+      "Qasem H",
+      "George Cherian N",
+      "Ibrahem Atoom G",
+      "Ibrahim Atoum B"
+    ],
+    "publication_date": "2026 Mar",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42064495/",
+    "abstract": "Association of Long-Term Proton Pump Inhibitor Use With Nutrient Deficiencies: A Retrospective Cross-Sectional Study.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13127095/",
+    "identifiers": {
+      "pmid": "42064495",
+      "pmcid": "PMC13127095",
+      "doi": "10.7759/cureus.106137",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:42.260338+00:00",
+      "response_received_at": "2026-09-02T17:38:43.272573+00:00",
+      "latency_ms": 1012.46,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:43.273311+00:00",
+    "source_updated_at": "2026 Mar",
+    "raw_response_hash": "b864061aabf1860cc4aff639c6f154f700f27a0ebb8baa820cfa0bc23db09732",
+    "document_id": "42064495",
+    "text": "Association of Long-Term Proton Pump Inhibitor Use With Nutrient Deficiencies: A Retrospective Cross-Sectional Study.",
+    "chunk_id": "chunk-42064495-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "37109245",
+    "title": "Effect of Long-Term Proton Pump Inhibitor Use on Blood Vitamins and Minerals: A Primary Care Setting Study.",
+    "authors": [
+      "Losurdo G",
+      "Caccavo NLB",
+      "Indellicati G",
+      "Celiberto F",
+      "Ierardi E",
+      "Barone M",
+      "Di Leo A"
+    ],
+    "publication_date": "2023 Apr 17",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37109245/",
+    "abstract": "Effect of Long-Term Proton Pump Inhibitor Use on Blood Vitamins and Minerals: A Primary Care Setting Study.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10146626/",
+    "identifiers": {
+      "pmid": "37109245",
+      "pmcid": "PMC10146626",
+      "doi": "10.3390/jcm12082910",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:43.273311+00:00",
+      "response_received_at": "2026-09-02T17:38:44.234502+00:00",
+      "latency_ms": 961.13,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:44.235498+00:00",
+    "source_updated_at": "2023 Apr 17",
+    "raw_response_hash": "43a96de69626206a62f49f10682047db56cc2c171242ea28571726ae2984562a",
+    "document_id": "37109245",
+    "text": "Effect of Long-Term Proton Pump Inhibitor Use on Blood Vitamins and Minerals: A Primary Care Setting Study.",
+    "chunk_id": "chunk-37109245-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "34213594",
+    "title": "Proton Pump Inhibitors Inhibit PHOSPHO1 Activity and Matrix Mineralisation In Vitro.",
+    "authors": [
+      "Staines KA",
+      "Myers K",
+      "Little K",
+      "Ralston SH",
+      "Farquharson C"
+    ],
+    "publication_date": "2021 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/34213594/",
+    "abstract": "Proton Pump Inhibitors Inhibit PHOSPHO1 Activity and Matrix Mineralisation In Vitro.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8531085/",
+    "identifiers": {
+      "pmid": "34213594",
+      "pmcid": "PMC8531085",
+      "doi": "10.1007/s00223-021-00882-9",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:44.235498+00:00",
+      "response_received_at": "2026-09-02T17:38:45.324240+00:00",
+      "latency_ms": 1088.81,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:45.325238+00:00",
+    "source_updated_at": "2021 Dec",
+    "raw_response_hash": "a01eeaf1dc60b845f21aa8484bd4f35cbdaa1718009a52aaac18668f76e32c7e",
+    "document_id": "34213594",
+    "text": "Proton Pump Inhibitors Inhibit PHOSPHO1 Activity and Matrix Mineralisation In Vitro.",
+    "chunk_id": "chunk-34213594-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42629597",
+    "title": "Real-world safety profile of trazodone: Evidence from FAERS pharmacovigilance data (2004-2024).",
+    "authors": [
+      "Zhou J",
+      "Xu L",
+      "Sun Y"
+    ],
+    "publication_date": "2026 Aug 21",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42629597/",
+    "abstract": "Real-world safety profile of trazodone: Evidence from FAERS pharmacovigilance data (2004-2024).",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "42629597",
+      "pmcid": null,
+      "doi": "10.1177/10398562261479289",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:46.346543+00:00",
+      "response_received_at": "2026-09-02T17:38:47.887850+00:00",
+      "latency_ms": 1541.07,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:47.887850+00:00",
+    "source_updated_at": "2026 Aug 21",
+    "raw_response_hash": "f7f2c12bcf3add0356f36bcbdb4ee6bff65288fb81352d00a873a42d13a837ed",
+    "document_id": "42629597",
+    "text": "Real-world safety profile of trazodone: Evidence from FAERS pharmacovigilance data (2004-2024).",
+    "chunk_id": "chunk-42629597-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "42075483",
+    "title": "Clinical Observations of Psychiatric and Sexual Outcomes in Patients with Trazodone-Associated Ischemic Priapism.",
+    "authors": [
+      "D\u0105browski H",
+      "Z\u0105bkowski T",
+      "Ciechan K",
+      "Wajszczuk M",
+      "Krzepkowski HA",
+      "Kaminski TW",
+      "Uciechowski P",
+      "Syry\u0142o T"
+    ],
+    "publication_date": "2026 Mar 24",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/42075483/",
+    "abstract": "Clinical Observations of Psychiatric and Sexual Outcomes in Patients with Trazodone-Associated Ischemic Priapism.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13117199/",
+    "identifiers": {
+      "pmid": "42075483",
+      "pmcid": "PMC13117199",
+      "doi": "10.3390/medicina62040612",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:47.888849+00:00",
+      "response_received_at": "2026-09-02T17:38:49.353217+00:00",
+      "latency_ms": 1465.34,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:49.354741+00:00",
+    "source_updated_at": "2026 Mar 24",
+    "raw_response_hash": "433a491d089d21455ee55c7418af282af66432aefd20ebfb0fc9ee36b8f0d06d",
+    "document_id": "42075483",
+    "text": "Clinical Observations of Psychiatric and Sexual Outcomes in Patients with Trazodone-Associated Ischemic Priapism.",
+    "chunk_id": "chunk-42075483-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41727848",
+    "title": "Presentations Due to Priapism in an Urban Hospital in Switzerland.",
+    "authors": [
+      "Uhl JD",
+      "Koneval L",
+      "Schneidewind L",
+      "Haschke M",
+      "Exadaktylos A",
+      "Liakoni E"
+    ],
+    "publication_date": "2026",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41727848/",
+    "abstract": "Presentations Due to Priapism in an Urban Hospital in Switzerland.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12917415/",
+    "identifiers": {
+      "pmid": "41727848",
+      "pmcid": "PMC12917415",
+      "doi": "10.1155/emmi/9996341",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:49.354741+00:00",
+      "response_received_at": "2026-09-02T17:38:50.350089+00:00",
+      "latency_ms": 995.58,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:50.351089+00:00",
+    "source_updated_at": "2026",
+    "raw_response_hash": "6a958256712172525c4c1e1df184fb2e51acd1c38976f235508dc3b22d1115ed",
+    "document_id": "41727848",
+    "text": "Presentations Due to Priapism in an Urban Hospital in Switzerland.",
+    "chunk_id": "chunk-41727848-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41840835",
+    "title": "Signal detection of drug-induced esophageal ulcer across 20 years of real-world study: Focus on 49 high-risk medicines.",
+    "authors": [
+      "Zheng W",
+      "Jin LY",
+      "Hu J",
+      "Wang JY",
+      "Mao KL",
+      "Jiang Q"
+    ],
+    "publication_date": "2026 Mar",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41840835/",
+    "abstract": "Signal detection of drug-induced esophageal ulcer across 20 years of real-world study: Focus on 49 high-risk medicines.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13009884/",
+    "identifiers": {
+      "pmid": "41840835",
+      "pmcid": "PMC13009884",
+      "doi": "10.1177/03000605261426764",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:51.258806+00:00",
+      "response_received_at": "2026-09-02T17:38:52.798476+00:00",
+      "latency_ms": 1539.87,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:52.798476+00:00",
+    "source_updated_at": "2026 Mar",
+    "raw_response_hash": "e6ceb889978024abb67c791c2609fb02ef92c42038ff3a0c6d48fd0d5ac8bb77",
+    "document_id": "41840835",
+    "text": "Signal detection of drug-induced esophageal ulcer across 20 years of real-world study: Focus on 49 high-risk medicines.",
+    "chunk_id": "chunk-41840835-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "40411829",
+    "title": "Salmonella-Derived Fluorescent Carbon Dots for Reprogramming Tumor-Associated Macrophages and Enhancing Tumor Photodynamic Therapy.",
+    "authors": [
+      "Zhang PJ",
+      "Zhou D",
+      "Yang ZW",
+      "Hu YG",
+      "Ma MW",
+      "Fan JX",
+      "Zhao YD",
+      "Zou JH"
+    ],
+    "publication_date": "2025 Jun 16",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40411829/",
+    "abstract": "Salmonella-Derived Fluorescent Carbon Dots for Reprogramming Tumor-Associated Macrophages and Enhancing Tumor Photodynamic Therapy.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "40411829",
+      "pmcid": null,
+      "doi": "10.1021/acsabm.5c00624",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:52.798476+00:00",
+      "response_received_at": "2026-09-02T17:38:54.333293+00:00",
+      "latency_ms": 1534.91,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:54.334294+00:00",
+    "source_updated_at": "2025 Jun 16",
+    "raw_response_hash": "9339102e8d5f37e93813977971f9ce3024775cf6e1ed756d67d11f573dd85f63",
+    "document_id": "40411829",
+    "text": "Salmonella-Derived Fluorescent Carbon Dots for Reprogramming Tumor-Associated Macrophages and Enhancing Tumor Photodynamic Therapy.",
+    "chunk_id": "chunk-40411829-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "39575385",
+    "title": "Disproportionality analysis of oesophageal toxicity associated with oral bisphosphonates using the FAERS database (2004-2023).",
+    "authors": [
+      "Chen L",
+      "Dai Z",
+      "Song H",
+      "Zhang J",
+      "Li T"
+    ],
+    "publication_date": "2024",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39575385/",
+    "abstract": "Disproportionality analysis of oesophageal toxicity associated with oral bisphosphonates using the FAERS database (2004-2023).",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11578700/",
+    "identifiers": {
+      "pmid": "39575385",
+      "pmcid": "PMC11578700",
+      "doi": "10.3389/fphar.2024.1473756",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:54.334294+00:00",
+      "response_received_at": "2026-09-02T17:38:55.860663+00:00",
+      "latency_ms": 1525.89,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:55.860663+00:00",
+    "source_updated_at": "2024",
+    "raw_response_hash": "70d52f0641b5cef45868f9992e6c1170e9c5ff448a3a81e77fca1b13b1df24fa",
+    "document_id": "39575385",
+    "text": "Disproportionality analysis of oesophageal toxicity associated with oral bisphosphonates using the FAERS database (2004-2023).",
+    "chunk_id": "chunk-39575385-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41577777",
+    "title": "Disulfiram-like reaction due to the interaction between vaping and metronidazole: a case report.",
+    "authors": [
+      "Strickland-Baker M"
+    ],
+    "publication_date": "2026 Jan",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41577777/",
+    "abstract": "Disulfiram-like reaction due to the interaction between vaping and metronidazole: a case report.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41577777",
+      "pmcid": null,
+      "doi": "10.1038/s41415-025-9199-9",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:57.234406+00:00",
+      "response_received_at": "2026-09-02T17:38:58.205710+00:00",
+      "latency_ms": 971.04,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:58.206715+00:00",
+    "source_updated_at": "2026 Jan",
+    "raw_response_hash": "aeb6ad31deb31dae9592bb37965b047a9072617852a0a6075ffcdcff1e3abe40",
+    "document_id": "41577777",
+    "text": "Disulfiram-like reaction due to the interaction between vaping and metronidazole: a case report.",
+    "chunk_id": "chunk-41577777-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "41366815",
+    "title": "Revisiting the Disulfiram-Like Reaction Between Alcohol and Oral Metronidazole.",
+    "authors": [
+      "Orire I",
+      "Sagoe M",
+      "Muzny CA",
+      "Kissinger PJ"
+    ],
+    "publication_date": "2026 Apr 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41366815/",
+    "abstract": "Revisiting the Disulfiram-Like Reaction Between Alcohol and Oral Metronidazole.",
+    "full_text_url": null,
+    "identifiers": {
+      "pmid": "41366815",
+      "pmcid": null,
+      "doi": "10.1097/OLQ.0000000000002276",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:58.206715+00:00",
+      "response_received_at": "2026-09-02T17:38:59.145347+00:00",
+      "latency_ms": 938.47,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:38:59.145347+00:00",
+    "source_updated_at": "2026 Apr 1",
+    "raw_response_hash": "be4f42f23850637f413dd3dba09d144ebe5758f763e5c5c3455a9f4f2ec04039",
+    "document_id": "41366815",
+    "text": "Revisiting the Disulfiram-Like Reaction Between Alcohol and Oral Metronidazole.",
+    "chunk_id": "chunk-41366815-001"
+  },
+  {
+    "source_type": "BIOMEDICAL_LITERATURE",
+    "provider": "pubmed",
+    "source_id": "40585894",
+    "title": "Drug-Associated Alcohol Intolerance: A Real-World Disproportionality Analysis Study.",
+    "authors": [
+      "Sridharan K",
+      "Sivaramakrishnan G"
+    ],
+    "publication_date": "2025 Dec",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40585894/",
+    "abstract": "Drug-Associated Alcohol Intolerance: A Real-World Disproportionality Analysis Study.",
+    "full_text_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12204988/",
+    "identifiers": {
+      "pmid": "40585894",
+      "pmcid": "PMC12204988",
+      "doi": "10.1177/00185787251345806",
+      "rxcui": null
+    },
+    "provenance": {
+      "provider": "pubmed",
+      "endpoint": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+      "http_method": "GET",
+      "request_started_at": "2026-09-02T17:38:59.145347+00:00",
+      "response_received_at": "2026-09-02T17:39:00.684162+00:00",
+      "latency_ms": 1538.44,
+      "status_code": 200,
+      "api_version": "2.0"
+    },
+    "retrieved_at": "2026-09-02T17:39:00.684162+00:00",
+    "source_updated_at": "2025 Dec",
+    "raw_response_hash": "daed9452c6d6876cfca5bdadafe1fea1a6e7ebc0afff010fde02c4ad1c2fcc8d",
+    "document_id": "40585894",
+    "text": "Drug-Associated Alcohol Intolerance: A Real-World Disproportionality Analysis Study.",
+    "chunk_id": "chunk-40585894-001"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "absolute_UAR_difference": 0.5,
+  "relative_UAR_reduction": 0.5,
+  "corrected_CI": "[0.2252, 0.7748]",
+  "ci_semantics": "Wald confidence interval for paired difference with continuity correction"
+}

@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-002",
+  "population_size": 239,
+  "sample_size": 12,
+  "sampling_seed": 1487222,
+  "sampled_document_ids": [
+    "41406988",
+    "41085374",
+    "42497636",
+    "41141842",
+    "41858685",
+    "42678242",
+    "42622073",
+    "41017291",
+    "42475421",
+    "42527260",
+    "42665114",
+    "41004670"
+  ],
+  "screening_results": [
+    {
+      "document_id": "41406988",
+      "title": "Trends and variation in the use of andexanet alfa for the reversal of direct oral anticoagulants in NHS trusts in England.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41085374",
+      "title": "Assessing Impact of Concomitant Use of Proton Pump Inhibitors and Clopidogrel on Incidence of Major Adverse Cardiovascular Events: A Retrospective Cohort Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42497636",
+      "title": "Macrophage membrane camouflaged biomimetic nanomedicine for normalizing electrical dysfunction and inflammation pathology in atrial fibrillation.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41141842",
+      "title": "Andexanet alfa for the reversal of the low-molecular-weight heparin enoxaparin.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41858685",
+      "title": "Impact of nutrition education intervention on dietary intake among pregnant women with hypothyroidism - A randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42678242",
+      "title": "Hepatoprotective effects of resolvin D1 in mice exposed to ethanol and galactosamine.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42622073",
+      "title": "Assessment of Pharmacokinetic Interaction and Clinical Efficacy of Clopidogrel Co-administered with Ilaprazole.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41017291",
+      "title": "Use of Drugs With Actionable Pharmacogenetic Biomarkers and Possible Prescribing Changes Among Older People.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42475421",
+      "title": "Vascular Endothelial Growth Factor Receptor 1-Blocking Antibody Improves Endothelial Structure, Kidney Function, and GFR in Diabetic Mice.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42527260",
+      "title": "Gabapentin for Postoperative Analgesia in Cardiac Surgery via Sternotomy: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42665114",
+      "title": "Doxorubicin-induced Cardiotoxicity is Propagated by Paracrine Signaling through Small Extracellular Vesicles.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41004670",
+      "title": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

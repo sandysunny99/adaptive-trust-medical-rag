@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-066",
+  "population_size": 233,
+  "sample_size": 12,
+  "sampling_seed": 96785951,
+  "sampled_document_ids": [
+    "41347947",
+    "41406988",
+    "41225655",
+    "42667464",
+    "29856752",
+    "42678243",
+    "42293737",
+    "41873481",
+    "42121128",
+    "40406172",
+    "40988289",
+    "42558881"
+  ],
+  "screening_results": [
+    {
+      "document_id": "41347947",
+      "title": "Navigating complementary and alternative medicine use, medication adherence, and herb-drug interaction risks among gout patients: a multicenter cross-sectional study in indonesia.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41406988",
+      "title": "Trends and variation in the use of andexanet alfa for the reversal of direct oral anticoagulants in NHS trusts in England.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41225655",
+      "title": "TNF-\u03b1 inhibitor etanercept improves cerebrovascular function in elderly RA patients: findings from a randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42667464",
+      "title": "Schisandra chinensis polysaccharide attenuates diabetic islet cell injury by promoting autophagy via suppression of the PI3K/AKT/mTOR signaling cascade.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "29856752",
+      "title": "Quality by design approach to optimize the formulation variables influencing the characteristics of biodegradable intramuscular in-situ gel loaded with alendronate sodium for osteoporosis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42678243",
+      "title": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42293737",
+      "title": "A UK-wide analysis of the use of reversal agents in 198 patients on direct oral anticoagulants prior to urgent procedures.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41873481",
+      "title": "Acceptance of recommendations by a pharmacogenetics clinic.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42121128",
+      "title": "Evaluation of drugs and risk factors requiring therapeutic drug monitoring in the Neonatal Intensive Care Unit: a retrospective study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40406172",
+      "title": "Digoxin for Fetal Tachyarrhythmia: Toxicity in an Underweight Mother.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40988289",
+      "title": "Drug-drug interactions: A descriptive analysis of FDA adverse event reporting system.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42558881",
+      "title": "Drug-associated psoriasis: a pharmacovigilance study based on the FAERS database.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-069",
+  "population_size": 245,
+  "sample_size": 12,
+  "sampling_seed": 4859299721366365104,
+  "sampled_document_ids": [
+    "30626809",
+    "42665114",
+    "42293737",
+    "42670801",
+    "42675994",
+    "40289797",
+    "42461919",
+    "42216360",
+    "42670022",
+    "41977337",
+    "42206096",
+    "42679829"
+  ],
+  "screening_results": [
+    {
+      "document_id": "30626809",
+      "title": "Symptoms and Upper Gastrointestinal Mucosal Injury Associated with Bisphosphonate Therapy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42665114",
+      "title": "Doxorubicin-induced Cardiotoxicity is Propagated by Paracrine Signaling through Small Extracellular Vesicles.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42293737",
+      "title": "A UK-wide analysis of the use of reversal agents in 198 patients on direct oral anticoagulants prior to urgent procedures.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670801",
+      "title": "Therapeutic Potential of Nanocurcumin in Mitigating Duloxetine-Induced Hepatic Damage: Biochemical and Histopathological Insights.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42675994",
+      "title": "An Adaptive, Time-Informed, Phenotype-Guided Pharmacological Framework for Severe Traumatic Brain Injury : A Hypothesis-Driven Narrative Review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40289797",
+      "title": "Association of Biomarkers With Intracerebral Hematoma Expansion and Arterial Thromboembolic Events in Patients With Acute Intracranial Hemorrhage: The ANNEXA-I Biomarker Substudy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42461919",
+      "title": "Signal mining and analysis of adverse events associated with Isotretinoin: A 20-Year real-world pharmacovigilance study based on FAERS and EudraVigilance databases.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42216360",
+      "title": "Real-world off-label apixaban dosing and clinical outcomes in patients with heart failure and end-stage kidney disease.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670022",
+      "title": "Apixaban Dose Selection in Kidney Failure: Reconciling Pharmacokinetics and Clinical Outcomes.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41977337",
+      "title": "Pharmacological Management of Thrombosis: Current State and Future Strategies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42206096",
+      "title": "Anticoagulation associated intracerebral haemorrhage trends, treatment and outcomes in a metropolitan cohort: analysed by availability of specific versus non-specific reversal agents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42679829",
+      "title": "Adolescent health across Asia Pacific, 2000-23: a systematic analysis for the Global Burden of Disease Study 2023.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

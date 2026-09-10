@@ -1,0 +1,31 @@
+{
+  "scenarios": [
+    {
+      "N": 200,
+      "alpha": 0.05,
+      "assumed_baseline_failure_probability": 0.4,
+      "assumed_hardened_failure_probability": 0.1,
+      "expected_absolute_effect": 0.30000000000000004,
+      "expected_discordant_pair_probability": 0.35,
+      "exact_mcnemar_power_method_used": "Asymptotic approximation (Connor 1987)",
+      "test_sidedness": "two-sided",
+      "resulting_power": 1.0,
+      "software_version": "custom python math script v1.0"
+    },
+    {
+      "N": 200,
+      "alpha": 0.05,
+      "assumed_baseline_failure_probability": 0.4,
+      "assumed_hardened_failure_probability": 0.25,
+      "expected_absolute_effect": 0.15000000000000002,
+      "expected_discordant_pair_probability": 0.25,
+      "exact_mcnemar_power_method_used": "Asymptotic approximation (Connor 1987)",
+      "test_sidedness": "two-sided",
+      "resulting_power": 0.9916,
+      "software_version": "custom python math script v1.0"
+    },
+    {
+      "error": "Invalid discordance assumption for given effect size"
+    }
+  ]
+}

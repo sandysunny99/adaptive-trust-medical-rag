@@ -1,11 +1,11 @@
-﻿# Final Project Backlog
+# Final Project Backlog
 
 **Date:** 2026-08-30  
 **Based on:** master_project_audit.md (commit 4a704f5)
 
 | Priority | Task | Type | Reason | Dependency | Risk | Must Finish Before |
 |---|---|---|---|---|---|---|
-| P0 | Implement RealLLMAdapter (Gemini/OpenAI SDK) | Engineering | LiveModelAdapter is a stub; all LLM quality metrics are invalid | None | HIGH - API costs, error handling | Any LLM quality experiment |
+| DONE | Implement RealLLMAdapter (Gemini/OpenAI SDK) | Engineering | LiveModelAdapter is a stub; all LLM quality metrics are invalid | None | HIGH - API costs, error handling | Any LLM quality experiment |
 | P0 | Fix Variant B/C confound (separate retriever configs) | Engineering | B and C call identical retriever; experimental variable is metadata flag only | None | MEDIUM | Any ablation run |
 | P0 | Replace SimpleEmbeddingModel with sentence-transformers | Engineering | 7-word vocabulary is not semantic similarity; dense retrieval results are not meaningful | None | MEDIUM | Dense retrieval experiments |
 | P0 | Expand evidence corpus to 100+ chunks | Data | 4-18 documents insufficient for retrieval evaluation | P0 APIs verified | HIGH - data quality | Any retrieval experiment |

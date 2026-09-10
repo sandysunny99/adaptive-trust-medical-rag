@@ -1,0 +1,22 @@
+{
+  "CI_PROTOCOL_TEXT_REFERENCE": "SECURITY_EVALUATION_PROTOCOL.md -> MANDATORY CONTEXT -> [RESEARCH INTEGRITY] -> 'Report confidence intervals, not just point estimates.'",
+  "CI_METHOD_EXPLICITLY_SPECIFIED": "NO",
+  "CI_METHOD_NAME": "Protocol requires confidence intervals but does not explicitly prescribe the estimator.",
+  "CI_PARAMETER": "difference in observed proportions",
+  "CI_CONFIDENCE_LEVEL": "95%",
+  "ANALYST_CHOSEN_CI_METHOD": "Wald interval for paired difference with continuity correction (analyst-selected supplementary CI method)",
+  "reproduction": {
+    "formula": "(n10-n01)/N +/- (Z * SE + 1/N)",
+    "N": 20,
+    "n01": 0,
+    "n10": 10,
+    "difference": 0.5,
+    "variance": 0.013157894736842105,
+    "SE": 0.11470786693528089,
+    "continuity_correction": 0.05,
+    "Z": 1.95996,
+    "margin": 0.27482283087847315,
+    "lower": 0.22517716912152685,
+    "upper": 0.7748228308784731
+  }
+}

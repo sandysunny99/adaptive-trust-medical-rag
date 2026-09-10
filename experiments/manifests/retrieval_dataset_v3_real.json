@@ -1,0 +1,1234 @@
+[
+  {
+    "case_id": "r-01",
+    "query": "How does metformin lower blood glucose?",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41177211"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41177211-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r-02",
+    "query": "Does aspirin increase bleeding risk with warfarin?",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r-03",
+    "query": "Metabolism of fluconazole via CYP2C9",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluconazole"
+    ]
+  },
+  {
+    "case_id": "r-04",
+    "query": "Spironolactone causing high potassium levels",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r-05",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life?",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "case_id": "r-06",
+    "query": "Lisinopril dosing in renal impairment GFR < 30",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r-07",
+    "query": "Role of CYP2C19 in omeprazole clearance",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-08",
+    "query": "Omeprazole interaction with clopidogrel",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-09",
+    "query": "Levothyroxine and iron sulfate co-administration",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ]
+  },
+  {
+    "case_id": "r-10",
+    "query": "ECG monitoring for citalopram",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MECHANISM",
+    "expected_document_ids": [
+      "42326111",
+      "41748094",
+      "41004670",
+      "40978465"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-41748094-001",
+      "chunk-41004670-001",
+      "chunk-40978465-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r-11",
+    "query": "Doxorubicin risk for heart failure",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "42670540",
+      "42665114",
+      "42663921",
+      "42660303"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001",
+      "chunk-42665114-001",
+      "chunk-42663921-001",
+      "chunk-42660303-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ]
+  },
+  {
+    "case_id": "r-12",
+    "query": "Amiodarone induced interstitial pneumonitis",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "42466914",
+      "42359186",
+      "42332214",
+      "42128899",
+      "41808861"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42359186-001",
+      "chunk-42332214-001",
+      "chunk-42128899-001",
+      "chunk-41808861-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r-13",
+    "query": "Isotretinoin use in females of childbearing age",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r-14",
+    "query": "Hepatotoxicity of acetaminophen",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "42678243",
+      "42638417",
+      "42631638"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42638417-001",
+      "chunk-42631638-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r-15",
+    "query": "Monitoring for digoxin toxicity",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42610101",
+      "42489609",
+      "40406172"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42610101-001",
+      "chunk-42489609-001",
+      "chunk-40406172-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r-16",
+    "query": "Esophageal ulceration risk with alendronate",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "38832136",
+      "27956102"
+    ],
+    "expected_chunk_ids": [
+      "chunk-38832136-001",
+      "chunk-27956102-001"
+    ],
+    "expected_entity_ids": [
+      "alendronate"
+    ]
+  },
+  {
+    "case_id": "r-17",
+    "query": "Pantoprazole and clopidogrel combination",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ]
+  },
+  {
+    "case_id": "r-18",
+    "query": "Fluoxetine inhibition of CYP2D6",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ]
+  },
+  {
+    "case_id": "r-19",
+    "query": "Sertraline safety during pregnancy",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [
+      "42596979"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42596979-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ]
+  },
+  {
+    "case_id": "r-20",
+    "query": "Gabapentin induced sedation",
+    "risk_tier": "R1",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [
+      "42437608"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42437608-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ]
+  },
+  {
+    "case_id": "r-21",
+    "query": "Seizure risk with tramadol",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41158891",
+      "41061201",
+      "40242084",
+      "38006536"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41158891-001",
+      "chunk-41061201-001",
+      "chunk-40242084-001",
+      "chunk-38006536-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ]
+  },
+  {
+    "case_id": "r-22",
+    "query": "Cardiovascular risk of celecoxib",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "celecoxib"
+    ]
+  },
+  {
+    "case_id": "r-23",
+    "query": "Antidote for bleeding caused by rivaroxaban",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ]
+  },
+  {
+    "case_id": "r-24",
+    "query": "Apixaban dosing in renal impairment",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "apixaban"
+    ]
+  },
+  {
+    "case_id": "r-25",
+    "query": "Reversal agent for dabigatran",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "dabigatran"
+    ]
+  },
+  {
+    "case_id": "r-26",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41177211"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41177211-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r-27",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r-28",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluconazole"
+    ]
+  },
+  {
+    "case_id": "r-29",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r-30",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "case_id": "r-31",
+    "query": "Lisinopril dosing in renal impairment GFR < 30 in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r-32",
+    "query": "Role of CYP2C19 in omeprazole clearance in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-33",
+    "query": "Omeprazole interaction with clopidogrel in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-34",
+    "query": "Levothyroxine and iron sulfate co-administration in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ]
+  },
+  {
+    "case_id": "r-35",
+    "query": "ECG monitoring for citalopram in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42326111",
+      "41748094",
+      "41004670",
+      "40978465"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-41748094-001",
+      "chunk-41004670-001",
+      "chunk-40978465-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r-36",
+    "query": "Doxorubicin risk for heart failure in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42670540",
+      "42665114",
+      "42663921",
+      "42660303"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001",
+      "chunk-42665114-001",
+      "chunk-42663921-001",
+      "chunk-42660303-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ]
+  },
+  {
+    "case_id": "r-37",
+    "query": "Amiodarone induced interstitial pneumonitis in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42466914",
+      "42359186",
+      "42332214",
+      "42128899",
+      "41808861"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42359186-001",
+      "chunk-42332214-001",
+      "chunk-42128899-001",
+      "chunk-41808861-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r-38",
+    "query": "Isotretinoin use in females of childbearing age in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r-39",
+    "query": "Hepatotoxicity of acetaminophen in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42678243",
+      "42638417",
+      "42631638"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42638417-001",
+      "chunk-42631638-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r-40",
+    "query": "Monitoring for digoxin toxicity in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42610101",
+      "42489609",
+      "40406172"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42610101-001",
+      "chunk-42489609-001",
+      "chunk-40406172-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r-41",
+    "query": "Esophageal ulceration risk with alendronate in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "38832136",
+      "27956102"
+    ],
+    "expected_chunk_ids": [
+      "chunk-38832136-001",
+      "chunk-27956102-001"
+    ],
+    "expected_entity_ids": [
+      "alendronate"
+    ]
+  },
+  {
+    "case_id": "r-42",
+    "query": "Pantoprazole and clopidogrel combination in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ]
+  },
+  {
+    "case_id": "r-43",
+    "query": "Fluoxetine inhibition of CYP2D6 in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ]
+  },
+  {
+    "case_id": "r-44",
+    "query": "Sertraline safety during pregnancy in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42596979"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42596979-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ]
+  },
+  {
+    "case_id": "r-45",
+    "query": "Gabapentin induced sedation in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42437608"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42437608-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ]
+  },
+  {
+    "case_id": "r-46",
+    "query": "Seizure risk with tramadol in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41158891",
+      "41061201",
+      "40242084",
+      "38006536"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41158891-001",
+      "chunk-41061201-001",
+      "chunk-40242084-001",
+      "chunk-38006536-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ]
+  },
+  {
+    "case_id": "r-47",
+    "query": "Cardiovascular risk of celecoxib in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "celecoxib"
+    ]
+  },
+  {
+    "case_id": "r-48",
+    "query": "Antidote for bleeding caused by rivaroxaban in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ]
+  },
+  {
+    "case_id": "r-49",
+    "query": "Apixaban dosing in renal impairment in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "apixaban"
+    ]
+  },
+  {
+    "case_id": "r-50",
+    "query": "Reversal agent for dabigatran in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "dabigatran"
+    ]
+  },
+  {
+    "case_id": "r-51",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41177211"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41177211-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r-52",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r-53",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluconazole"
+    ]
+  },
+  {
+    "case_id": "r-54",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r-55",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "case_id": "r-56",
+    "query": "Lisinopril dosing in renal impairment GFR < 30 in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r-57",
+    "query": "Role of CYP2C19 in omeprazole clearance in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-58",
+    "query": "Omeprazole interaction with clopidogrel in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r-59",
+    "query": "Levothyroxine and iron sulfate co-administration in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ]
+  },
+  {
+    "case_id": "r-60",
+    "query": "ECG monitoring for citalopram in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42326111",
+      "41748094",
+      "41004670",
+      "40978465"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-41748094-001",
+      "chunk-41004670-001",
+      "chunk-40978465-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r-61",
+    "query": "Doxorubicin risk for heart failure in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42670540",
+      "42665114",
+      "42663921",
+      "42660303"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001",
+      "chunk-42665114-001",
+      "chunk-42663921-001",
+      "chunk-42660303-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ]
+  },
+  {
+    "case_id": "r-62",
+    "query": "Amiodarone induced interstitial pneumonitis in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42466914",
+      "42359186",
+      "42332214",
+      "42128899",
+      "41808861"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42359186-001",
+      "chunk-42332214-001",
+      "chunk-42128899-001",
+      "chunk-41808861-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r-63",
+    "query": "Isotretinoin use in females of childbearing age in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r-64",
+    "query": "Hepatotoxicity of acetaminophen in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42678243",
+      "42638417",
+      "42631638"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42638417-001",
+      "chunk-42631638-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r-65",
+    "query": "Monitoring for digoxin toxicity in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42610101",
+      "42489609",
+      "40406172"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42610101-001",
+      "chunk-42489609-001",
+      "chunk-40406172-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r-66",
+    "query": "Esophageal ulceration risk with alendronate in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "38832136",
+      "27956102"
+    ],
+    "expected_chunk_ids": [
+      "chunk-38832136-001",
+      "chunk-27956102-001"
+    ],
+    "expected_entity_ids": [
+      "alendronate"
+    ]
+  },
+  {
+    "case_id": "r-67",
+    "query": "Pantoprazole and clopidogrel combination in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ]
+  },
+  {
+    "case_id": "r-68",
+    "query": "Fluoxetine inhibition of CYP2D6 in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ]
+  },
+  {
+    "case_id": "r-69",
+    "query": "Sertraline safety during pregnancy in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42596979"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42596979-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ]
+  },
+  {
+    "case_id": "r-70",
+    "query": "Gabapentin induced sedation in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42437608"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42437608-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ]
+  },
+  {
+    "case_id": "r-71",
+    "query": "Seizure risk with tramadol in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41158891",
+      "41061201",
+      "40242084",
+      "38006536"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41158891-001",
+      "chunk-41061201-001",
+      "chunk-40242084-001",
+      "chunk-38006536-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ]
+  },
+  {
+    "case_id": "r-72",
+    "query": "Cardiovascular risk of celecoxib in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "celecoxib"
+    ]
+  },
+  {
+    "case_id": "r-73",
+    "query": "Antidote for bleeding caused by rivaroxaban in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ]
+  },
+  {
+    "case_id": "r-74",
+    "query": "Apixaban dosing in renal impairment in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "apixaban"
+    ]
+  },
+  {
+    "case_id": "r-75",
+    "query": "Reversal agent for dabigatran in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "dabigatran"
+    ]
+  },
+  {
+    "case_id": "r-76",
+    "query": "How does metformin lower blood glucose? in clinical settings",
+    "risk_tier": "R1",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "41177211"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41177211-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r-77",
+    "query": "Does aspirin increase bleeding risk with warfarin? in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "DDI",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r-78",
+    "query": "Metabolism of fluconazole via CYP2C9 in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "fluconazole"
+    ]
+  },
+  {
+    "case_id": "r-79",
+    "query": "Spironolactone causing high potassium levels in clinical settings",
+    "risk_tier": "R3",
+    "claim_type": "ADE",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r-80",
+    "query": "Is atorvastatin suitable for alternate day dosing based on half-life? in clinical settings",
+    "risk_tier": "R2",
+    "claim_type": "Pharmacology",
+    "difficulty": "PARAPHRASE",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  }
+]

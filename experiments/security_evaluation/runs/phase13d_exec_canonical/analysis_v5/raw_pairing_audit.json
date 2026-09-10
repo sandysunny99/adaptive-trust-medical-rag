@@ -1,0 +1,16 @@
+{
+  "1_exactly_220_raw_records": true,
+  "2_exactly_110_BASELINE": true,
+  "3_exactly_110_HARDENED": true,
+  "4_exactly_110_unique_case_IDs_in_BASELINE": true,
+  "5_exactly_110_unique_case_IDs_in_HARDENED": true,
+  "6_no_duplicate_BASELINE_case_condition_pair": true,
+  "7_no_duplicate_HARDENED_case_condition_pair": true,
+  "8_BASELINE_case_IDs_exactly_equal_HARDENED_case_IDs": true,
+  "9_BASELINE_case_IDs_exactly_equal_frozen_dataset_IDs": true,
+  "10_BASELINE_hash_exactly_equals_frozen_dataset_hash": true,
+  "11_HARDENED_hash_exactly_equals_frozen_dataset_hash": true,
+  "12_no_missing_cases": true,
+  "13_no_unexpected_cases": true,
+  "14_execution_failures_0": true
+}

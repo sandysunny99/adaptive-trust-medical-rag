@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-022",
+  "population_size": 241,
+  "sample_size": 12,
+  "sampling_seed": -7219631478786614534,
+  "sampled_document_ids": [
+    "42159622",
+    "42667464",
+    "42647942",
+    "42653173",
+    "30626809",
+    "42603144",
+    "41840835",
+    "42666103",
+    "29262813",
+    "42318218",
+    "41858685",
+    "42429832"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42159622",
+      "title": "The hidden impact of renal impairment on ribociclib exposure and co-medications: a case report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42667464",
+      "title": "Schisandra chinensis polysaccharide attenuates diabetic islet cell injury by promoting autophagy via suppression of the PI3K/AKT/mTOR signaling cascade.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42647942",
+      "title": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42653173",
+      "title": "Molecular Mechanisms of Acute Drug Toxicity in Polypharmacy: Analgesic-Psychotropic Interactions.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "30626809",
+      "title": "Symptoms and Upper Gastrointestinal Mucosal Injury Associated with Bisphosphonate Therapy.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42603144",
+      "title": "Differential Quantification of Cutibacterium acnes Phylotypes IA and IB/II on Healthy and Acne-Prone Human Skin.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41840835",
+      "title": "Signal detection of drug-induced esophageal ulcer across 20 years of real-world study: Focus on 49 high-risk medicines.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42666103",
+      "title": "Clinical relevance of pharmacogenomic information for improving prescribing practices in acutely admitted older medical patients.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "29262813",
+      "title": "Renoprotective RAAS inhibition does not affect the association between worse renal function and higher plasma aldosterone levels.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42318218",
+      "title": "A case report and literature review of proton pump inhibitors inducing insulin autoimmune syndrome.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41858685",
+      "title": "Impact of nutrition education intervention on dietary intake among pregnant women with hypothyroidism - A randomized controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42429832",
+      "title": "Current perspectives on natural and pharmacological interventions for combating drug-induced pulmonary toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "42653173"
+  ],
+  "human_final_decisions": {
+    "42653173": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns acute drug toxicity in analgesic-psychotropic polypharmacy and does not provide evidence about the specific CYP2C9 interaction between fluconazole and warfarin.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

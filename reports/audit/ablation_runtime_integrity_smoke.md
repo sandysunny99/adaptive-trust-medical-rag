@@ -1,7 +1,7 @@
 # Ablation Runtime Integrity Audit (Smoke)
 
 **Status:** `FAIL`
-**Timestamp:** 2026-08-25T06:41:12.636693+00:00
+**Timestamp:** 2026-09-10T20:45:45.840120+00:00
 
 ---
 

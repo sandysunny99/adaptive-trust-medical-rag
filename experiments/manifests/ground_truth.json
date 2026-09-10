@@ -1,0 +1,85 @@
+{
+  "b19ee60033808d7c": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "220cab6f48752456": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "43603c024e5cb6db": {
+    "claim_type": "DDI",
+    "expected_document_ids": ["doc-guideline-warfarin-aspirin"],
+    "expected_chunk_ids": ["chunk-warfarin-001"]
+  },
+  "45c1ea241ffa6a37": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "c2b0a1fc71e86d9c": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "d58a8fd988dcff20": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "a0a8e5e845626ca8": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "8f1e193ee4a65e63": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "0bb541d61f769666": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "dc074855979f4c8d": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "b0bdb6e8112b5f3b": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "de695852f92fc53a": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "e99a75258ebfc4ff": {
+    "claim_type": "DDI",
+    "expected_document_ids": ["doc-guideline-warfarin-aspirin"],
+    "expected_chunk_ids": ["chunk-warfarin-001"]
+  },
+  "aa7aa762a3da0e6f": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "235358dcae2ee138": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "f22afdf5f4735480": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "6cb6e095addbaec2": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "b0881b25834fc6a0": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  },
+  "9fec3899803972b7": {
+    "claim_type": "DDI",
+    "expected_document_ids": ["doc-guideline-warfarin-aspirin"],
+    "expected_chunk_ids": ["chunk-warfarin-001"]
+  },
+  "59fb28e10888b60a": {
+    "claim_type": "NO_GROUND_TRUTH_EVIDENCE",
+    "expected_document_ids": []
+  }
+}

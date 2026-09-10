@@ -1,0 +1,29 @@
+{
+  "case_id": "e-19",
+  "variant": "R1",
+  "query_hash": "433f87faf932d1a8eaffb5974638a437c78b9349bd2b4842825b54bcab34b205",
+  "risk_tier": "R3",
+  "claim_type": "Medication_Safety",
+  "retrieved_document_ids": [],
+  "retrieved_chunk_ids": [],
+  "retrieval_scores": [],
+  "source_types": [],
+  "entity_ids": [],
+  "expected_document_ids": [],
+  "relevant_retrieved_ids": [],
+  "first_relevant_rank": null,
+  "metrics": {
+    "recall_at_1": null,
+    "recall_at_3": null,
+    "recall_at_5": null,
+    "recall_at_10": null,
+    "precision_at_5": null,
+    "mrr": null,
+    "ndcg_at_5": null,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.35280000884085894,
+  "channels": [
+    "vector"
+  ]
+}

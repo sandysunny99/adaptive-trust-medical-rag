@@ -1,0 +1,79 @@
+{
+  "case_id": "e-18",
+  "variant": "R3",
+  "query_hash": "7c1aa969f313e4a33a9767bfb9e86015bc2efd848be4d66abbac0107e5305a54",
+  "risk_tier": "R3",
+  "claim_type": "Medication_Safety",
+  "retrieved_document_ids": [
+    "41711272",
+    "36988981",
+    "42436620",
+    "42351625",
+    "42064495",
+    "41037695",
+    "41766537",
+    "41784061",
+    "42582297",
+    "39911218"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-41711272-001",
+    "chunk-36988981-001",
+    "chunk-42436620-001",
+    "chunk-42351625-001",
+    "chunk-42064495-001",
+    "chunk-41037695-001",
+    "chunk-41766537-001",
+    "chunk-41784061-001",
+    "chunk-42582297-001",
+    "chunk-39911218-001"
+  ],
+  "retrieval_scores": [
+    0.03278688524590164,
+    0.030536130536130537,
+    0.0304147465437788,
+    0.029571646010002173,
+    0.02919863597612958,
+    0.02904040404040404,
+    0.027529761904761904,
+    0.027313266443701224,
+    0.027242401779095628,
+    0.027222222222222224
+  ],
+  "source_types": [
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "41711272"
+  ],
+  "relevant_retrieved_ids": [
+    "41711272"
+  ],
+  "first_relevant_rank": 1,
+  "metrics": {
+    "recall_at_1": 1.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "precision_at_5": 0.2,
+    "mrr": 1.0,
+    "ndcg_at_5": 1.0,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 91.96469999733381,
+  "channels": [
+    "bm25",
+    "vector",
+    "graph"
+  ]
+}

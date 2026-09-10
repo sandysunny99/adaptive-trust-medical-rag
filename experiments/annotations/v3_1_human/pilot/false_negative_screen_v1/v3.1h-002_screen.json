@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-002",
+  "population_size": 239,
+  "sample_size": 12,
+  "sampling_seed": -7553739580867666719,
+  "sampled_document_ids": [
+    "42610101",
+    "42677606",
+    "38006536",
+    "42527260",
+    "30422511",
+    "42653808",
+    "41748094",
+    "42431357",
+    "42206096",
+    "28520369",
+    "32699722",
+    "40845290"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42610101",
+      "title": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42677606",
+      "title": "Mitochondrial Unfolded Protein Response Regulates Copper-Induced Oxidative Stress via a Sirt3/FOXO3a Signaling Pathway in Chicken Hepatocytes.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "38006536",
+      "title": "Clinical and Laboratory Factors Related to Seizure and Serotonin Toxicity in Tramadol Intoxication: An Egyptian Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42527260",
+      "title": "Gabapentin for Postoperative Analgesia in Cardiac Surgery via Sternotomy: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "30422511",
+      "title": "Vitamin A Toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42653808",
+      "title": "Berberine-Drug Interactions: Mechanisms, Clinical Relevance and Risk Stratification-A Narrative Review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41748094",
+      "title": "Heart Rate-Corrected QT Interval Dynamics Following Antidepressant Switching from Escitalopram to High-Dose Venlafaxine: Cardiac Safety Insights from the Early Medication Change Cohort.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42431357",
+      "title": "Oral use of anxiolytic, sedative, and anaesthetic medications in domestic cats (Felis catus): A scoping review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42206096",
+      "title": "Anticoagulation associated intracerebral haemorrhage trends, treatment and outcomes in a metropolitan cohort: analysed by availability of specific versus non-specific reversal agents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "28520369",
+      "title": "Celecoxib Therapy and CYP2C9 Genotype.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "32699722",
+      "title": "Metformin Associated Lactic Acidosis in the Intensive Care Unit: A Rare Condition Mimicking Sepsis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40845290",
+      "title": "The Effects of a Semester of Preprofessional Dance Training on Biomarkers and Performance Variables in Elite Adolescent Ballet Dancers.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "42677606"
+  ],
+  "human_final_decisions": {
+    "42677606": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns copper-induced oxidative stress in chicken hepatocytes and does not provide evidence about the clearance pathway of lisinopril.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

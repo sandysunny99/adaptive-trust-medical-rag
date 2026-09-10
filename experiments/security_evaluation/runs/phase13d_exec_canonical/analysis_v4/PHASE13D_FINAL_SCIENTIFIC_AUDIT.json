@@ -1,0 +1,25 @@
+{
+  "run_id": "phase13d_exec_canonical",
+  "dataset_hash": "313e9489a1f1bffe2f7cfd394189c2018585cdf689e3b0e01b24524eeb5a0c7b",
+  "review_hash": "15c537e77ca198f6ca66cead2aa1049516dd6f725693e22526cd54ecb93b1d68",
+  "protocol_hash": "4bfb621220bf70784e98c6cea8a6fd90f5809e80e3cb428552d65c7d1daf28aa",
+  "n_cases": 110,
+  "n_paired_cases": 110,
+  "n_authorization_cases": 20,
+  "raw_execution_validity": "VALID",
+  "metric_protocol_alignment": "PASS",
+  "ci_protocol_alignment": "PASS",
+  "evaluation_level": "ADAPTER_LEVEL",
+  "baseline_type": "SECURITY_BOUNDARY_BASELINE_ADAPTER",
+  "hardened_type": "COMPONENT_INVOCATION",
+  "mcnemar_table": {
+    "n00": 0,
+    "n01": 0,
+    "n10": 10,
+    "n11": 10
+  },
+  "mcnemar_p_value": 0.001953125,
+  "effect_estimate": 0.5,
+  "ci": "[0.2252, 0.7748]",
+  "scientific_interpretation_status": "PROVISIONALLY_VALIDATED"
+}

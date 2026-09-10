@@ -1,0 +1,13 @@
+{
+  "observed_UAR_difference": 0.5,
+  "observed_UAR_difference_percentage_points": 50.0,
+  "relative_UAR_reduction": 0.5,
+  "CI_method": "Wald interval for paired difference with continuity correction",
+  "CI_parameter": "difference in observed UAR proportions",
+  "CI_lower": 0.22517716912152685,
+  "CI_upper": 0.7748228308784731,
+  "McNemar_test": "Exact two-sided",
+  "McNemar_p_value": 0.001953125,
+  "McNemar_n01": 0,
+  "McNemar_n10": 10
+}

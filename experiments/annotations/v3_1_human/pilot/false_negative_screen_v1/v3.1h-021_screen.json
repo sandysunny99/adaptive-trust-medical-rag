@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-021",
+  "population_size": 237,
+  "sample_size": 12,
+  "sampling_seed": -2248129503274396885,
+  "sampled_document_ids": [
+    "42653071",
+    "42429832",
+    "38710058",
+    "42558881",
+    "42394350",
+    "42366387",
+    "41323006",
+    "42669317",
+    "41848246",
+    "42654342",
+    "42618000",
+    "42371403"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42653071",
+      "title": "Safety and Efficacy Assessment of Cannabis Plant Compared to Atorvastatin for Lipid Lowering in Diabetic and Obese Wistar Male Rats.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42429832",
+      "title": "Current perspectives on natural and pharmacological interventions for combating drug-induced pulmonary toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "38710058",
+      "title": "The Salutary Effects of Diminazene, Lisinopril or Valsartan on Cisplatin - Induced Acute Kidney Injury in Rats: A Comparative Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42558881",
+      "title": "Drug-associated psoriasis: a pharmacovigilance study based on the FAERS database.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42394350",
+      "title": "The DOAC-FRAIL Study-Same Dose, Different Story: Prevalence of Deviant Direct Oral Anticoagulant Levels in Nursing Home Residents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42366387",
+      "title": "Cannabidiol as an adjunct in refractory paroxysmal sympathetic hyperactivity following severe traumatic brain injury: a case report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41323006",
+      "title": "Randomized, Double-Blind, Placebo-Controlled, Dose-Ranging Comparison of the Analgesic Efficacy and Safety of Intravenous Ketoprofen, Tramadol, and Morphine After Bony Impacted Mandibular Third Molar Surgery.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42669317",
+      "title": "Ethical considerations in suspected isotretinoin nonadherence and/or diversion.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41848246",
+      "title": "[Nausea and dystonia in a woman with psychiatric illness].",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42654342",
+      "title": "Therapeutic Potential of Anti-Obesity Drugs in Obesity-Associated Female Reproductive Dysfunction: Translating Mechanistic Evidence into Personalized Clinical Strategies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42618000",
+      "title": "Pipamperone metabolism by various recombinant cytochrome preparations.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42371403",
+      "title": "Does gabapentin add value to multimodal analgesia in thoracic surgery? A procedure-specific meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

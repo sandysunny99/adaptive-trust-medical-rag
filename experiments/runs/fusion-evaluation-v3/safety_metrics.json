@@ -1,0 +1,12 @@
+{
+  "High_Risk_R3_Recall_at_5": {
+    "F0": 0.6666666666666666,
+    "F3": 1.0,
+    "n": 3
+  },
+  "Hard_Negative_Rank_e12": {
+    "F0_Rank": 2,
+    "F3_Rank": 3,
+    "relevant": false
+  }
+}

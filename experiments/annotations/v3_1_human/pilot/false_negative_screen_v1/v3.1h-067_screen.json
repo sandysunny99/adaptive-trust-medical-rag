@@ -1,0 +1,96 @@
+{
+  "case_id": "v3.1h-067",
+  "population_size": 244,
+  "sample_size": 12,
+  "sampling_seed": 592461377320164414,
+  "sampled_document_ids": [
+    "42181774",
+    "42462752",
+    "42267072",
+    "42515713",
+    "42677606",
+    "34258506",
+    "42254302",
+    "42665888",
+    "39817374",
+    "41811250",
+    "42674100",
+    "41100334"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42181774",
+      "title": "Transient abnormal acylcarnitine profile in newborn screening mimicking multiple acyl-Coenzyme A dehydrogenase deficiency associated with maternal sertraline use.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42462752",
+      "title": "Risk of fracture with gabapentinoid treatment in older adults: a multinational population-based study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42267072",
+      "title": "A Case of Prolonged Serotonin Toxicity After Fluoxetine Ingestion in an Adolescent Patient.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42515713",
+      "title": "CYP2D6 Metabolizer Phenotype Is Associated with Early Antidepressant Discontinuation in the UK Biobank.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42677606",
+      "title": "Mitochondrial Unfolded Protein Response Regulates Copper-Induced Oxidative Stress via a Sirt3/FOXO3a Signaling Pathway in Chicken Hepatocytes.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "34258506",
+      "title": "A Prospective Open-Label Observational Study of a Buffered Soluble 70\u2009mg Alendronate Effervescent Tablet on Upper Gastrointestinal Safety and Medication Errors: The GastroPASS Study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42254302",
+      "title": "Current Trends in NSAID Prescribing for Osteoarthritis and Axial Spondyloarthritis: Insights From Moroccan Rheumatologists Practices.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42665888",
+      "title": "EXPRESS: Effect of oral gabapentin administered in-hospital on behavioral stress, compliance, and physiologic stress markers: a randomized, double-blind, placebo-controlled trial.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "39817374",
+      "title": "Delineating CYP2C19-mediated Interactions: Network Pharmacology Investigation of Ilaprazole and Clopidogrel versus Conventional Proton Pump Inhibitors.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41811250",
+      "title": "Influence of transporter polymorphisms on digoxin serum concentrations: a systematic review and meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42674100",
+      "title": "Drug Repurposing Signals for Abdominal Aortic Aneurysms.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41100334",
+      "title": "Review of Safety and Efficacy of Polmacoxib: A Novel Dual Inhibitor of Cyclo-oxygenase 2 and Carbonic Anhydrase in Osteoarthritis and Acute Painful Conditions.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [],
+  "human_final_decisions": {}
+}

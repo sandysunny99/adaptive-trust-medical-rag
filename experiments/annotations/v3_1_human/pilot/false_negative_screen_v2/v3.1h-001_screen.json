@@ -1,0 +1,105 @@
+{
+  "case_id": "v3.1h-001",
+  "population_size": 234,
+  "sample_size": 12,
+  "sampling_seed": 74770263,
+  "sampled_document_ids": [
+    "42647942",
+    "42670540",
+    "42293737",
+    "42528583",
+    "42150307",
+    "42610101",
+    "41347947",
+    "41004670",
+    "41085374",
+    "42246839",
+    "42481856",
+    "42462752"
+  ],
+  "screening_results": [
+    {
+      "document_id": "42647942",
+      "title": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42670540",
+      "title": "Mechanisms and the Role of p38 MAPK Signaling in Doxorubicin-Induced Cardiotoxicity: A Review.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42293737",
+      "title": "A UK-wide analysis of the use of reversal agents in 198 patients on direct oral anticoagulants prior to urgent procedures.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42528583",
+      "title": "Amiodarone-induced granulomatous lung injury mimicking organizing pneumonia: a case report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42150307",
+      "title": "Metabolomic signatures of SSRI exposure during neural differentiation and correlation of lysophosphatidylcholines with early symptoms of neurodevelopmental disorders.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42610101",
+      "title": "Nature's Poison Pill: A Case of Digoxin-Like Toxicity From the Seed of the Ornamental Plant Thevetia peruviana.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41347947",
+      "title": "Navigating complementary and alternative medicine use, medication adherence, and herb-drug interaction risks among gout patients: a multicenter cross-sectional study in indonesia.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41004670",
+      "title": "Correlation Between Escitalopram, Sertraline, and Fluoxetine Serum Levels and QTc Interval Prolongation in Children and Adolescents.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41085374",
+      "title": "Assessing Impact of Concomitant Use of Proton Pump Inhibitors and Clopidogrel on Incidence of Major Adverse Cardiovascular Events: A Retrospective Cohort Study.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42246839",
+      "title": "Routine blood monitoring in acne vulgaris patients on isotretinoin: Is reassessment warranted? A retrospective cohort study from Tygerberg Hospital.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42481856",
+      "title": "Integrating Clinical Evidence with PBPK Modeling to Assess PPI-Clopidogrel-CYP2C19 Interactions in Chinese ACS Patients.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42462752",
+      "title": "Risk of fracture with gabapentinoid treatment in older adults: a multinational population-based study.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "41085374"
+  ],
+  "human_final_decisions": {
+    "41085374": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns concomitant proton pump inhibitor and clopidogrel use and cardiovascular events, and does not provide evidence about how metformin inhibits hepatic gluconeogenesis.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

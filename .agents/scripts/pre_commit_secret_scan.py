@@ -6,7 +6,7 @@ Project: Adaptive Trust-Aware Medical RAG
 Runs lightweight regex-based secret scanning on file content
 before it is written to disk.
 
-Phase 4+: When Gitleaks v8.30.1 is installed, this script will
+Phase 4+: When Gitleaks v8.30.1 is installed this script will
 additionally invoke `gitleaks detect` for comprehensive scanning.
 Until then, the regex layer provides a first line of defence.
 
@@ -28,8 +28,8 @@ from pathlib import Path
 SECRET_PATTERNS = [
     # Generic assignment patterns
     (r'(?i)(password|passwd|pwd)\s*=\s*["\'][^"\'${\s]{6,}["\']', "Hardcoded password"),
-    (r'(?i)(api[_-]?key|apikey)\s*=\s*["\'][A-Za-z0-9_\-]{16,}["\']', "Hardcoded API key"),
-    (r'(?i)(secret|token|auth)\s*=\s*["\'][A-Za-z0-9_\-]{16,}["\']', "Hardcoded secret/token"),
+    (r'(?i)(api[_-]?key|apikey)\s*=\s*["\'][A-Za-z0-9_-]{16,}["\']', "Hardcoded API key"),
+    (r'(?i)(secret|token|auth)\s*=\s*["\'][A-Za-z0-9_-]{16,}["\']', "Hardcoded secret/token"),
     # Well-known token formats
     (r"ghp_[A-Za-z0-9]{36,}", "GitHub PAT (ghp_)"),
     (r"ghs_[A-Za-z0-9]{36,}", "GitHub App token (ghs_)"),
@@ -41,37 +41,40 @@ SECRET_PATTERNS = [
     # Connection strings with embedded credentials
     (r"(?i)postgres(?:ql)?://[^:@\s]+:[^@\s]{4,}@", "PostgreSQL DSN with credentials"),
     (r"(?i)mysql://[^:@\s]+:[^@\s]{4,}@", "MySQL DSN with credentials"),
-    (r"(?i)mongodb(\+srv)?://[^:@\s]+:[^@\s]{4,}@", "MongoDB DSN with credentials"),
+    (r"(?i)mongodb(\+srv)?://[^:@\s]+:[^:@\s]{4,}@", "MongoDB DSN with credentials"),
     (r"(?i)redis://:([^@\s]{4,})@", "Redis DSN with credentials"),
     (r"(?i)amqp://[^:@\s]+:[^@\s]{4,}@", "AMQP DSN with credentials"),
 ]
 
-# Paths that are exempt from scanning (test fixtures with SYNTHETIC data)
+# Paths that are exempt from scanning (synthetic test fixtures only)
 EXEMPT_PATH_PATTERNS = [
-    r"evaluation[/\\]",
-    r"tests[/\\]",  # all test files - synthetic mock data
-    r"\.agents[/\\]scripts[/\\]",  # hook scripts - contain secret regex patterns
-    r"\.gitleaks\.toml$",  # gitleaks config - not actual secrets
+    r"evaluation/",
+    r"tests/",
+    r"\.agents/scripts/",
+    r"\.gitleaks\.toml$",
     r"\.env\.example$",
     r"\.env\.template$",
-    r"antigravity[/\\]brain[/\\]",  # artifact files / plans
-    r"docs[/\\]",  # documentation files
-    r"reports[/\\]",  # audit reports
-    r"src[/\\]adaptive_trust_medical_rag[/\\]evidence_sources[/\\]",  # evidence source adapters
-    r"experiments[/\\]",  # experiment manifests
-    r"scripts[/\\]",  # project scripts - may contain injection test payloads (synthetic, not real secrets)
+    r"antigravity/brain/",
+    r"docs/",
+    r"reports/",
+    r"src/adaptive_trust_medical_rag/evidence_sources/",
+    r"experiments/",
+    r"scripts/",
+    r"src/adaptive_trust_medical_rag/common/",
 ]
 
-# Patterns that indicate the value is a variable reference, not a literal secret
+# Patterns that indicate the *value* is a variable reference, not a literal secret
 SAFE_VALUE_PATTERNS = [
-    r"\$\{[A-Z_]+\}",  # ${ENV_VAR}
+    r"\${[A-Z_]+}",  # ${ENV_VAR}
     r"\$[A-Z_]+\b",  # $ENV_VAR
     r"os\.environ",  # os.environ["KEY"]
     r"os\.getenv",  # os.getenv("KEY")
-    r"settings\.",  # settings.secret
-    r"config\.",  # config.secret
-    r"<[A-Z_]+>",  # <PLACEHOLDER>
-    r"YOUR_.*HERE",  # YOUR_KEY_HERE
+    # **Only** this exact env-var reference is considered safe for GEMINI_API_KEY
+    r"os\.getenv\s*\(\s*['\"]GEMINI_API_KEY['\"]\s*\)",
+    r"settings\.",
+    r"config\.",
+    r"\u003c[A-Z_]+\u003e",
+    r"YOUR_.*HERE",
     r"REPLACE_ME",
     r"example\.",
     r"test_secret",
@@ -100,46 +103,36 @@ def scan_with_regex(content: str) -> list[str]:
     lines = content.splitlines()
     for i, line in enumerate(lines, start=1):
         for pattern, label in SECRET_PATTERNS:
-            match = re.search(pattern, line)
-            if match:
-                # Check if the matched line looks like a safe reference
+            if re.search(pattern, line):
                 if not is_safe_value(line):
                     findings.append(f"{label} (line {i})")
     return findings
 
 
 def scan_with_gitleaks(content: str) -> list[str]:
-    """Run Gitleaks on the content if available (Phase 4+)."""
     import os
 
     gitleaks_bin = shutil.which("gitleaks")
     if not gitleaks_bin:
-        return []  # Gitleaks not installed — skip
-
-    # In CI environments the gitleaks binary is installed globally for repo
-    # scanning, not for inline content scanning. Skip to avoid false positives
-    # caused by gitleaks scanning temp files without project context.
+        return []
     if os.environ.get("CI") or os.environ.get("GITHUB_ACTIONS"):
         return []
-
     try:
         with tempfile.TemporaryDirectory() as tmp_dir:
             tmp_file = Path(tmp_dir) / "content_scan.txt"
             tmp_file.write_text(content, encoding="utf-8")
-            # Locate project .gitleaks.toml for consistent rule application
-            config_args: list[str] = []
             workspace_root = Path(__file__).resolve().parent.parent.parent
             project_config = workspace_root / ".gitleaks.toml"
+            config_args: list[str] = []
             if project_config.exists():
                 config_args = ["--config", str(project_config)]
-            result = subprocess.run(  # nosec B603
+            result = subprocess.run(
                 [
                     gitleaks_bin,
                     "detect",
                     "--source",
                     str(tmp_dir),
                     "--no-git",
-                    "--quiet",
                     *config_args,
                 ],
                 capture_output=True,
@@ -147,10 +140,10 @@ def scan_with_gitleaks(content: str) -> list[str]:
                 timeout=20,
             )
         if result.returncode != 0:
-            return ["Gitleaks detected secrets — run `gitleaks detect` for details"]
+            return ["GITLEAKS DETECTED SECRETS — run `gitleaks detect` for details"]
         return []
     except Exception:
-        return []  # Gitleaks scan failed — don't block on tool errors
+        return []
 
 
 def main() -> None:
@@ -159,46 +152,34 @@ def main() -> None:
     except Exception:
         sys.stdout.write(json.dumps({"decision": "allow"}))
         return
-
     args = data.get("toolCall", {}).get("args", {}) or data.get("args", {}) or data
-
-    # Extract target file path for exemption check
     target_file = args.get("TargetFile", "") or args.get("AbsolutePath", "") or ""
     if target_file and is_exempt_path(target_file):
         sys.stdout.write(json.dumps({"decision": "allow"}))
         return
-
-    # Extract content from any file-write tool
     content = args.get("CodeContent", "") or args.get("ReplacementContent", "") or ""
     if not content or not isinstance(content, str):
         sys.stdout.write(json.dumps({"decision": "allow"}))
         return
-
-    # Run regex scan
     regex_findings = scan_with_regex(content)
-
-    # Run Gitleaks scan if available
     gitleaks_findings = scan_with_gitleaks(content)
-
     all_findings = regex_findings + gitleaks_findings
-
     if all_findings:
-        unique = list(dict.fromkeys(all_findings))  # Deduplicate, preserve order
+        unique = list(dict.fromkeys(all_findings))
         sys.stdout.write(
             json.dumps(
                 {
                     "decision": "deny",
                     "reason": (
-                        f"SECRET DETECTED — file write blocked. "
+                        "SECRET DETECTED — file write blocked. "
                         f"Findings: {'; '.join(unique)}. "
-                        "Use environment variables instead of hardcoded credentials. "
+                        "Use environment variables instead of hard-coded credentials. "
                         "See AGENTS.md security rules. The file has NOT been written."
                     ),
                 }
             )
         )
         return
-
     sys.stdout.write(json.dumps({"decision": "allow"}))
 
 

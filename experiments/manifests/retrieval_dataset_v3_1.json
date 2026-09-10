@@ -1,0 +1,1318 @@
+[
+  {
+    "case_id": "r3.1-manual-001",
+    "query": "How does metformin inhibit hepatic gluconeogenesis?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42661734",
+      "32699722",
+      "41177211"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42661734-001",
+      "chunk-32699722-001",
+      "chunk-41177211-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-002",
+    "query": "Metformin contraindication in severe renal disease",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "32699722",
+      "41177211",
+      "42661734"
+    ],
+    "expected_chunk_ids": [
+      "chunk-32699722-001",
+      "chunk-41177211-001",
+      "chunk-42661734-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-003",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-004",
+    "query": "Warfarin target INR monitoring",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-005",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "claim_type": "DDI",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42591558"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42591558-001"
+    ],
+    "expected_entity_ids": [
+      "fluconazole"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-006",
+    "query": "Genetic testing for CYP2C9 variants before prescribing",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "28520369",
+      "42580545"
+    ],
+    "expected_chunk_ids": [
+      "chunk-28520369-001",
+      "chunk-42580545-001"
+    ],
+    "expected_entity_ids": [
+      "cyp2c9"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-007",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "claim_type": "ADE",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42678243",
+      "42674049",
+      "42638417"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42674049-001",
+      "chunk-42638417-001"
+    ],
+    "expected_entity_ids": [
+      "liver"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-008",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42633086"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42633086-001"
+    ],
+    "expected_entity_ids": [
+      "hepatotoxicity"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-009",
+    "query": "Spironolactone induced hyperkalemia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42643702",
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42643702-001",
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-010",
+    "query": "Spironolactone and lisinopril combination risks",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42643702",
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42643702-001",
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-011",
+    "query": "What is the primary mechanism of action for atorvastatin?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42667336",
+      "42636576",
+      "42653071"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42667336-001",
+      "chunk-42636576-001",
+      "chunk-42653071-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-012",
+    "query": "Atorvastatin causing rhabdomyolysis",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42667336",
+      "42636576",
+      "42653071"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42667336-001",
+      "chunk-42636576-001",
+      "chunk-42653071-001"
+    ],
+    "expected_entity_ids": [
+      "atorvastatin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-013",
+    "query": "Clearance pathway for lisinopril",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "33048477",
+      "33986677",
+      "38710058"
+    ],
+    "expected_chunk_ids": [
+      "chunk-33048477-001",
+      "chunk-33986677-001",
+      "chunk-38710058-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-014",
+    "query": "Lisinopril dosing in renal impairment GFR < 30",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "33048477",
+      "33986677",
+      "38710058"
+    ],
+    "expected_chunk_ids": [
+      "chunk-33048477-001",
+      "chunk-33986677-001",
+      "chunk-38710058-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-015",
+    "query": "CYP enzyme responsible for omeprazole metabolism",
+    "claim_type": "Pharmacology",
+    "difficulty": "CYP_DDI",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-016",
+    "query": "Omeprazole reducing clopidogrel efficacy",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omeprazole"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-017",
+    "query": "Is levothyroxine absorbed better on an empty stomach?",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "41109285",
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41109285-001",
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-018",
+    "query": "Iron sulfate decreasing levothyroxine absorption",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "41109285",
+      "42438581"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41109285-001",
+      "chunk-42438581-001"
+    ],
+    "expected_entity_ids": [
+      "levothyroxine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-019",
+    "query": "Half-life of citalopram",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42326111",
+      "40978465",
+      "41748094"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-40978465-001",
+      "chunk-41748094-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-020",
+    "query": "Citalopram and dose dependent QT prolongation",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42326111",
+      "40978465",
+      "41748094"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-40978465-001",
+      "chunk-41748094-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-021",
+    "query": "Mechanism of doxorubicin intercalating DNA",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "42660303",
+      "42670540",
+      "38053572"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42660303-001",
+      "chunk-42670540-001",
+      "chunk-38053572-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-022",
+    "query": "Doxorubicin associated heart failure",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42670540",
+      "42676526",
+      "38053572"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42670540-001",
+      "chunk-42676526-001",
+      "chunk-38053572-001"
+    ],
+    "expected_entity_ids": [
+      "doxorubicin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-023",
+    "query": "Amiodarone distribution in adipose tissue",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42466914",
+      "42128899",
+      "42528583"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42128899-001",
+      "chunk-42528583-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-024",
+    "query": "Amiodarone induced pulmonary fibrosis",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42466914",
+      "42128899",
+      "41808861"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42466914-001",
+      "chunk-42128899-001",
+      "chunk-41808861-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-025",
+    "query": "Isotretinoin mechanism in acne",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42246839",
+      "42295720",
+      "42669317"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42246839-001",
+      "chunk-42295720-001",
+      "chunk-42669317-001"
+    ],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-026",
+    "query": "Isotretinoin causing severe birth defects",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42461919",
+      "42522519",
+      "42669317"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42461919-001",
+      "chunk-42522519-001",
+      "chunk-42669317-001"
+    ],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-027",
+    "query": "Acetaminophen toxic metabolite NAPQI",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "42678243",
+      "42638417",
+      "42665174"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42638417-001",
+      "chunk-42665174-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-028",
+    "query": "Acetaminophen overdose hepatotoxicity",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42678243",
+      "42663261",
+      "42665174"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42678243-001",
+      "chunk-42663261-001",
+      "chunk-42665174-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-029",
+    "query": "Digoxin inhibition of Na-K ATPase",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42610101",
+      "41811250",
+      "42658230"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42610101-001",
+      "chunk-41811250-001",
+      "chunk-42658230-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-030",
+    "query": "Monitoring for digoxin toxicity",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "42610101",
+      "42489609",
+      "40406172"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42610101-001",
+      "chunk-42489609-001",
+      "chunk-40406172-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-031",
+    "query": "Alendronate bone resorption inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "34258506",
+      "38832136",
+      "29856752"
+    ],
+    "expected_chunk_ids": [
+      "chunk-34258506-001",
+      "chunk-38832136-001",
+      "chunk-29856752-001"
+    ],
+    "expected_entity_ids": [
+      "alendronate"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-032",
+    "query": "Alendronate causing esophageal ulceration",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "34258506",
+      "38832136",
+      "29856752"
+    ],
+    "expected_chunk_ids": [
+      "chunk-34258506-001",
+      "chunk-38832136-001",
+      "chunk-29856752-001"
+    ],
+    "expected_entity_ids": [
+      "alendronate"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-033",
+    "query": "Pantoprazole proton pump inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-034",
+    "query": "Pantoprazole interaction with levothyroxine",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R2",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "pantoprazole"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-035",
+    "query": "Fluoxetine active metabolite norfluoxetine",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42631653",
+      "42571795",
+      "41004670"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42631653-001",
+      "chunk-42571795-001",
+      "chunk-41004670-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-036",
+    "query": "Fluoxetine increasing suicidal ideation",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42631653",
+      "42571795",
+      "41004670"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42631653-001",
+      "chunk-42571795-001",
+      "chunk-41004670-001"
+    ],
+    "expected_entity_ids": [
+      "fluoxetine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-037",
+    "query": "Sertraline serotonin reuptake blockade",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42596979",
+      "41004670",
+      "42662351"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42596979-001",
+      "chunk-41004670-001",
+      "chunk-42662351-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-038",
+    "query": "Sertraline safety during pregnancy",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "42596979",
+      "41004670",
+      "42662351"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42596979-001",
+      "chunk-41004670-001",
+      "chunk-42662351-001"
+    ],
+    "expected_entity_ids": [
+      "sertraline"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-039",
+    "query": "Gabapentin binding to voltage-gated calcium channels",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42665888",
+      "42666410",
+      "42371403"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42665888-001",
+      "chunk-42666410-001",
+      "chunk-42371403-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-040",
+    "query": "Gabapentin causing excessive somnolence",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42527260",
+      "42666410",
+      "42665888"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42527260-001",
+      "chunk-42666410-001",
+      "chunk-42665888-001"
+    ],
+    "expected_entity_ids": [
+      "gabapentin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-041",
+    "query": "Tramadol mu-opioid receptor affinity",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "41158891",
+      "41061201",
+      "41323006"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41158891-001",
+      "chunk-41061201-001",
+      "chunk-41323006-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-042",
+    "query": "Tramadol lowering seizure threshold",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "40242084",
+      "38006536",
+      "41061201"
+    ],
+    "expected_chunk_ids": [
+      "chunk-40242084-001",
+      "chunk-38006536-001",
+      "chunk-41061201-001"
+    ],
+    "expected_entity_ids": [
+      "tramadol"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-043",
+    "query": "Celecoxib selective COX-2 inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "28520369",
+      "41733550"
+    ],
+    "expected_chunk_ids": [
+      "chunk-28520369-001",
+      "chunk-41733550-001"
+    ],
+    "expected_entity_ids": [
+      "celecoxib"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-044",
+    "query": "Celecoxib and myocardial infarction risk",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "28520369",
+      "41733550"
+    ],
+    "expected_chunk_ids": [
+      "chunk-28520369-001",
+      "chunk-41733550-001"
+    ],
+    "expected_entity_ids": [
+      "celecoxib"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-045",
+    "query": "Rivaroxaban Factor Xa inhibition",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "41776019",
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41776019-001",
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-046",
+    "query": "Rivaroxaban associated major bleeding",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "41776019",
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41776019-001",
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "rivaroxaban"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-047",
+    "query": "Apixaban pharmacokinetics in renal failure",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42216360",
+      "42670022",
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42216360-001",
+      "chunk-42670022-001",
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "apixaban"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-048",
+    "query": "Apixaban associated gastrointestinal bleeding",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42216360",
+      "42670022",
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42216360-001",
+      "chunk-42670022-001",
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "apixaban"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-049",
+    "query": "Reversal agent for dabigatran",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42654146",
+      "41818114"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42654146-001",
+      "chunk-41818114-001"
+    ],
+    "expected_entity_ids": [
+      "dabigatran"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-050",
+    "query": "Dabigatran causing dyspepsia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42654146",
+      "41818114"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42654146-001",
+      "chunk-41818114-001"
+    ],
+    "expected_entity_ids": [
+      "dabigatran"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-051",
+    "query": "Management of severe bleeding on warfarin",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42128628"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42128628-001"
+    ],
+    "expected_entity_ids": [
+      "warfarin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-052",
+    "query": "Renal dosing adjustments for metformin",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "32699722",
+      "41177211",
+      "42661734"
+    ],
+    "expected_chunk_ids": [
+      "chunk-32699722-001",
+      "chunk-41177211-001",
+      "chunk-42661734-001"
+    ],
+    "expected_entity_ids": [
+      "metformin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-053",
+    "query": "Clopidogrel and naproxen GI bleeding",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "41766537",
+      "41085374",
+      "41077316"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41766537-001",
+      "chunk-41085374-001",
+      "chunk-41077316-001"
+    ],
+    "expected_entity_ids": [
+      "clopidogrel"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-054",
+    "query": "What monitoring is required for amiodarone liver toxicity?",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "42359186",
+      "42466914",
+      "42332214"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42359186-001",
+      "chunk-42466914-001",
+      "chunk-42332214-001"
+    ],
+    "expected_entity_ids": [
+      "amiodarone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-055",
+    "query": "Isotretinoin and tetracycline pseudotumor cerebri",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42461919",
+      "42522519",
+      "42669317"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42461919-001",
+      "chunk-42522519-001",
+      "chunk-42669317-001"
+    ],
+    "expected_entity_ids": [
+      "isotretinoin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-056",
+    "query": "Digoxin and macrolide toxicity",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42489609",
+      "42590087",
+      "42610101"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42489609-001",
+      "chunk-42590087-001",
+      "chunk-42610101-001"
+    ],
+    "expected_entity_ids": [
+      "digoxin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-057",
+    "query": "Acetaminophen and warfarin INR prolongation",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42628776",
+      "42678243",
+      "42665174"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42628776-001",
+      "chunk-42678243-001",
+      "chunk-42665174-001"
+    ],
+    "expected_entity_ids": [
+      "acetaminophen"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-058",
+    "query": "Citalopram and omeprazole QT prolongation",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42326111",
+      "40978465",
+      "41004670"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42326111-001",
+      "chunk-40978465-001",
+      "chunk-41004670-001"
+    ],
+    "expected_entity_ids": [
+      "citalopram"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-059",
+    "query": "Spironolactone causing gynecomastia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "42643702",
+      "42374912"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42643702-001",
+      "chunk-42374912-001"
+    ],
+    "expected_entity_ids": [
+      "spironolactone"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-060",
+    "query": "Lisinopril contraindicated in angioedema",
+    "claim_type": "Medication_Safety",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "33048477",
+      "33986677",
+      "38710058"
+    ],
+    "expected_chunk_ids": [
+      "chunk-33048477-001",
+      "chunk-33986677-001",
+      "chunk-38710058-001"
+    ],
+    "expected_entity_ids": [
+      "lisinopril"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-061",
+    "query": "Penicillin anaphylaxis management",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "penicillin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-062",
+    "query": "Amoxicillin and clavulanate dosing",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "amoxicillin"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-063",
+    "query": "Sildenafil contraindication with nitrates",
+    "claim_type": "DDI",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "sildenafil"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-064",
+    "query": "Ibuprofen induced gastric ulcer",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "expected_document_ids": [
+      "41489241"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41489241-001"
+    ],
+    "expected_entity_ids": [
+      "ibuprofen"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-065",
+    "query": "Salbutamol causing tachycardia",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "salbutamol"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-066",
+    "query": "Omalizumab injection site reaction",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "omalizumab"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-067",
+    "query": "Methotrexate folic acid supplementation",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R2",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "methotrexate"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-068",
+    "query": "Lithium toxicity tremor",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R2",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lithium"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-069",
+    "query": "Clozapine agranulocytosis monitoring",
+    "claim_type": "Medication_Safety",
+    "difficulty": "PARAPHRASE",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "clozapine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-070",
+    "query": "Valproate induced neural tube defects",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "valproate"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-071",
+    "query": "Lamotrigine Stevens-Johnson syndrome risk",
+    "claim_type": "ADE",
+    "difficulty": "MULTI_ENTITY",
+    "risk_tier": "R3",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "lamotrigine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-072",
+    "query": "Sumatriptan mechanism for migraines",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "sumatriptan"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-073",
+    "query": "Ketamine NMDA antagonism",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [
+      "41924710"
+    ],
+    "expected_chunk_ids": [
+      "chunk-41924710-001"
+    ],
+    "expected_entity_ids": [
+      "ketamine"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-074",
+    "query": "Propofol infusion syndrome",
+    "claim_type": "ADE",
+    "difficulty": "SYNONYM",
+    "risk_tier": "R3",
+    "expected_document_ids": [
+      "42437608"
+    ],
+    "expected_chunk_ids": [
+      "chunk-42437608-001"
+    ],
+    "expected_entity_ids": [
+      "propofol"
+    ]
+  },
+  {
+    "case_id": "r3.1-manual-075",
+    "query": "Buprenorphine ceiling effect",
+    "claim_type": "Pharmacology",
+    "difficulty": "MECHANISM",
+    "risk_tier": "R1",
+    "expected_document_ids": [],
+    "expected_chunk_ids": [],
+    "expected_entity_ids": [
+      "buprenorphine"
+    ]
+  }
+]

@@ -1,0 +1,112 @@
+{
+  "case_id": "v3.1h-022",
+  "population_size": 241,
+  "sample_size": 12,
+  "sampling_seed": 83061393,
+  "sampled_document_ids": [
+    "41833262",
+    "42647942",
+    "27956102",
+    "42438581",
+    "41075377",
+    "42246839",
+    "41278442",
+    "42499456",
+    "40845290",
+    "42653808",
+    "42660303",
+    "42429832"
+  ],
+  "screening_results": [
+    {
+      "document_id": "41833262",
+      "title": "Pearls and Pitfalls for the Emergency Clinician: Beta Blocker and Calcium Channel Blocker Toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42647942",
+      "title": "Use of Corrected QT Cutoffs Derived from Biological Variation to Predict Adverse Events Due to Antipsychotic Drugs: Case Report.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "27956102",
+      "title": "Pharyngolaryngeal ulcers associated with the improper use of alendronate.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42438581",
+      "title": "Unmasking Refractory Hypothyroidism: Persistent Iron-Levothyroxine Interaction Despite Appropriate Dose Separation.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "41075377",
+      "title": "Interpretation of the association between thyroid peroxidase antibodies and thyroid function during pregnancy: An individual participant data meta-analysis.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42246839",
+      "title": "Routine blood monitoring in acne vulgaris patients on isotretinoin: Is reassessment warranted? A retrospective cohort study from Tygerberg Hospital.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "41278442",
+      "title": "Pharmacological management of major complications following left ventricular assist device implantation in type 2 diabetes mellitus.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42499456",
+      "title": "Association of Proximal Tubule Secretion With Hyperkalemia Risk, Treatment Response, and Outcomes in Heart Failure With Preserved Ejection Fraction.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "40845290",
+      "title": "The Effects of a Semester of Preprofessional Dance Training on Biomarkers and Performance Variables in Elite Adolescent Ballet Dancers.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42653808",
+      "title": "Berberine-Drug Interactions: Mechanisms, Clinical Relevance and Risk Stratification-A Narrative Review.",
+      "status": "UNCERTAIN",
+      "overlap": 1
+    },
+    {
+      "document_id": "42660303",
+      "title": "Cardioprotective effects of natural phytochemicals from traditional medicinal plants against doxorubicin-induced cardiotoxicity: A meta-analysis of preclinical studies.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    },
+    {
+      "document_id": "42429832",
+      "title": "Current perspectives on natural and pharmacological interventions for combating drug-induced pulmonary toxicity.",
+      "status": "PROBABLY_IRRELEVANT",
+      "overlap": 0
+    }
+  ],
+  "human_escalations": [
+    "42438581",
+    "42653808"
+  ],
+  "human_final_decisions": {
+    "42438581": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns an iron-levothyroxine interaction and does not provide evidence about the CYP2C9 interaction between fluconazole and warfarin.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    },
+    "42653808": {
+      "human_final_label": "NOT_RELEVANT",
+      "human_annotation_reason": "The document concerns berberine-drug interactions and does not provide evidence about the CYP2C9 interaction between fluconazole and warfarin.",
+      "human_confidence": "HIGH",
+      "human_agreement": "DISAGREE"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+[
+  {
+    "case_id": "v3.1h-001",
+    "query": "How does metformin inhibit hepatic gluconeogenesis?",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "metformin"
+    ],
+    "ground_truth_status": "VALID",
+    "relevant_documents": [
+      {
+        "document_id": "41177211",
+        "chunk_id": "chunk-41177211-001",
+        "relevance": "DIRECT_SUPPORT",
+        "evidence_span": "Metformin decreases hepatic glucose production and decreases intestinal absorption of glucose.",
+        "evidence_text_hash": "f5061b00a2547a22ccee757112664bf09cd1e38a16f76fa992b9f4907c8ed7fc",
+        "annotation_reason": "Explicitly answers the mechanism for metformin decreasing glucose production",
+        "authority_tier": "PubMed_Central",
+        "confidence": "HIGH",
+        "annotator_id": "annotator_A",
+        "review_timestamp": "2026-09-03T05:14:07.256156+00:00"
+      }
+    ]
+  },
+  {
+    "case_id": "v3.1h-002",
+    "query": "Clearance pathway for lisinopril",
+    "claim_type": "Pharmacology",
+    "risk_tier": "R1",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "lisinopril"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-021",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "warfarin",
+      "aspirin"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-022",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "CYP_DDI",
+    "expected_entities": [
+      "fluconazole",
+      "warfarin"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-023",
+    "query": "Spironolactone and lisinopril combination risks",
+    "claim_type": "DDI",
+    "risk_tier": "R3",
+    "difficulty": "MULTI_ENTITY",
+    "expected_entities": [
+      "spironolactone",
+      "lisinopril"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-046",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "MECHANISM",
+    "expected_entities": [
+      "liver"
+    ],
+    "ground_truth_status": "VALID",
+    "relevant_documents": [
+      {
+        "document_id": "42678243",
+        "chunk_id": "chunk-42678243-001",
+        "relevance": "PARTIAL_SUPPORT",
+        "evidence_span": "MSCs overexpressing FGF21 alleviate acetaminophen-induced acute liver injury by eliciting macrophage-mediated phagocytosis.",
+        "evidence_text_hash": "0c3a9245464d97e0ec1d385efedf85a056461fc5206b9913faa6137159da4dc3",
+        "annotation_reason": "Mentions a specific mechanism but does not address general idiosyncratic DILI",
+        "authority_tier": "PubMed_Central",
+        "confidence": "HIGH",
+        "annotator_id": "annotator_A",
+        "review_timestamp": "2026-09-03T05:14:07.256156+00:00"
+      }
+    ]
+  },
+  {
+    "case_id": "v3.1h-047",
+    "query": "Spironolactone induced hyperkalemia",
+    "claim_type": "ADE",
+    "risk_tier": "R3",
+    "difficulty": "SYNONYM",
+    "expected_entities": [
+      "spironolactone"
+    ],
+    "ground_truth_status": "VALID",
+    "relevant_documents": [
+      {
+        "document_id": "42374912",
+        "chunk_id": "chunk-42374912-001",
+        "relevance": "DIRECT_SUPPORT",
+        "evidence_span": "Risk of Hyperkalemia in Patients with Heart Failure Treated with Spironolactone in Combination with Sacubitril/Valsartan vs. Renin-Angiotensin System Inhibitors.",
+        "evidence_text_hash": "7303184db19d40f9bd5d40f7975ff4ff6f3b6038a9037f9d3dddf57578d4bc6a",
+        "annotation_reason": "Explicitly identifies the risk of hyperkalemia with spironolactone",
+        "authority_tier": "PubMed_Central",
+        "confidence": "HIGH",
+        "annotator_id": "annotator_A",
+        "review_timestamp": "2026-09-03T05:14:07.256156+00:00"
+      }
+    ]
+  },
+  {
+    "case_id": "v3.1h-066",
+    "query": "Metformin contraindication in severe renal disease",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "metformin"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-067",
+    "query": "Warfarin target INR monitoring",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "warfarin"
+    ],
+    "ground_truth_status": "NO_EVIDENCE",
+    "relevant_documents": []
+  },
+  {
+    "case_id": "v3.1h-069",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "claim_type": "Medication_Safety",
+    "risk_tier": "R3",
+    "difficulty": "PARAPHRASE",
+    "expected_entities": [
+      "hepatotoxicity"
+    ],
+    "ground_truth_status": "VALID",
+    "relevant_documents": [
+      {
+        "document_id": "42633086",
+        "chunk_id": "chunk-42633086-001",
+        "relevance": "PARTIAL_SUPPORT",
+        "evidence_span": "Nivolumab after recurrent pembrolizumab-associated hepatotoxicity in PD-L1-high metastatic squamous non-small cell lung cancer: a case report.",
+        "evidence_text_hash": "627f5607a502a0baa23a27babc92c9d130538ad476a203473c740122101026c7",
+        "annotation_reason": "Mentions hepatotoxicity diagnosis in a specific case but not general diagnosis",
+        "authority_tier": "PubMed_Central",
+        "confidence": "HIGH",
+        "annotator_id": "annotator_A",
+        "review_timestamp": "2026-09-03T05:14:07.256156+00:00"
+      }
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "case_id": "43603c024e5cb6db",
+  "variant": "R0",
+  "query_hash": "eed3c2624387ed232036ac389d0945d6d7179f6ad963ef94df7a4aac87914dce",
+  "risk_tier": "R2",
+  "claim_type": "DDI",
+  "retrieved_document_ids": [
+    "doc-fda-spironolactone",
+    "doc-guideline-warfarin-aspirin",
+    "doc-fda-haloperidol"
+  ],
+  "retrieved_chunk_ids": [
+    "chunk-spironolactone-001",
+    "chunk-warfarin-001",
+    "chunk-haloperidol-001"
+  ],
+  "retrieval_scores": [
+    0.01639344262295082,
+    0.016129032258064516,
+    0.015873015873015872
+  ],
+  "source_types": [
+    "FDA Prescribing Information",
+    "American College of Chest Physicians",
+    "FDA Drug Safety Communication"
+  ],
+  "entity_ids": [],
+  "expected_document_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "relevant_retrieved_ids": [
+    "doc-guideline-warfarin-aspirin"
+  ],
+  "first_relevant_rank": 2,
+  "metrics": {
+    "recall_at_1": 0.0,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0,
+    "recall_at_10": 1.0,
+    "precision_at_5": 0.3333333333333333,
+    "mrr": 0.5,
+    "ndcg_at_5": 0.6309297535714575,
+    "source_authority_coverage": 0.0
+  },
+  "latency_ms": 0.03920000744983554,
+  "channels": [
+    "bm25"
+  ]
+}

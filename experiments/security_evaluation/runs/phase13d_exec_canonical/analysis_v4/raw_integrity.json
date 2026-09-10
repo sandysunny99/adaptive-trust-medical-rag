@@ -1,0 +1,7 @@
+{
+  "n_total": 220,
+  "n_baseline": 110,
+  "n_hardened": 110,
+  "all_paired": true,
+  "hashes_match": true
+}

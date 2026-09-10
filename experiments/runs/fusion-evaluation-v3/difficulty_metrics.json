@@ -1,0 +1,27 @@
+{
+  "CYP_DDI": {
+    "F0_Recall_at_5": 1.0,
+    "F3_Recall_at_5": 1.0,
+    "n": 1
+  },
+  "SYNONYM": {
+    "F0_Recall_at_5": 1.0,
+    "F3_Recall_at_5": 1.0,
+    "n": 1
+  },
+  "PARAPHRASE": {
+    "F0_Recall_at_5": 1.0,
+    "F3_Recall_at_5": 1.0,
+    "n": 2
+  },
+  "MECHANISM": {
+    "F0_Recall_at_5": 0.0,
+    "F3_Recall_at_5": 1.0,
+    "n": 1
+  },
+  "MULTI_ENTITY": {
+    "F0_Recall_at_5": 0.0,
+    "F3_Recall_at_5": 1.0,
+    "n": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "experiment": "Phase 2D.2 Cross-Encoder Evaluation",
+  "benchmark": "v2.1",
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "cross_encoder_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "candidate_pool_size": 20
+}
