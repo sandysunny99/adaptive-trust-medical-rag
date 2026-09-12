@@ -51,12 +51,14 @@ class TestRealLiveVariantExecution:
         assert res.retrieval_execution["dense_called"] is False
 
     @pytest.mark.live
-    def test_live_variant_B_uses_dense_retrieval(self, sample_case: EvalCase) -> None:
+    def test_live_variant_B_uses_unified_hybrid_retrieval(self, sample_case: EvalCase) -> None:
         runner = RealVariantRunner()
         res = runner.run_case(sample_case, AblationVariant.B)
         assert res.variant == "B"
         assert res.retrieval_execution["dense_called"] is True
-        assert res.retrieval_execution["bm25_called"] is False
+        assert res.retrieval_execution["bm25_called"] is True
+        assert res.retrieval_execution["graph_called"] is True
+        assert res.retrieval_execution["rrf_called"] is True
 
     @pytest.mark.live
     def test_live_variant_C_uses_hybrid_retrieval(self, sample_case: EvalCase) -> None:

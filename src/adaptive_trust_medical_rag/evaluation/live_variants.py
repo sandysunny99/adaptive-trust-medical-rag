@@ -184,19 +184,8 @@ def load_evidence_corpus(manifest_path: str | Path | None = None) -> list[Candid
 
 
 def _make_default_corpus() -> list[Candidate]:
-    return [
-        Candidate(
-            chunk_id="chunk-metformin-001",
-            document_id="doc-fda-metformin",
-            text=(
-                "Metformin decreases hepatic glucose production and improves insulin sensitivity."
-            ),
-            source_url="https://fda.gov/label/metformin",
-            source_authority=1.0,
-            poisoning_score=0.0,
-            metadata={"publication_date": "2024-01-01", "reputation_score": 0.95},
-        )
-    ]
+    """Returns the full unified corpus to ensure variant experimental control."""
+    return load_evidence_corpus()
 
 
 def _make_default_orchestrator() -> AdaptiveTrustRAGOrchestrator:
@@ -398,7 +387,7 @@ class RealVariantRunner:
         norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
 
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=10)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -442,9 +431,9 @@ class RealVariantRunner:
             },
             retrieval_execution={
                 "dense_called": True,
-                "bm25_called": False,
-                "graph_called": False,
-                "rrf_called": False,
+                "bm25_called": True,
+                "graph_called": True,
+                "rrf_called": True,
                 "retrieved_count": len(cands),
             },
             trust_execution={
@@ -479,7 +468,7 @@ class RealVariantRunner:
         norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
 
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=10)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -524,7 +513,7 @@ class RealVariantRunner:
             retrieval_execution={
                 "dense_called": True,
                 "bm25_called": True,
-                "graph_called": False,
+                "graph_called": True,
                 "rrf_called": True,
                 "retrieved_count": len(cands),
             },
@@ -560,7 +549,7 @@ class RealVariantRunner:
         norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
 
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=10)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -649,7 +638,7 @@ class RealVariantRunner:
         norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
 
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=10)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         trust_start = time.perf_counter()
