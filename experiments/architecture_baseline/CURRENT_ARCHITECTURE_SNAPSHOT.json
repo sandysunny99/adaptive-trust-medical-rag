@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "git_commit": "8741f595f6db0a87b84f50d131b1ff566ee2d6f0",
+  "python_version": "3.12.10",
+  "router_configuration": {
+    "mode": "SCIENTIFIC (via env) or APPLICATION",
+    "retry_policy": "Exponential backoff, jitter, max 3 attempts",
+    "circuit_breaker": "2 consecutive failures -> OPEN for 60s"
+  },
+  "retrieval_configuration": {
+    "channels": [
+      "BM25",
+      "Dense (SimpleEmbeddingModel)",
+      "Graph"
+    ],
+    "fusion": "Reciprocal Rank Fusion (k=60, top_n=50)",
+    "top_k": 10,
+    "corpus": "manifest.json (4 documents)",
+    "normalization": "DrugNormalizer (RxNorm-based local cache)",
+    "poisoning_threshold": 0.4
+  },
+  "security_modules": {
+    "input_sanitization": "sanitize_query (markdown stripping, injection markers)",
+    "prompt_injection_detector": "Regex/heuristics block on exact matches",
+    "retrieval_poisoning_detector": "SHA-256 validation against corpus manifest",
+    "trust_scorer": "AdaptiveTrustScorer (authority, entity, freshness, reputation)",
+    "evidence_eligibility_gate": "Risk-tier thresholds (R0:0.3, R1:0.45, R2:0.60, R3:0.75)",
+    "claim_verifier": "NLI-based check against chunks",
+    "contradiction_detector": "Detects conflicts in retrieved sources",
+    "answer_safety_gate": "Post-generation verification",
+    "controlled_abstention": "Required when gates fail or evidence is insufficient",
+    "authorization_boundary": "Agent action validation"
+  },
+  "generation": {
+    "llm_provider": "RoutedLLMBackend (Gemini primary, Groq secondary)",
+    "output_schema": "RAGResponse",
+    "prompt_template": "structured_medical_assistant"
+  }
+}
