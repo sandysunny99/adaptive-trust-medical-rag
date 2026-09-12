@@ -385,9 +385,20 @@ class RealVariantRunner:
     def _run_variant_b(
         self, case: EvalCase, experiment_id: str, q_hash: str, start_t: float
     ) -> LiveVariantResult:
-        # Variant B: Standard Dense Vector RAG
+        # Variant B: Standardized Retrieval Baseline
+        # Unified Hybrid Retrieval (Confound Fix)
+        norm_start = time.perf_counter()
+        norm_res = _normalize_query_sync(self.drug_normalizer, case.query)
+        if hasattr(norm_res, "generic_name") and norm_res.generic_name:
+            query_drugs = [norm_res.generic_name]
+        elif isinstance(norm_res, list):
+            query_drugs = [d.generic_name for d in norm_res if hasattr(d, "generic_name") and d.generic_name]
+        else:
+            query_drugs = []
+        norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
+
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -455,9 +466,20 @@ class RealVariantRunner:
     def _run_variant_c(
         self, case: EvalCase, experiment_id: str, q_hash: str, start_t: float
     ) -> LiveVariantResult:
-        # Variant C: Hybrid RAG (Dense + BM25 + RRF)
+        # Variant C: Hybrid RAG (Standardized)
+        # Unified Hybrid Retrieval (Confound Fix)
+        norm_start = time.perf_counter()
+        norm_res = _normalize_query_sync(self.drug_normalizer, case.query)
+        if hasattr(norm_res, "generic_name") and norm_res.generic_name:
+            query_drugs = [norm_res.generic_name]
+        elif isinstance(norm_res, list):
+            query_drugs = [d.generic_name for d in norm_res if hasattr(d, "generic_name") and d.generic_name]
+        else:
+            query_drugs = []
+        norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
+
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -526,12 +548,19 @@ class RealVariantRunner:
         self, case: EvalCase, experiment_id: str, q_hash: str, start_t: float
     ) -> LiveVariantResult:
         # Variant D: Entity-Aware Hybrid RAG
+        # Unified Hybrid Retrieval (Confound Fix)
         norm_start = time.perf_counter()
         norm_res = _normalize_query_sync(self.drug_normalizer, case.query)
+        if hasattr(norm_res, "generic_name") and norm_res.generic_name:
+            query_drugs = [norm_res.generic_name]
+        elif isinstance(norm_res, list):
+            query_drugs = [d.generic_name for d in norm_res if hasattr(d, "generic_name") and d.generic_name]
+        else:
+            query_drugs = []
         norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
 
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         doc_ids = [c.candidate.document_id for c in cands]
@@ -544,7 +573,7 @@ class RealVariantRunner:
             gen_start = time.perf_counter()
             context_text = "\n".join([c.candidate.text for c in cands])
             prompt = (
-                f"Normalized Entities: {norm_res}\nContext:\n{context_text}\n\nQuery: {case.query}"
+                f"Normalized Entities: {query_drugs}\nContext:\n{context_text}\n\nQuery: {case.query}"
             )
             model_res = self.model_adapter.generate_with_metadata(prompt)
             ans = model_res.response_text
@@ -608,8 +637,19 @@ class RealVariantRunner:
     ) -> LiveVariantResult:
         # Variant E: Trust-Aware Hybrid RAG
         rt_val = case.risk_tier.value if hasattr(case.risk_tier, "value") else str(case.risk_tier)
+        # Unified Hybrid Retrieval (Confound Fix)
+        norm_start = time.perf_counter()
+        norm_res = _normalize_query_sync(self.drug_normalizer, case.query)
+        if hasattr(norm_res, "generic_name") and norm_res.generic_name:
+            query_drugs = [norm_res.generic_name]
+        elif isinstance(norm_res, list):
+            query_drugs = [d.generic_name for d in norm_res if hasattr(d, "generic_name") and d.generic_name]
+        else:
+            query_drugs = []
+        norm_ms = round((time.perf_counter() - norm_start) * 1000, 3)
+
         ret_start = time.perf_counter()
-        cands = self.retriever.retrieve(case.query, top_k=5)
+        cands = self.retriever.retrieve(case.query, query_drugs=query_drugs, top_k=5)
         ret_ms = round((time.perf_counter() - ret_start) * 1000, 3)
 
         trust_start = time.perf_counter()
