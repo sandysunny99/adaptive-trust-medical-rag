@@ -14,9 +14,9 @@
 | Output Rails | ClaimVerifier, AnswerSafetyGate | Medium | NeMo can enforce factual consistency, but our custom NLI contradiction detection is specialized. |
 
 ## LLM Inference Implications
-NeMo relies heavily on the LLM to evaluate rails via specialized prompts (e.g., self-checking input/output).
-- **Extra LLM Calls**: High. Typical NeMo flows add 1-3 extra LLM calls per interaction.
-- **Latency**: Will significantly increase due to sequential LLM guardrail calls.
+NeMo guardrails may introduce additional model inference depending on the configured rail flows.
+- **Extra LLM Calls**: The number of additional calls and associated latency must be measured empirically for the selected configuration. Some flows use LLM/task models, while its tool-calling rails are explicitly local checks and do not make extra API calls.
+- **Latency**: Variable, requires empirical measurement of the specific rail configuration.
 
 ## Conclusion
 NeMo is best used as a DEFENSE-IN-DEPTH layer (specifically Input Rails) but should NOT replace the core Trust Engine or Authorization Boundary.
