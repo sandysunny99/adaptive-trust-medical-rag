@@ -1,8 +1,23 @@
 from __future__ import annotations
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from adaptive_trust_medical_rag.llm_routing.types import RoutingMode
 
+
+def load_env_local():
+    """Securely parse .env.local without external dependencies, setting os.environ.
+    Does NOT print or log secrets."""
+    env_file = Path(__file__).parent.parent.parent.parent / ".env.local"
+    if env_file.exists():
+        with open(env_file, "r") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    if "=" in line:
+                        k, v = line.split("=", 1)
+                        if k not in os.environ:
+                            os.environ[k] = v.strip('"\'')
 
 @dataclass
 class ProviderConfig:
@@ -16,6 +31,11 @@ class ProviderConfig:
     model_id: str
     api_key_env_var: str
 
+    @property
+    def credential_present(self) -> bool:
+        val = os.getenv(self.api_key_env_var)
+        return bool(val and len(val.strip()) > 0)
+
     def get_api_key(self) -> str:
         """Retrieve API key from environment. Raises if not set."""
         key = os.getenv(self.api_key_env_var)
@@ -25,6 +45,10 @@ class ProviderConfig:
                 f"for provider {self.name}"
             )
         return key
+
+    def __repr__(self):
+        return f"ProviderConfig(name={self.name}, model_id={self.model_id}, priority={self.priority}, credential_present={self.credential_present})"
+
 
 
 @dataclass
@@ -40,11 +64,20 @@ class RoutingConfig:
     circuit_breaker_enabled: bool = True
     circuit_breaker_threshold: int = 5
     circuit_breaker_recovery_seconds: float = 60.0
+    secret_redaction: bool = True
+    log_raw_keys: bool = False
 
     def __post_init__(self) -> None:
         # Scientific mode forces failover off
         if self.mode == RoutingMode.SCIENTIFIC:
             self.failover_enabled = False
+        
+        # Load environment preferences if available
+        if os.getenv("LLM_SECRET_REDACTION", "").lower() == "false":
+            self.secret_redaction = False
+        if os.getenv("LLM_LOG_RAW_KEYS", "").lower() == "true":
+            self.log_raw_keys = True
+
         # Sort providers by priority
         self.providers.sort(key=lambda p: p.priority)
 

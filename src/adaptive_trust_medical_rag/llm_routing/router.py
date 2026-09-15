@@ -127,11 +127,11 @@ class LLMProviderRouter:
                         elif "timeout" in lower_msg:
                             failure_class = FailureClass.TIMEOUT
                         elif "unauthorized" in lower_msg or "401" in error_msg or "403" in error_msg:
-                            failure_class = FailureClass.AUTH_ERROR
+                            failure_class = FailureClass.AUTHENTICATION
                         elif "validation" in lower_msg or "400" in error_msg:
-                            failure_class = FailureClass.VALIDATION_ERROR
+                            failure_class = FailureClass.INVALID_REQUEST
                         elif "500" in error_msg or "502" in error_msg or "503" in error_msg:
-                            failure_class = FailureClass.SERVER_ERROR
+                            failure_class = FailureClass.TRANSIENT_PROVIDER
                             
                     self.health_registry.record_failure(provider_name, failure_class)
                     if circuit_breaker:
@@ -151,15 +151,19 @@ class LLMProviderRouter:
                     else:
                         logger.error(f"Exhausted retries for {provider_name}")
                         break
+                    
+            if not is_scientific:
+                # In non-scientific mode, we just break out of this provider loop if it fails, and move to next
+                pass
 
         # Exhausted all providers
         if is_scientific:
             raise ExperimentProviderUnavailable(
                 case_id=case_id,
                 intended_provider=providers_to_try[0],
-                intended_model=self.providers_by_name[providers_to_try[0]].model_id,
+                intended_model=self.providers_by_name[providers_to_try[0]].model_id if providers_to_try[0] in self.providers_by_name else "unknown",
                 failure_reason=f"Exhausted retries. Last error: {error_msg if 'error_msg' in locals() else 'Unknown'}",
-                retry_count=max_attempts
+                retry_count=locals().get('max_attempts', 0)
             )
         else:
-            raise AllProvidersUnavailableError("All configured providers failed")
+            raise AllProvidersUnavailableError([])

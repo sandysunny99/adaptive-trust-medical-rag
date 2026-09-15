@@ -154,3 +154,13 @@ trivy-report.json
 # OS
 Desktop.ini
 ehthumbs.db
+
+# Local secrets
+.env
+.env.local
+.env.*.local
+
+# Never commit API credentials
+**/.env
+**/.env.local
+**/.env.*.local
