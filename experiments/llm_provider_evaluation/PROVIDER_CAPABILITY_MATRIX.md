@@ -21,10 +21,11 @@
 | **Free Tier** | Developer plan with finite limits (DOC-DERIVED) | Free tier with quota limits (EMPIRICALLY VERIFIED: 429 QUOTA_EXHAUSTED) | ~$0.10/month free credits (DOC-DERIVED) | 10,000 Neurons/day free (DOC-DERIVED) |
 | **Free Allocation** | Finite RPM/RPD per model (DOC-DERIVED) | 0 remaining on current key (EMPIRICALLY VERIFIED) | $0.10/month, subject to change (DOC-DERIVED) | 10,000 Neurons/day (DOC-DERIVED) |
 | **Credential Required** | `GROQ_API_KEY` | `GEMINI_API_KEY` | `HF_TOKEN` | `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` |
-| **Fallback Eligible** | Yes (transient failures only) | Yes (transient failures only) | Yes, when tertiary enabled (transient only) | N/A (not implemented) |
+| **Fallback Eligible** | Yes (transient failures only) | Yes (transient failures only) | Yes, when tertiary enabled (transient only) | Yes, when cloudflare_enabled (transient only) |
 | **Scientific Mode Eligible** | No | Yes (frozen Phase 15 provider) | No | No |
-| **Development Mode Eligible** | Yes (primary) | Yes (secondary) | Yes (tertiary fallback) | Future (documented only) |
-| **Implementation Status** | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ❌ NOT IMPLEMENTED (documented) |
+| **Development Mode Eligible** | Yes (primary) | Yes (secondary) | Yes (quaternary fallback) | Yes (tertiary, when enabled) |
+| **Implementation Status** | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED | ✅ IMPLEMENTED |
+| **OpenAI Compatible** | Yes (native) | No (Gemini SDK) | Model-dependent | Yes (DOC-DERIVED) |
 | **Evidence Type** | Mixed | Mixed | DOCUMENTATION-DERIVED | DOCUMENTATION-DERIVED |
 
 ## Runtime Observations

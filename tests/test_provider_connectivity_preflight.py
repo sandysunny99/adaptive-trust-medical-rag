@@ -65,11 +65,28 @@ class TestProviderConnectivityPreflight:
         backend = HuggingFaceBackend(token=token)
         assert backend is not None
 
+    def test_cloudflare_credential_detectable(self):
+        config = RoutingConfig.default_routing()
+        cf = next((p for p in config.providers if p.name == "cloudflare"), None)
+        assert cf is not None, "Cloudflare must be in default routing config"
+        status = "PRESENT" if cf.credential_present else "MISSING"
+        assert status in ("PRESENT", "MISSING")
+
+    def test_cloudflare_client_initializes(self):
+        """Cloudflare backend can be constructed when credentials are present."""
+        token = (os.getenv("CLOUDFLARE_API_TOKEN") or "").strip()
+        account = (os.getenv("CLOUDFLARE_ACCOUNT_ID") or "").strip()
+        if not token or not account:
+            pytest.skip("CLOUDFLARE_API_TOKEN or CLOUDFLARE_ACCOUNT_ID not set")
+        from adaptive_trust_medical_rag.llm_backend.cloudflare_backend import CloudflareBackend
+        backend = CloudflareBackend(api_token=token, account_id=account)
+        assert backend is not None
+
     def test_routing_profiles_exist(self):
         """Verify all routing profiles can be constructed."""
         normal = RoutingConfig.default_routing()
         assert normal.mode.value == "APPLICATION"
-        assert len(normal.providers) == 3
+        assert len(normal.providers) == 4
 
         scientific = RoutingConfig.scientific_phase15()
         assert scientific.mode.value == "SCIENTIFIC"
@@ -77,6 +94,7 @@ class TestProviderConnectivityPreflight:
         assert len(scientific.providers) == 1
         assert scientific.providers[0].name == "gemini"
         assert scientific.providers[0].model_id == "gemini-3.1-pro-preview"
+
 
     def test_phase15_dataset_not_consumed(self):
         """Verify these tests did NOT consume any Phase 15 cases."""

@@ -51,13 +51,22 @@ def get_backend() -> LLMBackend:
             gemini_priority = 1 if primary == "gemini" else 2
             providers_list.append(ProviderConfig(name="gemini", priority=gemini_priority, model_id=gem_model, api_key_env_var="GEMINI_API_KEY"))
 
-        # HuggingFace (tertiary, optional)
+        # Cloudflare Workers AI (tertiary, optional)
+        cf_token = (os.getenv("CLOUDFLARE_API_TOKEN") or "").strip()
+        cf_account = (os.getenv("CLOUDFLARE_ACCOUNT_ID") or "").strip()
+        if cf_token and cf_account:
+            from .cloudflare_backend import CloudflareBackend
+            cf_model = os.getenv("CLOUDFLARE_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+            backends["cloudflare"] = CloudflareBackend(api_token=cf_token, account_id=cf_account, model_name=cf_model)
+            providers_list.append(ProviderConfig(name="cloudflare", priority=3, model_id=cf_model, api_key_env_var="CLOUDFLARE_API_TOKEN"))
+
+        # HuggingFace (quaternary, optional)
         hf_token = (os.getenv("HF_TOKEN") or "").strip()
         if hf_token:
             from .huggingface_backend import HuggingFaceBackend
             hf_model = os.getenv("HF_MODEL", "meta-llama/Llama-3.3-70B-Instruct")
             backends["huggingface"] = HuggingFaceBackend(token=hf_token, model_name=hf_model)
-            providers_list.append(ProviderConfig(name="huggingface", priority=3, model_id=hf_model, api_key_env_var="HF_TOKEN"))
+            providers_list.append(ProviderConfig(name="huggingface", priority=4, model_id=hf_model, api_key_env_var="HF_TOKEN"))
 
         if not backends:
             raise ConfigurationError("No valid provider configurations found for LIVE_LLM")

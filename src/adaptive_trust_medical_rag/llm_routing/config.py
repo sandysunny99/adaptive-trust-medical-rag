@@ -67,6 +67,7 @@ class RoutingConfig:
     secret_redaction: bool = True
     log_raw_keys: bool = False
     tertiary_enabled: bool = False
+    cloudflare_enabled: bool = False
     free_only_mode: bool = True
 
     def __post_init__(self) -> None:
@@ -81,7 +82,11 @@ class RoutingConfig:
             self.log_raw_keys = True
         if os.getenv("LLM_TERTIARY_PROVIDER_ENABLED", "").lower() == "true":
             self.tertiary_enabled = True
+        if os.getenv("CLOUDFLARE_ENABLED", "").lower() == "true":
+            self.cloudflare_enabled = True
         if os.getenv("HF_FREE_ONLY_MODE", "").lower() == "false":
+            self.free_only_mode = False
+        if os.getenv("CLOUDFLARE_FREE_ONLY_MODE", "").lower() == "false":
             self.free_only_mode = False
 
         # Sort providers by priority
@@ -89,7 +94,7 @@ class RoutingConfig:
 
     @staticmethod
     def default_routing() -> RoutingConfig:
-        """Default normal-mode config: Groq primary, Gemini secondary, HF tertiary (disabled)."""
+        """Default normal-mode config: Groq(1), Gemini(2), Cloudflare(3), HF(4)."""
         providers = [
             ProviderConfig(
                 name="groq",
@@ -104,8 +109,14 @@ class RoutingConfig:
                 api_key_env_var="GEMINI_API_KEY",
             ),
             ProviderConfig(
-                name="huggingface",
+                name="cloudflare",
                 priority=3,
+                model_id=os.getenv("CLOUDFLARE_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast"),
+                api_key_env_var="CLOUDFLARE_API_TOKEN",
+            ),
+            ProviderConfig(
+                name="huggingface",
+                priority=4,
                 model_id=os.getenv("HF_MODEL", "meta-llama/Llama-3.3-70B-Instruct"),
                 api_key_env_var="HF_TOKEN",
             ),

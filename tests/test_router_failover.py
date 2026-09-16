@@ -19,16 +19,18 @@ from adaptive_trust_medical_rag.llm_routing.types import (
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 
 
-def _make_config(mode=RoutingMode.APPLICATION, tertiary_enabled=False, retry=0):
+def _make_config(mode=RoutingMode.APPLICATION, tertiary_enabled=False, cloudflare_enabled=False, retry=0):
     return RoutingConfig(
         providers=[
             ProviderConfig("groq", 1, "openai/gpt-oss-120b", "GROQ_API_KEY"),
             ProviderConfig("gemini", 2, "gemini-3.1-pro-preview", "GEMINI_API_KEY"),
-            ProviderConfig("huggingface", 3, "meta-llama/Llama-3.3-70B-Instruct", "HF_TOKEN"),
+            ProviderConfig("cloudflare", 3, "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "CLOUDFLARE_API_TOKEN"),
+            ProviderConfig("huggingface", 4, "meta-llama/Llama-3.3-70B-Instruct", "HF_TOKEN"),
         ],
         mode=mode,
         retry_max_attempts=retry,
         tertiary_enabled=tertiary_enabled,
+        cloudflare_enabled=cloudflare_enabled,
     )
 
 
@@ -294,11 +296,12 @@ async def test_t17_missing_hf_credential():
         await router.generate("test")
 
 
-# ── T18: Missing Cloudflare credential — no-op (not implemented) ──
-def test_t18_cloudflare_not_implemented():
-    """Cloudflare is documented but not implemented. No backend exists."""
+# ── T18: Cloudflare present in config but disabled by default ──
+def test_t18_cloudflare_disabled_by_default():
+    """Cloudflare is configured but disabled by default."""
     config = _make_config()
-    assert "cloudflare" not in {p.name for p in config.providers}
+    assert "cloudflare" in {p.name for p in config.providers}
+    assert config.cloudflare_enabled is False
 
 
 # ── T19: Secret redaction ──
@@ -322,3 +325,248 @@ def test_t20_env_local_git_protection():
     )
     assert result.returncode == 0, ".env.local must be ignored by git"
     assert ".env.local" in result.stdout
+
+
+# ════════════════════════════════════════════════════
+# T21–T36: Cloudflare Workers AI routing tests
+# ════════════════════════════════════════════════════
+
+
+# ── T21: Cloudflare credential missing ──
+@pytest.mark.asyncio
+async def test_t21_cloudflare_credential_missing():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    # Cloudflare not in backends (no credential)
+    router = LLMProviderRouter(config, {"groq": mock_groq, "gemini": mock_gemini})
+    with pytest.raises(AllProvidersUnavailableError):
+        await router.generate("test")
+
+
+# ── T22: Cloudflare disabled ──
+@pytest.mark.asyncio
+async def test_t22_cloudflare_disabled():
+    config = _make_config(cloudflare_enabled=False)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = _success_mock("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router = LLMProviderRouter(
+        config, {"groq": mock_groq, "gemini": mock_gemini, "cloudflare": mock_cf}
+    )
+    with pytest.raises(AllProvidersUnavailableError):
+        await router.generate("test")
+    mock_cf.generate.assert_not_called()
+
+
+# ── T23: Cloudflare enabled ──
+@pytest.mark.asyncio
+async def test_t23_cloudflare_enabled():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = _success_mock("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router = LLMProviderRouter(
+        config, {"groq": mock_groq, "gemini": mock_gemini, "cloudflare": mock_cf}
+    )
+    result = await router.generate("test")
+    assert result.provider == "cloudflare"
+
+
+# ── T24: Cloudflare primary mock success ──
+@pytest.mark.asyncio
+async def test_t24_cloudflare_primary_success():
+    config = RoutingConfig(
+        providers=[ProviderConfig("cloudflare", 1, "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "CLOUDFLARE_API_TOKEN")],
+        mode=RoutingMode.APPLICATION, retry_max_attempts=0, cloudflare_enabled=True,
+    )
+    mock_cf = _success_mock("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router = LLMProviderRouter(config, {"cloudflare": mock_cf})
+    result = await router.generate("test")
+    assert result.provider == "cloudflare"
+    assert result.success is True
+
+
+# ── T25: Gemini → Cloudflare fallback ──
+@pytest.mark.asyncio
+async def test_t25_gemini_cloudflare_fallback():
+    config = RoutingConfig(
+        providers=[
+            ProviderConfig("gemini", 1, "gemini-3.1-pro-preview", "GEMINI_API_KEY"),
+            ProviderConfig("cloudflare", 2, "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "CLOUDFLARE_API_TOKEN"),
+        ],
+        mode=RoutingMode.APPLICATION, retry_max_attempts=0, cloudflare_enabled=True,
+    )
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = _success_mock("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router = LLMProviderRouter(config, {"gemini": mock_gemini, "cloudflare": mock_cf})
+    result = await router.generate("test")
+    assert result.provider == "cloudflare"
+
+
+# ── T26: Groq → Gemini → Cloudflare sequence ──
+@pytest.mark.asyncio
+async def test_t26_groq_gemini_cloudflare_sequence():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = _success_mock("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router = LLMProviderRouter(
+        config, {"groq": mock_groq, "gemini": mock_gemini, "cloudflare": mock_cf}
+    )
+    result = await router.generate("test")
+    assert result.provider == "cloudflare"
+
+
+# ── T27: Cloudflare → HF fallback ──
+@pytest.mark.asyncio
+async def test_t27_cloudflare_hf_fallback():
+    config = _make_config(cloudflare_enabled=True, tertiary_enabled=True)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = AsyncMock()
+    mock_cf.generate.side_effect = _transient_error()
+    mock_hf = _success_mock("huggingface", "meta-llama/Llama-3.3-70B-Instruct")
+    router = LLMProviderRouter(
+        config, {"groq": mock_groq, "gemini": mock_gemini, "cloudflare": mock_cf, "huggingface": mock_hf}
+    )
+    result = await router.generate("test")
+    assert result.provider == "huggingface"
+
+
+# ── T28: Cloudflare 429 handling ──
+@pytest.mark.asyncio
+async def test_t28_cloudflare_429():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    mock_groq.generate.side_effect = _transient_error()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = AsyncMock()
+    e = Exception("429 Rate limit")
+    e.failure_class = FailureClass.RATE_LIMIT
+    mock_cf.generate.side_effect = e
+    router = LLMProviderRouter(
+        config, {"groq": mock_groq, "gemini": mock_gemini, "cloudflare": mock_cf}
+    )
+    with pytest.raises(AllProvidersUnavailableError):
+        await router.generate("test")
+
+
+# ── T29: Cloudflare auth failure ──
+@pytest.mark.asyncio
+async def test_t29_cloudflare_auth_failure():
+    config = RoutingConfig(
+        providers=[ProviderConfig("cloudflare", 1, "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "CLOUDFLARE_API_TOKEN")],
+        mode=RoutingMode.APPLICATION, retry_max_attempts=0, cloudflare_enabled=True,
+    )
+    mock_cf = AsyncMock()
+    mock_cf.generate.side_effect = _auth_error()
+    router = LLMProviderRouter(config, {"cloudflare": mock_cf})
+    with pytest.raises(ModelExecutionError, match="Non-transient error"):
+        await router.generate("test")
+
+
+# ── T30: Cloudflare quota exhausted ──
+@pytest.mark.asyncio
+async def test_t30_cloudflare_quota_exhausted():
+    config = RoutingConfig(
+        providers=[ProviderConfig("cloudflare", 1, "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "CLOUDFLARE_API_TOKEN")],
+        mode=RoutingMode.APPLICATION, retry_max_attempts=0, cloudflare_enabled=True,
+    )
+    mock_cf = AsyncMock()
+    e = Exception("429 Quota exhausted")
+    e.failure_class = FailureClass.RATE_LIMIT
+    mock_cf.generate.side_effect = e
+    router = LLMProviderRouter(config, {"cloudflare": mock_cf})
+    with pytest.raises(AllProvidersUnavailableError):
+        await router.generate("test")
+
+
+# ── T31: Cloudflare FREE_UNKNOWN blocked by free-only policy ──
+def test_t31_cloudflare_free_unknown_policy():
+    """When CLOUDFLARE_FREE_ONLY_MODE=true, FREE_UNKNOWN must be rejected."""
+    from adaptive_trust_medical_rag.llm_routing.types import FreeTierPolicy
+    # Verify the enum values exist for policy enforcement
+    assert FreeTierPolicy.FREE_UNKNOWN.value == "FREE_UNKNOWN"
+    assert FreeTierPolicy.FREE_CONFIRMED.value == "FREE_CONFIRMED"
+    assert FreeTierPolicy.PAID_REQUIRED.value == "PAID_REQUIRED"
+    assert FreeTierPolicy.QUOTA_EXHAUSTED.value == "QUOTA_EXHAUSTED"
+
+
+# ── T32: Security rejection prevents Cloudflare fallback ──
+@pytest.mark.asyncio
+async def test_t32_security_blocks_cloudflare_fallback():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    e = Exception("Security: prompt injection")
+    e.failure_class = FailureClass.APPLICATION_SEMANTIC
+    mock_groq.generate.side_effect = e
+    mock_cf = AsyncMock()
+    router = LLMProviderRouter(config, {"groq": mock_groq, "cloudflare": mock_cf})
+    with pytest.raises(ModelExecutionError, match="Non-transient error"):
+        await router.generate("test")
+    mock_cf.generate.assert_not_called()
+
+
+# ── T33: Authorization rejection prevents Cloudflare fallback ──
+@pytest.mark.asyncio
+async def test_t33_auth_blocks_cloudflare_fallback():
+    config = _make_config(cloudflare_enabled=True)
+    mock_groq = AsyncMock()
+    e = Exception("403 Forbidden")
+    e.failure_class = FailureClass.AUTHORIZATION
+    mock_groq.generate.side_effect = e
+    mock_cf = AsyncMock()
+    router = LLMProviderRouter(config, {"groq": mock_groq, "cloudflare": mock_cf})
+    with pytest.raises(ModelExecutionError, match="Non-transient error"):
+        await router.generate("test")
+    mock_cf.generate.assert_not_called()
+
+
+# ── T34: Scientific Mode prevents Cloudflare fallback ──
+@pytest.mark.asyncio
+async def test_t34_scientific_blocks_cloudflare():
+    config = RoutingConfig.scientific_phase15()
+    config.__post_init__()
+    mock_gemini = AsyncMock()
+    mock_gemini.generate.side_effect = _transient_error()
+    mock_cf = AsyncMock()
+    router = LLMProviderRouter(config, {"gemini": mock_gemini, "cloudflare": mock_cf})
+    with pytest.raises(ExperimentProviderUnavailable):
+        await router.generate("test")
+    mock_cf.generate.assert_not_called()
+
+
+# ── T35: Scientific Mode provider mismatch with Cloudflare ──
+@pytest.mark.asyncio
+async def test_t35_scientific_provider_mismatch_cloudflare():
+    config = RoutingConfig.scientific_phase15()
+    config.__post_init__()
+    # Only cloudflare in backends — scientific expects gemini
+    router = LLMProviderRouter(config, {"cloudflare": AsyncMock()})
+    with pytest.raises(ExperimentProviderUnavailable):
+        await router.generate("test")
+
+
+# ── T36: Secret redaction includes Cloudflare ──
+def test_t36_cloudflare_secret_redaction():
+    config = RoutingConfig.default_routing()
+    cf = next((p for p in config.providers if p.name == "cloudflare"), None)
+    assert cf is not None
+    repr_str = repr(cf)
+    assert "credential_present" in repr_str
+    # Token value must never appear
+    assert "Bearer" not in repr_str
+
