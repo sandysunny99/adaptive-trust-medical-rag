@@ -42,6 +42,14 @@ class RoutingMode(str, enum.Enum):
     SCIENTIFIC = "SCIENTIFIC"
 
 
+class FreeTierPolicy(str, enum.Enum):
+    """Free-tier cost classification for a provider route."""
+    FREE_CONFIRMED = "FREE_CONFIRMED"
+    FREE_UNKNOWN = "FREE_UNKNOWN"
+    PAID_REQUIRED = "PAID_REQUIRED"
+    QUOTA_EXHAUSTED = "QUOTA_EXHAUSTED"
+
+
 @dataclass
 class RateLimitInfo:
     """Provider-neutral rate limit metadata."""
@@ -100,6 +108,8 @@ class ProviderHealth:
     quota_remaining_requests: int | None = None
     quota_remaining_tokens: int | None = None
     health_timestamp: str | None = None
+    credential_state: str | None = None  # "PRESENT" / "MISSING" / "INVALID"
+    free_tier_policy: FreeTierPolicy | None = None
 
 
 class AllProvidersUnavailableError(Exception):

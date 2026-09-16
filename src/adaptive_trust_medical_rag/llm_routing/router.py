@@ -45,9 +45,18 @@ class LLMProviderRouter:
 
     async def generate(self, prompt: str, case_id: str | None = None) -> ProviderAttemptResult:
         is_scientific = self.config.mode == RoutingMode.SCIENTIFIC
-        providers_to_try = [p.name for p in self.config.providers]
-        if is_scientific and providers_to_try:
-            providers_to_try = [providers_to_try[0]]
+        
+        # Build eligible provider list
+        providers_to_try = []
+        for p in self.config.providers:
+            # In scientific mode, only the first (frozen) provider is allowed
+            if is_scientific:
+                providers_to_try = [p.name]
+                break
+            # Filter out tertiary providers (priority >= 3) unless enabled
+            if p.priority >= 3 and not self.config.tertiary_enabled:
+                continue
+            providers_to_try.append(p.name)
             
         if not providers_to_try:
             raise AllProvidersUnavailableError([])

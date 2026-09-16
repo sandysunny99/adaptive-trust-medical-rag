@@ -73,15 +73,15 @@ def test_factory_raises_on_invalid_config(monkeypatch):
     with pytest.raises(ConfigurationError):
         get_backend()
 
+    # Ensure no credentials leak from .env.local for the no-credential test
+    # Use empty strings (not delenv) so load_env_local() won't re-populate them
     monkeypatch.setenv("LLM_MODE", "LIVE_LLM")
-    with pytest.raises(ConfigurationError):
-        get_backend()
-    monkeypatch.setenv("LLM_PROVIDER", "gemini")
-    with pytest.raises(ConfigurationError):
-        get_backend()
-    monkeypatch.setenv("LLM_MODEL", "gemini-3.6-flash")
+    monkeypatch.setenv("GEMINI_API_KEY", "")
+    monkeypatch.setenv("GROQ_API_KEY", "")
+    monkeypatch.setenv("HF_TOKEN", "")
     with pytest.raises(ConfigurationError):
         get_backend()
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")
     backend = get_backend()
-    assert backend.__class__.__name__ == "GoogleGeminiBackend" or hasattr(backend, "generate")
+    assert hasattr(backend, "generate")
+

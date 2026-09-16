@@ -14,6 +14,9 @@ class LLMBackend(Protocol):
 
 
 def get_backend() -> LLMBackend:
+    from adaptive_trust_medical_rag.llm_routing.config import load_env_local
+    load_env_local()
+
     mode = os.getenv("LLM_MODE")
     if mode == "DETERMINISTIC_MOCK":
         from .mock_backend import MockLLMBackend
@@ -27,27 +30,37 @@ def get_backend() -> LLMBackend:
         backends = {}
         providers_list = []
         
-        gemini_api_key = os.getenv("GEMINI_API_KEY")
-        if gemini_api_key:
-            from .google_gemini_backend import GoogleGeminiBackend
-            gem_model = os.getenv("LLM_MODEL", "gemini-2.5-pro")
-            backends["gemini"] = GoogleGeminiBackend(api_key=gemini_api_key, model_name=gem_model)
-            providers_list.append(ProviderConfig(name="gemini", priority=1, model_id=gem_model, api_key_env_var="GEMINI_API_KEY"))
-            
-        groq_api_key = os.getenv("GROQ_API_KEY")
+        # Determine primary provider from env (default: groq for normal mode)
+        primary = os.getenv("LLM_PRIMARY_PROVIDER", "groq")
+        
+        # Groq
+        groq_api_key = (os.getenv("GROQ_API_KEY") or "").strip()
         if groq_api_key:
             from .groq_backend import GroqBackend
             groq_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
             backends["groq"] = GroqBackend(api_key=groq_api_key, model_name=groq_model)
-            providers_list.append(ProviderConfig(name="groq", priority=2, model_id=groq_model, api_key_env_var="GROQ_API_KEY"))
+            groq_priority = 1 if primary == "groq" else 2
+            providers_list.append(ProviderConfig(name="groq", priority=groq_priority, model_id=groq_model, api_key_env_var="GROQ_API_KEY"))
+            
+        # Gemini
+        gemini_api_key = (os.getenv("GEMINI_API_KEY") or "").strip()
+        if gemini_api_key:
+            from .google_gemini_backend import GoogleGeminiBackend
+            gem_model = os.getenv("GEMINI_MODEL", "gemini-3.1-pro-preview")
+            backends["gemini"] = GoogleGeminiBackend(api_key=gemini_api_key, model_name=gem_model)
+            gemini_priority = 1 if primary == "gemini" else 2
+            providers_list.append(ProviderConfig(name="gemini", priority=gemini_priority, model_id=gem_model, api_key_env_var="GEMINI_API_KEY"))
+
+        # HuggingFace (tertiary, optional)
+        hf_token = (os.getenv("HF_TOKEN") or "").strip()
+        if hf_token:
+            from .huggingface_backend import HuggingFaceBackend
+            hf_model = os.getenv("HF_MODEL", "meta-llama/Llama-3.3-70B-Instruct")
+            backends["huggingface"] = HuggingFaceBackend(token=hf_token, model_name=hf_model)
+            providers_list.append(ProviderConfig(name="huggingface", priority=3, model_id=hf_model, api_key_env_var="HF_TOKEN"))
 
         if not backends:
             raise ConfigurationError("No valid provider configurations found for LIVE_LLM")
-            
-        primary = os.getenv("LLM_PROVIDER", "gemini")
-        for p in providers_list:
-            if p.name == primary:
-                p.priority = 0  # ensure it's first
             
         routing_mode = RoutingMode.APPLICATION
         if os.getenv("SCIENTIFIC_MODE") == "1":
@@ -59,3 +72,4 @@ def get_backend() -> LLMBackend:
         return RoutedLLMBackend(router=router)
     else:
         raise ConfigurationError(f"Invalid or missing LLM_MODE: {mode}")
+
