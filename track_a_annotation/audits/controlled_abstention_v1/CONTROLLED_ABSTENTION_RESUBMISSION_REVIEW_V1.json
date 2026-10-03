@@ -1,0 +1,6 @@
+{
+  "audit": "CONTROLLED_ABSTENTION_V1_RESUBMISSION",
+  "decision": "READY_FOR_COMMIT",
+  "reason": "ARTIFACT_GAPS_RESOLVED",
+  "commit": "NOT PERFORMED unless READY_FOR_COMMIT"
+}

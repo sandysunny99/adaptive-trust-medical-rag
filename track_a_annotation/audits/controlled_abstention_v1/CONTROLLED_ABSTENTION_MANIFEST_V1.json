@@ -1,0 +1,122 @@
+{
+  "package_id": "CONTROLLED_ABSTENTION_V1",
+  "status": "COMPLETE",
+  "artifacts": [
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_AUDIT_V1.md",
+      "sha256": "7e22ae7457d63dfb8bf7036a59162c3b513f40ac38f591516b724822edebd38f"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_CLAIM_VS_ANSWER_V1.md",
+      "sha256": "b4751515f1f7fc354551417eb8f3e5cb17d9e69357477a6049f9b3349c444f9a"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_CONTRADICTION_V1.md",
+      "sha256": "c32306bbae223a9a21d9c2ad42b36d98824159226d40d9316affc0c58df76ef1"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_EVIDENCE_SUFFICIENCY_V1.md",
+      "sha256": "a762723d5354120471dddcfde45049d073892c47307507fb1d60072650f4bf86"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_EXECUTION_PATH_V1.md",
+      "sha256": "0390d94360cec6201c945ee43012f3e61fc8ca196bca3749d61a7961e8beb974"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FAIL_CLOSED_AUDIT_V1.md",
+      "sha256": "f30b1a088617a59f3e67327e26e36174941ee6295b0f0eca69092ab0ef24d51a"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINAL_INTEGRITY_AUDIT_V1.md",
+      "sha256": "b2e668df2fd245ac96b8c0fffafa2ad75723acb5006a3bdf1ead2898f9c99f4e"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINAL_OUTPUT_MATRIX_V1.json",
+      "sha256": "c3ff1e5622960a9cef17880efd52e798b39b2660293edc8f9d26fcecd0f82190"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINAL_OUTPUT_MATRIX_V1.md",
+      "sha256": "64f3c059cdaced2fce9a60549d1cbac0e6976db35a6484ea1794b22b022d0327"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINDINGS_RECLASSIFICATION_V1.json",
+      "sha256": "55d9d985075f0f444127bd7b4d813579fe68ba2111f82c4461bf448290219d6b"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINDINGS_V1.jsonl",
+      "sha256": "cb2dcf124b8261b300a8d46ea2818f17b4f82b54cb7a6b0a314fa4b5e4adecf7"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_FINDINGS_V1.md",
+      "sha256": "c4dc4bcc2fbab7b841bc709219c4bb5365e3d4c26c4769cbea899daea6c8866f"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_IMPLEMENTATION_INVENTORY_V1.md",
+      "sha256": "94bfc27779c4ae77bea7f88db51b1ad8925c9f2f7eab05f8caad1d6da8d2b614"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_MICROCASES_V1.json",
+      "sha256": "0a99e08375972ccfd32d0727dcd89c00426c3a905764b63ad67d1df0f017309d"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_MICROCASE_RESULTS_V1.md",
+      "sha256": "8c4b8e2c3461a659ad3da684b6b4cef645b2b85bb6b6fe05692330538ab5a4d0"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_MIXED_CLAIM_V1.md",
+      "sha256": "74d0ecc5f3a230eb45a919cf8d7c1dcd1ca5e34f107911c83877dd1f9b06172f"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_MIXED_EVIDENCE_V1.md",
+      "sha256": "732507b0c63f03f18ef4c6c1fce2aefd80a698ae7d087c9b67638c930157af3c"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_PROVENANCE_FAILURE_V1.md",
+      "sha256": "fe932e4328a9835ff820b5080ee5a1948dbdc821a5a52dcb62e320673f8a1218"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_R3_AUDIT_V1.md",
+      "sha256": "940a4a83fd985cfdb57c980321b8086cc945c374542d1497034628a03ab9d150"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_REASON_TRACEABILITY_V1.md",
+      "sha256": "0ee9ecdef3d67783b8ef7c8f5505245822a04f1477d8e6eaabbcda228f3a072c"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_RELATIONSHIP_V1.md",
+      "sha256": "8915e620866a7dda428d5c9a26965a935937542c3f3244042fe0c4479bd200c4"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_RESEARCH_GAPS_V1.md",
+      "sha256": "151890bcd4df50a493281863adf97173cc1349041abae00f19c56d8cc86d4d56"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_RESULTS_V1.json",
+      "sha256": "f15514c16e1e38103f68a73199f24b766fc8baa0e7091ff27471a9ac333c1beb"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_SPECIFICATION_INVENTORY_V1.md",
+      "sha256": "7402f759ebf519dc72cc0a4c94ca1e2aa1d0d12d08476deaac023956b26231d1"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_STATE_MODEL_V1.md",
+      "sha256": "7d3425d1f48a99c2ecf3bbf0f3ebe490ff2fc45a5c6c7b79ccfbb176414f9f8c"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_TEST_COVERAGE_V1.md",
+      "sha256": "0499cf35b1dbd7c26a6cc2b05053b7ade183de08e236c51d4e6f671f10712605"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_TRIGGER_MATRIX_V1.md",
+      "sha256": "de1672e7f8a8060055266e93fcbaf3d807e8085d90f54e12bb66acacda20ed54"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_TRUST_INTERACTION_V1.md",
+      "sha256": "cfdcc2537883c228e4728de6aa53fefaa62bcd88394d15290709f7468cb363d8"
+    },
+    {
+      "relative_path": "CONTROLLED_ABSTENTION_VALIDATION_BOUNDARY_V1.md",
+      "sha256": "3c728619b7be0f13422194cfa0736d37f2a351f21a2c2b39bc1b93af0cc293d7"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "audit_metadata": {
+    "audit_id": "CONTROLLED_ABSTENTION_V1",
+    "status": "COMPLETE",
+    "timestamp": "2026-10-04T00:30:00Z"
+  },
+  "repository_state": {
+    "commit": "f4f45afcae0c699927ec3fe3cbefabe4a114839e",
+    "branch": "main",
+    "worktree": "NON-CLEAN"
+  },
+  "specification_results": {
+    "r0_r3_thresholding": "YES",
+    "missing_evidence_abstention": "YES",
+    "citation_support": "YES",
+    "contradiction_abstention": "YES"
+  },
+  "implementation_results": {
+    "evidence_eligibility_gate": "IMPLEMENTED",
+    "answer_safety_gate": "IMPLEMENTED",
+    "adaptive_trust_scorer": "IMPLEMENTED",
+    "claim_verifier_v2": "IMPLEMENTED"
+  },
+  "pre_generation_results": {
+    "zero_evidence": "FAIL_CLOSED",
+    "all_chunks_low_trust": "FAIL_CLOSED"
+  },
+  "post_generation_results": {
+    "unsupported_claim": "FAIL_CLOSED",
+    "invalid_citation": "FAIL_CLOSED",
+    "unsupported_relationship": "FAIL_CLOSED",
+    "contradiction": "FAIL_CLOSED"
+  },
+  "fail_closed_results": {
+    "overall": "PASS",
+    "silent_pass_found": false
+  },
+  "microcase_results": {
+    "executed_cases": 12,
+    "passed": 12,
+    "failed": 0,
+    "not_verified": 8
+  },
+  "provenance_results": {
+    "missing_citation": "UNSUPPORTED",
+    "invalid_citation": "UNSUPPORTED"
+  },
+  "relationship_results": {
+    "no_relevant_relation": "UNSUPPORTED",
+    "canonical_identity_matching": "KNOWN_FUTURE_GAP"
+  },
+  "reason_traceability_results": {
+    "traceable": true,
+    "claim_level_details_preserved": true
+  },
+  "environment_boundary": {
+    "unit_tested": true,
+    "offline_microcase_tested": true,
+    "integration_tested": false,
+    "e2e_provider_tested": false,
+    "provider_execution": "NONE"
+  },
+  "protected_artifact_integrity": {
+    "track_a_mutation": "NONE",
+    "retrieval_rerun": "NO",
+    "parameter_tuning": "NO",
+    "production_code_mutation": "NONE"
+  },
+  "findings": [
+    "Pre-generation gate successfully prevents ungrounded hallucinations from empty context.",
+    "Post-generation gate successfully aggregates structural citation failures into total abstention.",
+    "The relationship identity gap remains a structural limitation, relying on textual entailment for the exact relationship match."
+  ],
+  "final_status": "READY_FOR_RESUBMISSION"
+}

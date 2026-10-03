@@ -1,0 +1,38 @@
+{
+  "package_id": "CONTROLLED_ABSTENTION_ARTIFACT_COMPLETION_V1",
+  "timestamp": "2026-10-03T19:06:17.337216+00:00",
+  "files": [
+    {
+      "filename": "CONTROLLED_ABSTENTION_FINAL_OUTPUT_MATRIX_V1_EVIDENCE.json",
+      "sha256": "ecaa70424d6ffc7961440f43591d6764222dd1b9c4c0181cd20935c98d5f9e81",
+      "artifact_role": "evidence",
+      "source_of_truth": "artifact_completion_v1",
+      "historical_or_completion": "completion",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CONTROLLED_ABSTENTION_MASTER_CONTROL_MATRIX_V1_EVIDENCE.json",
+      "sha256": "0756b4fd5a6cfde18d3745a52935e023f936ad4e596c723642038ab26aff1d18",
+      "artifact_role": "evidence",
+      "source_of_truth": "artifact_completion_v1",
+      "historical_or_completion": "completion",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CONTROLLED_ABSTENTION_MASTER_CONTROL_MATRIX_V1_EVIDENCE.md",
+      "sha256": "6e908e422c2d7adf1f534ac3090e88337547ed49fa0997c0973f69133f7ad0b2",
+      "artifact_role": "evidence",
+      "source_of_truth": "artifact_completion_v1",
+      "historical_or_completion": "completion",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CONTROLLED_ABSTENTION_RESULTS_V1_EVIDENCE.json",
+      "sha256": "e0efa4af308c47bca7730ab6199a9b4c7181d0f27de7039d7f3b08dba8aa2471",
+      "artifact_role": "evidence",
+      "source_of_truth": "artifact_completion_v1",
+      "historical_or_completion": "completion",
+      "verification_status": "verified"
+    }
+  ]
+}
