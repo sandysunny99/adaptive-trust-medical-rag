@@ -1,0 +1,15 @@
+{
+  "total_positions": 530,
+  "abstract_available": 522,
+  "abstract_unavailable": 8,
+  "missing_position_ids": [
+    "pos-10aae2c8",
+    "pos-3d27c5b0",
+    "pos-4c8cc2be",
+    "pos-86bb114a",
+    "pos-a9e7c46c",
+    "pos-aa15aacd",
+    "pos-b162a84a",
+    "pos-bc7bb827"
+  ]
+}

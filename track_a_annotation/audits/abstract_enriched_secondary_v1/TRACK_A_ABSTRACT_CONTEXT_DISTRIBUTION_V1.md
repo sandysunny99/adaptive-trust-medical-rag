@@ -1,0 +1,36 @@
+# TRACK A ABSTRACT CONTEXT DISTRIBUTION
+
+```json
+{
+  "context_contribution": {
+    "CLARIFIES_CONTEXT": 100,
+    "NO_ADDITIONAL_CONTEXT": 329,
+    "REVEALS_CONTRADICTION_OR_TENSION": 76,
+    "REVEALS_INSUFFICIENCY": 7,
+    "SUPPORTS_EXISTING_INTERPRETATION": 10
+  },
+  "evidence_sufficiency": {
+    "PARTIALLY_SUFFICIENT": 100,
+    "INSUFFICIENT": 336,
+    "CONTRADICTED_OR_QUALIFIED": 76,
+    "SUFFICIENT_FOR_EXISTING_DECISION": 10
+  },
+  "entity_alignment": {
+    "PARTIAL_ALIGNMENT": 100,
+    "MISALIGNED": 329,
+    "ABSTRACT_UNAVAILABLE": 76,
+    "GENERAL_CONTEXT_ONLY": 7,
+    "EXACT_ALIGNMENT": 10
+  },
+  "contradiction_status": {
+    "NONE": 446,
+    "MATERIAL_TENSION": 76
+  },
+  "missing_context": {
+    "MECHANISM": 100,
+    "POPULATION": 100,
+    "CLINICAL_CONTEXT": 7,
+    "OUTCOME": 7
+  }
+}
+```

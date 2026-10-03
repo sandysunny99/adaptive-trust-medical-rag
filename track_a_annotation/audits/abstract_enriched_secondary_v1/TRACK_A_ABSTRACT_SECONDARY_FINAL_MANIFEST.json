@@ -1,0 +1,89 @@
+{
+  "package_id": "TRACK_A_ABSTRACT_SECONDARY_ANALYSIS_V1",
+  "status": "CLOSED",
+  "dataset_size": 530,
+  "abstract_available": 522,
+  "abstract_unavailable": 8,
+  "secondary_analysis_records": 522,
+  "ground_truth_mutation": false,
+  "canonical_mutation": false,
+  "registry_mutation": false,
+  "benchmark_locked": true,
+  "retrieval_rerun": false,
+  "parameter_tuning": false,
+  "provider_execution": false,
+  "historical_annotations_preserved": true,
+  "historical_span_anomalies_preserved": true,
+  "artifacts": [
+    {
+      "relative_path": "TRACK_A_ABSTRACT_COVERAGE_AUDIT.md",
+      "byte_size": 198,
+      "sha256": "c13e5538dde8901f675c6610df17187c8c171a54f591394a979114679df6a070"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_COVERAGE_AUDIT.json",
+      "byte_size": 292,
+      "sha256": "2f3405e8f0f984e67aeb264da4f8ad5b4fbde4b56f2851af4755aa80c466bbf7"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_ANALYSIS_SCHEMA_V1.md",
+      "byte_size": 200,
+      "sha256": "94044103fdb37407c9344f04f9d20d20680ae4bef31bb4f056099fa6849bb0bc"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_ANALYSIS_522.jsonl",
+      "byte_size": 606845,
+      "sha256": "1bc83b25f68cf9d2e660ed9f96f7e67e3be2f2b91770ee79bcd43ea4abfc83ae"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_ANALYSIS_522.md",
+      "byte_size": 113,
+      "sha256": "881b85bc4c732f05b6698cc57eaa17d349cabf51d3386bdbcdd929193d032b35"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_CONTEXT_DISTRIBUTION_V1.json",
+      "byte_size": 785,
+      "sha256": "e7637fc55e2ca90f8e423ef4d3a2521e65d040d0b53764e101e41b20a208fb2c"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_CONTEXT_DISTRIBUTION_V1.md",
+      "byte_size": 842,
+      "sha256": "935825a7f8052fb96ee9dc150b205c818bc960e064ca448b3e8078fa8260aa67"
+    },
+    {
+      "relative_path": "TRACK_A_EVIDENCE_SUFFICIENCY_ANALYSIS_V1.md",
+      "byte_size": 111,
+      "sha256": "64c478ba3c520bb676893c4625040d97290cb05e685f7a605c0d1206c241e609"
+    },
+    {
+      "relative_path": "TRACK_A_DECISION_BOUNDARY_ANALYSIS_V1.md",
+      "byte_size": 152,
+      "sha256": "9a95a906742779c28b346606bdf40bc3d85e3e3a8e3079422b0414aced378f83"
+    },
+    {
+      "relative_path": "TRACK_A_RESEARCHER_REVIEW_CANDIDATES_V1.jsonl",
+      "byte_size": 93954,
+      "sha256": "891c2350d3f68165b47224ec1b3206e5be26932866610416ed51134309fef596"
+    },
+    {
+      "relative_path": "TRACK_A_RESEARCHER_REVIEW_CANDIDATES_V1.md",
+      "byte_size": 88,
+      "sha256": "67224cde63726e626a6ca46d5fdf44f809527377b1e082c1810aa6e510c1d498"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_INTEGRITY_AUDIT.md",
+      "byte_size": 116,
+      "sha256": "32865e23a15b3e38be755d775aaf5a95330db25f0856ef638b8393257aaed8ce"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_INTEGRITY_AUDIT.json",
+      "byte_size": 59,
+      "sha256": "9f18886b78d572d0043a32dc2211b0b0e651e944e87de26113a8f8eeeda44171"
+    },
+    {
+      "relative_path": "TRACK_A_ABSTRACT_SECONDARY_MANIFEST.json",
+      "byte_size": 110,
+      "sha256": "101d6baaeaa365bacf9c8182c2fa493711254ed964958654f41d42776209e58c"
+    }
+  ]
+}
