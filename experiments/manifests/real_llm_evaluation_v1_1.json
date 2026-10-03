@@ -1,0 +1,55 @@
+{
+  "protocol_version": "REAL_LLM_EVALUATION_PROTOCOL_V1_1",
+  "dataset_path": "experiments/manifests/v3_1_human_cases.json",
+  "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
+  "case_count": 80,
+  "case_ids_hash": "bb47d3c18a0c9bf5488437bc0bca873c4cd5ee4a2d6c7f8ce133ac6cd505da2f",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "max_tokens": null,
+  "seed_support": "NOT_SUPPORTED",
+  "prompt_version": "REAL_LLM_PROMPT_V1",
+  "prompt_hash": "1d461a83fd6ade33291ce565a0032cdb01c73d2b76386dc68c5dc12aa0970c09",
+  "experimental_factor": "INTEGRATED_ADAPTIVE_TRUST_AWARE_EVIDENCE_CONTROL_LAYER",
+  "answer_level_medical_ground_truth": "NOT_AVAILABLE",
+  "arm_definitions": {
+    "ARM_A_BASELINE": {
+      "description": "Baseline RAG + Groq Real LLM (Trust Control DISABLED, Abstention DEFAULT, Claim Verification DISABLED)",
+      "trust_control": "DISABLED",
+      "abstention": "DEFAULT",
+      "claim_verification": "DISABLED"
+    },
+    "ARM_B_ADAPTIVE": {
+      "description": "Adaptive Trust-Aware RAG + Groq Real LLM (Trust Control ENABLED, Abstention ENABLED, Claim Verification ENABLED)",
+      "trust_control": "ENABLED",
+      "abstention": "ENABLED",
+      "claim_verification": "ENABLED"
+    }
+  },
+  "metrics": {
+    "claim_support_rate": "Proportion of generated factual claims that are successfully verified against the cited retrieved evidence. NOT a measure of medical answer correctness.",
+    "citation_validation_rate": "Proportion of generated citations that map to valid retrieved chunks.",
+    "unsupported_answer_rate": "Proportion of answers containing at least one UNSUPPORTED_OR_UNVERIFIED_CLAIM.",
+    "abstention_rate": "OBSERVED_ABSTENTION_RATE. (Abstention correctness cannot be evaluated without expected-abstention ground truth).",
+    "provider_failure_rate": "Provider failures / total authorized provider requests."
+  },
+  "failure_policy": "Provider failures are explicitly recorded. No retries, no imputation, no fallback.",
+  "abstention_policy": "Controlled abstentions are recorded. Excluded from claim support rates.",
+  "security_scope": "EXCLUDED",
+  "retrieval_scope": "FROZEN_HISTORICAL_OUTPUT",
+  "request_budget": 160,
+  "reproducibility_statement": "seed=NOT_SUPPORTED. Strict deterministic replay is FALSE.",
+  "protected_artifacts": [
+    "Track A Benchmark",
+    "Gate 5",
+    "Trust/Evidence remediation",
+    "Claim-Evidence remediation",
+    "Controlled Abstention",
+    "Canonical Relationship Identity",
+    "RG-02",
+    "Phase 15"
+  ],
+  "authorization_status": "PENDING_RESEARCHER_DECISION",
+  "execution_authorized": false
+}
