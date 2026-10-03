@@ -1,5 +1,6 @@
 import os
-from typing import Protocol
+from typing import Protocol, Any
+from dataclasses import dataclass
 
 from adaptive_trust_medical_rag.common.model_result import ModelGenerationResult
 
@@ -10,7 +11,13 @@ class ConfigurationError(RuntimeError):
 
 
 class LLMBackend(Protocol):
-    async def generate(self, prompt: str) -> ModelGenerationResult: ...
+    def generate(self, prompt: str) -> Any: ...
+
+
+@dataclass
+class GenerationConfig:
+    temperature: float = 0.0
+    max_tokens: int | None = None
 
 
 def get_backend() -> LLMBackend:
@@ -26,9 +33,11 @@ def get_backend() -> LLMBackend:
         from adaptive_trust_medical_rag.llm_routing.config import RoutingConfig, ProviderConfig
         from adaptive_trust_medical_rag.llm_routing.routed_llm_backend import RoutedLLMBackend
         from adaptive_trust_medical_rag.llm_routing.types import RoutingMode
+        from .sync_adapter import SyncLLMBackendAdapter
         
         backends = {}
         providers_list = []
+        gen_config = GenerationConfig()
         
         # Determine primary provider from env (default: groq for normal mode)
         primary = os.getenv("LLM_PRIMARY_PROVIDER", "groq")
@@ -38,7 +47,12 @@ def get_backend() -> LLMBackend:
         if groq_api_key:
             from .groq_backend import GroqBackend
             groq_model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
-            backends["groq"] = GroqBackend(api_key=groq_api_key, model_name=groq_model)
+            backends["groq"] = GroqBackend(
+                api_key=groq_api_key, 
+                model_name=groq_model,
+                temperature=gen_config.temperature,
+                max_tokens=gen_config.max_tokens,
+            )
             groq_priority = 1 if primary == "groq" else 2
             providers_list.append(ProviderConfig(name="groq", priority=groq_priority, model_id=groq_model, api_key_env_var="GROQ_API_KEY"))
             
@@ -78,7 +92,7 @@ def get_backend() -> LLMBackend:
         config = RoutingConfig(mode=routing_mode, providers=providers_list)
         router = LLMProviderRouter(config=config, backends=backends)
         
-        return RoutedLLMBackend(router=router)
+        return SyncLLMBackendAdapter(RoutedLLMBackend(router=router))
     else:
         raise ConfigurationError(f"Invalid or missing LLM_MODE: {mode}")
 

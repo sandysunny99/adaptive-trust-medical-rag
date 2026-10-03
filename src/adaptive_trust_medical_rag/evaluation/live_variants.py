@@ -133,6 +133,13 @@ class LiveModelAdapter:
         from adaptive_trust_medical_rag.llm_backend import get_backend
 
         backend = get_backend()
+        import inspect
+        
+        if not inspect.iscoroutinefunction(backend.generate):
+            # Synchronous backend (e.g. SyncLLMBackendAdapter)
+            backend.generate(prompt)
+            return getattr(backend, "last_result", None)
+
         try:
             return asyncio.run(backend.generate(prompt))
         except RuntimeError:
@@ -164,6 +171,8 @@ def load_evidence_corpus(manifest_path: str | Path | None = None) -> list[Candid
     data = json.loads(p.read_text(encoding="utf-8"))
     candidates = []
     for doc in data.get("documents", []):
+        # Compute SHA-256 content hash per ingestion skill contract
+        content_hash = hashlib.sha256(doc["text"].encode("utf-8")).hexdigest()
         c = Candidate(
             chunk_id=doc["chunk_id"],
             document_id=doc["document_id"],
@@ -177,6 +186,15 @@ def load_evidence_corpus(manifest_path: str | Path | None = None) -> list[Candid
                 "title": doc.get("title", ""),
                 "source": doc.get("source", ""),
                 "authority_tier": doc.get("authority_tier", "tier_1_peer_reviewed"),
+                "freshness_score": 0.8,
+                "provenance": {
+                    "source": doc.get("source", ""),
+                    "source_url": doc.get("source_url", ""),
+                    "document_id": doc.get("document_id", ""),
+                    "content_hash": content_hash,
+                    "source_authority": float(doc.get("authority_score", 1.0)),
+                    "validation_status": "validated",
+                },
             },
         )
         candidates.append(c)

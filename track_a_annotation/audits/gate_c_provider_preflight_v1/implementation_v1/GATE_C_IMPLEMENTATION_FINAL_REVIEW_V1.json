@@ -1,0 +1,19 @@
+{
+  "LLMBackend_compatibility": "PASS",
+  "Async_to_sync_bridge": "PASS",
+  "Factory_integration": "PASS",
+  "ModelGenerationResult_extraction": "PASS",
+  "Event_loop_safety": "PASS",
+  "Groq_configuration": "PASS",
+  "Reproducibility_controls": "PARTIAL",
+  "Credential_safety": "PASS",
+  "Trust_preservation": "PASS",
+  "Claim_Evidence_preservation": "PASS",
+  "Canonical_Identity_preservation": "PASS",
+  "Controlled_Abstention_preservation": "PASS",
+  "RG_02_preservation": "PASS",
+  "Provider_failure_handling": "PASS",
+  "Track_A": "UNCHANGED",
+  "Retrieval": "NOT_RERUN",
+  "Provider_execution": "NONE"
+}
