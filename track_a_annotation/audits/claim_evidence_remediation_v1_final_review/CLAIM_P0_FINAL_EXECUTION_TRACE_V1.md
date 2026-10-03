@@ -1,0 +1,11 @@
+# P0 FINAL EXECUTION TRACE
+- `ClaimVerifierV2.verify(answer, evidence)`
+- `decompose_into_claims(answer)` -> `AtomicClaim` objects.
+- `_evaluate_pair` calculates chunk entailments.
+- `citation_resolves` checks if cited indices exist.
+- `citation_supports` checks if `max(ent)` across CITED chunks > `max(con, neu)`.
+- Enforce block: If `citation_present` is True:
+  - If `citation_contradicts`, sets `CONTRADICTED`.
+  - If `not citation_resolves` or `not citation_supports`, sets `UNSUPPORTED`.
+  - Else sets `global_state`.
+- Finally `GateDecision` processes `FinalSupportState`.

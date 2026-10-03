@@ -1,0 +1,192 @@
+{
+  "package_id": "CLAIM_EVIDENCE_REMEDIATION_V1",
+  "status": "READY_FOR_COMMIT",
+  "p0_provenance": "CONFIRMED_REMEDIATED",
+  "p1_trust": "CONFIRMED_REMEDIATED",
+  "p1_relationship": "STATUS_LEVEL_REMEDIATED",
+  "relationship_identity_gap": true,
+  "track_a_mutation": false,
+  "abstract_secondary_mutation": false,
+  "trust_p0_v2_mutation": false,
+  "retrieval_rerun": false,
+  "parameter_tuning": false,
+  "provider_execution": false,
+  "artifacts": [
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_BEFORE_AFTER_V1.md",
+      "sha256": "3f3cb531048aae755637a60fc99837c66ad229bb4f68a863f512a4129191a481"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_CONTRACT_V1.md",
+      "sha256": "c5b7e92c6bc440d83d6b80ad452d7c605b9d2315fe72ac8b464928963d9da62e"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_FULL_REGRESSION_V1.md",
+      "sha256": "ebdd5a783b1c5dfdbeb303293d17109b8a84510e6f300fa9ce8957e8717d8d3a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_MICROCASES_V1.json",
+      "sha256": "ee8a317271c331353a787c6085a9eeca367ab11c86d534afa46257580b62f029"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_MICROCASE_RESULTS_V1.md",
+      "sha256": "791496bbe8e8cae3ee86e738731979715150a7c5b61d112629ee1c5f0fb114f2"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_P0_REGRESSION_REPORT_V1.md",
+      "sha256": "fbd67327c49197e2a58a92ef9011c1fe50f77858112754510c38c81a16659154"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_RELATIONSHIP_REGRESSION_REPORT_V1.md",
+      "sha256": "00402e7eabe60e3d54e190dc20bd833df42a7779e58a94eb3d39c8f09ce659b3"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMAINING_RISKS_V1.md",
+      "sha256": "eb7dfeb5fd0df3db886f292fdef37533511785b70c0900ff5787b24c1b2ad9c5"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_FINAL_CLOSE_REPORT.md",
+      "sha256": "28c7ea60e2a63773cd8cf1365b82835af6c6534902ca05ae7d1f4a86846260f6"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_INTEGRITY_V1.md",
+      "sha256": "522ae6cd14ccc1ec31e9611b507c6beb88591ea2e7965f7db98aaadf3ffba1b2"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_MANIFEST_V1.json",
+      "sha256": "cabc79dc85926d180c6b3134d1a76f1e58bd0984a868591f45f3b310c2ac5e1f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_PRE_BASELINE.json",
+      "sha256": "b2743a606ad85c130b9d3022b201e10373fc31197adac7d1870615ffe2e24b99"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_PRE_BASELINE.md",
+      "sha256": "9bbbc4a456d743e1d68409835d7601c8c7cb672c906951643c20c65dbb301926"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_REMEDIATION_RESULTS_V1.json",
+      "sha256": "3486828affa5a8991328ad845b1f144d36dd1a4f5035c993df01a13e8d2898b0"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_SERIALIZATION_REGRESSION_V1.md",
+      "sha256": "5c162128bac80a8c0a46bdc3d5757e2b13797b5664ce88e4143cd5288a9882d3"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_EVIDENCE_TRUST_REGRESSION_REPORT_V1.md",
+      "sha256": "9a5c4bdd196732aace05c80a0d7d9aab7b870fba37af64b343119697850bc193"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_PROVENANCE_EXECUTION_PATH_V1.md",
+      "sha256": "d44e07a0ff38b69f1fb8846ab3a4df03a5130ae1f474a52e7daeaed49e478574"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_PROVENANCE_REMEDIATION_DESIGN_V1.md",
+      "sha256": "88bfc4ffb1d3eb091bf578830668673f1caed44ef80d4f35f7739554e4138416"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_PROVENANCE_REMEDIATION_REPORT_V1.md",
+      "sha256": "dfe6c95c4766a1e000869588cb64b5d043d1b38a468f686f28e91a3fb5c6f518"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_RELATIONSHIP_SCOPE_REMEDIATION_V1.md",
+      "sha256": "b232a97fbe12df8e658f43235b4115856fa5d169d9e50dd11d8807a2c48cf0bf"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1/CLAIM_TRUST_PROPAGATION_REMEDIATION_V1.md",
+      "sha256": "5da1f7bf5ef48ab0a1243b28d1bc3632109ecc9570ca31e2d9f9184d9e59feef"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_ADVERSARIAL_CASES_V1.json",
+      "sha256": "53d7900ecdccfbfcca172990134a15f2a7f09f9701875d2f2bf417723e4ecf8a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_ERROR_HANDLING_REGRESSION_V1.md",
+      "sha256": "8b41b98d4d97876384572dcfaee5aeee3bf2e6571efd6f0bec7f716d8ab9bc5a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_FINAL_INTEGRITY_AUDIT_V1.md",
+      "sha256": "a9552b47f164851702267574fccce51c8a795ad9893b6957f760f26c13e4c02d"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_FINAL_REVIEW_MANIFEST_V1.json",
+      "sha256": "9aa5b46a1137bb31930677f5674b1b64a2194d63bbb588d957f0ca0245734937"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_FINAL_REVIEW_RESULTS_V1.json",
+      "sha256": "0673732280047881d5f1e06f02e0156df53a2891e516fc68abb021f0d904b165"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_FINDINGS_RECLASSIFICATION_V1.json",
+      "sha256": "3503507d3a02aba327ac0c6f27c1958240900c9ef065c55ac84903f5d668bd1a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_FULL_REGRESSION_FINAL_V1.md",
+      "sha256": "7f9cc535475c91eed159ad0b99965b187c38f61dba1aa8cc892beaf1760ef75d"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_OUTPUT_GATE_FINAL_AUDIT_V1.md",
+      "sha256": "b47fb7690ec5dc848e4431cc8ebce01d3bbc67fc7e70cb75c2634072a76fc69a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_PRODUCTION_SCOPE_AUDIT_V1.md",
+      "sha256": "01cb7342c1918836ce3041373f4a2261b47472581d5617a9883052afdc091d53"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_REMAINING_GAPS_V1.md",
+      "sha256": "e6100ecdb458eef26eb5c4e40dd93c8857eb79533bd2f4604d91e684f9ec85d0"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_REMEDIATION_FINAL_REVIEW_V1.md",
+      "sha256": "0fd45a8aaf5fe14334d78ece0aef27fa59e3c3d80dc17553d8581a8956b02009"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_SCIENTIFIC_BOUNDARY_V1.md",
+      "sha256": "5e8b6170ade95bf0f6dc4eaea1435b3bf65ebc7e426b15312d40fba0c1702cc0"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_EVIDENCE_SERIALIZATION_REGRESSION_V1.md",
+      "sha256": "f466aa780f21a51528b0f074f177aa4af6cdbd6d0c733194007e85ba4bd5a02a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P0_ADVERSARIAL_CITATION_TEST_V1.md",
+      "sha256": "070aa289179a0e43f9960eca3a19717e91ab03da6738ddaa0fe0583b8517fd50"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P0_FINAL_EXECUTION_TRACE_V1.md",
+      "sha256": "354abb56e047738fb9bf7aae9156498d62213b350e3428c4b7a9d8c61ecb0d8f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P0_GLOBAL_VS_CITED_SUPPORT_V1.md",
+      "sha256": "0272b0bc30601800a1755d82a8e543507e1a76ad68f49c5bbdfcdc834aa28edf"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P0_INVALID_CITATION_TEST_V1.md",
+      "sha256": "1978e7c1879955bd297e432022316ccd9821db3029f77305500a0d57c4dafa30"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P0_MULTI_CITATION_TEST_V1.md",
+      "sha256": "004e2c57b87956689925b1c600c5703ca3d45bae11e2becaed21ae68cc9130cc"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P1_RELATIONSHIP_ADVERSARIAL_TEST_V1.md",
+      "sha256": "1df510db1e42dff9e3173730d75ddbd33e478c465efd456d46ee68e2487f19e7"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P1_RELATIONSHIP_SCOPE_FINAL_TRACE_V1.md",
+      "sha256": "9ef639fa11c37a290dbe55eb2c96fa53b771d5fbf87077013164a2a4ea71680c"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P1_RG02_PRESERVATION_V1.md",
+      "sha256": "2bed5787e4b368127af57001c42789da919a432c7c1b317c861be06a0669e6e3"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P1_TRUST_METADATA_REGRESSION_V1.md",
+      "sha256": "a1792d631d3f0bddadd5a4c0a3a553e2b4a523d8a294cdee7f7f3680152f4eb5"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/claim_evidence_remediation_v1_final_review/CLAIM_P1_TRUST_PROPAGATION_FINAL_TRACE_V1.md",
+      "sha256": "4c3388df76cbe7c0b1a7b4a72c2a5e82ff0abc2301480f8e02e0b6aefcb6a615"
+    }
+  ]
+}

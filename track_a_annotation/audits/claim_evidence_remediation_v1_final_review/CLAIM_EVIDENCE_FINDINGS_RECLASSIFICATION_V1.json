@@ -1,0 +1,29 @@
+[
+  {
+    "finding_id": "CEA-P0-001",
+    "original_severity": "P0",
+    "final_status": "CONFIRMED_REMEDIATED",
+    "evidence": [
+      "CLAIM_P0_ADVERSARIAL_CITATION_TEST_V1.md"
+    ],
+    "remaining_gap": null
+  },
+  {
+    "finding_id": "CEA-P1-002",
+    "original_severity": "P1",
+    "final_status": "CONFIRMED_REMEDIATED",
+    "evidence": [
+      "CLAIM_P1_TRUST_METADATA_REGRESSION_V1.md"
+    ],
+    "remaining_gap": null
+  },
+  {
+    "finding_id": "CEA-P1-003",
+    "original_severity": "P1",
+    "final_status": "CONFIRMED_REMEDIATED",
+    "evidence": [
+      "CLAIM_P1_RELATIONSHIP_ADVERSARIAL_TEST_V1.md"
+    ],
+    "remaining_gap": "Propagates status flag rather than canonical relational identity."
+  }
+]

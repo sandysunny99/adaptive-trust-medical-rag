@@ -89,7 +89,10 @@ class EvidenceChunk:
     chunk_id: str
     text: str
     source_authority: float = 0.8
-    citation_index: int = 0  # 1-based [Source N] index
+    citation_index: int = 0
+    trust_score: float = 0.0
+    missing_factors: list[str] = field(default_factory=list)
+    relationship_scope: str | None = None  # 1-based [Source N] index
 
 
 @dataclass

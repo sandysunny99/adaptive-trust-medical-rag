@@ -1,0 +1,37 @@
+{
+  "P0_Adversarial": {
+    "global_entailment": 0.9,
+    "citation_resolves": true,
+    "citation_supports": false,
+    "final_support_state": "UNSUPPORTED",
+    "gate_decision": "qualify",
+    "passed": true
+  },
+  "Multi_Citation": {
+    "citation_supports": false,
+    "final_support_state": "UNSUPPORTED",
+    "passed": false
+  },
+  "Invalid_Citation": {
+    "citation_resolves": false,
+    "final_support_state": "UNSUPPORTED",
+    "passed": true
+  },
+  "Missing_Citation": {
+    "citation_present": false,
+    "final_support_state": "UNSUPPORTED",
+    "passed": true
+  },
+  "Trust_Propagation": {
+    "trust_score": 0.4,
+    "missing_factors": [
+      "query_relevance"
+    ],
+    "passed": true
+  },
+  "Relationship_Scope": {
+    "relationship_scope": "NO_RELEVANT_RELATION",
+    "final_support_state": "UNSUPPORTED",
+    "passed": true
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "package_id": "CLAIM_EVIDENCE_REMEDIATION_FINAL_REVIEW_V1",
+  "timestamp": "2026-10-03T18:21:26.902750+00:00",
+  "artifacts": [
+    {
+      "relative_path": "CLAIM_EVIDENCE_ADVERSARIAL_CASES_V1.json",
+      "sha256": "53d7900ecdccfbfcca172990134a15f2a7f09f9701875d2f2bf417723e4ecf8a"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_ERROR_HANDLING_REGRESSION_V1.md",
+      "sha256": "8b41b98d4d97876384572dcfaee5aeee3bf2e6571efd6f0bec7f716d8ab9bc5a"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_FINAL_INTEGRITY_AUDIT_V1.md",
+      "sha256": "a9552b47f164851702267574fccce51c8a795ad9893b6957f760f26c13e4c02d"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_FINAL_REVIEW_RESULTS_V1.json",
+      "sha256": "0673732280047881d5f1e06f02e0156df53a2891e516fc68abb021f0d904b165"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_FINDINGS_RECLASSIFICATION_V1.json",
+      "sha256": "3503507d3a02aba327ac0c6f27c1958240900c9ef065c55ac84903f5d668bd1a"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_FULL_REGRESSION_FINAL_V1.md",
+      "sha256": "7f9cc535475c91eed159ad0b99965b187c38f61dba1aa8cc892beaf1760ef75d"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_OUTPUT_GATE_FINAL_AUDIT_V1.md",
+      "sha256": "b47fb7690ec5dc848e4431cc8ebce01d3bbc67fc7e70cb75c2634072a76fc69a"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_PRODUCTION_SCOPE_AUDIT_V1.md",
+      "sha256": "01cb7342c1918836ce3041373f4a2261b47472581d5617a9883052afdc091d53"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_REMAINING_GAPS_V1.md",
+      "sha256": "e6100ecdb458eef26eb5c4e40dd93c8857eb79533bd2f4604d91e684f9ec85d0"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_REMEDIATION_FINAL_REVIEW_V1.md",
+      "sha256": "0fd45a8aaf5fe14334d78ece0aef27fa59e3c3d80dc17553d8581a8956b02009"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_SCIENTIFIC_BOUNDARY_V1.md",
+      "sha256": "5e8b6170ade95bf0f6dc4eaea1435b3bf65ebc7e426b15312d40fba0c1702cc0"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_SERIALIZATION_REGRESSION_V1.md",
+      "sha256": "f466aa780f21a51528b0f074f177aa4af6cdbd6d0c733194007e85ba4bd5a02a"
+    },
+    {
+      "relative_path": "CLAIM_P0_ADVERSARIAL_CITATION_TEST_V1.md",
+      "sha256": "070aa289179a0e43f9960eca3a19717e91ab03da6738ddaa0fe0583b8517fd50"
+    },
+    {
+      "relative_path": "CLAIM_P0_FINAL_EXECUTION_TRACE_V1.md",
+      "sha256": "354abb56e047738fb9bf7aae9156498d62213b350e3428c4b7a9d8c61ecb0d8f"
+    },
+    {
+      "relative_path": "CLAIM_P0_GLOBAL_VS_CITED_SUPPORT_V1.md",
+      "sha256": "0272b0bc30601800a1755d82a8e543507e1a76ad68f49c5bbdfcdc834aa28edf"
+    },
+    {
+      "relative_path": "CLAIM_P0_INVALID_CITATION_TEST_V1.md",
+      "sha256": "1978e7c1879955bd297e432022316ccd9821db3029f77305500a0d57c4dafa30"
+    },
+    {
+      "relative_path": "CLAIM_P0_MULTI_CITATION_TEST_V1.md",
+      "sha256": "004e2c57b87956689925b1c600c5703ca3d45bae11e2becaed21ae68cc9130cc"
+    },
+    {
+      "relative_path": "CLAIM_P1_RELATIONSHIP_ADVERSARIAL_TEST_V1.md",
+      "sha256": "1df510db1e42dff9e3173730d75ddbd33e478c465efd456d46ee68e2487f19e7"
+    },
+    {
+      "relative_path": "CLAIM_P1_RELATIONSHIP_SCOPE_FINAL_TRACE_V1.md",
+      "sha256": "9ef639fa11c37a290dbe55eb2c96fa53b771d5fbf87077013164a2a4ea71680c"
+    },
+    {
+      "relative_path": "CLAIM_P1_RG02_PRESERVATION_V1.md",
+      "sha256": "2bed5787e4b368127af57001c42789da919a432c7c1b317c861be06a0669e6e3"
+    },
+    {
+      "relative_path": "CLAIM_P1_TRUST_METADATA_REGRESSION_V1.md",
+      "sha256": "a1792d631d3f0bddadd5a4c0a3a553e2b4a523d8a294cdee7f7f3680152f4eb5"
+    },
+    {
+      "relative_path": "CLAIM_P1_TRUST_PROPAGATION_FINAL_TRACE_V1.md",
+      "sha256": "4c3388df76cbe7c0b1a7b4a72c2a5e82ff0abc2301480f8e02e0b6aefcb6a615"
+    }
+  ]
+}

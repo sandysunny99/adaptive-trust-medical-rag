@@ -1,0 +1,70 @@
+{
+  "package_id": "CLAIM_EVIDENCE_REMEDIATION_V1",
+  "timestamp": "2026-10-03T18:13:20.306901+00:00",
+  "artifacts": [
+    {
+      "relative_path": "CLAIM_EVIDENCE_BEFORE_AFTER_V1.md",
+      "sha256": "3f3cb531048aae755637a60fc99837c66ad229bb4f68a863f512a4129191a481"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_CONTRACT_V1.md",
+      "sha256": "c5b7e92c6bc440d83d6b80ad452d7c605b9d2315fe72ac8b464928963d9da62e"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_FULL_REGRESSION_V1.md",
+      "sha256": "ebdd5a783b1c5dfdbeb303293d17109b8a84510e6f300fa9ce8957e8717d8d3a"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_MICROCASE_RESULTS_V1.md",
+      "sha256": "791496bbe8e8cae3ee86e738731979715150a7c5b61d112629ee1c5f0fb114f2"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_P0_REGRESSION_REPORT_V1.md",
+      "sha256": "fbd67327c49197e2a58a92ef9011c1fe50f77858112754510c38c81a16659154"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_RELATIONSHIP_REGRESSION_REPORT_V1.md",
+      "sha256": "00402e7eabe60e3d54e190dc20bd833df42a7779e58a94eb3d39c8f09ce659b3"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_REMAINING_RISKS_V1.md",
+      "sha256": "eb7dfeb5fd0df3db886f292fdef37533511785b70c0900ff5787b24c1b2ad9c5"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_REMEDIATION_INTEGRITY_V1.md",
+      "sha256": "522ae6cd14ccc1ec31e9611b507c6beb88591ea2e7965f7db98aaadf3ffba1b2"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_REMEDIATION_PRE_BASELINE.md",
+      "sha256": "9bbbc4a456d743e1d68409835d7601c8c7cb672c906951643c20c65dbb301926"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_SERIALIZATION_REGRESSION_V1.md",
+      "sha256": "5c162128bac80a8c0a46bdc3d5757e2b13797b5664ce88e4143cd5288a9882d3"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_TRUST_REGRESSION_REPORT_V1.md",
+      "sha256": "9a5c4bdd196732aace05c80a0d7d9aab7b870fba37af64b343119697850bc193"
+    },
+    {
+      "relative_path": "CLAIM_PROVENANCE_EXECUTION_PATH_V1.md",
+      "sha256": "d44e07a0ff38b69f1fb8846ab3a4df03a5130ae1f474a52e7daeaed49e478574"
+    },
+    {
+      "relative_path": "CLAIM_PROVENANCE_REMEDIATION_DESIGN_V1.md",
+      "sha256": "88bfc4ffb1d3eb091bf578830668673f1caed44ef80d4f35f7739554e4138416"
+    },
+    {
+      "relative_path": "CLAIM_PROVENANCE_REMEDIATION_REPORT_V1.md",
+      "sha256": "dfe6c95c4766a1e000869588cb64b5d043d1b38a468f686f28e91a3fb5c6f518"
+    },
+    {
+      "relative_path": "CLAIM_RELATIONSHIP_SCOPE_REMEDIATION_V1.md",
+      "sha256": "b232a97fbe12df8e658f43235b4115856fa5d169d9e50dd11d8807a2c48cf0bf"
+    },
+    {
+      "relative_path": "CLAIM_TRUST_PROPAGATION_REMEDIATION_V1.md",
+      "sha256": "5da1f7bf5ef48ab0a1243b28d1bc3632109ecc9570ca31e2d9f9184d9e59feef"
+    }
+  ]
+}
