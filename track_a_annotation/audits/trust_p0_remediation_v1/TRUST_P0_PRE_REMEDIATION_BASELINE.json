@@ -1,0 +1,7 @@
+{
+  "git_head": "cd6585822bdc9931d5fe944decaa9311326d83c1",
+  "files": {
+    "trust_scorer.py": "5708e101b8734f4f22e5ac39e916f8c81bf4f01e1328c54d1ca8e976fc86f3d0",
+    "test_trust_scorer.py": "ddd6bdd9ffc5e22dc1f32afe0c7f0b9dc6d3b94803874aa88a8b3d7591d22a0c"
+  }
+}

@@ -521,3 +521,29 @@ def test_invalid_risk_class_raises() -> None:
     scorer = AdaptiveTrustScorer()
     with pytest.raises(ValueError, match="Invalid risk class"):
         scorer.score("c", "R9", TrustFactorScores())
+
+def test_missing_query_relevance_vs_zero():
+    scorer = AdaptiveTrustScorer()
+    
+    factors_missing = TrustFactorScores(source_authority=0.8, freshness=0.8, population_match=0.8, consistency=0.8, entity_match=0.8, anti_poisoning=1.0, anti_injection=1.0)
+    factors_zero = TrustFactorScores(source_authority=0.8, query_relevance=0.0, evidence_quality=0.0, freshness=0.8, population_match=0.8, consistency=0.8, entity_match=0.8, anti_poisoning=1.0, anti_injection=1.0)
+    
+    res_missing = scorer.score("c1", "R1", factors_missing)
+    res_zero = scorer.score("c1", "R1", factors_zero)
+    
+    
+    assert "query_relevance" in res_missing.missing_factors
+    assert "query_relevance" not in res_zero.missing_factors
+
+def test_missing_population_match_vs_one():
+    scorer = AdaptiveTrustScorer()
+    
+    factors_missing = TrustFactorScores(source_authority=0.8, query_relevance=0.8, evidence_quality=0.8, consistency=0.8, entity_match=0.8, anti_poisoning=1.0, anti_injection=1.0)
+    factors_one = TrustFactorScores(source_authority=0.8, query_relevance=0.8, evidence_quality=0.8, freshness=1.0, population_match=1.0, consistency=0.8, entity_match=0.8, anti_poisoning=1.0, anti_injection=1.0)
+    
+    res_missing = scorer.score("c1", "R1", factors_missing)
+    res_one = scorer.score("c1", "R1", factors_one)
+    
+    assert res_missing.trust_score != res_one.trust_score
+    assert "population_match" in res_missing.missing_factors
+    assert "population_match" not in res_one.missing_factors

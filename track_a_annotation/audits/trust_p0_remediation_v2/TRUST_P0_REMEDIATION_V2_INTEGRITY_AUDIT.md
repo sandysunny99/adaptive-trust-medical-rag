@@ -1,0 +1,7 @@
+# TRUST P0 REMEDIATION V2 INTEGRITY AUDIT
+
+- Track A benchmark: LOCKED
+- Abstract Secondary: CLOSED
+- Canonical: UNCHANGED
+- F0/F3: UNCHANGED
+- Production Code: MODIFIED ONLY FOR V2 REMEDIATION

@@ -101,28 +101,27 @@ _trust_config = _load_trust_config()
 class TrustFactorScores:
     """All nine factor scores for a single evidence chunk.
 
-    All scores MUST be in [0.0, 1.0].
-    anti_poisoning = 1.0 − anomaly_score
-    anti_injection = 1.0 − injection_score
+    All scores MUST be in [0.0, 1.0] if provided.
+    Missing fields are explicitly represented as None.
     """
 
-    source_authority: float = 0.0
-    query_relevance: float = 0.0
-    evidence_quality: float = 0.0
-    freshness: float = 1.0
-    consistency: float = 1.0
-    entity_match: float = 0.0
-    population_match: float = 1.0
-    anti_poisoning: float = 1.0  # Default: assume clean until poisoning detected
-    anti_injection: float = 1.0  # Default: assume clean until injection detected
+    source_authority: float | None = None
+    query_relevance: float | None = None
+    evidence_quality: float | None = None
+    freshness: float | None = None
+    consistency: float | None = None
+    entity_match: float | None = None
+    population_match: float | None = None
+    anti_poisoning: float | None = None
+    anti_injection: float | None = None
 
     def __post_init__(self) -> None:
         for fname in TRUST_FACTORS:
             val = getattr(self, fname)
-            if not (0.0 <= val <= 1.0):
+            if val is not None and not (0.0 <= val <= 1.0):
                 raise ValueError(f"TrustFactorScores.{fname} = {val} is out of range [0.0, 1.0]")
 
-    def as_dict(self) -> dict[str, float]:
+    def as_dict(self) -> dict[str, float | None]:
         return {f: getattr(self, f) for f in TRUST_FACTORS}
 
 
@@ -137,19 +136,22 @@ class TrustScoringResult:
     weights: dict[str, float]
 
     trust_score: float
-    """Weighted composite score ∈ [0.0, 1.0]."""
+    """Weighted composite score in [0.0, 1.0]."""
 
     threshold: float
     """Eligibility threshold for this risk class."""
 
     is_eligible: bool
-    """True if trust_score ≥ threshold."""
+    """True if trust_score >= threshold."""
 
     config_hash: str
-    """SHA-256 of the weight config used — for reproducibility audit."""
+    """SHA-256 of the weight config used - for reproducibility audit."""
 
     score_breakdown: dict[str, float] = field(default_factory=dict)
-    """Per-factor weighted contribution: w_i × S_i."""
+    """Individual weighted contributions."""
+
+    missing_factors: list[str] = field(default_factory=list)
+    """List of factors that were missing and thus excluded from the aggregate calculation."""
 
     notes: list[str] = field(default_factory=list)
 
@@ -223,27 +225,45 @@ class AdaptiveTrustScorer:
         # Compute weighted contributions
         breakdown: dict[str, float] = {}
         total = 0.0
+        missing_factors = []
+        
+        # Policy: FULL DENOMINATOR (No Renormalization)
+        # Missing factors contribute 0.0 to the numerator but do not reduce the denominator.
+        weight_sum = sum(weights[f] for f in TRUST_FACTORS)
+
         for fname in TRUST_FACTORS:
-            contribution = round(weights[fname] * factor_dict[fname], 6)
+            val = factor_dict[fname]
+            if val is None:
+                missing_factors.append(fname)
+                continue
+            contribution = round(weights[fname] * val, 6)
             breakdown[fname] = contribution
             total += contribution
 
-        trust_score = round(total, 4)
+        if weight_sum > 0:
+            trust_score = round(total / weight_sum, 4)
+        else:
+            trust_score = 0.0
+
         is_eligible = trust_score >= threshold
         notes: list[str] = []
+
+        if missing_factors:
+            notes.append(f"Missing factors excluded from scoring: {', '.join(missing_factors)}")
 
         if not is_eligible:
             notes.append(
                 f"Chunk '{chunk_id}' disqualified: trust_score={trust_score:.4f} "
                 f"< {risk_class} threshold={threshold:.2f}. "
-                "Controlled abstention — chunk excluded from LLM context."
+                "Controlled abstention - chunk excluded from LLM context."
             )
             logger.info(
-                "ABSTAIN gate: chunk=%s risk=%s score=%.4f threshold=%.2f",
+                "ABSTAIN gate: chunk=%s risk=%s score=%.4f threshold=%.2f missing=%s",
                 chunk_id,
                 risk_class,
                 trust_score,
                 threshold,
+                missing_factors
             )
 
         return TrustScoringResult(
@@ -256,6 +276,7 @@ class AdaptiveTrustScorer:
             is_eligible=is_eligible,
             config_hash=self._config_hash,
             score_breakdown=breakdown,
+            missing_factors=missing_factors,
             notes=notes,
         )
 

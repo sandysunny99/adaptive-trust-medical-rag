@@ -1,0 +1,1 @@
+{"trust_scorer_tests": "PASS", "full_repository_tests": "PARTIAL_PASS_ENVIRONMENTAL_FAILURE", "environmental_error": "ModuleNotFoundError: transformers"}

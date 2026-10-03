@@ -1,0 +1,78 @@
+{
+  "package_id": "TRUST_P0_POLICY_DESIGN_V1",
+  "timestamp": "2026-10-03T17:26:07.062041+00:00",
+  "status": "REMEDIATION_DESIGN_REQUIRED",
+  "regression_status": "PARTIAL_PASS_ENVIRONMENTAL_FAILURE",
+  "artifacts": [
+    {
+      "relative_path": "TRUST_ALL_FACTORS_MISSING_POLICY_MATRIX_V1.md",
+      "byte_size": 1097,
+      "sha256": "edd413e099bbabec4dc19990348f2ea4b4e21ee2dc32ef74604f4886374b2c4b"
+    },
+    {
+      "relative_path": "TRUST_CURRENT_REMEDIATION_EXTREME_CASES_V1.md",
+      "byte_size": 609,
+      "sha256": "17644437bb2b651f5e8145e8327d4b52a324b2d7c2f46e2e281399b34e1c04c3"
+    },
+    {
+      "relative_path": "TRUST_CURRENT_REMEDIATION_SCIENTIFIC_BOUNDARY_V1.md",
+      "byte_size": 469,
+      "sha256": "29a88c44a6de964c463d814b581da544b704a042a1360e6e55d48f4f4ff88fab"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_ABSTENTION_INTERACTION_V1.md",
+      "byte_size": 595,
+      "sha256": "66f2662d5fd1e8b8a0c1aeb972fe14b594a95fb34755ea7a9158989093013e06"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_COMPLETENESS_AUDIT_V1.md",
+      "byte_size": 506,
+      "sha256": "8ca5ab233832103258f1031143c8fc56a358b29f430abdd1117c07eb1ca75f62"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_POLICY_GAP_V1.md",
+      "byte_size": 813,
+      "sha256": "817860aaf3e5a2d1348587a83edc7b4a14887575171f5adb3d277a85ed2a241c"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_POLICY_OPTIONS_V1.json",
+      "byte_size": 241,
+      "sha256": "b0e8558bbcb1b87855dfd4843f066c34e22a2ed4b965a82fbeab4db5b1d8f59c"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_POLICY_OPTIONS_V1.md",
+      "byte_size": 1617,
+      "sha256": "bd398c223ff4d0271d330e7f768bf9e881c4e56da39a5d75ab626764ed2d3b92"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_POLICY_SOURCE_MATRIX_V1.md",
+      "byte_size": 1290,
+      "sha256": "419af2e639a7a00c275af02b897567c491042597801241e0232cb589d3dd4181"
+    },
+    {
+      "relative_path": "TRUST_P0_POLICY_DECISION_V1.json",
+      "byte_size": 120,
+      "sha256": "f3ae4d5232776a22f08b3cde4fdfcaea8270015847e4a2db9f2e67df31a0e7a5"
+    },
+    {
+      "relative_path": "TRUST_P0_POLICY_DESIGN_DECISION_V1.md",
+      "byte_size": 870,
+      "sha256": "3ed974072e81db039218a7230c74981c0edeaf3f49feb65bbfb73fe8b7c340f8"
+    },
+    {
+      "relative_path": "TRUST_P0_POLICY_DESIGN_INTEGRITY_V1.md",
+      "byte_size": 228,
+      "sha256": "5ad17760292e952014786ebed74fb24e6a5e937b7e74e5fcbebf494aadf34af4"
+    },
+    {
+      "relative_path": "TRUST_R3_MISSING_DATA_SEMANTICS_V1.md",
+      "byte_size": 862,
+      "sha256": "728236ed088497e9607111abb3ced2fd59e4b755f4917a6e15ddb9c36f2dac6e"
+    },
+    {
+      "relative_path": "TRUST_REGRESSION_STATUS_CORRECTION_V1.json",
+      "byte_size": 153,
+      "sha256": "b98fe55356e7f902bf35e5580c31cf913401b36487119733e2b3151914659591"
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "package_id": "TRUST_P0_REMEDIATION_V2",
+  "status": "READY_FOR_COMMIT",
+  "original_p0": "CONFIRMED",
+  "v1_conflict": "VERIFIED",
+  "v2_policy": "VERIFIED",
+  "silent_imputation": "ELIMINATED",
+  "denominator_exclusion": "ELIMINATED",
+  "r3": "VERIFIED",
+  "abstention": "VERIFIED",
+  "trust_tests": "PASS",
+  "full_regression": "PARTIAL_PASS_ENVIRONMENTAL_FAILURE",
+  "track_a": 530,
+  "benchmark": "LOCKED",
+  "provider_execution": false,
+  "retrieval_rerun": false,
+  "parameter_tuning": false,
+  "track_a_mutation": false,
+  "abstract_secondary_mutation": false,
+  "artifacts": [
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_BEFORE_AFTER_BEHAVIOR_V1.md",
+      "byte_size": 551,
+      "sha256": "42371a46702949d6685af60064c11435c6b659ba135b6623ad3099e7457f4900"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_BEFORE_AFTER_V1.json",
+      "byte_size": 164,
+      "sha256": "8608f4fadf360fd095ea5fb964ef3e3d8a9e072a6689c7a50a94ac9d7c20e83b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_DOWNSTREAM_CONSUMER_MATRIX_V1.md",
+      "byte_size": 667,
+      "sha256": "03a73887e8d41865a3aebc648be203c76444375a2a6a9a2d64f7387d89b43560"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_MISSING_DATA_REGRESSION_MATRIX_V1.md",
+      "byte_size": 767,
+      "sha256": "f31d6dbd33ea8020ea14613f77609ae682fa5c3640a0ba7844ded7275a107ece"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_PRE_REMEDIATION_BASELINE.json",
+      "byte_size": 270,
+      "sha256": "859ca1337c2e254374d834ca6da9aad750f8b87cedbcf5ab4ea20c89db52b06b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_PRE_REMEDIATION_BASELINE.md",
+      "byte_size": 668,
+      "sha256": "112fdb13319a5cf1ab19cde613595f6e257861a79dbcaa394982a91324d95689"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMAINING_RISKS_V1.md",
+      "byte_size": 364,
+      "sha256": "4c3d0c71b2ccd64eb0467423bce48dc6d5862d5172509036612eea5e47c1e783"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMEDIATION_DESIGN_V1.md",
+      "byte_size": 1116,
+      "sha256": "f67b745fb5ae7feed77bfe1e49489a32b93df774d399590e623fdf37feacdd6b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMEDIATION_IMPLEMENTATION_REPORT_V1.md",
+      "byte_size": 814,
+      "sha256": "32231889df6341e0f7c8a2d150733c7a141b8f556d9ce3c07af33acf22b71e99"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMEDIATION_INTEGRITY_AUDIT_V1.md",
+      "byte_size": 296,
+      "sha256": "b306bfdeca4286d16e6a1bb3e1d19fba2163c947d3f1988f7bc6be2129e9dbfc"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMEDIATION_MANIFEST_V1.json",
+      "byte_size": 2770,
+      "sha256": "96b658238c1a51b27dec5a77e4ea1c709f0fa7411879027b2f963bd59170969b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_REMEDIATION_TEST_RESULTS_V1.json",
+      "byte_size": 141,
+      "sha256": "5f40e7efb82b03727dccefd8c729c3452fc55c339fb130c6abe995fc6ab007dc"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_SCIENTIFIC_IMPACT_AFTER_REMEDIATION_V1.md",
+      "byte_size": 302,
+      "sha256": "f840fa9c8784d4a502bcd9ffadbb181b305d0b490b16364da256145e1289c3ed"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v1/TRUST_P0_TEST_RESULTS_V1.md",
+      "byte_size": 259,
+      "sha256": "10d78ad39bf5cd6bc3f576edab9f2dcd8889704cad2b43bbe914aacb2b13da7b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_ABSTENTION_INTERACTION_V1.md",
+      "byte_size": 293,
+      "sha256": "b5c9b6d184a1195f75ed9daaa0e81069c955d47fa10e97e05c3ae151a808be6f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_ALL_FACTOR_REMEDIATION_MATRIX_V1.md",
+      "byte_size": 1012,
+      "sha256": "64446db1f28fd56771868d724c7dc1268b240e4905c37c0e6773287e030d690b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_EXTREME_CASE_ANALYSIS_V1.md",
+      "byte_size": 587,
+      "sha256": "bf88dac621210661bf8f5e0cd547b54430c9626b4d96d94136c8f347768b2067"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_FULL_REGRESSION_RESULTS_V1.md",
+      "byte_size": 339,
+      "sha256": "3f9e1bc9ba9e8b5ebe2873022605c87312272cecb5900f64915a4d67f4b52c9a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_NONE_DOWNSTREAM_SAFETY_AUDIT_V1.md",
+      "byte_size": 376,
+      "sha256": "fc398a1eda11731ff0beda40b84578e7843d290af64355bd03b000940430e2ba"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_POST_REMEDIATION_CALLSITE_AUDIT_V1.md",
+      "byte_size": 393,
+      "sha256": "07e4188c74201cd102ad61b5d38012c268ae0304c51afb4cbb59ab02cb3d653e"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_POST_REMEDIATION_RESULTS_V1.json",
+      "byte_size": 158,
+      "sha256": "c7962cda551ea1cee293901ac34fb2b99404b57ad266a295fa0d016208e3fc26"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_REMEDIATION_ACCEPTANCE_V1.md",
+      "byte_size": 447,
+      "sha256": "84375ecb17ca06a64b1a4630e239e483a25ff68352302f54a35ac8c269b6f944"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_REMEDIATION_REVIEW_INTEGRITY_V1.md",
+      "byte_size": 175,
+      "sha256": "8adfbd57abaf1e5ab7e6b42d8b4cab697f96643bcf3d0cd8605688e626c368a2"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_REMEDIATION_REVIEW_MANIFEST_V1.json",
+      "byte_size": 3116,
+      "sha256": "9f5e2b45ee8d65dbc18a6e9098cc023c20511628bbe4f2b838e93425d758b10f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_REMEDIATION_REVIEW_V1.md",
+      "byte_size": 876,
+      "sha256": "25510e6a6bb2a6644519c3995ae74952dc71136cce9fc2f2facf7a9cf9423f98"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_SCORING_CASE_MATRIX_V1.json",
+      "byte_size": 79,
+      "sha256": "5966c6bbf1a8a1eec6bf9e30071c4067ef0bfc0a9f99a7e54d1c43bd1cd2615f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_SCORING_SEMANTICS_VALIDATION_V1.md",
+      "byte_size": 621,
+      "sha256": "c6f35902910e7800fcb99d81b23ebeffd2f17626f534bf0bc999c1db6f8da087"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_SECURITY_REGRESSION_V1.md",
+      "byte_size": 288,
+      "sha256": "396d1f3e504f0f44fcad6850c5276fdae2a962fc99b849b1486fb6925d6be6c5"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_SERIALIZATION_VALIDATION_V1.md",
+      "byte_size": 270,
+      "sha256": "89118ae9c40ce03423467b0ce85d2ebaa773738de77d69d5d996de6e5f99ec2f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_review_v1/TRUST_P0_THRESHOLD_WEIGHT_STABILITY_V1.md",
+      "byte_size": 167,
+      "sha256": "d987ce7020cce71eef05435f99df33af0d206556463324c2d06a03b03323294b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_ALL_FACTORS_MISSING_POLICY_MATRIX_V1.md",
+      "byte_size": 1097,
+      "sha256": "edd413e099bbabec4dc19990348f2ea4b4e21ee2dc32ef74604f4886374b2c4b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_CURRENT_REMEDIATION_EXTREME_CASES_V1.md",
+      "byte_size": 609,
+      "sha256": "17644437bb2b651f5e8145e8327d4b52a324b2d7c2f46e2e281399b34e1c04c3"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_CURRENT_REMEDIATION_SCIENTIFIC_BOUNDARY_V1.md",
+      "byte_size": 469,
+      "sha256": "29a88c44a6de964c463d814b581da544b704a042a1360e6e55d48f4f4ff88fab"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_ABSTENTION_INTERACTION_V1.md",
+      "byte_size": 595,
+      "sha256": "66f2662d5fd1e8b8a0c1aeb972fe14b594a95fb34755ea7a9158989093013e06"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_COMPLETENESS_AUDIT_V1.md",
+      "byte_size": 506,
+      "sha256": "8ca5ab233832103258f1031143c8fc56a358b29f430abdd1117c07eb1ca75f62"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_POLICY_GAP_V1.md",
+      "byte_size": 813,
+      "sha256": "817860aaf3e5a2d1348587a83edc7b4a14887575171f5adb3d277a85ed2a241c"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_POLICY_OPTIONS_V1.json",
+      "byte_size": 241,
+      "sha256": "b0e8558bbcb1b87855dfd4843f066c34e22a2ed4b965a82fbeab4db5b1d8f59c"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_POLICY_OPTIONS_V1.md",
+      "byte_size": 1617,
+      "sha256": "bd398c223ff4d0271d330e7f768bf9e881c4e56da39a5d75ab626764ed2d3b92"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_MISSING_DATA_POLICY_SOURCE_MATRIX_V1.md",
+      "byte_size": 1290,
+      "sha256": "419af2e639a7a00c275af02b897567c491042597801241e0232cb589d3dd4181"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_P0_POLICY_DECISION_V1.json",
+      "byte_size": 120,
+      "sha256": "f3ae4d5232776a22f08b3cde4fdfcaea8270015847e4a2db9f2e67df31a0e7a5"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_P0_POLICY_DESIGN_DECISION_V1.md",
+      "byte_size": 870,
+      "sha256": "3ed974072e81db039218a7230c74981c0edeaf3f49feb65bbfb73fe8b7c340f8"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_P0_POLICY_DESIGN_INTEGRITY_V1.md",
+      "byte_size": 228,
+      "sha256": "5ad17760292e952014786ebed74fb24e6a5e937b7e74e5fcbebf494aadf34af4"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_P0_POLICY_DESIGN_MANIFEST_V1.json",
+      "byte_size": 2938,
+      "sha256": "dffbaa13349296fdc1c05807a16db3f0f55759293e8a58ef044594d5a8385efc"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_R3_MISSING_DATA_SEMANTICS_V1.md",
+      "byte_size": 862,
+      "sha256": "728236ed088497e9607111abb3ced2fd59e4b755f4917a6e15ddb9c36f2dac6e"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_policy_design_v1/TRUST_REGRESSION_STATUS_CORRECTION_V1.json",
+      "byte_size": 153,
+      "sha256": "b98fe55356e7f902bf35e5580c31cf913401b36487119733e2b3151914659591"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_ABSTENTION_REGRESSION_V2.md",
+      "byte_size": 282,
+      "sha256": "3bfdc36240f59d2f3a74af4e1f8f6841a585402daec1be0662a894c24afecd4a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_BEFORE_V1_V2_COMPARISON.md",
+      "byte_size": 563,
+      "sha256": "a8e8958fe4862c7eb1e7ba56c157daeaa5b243877915e51f44adb659e6151219"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_DOWNSTREAM_INTEGRATION_AUDIT_V2.md",
+      "byte_size": 377,
+      "sha256": "bfbb0a4d2f3173992c17bf88d0c20175934107e4fbf624751cef661c0e79fb58"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_EXTREME_CASE_RESULTS_V2.md",
+      "byte_size": 499,
+      "sha256": "34787e60130fcb952e4e64ba8fc854ac4381d3bca015b63cb70fdcede5a9475b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_FACTOR_SAFETY_POLICY_MATRIX_V2.md",
+      "byte_size": 844,
+      "sha256": "37cdac59691c373d324eef2db5cf04f0d127a1c859cfa7ab925e1d224dea2e3f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_FULL_REGRESSION_V2.md",
+      "byte_size": 299,
+      "sha256": "66e0cbc2e5529abf84c59864596d71d22acaee5a19711d8198ebfac232311618"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_IMPLEMENTATION_CHANGE_REPORT_V2.md",
+      "byte_size": 409,
+      "sha256": "7cb5dba2eb90e47ac4a8391adc334a2b68b808aa66574680d14bb3658468be55"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_MISSING_DATA_TEST_MATRIX_V2.md",
+      "byte_size": 660,
+      "sha256": "c9f37e412ed4327686bfdcaf3954457679a01c55bbdc1516bb0f7735f795acd5"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_R3_EXECUTION_PATH_V2.md",
+      "byte_size": 432,
+      "sha256": "1a56e26cf78059512329b2d61ad97568ac7b78364b801dff55138a47c2e2439f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMAINING_RISKS_V2.md",
+      "byte_size": 317,
+      "sha256": "b2f3573c360534426bd6606dfe4345bfd6d7b5d61df5b895b6f34575c437142c"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_BASELINE.json",
+      "byte_size": 208,
+      "sha256": "08ffbec823bd227bc1e0352677d187dac8b0b2503bb5fc2dc7b3b08aa786f1cd"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_BASELINE.md",
+      "byte_size": 494,
+      "sha256": "6325b54b86d68fc40c5162ad9345de7e5511057ec0e7f18936f7417e6e984d12"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_FINAL_CLOSE_REPORT.md",
+      "byte_size": 1930,
+      "sha256": "0c274647378f9b4d6f3dfe8066a0e6c5bfa2dde51cf842691be30104ad93ff04"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_INTEGRITY_AUDIT.md",
+      "byte_size": 201,
+      "sha256": "e8de011a4e4d074663153173a684ba18e4de46c97eac19524626a659a36b2e09"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_MANIFEST.json",
+      "byte_size": 3370,
+      "sha256": "64d435bcdf3f5c9aee2c6d28366d292df977e520a929c7d6e66e1b665bdaaaa4"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_RESULTS.json",
+      "byte_size": 109,
+      "sha256": "74e0983eccdc5ff465764d7fdc7bee38fb50b4561c0fc8207e50c25189ad561a"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_REMEDIATION_V2_TARGET_POLICY.md",
+      "byte_size": 1252,
+      "sha256": "2fc23522d3d7b2d30467bd5992522c1a1bf21a785cebafc98f13b33c184c2d84"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_SCORING_CASES_V2.json",
+      "byte_size": 98,
+      "sha256": "bf578c50c073bc2e87fe04db330742b0345ec931598ac6c3b19e75c2a39677f2"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2/TRUST_P0_SECURITY_REGRESSION_V2.md",
+      "byte_size": 258,
+      "sha256": "99c4f12d67e0b95691cec4419981d4a441effe0547f6f25096e5bc5c74aae036"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_ACCEPTANCE_GATE.md",
+      "byte_size": 405,
+      "sha256": "98710bb51335e248781542d74319e59d73ae39c988459902a83b745270deebe6"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_BEFORE_V1_V2_COMPARISON.md",
+      "byte_size": 411,
+      "sha256": "55cd2fc7dcc3bb569edfd651e04c4eb5ac24d264eda33ffa88d6c17829649001"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_CLAIM_VERIFICATION_REGRESSION.md",
+      "byte_size": 261,
+      "sha256": "98d9ebb511d44d44d9aa1698b1d684ef94a1e17b2fc2f2b3134840fa69a8dc8f"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_DOWNSTREAM_NONE_AUDIT.md",
+      "byte_size": 411,
+      "sha256": "791b4e587ec357679d798c68f261d964b9850e160fe9eeaf2f2e33fef442e7b2"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_EXTREME_CASE_RECALCULATION.md",
+      "byte_size": 609,
+      "sha256": "16540e08e523614514c4ee0bf0b28697cd07070983441c0dc88ac88abd7da829"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FINAL_INTEGRITY_AUDIT.md",
+      "byte_size": 252,
+      "sha256": "be2a854b2ae476ae1bd920a2c6230f43ae358bee13656a4a19818bb34ee04639"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FINAL_REVIEW_MANIFEST.json",
+      "byte_size": 3182,
+      "sha256": "8527b1168868b66f70476f9fcde25745e6f704d9b3b99c797ac479021f2bdd7e"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FINAL_REVIEW_REPORT.md",
+      "byte_size": 486,
+      "sha256": "805420a5130e445e54c1ccd662d6ac8fc9728aca75071854ffc4eb47d71fb653"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FINAL_REVIEW_RESULTS.json",
+      "byte_size": 101,
+      "sha256": "3f9909875d03240aec2722f299bdbf88f40ad9a246d5b216fc8b12df60e806d7"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FORMULA_VALIDATION.md",
+      "byte_size": 494,
+      "sha256": "a1444afe280e9ab9dc6293ad1ba9079c840102b6c2c184ab1624e2d49345c2b9"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_FULL_REGRESSION_STATUS.md",
+      "byte_size": 328,
+      "sha256": "2ba0ff6772a0d09d2395d9ba396caa18ac035af13b7e6e852037c4ed4a771a1c"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_MISSING_ZERO_ONE_SEMANTICS.md",
+      "byte_size": 497,
+      "sha256": "7ee6a9691257769116496bd8174d86595cdd650c683e84133e536420aa3fc0c0"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_R3_ABSTENTION_VALIDATION.md",
+      "byte_size": 464,
+      "sha256": "070ddfad7b14b7f5d66d267f5a19bf7ed3b2c84a6500d0e663a2d4049c7f4304"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_RELATIONSHIP_GROUNDING_REGRESSION.md",
+      "byte_size": 269,
+      "sha256": "be2e07238c3ff5a24ffc3541f6749c76f0694b14670fc5b842323a9cccd667a6"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_SERIALIZATION_REGRESSION.md",
+      "byte_size": 298,
+      "sha256": "f817050f308fd8c8d8e6f1312e1d435f0ed31688a13b24158fe5676c15c3fe5d"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_TEST_RESULTS.json",
+      "byte_size": 157,
+      "sha256": "b3221c6e259a3fc707dc5c035b5b3dc70193b8b72c00536d40c66a47a22a5a2b"
+    },
+    {
+      "relative_path": "track_a_annotation/audits/trust_p0_remediation_v2_final_review/TRUST_P0_V2_WEIGHT_VALIDATION.md",
+      "byte_size": 407,
+      "sha256": "a20a4a9607b3d915fb81921a82547e27d3b5aa153f7475b557a24fcfc20051d9"
+    }
+  ]
+}

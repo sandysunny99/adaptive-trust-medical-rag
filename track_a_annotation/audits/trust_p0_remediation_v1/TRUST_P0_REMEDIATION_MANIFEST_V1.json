@@ -1,0 +1,76 @@
+{
+  "package_id": "TRUST_P0_REMEDIATION_V1",
+  "timestamp": "2026-10-03T16:44:04.612328+00:00",
+  "status": "READY_FOR_REMEDIATION_REVIEW",
+  "track_a_mutation": false,
+  "abstract_secondary_mutation": false,
+  "production_modified": true,
+  "tests_modified": true,
+  "artifacts": [
+    {
+      "relative_path": "TRUST_P0_BEFORE_AFTER_BEHAVIOR_V1.md",
+      "byte_size": 551,
+      "sha256": "42371a46702949d6685af60064c11435c6b659ba135b6623ad3099e7457f4900"
+    },
+    {
+      "relative_path": "TRUST_P0_BEFORE_AFTER_V1.json",
+      "byte_size": 164,
+      "sha256": "8608f4fadf360fd095ea5fb964ef3e3d8a9e072a6689c7a50a94ac9d7c20e83b"
+    },
+    {
+      "relative_path": "TRUST_P0_DOWNSTREAM_CONSUMER_MATRIX_V1.md",
+      "byte_size": 667,
+      "sha256": "03a73887e8d41865a3aebc648be203c76444375a2a6a9a2d64f7387d89b43560"
+    },
+    {
+      "relative_path": "TRUST_P0_MISSING_DATA_REGRESSION_MATRIX_V1.md",
+      "byte_size": 767,
+      "sha256": "f31d6dbd33ea8020ea14613f77609ae682fa5c3640a0ba7844ded7275a107ece"
+    },
+    {
+      "relative_path": "TRUST_P0_PRE_REMEDIATION_BASELINE.json",
+      "byte_size": 270,
+      "sha256": "859ca1337c2e254374d834ca6da9aad750f8b87cedbcf5ab4ea20c89db52b06b"
+    },
+    {
+      "relative_path": "TRUST_P0_PRE_REMEDIATION_BASELINE.md",
+      "byte_size": 668,
+      "sha256": "112fdb13319a5cf1ab19cde613595f6e257861a79dbcaa394982a91324d95689"
+    },
+    {
+      "relative_path": "TRUST_P0_REMAINING_RISKS_V1.md",
+      "byte_size": 364,
+      "sha256": "4c3d0c71b2ccd64eb0467423bce48dc6d5862d5172509036612eea5e47c1e783"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_DESIGN_V1.md",
+      "byte_size": 1116,
+      "sha256": "f67b745fb5ae7feed77bfe1e49489a32b93df774d399590e623fdf37feacdd6b"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_IMPLEMENTATION_REPORT_V1.md",
+      "byte_size": 814,
+      "sha256": "32231889df6341e0f7c8a2d150733c7a141b8f556d9ce3c07af33acf22b71e99"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_INTEGRITY_AUDIT_V1.md",
+      "byte_size": 296,
+      "sha256": "b306bfdeca4286d16e6a1bb3e1d19fba2163c947d3f1988f7bc6be2129e9dbfc"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_TEST_RESULTS_V1.json",
+      "byte_size": 141,
+      "sha256": "5f40e7efb82b03727dccefd8c729c3452fc55c339fb130c6abe995fc6ab007dc"
+    },
+    {
+      "relative_path": "TRUST_P0_SCIENTIFIC_IMPACT_AFTER_REMEDIATION_V1.md",
+      "byte_size": 302,
+      "sha256": "f840fa9c8784d4a502bcd9ffadbb181b305d0b490b16364da256145e1289c3ed"
+    },
+    {
+      "relative_path": "TRUST_P0_TEST_RESULTS_V1.md",
+      "byte_size": 259,
+      "sha256": "10d78ad39bf5cd6bc3f576edab9f2dcd8889704cad2b43bbe914aacb2b13da7b"
+    }
+  ]
+}

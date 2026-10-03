@@ -1,0 +1,83 @@
+{
+  "package_id": "TRUST_P0_REMEDIATION_REVIEW_V1",
+  "timestamp": "2026-10-03T17:07:12.805279+00:00",
+  "status": "DESIGN_DECISION_REQUIRED",
+  "git_head_pre_remediation": "cd6585822bdc9931d5fe944decaa9311326d83c1",
+  "artifacts": [
+    {
+      "relative_path": "TRUST_P0_ABSTENTION_INTERACTION_V1.md",
+      "byte_size": 293,
+      "sha256": "b5c9b6d184a1195f75ed9daaa0e81069c955d47fa10e97e05c3ae151a808be6f"
+    },
+    {
+      "relative_path": "TRUST_P0_ALL_FACTOR_REMEDIATION_MATRIX_V1.md",
+      "byte_size": 1012,
+      "sha256": "64446db1f28fd56771868d724c7dc1268b240e4905c37c0e6773287e030d690b"
+    },
+    {
+      "relative_path": "TRUST_P0_EXTREME_CASE_ANALYSIS_V1.md",
+      "byte_size": 587,
+      "sha256": "bf88dac621210661bf8f5e0cd547b54430c9626b4d96d94136c8f347768b2067"
+    },
+    {
+      "relative_path": "TRUST_P0_FULL_REGRESSION_RESULTS_V1.md",
+      "byte_size": 339,
+      "sha256": "3f9e1bc9ba9e8b5ebe2873022605c87312272cecb5900f64915a4d67f4b52c9a"
+    },
+    {
+      "relative_path": "TRUST_P0_NONE_DOWNSTREAM_SAFETY_AUDIT_V1.md",
+      "byte_size": 376,
+      "sha256": "fc398a1eda11731ff0beda40b84578e7843d290af64355bd03b000940430e2ba"
+    },
+    {
+      "relative_path": "TRUST_P0_POST_REMEDIATION_CALLSITE_AUDIT_V1.md",
+      "byte_size": 393,
+      "sha256": "07e4188c74201cd102ad61b5d38012c268ae0304c51afb4cbb59ab02cb3d653e"
+    },
+    {
+      "relative_path": "TRUST_P0_POST_REMEDIATION_RESULTS_V1.json",
+      "byte_size": 158,
+      "sha256": "c7962cda551ea1cee293901ac34fb2b99404b57ad266a295fa0d016208e3fc26"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_ACCEPTANCE_V1.md",
+      "byte_size": 447,
+      "sha256": "84375ecb17ca06a64b1a4630e239e483a25ff68352302f54a35ac8c269b6f944"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_REVIEW_INTEGRITY_V1.md",
+      "byte_size": 175,
+      "sha256": "8adfbd57abaf1e5ab7e6b42d8b4cab697f96643bcf3d0cd8605688e626c368a2"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_REVIEW_V1.md",
+      "byte_size": 876,
+      "sha256": "25510e6a6bb2a6644519c3995ae74952dc71136cce9fc2f2facf7a9cf9423f98"
+    },
+    {
+      "relative_path": "TRUST_P0_SCORING_CASE_MATRIX_V1.json",
+      "byte_size": 79,
+      "sha256": "5966c6bbf1a8a1eec6bf9e30071c4067ef0bfc0a9f99a7e54d1c43bd1cd2615f"
+    },
+    {
+      "relative_path": "TRUST_P0_SCORING_SEMANTICS_VALIDATION_V1.md",
+      "byte_size": 621,
+      "sha256": "c6f35902910e7800fcb99d81b23ebeffd2f17626f534bf0bc999c1db6f8da087"
+    },
+    {
+      "relative_path": "TRUST_P0_SECURITY_REGRESSION_V1.md",
+      "byte_size": 288,
+      "sha256": "396d1f3e504f0f44fcad6850c5276fdae2a962fc99b849b1486fb6925d6be6c5"
+    },
+    {
+      "relative_path": "TRUST_P0_SERIALIZATION_VALIDATION_V1.md",
+      "byte_size": 270,
+      "sha256": "89118ae9c40ce03423467b0ce85d2ebaa773738de77d69d5d996de6e5f99ec2f"
+    },
+    {
+      "relative_path": "TRUST_P0_THRESHOLD_WEIGHT_STABILITY_V1.md",
+      "byte_size": 167,
+      "sha256": "d987ce7020cce71eef05435f99df33af0d206556463324c2d06a03b03323294b"
+    }
+  ]
+}

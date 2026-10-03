@@ -1,0 +1,20 @@
+Package:
+    TRUST_P0_REMEDIATION_V2
+
+Status:
+    READY_FOR_COMMIT
+
+Historical Track A checkpoint:
+    cd6585822bdc9931d5fe944decaa9311326d83c1
+
+Current HEAD:
+    cd6585822bdc9931d5fe944decaa9311326d83c1
+
+Final manifest SHA:
+    4ae2f4b678b1b074f128d904774beca6691c68515530c67eccc33c1fd57a42c2
+
+Final close report SHA:
+    0c274647378f9b4d6f3dfe8066a0e6c5bfa2dde51cf842691be30104ad93ff04
+
+Commit:
+    PENDING

@@ -1,0 +1,92 @@
+{
+  "package_id": "TRUST_P0_REMEDIATION_V2",
+  "timestamp": "2026-10-03T17:38:19.256292+00:00",
+  "status": "READY_FOR_REMEDIATION_REVIEW",
+  "artifacts": [
+    {
+      "relative_path": "TRUST_P0_ABSTENTION_REGRESSION_V2.md",
+      "byte_size": 282,
+      "sha256": "3bfdc36240f59d2f3a74af4e1f8f6841a585402daec1be0662a894c24afecd4a"
+    },
+    {
+      "relative_path": "TRUST_P0_BEFORE_V1_V2_COMPARISON.md",
+      "byte_size": 563,
+      "sha256": "a8e8958fe4862c7eb1e7ba56c157daeaa5b243877915e51f44adb659e6151219"
+    },
+    {
+      "relative_path": "TRUST_P0_DOWNSTREAM_INTEGRATION_AUDIT_V2.md",
+      "byte_size": 377,
+      "sha256": "bfbb0a4d2f3173992c17bf88d0c20175934107e4fbf624751cef661c0e79fb58"
+    },
+    {
+      "relative_path": "TRUST_P0_EXTREME_CASE_RESULTS_V2.md",
+      "byte_size": 499,
+      "sha256": "34787e60130fcb952e4e64ba8fc854ac4381d3bca015b63cb70fdcede5a9475b"
+    },
+    {
+      "relative_path": "TRUST_P0_FACTOR_SAFETY_POLICY_MATRIX_V2.md",
+      "byte_size": 844,
+      "sha256": "37cdac59691c373d324eef2db5cf04f0d127a1c859cfa7ab925e1d224dea2e3f"
+    },
+    {
+      "relative_path": "TRUST_P0_FULL_REGRESSION_V2.md",
+      "byte_size": 299,
+      "sha256": "66e0cbc2e5529abf84c59864596d71d22acaee5a19711d8198ebfac232311618"
+    },
+    {
+      "relative_path": "TRUST_P0_IMPLEMENTATION_CHANGE_REPORT_V2.md",
+      "byte_size": 409,
+      "sha256": "7cb5dba2eb90e47ac4a8391adc334a2b68b808aa66574680d14bb3658468be55"
+    },
+    {
+      "relative_path": "TRUST_P0_MISSING_DATA_TEST_MATRIX_V2.md",
+      "byte_size": 660,
+      "sha256": "c9f37e412ed4327686bfdcaf3954457679a01c55bbdc1516bb0f7735f795acd5"
+    },
+    {
+      "relative_path": "TRUST_P0_R3_EXECUTION_PATH_V2.md",
+      "byte_size": 432,
+      "sha256": "1a56e26cf78059512329b2d61ad97568ac7b78364b801dff55138a47c2e2439f"
+    },
+    {
+      "relative_path": "TRUST_P0_REMAINING_RISKS_V2.md",
+      "byte_size": 317,
+      "sha256": "b2f3573c360534426bd6606dfe4345bfd6d7b5d61df5b895b6f34575c437142c"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_V2_BASELINE.json",
+      "byte_size": 208,
+      "sha256": "08ffbec823bd227bc1e0352677d187dac8b0b2503bb5fc2dc7b3b08aa786f1cd"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_V2_BASELINE.md",
+      "byte_size": 494,
+      "sha256": "6325b54b86d68fc40c5162ad9345de7e5511057ec0e7f18936f7417e6e984d12"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_V2_INTEGRITY_AUDIT.md",
+      "byte_size": 201,
+      "sha256": "e8de011a4e4d074663153173a684ba18e4de46c97eac19524626a659a36b2e09"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_V2_RESULTS.json",
+      "byte_size": 109,
+      "sha256": "74e0983eccdc5ff465764d7fdc7bee38fb50b4561c0fc8207e50c25189ad561a"
+    },
+    {
+      "relative_path": "TRUST_P0_REMEDIATION_V2_TARGET_POLICY.md",
+      "byte_size": 1252,
+      "sha256": "2fc23522d3d7b2d30467bd5992522c1a1bf21a785cebafc98f13b33c184c2d84"
+    },
+    {
+      "relative_path": "TRUST_P0_SCORING_CASES_V2.json",
+      "byte_size": 98,
+      "sha256": "bf578c50c073bc2e87fe04db330742b0345ec931598ac6c3b19e75c2a39677f2"
+    },
+    {
+      "relative_path": "TRUST_P0_SECURITY_REGRESSION_V2.md",
+      "byte_size": 258,
+      "sha256": "99c4f12d67e0b95691cec4419981d4a441effe0547f6f25096e5bc5c74aae036"
+    }
+  ]
+}
