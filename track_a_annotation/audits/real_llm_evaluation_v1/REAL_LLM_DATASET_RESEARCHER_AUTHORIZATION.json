@@ -1,0 +1,18 @@
+{
+  "dataset_path": "experiments/manifests/v3_1_human_cases.json",
+  "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
+  "case_count": 80,
+  "case_ids_hash": "bb47d3c18a0c9bf5488437bc0bca873c4cd5ee4a2d6c7f8ce133ac6cd505da2f",
+  "protocol_version": "REAL_LLM_EVALUATION_PROTOCOL_V1_1",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-120b",
+  "original_purpose": "retrieval/evidence evaluation",
+  "authorized_purpose": "real-LLM evidence-grounding evaluation ONLY IF RESEARCHER AUTHORIZES",
+  "answer_level_medical_ground_truth": "NOT_AVAILABLE",
+  "researcher_decision": "PENDING_RESEARCHER_DECISION",
+  "authorization_status": "PENDING_RESEARCHER_DECISION",
+  "execution_authorized": false,
+  "provider_execution": false,
+  "provider_request_count": 0,
+  "timestamp": "2026-10-04T03:49:00+05:30"
+}

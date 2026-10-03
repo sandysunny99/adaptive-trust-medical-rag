@@ -1,0 +1,17 @@
+{
+  "dataset_unchanged": true,
+  "dataset_hash_verified": true,
+  "case_ids_hash_verified": true,
+  "protocol_v1_1_unchanged": true,
+  "track_a_unchanged": true,
+  "benchmark_unchanged": true,
+  "historical_retrieval_unchanged": true,
+  "trust_unchanged": true,
+  "claim_evidence_unchanged": true,
+  "controlled_abstention_unchanged": true,
+  "canonical_identity_unchanged": true,
+  "rg_02_unchanged": true,
+  "phase_15_unchanged": true,
+  "provider_execution": false,
+  "provider_request_count": 0
+}
