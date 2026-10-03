@@ -1,0 +1,64 @@
+{
+  "test_cases": [
+    {
+      "case_id": "CASE_RI_01",
+      "condition": "Correct A + correct relationship + correct B",
+      "current_behavior": "NLI textual entailment passes, status SUPPORTED propagates. PASSES.",
+      "gap": false
+    },
+    {
+      "case_id": "CASE_RI_02",
+      "condition": "Correct A + wrong relationship + correct B",
+      "current_behavior": "NLI likely fails textual entailment, but if phrasing is ambiguous, it might pass. RG-02 string checks pass.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_03",
+      "condition": "Wrong A + correct relationship + correct B",
+      "current_behavior": "RG-02 entity array match string might fail if 'Wrong A' isn't in source text, marking UNSUPPORTED. But canonical RxCUI mismatch is not checked explicitly.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_04",
+      "condition": "Correct A + correct relationship + wrong B",
+      "current_behavior": "Same as RI_03. String match fails, but structural ID mismatch isn't used.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_05",
+      "condition": "Correct pair + reverse direction (A->B instead of B->A)",
+      "current_behavior": "RG-02 extracts unordered array of strings. NLI is notoriously bad at distinguishing directionality. Huge risk of false positive.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_06",
+      "condition": "Ambiguous drug mapping (Class vs specific drug)",
+      "current_behavior": "RG-02 string regex might miss the distinction. NLI may treat class and instance interchangeably.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_07",
+      "condition": "One drug canonicalized, other unresolved",
+      "current_behavior": "Current system uses simple text string regex, ignores canonicalization status entirely.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_08",
+      "condition": "Relationship status says SUPPORTED but identity does not match",
+      "current_behavior": "If chunk has status SUPPORTED, verifier only relies on NLI. It would pass if NLI scores high.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_09",
+      "condition": "Evidence text supports relationship but canonical pair differs",
+      "current_behavior": "If evidence mentions the relation for a different drug that has a similar string name, system may pass.",
+      "gap": true
+    },
+    {
+      "case_id": "CASE_RI_10",
+      "condition": "Globally supporting source but wrong canonical pair",
+      "current_behavior": "If RG-02 status is globally SUPPORTED but citation matches wrong pair, text NLI handles it (often poorly).",
+      "gap": true
+    }
+  ]
+}

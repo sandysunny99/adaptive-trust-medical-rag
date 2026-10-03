@@ -1,0 +1,48 @@
+{
+  "package_id": "CANONICAL_RELATIONSHIP_IDENTITY_DOCUMENTATION_REVIEW_V1",
+  "parent_commit": "5b2d985879ad6592b30e15a47ca2412ef9694055",
+  "files": [
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_DOCUMENTATION_REVIEW_V1.md",
+      "sha256": "f4c4b4aea7407b8df64b238b3875892e375898f30f3499feee9278f268896802",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_DOCUMENTATION_REVIEW_V1.json",
+      "sha256": "7938fcb70e2b41dc9ed79cc104581c0d2a15a6cc188507f6e1d1b0a9176929fc",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_DOCUMENTATION_SEARCH_LOG_V1.md",
+      "sha256": "3ee47f9f0803970e9f4813d232cf2c2557a7a0cce9ac142cf989bc125ce7972b",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REQUIREMENT_TRACE_V1.md",
+      "sha256": "c75241d50b705475935119957240c794836a01d5311cb8d8eedba2f02fea6219",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_SPECIFICATION_REASSESSMENT_V1.md",
+      "sha256": "9533641e3bf7218ba26eab5a4a90b1695e7286b6702b6cc29965ae076258c326",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_SECURITY_REQUIREMENT_REVIEW_V1.md",
+      "sha256": "7b92d244f2e32edc7c8b911b1692d594ac5b282fdad3c3b0863e9984b055725c",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_TEST_REQUIREMENT_REVIEW_V1.md",
+      "sha256": "934d71c43eec398a179b445923ccd636e5ec081ca16093082ef4925e7b54034e",
+      "artifact_role": "documentation_review",
+      "verification_status": "verified"
+    }
+  ]
+}

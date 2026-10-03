@@ -1,0 +1,15 @@
+{
+  "audit": "CANONICAL_RELATIONSHIP_IDENTITY_V1",
+  "status": "COMPLETE",
+  "identity_source": "DrugNormalizerProtocol outputs DrugEntity with RxCUI, but Orchestrator downcasts to list[str]",
+  "identity_loss_point": "DURING EVIDENCE OBJECT CREATION (Orchestrator discards entity alignment and saves only status.name to EvidenceChunk)",
+  "final_claim_identity_check": "NONE (ClaimVerifierV2 uses textual NLI entailment and string status checks)",
+  "specification_status": "SPECIFICATION_GAP (Implicitly desired, not structurally defined)",
+  "test_coverage": "TEST_COVERAGE_GAP (No unit tests verify canonical identity binding)",
+  "security_impact": "Vulnerable to 'correct source + wrong relationship interpretation' if NLI hallucinates direction",
+  "provenance_impact": "Provenance tracks chunk text, but canonical semantic pairs lack explicit provenance pointers",
+  "abstention_impact": "Currently abstains on 'UNSUPPORTED' status, but cannot abstain on subtle identity mismatches (e.g. A->B vs B->A)",
+  "interface_impact": "Requires adding canonical structures to EvidenceChunk, VerificationReportV2, and SemanticJudgment",
+  "final_gap_classification": "ARCHITECTURAL_GAP",
+  "implementation_recommendation": "ARCHITECTURAL REMEDIATION REQUIRED"
+}

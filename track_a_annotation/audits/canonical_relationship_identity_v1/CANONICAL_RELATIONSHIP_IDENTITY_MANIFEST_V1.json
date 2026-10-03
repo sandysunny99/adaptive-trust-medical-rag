@@ -1,0 +1,66 @@
+{
+  "package_id": "CANONICAL_RELATIONSHIP_IDENTITY_AUDIT_V1",
+  "parent_commit": "5b2d985879ad6592b30e15a47ca2412ef9694055",
+  "files": [
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_AUDIT_V1.md",
+      "sha256": "f6eba56e36583d543f43ab311ef1498ce78ff07b059c2bedfabf1105c3abe57b",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_AUDIT_V1.json",
+      "sha256": "979ada28d1e3475e82a3bb2e2049d37b4fef2e98c8bf2adb6c788f41c9910a36",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_TRACE_V1.md",
+      "sha256": "ea64a478135f7623bf3c58c4bd415cfa883a9148a703df252333448a13473f21",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_GAP_ANALYSIS_V1.md",
+      "sha256": "55e75d82c1dfb44245f3d55d5f718c7dcd770db6bd06062924c845a04a4c0455",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_SPECIFICATION_V1.md",
+      "sha256": "fe6b8e6dabaae412253ca4fc327feb48fa0856ff62ccebe4f3e772b329818144",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_TEST_MATRIX_V1.json",
+      "sha256": "226f0601990b5b7149afd3dc1aa13b5d29e9244c31501b7eb7f08f1151b66f9d",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_INTERFACE_IMPACT_V1.md",
+      "sha256": "8269ea94a4b0326dab041638202a7f9f555469c4246cea9b6639075d756df284",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_SECURITY_ANALYSIS_V1.md",
+      "sha256": "048d60395648c45a81919d2c6bce7b1220f2c1d24fede295ddb8c6a2e435f8d2",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_PROVENANCE_ANALYSIS_V1.md",
+      "sha256": "08dcd76c9f5b642e51acd4bb5d9c91f003fdfad16dff167059420dc0a957409c",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_FINDINGS_V1.md",
+      "sha256": "3b9b49c0fbb0f6b087122325e9ae95b5bbd0e7192b574fc79483305d4f30e580",
+      "artifact_role": "audit_report",
+      "verification_status": "verified"
+    }
+  ]
+}
