@@ -1,0 +1,1 @@
+Updated to V1.2. Circularity risk mitigated. Enforced retry=0. Dataset auth pending.
