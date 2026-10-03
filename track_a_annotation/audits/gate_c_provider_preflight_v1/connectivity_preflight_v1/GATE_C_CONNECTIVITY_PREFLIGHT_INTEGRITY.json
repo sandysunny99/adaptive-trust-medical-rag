@@ -1,0 +1,9 @@
+{
+  "track_a_locked": true,
+  "benchmark_locked": true,
+  "retrieval_locked": true,
+  "security_experiments_locked": true,
+  "phase15_gemini_locked": true,
+  "medical_safety_preserved": true,
+  "secret_exposure": false
+}

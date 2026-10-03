@@ -1,0 +1,16 @@
+{
+  "provider_execution": true,
+  "request_count": 1,
+  "credential_present": true,
+  "authentication_verified": true,
+  "model_verified": true,
+  "model_generation_result_valid": true,
+  "sync_adapter_valid": true,
+  "factory_valid": true,
+  "medical_prompt_used": false,
+  "track_a_mutated": false,
+  "benchmark_mutated": false,
+  "retrieval_rerun": false,
+  "security_experiment_run": false,
+  "final_status": "CONNECTIVITY_PREFLIGHT_PASS"
+}
