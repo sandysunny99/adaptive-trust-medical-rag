@@ -1,0 +1,42 @@
+{
+  "package_id": "CANONICAL_RELATIONSHIP_IDENTITY_REMEDIATION_V1",
+  "parent_commit": "5b2d985879ad6592b30e15a47ca2412ef9694055",
+  "files": [
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REMEDIATION_V1.md",
+      "sha256": "df936f68dabc39e9f40b15591d4b423def7927b766faa9e8d1bf7dee6a5a7792",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REMEDIATION_TEST_REPORT_V1.md",
+      "sha256": "e2b19f04c9a6fb7ee1d441a7909aa8a90b88406c19cb86a0517303572da673ef",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REMEDIATION_SECURITY_TEST_V1.md",
+      "sha256": "ae40a8bb53dd4823c03382b23c78ee5e8784c6e98fecd3023da100143922fe90",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REMEDIATION_INTEGRITY_V1.md",
+      "sha256": "78c386e1fbf8ee43e8014023310d29872367f13200afb1e0e4f983712d2a4f80",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_FINAL_IMPLEMENTATION_REVIEW_V1.md",
+      "sha256": "9744c4fcd2d48a6e06db870125eac6e76bc919365ffe6e282e56fd15deea94be",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_FINAL_IMPLEMENTATION_REVIEW_V1.json",
+      "sha256": "e93ad8b350da69662fdaf09e24b2fbaa580db1d89b22b7848a08bf98741e365f",
+      "artifact_role": "implementation",
+      "verification_status": "verified"
+    }
+  ]
+}

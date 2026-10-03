@@ -4,6 +4,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any
 from transformers import pipeline
+from adaptive_trust_medical_rag.verification.canonical_identity import (
+    CanonicalRelationshipIdentity,
+    CanonicalMatchStatus,
+    compare_identity,
+    extract_claim_identity,
+)
 
 _CITATION_RE = re.compile(r"\[Source\s+(\d+)\]", re.IGNORECASE)
 
@@ -33,6 +39,7 @@ class EvidenceChunk:
     trust_score: float = 0.0
     missing_factors: list[str] = field(default_factory=list)
     relationship_scope: str | None = None
+    relationship_identity: CanonicalRelationshipIdentity | None = None
 
 @dataclass
 class AtomicClaim:
@@ -67,6 +74,8 @@ class SemanticJudgment:
     trust_score: float = 0.0
     missing_factors: list[str] = field(default_factory=list)
     relationship_scope: str | None = None
+    canonical_identity_status: str | None = None
+    canonical_identity_reason: str | None = None
 
 @dataclass
 class VerificationReportV2:
@@ -204,7 +213,7 @@ class ClaimVerifierV2:
             return FinalSupportState.INSUFFICIENT_EVIDENCE
         return FinalSupportState.UNSUPPORTED
 
-    def verify(self, answer: str, evidence: list[EvidenceChunk], risk_tier="R1", critical_claim_indices: list[int] = None) -> VerificationReportV2:
+    def verify(self, answer: str, evidence: list[EvidenceChunk], risk_tier="R1", critical_claim_indices: list[int] = None, drug_rxcui_map: dict[str, str] | None = None) -> VerificationReportV2:
         if critical_claim_indices is None:
             critical_claim_indices = []
             
@@ -297,6 +306,34 @@ class ClaimVerifierV2:
             else:
                 state = FinalSupportState.UNSUPPORTED
                 
+            # Canonical Relationship Identity Verification
+            canonical_id_status = None
+            canonical_id_reason = None
+            if drug_rxcui_map is not None:
+                # Extract source canonical identity from best supporting evidence
+                source_identities = [
+                    c.relationship_identity for c in (cited_chunks if cited_chunks else evidence)
+                    if c.relationship_identity is not None
+                ]
+                source_identity = source_identities[0] if source_identities else None
+                
+                # Extract claim canonical identity
+                claim_identity = extract_claim_identity(claim.text, drug_rxcui_map)
+                
+                # Deterministic comparison
+                id_status, id_reason = compare_identity(source_identity, claim_identity)
+                canonical_id_status = id_status.value
+                canonical_id_reason = id_reason
+                
+                # Canonical identity enforcement: mismatch or ambiguity overrides
+                if id_status == CanonicalMatchStatus.MISMATCH:
+                    state = FinalSupportState.UNSUPPORTED
+                elif id_status == CanonicalMatchStatus.AMBIGUOUS:
+                    state = FinalSupportState.UNSUPPORTED
+                elif id_status == CanonicalMatchStatus.UNAVAILABLE:
+                    state = FinalSupportState.UNSUPPORTED
+                # MATCH: state remains as determined by NLI/citation/provenance
+                
             judgments.append(
                 SemanticJudgment(
                     claim=claim,
@@ -318,7 +355,9 @@ class ClaimVerifierV2:
                     nli_error="; ".join(nli_errors) if nli_errors else None,
                     trust_score=claim_trust_score,
                     missing_factors=claim_missing_factors,
-                    relationship_scope=claim_relationship_scope
+                    relationship_scope=claim_relationship_scope,
+                    canonical_identity_status=canonical_id_status,
+                    canonical_identity_reason=canonical_id_reason
                 )
             )
             

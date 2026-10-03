@@ -63,6 +63,11 @@ from adaptive_trust_medical_rag.verification.claim_verifier import (
     GateDecision,
     VerificationReport,
 )
+from adaptive_trust_medical_rag.verification.canonical_identity import (
+    CanonicalRelationshipIdentity,
+    CanonicalDirection,
+    normalize_predicate,
+)
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -462,6 +467,15 @@ class AdaptiveTrustRAGOrchestrator:
             query_drugs = self._extract_drugs_simple(sanitized_query)
         _log("entity_normalization", {"drugs": query_drugs})
 
+        # Step 2.5: Build canonical drug RxCUI map
+        drug_rxcui_map: dict[str, str] = {}
+        if hasattr(self._drug_normalizer, '_cache'):
+            cache = getattr(self._drug_normalizer, '_cache')
+            for drug_name in query_drugs:
+                cached = cache.lookup(drug_name)
+                if cached and cached.get('rxcui'):
+                    drug_rxcui_map[drug_name.lower()] = cached['rxcui']
+
         # ðŸš€ Step 3: Query risk classification
         if request.risk_tier_override:
             risk_tier = request.risk_tier_override
@@ -648,18 +662,43 @@ class AdaptiveTrustRAGOrchestrator:
             )
 
         # ðŸš€ Step 8: Answer safety gate (post-generation)
-        evidence_chunks = [
-            EvidenceChunk(
-                chunk_id=sc.candidate.chunk_id,
-                text=sc.candidate.text,
-                source_authority=sc.candidate.source_authority,
-                citation_index=i,
-                trust_score=trust_scores.get(sc.candidate.chunk_id, 0.0),
-                missing_factors=missing_factors_dict.get(sc.candidate.chunk_id, []),
-                relationship_scope=grounding_states[sc.candidate.chunk_id].status.name if (grounding_states and sc.candidate.chunk_id in grounding_states) else None
+        # Build source canonical identities
+        source_identity = None
+        if len(drug_rxcui_map) >= 2:
+            rxcui_list = list(drug_rxcui_map.items())
+            subject_name, subject_rxcui = rxcui_list[0]
+            object_name, object_rxcui = rxcui_list[1]
+            predicate = "INTERACTION"
+            source_identity = CanonicalRelationshipIdentity(
+                subject_rxcui=subject_rxcui,
+                object_rxcui=object_rxcui,
+                predicate=predicate,
+                direction=CanonicalDirection.A_TO_B,
             )
-            for i, sc in enumerate(eligible_candidates, start=1)
-        ]
+
+        evidence_chunks = []
+        for i, sc in enumerate(eligible_candidates, start=1):
+            identity_copy = None
+            if source_identity is not None:
+                identity_copy = CanonicalRelationshipIdentity(
+                    subject_rxcui=source_identity.subject_rxcui,
+                    object_rxcui=source_identity.object_rxcui,
+                    predicate=source_identity.predicate,
+                    direction=source_identity.direction,
+                    provenance_chunk_id=sc.candidate.chunk_id
+                )
+            evidence_chunks.append(
+                EvidenceChunk(
+                    chunk_id=sc.candidate.chunk_id,
+                    text=sc.candidate.text,
+                    source_authority=sc.candidate.source_authority,
+                    citation_index=i,
+                    trust_score=trust_scores.get(sc.candidate.chunk_id, 0.0),
+                    missing_factors=missing_factors_dict.get(sc.candidate.chunk_id, []),
+                    relationship_scope=grounding_states[sc.candidate.chunk_id].status.name if (grounding_states and sc.candidate.chunk_id in grounding_states) else None,
+                    relationship_identity=identity_copy
+                )
+            )
 
         safety_gate = AnswerSafetyGate(risk_tier=risk_tier)
         verification = safety_gate.verify(raw_answer, evidence_chunks)

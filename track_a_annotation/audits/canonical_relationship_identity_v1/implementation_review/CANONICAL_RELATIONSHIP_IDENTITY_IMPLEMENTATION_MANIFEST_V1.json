@@ -1,0 +1,60 @@
+{
+  "package_id": "CANONICAL_RELATIONSHIP_IDENTITY_IMPLEMENTATION_REVIEW_V1",
+  "parent_commit": "5b2d985879ad6592b30e15a47ca2412ef9694055",
+  "files": [
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_IMPLEMENTATION_REVIEW_V1.md",
+      "sha256": "cd72e5b90799ef89cd71965479dff6367707893edc6524b1206aa0967cd5e1cc",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_IMPLEMENTATION_REVIEW_V1.json",
+      "sha256": "e04a675c35da3805d7883ff62c0973178751b8e814552efd00f2189dc67319bf",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_DOCUMENTATION_EVIDENCE_V1.md",
+      "sha256": "c2bf6d35c8cc5a60da3be1900c5c19d798500810afe80819d78d370caa174b96",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REQUIREMENT_MATRIX_V1.md",
+      "sha256": "97b37c68a57eaa169f176c76a4671b6664b1048f29caf181871a6c6a602ecb0b",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_IMPLEMENTATION_REQUIREMENTS_V1.md",
+      "sha256": "a5adf19f1bb503b2b20f7be5602939d0a62fcf1bb36f38220b0c1a5b1bbfaf82",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_DATAFLOW_SPEC_V1.md",
+      "sha256": "67f82c958ba9d79741222fbecff0d715b96566f9d557188fd953633da1ec6d1f",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_CLAIM_BINDING_SPEC_V1.md",
+      "sha256": "e99fd4922c96c3a4eaf3d7e4bbc68572becf7ff4be2bf66a6d9ef783fff199f8",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_ABSTENTION_SPEC_V1.md",
+      "sha256": "e8f52648c58403c2f4ecbcb3f0489f3e4122b64bc91b374af7d720cbc3ff0a59",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CANONICAL_RELATIONSHIP_IDENTITY_REGRESSION_SPEC_V1.md",
+      "sha256": "8208b47f3dde55a68a011798f2a224e56dbe937e9d98b5d138e95d154f858f75",
+      "artifact_role": "implementation_review",
+      "verification_status": "verified"
+    }
+  ]
+}
