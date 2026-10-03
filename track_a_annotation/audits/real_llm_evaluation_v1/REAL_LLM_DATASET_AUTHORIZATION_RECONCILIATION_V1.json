@@ -1,0 +1,25 @@
+{
+  "dataset_path": "experiments/manifests/v3_1_human_cases.json",
+  "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
+  "case_count": 80,
+  "case_ids_hash": "bb47d3c18a0c9bf5488437bc0bca873c4cd5ee4a2d6c7f8ce133ac6cd505da2f",
+  "duplicate_case_ids": [],
+  "original_purpose": "Retrieval evidence evaluation (document relevance and evidence spans).",
+  "proposed_purpose": "Real-LLM medical generation evaluation (claim grounding, abstention).",
+  "authorization_basis": "Insufficient repository evidence. No documentation explicitly authorizing this dataset for generation evaluation.",
+  "answer_ground_truth_available": "NOT_AVAILABLE",
+  "metric_support": {
+    "claim_support_rate": "PARTIALLY_SUPPORTED (requires defined generation claim verification)",
+    "citation_validation_rate": "SUPPORTED (computable from output references)",
+    "unsupported_answer_rate": "PARTIALLY_SUPPORTED (requires defined generation claim verification)",
+    "abstention_rate": "PARTIALLY_SUPPORTED (requires explicitly defined expected abstention labels)",
+    "provider_failure_rate": "SUPPORTED"
+  },
+  "arm_compatibility": "Methodology mismatch. 'Single Intended Difference' inaccurately describes the integrated adaptive factor (Trust + Abstention + Claim Verification).",
+  "protocol_revision_required": true,
+  "researcher_decision_required": true,
+  "provider_execution": false,
+  "provider_request_count": 0,
+  "protected_artifacts_unchanged": true,
+  "final_status": "PENDING_RESEARCHER_DECISION"
+}
