@@ -1,0 +1,11 @@
+{
+  "parent_commit": "759721c5abccb76c8c42a255979c53c442cf282d",
+  "correction_commit": "PENDING",
+  "microcase_count": 12,
+  "microcase_evidence_path": "track_a_annotation/audits/controlled_abstention_v1/artifact_completion_v1/CONTROLLED_ABSTENTION_MICROCASES_V1_EVIDENCE.json",
+  "protected_artifacts": "UNCHANGED",
+  "production_mutation": "NONE",
+  "retrieval_rerun": "NO",
+  "provider_execution": "NONE",
+  "status": "PASS"
+}

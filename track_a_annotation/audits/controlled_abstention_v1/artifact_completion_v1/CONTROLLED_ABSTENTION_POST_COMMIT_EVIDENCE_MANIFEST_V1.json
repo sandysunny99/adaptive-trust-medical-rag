@@ -1,0 +1,28 @@
+{
+  "package_id": "CONTROLLED_ABSTENTION_POST_COMMIT_EVIDENCE_MANIFEST_V1",
+  "parent_commit": "759721c5abccb76c8c42a255979c53c442cf282d",
+  "correction_reason": "Original commit lacked committed case-level microcase evidence; actual evidence was verified from scratch execution artifacts.",
+  "new_artifacts": [
+    {
+      "filename": "CONTROLLED_ABSTENTION_MICROCASES_V1_EVIDENCE.json",
+      "sha256": "1477e48907b7c200f81bfc2b8bb4d39636561e6e590587eb24d16579a2a4372e",
+      "artifact_role": "evidence",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CONTROLLED_ABSTENTION_POST_COMMIT_ARTIFACT_CORRECTION_V1.md",
+      "sha256": "f28f2a378f5147dd59c1599e1afc0183a2b6e5e639c7d65449124611640a1e24",
+      "artifact_role": "report",
+      "verification_status": "verified"
+    },
+    {
+      "filename": "CONTROLLED_ABSTENTION_POST_COMMIT_INTEGRITY_V2.json",
+      "sha256": "be3ec84698bb436a8519be222400ae7f2332c2ca2abe77620a65ef400fa39e83",
+      "artifact_role": "report",
+      "verification_status": "verified"
+    }
+  ],
+  "source_artifacts": [
+    "scratch/microcase_results.json"
+  ]
+}

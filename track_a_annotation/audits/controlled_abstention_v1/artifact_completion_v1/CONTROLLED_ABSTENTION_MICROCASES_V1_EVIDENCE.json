@@ -1,0 +1,122 @@
+{
+  "package_id": "CONTROLLED_ABSTENTION_V1",
+  "artifact": "MICROCASE_EVIDENCE",
+  "source_result_file": "scratch/microcase_results.json",
+  "source_test_file": "scratch/test_abstention.py",
+  "verified_case_count": 12,
+  "cases": [
+    {
+      "case_id": "CASE_01",
+      "condition": "Complete evidence + supported claim",
+      "decision": "release",
+      "support_state": "SUPPORTED",
+      "explanation": "Gate policy matched: release",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_02",
+      "condition": "Zero usable evidence at verification",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_04",
+      "condition": "Insufficient evidence",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_05",
+      "condition": "Unsupported claim",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_06",
+      "condition": "Invalid citation",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_07",
+      "condition": "Global vs Cited support",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_08",
+      "condition": "Missing trust factor",
+      "decision": "release",
+      "support_state": "SUPPORTED",
+      "explanation": "Gate policy matched: release",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_12",
+      "condition": "Unsupported relationship",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_13",
+      "condition": "RG-02 NO_RELEVANT_RELATION",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_14",
+      "condition": "Contradictory evidence",
+      "decision": "abstain",
+      "support_state": "CONTRADICTED",
+      "explanation": "Gate policy matched: abstain",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_16",
+      "condition": "Ambiguous claim support",
+      "decision": "qualify",
+      "support_state": "UNSUPPORTED",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    },
+    {
+      "case_id": "CASE_17",
+      "condition": "Mixed claims",
+      "decision": "qualify",
+      "support_state": "INSUFFICIENT_EVIDENCE",
+      "explanation": "Gate policy matched: qualify",
+      "claims": [],
+      "verification_status": "VERIFIED"
+    }
+  ],
+  "integrity": {
+    "source_results_verified": true,
+    "source_test_verified": true,
+    "script_result_case_match": true
+  }
+}
