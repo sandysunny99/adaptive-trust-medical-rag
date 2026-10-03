@@ -1,0 +1,13 @@
+{
+  "track_a_unchanged": true,
+  "benchmark_unchanged": true,
+  "historical_retrieval_unchanged": true,
+  "trust_implementation_unchanged": true,
+  "claim_verification_unchanged": true,
+  "controlled_abstention_unchanged": true,
+  "canonical_identity_unchanged": true,
+  "rg_02_unchanged": true,
+  "phase_15_unchanged": true,
+  "gemini_configuration_unchanged": true,
+  "integrity_status": "PASS"
+}

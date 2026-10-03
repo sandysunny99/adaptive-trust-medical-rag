@@ -1,0 +1,52 @@
+{
+  "protocol_version": "REAL_LLM_EVALUATION_PROTOCOL_V1",
+  "dataset_path": "experiments/manifests/v3_1_human_cases.json",
+  "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
+  "case_count": 80,
+  "case_ids_hash": "UNDEFINED",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-120b",
+  "temperature": 0.0,
+  "max_tokens": null,
+  "seed_support": "NOT_SUPPORTED",
+  "prompt_version": "REAL_LLM_PROMPT_V1",
+  "prompt_hash": "1d461a83fd6ade33291ce565a0032cdb01c73d2b76386dc68c5dc12aa0970c09",
+  "arm_definitions": {
+    "ARM_A_BASELINE": {
+      "description": "Baseline RAG + Groq Real LLM (No Trust Control)",
+      "trust_control": "DISABLED",
+      "abstention": "DEFAULT",
+      "claim_verification": "DISABLED"
+    },
+    "ARM_B_ADAPTIVE": {
+      "description": "Adaptive Trust-Aware RAG + Groq Real LLM",
+      "trust_control": "ENABLED",
+      "abstention": "ENABLED",
+      "claim_verification": "ENABLED"
+    }
+  },
+  "metrics": [
+    "claim_support_rate",
+    "citation_validation_rate",
+    "unsupported_answer_rate",
+    "abstention_rate",
+    "provider_failure_rate"
+  ],
+  "failure_policy": "Provider failures are recorded as PROVIDER_FAILURE, excluded from medical metrics, but included in provider_failure_rate. Do not impute.",
+  "abstention_policy": "Controlled abstentions triggered by Evidence Eligibility Gate or Answer Safety Gate are recorded as ABSTENTION. They are excluded from claim support rates.",
+  "security_scope": "EXCLUDED",
+  "retrieval_scope": "FROZEN_HISTORICAL_OUTPUT",
+  "request_budget": 160,
+  "reproducibility_statement": "seed=NOT_SUPPORTED. Strict deterministic replay is FALSE.",
+  "protected_artifacts": [
+    "Track A Benchmark",
+    "Gate 5",
+    "Trust/Evidence remediation",
+    "Claim-Evidence remediation",
+    "Controlled Abstention",
+    "Canonical Relationship Identity",
+    "RG-02",
+    "Phase 15"
+  ],
+  "authorization_status": "PENDING_RESEARCHER_DECISION"
+}
