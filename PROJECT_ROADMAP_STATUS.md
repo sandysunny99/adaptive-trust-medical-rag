@@ -26,11 +26,11 @@ APP-16 Citation validation
 APP-17 Post-LLM safety
     SERVICE VALIDATED
 APP-18 Final verified browser answer
-    PENDING TRUE E2E VALIDATION
+    SERVICE VALIDATED
 APP-E2E-01 Real HTTP + SSE + React validation
-    PENDING
+    SERVICE VALIDATED
 APP-E2E-02 Real retrieval validation
-    PENDING
+    SERVICE VALIDATED
 APP-MP-01 Multi-Provider Router
     SERVICE VALIDATED
 APP-MP-02 NVIDIA NIM Integration

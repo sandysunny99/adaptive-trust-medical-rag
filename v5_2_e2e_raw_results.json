@@ -1,0 +1,712 @@
+{
+  "nvidia_happy": {
+    "label": "NVIDIA: warfarin + aspirin (Happy Path)",
+    "drugs": [
+      "warfarin",
+      "aspirin"
+    ],
+    "request_id": "d6f3f763-4354-444f-a39c-30779e23404c",
+    "events": [
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "uploading",
+          "status": "running",
+          "message": "Sanitizing input...",
+          "timestamp": "2026-10-04T12:08:58.878948+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "uploading",
+          "status": "complete",
+          "message": "2 drug(s) accepted",
+          "timestamp": "2026-10-04T12:08:58.878948+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "normalizing",
+          "status": "running",
+          "message": "Resolving drug entities via RxNorm...",
+          "timestamp": "2026-10-04T12:08:58.879884+00:00"
+        }
+      },
+      {
+        "event": "rxnorm",
+        "data": {
+          "entities": [
+            {
+              "raw_text": "warfarin",
+              "canonical_name": "warfarin",
+              "rxcui": "11289",
+              "brand_name": "Coumadin",
+              "formulation": null,
+              "confidence": 1.0,
+              "source": "cache",
+              "status": "MATCHED"
+            },
+            {
+              "raw_text": "aspirin",
+              "canonical_name": "aspirin",
+              "rxcui": "1191",
+              "brand_name": "Bayer Aspirin",
+              "formulation": null,
+              "confidence": 1.0,
+              "source": "cache",
+              "status": "MATCHED"
+            }
+          ]
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "normalizing",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:08:58.880399+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "retrieving",
+          "status": "running",
+          "message": "Retrieving evidence...",
+          "timestamp": "2026-10-04T12:08:58.880399+00:00"
+        }
+      },
+      {
+        "event": "retrieval",
+        "data": {
+          "evidence_count": 5,
+          "sources": [
+            "OPENFDA",
+            "PUBMED",
+            "DAILYMED"
+          ]
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "retrieving",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:08:59.005426+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "security_checking",
+          "status": "running",
+          "timestamp": "2026-10-04T12:08:59.006426+00:00"
+        }
+      },
+      {
+        "event": "security",
+        "data": {
+          "injection_status": "ALLOW",
+          "poisoning_status": "ALLOW",
+          "poisoning_reason": null
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "security_checking",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:08:59.006426+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "trust_evaluating",
+          "status": "running",
+          "timestamp": "2026-10-04T12:08:59.006426+00:00"
+        }
+      },
+      {
+        "event": "trust",
+        "data": {
+          "overall_score": 0.6325,
+          "threshold": 0.3,
+          "risk_class": "R0",
+          "is_eligible": true,
+          "factors": {
+            "source_authority": 0.95,
+            "query_relevance": null,
+            "evidence_quality": null,
+            "freshness": 0.9,
+            "consistency": 1.0,
+            "entity_match": 1.0,
+            "population_match": null,
+            "anti_poisoning": 1.0,
+            "anti_injection": 1.0
+          },
+          "missing_factors": []
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "trust_evaluating",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:08:59.007427+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "generating",
+          "status": "running",
+          "timestamp": "2026-10-04T12:08:59.007427+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "generating",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:09.226338+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "claim_verifying",
+          "status": "running",
+          "timestamp": "2026-10-04T12:09:09.226338+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "claim_verifying",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:09.226338+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "safety_gating",
+          "status": "running",
+          "timestamp": "2026-10-04T12:09:09.227338+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "safety_gating",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:09.227338+00:00"
+        }
+      },
+      {
+        "event": "answer",
+        "data": {
+          "request_id": "d6f3f763-4354-444f-a39c-30779e23404c",
+          "input_mode": "direct_drugs",
+          "processing_time_ms": 10355.8,
+          "medications": [
+            {
+              "raw_text": "warfarin",
+              "canonical_name": "warfarin",
+              "rxcui": "11289",
+              "brand_name": "Coumadin",
+              "formulation": null,
+              "confidence": 1.0,
+              "source": "cache",
+              "status": "MATCHED"
+            },
+            {
+              "raw_text": "aspirin",
+              "canonical_name": "aspirin",
+              "rxcui": "1191",
+              "brand_name": "Bayer Aspirin",
+              "formulation": null,
+              "confidence": 1.0,
+              "source": "cache",
+              "status": "MATCHED"
+            }
+          ],
+          "patient_context_used": null,
+          "interactions": [],
+          "adverse_reactions": [],
+          "warnings": [],
+          "food_guidance": [],
+          "patient_considerations": [],
+          "trust": {
+            "overall_score": 0.6325,
+            "threshold": 0.3,
+            "risk_class": "R0",
+            "is_eligible": true,
+            "factors": {
+              "source_authority": 0.95,
+              "query_relevance": null,
+              "evidence_quality": null,
+              "freshness": 0.9,
+              "consistency": 1.0,
+              "entity_match": 1.0,
+              "population_match": null,
+              "anti_poisoning": 1.0,
+              "anti_injection": 1.0
+            },
+            "missing_factors": []
+          },
+          "security": {
+            "injection_status": "ALLOW",
+            "poisoning_status": "ALLOW",
+            "poisoning_reason": null
+          },
+          "claims": [],
+          "evidence": [
+            {
+              "chunk_id": "DAILYMED-SPL-WARFARIN-001-CHUNK-01",
+              "document_id": "SPL-WARFARIN-001",
+              "source_type": "DAILYMED",
+              "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-warfarin",
+              "title": "Evidence [Source 1]",
+              "text": "Warfarin Sodium Tablets USP. PRECAUTIONS: Drug Interactions. Drugs that may increase the risk of bleeding include NSAIDs (e.g., aspirin, ibuprofen, naproxen). Concurrent use of NSAIDs with warfarin increases the risk of bleeding. If coadministration is necessary, patients should be closely monitored for signs of bleeding, and dosage adjustments of warfarin may be required.",
+              "source_authority": 0.95,
+              "trust_score": 0.6325,
+              "freshness": 0.9,
+              "retrieval_method": "hybrid-rrf",
+              "provenance_status": "RETRIEVED"
+            },
+            {
+              "chunk_id": "OPENFDA-FDA-AE-9991-CHUNK-01",
+              "document_id": "FDA-AE-9991",
+              "source_type": "OPENFDA",
+              "source_name": "https://open.fda.gov/apis/drug/event/",
+              "title": "Evidence [Source 2]",
+              "text": "Aspirin is known to cause gastrointestinal adverse events. Common adverse reactions include dyspepsia, nausea, and abdominal pain. More serious, but less common, adverse events include gastrointestinal bleeding, ulcers, and perforation, which can be fatal.",
+              "source_authority": 0.88,
+              "trust_score": 0.617,
+              "freshness": 0.85,
+              "retrieval_method": "hybrid-rrf",
+              "provenance_status": "RETRIEVED"
+            },
+            {
+              "chunk_id": "DAILYMED-SPL-LISINOPRIL-002-CHUNK-01",
+              "document_id": "SPL-LISINOPRIL-002",
+              "source_type": "DAILYMED",
+              "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-lisinopril",
+              "title": "Evidence [Source 3]",
+              "text": "WARNING: FETAL TOXICITY. When pregnancy is detected, discontinue lisinopril as soon as possible. Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus.",
+              "source_authority": 0.95,
+              "trust_score": 0.5825,
+              "freshness": 0.9,
+              "retrieval_method": "hybrid-rrf",
+              "provenance_status": "RETRIEVED"
+            },
+            {
+              "chunk_id": "PUBMED-PMID-31234567-CHUNK-01",
+              "document_id": "PMID-31234567",
+              "source_type": "PUBMED",
+              "source_name": "https://pubmed.ncbi.nlm.nih.gov/31234567",
+              "title": "Evidence [Source 4]",
+              "text": "Coadministration of ACE inhibitors like lisinopril with potassium supplements, potassium-sparing diuretics, or potassium-containing salt substitutes can lead to hyperkalemia. Serum potassium should be monitored frequently in patients receiving this combination.",
+              "source_authority": 0.85,
+              "trust_score": 0.5575,
+              "freshness": 0.8,
+              "retrieval_method": "hybrid-rrf",
+              "provenance_status": "RETRIEVED"
+            },
+            {
+              "chunk_id": "DAILYMED-SPL-ATORVASTATIN-005-CHUNK-01",
+              "document_id": "SPL-ATORVASTATIN-005",
+              "source_type": "DAILYMED",
+              "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-atorvastatin",
+              "title": "Evidence [Source 5]",
+              "text": "Atorvastatin Calcium Tablets can be administered as a single dose at any time of the day, with or without food. However, patients should be advised to avoid consumption of large quantities of grapefruit juice (more than 1.2 liters daily), as it may increase plasma concentrations of atorvastatin.",
+              "source_authority": 0.95,
+              "trust_score": 0.5825,
+              "freshness": 0.9,
+              "retrieval_method": "hybrid-rrf",
+              "provenance_status": "RETRIEVED"
+            }
+          ],
+          "provenance": [
+            {
+              "level": "evidence",
+              "id": "DAILYMED-SPL-WARFARIN-001-CHUNK-01",
+              "label": "Evidence [Source 1]",
+              "detail": "Warfarin Sodium Tablets USP. PRECAUTIONS: Drug Interactions. Drugs that may increase the risk of ble..."
+            },
+            {
+              "level": "evidence",
+              "id": "OPENFDA-FDA-AE-9991-CHUNK-01",
+              "label": "Evidence [Source 2]",
+              "detail": "Aspirin is known to cause gastrointestinal adverse events. Common adverse reactions include dyspepsi..."
+            },
+            {
+              "level": "evidence",
+              "id": "DAILYMED-SPL-LISINOPRIL-002-CHUNK-01",
+              "label": "Evidence [Source 3]",
+              "detail": "WARNING: FETAL TOXICITY. When pregnancy is detected, discontinue lisinopril as soon as possible. Dru..."
+            },
+            {
+              "level": "evidence",
+              "id": "PUBMED-PMID-31234567-CHUNK-01",
+              "label": "Evidence [Source 4]",
+              "detail": "Coadministration of ACE inhibitors like lisinopril with potassium supplements, potassium-sparing diu..."
+            },
+            {
+              "level": "evidence",
+              "id": "DAILYMED-SPL-ATORVASTATIN-005-CHUNK-01",
+              "label": "Evidence [Source 5]",
+              "detail": "Atorvastatin Calcium Tablets can be administered as a single dose at any time of the day, with or wi..."
+            }
+          ],
+          "conclusion": "",
+          "gate_decision": "release",
+          "abstention_reason": null
+        }
+      },
+      {
+        "event": "complete",
+        "data": {
+          "request_id": "d6f3f763-4354-444f-a39c-30779e23404c",
+          "duration_ms": 10355.8
+        }
+      }
+    ],
+    "final_event": "answer",
+    "final_payload": {
+      "request_id": "d6f3f763-4354-444f-a39c-30779e23404c",
+      "input_mode": "direct_drugs",
+      "processing_time_ms": 10355.8,
+      "medications": [
+        {
+          "raw_text": "warfarin",
+          "canonical_name": "warfarin",
+          "rxcui": "11289",
+          "brand_name": "Coumadin",
+          "formulation": null,
+          "confidence": 1.0,
+          "source": "cache",
+          "status": "MATCHED"
+        },
+        {
+          "raw_text": "aspirin",
+          "canonical_name": "aspirin",
+          "rxcui": "1191",
+          "brand_name": "Bayer Aspirin",
+          "formulation": null,
+          "confidence": 1.0,
+          "source": "cache",
+          "status": "MATCHED"
+        }
+      ],
+      "patient_context_used": null,
+      "interactions": [],
+      "adverse_reactions": [],
+      "warnings": [],
+      "food_guidance": [],
+      "patient_considerations": [],
+      "trust": {
+        "overall_score": 0.6325,
+        "threshold": 0.3,
+        "risk_class": "R0",
+        "is_eligible": true,
+        "factors": {
+          "source_authority": 0.95,
+          "query_relevance": null,
+          "evidence_quality": null,
+          "freshness": 0.9,
+          "consistency": 1.0,
+          "entity_match": 1.0,
+          "population_match": null,
+          "anti_poisoning": 1.0,
+          "anti_injection": 1.0
+        },
+        "missing_factors": []
+      },
+      "security": {
+        "injection_status": "ALLOW",
+        "poisoning_status": "ALLOW",
+        "poisoning_reason": null
+      },
+      "claims": [],
+      "evidence": [
+        {
+          "chunk_id": "DAILYMED-SPL-WARFARIN-001-CHUNK-01",
+          "document_id": "SPL-WARFARIN-001",
+          "source_type": "DAILYMED",
+          "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-warfarin",
+          "title": "Evidence [Source 1]",
+          "text": "Warfarin Sodium Tablets USP. PRECAUTIONS: Drug Interactions. Drugs that may increase the risk of bleeding include NSAIDs (e.g., aspirin, ibuprofen, naproxen). Concurrent use of NSAIDs with warfarin increases the risk of bleeding. If coadministration is necessary, patients should be closely monitored for signs of bleeding, and dosage adjustments of warfarin may be required.",
+          "source_authority": 0.95,
+          "trust_score": 0.6325,
+          "freshness": 0.9,
+          "retrieval_method": "hybrid-rrf",
+          "provenance_status": "RETRIEVED"
+        },
+        {
+          "chunk_id": "OPENFDA-FDA-AE-9991-CHUNK-01",
+          "document_id": "FDA-AE-9991",
+          "source_type": "OPENFDA",
+          "source_name": "https://open.fda.gov/apis/drug/event/",
+          "title": "Evidence [Source 2]",
+          "text": "Aspirin is known to cause gastrointestinal adverse events. Common adverse reactions include dyspepsia, nausea, and abdominal pain. More serious, but less common, adverse events include gastrointestinal bleeding, ulcers, and perforation, which can be fatal.",
+          "source_authority": 0.88,
+          "trust_score": 0.617,
+          "freshness": 0.85,
+          "retrieval_method": "hybrid-rrf",
+          "provenance_status": "RETRIEVED"
+        },
+        {
+          "chunk_id": "DAILYMED-SPL-LISINOPRIL-002-CHUNK-01",
+          "document_id": "SPL-LISINOPRIL-002",
+          "source_type": "DAILYMED",
+          "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-lisinopril",
+          "title": "Evidence [Source 3]",
+          "text": "WARNING: FETAL TOXICITY. When pregnancy is detected, discontinue lisinopril as soon as possible. Drugs that act directly on the renin-angiotensin system can cause injury and death to the developing fetus.",
+          "source_authority": 0.95,
+          "trust_score": 0.5825,
+          "freshness": 0.9,
+          "retrieval_method": "hybrid-rrf",
+          "provenance_status": "RETRIEVED"
+        },
+        {
+          "chunk_id": "PUBMED-PMID-31234567-CHUNK-01",
+          "document_id": "PMID-31234567",
+          "source_type": "PUBMED",
+          "source_name": "https://pubmed.ncbi.nlm.nih.gov/31234567",
+          "title": "Evidence [Source 4]",
+          "text": "Coadministration of ACE inhibitors like lisinopril with potassium supplements, potassium-sparing diuretics, or potassium-containing salt substitutes can lead to hyperkalemia. Serum potassium should be monitored frequently in patients receiving this combination.",
+          "source_authority": 0.85,
+          "trust_score": 0.5575,
+          "freshness": 0.8,
+          "retrieval_method": "hybrid-rrf",
+          "provenance_status": "RETRIEVED"
+        },
+        {
+          "chunk_id": "DAILYMED-SPL-ATORVASTATIN-005-CHUNK-01",
+          "document_id": "SPL-ATORVASTATIN-005",
+          "source_type": "DAILYMED",
+          "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-atorvastatin",
+          "title": "Evidence [Source 5]",
+          "text": "Atorvastatin Calcium Tablets can be administered as a single dose at any time of the day, with or without food. However, patients should be advised to avoid consumption of large quantities of grapefruit juice (more than 1.2 liters daily), as it may increase plasma concentrations of atorvastatin.",
+          "source_authority": 0.95,
+          "trust_score": 0.5825,
+          "freshness": 0.9,
+          "retrieval_method": "hybrid-rrf",
+          "provenance_status": "RETRIEVED"
+        }
+      ],
+      "provenance": [
+        {
+          "level": "evidence",
+          "id": "DAILYMED-SPL-WARFARIN-001-CHUNK-01",
+          "label": "Evidence [Source 1]",
+          "detail": "Warfarin Sodium Tablets USP. PRECAUTIONS: Drug Interactions. Drugs that may increase the risk of ble..."
+        },
+        {
+          "level": "evidence",
+          "id": "OPENFDA-FDA-AE-9991-CHUNK-01",
+          "label": "Evidence [Source 2]",
+          "detail": "Aspirin is known to cause gastrointestinal adverse events. Common adverse reactions include dyspepsi..."
+        },
+        {
+          "level": "evidence",
+          "id": "DAILYMED-SPL-LISINOPRIL-002-CHUNK-01",
+          "label": "Evidence [Source 3]",
+          "detail": "WARNING: FETAL TOXICITY. When pregnancy is detected, discontinue lisinopril as soon as possible. Dru..."
+        },
+        {
+          "level": "evidence",
+          "id": "PUBMED-PMID-31234567-CHUNK-01",
+          "label": "Evidence [Source 4]",
+          "detail": "Coadministration of ACE inhibitors like lisinopril with potassium supplements, potassium-sparing diu..."
+        },
+        {
+          "level": "evidence",
+          "id": "DAILYMED-SPL-ATORVASTATIN-005-CHUNK-01",
+          "label": "Evidence [Source 5]",
+          "detail": "Atorvastatin Calcium Tablets can be administered as a single dose at any time of the day, with or wi..."
+        }
+      ],
+      "conclusion": "",
+      "gate_decision": "release",
+      "abstention_reason": null
+    },
+    "expect_abstention": false
+  },
+  "abstention": {
+    "label": "Controlled Abstention: warfarin overdose",
+    "drugs": [
+      "warfarin overdose"
+    ],
+    "request_id": "0e455fb4-596e-4dbe-94be-9d82b3cf75d6",
+    "events": [
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "uploading",
+          "status": "running",
+          "message": "Sanitizing input...",
+          "timestamp": "2026-10-04T12:09:09.696163+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "uploading",
+          "status": "complete",
+          "message": "1 drug(s) accepted",
+          "timestamp": "2026-10-04T12:09:09.696163+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "normalizing",
+          "status": "running",
+          "message": "Resolving drug entities via RxNorm...",
+          "timestamp": "2026-10-04T12:09:09.697163+00:00"
+        }
+      },
+      {
+        "event": "rxnorm",
+        "data": {
+          "entities": [
+            {
+              "raw_text": "warfarin overdose",
+              "canonical_name": "warfarin",
+              "rxcui": "11289",
+              "brand_name": null,
+              "formulation": null,
+              "confidence": 0.8,
+              "source": "rxnorm_approx",
+              "status": "MATCHED"
+            }
+          ]
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "normalizing",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:13.456285+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "retrieving",
+          "status": "running",
+          "message": "Retrieving evidence...",
+          "timestamp": "2026-10-04T12:09:13.456285+00:00"
+        }
+      },
+      {
+        "event": "retrieval",
+        "data": {
+          "evidence_count": 5,
+          "sources": [
+            "OPENFDA",
+            "PUBMED",
+            "DAILYMED"
+          ]
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "retrieving",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:13.476105+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "security_checking",
+          "status": "running",
+          "timestamp": "2026-10-04T12:09:13.476105+00:00"
+        }
+      },
+      {
+        "event": "security",
+        "data": {
+          "injection_status": "ALLOW",
+          "poisoning_status": "ALLOW",
+          "poisoning_reason": null
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "security_checking",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:13.477519+00:00"
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "trust_evaluating",
+          "status": "running",
+          "timestamp": "2026-10-04T12:09:13.477519+00:00"
+        }
+      },
+      {
+        "event": "trust",
+        "data": {
+          "overall_score": 0.545,
+          "threshold": 0.75,
+          "risk_class": "R3",
+          "is_eligible": false,
+          "factors": {
+            "source_authority": 0.95,
+            "query_relevance": null,
+            "evidence_quality": null,
+            "freshness": 0.9,
+            "consistency": 1.0,
+            "entity_match": 0.5,
+            "population_match": null,
+            "anti_poisoning": 1.0,
+            "anti_injection": 1.0
+          },
+          "missing_factors": []
+        }
+      },
+      {
+        "event": "stage_update",
+        "data": {
+          "stage": "trust_evaluating",
+          "status": "complete",
+          "timestamp": "2026-10-04T12:09:13.478037+00:00"
+        }
+      },
+      {
+        "event": "abstention",
+        "data": {
+          "reason": "Insufficient eligible evidence retrieved to meet trust threshold.",
+          "trust": {
+            "overall_score": 0.545,
+            "threshold": 0.75,
+            "risk_class": "R3"
+          }
+        }
+      }
+    ],
+    "final_event": "abstention",
+    "final_payload": {
+      "reason": "Insufficient eligible evidence retrieved to meet trust threshold.",
+      "trust": {
+        "overall_score": 0.545,
+        "threshold": 0.75,
+        "risk_class": "R3"
+      }
+    },
+    "expect_abstention": true
+  }
+}

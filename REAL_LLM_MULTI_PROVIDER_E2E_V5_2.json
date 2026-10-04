@@ -1,0 +1,38 @@
+{
+    "nvidia": {
+        "configuration": "PASS",
+        "connectivity": "PASS",
+        "real_medical_request": "PASS",
+        "real_retrieval": "PASS",
+        "structured_output": "PASS",
+        "claim_verification": "PASS",
+        "citation_validation": "PASS",
+        "post_llm_safety": "PASS",
+        "sse": "PASS",
+        "react": "PASS",
+        "browser": "PASS"
+    },
+    "groq": {
+        "configuration": "PASS",
+        "connectivity": "PASS",
+        "real_medical_request": "PASS",
+        "real_retrieval": "PASS",
+        "structured_output": "PASS",
+        "claim_verification": "PASS",
+        "citation_validation": "PASS",
+        "post_llm_safety": "PASS",
+        "sse": "PASS",
+        "react": "PASS",
+        "browser": "PASS",
+        "controlled_abstention": "PASS"
+    },
+    "provider_routing": "PASS",
+    "secret_audit": "PASS",
+    "research_medical_requests": 0,
+    "live_nvidia_medical_requests": 2,
+    "live_groq_medical_requests": 2,
+    "fallback_used_during_controlled_tests": "NO",
+    "research_protocol_modified": "NO",
+    "frozen_artifacts_modified": "NO",
+    "overall_status": "COMPLETE"
+}
