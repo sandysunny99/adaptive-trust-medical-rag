@@ -498,7 +498,7 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
 
-            query_str = ", ".join([m["raw_text"] for m in medications])
+            query_str = ", ".join([f'{m.get("canonical_name", m["raw_text"])} (RxCUI: {m.get("rxcui", "Unknown")})' for m in medications])
             patient_ctx_str = json.dumps(patient_context) if patient_context else "None provided."
             
             prompt = self.prompt_template.format(
