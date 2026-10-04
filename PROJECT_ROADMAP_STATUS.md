@@ -40,16 +40,16 @@ APP-20 ADE output                              ⏳
 APP-21 Food/admin                              ⏳
 APP-22 Patient context                         🟡 PARTIAL
 APP-23 Patient-specific analysis               ⏳
-APP-24 Prescription image upload                o. COMPLETE
-APP-25 Vision/OCR abstraction                   o. COMPLETE
-APP-26 Confirmation boundary                    o. COMPLETE
-APP-27 Confirmed medication -> RxNorm           o. COMPLETE
-APP-28 Real NVIDIA vision extraction            o. COMPLETE
-APP-29 Image -> Vision -> Confirmation -> RxNorm o. COMPLETE
-APP-30 Image -> Full Medical RAG                ?3 PENDING
-APP-31 Multimodal claim/citation/safety         ?3 PENDING
-APP-32 Multimodal browser E2E                   ?3 PENDING
-APP-33 Multimodal security validation           ?3 PENDING
+APP-24 Prescription image upload                COMPLETE
+APP-25 Vision/OCR abstraction                   COMPLETE
+APP-26 Confirmation boundary                    COMPLETE
+APP-27 Confirmed medication -> RxNorm           COMPLETE
+APP-28 Real NVIDIA vision extraction            COMPLETE
+APP-29 Image -> Vision -> Confirmation -> RxNorm COMPLETE (C6)
+APP-30 Image -> Full Medical RAG                COMPLETE (C7)
+APP-31 Multimodal claim/citation/safety         COMPLETE (C8)
+APP-32 Multimodal browser E2E                   PENDING
+APP-33 Multimodal security validation           PENDING
 ```
 
 ## Research Status

@@ -212,8 +212,9 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 image_bytes = analysis.get("image_bytes")
                 image_meta = analysis.get("image_meta")
                 patient_context_dict = analysis.get("patient_context")
-                # Create an event to wait for confirmation
-                analysis["confirmation_event"] = asyncio.Event()
+                # Create an event to wait for confirmation if not already present
+                if "confirmation_event" not in analysis:
+                    analysis["confirmation_event"] = asyncio.Event()
             else:
                 body: AnalyzeRequest = analysis["body"]
                 drug_names = body.drug_names
