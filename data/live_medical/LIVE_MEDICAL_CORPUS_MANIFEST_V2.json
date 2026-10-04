@@ -1,0 +1,16 @@
+{
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "creation_timestamp": "2026-10-04T16:35:06.607255+00:00",
+  "source_types": [
+    "DAILYMED",
+    "PUBMED",
+    "OPENFDA"
+  ],
+  "document_count": 14,
+  "chunk_count": 14,
+  "embedding_model": "all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "provenance_scheme": "sha256",
+  "hash_scheme": "sha256",
+  "inherited_from": "LIVE_MEDICAL_CORPUS_V1"
+}

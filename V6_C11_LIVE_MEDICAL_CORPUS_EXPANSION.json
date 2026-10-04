@@ -1,0 +1,54 @@
+{
+  "checkpoint": "V6_C11",
+  "status": "COMPLETE",
+  "acceptance_criteria": {
+    "live_corpus_audit": true,
+    "corpus_versioning": true,
+    "source_provenance": true,
+    "medical_category_coverage": true,
+    "ddi_coverage": true,
+    "ade_safety_coverage": true,
+    "entity_alignment": true,
+    "duplicate_control": true,
+    "evidence_integrity": true,
+    "freshness_metadata": true,
+    "retrieval_regression": true,
+    "real_live_llm_validation": true,
+    "multimodal_validation": true,
+    "claim_verification": true,
+    "citation_validation": true,
+    "controlled_abstention": true,
+    "prompt_injection_poisoning_regression": true,
+    "sse": true,
+    "react": true,
+    "browser": true,
+    "security_regression": true,
+    "research_isolation": true,
+    "research_medical_requests": 0,
+    "frozen_research_artifacts_modified": false,
+    "secrets_committed": false,
+    "real_patient_data": false
+  },
+  "metrics": {
+    "v1_document_count": 5,
+    "v2_document_count": 14,
+    "v1_chunk_count": 5,
+    "v2_chunk_count": 14,
+    "expanded_categories": [
+      "anticoagulants",
+      "antiplatelet drugs",
+      "NSAIDs",
+      "antibiotics",
+      "antidiabetic medications",
+      "antihypertensives",
+      "statins",
+      "antidepressants",
+      "antiepileptic drugs",
+      "OTC medications"
+    ]
+  },
+  "audit_details": {
+    "test_file": "tests/e2e/test_v6_c11_corpus_expansion.py",
+    "notes": "Live Medical Corpus V2 was generated successfully without modifying frozen research artifacts."
+  }
+}

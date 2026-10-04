@@ -166,7 +166,7 @@ def create_app(
         import json
         import os
         
-        corpus_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "LIVE_MEDICAL_CORPUS_V1.json")
+        corpus_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "LIVE_MEDICAL_CORPUS_V2.json")
         live_corpus = []
         if os.path.exists(corpus_path):
             with open(corpus_path, "r", encoding="utf-8") as f:
