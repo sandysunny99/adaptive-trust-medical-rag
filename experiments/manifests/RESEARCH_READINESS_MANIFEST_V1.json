@@ -1,0 +1,23 @@
+{
+  "manifest_version": "1.0",
+  "controls": {
+    "trust_evidence_control": {
+      "status": "VALIDATED",
+      "artifact": "adaptive_trust_medical_rag/trust_scoring/trust_scorer.py",
+      "validation_test": "tests/test_trust_scoring.py",
+      "notes": "Historical validation of trust scoring implementation."
+    },
+    "claim_verification": {
+      "status": "VALIDATED",
+      "artifact": "adaptive_trust_medical_rag/verification/claim_verifier_v2.py",
+      "validation_test": "tests/test_claim_verifier_v2.py",
+      "notes": "Claim verifier v2 passes all baseline semantic judgments."
+    },
+    "controlled_abstention": {
+      "status": "VALIDATED",
+      "artifact": "adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py",
+      "validation_test": "tests/test_abstention.py",
+      "notes": "Verified against the historical microcases."
+    }
+  }
+}

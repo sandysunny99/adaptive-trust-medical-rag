@@ -26,7 +26,7 @@ export function EvaluationPage() {
     return <div className="p-6 text-red-500">Failed to load research state.</div>;
   }
 
-  const isBlocked = state.prompt_freeze === 'BLOCKED' || state.provider_readiness === 'BLOCKED' || state.dataset_integrity === 'BLOCKED';
+  const isBlocked = state.prompt_freeze.status === 'BLOCKED' || state.provider_readiness.status === 'BLOCKED' || state.dataset_integrity.status === 'BLOCKED';
 
   return (
     <div className="space-y-4">
@@ -46,9 +46,9 @@ export function EvaluationPage() {
           <div className={`mt-2 text-xs space-y-1 ${isBlocked ? 'text-amber-700' : 'text-blue-700'}`}>
             <p><strong>Status:</strong> {isBlocked ? 'BLOCKED / NOT STARTED' : 'READY / NOT STARTED'}</p>
             <p><strong>Protocol:</strong> {state.protocol}</p>
-            <p><strong>Prompt Freeze:</strong> {state.prompt_freeze}</p>
-            <p><strong>Provider Readiness:</strong> {state.provider_readiness}</p>
-            <p><strong>Researcher Authorization:</strong> {state.researcher_authorization}</p>
+            <p><strong>Prompt Freeze:</strong> {state.prompt_freeze.status}</p>
+            <p><strong>Provider Readiness:</strong> {state.provider_readiness.status}</p>
+            <p><strong>Researcher Authorization:</strong> {state.researcher_authorization.status}</p>
             <p><strong>Medical Evaluation Requests:</strong> {state.medical_evaluation_requests_executed} / {state.medical_evaluation_requests_total}</p>
           </div>
         </div>

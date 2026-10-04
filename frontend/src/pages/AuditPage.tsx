@@ -7,6 +7,10 @@ const STATUS_CONFIG = {
   BLOCKED: { icon: X, color: 'text-red-600', bg: 'bg-red-50' },
   PENDING: { icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
   READY: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  VALIDATED: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  NOT_VALIDATED: { icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50' },
+  NOT_CONFIGURED: { icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50' },
+  CONFIGURED: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
   NOT_STARTED: { icon: AlertTriangle, color: 'text-slate-500', bg: 'bg-slate-50' },
 } as const;
 
@@ -35,16 +39,16 @@ export function AuditPage() {
   }
 
   const AUDIT_ITEMS = [
-    { label: 'Dataset Integrity', status: state.dataset_integrity },
-    { label: 'Case Order Integrity', status: state.case_order_integrity },
-    { label: 'Frozen Retrieval', status: state.frozen_retrieval },
-    { label: 'Trust / Evidence Control', status: state.trust_evidence_control },
-    { label: 'Claim Verification', status: state.claim_verification },
-    { label: 'Controlled Abstention', status: state.controlled_abstention },
-    { label: 'Prompt Freeze', status: state.prompt_freeze },
-    { label: 'Provider Readiness', status: state.provider_readiness },
-    { label: 'Researcher Authorization', status: state.researcher_authorization },
-    { label: 'Real-LLM Evaluation', status: state.real_llm_evaluation },
+    { label: 'Dataset Integrity', status: state.dataset_integrity.status },
+    { label: 'Case Order Integrity', status: state.case_order_integrity.status },
+    { label: 'Frozen Retrieval', status: state.frozen_retrieval.status },
+    { label: 'Trust / Evidence Control', status: state.trust_evidence_control.status },
+    { label: 'Claim Verification', status: state.claim_verification.status },
+    { label: 'Controlled Abstention', status: state.controlled_abstention.status },
+    { label: 'Prompt Freeze', status: state.prompt_freeze.status },
+    { label: 'Provider Readiness', status: state.provider_readiness.status },
+    { label: 'Researcher Authorization', status: state.researcher_authorization.status },
+    { label: 'Real-LLM Evaluation', status: state.real_llm_evaluation.status },
   ];
 
   return (
