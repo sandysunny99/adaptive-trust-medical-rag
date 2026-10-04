@@ -1,0 +1,38 @@
+{
+  "checkpoint": "V6_C4",
+  "status": "COMPLETE",
+  "tests_passed": 16,
+  "research_medical_requests_executed": 0,
+  "frozen_artifacts_modified": false,
+  "acceptance_criteria": {
+    "existing_normalizer_reused": true,
+    "real_rxnorm": true,
+    "warfarin_resolved": true,
+    "aspirin_resolved": true,
+    "multiple_medications": true,
+    "edited_candidate_supported": true,
+    "user_added_candidate_supported": true,
+    "provenance_preserved": true,
+    "ambiguous_fails_safely": true,
+    "unknown_fails_safely": true,
+    "rxnorm_error_fails_safely": true,
+    "empty_list_rejected": true,
+    "unresolved_confirmation_blocked": true,
+    "rxnorm_after_confirmation": true,
+    "retrieval_after_canonicalization": true,
+    "llm_after_canonicalization": true,
+    "canonical_relationship_compatibility": true,
+    "trust_compatibility": true,
+    "paths_converge": true,
+    "sse_reflects_normalization": true,
+    "malicious_text_treated_as_data": true,
+    "patient_context_not_inferred": true,
+    "tests_pass": true,
+    "research_state_unchanged": true,
+    "no_secrets_committed": true
+  },
+  "limitations": [
+    "Real Vision/OCR Extraction is NOT validated in C4.",
+    "Full image-to-RAG E2E is NOT validated in C4."
+  ]
+}

@@ -111,14 +111,26 @@ class LiveMedicalRAGService:
                     await confirmation_event.wait()
                 
                 # User confirmed, use the confirmed medications for the rest of the pipeline
-                drug_names = analysis_state.get("confirmed_medications", [])
-                if not drug_names:
+                confirmed = analysis_state.get("confirmed_medications", [])
+                if not confirmed:
                     yield _sse("error", {
                         "code": "NO_VALID_DRUGS",
                         "message": "No valid drug names provided during confirmation.",
                     })
                     return
-
+                
+                # Build provenance map and extract drug names
+                provenance_map = {}
+                drug_names = []
+                for item in confirmed:
+                    # Item could be a Pydantic model or a dict depending on how it's stored
+                    item_dict = item.model_dump() if hasattr(item, "model_dump") else item
+                    name = item_dict["name"]
+                    drug_names.append(name)
+                    provenance_map[name.lower()] = item_dict
+                    
+                analysis_state["provenance_map"] = provenance_map
+                
             # ── Stage 1: Input Validation & Sanitization ────────────────────────
             yield _sse("stage_update", {
                 "stage": "uploading",
@@ -153,7 +165,7 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
 
-            # ── Stage 2: Drug Normalization (RxNorm) ─────────────────
+            # ── Stage 2: Drug Normalization (RxNorm) ────────────────────────
             yield _sse("stage_update", {
                 "stage": "normalizing",
                 "status": "running",
@@ -164,43 +176,83 @@ class LiveMedicalRAGService:
             medications = []
             normalizer = getattr(self.app_state, "drug_normalizer", None)
             drug_rxcui_map = {}
+            all_resolved = True
+            
+            provenance_map = {}
+            if analysis_state and "provenance_map" in analysis_state:
+                provenance_map = analysis_state["provenance_map"]
 
             if normalizer:
                 try:
                     entities = await normalizer.normalize_batch(sanitized_drugs)
                     for entity in entities:
+                        if entity.confidence == 0.0:
+                            status = "NOT_FOUND"
+                        elif entity.confidence < 0.8:
+                            status = "AMBIGUOUS"
+                        else:
+                            status = "RESOLVED"
+                            
+                        if status != "RESOLVED":
+                            all_resolved = False
+
                         if entity.rxcui:
                             drug_rxcui_map[entity.raw_text.lower()] = entity.rxcui
                             if entity.generic_name:
                                 drug_rxcui_map[entity.generic_name.lower()] = entity.rxcui
                                 
+                        prov_info = provenance_map.get(entity.raw_text.lower(), {})
+                                
                         medications.append({
                             "raw_text": entity.raw_text,
-                            "canonical_name": entity.generic_name,
+                            "canonical_name": entity.generic_name or entity.raw_text,
                             "rxcui": entity.rxcui,
                             "brand_name": entity.brand_name,
                             "formulation": entity.formulation,
                             "confidence": entity.confidence,
-                            "source": entity.source,
-                            "status": "MATCHED" if entity.rxcui else "NOT_FOUND",
+                            "source": prov_info.get("source", entity.source),
+                            "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
+                            "raw_detected_name": prov_info.get("raw_detected_name"),
+                            "status": status,
                         })
                 except Exception as e:
                     log.error("RxNorm error: %s", e)
+                    all_resolved = False
                     for d in sanitized_drugs:
+                        prov_info = provenance_map.get(d.lower(), {})
                         medications.append({
                             "raw_text": d,
                             "canonical_name": d.lower(),
-                            "status": "UNAVAILABLE",
+                            "source": prov_info.get("source", "UNKNOWN"),
+                            "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
+                            "status": "ERROR",
                         })
             else:
+                all_resolved = False
                 for d in sanitized_drugs:
+                    prov_info = provenance_map.get(d.lower(), {})
                     medications.append({
                         "raw_text": d,
                         "canonical_name": d.lower(),
+                        "source": prov_info.get("source", "UNKNOWN"),
+                        "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
                         "status": "UNAVAILABLE",
                     })
 
-            yield _sse("rxnorm", {"entities": medications})
+            yield _sse("rxnorm", {"entities": medications, "overall_status": "RESOLVED" if all_resolved else "FAILED"})
+            
+            if not all_resolved:
+                yield _sse("error", {
+                    "code": "NORMALIZATION_ERROR",
+                    "message": "One or more medications could not be resolved to a canonical identity.",
+                })
+                yield _sse("stage_update", {
+                    "stage": "normalizing",
+                    "status": "failed",
+                    "timestamp": _ts(),
+                })
+                return
+
             yield _sse("stage_update", {
                 "stage": "normalizing",
                 "status": "complete",
@@ -593,3 +645,5 @@ class LiveMedicalRAGService:
                 "code": "PIPELINE_ERROR",
                 "message": str(e),
             })
+
+

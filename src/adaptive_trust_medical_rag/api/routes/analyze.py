@@ -144,9 +144,16 @@ async def post_analyze_prescription(
     }
 
 from pydantic import BaseModel
+from typing import Optional
+
+class ConfirmedMedicationItem(BaseModel):
+    name: str
+    status: str
+    source: str
+    raw_detected_name: Optional[str] = None
 
 class ConfirmMedicationsRequest(BaseModel):
-    confirmed_medications: list[str]
+    confirmed_medications: list[ConfirmedMedicationItem]
 
 @router.post(
     "/analyze/{request_id}/confirm",
