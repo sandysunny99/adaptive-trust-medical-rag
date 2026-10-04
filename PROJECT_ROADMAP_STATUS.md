@@ -17,11 +17,20 @@ APP-10 Provenance validation                   ✅
 APP-11 Trust integration                       ✅
 APP-12 Security integration                    ✅
 APP-13 PRE-LLM eligibility                     ✅
-APP-14 Real LLM integration                    ✅
-APP-15 Claim verification                      ✅
-APP-16 Citation validation                     ✅
-APP-17 Post-LLM safety                         ✅
-APP-18 Final verified answer                   ✅
+APP-14 Real LLM integration
+    SERVICE VALIDATED
+APP-15 Claim verification
+    SERVICE VALIDATED
+APP-16 Citation validation
+    SERVICE VALIDATED
+APP-17 Post-LLM safety
+    SERVICE VALIDATED
+APP-18 Final verified browser answer
+    PENDING TRUE E2E VALIDATION
+APP-E2E-01 Real HTTP + SSE + React validation
+    PENDING
+APP-E2E-02 Real retrieval validation
+    PENDING
 APP-19 DDI output                              ⏳
 APP-20 ADE output                              ⏳
 APP-21 Food/admin                              ⏳
