@@ -1,0 +1,27 @@
+{
+  "checkpoint": "V6_C3",
+  "name": "Prescription Medication Confirmation UI",
+  "status": "COMPLETE",
+  "completion_date": "2026-10-04",
+  "components_updated": [
+    "frontend/src/types/index.ts",
+    "frontend/src/services/api.ts",
+    "frontend/src/hooks/useAnalysis.ts",
+    "frontend/src/components/MedicationConfirmationPanel.tsx",
+    "frontend/src/pages/WorkspacePage.tsx",
+    "src/adaptive_trust_medical_rag/api/routes/analyze.py",
+    "src/adaptive_trust_medical_rag/services/live_application.py"
+  ],
+  "tests": {
+    "framework": "vitest",
+    "run_count": 10,
+    "pass_count": 10,
+    "fail_count": 0
+  },
+  "safety_gates": {
+    "rxnorm_blocked_before_confirmation": true,
+    "retrieval_blocked_before_confirmation": true,
+    "llm_blocked_before_confirmation": true,
+    "direct_drug_regression_pass": true
+  }
+}

@@ -24,6 +24,21 @@ export type PipelineStage =
 
 export type RxNormStatus = 'MATCHED' | 'AMBIGUOUS' | 'NOT_FOUND' | 'UNAVAILABLE';
 
+export type ExtractionConfidence = 'HIGH' | 'MEDIUM' | 'LOW' | 'UNCERTAIN';
+
+export type CandidateStatus = 'DETECTED' | 'UNCERTAIN' | 'CONFIRMED' | 'REJECTED' | 'USER_ADDED' | 'EDITED';
+
+export interface MedicationCandidate {
+  id: string;
+  raw_text: string;
+  normalized_text: string | null;
+  confidence: ExtractionConfidence;
+  status: CandidateStatus;
+  source: 'VISION' | 'OCR' | 'USER';
+  source_region?: any;
+  warnings?: string[];
+}
+
 export type SupportState =
   | 'SUPPORTED'
   | 'PARTIALLY_SUPPORTED'

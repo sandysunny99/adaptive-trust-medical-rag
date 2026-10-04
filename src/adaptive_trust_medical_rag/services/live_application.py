@@ -56,10 +56,69 @@ class LiveMedicalRAGService:
         drug_names: list[str],
         patient_context: dict[str, Any] | None,
         start_time: float,
+        image_bytes: bytes | None = None,
+        image_meta: dict | None = None,
+        analysis_state: dict | None = None,
     ) -> AsyncGenerator[dict[str, Any], None]:
         """Execute the live pipeline and yield SSE event dicts."""
         
         try:
+            # Checkpoint 3: Handle image upload and extraction pause
+            if image_bytes is not None and analysis_state is not None:
+                yield _sse("stage_update", {
+                    "stage": "extracting",
+                    "status": "running",
+                    "message": "Extracting medications from prescription image...",
+                    "timestamp": _ts(),
+                })
+                
+                # Mock OCR Extraction for Checkpoint 3 (Before V6-C5 integration)
+                # We yield the extracted candidates so the UI can render them
+                yield _sse("medication_candidates_extracted", {
+                    "candidates": [
+                        {
+                            "id": "ocr-1",
+                            "raw_text": "Warfarin 5mg",
+                            "normalized_text": "warfarin",
+                            "confidence": "HIGH",
+                            "status": "DETECTED",
+                            "source": "VISION"
+                        },
+                        {
+                            "id": "ocr-2",
+                            "raw_text": "Asp...n",
+                            "normalized_text": "aspirin",
+                            "confidence": "LOW",
+                            "status": "UNCERTAIN",
+                            "source": "VISION",
+                            "warnings": ["Low confidence extraction"]
+                        }
+                    ]
+                })
+                
+                yield _sse("stage_update", {
+                    "stage": "extracting",
+                    "status": "complete",
+                    "message": "Extraction complete. Waiting for confirmation.",
+                    "timestamp": _ts(),
+                })
+                
+                yield _sse("confirmation_required", {})
+                
+                # Wait for the frontend to confirm
+                confirmation_event = analysis_state.get("confirmation_event")
+                if confirmation_event:
+                    await confirmation_event.wait()
+                
+                # User confirmed, use the confirmed medications for the rest of the pipeline
+                drug_names = analysis_state.get("confirmed_medications", [])
+                if not drug_names:
+                    yield _sse("error", {
+                        "code": "NO_VALID_DRUGS",
+                        "message": "No valid drug names provided during confirmation.",
+                    })
+                    return
+
             # ── Stage 1: Input Validation & Sanitization ────────────────────────
             yield _sse("stage_update", {
                 "stage": "uploading",

@@ -56,6 +56,47 @@ export async function submitAnalysis(
   return response.json();
 }
 
+export async function submitPrescriptionImage(
+  file: File,
+  patientContext?: PatientContext | null,
+): Promise<AnalyzeAccepted & { validation: any }> {
+  const formData = new FormData();
+  formData.append('image', file);
+  if (patientContext) {
+    formData.append('patient_context', JSON.stringify(patientContext));
+  }
+
+  const response = await fetch(`${API_BASE}/api/v1/analyze/prescription`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errBody = await response.text();
+    throw new Error(`Image upload failed (${response.status}): ${errBody}`);
+  }
+
+  return response.json();
+}
+
+export async function confirmMedications(
+  requestId: string,
+  confirmedMedications: string[]
+): Promise<{ status: string }> {
+  const response = await fetch(`${API_BASE}/api/v1/analyze/${requestId}/confirm`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ confirmed_medications: confirmedMedications }),
+  });
+
+  if (!response.ok) {
+    const errBody = await response.text();
+    throw new Error(`Confirmation failed (${response.status}): ${errBody}`);
+  }
+
+  return response.json();
+}
+
 export async function checkHealth(): Promise<HealthStatus> {
   const response = await fetch(`${API_BASE}/health`);
   if (!response.ok) {

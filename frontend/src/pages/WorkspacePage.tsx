@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { Upload, Pill, UserCog, Search, AlertTriangle } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Upload, Pill, UserCog, Search, AlertTriangle, X } from 'lucide-react';
 import type { InputMode, PatientContext, PipelineStage } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
+import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
 import { useAnalysis } from '../hooks/useAnalysis';
 
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
   { key: 'extracting', label: 'Medication Extraction' },
+  { key: 'confirming', label: 'User Confirmation' },
   { key: 'normalizing', label: 'RxNorm Canonicalization' },
   { key: 'retrieving', label: 'Evidence Retrieval' },
   { key: 'trust_evaluating', label: 'Trust Evaluation' },
@@ -21,6 +23,7 @@ const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
 export function WorkspacePage() {
   const [inputMode, setInputMode] = useState<InputMode>('direct_drugs');
   const [drugInputs, setDrugInputs] = useState<string[]>(['']);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   
   // Patient Context state
   const [age, setAge] = useState<string>('');
@@ -31,11 +34,13 @@ export function WorkspacePage() {
 
   const { 
     analyze, 
+    confirm,
     isProcessing, 
     currentStage, 
     stageUpdates, 
     result, 
-    error 
+    error,
+    extractedCandidates
   } = useAnalysis();
 
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
@@ -46,6 +51,39 @@ export function WorkspacePage() {
     if (drugInputs.length > 1) {
       setDrugInputs(prev => prev.filter((_, i) => i !== index));
     }
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async () => {
+    const validDrugs = drugInputs.map(d => d.trim()).filter(Boolean);
+    
+    if (inputMode === 'direct_drugs' && validDrugs.length === 0) return;
+    if (inputMode === 'prescription_image' && !imageFile) return;
+
+    let patientContext: PatientContext | null = {};
+    if (age || sex || allergies || conditions || currentMeds) {
+      if (age) patientContext.age = parseInt(age, 10);
+      if (sex) patientContext.sex = sex as 'male' | 'female' | 'other';
+      if (allergies) patientContext.known_allergies = allergies.split(',').map(s => s.trim()).filter(Boolean);
+      if (conditions) patientContext.known_conditions = conditions.split(',').map(s => s.trim()).filter(Boolean);
+      if (currentMeds) patientContext.current_medications = currentMeds.split(',').map(s => s.trim()).filter(Boolean);
+      
+      if (Object.keys(patientContext).length === 0) {
+        patientContext = null;
+      }
+    }
+
+    await analyze({
+      drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
+      imageFile: inputMode === 'prescription_image' ? imageFile : undefined,
+      patientContext,
+      inputMode
+    });
   };
 
   const handleSubmit = async () => {
@@ -108,11 +146,18 @@ export function WorkspacePage() {
 
         <div className="p-5">
           {inputMode === 'prescription_image' && (
-            <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
+            <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer relative">
               <Upload className="mx-auto text-slate-400 mb-3" size={32} />
-              <p className="text-sm text-slate-600">Drag & drop a prescription image, or click to browse</p>
-              <p className="text-xs text-slate-400 mt-1">PNG, JPG, or PDF • Max 10MB</p>
-              <input type="file" className="hidden" accept="image/*,.pdf" />
+              <p className="text-sm text-slate-600">
+                {imageFile ? imageFile.name : "Drag & drop a prescription image, or click to browse"}
+              </p>
+              <p className="text-xs text-slate-400 mt-1">PNG, JPG, or WEBP • Max 5MB</p>
+              <input 
+                type="file" 
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                accept="image/jpeg,image/png,image/webp" 
+                onChange={handleImageChange}
+              />
             </div>
           )}
 
@@ -136,7 +181,7 @@ export function WorkspacePage() {
                       className="px-3 py-2 text-slate-400 hover:text-red-500 transition-colors"
                       aria-label="Remove drug"
                     >
-                      ✕
+                      <X size={16} />
                     </button>
                   )}
                 </div>
@@ -206,11 +251,15 @@ export function WorkspacePage() {
           <div className="mt-5 flex items-center justify-between">
             <div className="flex items-center gap-2 text-xs text-amber-600">
               <AlertTriangle size={14} />
-              <span>Research prototype — does not replace clinical advice</span>
+              <span>Research prototype - does not replace clinical advice</span>
             </div>
             <button
               onClick={handleSubmit}
-              disabled={isProcessing || drugInputs.every(d => !d.trim())}
+              disabled={
+                isProcessing || 
+                (inputMode === 'direct_drugs' && drugInputs.every(d => !d.trim())) ||
+                (inputMode === 'prescription_image' && !imageFile)
+              }
               className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <Search size={16} />
@@ -229,6 +278,14 @@ export function WorkspacePage() {
         />
       )}
 
+      {/* Confirmation Panel */}
+      {currentStage === 'confirming' && extractedCandidates && extractedCandidates.length > 0 && (
+        <MedicationConfirmationPanel 
+          candidates={extractedCandidates}
+          onConfirm={confirm}
+        />
+      )}
+
       {/* Error Message */}
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
@@ -241,7 +298,7 @@ export function WorkspacePage() {
       )}
 
       {/* Results */}
-      {result && <ResultPanel result={result} />}
+      {result && currentStage !== 'confirming' && <ResultPanel result={result} />}
     </div>
   );
 }

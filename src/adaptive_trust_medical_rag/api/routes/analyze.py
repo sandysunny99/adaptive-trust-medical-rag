@@ -143,6 +143,28 @@ async def post_analyze_prescription(
         "validation": validation_meta
     }
 
+from pydantic import BaseModel
+
+class ConfirmMedicationsRequest(BaseModel):
+    confirmed_medications: list[str]
+
+@router.post(
+    "/analyze/{request_id}/confirm",
+    summary="Confirm medications for analysis",
+)
+async def confirm_medications(request_id: str, body: ConfirmMedicationsRequest, request: Request):
+    pending = getattr(request.app.state, "pending_analyses", {})
+    analysis = pending.get(request_id)
+    
+    if not analysis:
+        raise HTTPException(status_code=404, detail="Analysis request not found or expired")
+        
+    analysis["confirmed_medications"] = body.confirmed_medications
+    if "confirmation_event" in analysis:
+        analysis["confirmation_event"].set()
+        
+    return {"status": "success", "confirmed": body.confirmed_medications}
+
 @router.get(
     "/stream/{request_id}",
     summary="SSE stream for medication analysis pipeline",
@@ -165,8 +187,6 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
 
         return StreamingResponse(error_stream(), media_type="text/event-stream")
 
-    body: AnalyzeRequest = analysis["body"]
-
     async def pipeline_stream():
         """Execute the analysis pipeline and emit SSE events."""
         start_time = time.time()
@@ -175,11 +195,31 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
             from adaptive_trust_medical_rag.services.live_application import LiveMedicalRAGService
             service = LiveMedicalRAGService(request.app.state)
             
+            # Support both direct_drugs and prescription_image
+            drug_names = []
+            patient_context_dict = None
+            image_bytes = None
+            image_meta = None
+            
+            if analysis.get("type") == "prescription_image":
+                image_bytes = analysis.get("image_bytes")
+                image_meta = analysis.get("image_meta")
+                patient_context_dict = analysis.get("patient_context")
+                # Create an event to wait for confirmation
+                analysis["confirmation_event"] = asyncio.Event()
+            else:
+                body: AnalyzeRequest = analysis["body"]
+                drug_names = body.drug_names
+                patient_context_dict = body.patient_context.model_dump() if body.patient_context else None
+
             async for event_dict in service.execute(
                 request_id=request_id,
-                drug_names=body.drug_names,
-                patient_context=body.patient_context.model_dump() if body.patient_context else None,
-                start_time=start_time
+                drug_names=drug_names,
+                patient_context=patient_context_dict,
+                start_time=start_time,
+                image_bytes=image_bytes,
+                image_meta=image_meta,
+                analysis_state=analysis
             ):
                 yield await _sse_event(event_dict["event"], event_dict["data"])
                 

@@ -40,9 +40,9 @@ APP-20 ADE output                              ⏳
 APP-21 Food/admin                              ⏳
 APP-22 Patient context                         🟡 PARTIAL
 APP-23 Patient-specific analysis               ⏳
-APP-24 Prescription image                     ⏳
-APP-25 Vision/OCR                              ⏳
-APP-26 OCR confirmation                        ⏳
+APP-24 Prescription image                      o. COMPLETE (C1)
+APP-25 Vision/OCR                              o. COMPLETE (C2)
+APP-26 OCR confirmation                        o. COMPLETE (C3)
 APP-27 Query history                            ⏳
 APP-28 Audit dashboard                         ⏳
 APP-29 Security dashboard                      ⏳
