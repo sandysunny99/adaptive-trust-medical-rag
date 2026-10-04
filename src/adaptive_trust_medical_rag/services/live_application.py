@@ -368,8 +368,8 @@ class LiveMedicalRAGService:
 
             try:
                 # Use JSON output mode for the provider
-                gen_result = await llm_backend.generate(prompt, response_format={"type": "json_object"})
-                raw_text = gen_result.response_text
+                gen_result = await llm_backend.generate_structured(prompt, {"type": "json_object"})
+                raw_text = gen_result.content
                 
                 try:
                     structured_result = json.loads(raw_text)

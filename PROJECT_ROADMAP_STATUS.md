@@ -31,6 +31,10 @@ APP-E2E-01 Real HTTP + SSE + React validation
     PENDING
 APP-E2E-02 Real retrieval validation
     PENDING
+APP-MP-01 Multi-Provider Router
+    SERVICE VALIDATED
+APP-MP-02 NVIDIA NIM Integration
+    SERVICE VALIDATED
 APP-19 DDI output                              ⏳
 APP-20 ADE output                              ⏳
 APP-21 Food/admin                              ⏳

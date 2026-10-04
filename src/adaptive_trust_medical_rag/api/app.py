@@ -115,12 +115,38 @@ def create_app(
         pass
         
     groq_api_key = os.environ.get("GROQ_API_KEY")
+    nvidia_api_key = os.environ.get("NVIDIA_API_KEY")
+    
+    from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import OpenAICompatibleBackend
+    from adaptive_trust_medical_rag.llm_backend.live_provider_router import LiveProviderRouter
+
+    primary_provider = os.environ.get("LLM_PROVIDER", "nvidia").lower()
+    
+    router = LiveProviderRouter(primary_provider=primary_provider, secondary_provider="groq" if primary_provider == "nvidia" else "nvidia")
+    
     if groq_api_key:
-        from adaptive_trust_medical_rag.llm_backend.groq_backend import GroqBackend
-        app.state.llm_backend = GroqBackend(api_key=groq_api_key, temperature=0.0)
-    else:
-        log.warning("GROQ_API_KEY not set; LLM functionality will be disabled.")
+        groq_backend = OpenAICompatibleBackend(
+            provider_name="groq",
+            base_url="https://api.groq.com/openai/v1",
+            api_key=groq_api_key,
+            model_name="openai/gpt-oss-120b"
+        )
+        router.register_provider("groq", groq_backend)
+
+    if nvidia_api_key:
+        nvidia_backend = OpenAICompatibleBackend(
+            provider_name="nvidia",
+            base_url="https://integrate.api.nvidia.com/v1",
+            api_key=nvidia_api_key,
+            model_name="nvidia/nemotron-3-super-120b-a12b"
+        )
+        router.register_provider("nvidia", nvidia_backend)
+        
+    if not router.providers:
+        log.warning("No LLM API keys set; LLM functionality will be disabled.")
         app.state.llm_backend = None
+    else:
+        app.state.llm_backend = router
         
     from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
     app.state.claim_verifier = ClaimVerifierV2()
