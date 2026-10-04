@@ -1,0 +1,37 @@
+{
+  "checkpoint": "V6_C13",
+  "status": "COMPLETE",
+  "acceptance_criteria": {
+    "environment_configuration": true,
+    "secret_hygiene": true,
+    "frontend_production_build": true,
+    "backend_startup": true,
+    "health": true,
+    "readiness": true,
+    "api_error_handling": true,
+    "cors_boundary": true,
+    "sse_lifecycle": true,
+    "image_file_security": true,
+    "provider_configuration": true,
+    "provider_failure_handling": true,
+    "live_corpus_integrity": true,
+    "retrieval_startup": true,
+    "request_state_handling": true,
+    "restart_recovery": true,
+    "deployment_reproducibility": true,
+    "direct_text_smoke_test": true,
+    "multimodal_smoke_test": true,
+    "patient_context_smoke_test": true,
+    "security_smoke_regression": true,
+    "browser": true,
+    "research_isolation": true,
+    "research_medical_requests": 0,
+    "frozen_research_artifacts_modified": false,
+    "secrets_committed": false,
+    "real_patient_data": false
+  },
+  "clinical_production_validation": "NOT CLAIMED",
+  "audit_details": {
+    "notes": "Application successfully hardened for research/demo deployment. No clinical production readiness claimed. Process memory handles UUID scoping efficiently but distributed scale requires Redis implementation. Research track is completely isolated and unmodified."
+  }
+}
