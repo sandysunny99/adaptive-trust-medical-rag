@@ -108,10 +108,35 @@ export async function checkHealth(): Promise<HealthStatus> {
 // ── SSE Stream Client ────────────────────────────────────────────────────────
 
 
-export async function fetchResearchState(): Promise<any> {
-  const response = await fetch(${API_BASE}/research-state);
+
+
+
+export interface ControlState {
+  status: string;
+  reason: string;
+  reference: string;
+}
+
+export interface ResearchState {
+  dataset_integrity: ControlState;
+  case_order_integrity: ControlState;
+  frozen_retrieval: ControlState;
+  trust_evidence_control: ControlState;
+  claim_verification: ControlState;
+  controlled_abstention: ControlState;
+  prompt_freeze: ControlState;
+  provider_readiness: ControlState;
+  researcher_authorization: ControlState;
+  real_llm_evaluation: ControlState;
+  medical_evaluation_requests_total: number;
+  medical_evaluation_requests_executed: number;
+  protocol: string;
+}
+
+export async function fetchResearchState(): Promise<ResearchState> {
+  const response = await fetch(`${API_BASE}/research-state`);
   if (!response.ok) {
-    throw new Error(Failed to fetch research state: );
+    throw new Error(`Failed to fetch research state: ${response.status}`);
   }
   return response.json();
 }

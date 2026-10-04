@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Pill, Check, Edit2, X, Plus, AlertTriangle } from 'lucide-react';
 import type { MedicationCandidate } from '../types';
 

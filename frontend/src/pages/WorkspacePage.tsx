@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { Upload, Pill, UserCog, Search, AlertTriangle, X } from 'lucide-react';
 import type { InputMode, PatientContext, PipelineStage } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
@@ -80,7 +80,7 @@ export function WorkspacePage() {
 
     await analyze({
       drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
-      imageFile: inputMode === 'prescription_image' ? imageFile : undefined,
+      imageFile: inputMode === 'prescription_image' ? (imageFile || undefined) : undefined,
       patientContext,
       inputMode
     });
