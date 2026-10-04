@@ -76,9 +76,6 @@ class LiveMedicalRAGService:
                 
                 # V6-C5: Real Vision Extraction
                 if vision_backend:
-                    import hashlib
-                    import time
-                    import uuid
                     
                     original_image_sha256 = hashlib.sha256(image_bytes).hexdigest()
                     mime = image_meta.get("content_type", "image/jpeg") if image_meta else "image/jpeg"

@@ -15,14 +15,14 @@ export function ResultPanel({ result }: ResultPanelProps) {
           <h3 className="text-sm font-semibold text-slate-900">Medications Identified</h3>
         </div>
         <div className="p-4 grid gap-3">
-          {result.medications.map((med, i) => (
+          {(result.medications || []).map((med, i) => (
             <MedicationCard key={i} medication={med} />
           ))}
         </div>
       </section>
 
       {/* Drug-Drug Interactions */}
-      {result.interactions.length > 0 && (
+      {(result.interactions || []).length > 0 && (
         <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
           <div className="p-4 border-b border-slate-100">
             <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
@@ -31,7 +31,7 @@ export function ResultPanel({ result }: ResultPanelProps) {
             </h3>
           </div>
           <div className="p-4 space-y-3">
-            {result.interactions.map((interaction, i) => (
+            {(result.interactions || []).map((interaction, i) => (
               <div key={i} className={`rounded-lg border p-3 ${
                 interaction.interaction_detected
                   ? 'border-amber-200 bg-amber-50'
@@ -59,7 +59,7 @@ export function ResultPanel({ result }: ResultPanelProps) {
       )}
 
       {/* Food & Administration */}
-      {result.food_guidance.length > 0 && (
+      {(result.food_guidance || []).length > 0 && (
         <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
           <div className="p-4 border-b border-slate-100">
             <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
@@ -68,7 +68,7 @@ export function ResultPanel({ result }: ResultPanelProps) {
             </h3>
           </div>
           <div className="p-4 space-y-2">
-            {result.food_guidance.map((fg, i) => (
+            {(result.food_guidance || []).map((fg, i) => (
               <div key={i} className="flex items-center justify-between p-3 rounded border border-slate-200">
                 <div>
                   <span className="text-sm font-medium text-slate-900">{fg.drug}</span>
@@ -101,16 +101,16 @@ export function ResultPanel({ result }: ResultPanelProps) {
       </section>
 
       {/* Verified Evidence */}
-      {result.evidence.length > 0 && (
+      {(result.evidence || []).length > 0 && (
         <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
           <div className="p-4 border-b border-slate-100">
             <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
               <FileText size={16} className="text-blue-600" />
-              Verified Evidence ({result.evidence.length})
+              Verified Evidence ({(result.evidence || []).length})
             </h3>
           </div>
           <div className="p-4 space-y-2">
-            {result.evidence.map((ev, i) => (
+            {(result.evidence || []).map((ev, i) => (
               <div key={i} className="p-3 rounded border border-slate-200 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-slate-900">[{i + 1}] {ev.source_name}</span>
