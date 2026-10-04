@@ -169,7 +169,7 @@ export function useAnalysis() {
         },
         (err) => {
           console.error("Stream error", err);
-          setError("Connection to analysis stream lost.");
+          setError(prev => prev || "Analysis Failed: LLM provider authentication failed or connection lost. Please verify the configured provider credentials and restart the backend if required.");
           setCurrentStage('error');
           setIsProcessing(false);
         }

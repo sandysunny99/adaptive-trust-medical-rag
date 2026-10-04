@@ -1,25 +1,52 @@
+import { useState, useEffect } from 'react';
 import { Activity, Check, X, Clock, AlertTriangle } from 'lucide-react';
-
-const AUDIT_ITEMS = [
-  { label: 'Dataset Integrity', status: 'PASS' as const },
-  { label: 'Case Order Integrity', status: 'PASS' as const },
-  { label: 'Frozen Retrieval', status: 'PASS' as const },
-  { label: 'Trust / Evidence Control', status: 'PASS' as const },
-  { label: 'Claim Verification', status: 'PASS' as const },
-  { label: 'Controlled Abstention', status: 'PASS' as const },
-  { label: 'Prompt Freeze', status: 'BLOCKED' as const },
-  { label: 'Researcher Authorization', status: 'PENDING' as const },
-  { label: 'Real-LLM Evaluation', status: 'NOT_EXECUTED' as const },
-];
+import { fetchResearchState } from '../services/api';
 
 const STATUS_CONFIG = {
   PASS: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
   BLOCKED: { icon: X, color: 'text-red-600', bg: 'bg-red-50' },
   PENDING: { icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
-  NOT_EXECUTED: { icon: AlertTriangle, color: 'text-slate-500', bg: 'bg-slate-50' },
+  READY: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
+  NOT_STARTED: { icon: AlertTriangle, color: 'text-slate-500', bg: 'bg-slate-50' },
 } as const;
 
 export function AuditPage() {
+  const [state, setState] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchResearchState()
+      .then(res => {
+        setState(res);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to fetch research state:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="p-6">Loading research state...</div>;
+  }
+
+  if (!state) {
+    return <div className="p-6 text-red-500">Failed to load research state.</div>;
+  }
+
+  const AUDIT_ITEMS = [
+    { label: 'Dataset Integrity', status: state.dataset_integrity },
+    { label: 'Case Order Integrity', status: state.case_order_integrity },
+    { label: 'Frozen Retrieval', status: state.frozen_retrieval },
+    { label: 'Trust / Evidence Control', status: state.trust_evidence_control },
+    { label: 'Claim Verification', status: state.claim_verification },
+    { label: 'Controlled Abstention', status: state.controlled_abstention },
+    { label: 'Prompt Freeze', status: state.prompt_freeze },
+    { label: 'Provider Readiness', status: state.provider_readiness },
+    { label: 'Researcher Authorization', status: state.researcher_authorization },
+    { label: 'Real-LLM Evaluation', status: state.real_llm_evaluation },
+  ];
+
   return (
     <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
       <div className="flex items-center gap-2 mb-4">
@@ -28,7 +55,7 @@ export function AuditPage() {
       </div>
       <div className="space-y-2">
         {AUDIT_ITEMS.map(({ label, status }) => {
-          const config = STATUS_CONFIG[status];
+          const config = STATUS_CONFIG[status as keyof typeof STATUS_CONFIG] || STATUS_CONFIG.NOT_STARTED;
           const Icon = config.icon;
           return (
             <div key={label} className={`flex items-center justify-between p-3 rounded-lg ${config.bg}`}>

@@ -86,29 +86,6 @@ export function WorkspacePage() {
     });
   };
 
-  const handleSubmit = async () => {
-    const validDrugs = drugInputs.filter(d => d.trim().length > 0);
-    if (validDrugs.length === 0) return;
-    
-    let patientContext: PatientContext | null = null;
-    
-    // Construct patient context if fields are provided
-    if (age || sex || allergies || conditions || currentMeds) {
-      patientContext = {};
-      if (age && !isNaN(parseInt(age))) patientContext.age = parseInt(age);
-      if (sex) patientContext.sex = sex as 'male' | 'female' | 'other';
-      if (allergies) patientContext.known_allergies = allergies.split(',').map(s => s.trim()).filter(Boolean);
-      if (conditions) patientContext.known_conditions = conditions.split(',').map(s => s.trim()).filter(Boolean);
-      if (currentMeds) patientContext.current_medications = currentMeds.split(',').map(s => s.trim()).filter(Boolean);
-      
-      if (Object.keys(patientContext).length === 0) {
-        patientContext = null;
-      }
-    }
-
-    await analyze(validDrugs, patientContext, inputMode);
-  };
-
   return (
     <div className="space-y-6">
       {/* Input Section */}

@@ -1,6 +1,33 @@
-import { BarChart3, AlertTriangle } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { BarChart3, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { fetchResearchState } from '../services/api';
 
 export function EvaluationPage() {
+  const [state, setState] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchResearchState()
+      .then(res => {
+        setState(res);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to fetch research state:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="p-6">Loading research state...</div>;
+  }
+
+  if (!state) {
+    return <div className="p-6 text-red-500">Failed to load research state.</div>;
+  }
+
+  const isBlocked = state.prompt_freeze === 'BLOCKED' || state.provider_readiness === 'BLOCKED' || state.dataset_integrity === 'BLOCKED';
+
   return (
     <div className="space-y-4">
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
@@ -9,16 +36,20 @@ export function EvaluationPage() {
           <h2 className="text-base font-semibold text-slate-900">Research Evaluation</h2>
         </div>
 
-        <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+        <div className={`p-4 border rounded-lg ${isBlocked ? 'bg-amber-50 border-amber-200' : 'bg-blue-50 border-blue-200'}`}>
           <div className="flex items-center gap-2">
-            <AlertTriangle size={16} className="text-amber-600" />
-            <span className="text-sm font-medium text-amber-800">Real-LLM V1.1 Evaluation</span>
+            {isBlocked ? <AlertTriangle size={16} className="text-amber-600" /> : <CheckCircle2 size={16} className="text-blue-600" />}
+            <span className={`text-sm font-medium ${isBlocked ? 'text-amber-800' : 'text-blue-800'}`}>
+              REAL-LLM {state.protocol.replace('REAL_LLM_EVALUATION_PROTOCOL_', '')} EVALUATION
+            </span>
           </div>
-          <div className="mt-2 text-xs text-amber-700 space-y-1">
-            <p><strong>Status:</strong> BLOCKED / NOT EXECUTED</p>
-            <p><strong>Prompt Freeze:</strong> BLOCKED (source missing)</p>
-            <p><strong>Researcher Authorization:</strong> PENDING</p>
-            <p><strong>Medical Evaluation Requests:</strong> 0 / 160</p>
+          <div className={`mt-2 text-xs space-y-1 ${isBlocked ? 'text-amber-700' : 'text-blue-700'}`}>
+            <p><strong>Status:</strong> {isBlocked ? 'BLOCKED / NOT STARTED' : 'READY / NOT STARTED'}</p>
+            <p><strong>Protocol:</strong> {state.protocol}</p>
+            <p><strong>Prompt Freeze:</strong> {state.prompt_freeze}</p>
+            <p><strong>Provider Readiness:</strong> {state.provider_readiness}</p>
+            <p><strong>Researcher Authorization:</strong> {state.researcher_authorization}</p>
+            <p><strong>Medical Evaluation Requests:</strong> {state.medical_evaluation_requests_executed} / {state.medical_evaluation_requests_total}</p>
           </div>
         </div>
 

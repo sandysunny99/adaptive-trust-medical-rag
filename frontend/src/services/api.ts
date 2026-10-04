@@ -107,6 +107,15 @@ export async function checkHealth(): Promise<HealthStatus> {
 
 // ── SSE Stream Client ────────────────────────────────────────────────────────
 
+
+export async function fetchResearchState(): Promise<any> {
+  const response = await fetch(${API_BASE}/research-state);
+  if (!response.ok) {
+    throw new Error(Failed to fetch research state: );
+  }
+  return response.json();
+}
+
 export function connectStream(
   streamUrl: string,
   onEvent: SSEEventHandler,
