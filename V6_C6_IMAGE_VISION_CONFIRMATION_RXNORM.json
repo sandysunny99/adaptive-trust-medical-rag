@@ -1,0 +1,39 @@
+{
+  "checkpoint": "V6_C6",
+  "status": "COMPLETE",
+  "acceptance_criteria": {
+    "real_image": true,
+    "image_validation": true,
+    "real_nvidia_vision": true,
+    "candidate_extraction": true,
+    "candidate_confidence": true,
+    "confirmation_boundary": true,
+    "no_automatic_rxnorm": true,
+    "user_confirmation": true,
+    "real_rxnorm": true,
+    "warfarin_resolved": true,
+    "aspirin_resolved": true,
+    "multiple_medications": true,
+    "edited_candidate": true,
+    "removed_candidate": true,
+    "user_added_candidate": true,
+    "ambiguous_candidate": true,
+    "unknown_candidate": true,
+    "provenance": true,
+    "sse": true,
+    "react": true,
+    "browser": true,
+    "direct_text_regression": true,
+    "multimodal_prompt_injection": true,
+    "vision_failure": true,
+    "rxnorm_failure": true,
+    "research_medical_requests": 0,
+    "frozen_artifacts_modified": false,
+    "secrets_committed": false,
+    "real_patient_data": false
+  },
+  "limitations": [
+    "V6-C6 demonstrates technical end-to-end convergence from a prescription image through real vision extraction, explicit human confirmation, and real RxNorm canonicalization.",
+    "It does NOT establish clinical correctness, prescription correctness, diagnostic accuracy, clinical safety, universal OCR accuracy, or universal multimodal prompt-injection resistance."
+  ]
+}
