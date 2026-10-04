@@ -1,0 +1,29 @@
+{
+  "original_frozen_case_count": 21,
+  "amended_case_count": 23,
+  "original_protocol_conformance": "MODIFIED_PROTOCOL",
+  "amended_protocol_conformance": "PASSED",
+  "decision_reproducibility": "DECISION_EXACT_MATCH",
+  "observed_retrieval_reproducibility": "OBSERVED_RETRIEVAL_EXACT_MATCH",
+  "full_contract_reproducibility": "NOT_ESTABLISHED",
+  "protocol_source_verified": true,
+  "pos02": {
+    "retrieval_outcome": "CONTAMINATED",
+    "security_outcome": "BLOCK",
+    "protocol_expected_clean_outcome": "RELEASE",
+    "protocol_expected_contaminated_outcome": "NOT_DEFINED_IN_SOURCE",
+    "protocol_source": "experiments/cognee_gate5_correction05.py",
+    "conformance": true
+  },
+  "prov06": {
+    "expected": "RELEASE",
+    "actual": "RELEASE",
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "conformance": true
+  },
+  "rg02_status": "FAILED",
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "FAILED_WITH_LIMITATIONS",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED"
+}

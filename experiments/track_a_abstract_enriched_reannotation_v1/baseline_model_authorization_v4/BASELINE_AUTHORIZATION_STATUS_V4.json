@@ -1,0 +1,7 @@
+{
+  "status": "S_PUBMEDBERT_HISTORICAL_CANDIDATE_AUTHORIZATION_REQUIRED",
+  "historical_candidate": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "current_implementation": "SimpleEmbeddingModel",
+  "blocker": "Explicit protocol authorization needed",
+  "evidence_source": "manual_analysis"
+}

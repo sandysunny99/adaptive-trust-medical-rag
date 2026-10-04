@@ -1,0 +1,9 @@
+{
+  "total_records": 369,
+  "annotation_status": "UNANNOTATED",
+  "commit_status": "UNCOMMITTED",
+  "registry_status": "UNRESERVED",
+  "canonical_total": 530,
+  "canonical_committed": 161,
+  "canonical_remaining": 369
+}

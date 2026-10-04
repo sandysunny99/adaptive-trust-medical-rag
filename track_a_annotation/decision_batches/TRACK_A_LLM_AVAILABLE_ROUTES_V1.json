@@ -1,0 +1,6 @@
+{
+  "available_routes": [
+    "NONE"
+  ],
+  "reason": "No credentials found in environment."
+}

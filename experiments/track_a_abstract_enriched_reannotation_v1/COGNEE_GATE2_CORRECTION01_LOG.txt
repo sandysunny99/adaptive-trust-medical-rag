@@ -1,0 +1,29 @@
+=== COGNEE PHASE-0 GATE 2 CORRECTION 01 ===
+
+[STEP 11] VERIFY CORPUS HASH
+Computed SHA-256: b4a8073e63ac2f5b0482ebdb308be16778822ac0e1a2dab0cdcffbfc76b880ce
+
+[PREPARE GATE 2 CORRECTION WORKSPACE]
+
+[INGEST 5 DOCUMENTS]
+Ingestion completed.
+
+[STEP 5] GRAPH INVENTORY
+Actual node count (approx): 0
+Actual edge count (approx): 131
+
+[STEP 3 & 6] RETRIEVAL TESTING
+CHUNKS Query: 'statin side effects' | Latency: 0.98s | Results: 1
+CHUNKS Query: 'metformin dosage' | Latency: 0.51s | Results: 1
+HYBRID Query: 'statin side effects' | Latency: 1.37s | Results: 1
+HYBRID Query: 'metformin dosage' | Latency: 0.70s | Results: 1
+
+[STEP 7] DETERMINISM
+CHUNKS Determinism: ID_MATCH = True, RANK_MATCH = True
+
+[STEP 8] DUPLICATE HANDLING
+First ingestion -> Nodes: 0, Edges: 3
+Second ingestion -> Nodes: 0, Edges: 3
+Result: IDEMPOTENT / REUSES EXISTING OBJECTS
+
+=== GATE 2 CORRECTION COMPLETED ===

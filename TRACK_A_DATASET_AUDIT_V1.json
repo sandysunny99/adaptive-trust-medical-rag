@@ -1,0 +1,21 @@
+{
+  "total_evaluation_positions": 530,
+  "unique_queries_count": 9,
+  "duplicate_queries": 9,
+  "duplicate_documents_or_chunks": 0,
+  "positions_without_sufficient_evidence_context": 8,
+  "positions_lacking_abstracts": 8,
+  "positions_with_incomplete_provenance": 0,
+  "positions_requiring_human_adjudication": 8,
+  "malformed_or_ambiguous_positions": 8,
+  "excluded_or_blocked_positions": {
+    "pos-86bb114a": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-a9e7c46c": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-b162a84a": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-4c8cc2be": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-3d27c5b0": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-10aae2c8": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-aa15aacd": "Missing abstract or incomplete provenance requires human adjudication",
+    "pos-bc7bb827": "Missing abstract or incomplete provenance requires human adjudication"
+  }
+}

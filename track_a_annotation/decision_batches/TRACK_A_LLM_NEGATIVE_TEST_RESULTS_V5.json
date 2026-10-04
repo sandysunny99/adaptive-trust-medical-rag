@@ -1,0 +1,14 @@
+{
+  "span_tests": {
+    "VALID_SPAN": "SCHEMA_FAIL: Schema validation failed: Additional properties are not allowed ('best_supporting_span' was unexpected)",
+    "INVALID_SPAN": "SCHEMA_FAIL: Schema validation failed: Additional properties are not allowed ('best_supporting_span' was unexpected)"
+  },
+  "schema_tests": {
+    "VALID_SCHEMA": "VALID",
+    "MISSING_REQUIRED_FIELD": "INVALID: Schema validation failed: 'grade' is a required property",
+    "WRONG_TYPE": "INVALID: Schema validation failed: 'two' is not of type 'integer'",
+    "INVALID_ENUM": "INVALID: Schema validation failed: 'SUPER_RELEVANT' is not one of ['RELEVANT', 'PARTIALLY_RELEVANT', 'IRRELEVANT', 'INSUFFICIENT_INFORMATION', 'AMBIGUOUS']",
+    "INVALID_GRADE": "INVALID: Schema validation failed: 3 is not one of [0, 1, 2]",
+    "INVALID_NESTED_CLAIM": "INVALID: Schema validation failed: 'not an array' is not of type 'array'"
+  }
+}

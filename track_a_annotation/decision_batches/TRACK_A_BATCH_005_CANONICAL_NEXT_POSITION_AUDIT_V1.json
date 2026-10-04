@@ -1,0 +1,16 @@
+{
+  "total_dataset": 530,
+  "annotated_count": 75,
+  "unannotated_count": 455,
+  "reserved_count": 80,
+  "unavailable_count": 0,
+  "next_eligible_ids": [
+    "pos-cbaac358",
+    "pos-6b51aa62",
+    "pos-41410b52",
+    "pos-47d7ebb4",
+    "pos-a835aaac",
+    "pos-5b711aba"
+  ],
+  "reason": "These are the next unannotated positions that hold a valid RESERVED status in the authoritative manifest."
+}

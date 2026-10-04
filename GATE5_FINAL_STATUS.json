@@ -1,0 +1,13 @@
+{
+  "execution_status": "GATE5_EXECUTION_COMPLETE_CONFORMANT",
+  "matrix_cases": 23,
+  "runs_per_case_per_engine": 2,
+  "engines": ["BASELINE", "COGNEE"],
+  "corpus_version": "2.0.0",
+  "corpus_hash": "adae7e315cdc39a2d00ec58a05516b685251af51207a18ab3368ee0d9022a847",
+  "pos_02_conformance": "PASS",
+  "rg_02_conformance": "PASS",
+  "security_controls_active": true,
+  "reproducibility": "100%",
+  "semantic_polarity_repair": "VERIFIED"
+}

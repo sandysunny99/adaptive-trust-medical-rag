@@ -1,0 +1,13 @@
+{
+  "distinct_queries": 7,
+  "counts": {
+    "Idiosyncratic drug induced liver injury mechanisms": 60,
+    "Warfarin target INR monitoring": 60,
+    "Metformin contraindication in severe renal disease": 60,
+    "Risk of hyperkalemia in patients treated with spironolactone": 60,
+    "Diagnosis of drug induced hepatotoxicity": 60,
+    "Lisinopril and spironolactone interaction hyperkalemia risk": 60,
+    "CYP2C9 interaction between fluconazole and warfarin": 29
+  },
+  "sum": 389
+}

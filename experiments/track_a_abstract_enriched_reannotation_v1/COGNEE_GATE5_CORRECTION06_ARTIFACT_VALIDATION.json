@@ -1,0 +1,13 @@
+{
+  "artifact_validation_status": "FAILED_WITH_LIMITATIONS",
+  "checks": [
+    {
+      "status": "PASSED",
+      "reason": "Manifest hashes strictly match source_text"
+    },
+    {
+      "status": "FAILED",
+      "reason": "RG-02 was NOT blocked. The prototype regex is limited."
+    }
+  ]
+}

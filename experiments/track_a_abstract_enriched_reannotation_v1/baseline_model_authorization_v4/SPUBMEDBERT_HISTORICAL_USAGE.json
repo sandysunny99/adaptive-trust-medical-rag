@@ -1,0 +1,38 @@
+[
+  {
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "date": "2026-09-11 02:17:43 +0530",
+    "author": "sandysunny99",
+    "script": "scripts/run_fusion_evaluation.py",
+    "experiment": "fusion-evaluation-v3-real",
+    "configuration": {
+      "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+      "embedding_dimension": 768,
+      "normalization": "True (L2 via normalize_embeddings=True)",
+      "similarity_metric": "cosine similarity",
+      "retrieval_role": "Base dense candidate generation (F0) before cross-encoder reranking"
+    },
+    "classification": "EXPERIMENTAL_DENSE_MODEL",
+    "notes": "Introduced via RealEmbeddingModel wrapper. Used as the primary semantic retrieval engine."
+  },
+  {
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "script": "scripts/run_biomedical_fusion.py",
+    "experiment": "biomedical-fusion-comparison",
+    "classification": "ABLATION",
+    "notes": "S-PubMedBert was compared against another biomedical model (cambridgeltl/SapBERT-from-PubMedBERT-fulltext) to measure retrieval recall."
+  },
+  {
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "script": "scripts/run_diagnostic.py",
+    "experiment": "retrieval-diagnostic-phase2f5-real",
+    "classification": "DIAGNOSTIC_ONLY",
+    "notes": "Used S-PubMedBert to diagnose real retrieval outputs vs simulated results."
+  },
+  {
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "manifest": "experiments/runs/fusion-evaluation-v3-real/manifest.json",
+    "classification": "HISTORICAL_RECORD",
+    "notes": "Explicitly recorded the model used during a fusion evaluation."
+  }
+]

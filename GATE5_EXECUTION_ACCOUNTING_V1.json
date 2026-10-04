@@ -1,0 +1,10 @@
+{
+  "total_cases_in_matrix": 23,
+  "engines_evaluated": ["BASELINE", "COGNEE"],
+  "repetitions_per_case_per_engine": 2,
+  "expected_total_executions": 92,
+  "actual_total_executions_recorded": 92,
+  "duplicate_executions": 0,
+  "missing_cases": 0,
+  "status": "VERIFIED_ACCOUNTING_COMPLETE"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "BASELINE_AUTHORIZATION_AMBIGUOUS",
+  "classification": {
+    "SimpleEmbeddingModel": "TEST_FIXTURE",
+    "pritamdeka/S-PubMedBert-MS-MARCO": "HISTORICAL_BASELINE_CANDIDATE",
+    "CURRENT_ARCHITECTURE_SNAPSHOT.md": "DESCRIPTIVE_NOT_NORMATIVE",
+    "FREE_REPLICATION_V1_PROTOCOL.md": "SILENT_ON_EMBEDDING_MODEL"
+  },
+  "runtime_retrieval_proof": "CONFIRMED_VIA_V2_ARTIFACTS",
+  "evidence_source": "manual_analysis"
+}

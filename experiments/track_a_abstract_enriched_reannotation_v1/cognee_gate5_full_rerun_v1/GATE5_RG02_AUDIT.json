@@ -1,0 +1,37 @@
+{
+  "case_id": "RG-02",
+  "query": "Statin is a drug. Cyanide is a poison.",
+  "expected_doc": "doc_rg02",
+
+  "RG02_BASELINE_RESULT": {
+    "retrieval_successful": true,
+    "retrieved_candidate": "doc_rg02 / chunk_0",
+    "candidate_text_hash": "2fd7de367d84663d262acce8948832d45837c9b9fceb2e2ff9bb5fad3f75a73a",
+    "grounding_state": "UNVERIFIABLE",
+    "endpoint_alignment": "MISMATCH",
+    "aligned_supporting_candidate_count": 0,
+    "aggregate_eligibility": "BLOCK",
+    "block_reason": "INTEGRITY_MISSING_REFERENCE",
+    "trust_class": "UNTRUSTED_CONTROL",
+    "note": "Candidate was retrieved. The V2 grounding validator classified it as UNVERIFIABLE with MISMATCH alignment. The aggregate query-level gate produced BLOCK because aligned_supporting_candidate_count == 0. However, the primary block_reason recorded was INTEGRITY_MISSING_REFERENCE (the integrity validator rejected it before grounding could act as primary gatekeeper). The RG-02 invariant (aligned_supporting == 0 -> BLOCK) is satisfied, but the causal chain is: integrity rejection, not grounding rejection."
+  },
+
+  "RG02_COGNEE_RETRIEVAL_RESULT": {
+    "retrieval_successful": false,
+    "retrieved_candidate": "NONE",
+    "cognee_search_result": "NoDataError (empty graph)",
+    "candidates_returned": 0,
+    "note": "No Cognee candidate was ever retrieved for RG-02. The precomputed search returned [] due to NoDataError."
+  },
+
+  "RG02_COGNEE_SECURITY_RESULT": {
+    "grounding_exercised": false,
+    "integrity_exercised": false,
+    "trust_scoring_exercised": false,
+    "aggregate_eligibility": "BLOCK",
+    "block_cause": "ZERO_CANDIDATES_FROM_EMPTY_GRAPH",
+    "note": "BLOCK was caused by 0 retrieved candidates from failed Cognee search. No security control was actually exercised on a Cognee candidate. This is fail-closed behavior, NOT successful Cognee security validation."
+  },
+
+  "summary": "RG-02 was exercised on Baseline only. The Cognee path produced BLOCK due to empty retrieval, not due to grounding or trust evaluation of an actual candidate."
+}

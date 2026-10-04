@@ -1,0 +1,19 @@
+{
+  "total": 530,
+  "committed": 151,
+  "remaining": 379,
+  "registry_committed": 151,
+  "registry_unreserved": 379,
+  "window_01_committed": [
+    "pos-00134e05",
+    "pos-00cfdf17",
+    "pos-01258043",
+    "pos-018d5819",
+    "pos-01cadfb9",
+    "pos-024f1c65",
+    "pos-038b917d",
+    "pos-038edd1d",
+    "pos-04077fbb",
+    "pos-04992eed"
+  ]
+}

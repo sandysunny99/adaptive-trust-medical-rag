@@ -1,0 +1,247 @@
+============================================================
+TRACK A HUMAN ANNOTATION WINDOW
+============================================================
+Batch ID: TRACK_A_A_BATCH_003
+Window: 02 of 06
+Window Record count: 10
+Batch Record count: 60
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_11
+position_id: pos-c958f9a4
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Atrial fibrillation (AF), the common sustained tachyarrhythmia in clinical practice, is characterized by a pathophysiology with electrical dysfunction and inflammation. To overcome the challenges of low bioavailability, short pharmacokinetic half-life and severe adverse effects of Amiodarone (AMD), a macrophage membrane-biomimetic nanotherapeutic platform (MM@AMDNPs) was developed for enhancing the target delivery and sustained AMD release. Given the inherited biological activity from macrophage, MM@AMDNPs is able to specifically localize to AF-associated inflammatory lesion, enabling interference with electrical remodeling while mitigating AMD-related pulmonary toxicity, i.e., compared with the uncoated nanoparticles, MM@AMDNPs prolongs 2.03-fold blood circulation half-life, enhances 1.7-fold target accumulation at AF lesions, reduces macrophage phagocytosis by 65.5%, alleviates AF inducibility from 100% to 20%, shortens AF duration from 132.8 ± 26.2 s to 0.8 ± 1.8 s at 4 h post-administration, normalizes the inflammatory marker iNOS and fibrotic marker TGF-β1 in lung tissues without any significant pulmonary histopathological injury. Hence, MM@AMDNPs represents a promising therapeutic platform for safe and effective antiarrhythmic therapy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_12
+position_id: pos-456cdfbc
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+INTRODUCTION: Type 2 diabetes mellitus (T2DM) is a metabolic condition that often leads to long-term microvascular and macrovascular complications. Among its most frequent and severe complications is diabetic nephropathy, which stands as a primary contributor to chronic kidney disease and end-stage renal disease on a global scale. Literature search studies have exhibited both renoprotective and non-renoprotective effects of different antidiabetic drugs, and to our knowledge, no study comparing the renoprotective effect of antidiabetic drugs was found, so this study was designed to assess the impact of these drugs on kidney function in patients with T2DM. MATERIALS AND METHODS: A prospective observational study was carried out on 100 patients with T2DM at a tertiary care hospital after approval from the institutional ethics committee. Informed consent was obtained from all patients. Patients aged ≥18 years receiving antidiabetic therapy were included in the study. Data, including demographic details, ongoing antidiabetic treatment, and clinical parameters, were recorded and analyzed according to the prescribed drug therapy. Glycemic control was assessed using HbA1c levels, while renal function was evaluated using renal parameters at baseline and during follow-up visits. The data was analyzed using IBM SPSS Statistics for Windows, Version 20 (Released 2011; IBM Corp., Armonk, New York, United States). A student's t-test and ANOVA were applied as appropriate, and a p-value < 0.05 was considered statistically significant. RESULTS: Patients receiving metformin and gliptin therapy showed a statistically significant reduction (p < 0.05) in HbA1c levels and mean serum urea during the study period. Serum creatinine levels were found to be slightly higher than the normal range in all the groups except metformin-based combination therapy with sulfonylureas and metformin-based combination therapy with sulfonylureas plus voglibose at the first visit. The values dropped down gradually in subsequent visits in all the groups except in the insulin group and the metformin-with-voglibose group, but were not statistically significant. A significant reduction was observed in the group taking metformin with sodium-glucose cotransporter 2 (SGLT2) inhibitors and gliptins. Renal function tests, such as serum urea and serum creatinine levels, showed significant changes during all three subsequent follow-ups. CONCLUSION: Proper use of antidiabetic drugs, particularly oral combination therapy, not only improves blood sugar control but also helps in protecting kidney function in diabetic patients. Future investigations with large sample sizes and longer observation periods are warranted to substantiate these findings.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_13
+position_id: pos-223118a4
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND AND AIMS: Nonsteroidal anti-inflammatory drugs (NSAIDs) remain the cornerstone of symptomatic management in osteoarthritis (OA) and axial spondyloarthritis (axial SpA), but safety concerns have reshaped prescribing behaviors. This study aimed to describe current NSAID prescribing practices among Moroccan rheumatologists for both conditions. METHODS: A cross-sectional descriptive survey was conducted among rheumatologists from public and private sectors. Data were collected using a 30-item validated questionnaire approved by an expert committee. RESULTS: Eighty-two rheumatologists participated. More than half (56.1%) reported having no absolute age limit for NSAID use, while 24% avoided NSAIDs in patients aged > 75 years. The most concerning combination was NSAIDs with vitamin K antagonists (96.3%), and the most cited contraindication was active gastroduodenal ulcer (85.4%). Only 13.4% routinely requested renal function tests before prescribing NSAIDs. Proton pump inhibitors were co-prescribed mainly for a history of gastrointestinal bleeding (93.9% with conventional NSAIDs; 87.8% with coxibs). Naproxen (95.1%), celecoxib (63.4%), and meloxicam (58.5%) were considered the safest for cardiovascular risk. Celecoxib was the first-line NSAID for OA (47.6%), while diclofenac was preferred for axial SpA (34.9%) and celecoxib in patients with inflammatory bowel disease (73.2%). Nearly half (47.6%) prescribed NSAIDs on an as-needed basis. CONCLUSION: NSAID prescribing in OA and axial SpA is increasingly personalized, with choices guided by comorbidities and safety concerns. Celecoxib is preferred for OA, while diclofenac remains first-line for axial SpA, with caution in patients at gastrointestinal or cardiovascular risk.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_14
+position_id: pos-7c696aa6
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Doxorubicin (DOX) is a widely used anticancer agent, but its use carries the risk of cardiotoxicity. The underlying mechanisms of DOX-induced cardiac injury involve multiple interconnected processes, including oxidative stress, inflammatory activation, apoptosis, dysregulation of metal ion homeostasis, mitochondrial dysfunction, and impaired autophagy. The p38 mitogen-activated protein kinase (p38 MAPK) pathway functions as a stress-response central hub that integrates these signals and orchestrates downstream cellular outcomes via phosphorylation-dependent signaling cascades. This review summarizes current evidence on the molecular mechanisms of DOX-induced cardiotoxicity (DIC), with a focus on the pivotal role of the p38 MAPK pathway. We further discuss natural compounds that mitigate DIC via modulation of p38 MAPK signaling and examine emerging evidence on sex-specific cardioprotective effects mediated by distinct p38 MAPK isoforms. In addition, we briefly discuss the role of DOX nanoformulations in reducing cardiotoxicity, offering new insights into the mitigation of DIC.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_15
+position_id: pos-c896c5d9
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+As a global health challenge, drug-induced liver injury (DILI) is an acute inflammatory disease closely linked to ferroptosis. Ferroptosis, characterized by iron-dependent lipid peroxidation, has been implicated in diverse pathological conditions, however, its precise molecular mechanism in liver injury remains to be fully elucidated. As a key active nitrogen species, the concentration fluctuation of nitroxyl (HNO) is closely correlated with ferroptosis. Nevertheless, in situ and real-time monitoring of endogenous HNO remains highly challenging owing to its transient lifespan and prominent reactivity. To address this issue, we constructed a near-infrared fluorescent probe specifically activated by HNO to delineate the intrinsic interplay between ferroptosis and DILI, thereby facilitating early diagnosis. This probe features a rapid response rate, extremely specificity, high sensitivity, and outstanding photostability, successfully achieving precise detection and imaging of both exogenous and endogenous HNO in vitro and in vivo. Crucially, real-time monitoring of the dynamic fluctuations of HNO levels with the probe explicitly unveiled a tight correlation of the ferroptosis process with DILI. Notably, inhibiting ferroptosis could significantly alleviate the progression of liver injury. Overall, this work not only provides a powerful molecular tool for the diagnosis of ferroptosis-associated liver diseases, but also offers important theoretical foundations and new strategies for the early clinical intervention of liver injury and related drug screening.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_16
+position_id: pos-865ade74
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+This study aimed to investigate the potential protective effects of diminazene, an activator of angiotensin II converting enzyme (ACE2), on kidney function and structure in rats with acute kidney injury (AKI) induced by the anticancer drug doxorubicin (DOX). The impact of diminazene was compared to that of two other drugs: the ACE inhibitor lisinopril and the angiotensin II type 1 (AT1) receptor blocker valsartan. Rats were subjected to a single intraperitoneal injection of DOX (13.5 mg/kg) on the 5th day, either alone or in combination with diminazene (15 mg/kg/day), lisinopril (10 mg/kg/day), or valsartan (30 mg/kg/day) for 8 consecutive days. Various markers related to kidney function, oxidative stress, and inflammation were measured in plasma and urine. Additionally, kidney tissues were assessed histopathologically. DOX-induced nephrotoxicity was confirmed by elevated levels of plasma urea, creatinine, and neutrophil gelatinase-associated lipocalin (NGAL). DOX also led to increased urinary N-acetyl-β-D-glucosaminidase (NAG) activity and decreased creatinine clearance, albumin levels, and osmolality. Moreover, DOX caused a reduction in renal oxidative stress markers, including superoxide dismutase (SOD), glutathione reductase (GR), and catalase activities, while increasing malondialdehyde (MDA) levels. It also raised plasma inflammatory markers, tumor necrosis factor alpha (TNF-α) and interleukin 1 beta (IL-1β). Concurrently administering diminazene significantly mitigated these DOX-induced changes, including histopathological alterations like renal tubule necrosis, tubular casts, shrunken glomeruli, and increased renal fibrosis. Similar protective effects were observed with lisinopril and valsartan. These protective effects, at least in part, appear to result from the anti-inflammatory and antioxidant properties of these drugs. In summary, this study suggests that the administration of diminazene, lisinopril, or valsartan had comparable effects in ameliorating the biochemical and histopathological aspects of DOX-induced acute kidney injury in rats.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_17
+position_id: pos-074944db
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Endometrial carcinoma is one of most common malignant tumors in women, and ferroptosis is closely related to the development and treatment of endometrial carcinoma. The aim of this study was to screen ferroptosis-related genes associated with endometrial carcinoma and predict targeted drugs through bioinformatics. 761 differentially expressed genes were obtained by the dataset GSE63678 from the GEO database, and most of the genes were enriched in the KEGG_CELL_CYCLE and KEGG_OOCYTE_MEIOSIS signaling pathways. 22 ferroptosis-differentially expressed genes were obtained by intersection with the FerrDb database. These genes were involved in biological processes including macromolecular complex assembly and others, and involved in signal pathways including glutathione metabolism, p53 signaling pathway and others. CDKN2A, IDH1, NRAS, TFRC and GOT1 were obtained as hub genes by PPI network analysis. GEPIA showed that CDKN2A, IDH1, NRAS and TFRC were significantly expressed in endometrial carcinoma. Immunohistochemical results showed that CDKN2A, NRAS and TFRC were significantly expressed in endometrial carcinoma clinical tissue samples. The ROC constructed by TCGA database showed that CDKN2A, NRAS and TFRC had significant value in the diagnosis of endometrial carcinoma, and all had prognostic efficacy. 136,572-09-3 BOSS and others were identified as potential targeted drugs for endometrial carcinoma targeting ferroptosis. Our study has shown that ferroptosis-related genes CDKN2A, NRAS and TFRC are diagnostic markers of endometrial carcinoma, and 136,572-09-3 BOSS, methyprylon BOSS, daunorubicin CTD 00005752, nitroglycerin BOSS and dUTP BOSS, IRON BOSS, Imatinib mesylate BOSS, 2-Butanone BOSS, water BOSS, and L-thyroxine BOSS may be potential therapeutic drugs.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_18
+position_id: pos-fa9aa245
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Citalopram (CIT) is widely used as an anti-depressant and has been reported to be associated with QT interval prolongation and increased vulnerability of torsades de pointes (TdP), although the underlying mechanism remains unclear. OBJECTIVE: The aim of this study is to determine the proarrhythmic properties and underlying mechanisms of CIT. METHODS: Mice were intraperitoneally injected with CIT or saline (SAL) for 4 weeks. Echocardiograms and electrocardiograms were performed to evaluate the cardiac electrophysiological and hemodynamic properties. Proarrhythmic mechanisms of CIT were then explored using optical mapping. Finally, transcriptomic array, RT-qPCR, and whole-cell patch-clamp were conducted to explore and validate the potential ionic mechanisms of CIT-related electrical abnormalities. RESULTS: CIT treatment induced QT prolongation and increased the vulnerability of cardiac arrhythmias in the absence of structural or hemodynamic changes. Optical mapping showed that action potential duration (APD) and Ca2+ transient duration (CaTD) were prolonged, but the degree of prolongation was heterogeneous, resulting in impaired Vm-Ca2+ coupling in CIT-treated hearts. Meanwhile, CaT alternans exhibited a regional preference for initiating ventricular tachyarrhythmias in hearts treated with CIT. The transcriptomic array showed that multiple potassium channels were downregulated in hearts treated with CIT, which were confirmed by RT-qPCR. Prolonged APD and downregulated transient outward potassium current (Ito) and L-type calcium current (ICa-L) were recorded in isolated single cardiomyocytes with the patch-clamp technique after CIT treatment. CONCLUSION: CIT treatment resulted in QT prolongation and higher susceptibility of ventricular arrhythmia. Regions with serious cardiac alternans were mainly responsible for initiation of CIT-related arrhythmias. Abnormal Ca2+ handling and decreased Ito-related gene expression likely underlie the ionic mechanism and may be a novel target for CIT-related arrhythmias.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_19
+position_id: pos-43b39b0f
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Anthracycline-induced cardiotoxicity remains a major limitation in cancer therapy, with substantial inter-individual variability in susceptibility, including documented sex differences. However, the molecular basis underlying these disparities remains incompletely understood. In this study, we employed large-scale data-independent acquisition proteomics in a long-latency rat model of doxorubicin-induced cardiomyopathy to characterize early cardiac proteomic remodeling. Longitudinal echocardiography demonstrated a significantly greater decline in fractional shortening in males compared to females. Early proteomic profiling identified 5184 proteins and revealed widespread remodeling across metabolic, mitochondrial, cytoskeletal, and stress-response pathways. While doxorubicin induced broad proteomic changes in both sexes, two-way limma-based sex-stratified analyses identified 430 proteins exhibiting significant sex-by-treatment interactions. Our results suggested that doxorubicin was associated with alterations in oxidative phosphorylation, fatty acid metabolism, and calcium handling pathways. A female-specific upregulation of mitochondrial proteins, including Sco1, Cox17, and Atp2a2, which may be associated with preserved energetics and Ca2+ handling, was detected. In contrast, male hearts demonstrated reduced Micu1 and RyR2 together with increased levels of Ppp1ca, findings that may indicate alterations in mitochondrial function and, excitation-contraction coupling. We also observed lower levels of calcineurin (Ppp3cb) in females. Baseline proteomic differences between sexes further implied distinct regulatory states that may shape the cardiac response to doxorubicin.Together, these findings suggest early proteomic remodeling upon doxorubicin treatment and represent candidate molecular targets that warrant functional validation in future studies. This work offers hypothesis-generating mechanistic insights into sex-specific responses to anthracycline-induced cardiomyopathy and underscores the importance of incorporating sex as a biological variable in cardio-oncology research.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_02 / POSITION_20
+position_id: pos-028d95b5
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Amiodarone is a widely used antiarrhythmic agent. Pulmonary toxicity is its most feared non-cardiac complication and is classically associated with high doses and prolonged duration of therapy. We report a case of early-onset amiodarone pulmonary toxicity (APT) developing after approximately one month of standard-dose amiodarone therapy (400 mg/day) in the setting of concurrent decompensated heart failure with preserved ejection fraction (HFpEF), which substantially complicated the diagnostic evaluation. A 71-year-old male with paroxysmal atrial fibrillation, nonischemic cardiomyopathy, and multiple comorbidities was initiated on amiodarone 400 mg/day in April. Within one month, he developed progressive dyspnea on exertion and productive cough. He presented to the emergency department in September with acute hypoxic respiratory failure (SpO₂ 86% on room air), weight gain, and bilateral lower extremity edema approximately five months after symptom onset. CT of the chest demonstrated bilateral ground-glass and consolidative opacities with upper lobe predominance and interlobular septal thickening. The initial working diagnosis of decompensated HFpEF was supported by elevated BNP and peripheral edema; intravenous furosemide led to the resolution of edema but no improvement in oxygenation. APT was subsequently suspected, and intravenous methylprednisolone was initiated, resulting in marked clinical improvement. The patient was discharged on room air on a prolonged prednisone taper. At the three-month follow-up, he demonstrated complete symptomatic resolution, marked radiological improvement, and normalization of BNP. This case adds to the existing evidence that clinically significant APT may occur at standard maintenance doses and within a shorter timeframe than traditionally recognized. Coexistent HFpEF poses a major diagnostic challenge given the substantial overlap in clinical and radiological features. The possibility of concurrent rather than competing pathology should always be considered. Clinicians should maintain a high index of suspicion for APT in any patient on amiodarone with progressive respiratory symptoms, irrespective of dose or duration of exposure.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION

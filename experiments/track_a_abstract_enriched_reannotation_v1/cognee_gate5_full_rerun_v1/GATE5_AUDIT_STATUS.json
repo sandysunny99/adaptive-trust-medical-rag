@@ -1,0 +1,29 @@
+{
+  "audit_timestamp": "2026-10-02T05:57:30Z",
+  "gate5_status": "FULL_GATE5_FAILED_WITH_LIMITATIONS",
+  "gate6_status": "NOT_AUTHORIZED_STOPPED",
+  "execution_path_status": "FULL_EXECUTION_PATH_FAILED_WITH_LIMITATIONS",
+  "new_gate5_execution_required": true,
+
+  "reason": "The Cognee retrieval path did not successfully retrieve any candidates for any of the 23 cases. All Cognee execution records reflect precomputed empty-cache lookups from failed cognee.search() calls (NoDataError due to empty knowledge graph). The Baseline path exercised security controls with synthetic mock retrieval. A new Full Gate 5 execution is required that achieves successful Cognee cognify + search producing real retrievable candidates.",
+
+  "deviations_found": [
+    "DEVIATION_1: cognee.cognify() ran but did not produce a searchable vector/graph state (empty knowledge graph).",
+    "DEVIATION_2: All cognee.search() calls raised NoDataError, silently caught and replaced with [].",
+    "DEVIATION_3: BridgedCogneeAdapter used precomputed cache (dict lookup), not live per-case cognee.search().",
+    "DEVIATION_4: TamperingRetrievalWrapper received 0 candidates on all Cognee runs, so no tamper scenario was exercised on Cognee.",
+    "DEVIATION_5: Positive controls (POS-01, POS-02) achieved BLOCK on Cognee due to 0 candidates, not RELEASE.",
+    "DEVIATION_6: RG-02 was not exercised through Cognee retrieval.",
+    "DEVIATION_7: The BridgedCogneeAdapter identity/provenance bridge code was never executed with real Cognee data.",
+    "DEVIATION_8: Reproducibility for Cognee records measures cache consistency of empty results, not retrieval consistency."
+  ],
+
+  "what_the_run_does_establish": [
+    "ESTABLISHED_1: The orchestrator does not crash when retrieval returns 0 candidates (fail-closed to BLOCK).",
+    "ESTABLISHED_2: Baseline mock retrieval correctly exercises security controls (grounding, integrity, poisoning, injection).",
+    "ESTABLISHED_3: RG-02 invariant (aligned_supporting_candidate_count == 0 -> BLOCK) holds on Baseline.",
+    "ESTABLISHED_4: The precomputed cache architecture is structurally functional (just empty).",
+    "ESTABLISHED_5: Artifact generation and hashing pipeline works correctly.",
+    "ESTABLISHED_6: 1033 regression tests pass independently."
+  ]
+}

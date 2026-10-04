@@ -1,0 +1,7 @@
+{
+  "transport_test_schema_sha256": "7c4bb65cda2f8731afa3a99a88289088d4fc8f822ae9a2b4e2a881cc1af9c765",
+  "track_a_schema_sha256": "9131804c0522ea7e690003336f1d213f1f782f74b9ace5b1a8b062767d0d2c9c",
+  "track_a_llm_system_prompt_v2_sha256": "dfdd5c45ad009720aa46242997a1bd161497907eb0a6a381fb439e534d0fe1ab",
+  "track_a_llm_adjudication_prompt_v2_sha256": "0717ba9a50036d19db6280cbf3c46c54c90dfc9c587277ab15dea08a7915399f",
+  "track_a_llm_challenge_prompt_v2_sha256": "86872697a009d977db6d7c0ea2c5a18b371f9b8fbe5f017186ce06547768628e"
+}

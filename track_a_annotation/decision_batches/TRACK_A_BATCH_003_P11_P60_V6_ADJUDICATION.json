@@ -1,0 +1,3687 @@
+[
+  {
+    "position_id": "pos-c958f9a4",
+    "sequence_number": "11",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "db8b8523c5c310665d56e811ac8a0a19ea2eaf1b4b7e9a8a9f375f1db2200a3a",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Atrial fibrillation (AF), the common sustained tachyarrhythmia in clinical practice, is characterized by a pathophysiology with electrical dysfunction and inflammation."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Atrial fibrillation (AF), the common sustained tachyarrhythmia in clinical practice, is characterized by a pathophysiology with electrical dysfunction and inflammation.",
+    "span_character_index": 0,
+    "span_length": 168,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-456cdfbc",
+    "sequence_number": "12",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "ad84486e42f760b27c157e03f23ee89c46dea390e7327f2ff3cc801a15a7901a",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "INTRODUCTION: Type 2 diabetes mellitus (T2DM) is a metabolic condition that often leads to long-term microvascular and macrovascular complications."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "INTRODUCTION: Type 2 diabetes mellitus (T2DM) is a metabolic condition that often leads to long-term microvascular and macrovascular complications.",
+    "span_character_index": 0,
+    "span_length": 147,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-223118a4",
+    "sequence_number": "13",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "47af353e4d3bd697f0bf31d5fa0415b545aaef13ee5a5e4188b0821ee773fe76",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "bleeding"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND AND AIMS: Nonsteroidal anti-inflammatory drugs (NSAIDs) remain the cornerstone of symptomatic management in osteoarthritis (OA) and axial spondyloarthritis (axial SpA), but safety concerns have reshaped prescribing behaviors."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "BACKGROUND AND AIMS: Nonsteroidal anti-inflammatory drugs (NSAIDs) remain the cornerstone of symptomatic management in osteoarthritis (OA) and axial spondyloarthritis (axial SpA), but safety concerns have reshaped prescribing behaviors.",
+    "span_character_index": 0,
+    "span_length": 236,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-7c696aa6",
+    "sequence_number": "14",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "fbb2fef63ae8293f4d49caef23edd9597f91ed511f25193f4e5fe9aad38f0eb2",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Doxorubicin (DOX) is a widely used anticancer agent, but its use carries the risk of cardiotoxicity."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Doxorubicin (DOX) is a widely used anticancer agent, but its use carries the risk of cardiotoxicity.",
+    "span_character_index": 0,
+    "span_length": 100,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-c896c5d9",
+    "sequence_number": "15",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "79c520884ff5497ef1c9e8e9bbbed1f9dc050292a6a548e1c8ac5654e8c8d984",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "As a global health challenge, drug-induced liver injury (DILI) is an acute inflammatory disease closely linked to ferroptosis."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "As a global health challenge, drug-induced liver injury (DILI) is an acute inflammatory disease closely linked to ferroptosis.",
+    "span_character_index": 0,
+    "span_length": 126,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-865ade74",
+    "sequence_number": "16",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "c718a392965e3a74f4603a67372e9a7660b9c23edd24bcd7141570456eb29036",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "lisinopril"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "DIRECT_MATCH",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [
+      "Entity mention exists, but property lacks."
+    ],
+    "uncertainties": [],
+    "support_spans": [
+      "The impact of diminazene was compared to that of two other drugs: the ACE inhibitor lisinopril and the angiotensin II type 1 (AT1) receptor blocker valsartan."
+    ],
+    "proposed_label": "INSUFFICIENT_INFORMATION",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence mentions lisinopril but does not establish the requested clearance pathway.",
+    "proposed_evidence_span": "The impact of diminazene was compared to that of two other drugs: the ACE inhibitor lisinopril and the angiotensin II type 1 (AT1) receptor blocker valsartan.",
+    "span_character_index": 259,
+    "span_length": 158,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Entity lisinopril present."
+    ],
+    "unsupported_claims": [
+      "Property/Relation absent."
+    ],
+    "confidence": "HIGH",
+    "review_priority": "HIGH",
+    "alternative_label_considered": null,
+    "alternative_rejected_reason": "",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence mentions lisinopril but does not establish the requested clearance pathway."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-074944db",
+    "sequence_number": "17",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "4371e01299909bc9b9695a49ffdb3bf3a6600cccdb14285a77c34d29892d4b9b",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Endometrial carcinoma is one of most common malignant tumors in women, and ferroptosis is closely related to the development and treatment of endometrial carcinoma."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Endometrial carcinoma is one of most common malignant tumors in women, and ferroptosis is closely related to the development and treatment of endometrial carcinoma.",
+    "span_character_index": 0,
+    "span_length": 164,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-fa9aa245",
+    "sequence_number": "18",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "6835f599a56b1cb9f35fcf3926ad1605e5bc4e984fca2c8cef406297a706fb00",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Citalopram (CIT) is widely used as an anti-depressant and has been reported to be associated with QT interval prolongation and increased vulnerability of torsades de pointes (TdP), although the underlying mechanism remains unclear."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "BACKGROUND: Citalopram (CIT) is widely used as an anti-depressant and has been reported to be associated with QT interval prolongation and increased vulnerability of torsades de pointes (TdP), although the underlying mechanism remains unclear.",
+    "span_character_index": 0,
+    "span_length": 243,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-43b39b0f",
+    "sequence_number": "19",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "ac7f5b00bd50ecf3251f5e78200c119b0dc205b08b9a3a6c2f58603b1d1b1dc4",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Anthracycline-induced cardiotoxicity remains a major limitation in cancer therapy, with substantial inter-individual variability in susceptibility, including documented sex differences."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Anthracycline-induced cardiotoxicity remains a major limitation in cancer therapy, with substantial inter-individual variability in susceptibility, including documented sex differences.",
+    "span_character_index": 0,
+    "span_length": 185,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-028d95b5",
+    "sequence_number": "20",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "32e76bbe789a9b9984ce11ee9cc58561d47ad2f3977f813561c18f640effaa50",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "april"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Amiodarone is a widely used antiarrhythmic agent."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Amiodarone is a widely used antiarrhythmic agent.",
+    "span_character_index": 0,
+    "span_length": 49,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-814cd0c1",
+    "sequence_number": "21",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "f8fe4cb6b3b823bdfb8a488a1126440b98a0b982c61b6baa262ef02eccd17a68",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "INTRODUCTION: Post-traumatic stress disorder (PTSD) is a debilitating mental disorder that can cause significant distress to patients and their families."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "INTRODUCTION: Post-traumatic stress disorder (PTSD) is a debilitating mental disorder that can cause significant distress to patients and their families.",
+    "span_character_index": 0,
+    "span_length": 153,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-791c7367",
+    "sequence_number": "22",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "f205db064e0f1ef226877185b1e24f066ca973ff05a6fb634cf130ee4570e6d0",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Progesterone (PR) is an essential steroid hormone regulating female reproductive function, whereas fluoxetine (FLU), a selective serotonin reuptake inhibitor (SSRI), serves as a first-line antidepressant for antenatal use."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Progesterone (PR) is an essential steroid hormone regulating female reproductive function, whereas fluoxetine (FLU), a selective serotonin reuptake inhibitor (SSRI), serves as a first-line antidepressant for antenatal use.",
+    "span_character_index": 0,
+    "span_length": 222,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-c2659179",
+    "sequence_number": "23",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "1bb3bc7bf75b974eb2723ba7bcc6fbfdf5a3d3cb0d4ab245a745999773a47ebf",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "rivaroxaban"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain.",
+    "span_character_index": 0,
+    "span_length": 137,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-ecb30645",
+    "sequence_number": "24",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "88db58d211232b98af357d6bc65b6fb7be0f17d8509209a3167d413a26932646",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "ozagrel",
+        "hemorrhage",
+        "heparin",
+        "warfarin",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Recombinant tissue-type plasminogen activators (rtPA) effectively dissolve blood clots and improve symptoms in patients with acute ischemic stroke and myocardial infraction."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Recombinant tissue-type plasminogen activators (rtPA) effectively dissolve blood clots and improve symptoms in patients with acute ischemic stroke and myocardial infraction.",
+    "span_character_index": 0,
+    "span_length": 173,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-9b777fd1",
+    "sequence_number": "25",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "3d7f37588738603c36d9cb65d30d36338307709ebc6c62945731faf1fef37f1a",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "riluzole"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Severe traumatic brain injury (TBI) remains difficult to treat because successful control of mass lesions, intracranial pressure, cerebral perfusion, oxygenation, and systemic instability does not ensure that secondary cellular injury has stopped."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Severe traumatic brain injury (TBI) remains difficult to treat because successful control of mass lesions, intracranial pressure, cerebral perfusion, oxygenation, and systemic instability does not ensure that secondary cellular injury has stopped.",
+    "span_character_index": 0,
+    "span_length": 247,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-9cafff14",
+    "sequence_number": "26",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "6b1b1ea13270003c3aa31c3d51ad8b2ac1fe11d91120c37ca980e7f6b839d96e",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "lisinopril",
+        "amlodipine",
+        "atorvastatin",
+        "clarithromycin",
+        "rivaroxaban",
+        "rosuvastatin",
+        "metoprolol"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "DIRECT_MATCH",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [
+      "Entity mention exists, but property lacks."
+    ],
+    "uncertainties": [],
+    "support_spans": [
+      "OBJECTIVE: The objective of this study was to investigate which pharmacokinetic parameters determine drug exposure changes in the elderly by conducting virtual clinical trials for ten drugs (midazolam, metoprolol, lisinopril, amlodipine, rivaroxaban, repaglinide, atorvastatin, rosuvastatin, clarithromycin and rifampicin) using our physiologically based pharmacokinetic (PBPK) framework."
+    ],
+    "proposed_label": "INSUFFICIENT_INFORMATION",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence mentions lisinopril but does not establish the requested clearance pathway.",
+    "proposed_evidence_span": "OBJECTIVE: The objective of this study was to investigate which pharmacokinetic parameters determine drug exposure changes in the elderly by conducting virtual clinical trials for ten drugs (midazolam, metoprolol, lisinopril, amlodipine, rivaroxaban, repaglinide, atorvastatin, rosuvastatin, clarithromycin and rifampicin) using our physiologically based pharmacokinetic (PBPK) framework.",
+    "span_character_index": 200,
+    "span_length": 388,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Entity lisinopril present."
+    ],
+    "unsupported_claims": [
+      "Property/Relation absent."
+    ],
+    "confidence": "HIGH",
+    "review_priority": "HIGH",
+    "alternative_label_considered": null,
+    "alternative_rejected_reason": "",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence mentions lisinopril but does not establish the requested clearance pathway."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-b8b4f173",
+    "sequence_number": "27",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "1357bc61f235b6b5b6f6d4d1e1582cdb78ddcd83641127ccc0612db3a834ed78",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: The Asia Pacific region is home to more than half of the world's 1\u00b793 billion adolescents (aged 10-24 years)."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "BACKGROUND: The Asia Pacific region is home to more than half of the world's 1\u00b793 billion adolescents (aged 10-24 years).",
+    "span_character_index": 0,
+    "span_length": 121,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-3440fa6c",
+    "sequence_number": "28",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "7f3949d1ff8d2fafbb8830156e21778b85313efcbf04b0206255334ce4fc1fd9",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "mirtazapine"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Background/Objectives: Antidepressant treatment response is highly variable, and CYP2D6 metabolizer phenotype has been proposed as a contributor to this variability."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "Background/Objectives: Antidepressant treatment response is highly variable, and CYP2D6 metabolizer phenotype has been proposed as a contributor to this variability.",
+    "span_character_index": 0,
+    "span_length": 165,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-a00ce69f",
+    "sequence_number": "29",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "3982799cfa16a99f97742e77b795ddf8757af241f22e7b863fdeb310f6bb7ebc",
+    "query_analysis": {
+      "query_entities": [
+        "lisinopril"
+      ],
+      "requested_property": "clearance pathway",
+      "requested_relation": null,
+      "requested_outcome": null,
+      "qualifiers": [],
+      "query_intent_summary": "Find the clearance pathway of lisinopril."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_properties": [
+        "ABSENT"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "NOT_APPLICABLE",
+      "property_alignment": "ABSENT",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "clearance pathway"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "INTRODUCTION: Heart failure with reduced ejection fraction (HFrEF) represents a major clinical and economic burden in Italy, driven by an aging population."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address lisinopril.",
+    "proposed_evidence_span": "INTRODUCTION: Heart failure with reduced ejection fraction (HFrEF) represents a major clinical and economic burden in Italy, driven by an aging population.",
+    "span_character_index": 0,
+    "span_length": 155,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address lisinopril."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-67f09880",
+    "sequence_number": "30",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "e3581073b2d782e6f92cb62b972f9b21d84f3dbac1874e023cf64bfdd2acfabb",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "clopidogrel",
+        "omeprazole",
+        "esomeprazole"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "PURPOSE: Clopidogrel, an antiplatelet agent used to prevent ischemic events, may interact with proton pump inhibitors (PPIs), especially omeprazole and esomeprazole, and reduce its effectiveness."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "PURPOSE: Clopidogrel, an antiplatelet agent used to prevent ischemic events, may interact with proton pump inhibitors (PPIs), especially omeprazole and esomeprazole, and reduce its effectiveness.",
+    "span_character_index": 0,
+    "span_length": 195,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-53198e7b",
+    "sequence_number": "31",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "ccbaba277fab997a3a746540206842d02b9974f375600dcc56834610a37a038c",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "bleeding"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Nonsteroidal anti-inflammatory drugs (NSAIDs) are widely used for pain and inflammation but are associated with gastrointestinal (GI) bleeding."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Nonsteroidal anti-inflammatory drugs (NSAIDs) are widely used for pain and inflammation but are associated with gastrointestinal (GI) bleeding.",
+    "span_character_index": 0,
+    "span_length": 143,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-a3b4c771",
+    "sequence_number": "32",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "76b621cc10cf96eed59a69cf88bcdd7be6d8cce6c229d535a16f60129c421a34",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "clopidogrel",
+        "bleeding",
+        "omeprazole",
+        "nifedipine"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "COMPONENT_ONLY",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Notably, Ginkgo biloba extract frequent interacts with antiplatelets, anticoagulants, and nonsteroidal anti-inflammatory drugs, with Clopidogrel and Aspirin exhibiting the highest prevalence rates of 2."
+    ],
+    "proposed_label": "PARTIALLY_RELEVANT",
+    "proposed_grade": 1,
+    "proposed_rationale": "The evidence is partially relevant as it discusses related topics but lacks full entity alignment for warfarin and aspirin.",
+    "proposed_evidence_span": "Notably, Ginkgo biloba extract frequent interacts with antiplatelets, anticoagulants, and nonsteroidal anti-inflammatory drugs, with Clopidogrel and Aspirin exhibiting the highest prevalence rates of 2.",
+    "span_character_index": 730,
+    "span_length": 202,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Discusses partial components."
+    ],
+    "unsupported_claims": [
+      "Full relationship not established."
+    ],
+    "confidence": "MEDIUM",
+    "review_priority": "HIGH",
+    "alternative_label_considered": "IRRELEVANT",
+    "alternative_rejected_reason": "Evidence is clinically adjacent to the queried class.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence is partially relevant as it discusses related topics but lacks full entity alignment for warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-7e689ff1",
+    "sequence_number": "33",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "8245c325f72a8f327aed86b6a23f7f74af6e4bcc8d0c81bbeed04dc6803b4e65",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND AND OBJECTIVES: Concomitant use of tramadol and antidepressants with potent inhibition of the cytochrome P450 2D6 (CYP2D6) enzyme is postulated to increase risk of seizures in older adults; yet, such an association has not been empirically tested in populations."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND AND OBJECTIVES: Concomitant use of tramadol and antidepressants with potent inhibition of the cytochrome P450 2D6 (CYP2D6) enzyme is postulated to increase risk of seizures in older adults; yet, such an association has not been empirically tested in populations.",
+    "span_character_index": 0,
+    "span_length": 273,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-6d49dc3b",
+    "sequence_number": "34",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "85c67d3ad0993e0969f7086b58a8bc60be60c31b98c1a44a92de202ed755521b",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "hemorrhage",
+        "rivaroxaban",
+        "warfarin"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "COMPONENT_ONLY",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "This study aimed to evaluate the comparative efficacy and safety of apixaban and rivaroxaban versus vitamin K antagonists (VKAs) in anticoagulation management in a dialysis population."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "This study aimed to evaluate the comparative efficacy and safety of apixaban and rivaroxaban versus vitamin K antagonists (VKAs) in anticoagulation management in a dialysis population.",
+    "span_character_index": 0,
+    "span_length": 184,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-4b1bd9e5",
+    "sequence_number": "35",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "497d02cad9390b2a83566de38a4b67646f7aa1d34befa6560bdddaa254201840",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "clopidogrel",
+        "bleeding",
+        "esomeprazole"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Potassium-competitive acid blockers (P-CABs) are newly introduced gastrointestinal protectants, but their interaction with clopidogrel remains uncharacterized."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Potassium-competitive acid blockers (P-CABs) are newly introduced gastrointestinal protectants, but their interaction with clopidogrel remains uncharacterized.",
+    "span_character_index": 0,
+    "span_length": 171,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-5a1ffded",
+    "sequence_number": "36",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "97da30f6f639d4dd6d0deff5ffa9ba819479b75b16f6986b471d57c631d2f02b",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "clopidogrel",
+        "bleeding",
+        "pantoprazole",
+        "ilaprazole"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Clopidogrel is often co-prescribed with proton pump inhibitors (PPIs) to reduce gastrointestinal bleeding risk."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Clopidogrel is often co-prescribed with proton pump inhibitors (PPIs) to reduce gastrointestinal bleeding risk.",
+    "span_character_index": 0,
+    "span_length": 111,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-68c36127",
+    "sequence_number": "37",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "5a2b84650cfb30e91af1fb82367d0f11027c3db674ce304c10616f140ae56424",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "rivaroxaban",
+        "edoxaban"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Direct oral anticoagulants (DOACs) are metabolized by CYP3A4 and/or transported by P-glycoprotein."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Direct oral anticoagulants (DOACs) are metabolized by CYP3A4 and/or transported by P-glycoprotein.",
+    "span_character_index": 0,
+    "span_length": 110,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-cf4730de",
+    "sequence_number": "38",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "592c7f08f4787c6416f95c62e1381c363bd7256f2aa5459adafd2ae48e9b803f",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "bleeding"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Chronic pain affects over a quarter of Canadians and remains a leading cause of outpatient visits."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Chronic pain affects over a quarter of Canadians and remains a leading cause of outpatient visits.",
+    "span_character_index": 0,
+    "span_length": 98,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-9acf02db",
+    "sequence_number": "39",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "e92884fcca6e15448eeaac74812a85591b0cfabd2ca676e93e57ab7688013b29",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "edoxaban",
+        "apixaban",
+        "bleeding",
+        "rivaroxaban",
+        "thrombosis",
+        "warfarin",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "COMPONENT_ONLY",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Recent trials for treatments of direct oral anticoagulant (DOAC) related acute haemorrhage have highlighted incidences of post treatment thrombosis."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Recent trials for treatments of direct oral anticoagulant (DOAC) related acute haemorrhage have highlighted incidences of post treatment thrombosis.",
+    "span_character_index": 0,
+    "span_length": 160,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "MEDIUM",
+    "review_priority": "HIGH",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-7fa9c744",
+    "sequence_number": "40",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "fb5b6abe98b163d2f519c8e90c08b82369a332cfff73bd452474d5f15a531e7b",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Tramadol is a common pain medication used in practice across numerous specialties."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Tramadol is a common pain medication used in practice across numerous specialties.",
+    "span_character_index": 0,
+    "span_length": 82,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-7436f45f",
+    "sequence_number": "41",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "cf59b44a20773c1cd8864dfcc688336d6448ea1260e9b4989037bd7e45054354",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "edoxaban",
+        "apixaban",
+        "bleeding",
+        "rivaroxaban",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "There are no real-world data on the modalities and outcomes of managing major or life-threatening bleeding related to oral anticoagulants in the emergency room (ER)."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "There are no real-world data on the modalities and outcomes of managing major or life-threatening bleeding related to oral anticoagulants in the emergency room (ER).",
+    "span_character_index": 0,
+    "span_length": 165,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-d3295d06",
+    "sequence_number": "42",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "c79f38c9697386bf4a8602d615792356b13c929e5ca7e9a12032fdb24ab2204b",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "rivaroxaban"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "AIMS: Andexanet alfa was recommended by the National Institute for Health and Clinical Excellence (NICE) as an option in the management of life-threatening gastrointestinal bleeding in patients taking apixaban or rivaroxaban in May 2021."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "AIMS: Andexanet alfa was recommended by the National Institute for Health and Clinical Excellence (NICE) as an option in the management of life-threatening gastrointestinal bleeding in patients taking apixaban or rivaroxaban in May 2021.",
+    "span_character_index": 0,
+    "span_length": 237,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-fc86260b",
+    "sequence_number": "43",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "106a8845f46689bff434db9c5ec41c4036cfdf879d84f51a97404e5c61e71d65",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "rivaroxaban"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Andexanet alfa (AA), a recombinant coagulation factor Xa, is approved as an antidote for the treatment of bleeding secondary to rivaroxaban and apixaban."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Andexanet alfa (AA), a recombinant coagulation factor Xa, is approved as an antidote for the treatment of bleeding secondary to rivaroxaban and apixaban.",
+    "span_character_index": 0,
+    "span_length": 165,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-0c17f293",
+    "sequence_number": "44",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "2f1825725ab56beee4999caddfb0f21c4b211d09abc5941258cfbf754d729037",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Background: Berberine, an isoquinoline alkaloid present in Berberis spp."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Background: Berberine, an isoquinoline alkaloid present in Berberis spp.",
+    "span_character_index": 0,
+    "span_length": 72,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-6d33df67",
+    "sequence_number": "45",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "987cbeb4cd564321f7d10bb077b0e1567be333b985dd0c3c23d8d340db06a1e6",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "pantoprazole",
+        "clopidogrel",
+        "bleeding",
+        "omeprazole"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "COMPONENT_ONLY",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Classifications of drug interaction alerts regarding clopidogrel and a proton pump inhibitor (PPI) differ between knowledge resources."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Classifications of drug interaction alerts regarding clopidogrel and a proton pump inhibitor (PPI) differ between knowledge resources.",
+    "span_character_index": 0,
+    "span_length": 134,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-7d7a2a67",
+    "sequence_number": "46",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "7e6a06485dc0c0515b5f32b0b6af7b435e56edfc792731ffe5fd5d8fcc1c5dbb",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "edoxaban",
+        "apixaban",
+        "bleeding",
+        "rivaroxaban",
+        "thrombosis",
+        "idarucizumab",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Direct oral anticoagulants (DOACs) are widely prescribed but present challenges when patients require urgent invasive procedures."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Direct oral anticoagulants (DOACs) are widely prescribed but present challenges when patients require urgent invasive procedures.",
+    "span_character_index": 0,
+    "span_length": 141,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-e237444e",
+    "sequence_number": "47",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "af9a99ef242158f13317fd4c092c774502ed0fe8c07ce39c5b8f35315437ca1b",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Although mineralocorticoid receptor (MR) antagonism is a mechanistically plausible target of therapy in patients with kidney failure, prior small trials failed to elucidate the safety and efficacy of spironolactone and eplerenone in this population."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Although mineralocorticoid receptor (MR) antagonism is a mechanistically plausible target of therapy in patients with kidney failure, prior small trials failed to elucidate the safety and efficacy of spironolactone and eplerenone in this population.",
+    "span_character_index": 0,
+    "span_length": 249,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-734b9fb4",
+    "sequence_number": "48",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "9d95f4e156b8528be0df30f5893690564a18b7cce0d6e142ec72e89cf4b5555a",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "warfarin"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "DIRECT_MATCH",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [
+      "Entity mention exists, but property lacks."
+    ],
+    "uncertainties": [],
+    "support_spans": [
+      "Four potential herb-drug interactions were identified, namely ginger-aspirin (n=2), ginger-glibenclamide (n=1), honey-warfarin (n=1), and garlic-aspirin (n=1), suggesting a need for clinical monitoring."
+    ],
+    "proposed_label": "INSUFFICIENT_INFORMATION",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use. The entities appear in separate contexts without a demonstrated concomitant relationship.",
+    "proposed_evidence_span": "Four potential herb-drug interactions were identified, namely ginger-aspirin (n=2), ginger-glibenclamide (n=1), honey-warfarin (n=1), and garlic-aspirin (n=1), suggesting a need for clinical monitoring.",
+    "span_character_index": 1432,
+    "span_length": 202,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Entity warfarin and aspirin present."
+    ],
+    "unsupported_claims": [
+      "Property/Relation absent."
+    ],
+    "confidence": "HIGH",
+    "review_priority": "HIGH",
+    "alternative_label_considered": null,
+    "alternative_rejected_reason": "",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use. The entities appear in separate contexts without a demonstrated concomitant relationship."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-c3e553c3",
+    "sequence_number": "49",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "c955fcbbadf0815d3e4f0e10ff811dd408288162d5e93f632745a44b419fd042",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Oral bisphosphonates are approved for the treatment of bone loss associated with several conditions including postmenopausal osteoporosis."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Oral bisphosphonates are approved for the treatment of bone loss associated with several conditions including postmenopausal osteoporosis.",
+    "span_character_index": 0,
+    "span_length": 138,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-c8189f02",
+    "sequence_number": "50",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "b097ebf3da2da75959508db31fe42e295f92ff7ecaccbda6e66cc5ae32797936",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "heparin",
+        "rivaroxaban",
+        "thrombosis",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Coagulation is a physiological process necessary to achieve homeostasis."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Coagulation is a physiological process necessary to achieve homeostasis.",
+    "span_character_index": 0,
+    "span_length": 72,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-2fd215f0",
+    "sequence_number": "51",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "091019d50c931829e4b8873e20ed36e5c9c216ab4c92ed68331e9e4420cd7366",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Severe QT prolongation (SQTP) induced by antipsychotics or antidepressants remains a major safety concern, yet real-world data on its incidence and outcomes are limited."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Severe QT prolongation (SQTP) induced by antipsychotics or antidepressants remains a major safety concern, yet real-world data on its incidence and outcomes are limited.",
+    "span_character_index": 0,
+    "span_length": 181,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-33c679d3",
+    "sequence_number": "52",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "d5cfd5f86be6c23bfa66a20fdb3277994c8dbc76b8d878defebd026cf1412b32",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Osteoarthritis (OA) is a chronic degenerative joint disorder and a leading cause of pain and disability among the elderly."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Osteoarthritis (OA) is a chronic degenerative joint disorder and a leading cause of pain and disability among the elderly.",
+    "span_character_index": 0,
+    "span_length": 122,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-f9f910f8",
+    "sequence_number": "53",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "062395e30efcf5671c33bb723f29e4bff28b6dc93fc9f4f7eec2b221e76709e8",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "This study evaluated the influence of prior gabapentin administration, associated or not with integrative practices, on sedation scores, physiological parameters, and propofol requirement in cats sedated with dexmedetomidine undergoing elective orchiectomy."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "This study evaluated the influence of prior gabapentin administration, associated or not with integrative practices, on sedation scores, physiological parameters, and propofol requirement in cats sedated with dexmedetomidine undergoing elective orchiectomy.",
+    "span_character_index": 0,
+    "span_length": 257,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-878c4053",
+    "sequence_number": "54",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "ba2885678e310b46ee774cbbddd1ac7db825e01498a04b603b5b8e9a2f6b63c4",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Introduction Although opioids remain the standard of care for managing postsurgical pain, concerns persist regarding their safety, tolerability, and potential for addiction."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Introduction Although opioids remain the standard of care for managing postsurgical pain, concerns persist regarding their safety, tolerability, and potential for addiction.",
+    "span_character_index": 0,
+    "span_length": 173,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-cbaac358",
+    "sequence_number": "55",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "b4896196a53ff91285e913d7c24831727cb9c959bfd742505bb023708e2f11d6",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "ozagrel",
+        "hemorrhage",
+        "heparin",
+        "warfarin",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "SUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "DIRECT_MATCH",
+      "relationship_alignment": "SUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "POSITIVE",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [
+      "Entity mention exists, but property lacks."
+    ],
+    "uncertainties": [],
+    "support_spans": [
+      "HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban."
+    ],
+    "proposed_label": "INSUFFICIENT_INFORMATION",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use.",
+    "proposed_evidence_span": "HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban.",
+    "span_character_index": 1080,
+    "span_length": 220,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Entity warfarin and aspirin present."
+    ],
+    "unsupported_claims": [
+      "Property/Relation absent."
+    ],
+    "confidence": "MEDIUM",
+    "review_priority": "HIGH",
+    "alternative_label_considered": null,
+    "alternative_rejected_reason": "",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-6b51aa62",
+    "sequence_number": "56",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "a834d8be740497b615ea776c1deec50dded5e78f1a668d7c7240253e73a91426",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "hemorrhage",
+        "enoxaparin",
+        "clopidogrel",
+        "warfarin"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "DIRECT_MATCH",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "PARTIAL"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [
+      "Entity mention exists, but property lacks."
+    ],
+    "uncertainties": [],
+    "support_spans": [
+      "Due to exclusion of alternative origins of thromboembolism and unfavorable interactions with the patient's medication, he was started on warfarin."
+    ],
+    "proposed_label": "INSUFFICIENT_INFORMATION",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use. The entities appear in separate contexts without a demonstrated concomitant relationship.",
+    "proposed_evidence_span": "Due to exclusion of alternative origins of thromboembolism and unfavorable interactions with the patient's medication, he was started on warfarin.",
+    "span_character_index": 294,
+    "span_length": 146,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [
+      "Entity warfarin and aspirin present."
+    ],
+    "unsupported_claims": [
+      "Property/Relation absent."
+    ],
+    "confidence": "HIGH",
+    "review_priority": "HIGH",
+    "alternative_label_considered": null,
+    "alternative_rejected_reason": "",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence mentions warfarin and aspirin but does not establish the requested concomitant use. The entities appear in separate contexts without a demonstrated concomitant relationship."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-41410b52",
+    "sequence_number": "57",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "70ca106e075b559682050bf2f1b0c17ec2465b5405be3a66b3c5bab5ee93769e",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "edoxaban",
+        "apixaban",
+        "bleeding",
+        "hemorrhage",
+        "anticoagulant"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Anticoagulant therapy is the cornerstone of stroke prevention in atrial fibrillation (AF), yet its management in elderly and frail patients remains particularly challenging."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Anticoagulant therapy is the cornerstone of stroke prevention in atrial fibrillation (AF), yet its management in elderly and frail patients remains particularly challenging.",
+    "span_character_index": 0,
+    "span_length": 173,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-47d7ebb4",
+    "sequence_number": "58",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "770a71486d5940103734cf392cef916ee7a32c9a733b9f8a4d9066e69ee72263",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "BACKGROUND: Despite recent changes in the labeling of safety risks for prescription medications during pregnancy, information on the use of prescription medications potentially harmful or teratogenic among women of reproductive age is not known."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "BACKGROUND: Despite recent changes in the labeling of safety risks for prescription medications during pregnancy, information on the use of prescription medications potentially harmful or teratogenic among women of reproductive age is not known.",
+    "span_character_index": 0,
+    "span_length": 245,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-a835aaac",
+    "sequence_number": "59",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "c51d6a72666076ad893765f54d5c2182e2e0eb970bb3f6ac7fdda3a1e8f05e9a",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "apixaban",
+        "bleeding",
+        "rivaroxaban"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain.",
+    "span_character_index": 0,
+    "span_length": 137,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  },
+  {
+    "position_id": "pos-5b711aba",
+    "sequence_number": "60",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "source_record_sha256": "4d73e05788cdfe0afe014730676c6a5e9386782fe76026614d54971eb5c68824",
+    "query_analysis": {
+      "query_entities": [
+        "warfarin",
+        "aspirin"
+      ],
+      "requested_property": null,
+      "requested_relation": "concomitant use",
+      "requested_outcome": "bleeding risk",
+      "qualifiers": [],
+      "query_intent_summary": "Determine the bleeding risk during concomitant use of warfarin and aspirin."
+    },
+    "evidence_analysis": {
+      "evidence_entities": [
+        "various clinical terms"
+      ],
+      "evidence_claims": [],
+      "evidence_relations": [
+        "UNSUPPORTED"
+      ],
+      "evidence_properties": [
+        "NOT_APPLICABLE"
+      ],
+      "evidence_outcomes": [
+        "ABSENT"
+      ],
+      "entity_alignment": "ABSENT",
+      "relationship_alignment": "UNSUPPORTED",
+      "property_alignment": "NOT_APPLICABLE",
+      "outcome_alignment": "ABSENT",
+      "relation_polarity": "UNCERTAIN",
+      "outcome_polarity": "UNCERTAIN",
+      "evidence_coverage": "ABSENT"
+    },
+    "missing_information": [
+      "bleeding risk"
+    ],
+    "counterevidence": [],
+    "uncertainties": [],
+    "support_spans": [
+      "Cobblestone esophagus is a rare finding that has been previously described in cases of eosinophilic esophagitis (EoE), candidiasis, Barrett's esophagus, or severe reflux esophagitis from distal gastrointestinal obstruction."
+    ],
+    "proposed_label": "IRRELEVANT",
+    "proposed_grade": 0,
+    "proposed_rationale": "The evidence concerns other topics and does not materially address warfarin and aspirin.",
+    "proposed_evidence_span": "Cobblestone esophagus is a rare finding that has been previously described in cases of eosinophilic esophagitis (EoE), candidiasis, Barrett's esophagus, or severe reflux esophagitis from distal gastrointestinal obstruction.",
+    "span_character_index": 0,
+    "span_length": 223,
+    "literal_span_validation": "PASS",
+    "semantic_span_support": "PASS",
+    "rationale_evidence_consistency": "PASS",
+    "supported_claims": [],
+    "unsupported_claims": [],
+    "confidence": "HIGH",
+    "review_priority": "LOW",
+    "alternative_label_considered": "PARTIALLY_RELEVANT",
+    "alternative_rejected_reason": "No direct entity overlap.",
+    "semantic_reasoning_summary": "Rule-based semantic alignment with deep context matching.",
+    "decision_basis": [
+      "The evidence concerns other topics and does not materially address warfarin and aspirin."
+    ],
+    "decision_status": "PROPOSED",
+    "human_confirmation_status": "WAITING",
+    "human_final_label": null,
+    "human_final_grade": null,
+    "human_final_rationale": null,
+    "human_final_evidence_span": null
+  }
+]

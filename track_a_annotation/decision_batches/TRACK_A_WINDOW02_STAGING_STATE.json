@@ -1,0 +1,21 @@
+{
+  "total": 530,
+  "committed": 151,
+  "remaining": 379,
+  "registry_committed": 151,
+  "registry_unreserved": 379,
+  "window_02_staged_pids": [
+    "pos-0639bf30",
+    "pos-0653b758",
+    "pos-069cfc91",
+    "pos-07a239c0",
+    "pos-08b33ee5",
+    "pos-092e9947",
+    "pos-09607bb3",
+    "pos-0ba363e7",
+    "pos-0c461066",
+    "pos-0c63d702"
+  ],
+  "benchmark": "LOCKED",
+  "provider_execution": "FALSE"
+}

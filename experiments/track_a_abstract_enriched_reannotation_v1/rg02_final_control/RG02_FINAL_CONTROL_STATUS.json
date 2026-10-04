@@ -1,0 +1,217 @@
+{
+  "status": "TARGETED_RG02_CONTROL_VALIDATED_PENDING_FULL_GATE5",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "baseline_control_validated": true,
+  "security_invariant_holds": true,
+  "cognee_targeted_retrieval": "COGNEE_FINAL_CONTROL_VALIDATED",
+  "reproducibility": [
+    {
+      "case_id": "RG-02",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0"
+      ]
+    },
+    {
+      "case_id": "REGRESSION-CRITICAL",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0"
+      ]
+    },
+    {
+      "case_id": "POS-02",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_rg02_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_rg02_chunk_0"
+      ]
+    },
+    {
+      "case_id": "CTRL-UNSUPPORTED",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_rg02_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_pos01_chunk_0",
+        "doc_rg02_chunk_0"
+      ]
+    },
+    {
+      "case_id": "CTRL-CONTRADICTION",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_ctrl_contra_chunk_0",
+        "doc_pos02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0"
+      ]
+    },
+    {
+      "case_id": "POS-01",
+      "mode": "BASELINE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "doc_pos01_chunk_0",
+        "doc_ctrl_unrel_chunk_0",
+        "doc_rg02_chunk_0",
+        "doc_ctrl_unsupp_chunk_0",
+        "doc_pos02_chunk_0"
+      ]
+    },
+    {
+      "case_id": "RG-02",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    },
+    {
+      "case_id": "REGRESSION-CRITICAL",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    },
+    {
+      "case_id": "POS-02",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    },
+    {
+      "case_id": "CTRL-UNSUPPORTED",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    },
+    {
+      "case_id": "CTRL-CONTRADICTION",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    },
+    {
+      "case_id": "POS-01",
+      "mode": "COGNEE",
+      "retrieved_count_match": true,
+      "aggregate_match": true,
+      "aligned_support_match": true,
+      "candidate_ids_run1": [
+        "chunk_0"
+      ],
+      "candidate_ids_run2": [
+        "chunk_0"
+      ]
+    }
+  ],
+  "run_timestamp": "2026-09-30T18:37:15.225132+00:00"
+}

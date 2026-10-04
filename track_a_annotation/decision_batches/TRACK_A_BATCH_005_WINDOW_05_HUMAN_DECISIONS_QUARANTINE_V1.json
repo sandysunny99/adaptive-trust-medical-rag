@@ -1,0 +1,102 @@
+[
+  {
+    "position_id": "pos-cbaac358",
+    "human_final_label": "PARTIALLY_RELEVANT",
+    "human_final_grade": 1,
+    "human_final_rationale": "HT/ICH signals explicitly contain both aspirin and warfarin potassium...",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-6b51aa62",
+    "human_final_label": "PARTIALLY_RELEVANT",
+    "human_final_grade": 1,
+    "human_final_rationale": "The case contains warfarin, later aspirin exposure...",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-41410b52",
+    "human_final_label": "PARTIALLY_RELEVANT",
+    "human_final_grade": 1,
+    "human_final_rationale": "Discusses VKAs in relation to bleeding...",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-47d7ebb4",
+    "human_final_label": "IRRELEVANT",
+    "human_final_grade": 0,
+    "human_final_rationale": "",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-a835aaac",
+    "human_final_label": "PARTIALLY_RELEVANT",
+    "human_final_grade": 1,
+    "human_final_rationale": "Concerns anticoagulation/VKAs and bleeding-related management...",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-5b711aba",
+    "human_final_label": "IRRELEVANT",
+    "human_final_grade": 0,
+    "human_final_rationale": "",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-eb331f6c",
+    "human_final_label": "IRRELEVANT",
+    "human_final_grade": 0,
+    "human_final_rationale": "",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-e8bcb783",
+    "human_final_label": "IRRELEVANT",
+    "human_final_grade": 0,
+    "human_final_rationale": "",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-b043af88",
+    "human_final_label": "PARTIALLY_RELEVANT",
+    "human_final_grade": 1,
+    "human_final_rationale": "Addresses warfarin and anticoagulation-associated intracerebral hemorrhage...",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  },
+  {
+    "position_id": "pos-19c49db1",
+    "human_final_label": "IRRELEVANT",
+    "human_final_grade": 0,
+    "human_final_rationale": "",
+    "human_final_evidence_span": "",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "quarantine_reason": "Packet to authoritative reservation mapping failed (IDs belong to Batch 003 or lack reservation).",
+    "committable": false
+  }
+]

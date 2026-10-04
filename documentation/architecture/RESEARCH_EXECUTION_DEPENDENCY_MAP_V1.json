@@ -1,0 +1,13 @@
+{
+  "stage": "CONTROLLED_SCIENTIFIC_VALIDATION",
+  "workstreams": {
+    "track_a": { "status": "ACTIVE", "can_execute_now": true, "live_provider_required": false },
+    "gate_c_preflight": { "status": "BLOCKED", "can_execute_now": false, "live_provider_required": true },
+    "claim_evidence": { "status": "READY", "can_execute_now": true, "live_provider_required": false },
+    "e2e_security": { "status": "PENDING", "can_execute_now": false, "live_provider_required": true },
+    "free_replication": { "status": "PENDING", "can_execute_now": false, "live_provider_required": true },
+    "controlled_abstention": { "status": "READY", "can_execute_now": true, "live_provider_required": false },
+    "cognee": { "status": "PENDING", "can_execute_now": false, "live_provider_required": true },
+    "thesis": { "status": "ACTIVE", "can_execute_now": true, "live_provider_required": false }
+  }
+}

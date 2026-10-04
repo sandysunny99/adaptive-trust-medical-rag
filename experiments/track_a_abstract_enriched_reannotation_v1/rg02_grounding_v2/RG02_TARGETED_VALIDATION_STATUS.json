@@ -1,0 +1,6 @@
+{
+  "status": "GROUNDING_CONTROL_VALIDATED_NATIVE_RETRIEVAL_PENDING",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "rg02_retrieval_status": "NATIVELY_RETRIEVED"
+}

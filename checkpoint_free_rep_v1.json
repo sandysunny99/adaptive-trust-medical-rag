@@ -1,0 +1,11 @@
+{
+  "completed_case_ids": [
+    "PI-6e9b74bb",
+    "PI-cd11bc9d"
+  ],
+  "attempted_tokens": 0,
+  "committed_tokens": 0,
+  "attempted_requests": 4,
+  "committed_requests": 4,
+  "last_run_timestamp": "2026-09-16T18:36:08.056174+00:00"
+}

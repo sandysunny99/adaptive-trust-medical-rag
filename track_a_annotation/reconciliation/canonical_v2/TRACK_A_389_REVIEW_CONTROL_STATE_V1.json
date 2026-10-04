@@ -1,0 +1,18 @@
+{
+  "package_id": "TRACK_A_FINAL_COMPLETION_389",
+  "package_hash": "0de3c17e93af88591be5ce6b7f4ea6b01631b712ecedb866cae28a25b81932c2",
+  "dataset_total": 530,
+  "committed_excluded": 141,
+  "review_total": 389,
+  "processed_records": 10,
+  "current_window": "WINDOW_01",
+  "completed_windows": 1,
+  "advisory_completed": 10,
+  "researcher_confirmed": 10,
+  "commit_authorized": false,
+  "benchmark_status": "LOCKED",
+  "provider_execution": false,
+  "workflow_status": "WINDOW_01_RESEARCHER_DECISION_STAGED",
+  "last_validation_timestamp": "2026-10-03T10:45:13.392973Z",
+  "committed": 0
+}

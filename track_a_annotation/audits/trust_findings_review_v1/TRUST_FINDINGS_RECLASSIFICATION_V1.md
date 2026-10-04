@@ -1,0 +1,26 @@
+# TRUST FINDINGS RECLASSIFICATION V1
+
+```json
+{
+  "finding_id": "TEA-001",
+  "original_severity": "P0",
+  "validation_status": "CONFIRMED_P0",
+  "default_behavior_observed": true,
+  "missing_query_relevance": "Defaults to 0.0 (Observed in rag_orchestrator.py)",
+  "missing_evidence_quality": "Defaults to 0.0 (Observed in rag_orchestrator.py and live_variants.py)",
+  "missing_population_match": "Defaults to 1.0 (Observed in rag_orchestrator.py and live_variants.py)",
+  "missing_freshness": "Defaults to 1.0 (Observed in live_variants.py)",
+  "score_effect_observed": "Numeric defaults multiply against configured weights, actively changing the score.",
+  "gate_effect_observed": "Tested offline: missing factors cause passing or failing of thresholds indistinguishably from explicit zeros/ones.",
+  "specification_status": "CODE_SPECIFICATION_MISMATCH",
+  "test_coverage_status": "Tests validate the arithmetic execution of defaults, not their scientific correctness.",
+  "scientific_impact": "Compromises the adaptive trust score's capacity to represent uncertainty.",
+  "evidence": [
+    "src/adaptive_trust_medical_rag/trust_scoring/trust_scorer.py - TrustFactorScores dataclass defaults",
+    "src/adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py:502 - Constructor omitting factors",
+    "scratch/validate_trust_p0.py - Controlled reproduction script proving mathematical equivalence of omitted vs explicitly supplied defaults"
+  ],
+  "requires_engineering_fix": true,
+  "production_code_modified": false
+}
+```

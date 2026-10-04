@@ -1,0 +1,20 @@
+# TRACK_A_A_BATCH_004_REVIEW_BUNDLE_01 VALIDATION REPORT
+
+- **Bundle ID:** TRACK_A_A_BATCH_004_REVIEW_BUNDLE_01
+- **Number of formal windows included:** 4
+- **Number of review records:** 40
+- **Records per window:** 10
+- **Batch ownership:** PASS
+- **Window ownership:** PASS
+- **Reservation status:** PASS
+- **Master status:** PASS
+- **Query equality:** 40/40
+- **Evidence equality:** 40/40
+- **Fingerprint equality:** 40/40
+- **Duplicate count:** 0
+- **Ownership conflicts:** 0
+- **Automatic labels:** 0
+- **Automatic corrections:** 0
+- **Benchmark state:** LOCKED
+- **Master annotation count before:** 101
+- **Batch committed count before:** 20

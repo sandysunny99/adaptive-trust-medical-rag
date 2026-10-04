@@ -1,0 +1,34 @@
+[
+  {
+    "path": "scratch/prep_window05.py",
+    "type": "script",
+    "batch": "005",
+    "window": "05",
+    "authoritative": false,
+    "derived": true
+  },
+  {
+    "path": "scratch/commit_prep_window05.py",
+    "type": "script",
+    "batch": "005",
+    "window": "05",
+    "authoritative": false,
+    "derived": true
+  },
+  {
+    "path": "track_a_annotation/decision_batches/TRACK_A_A_BATCH_005_WINDOW_05.json",
+    "type": "data",
+    "batch": "005",
+    "window": "05",
+    "authoritative": false,
+    "derived": true
+  },
+  {
+    "path": "documentation/architecture/TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "type": "document",
+    "batch": "005",
+    "window": "05",
+    "authoritative": false,
+    "derived": true
+  }
+]

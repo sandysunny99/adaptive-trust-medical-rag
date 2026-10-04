@@ -1,0 +1,21 @@
+{
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "FAILED_WITH_LIMITATIONS",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "rg02_status": "FAILED",
+  "cognee_search_calls": 42,
+  "baseline_search_calls": 21,
+  "unique_cases": 21,
+  "runtime_cases": 63,
+  "reproducibility_cases": 21,
+  "reproducibility_exact_matches": 21,
+  "reproducibility_differences": 0,
+  "known_limitations": [
+    "POS-02",
+    "POS-04",
+    "RG-02",
+    "INT-05",
+    "PI-01"
+  ]
+}

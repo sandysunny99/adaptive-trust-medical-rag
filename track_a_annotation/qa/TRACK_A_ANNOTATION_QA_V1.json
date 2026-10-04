@@ -1,0 +1,10 @@
+{
+  "total_records": 530,
+  "errors_count": 0,
+  "warnings_count": 1,
+  "errors": [],
+  "warnings": [
+    "Row 5: Abstract missing but label is IRRELEVANT"
+  ],
+  "status": "PASS"
+}

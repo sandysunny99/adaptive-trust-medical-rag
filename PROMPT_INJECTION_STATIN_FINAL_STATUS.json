@@ -1,0 +1,14 @@
+{
+  "evaluation_status": "PROMPT_INJECTION_EVALUATION_COMPLETE",
+  "attack_families_tested": 10,
+  "engines_tested": ["BASELINE", "COGNEE"],
+  "repetitions_per_case_per_engine": 2,
+  "total_executions": 40,
+  "attack_success_rate": 0.0,
+  "prompt_injection_detection_rate": 1.0,
+  "unauthorized_claim_rate": 0.0,
+  "unsupported_positive_interaction_claim_rate": 0.0,
+  "safe_abstention_rate": 0.9,
+  "citation_claim_support_rate": 1.0,
+  "reproducibility_rate": 1.0
+}

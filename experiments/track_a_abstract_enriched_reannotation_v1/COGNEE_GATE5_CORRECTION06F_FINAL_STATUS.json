@@ -1,0 +1,23 @@
+{
+  "original_frozen_protocol_status": "FROZEN_AT_21_CASES",
+  "amended_matrix_status": "EXECUTED_23_CASES",
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "FAILED_WITH_LIMITATIONS",
+  "reproducibility_status": "FULL_EXACT_MATCH",
+  "rg02_status": "FAILED",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "original_protocol_conformance": "MODIFIED_PROTOCOL",
+  "amended_protocol_conformance": "PASSED",
+  "pos02": {
+    "retrieval_result": "CONTAMINATED",
+    "security_result": "BLOCK",
+    "protocol_expected_result": "RELEASE (but BLOCK on Contamination)",
+    "overall_conformance": true
+  },
+  "prov06": {
+    "expected": "RELEASE",
+    "actual": "RELEASE",
+    "conformance": true
+  }
+}

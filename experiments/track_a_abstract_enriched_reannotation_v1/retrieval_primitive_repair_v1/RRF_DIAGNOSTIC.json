@@ -1,0 +1,4 @@
+{
+  "RRF_status": "FUNCTIONAL",
+  "cause_of_failures": "F. query/fixture mismatch due to SimpleEmbeddingModel constrained vocabulary preventing vector matches, combined with intermittent Cognee database locks."
+}

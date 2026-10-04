@@ -1,0 +1,76 @@
+[
+  {
+    "model_id": "BAAI/bge-small-en-v1.5",
+    "revision": "ca906247640776a07753514055be9726f9080ead",
+    "source": "operator-provided",
+    "directory": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface\\BAAI--bge-small-en-v1.5",
+    "total_size_bytes": 134411033,
+    "files": [
+      {
+        "path": "config.json",
+        "sha256": "094f8e891b932f2000c92cfc663bac4c62069f5d8af5b5278c4306aef3084750"
+      },
+      {
+        "path": "model.safetensors",
+        "size": 133466304
+      },
+      {
+        "path": "modules.json",
+        "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+      },
+      {
+        "path": "sentence_bert_config.json",
+        "sha256": "84e39fda68ccbff05bfa723ae9c0e70e23e2ec373b76e0f8c6e71af72a693cbf"
+      },
+      {
+        "path": "special_tokens_map.json",
+        "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3"
+      },
+      {
+        "path": "tokenizer.json",
+        "sha256": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "sha256": "9261e7d79b44c8195c1cada2b453e55b00aeb81e907a6664974b4d7776172ab3"
+      },
+      {
+        "path": "vocab.txt",
+        "size": 231508
+      },
+      {
+        "path": "config.json",
+        "sha256": "d1caf60c96f5fba2157c0c26b76d80818fad6cf0b8eb5e73ec372ff9818eba5c"
+      }
+    ]
+  },
+  {
+    "model_id": "fastino/gliner2.5-base-v1",
+    "revision": "ca906247640776a07753514055be9726f9080ead",
+    "source": "operator-provided",
+    "directory": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface\\fastino--gliner2.5-base-v1",
+    "total_size_bytes": 782712929,
+    "files": [
+      {
+        "path": "config.json",
+        "sha256": "0eb92d00584d613aab32b2178f84a85176b62c87ae3689ce9084e83f6eba64d1"
+      },
+      {
+        "path": "model.safetensors",
+        "size": 774366564
+      },
+      {
+        "path": "tokenizer.json",
+        "sha256": "cbc8ae6037812709c9c26f2a160f8dc48b0440bcb79c8141804259ae2d6adac3"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "sha256": "0bf3ea0873234bd9bfdd3853c440395009ac6365a925b91654daed5396d655e1"
+      },
+      {
+        "path": "config.json",
+        "sha256": "d36a845b9f25dcaf1ec45a1c4bdf65ea4ac20596537e14530ec9f660a63aeca4"
+      }
+    ]
+  }
+]

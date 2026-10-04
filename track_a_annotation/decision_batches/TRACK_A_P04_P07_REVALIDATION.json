@@ -1,0 +1,38 @@
+[
+  {
+    "position_id": "pos-2142a295",
+    "query_id": "Clearance pathway for lisinopril",
+    "query_text": "Clearance pathway for lisinopril",
+    "label": "IRRELEVANT",
+    "rationale": "The evidence exclusively discusses the pharmacokinetic and pharmacodynamic interactions between Danshen Yin (DSY) and clopidogrel (Clop). It does not mention lisinopril or its clearance pathway.",
+    "evidence_span": "ETHNOPHARMACOLOGICAL RELEVANCE: Danshen Yin (DSY) as a traditional Chinese medicine (TCM) formula, has been extensively employed as a clinical adjuvant in the treatment of cardiovascular diseases, particularly acute myocardial infarction (AMI).",
+    "annotation_status": "VALIDATED"
+  },
+  {
+    "position_id": "pos-055e405a",
+    "query_id": "Clearance pathway for lisinopril",
+    "query_text": "Clearance pathway for lisinopril",
+    "label": "IRRELEVANT",
+    "rationale": "The evidence focuses entirely on seizures and safety margins associated with intravenous tramadol and ketoprofen for postsurgical pain. It does not mention lisinopril or its clearance pathway.",
+    "evidence_span": "Two subjects receiving a single intravenous (IV) dose of tramadol 150 mg for severe postsurgical pain developed seizures within four minutes of drug administration despite rigorous screening and exclusion of patients at risk for seizures.",
+    "annotation_status": "VALIDATED"
+  },
+  {
+    "position_id": "pos-59a4d6ce",
+    "query_id": "Clearance pathway for lisinopril",
+    "query_text": "Clearance pathway for lisinopril",
+    "label": "IRRELEVANT",
+    "rationale": "The evidence discusses electrocardiographic changes (QT interval prolongation) associated with escitalopram and venlafaxine. It does not mention lisinopril or its clearance pathway.",
+    "evidence_span": "INTRODUCTION: Electrocardiographic changes indicating a significantly increased risk of adverse cardiac effects, such as heart-rate corrected QT interval prolongation, are rare during antidepressant treatment; however, systematic analyses are lacking.",
+    "annotation_status": "VALIDATED"
+  },
+  {
+    "position_id": "pos-3fb32a70",
+    "query_id": "Clearance pathway for lisinopril",
+    "query_text": "Clearance pathway for lisinopril",
+    "label": "IRRELEVANT",
+    "rationale": "The evidence focuses on the gut-heart axis, cardiovascular disease, and microbiome-drug interactions (e.g., digoxin, aspirin, warfarin). It does not mention lisinopril or its clearance pathway.",
+    "evidence_span": "Cardiovascular disease (CVD) remains the leading cause of mortality worldwide despite major advances in pharmacotherapy.",
+    "annotation_status": "VALIDATED"
+  }
+]

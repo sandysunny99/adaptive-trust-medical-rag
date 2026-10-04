@@ -1,0 +1,3 @@
+{"query": "statin therapy is common", "case": "POS-01", "bm25_returned": true, "dense_returned": false, "graph_returned": false, "rrf_returned": true, "evidence_source": "runtime_capture"}
+{"query": "Does statin interact with aspirin?", "case": "POS-02", "bm25_returned": true, "dense_returned": true, "graph_returned": false, "rrf_returned": true, "evidence_source": "runtime_capture"}
+{"query": "Statin is a drug. Cyanide is a poison.", "case": "RG-02", "bm25_returned": true, "dense_returned": false, "graph_returned": false, "rrf_returned": true, "evidence_source": "runtime_capture"}

@@ -1,0 +1,47 @@
+{
+  "protocol_documents_audited": [
+    {
+      "file": "experiments/architecture_baseline/FREE_REPLICATION_V1_PROTOCOL.md",
+      "embedding_model_specified": "UNSPECIFIED",
+      "vector_dimensionality_specified": "UNSPECIFIED",
+      "similarity_metric_specified": "UNSPECIFIED",
+      "normalization_specified": "UNSPECIFIED",
+      "dense_retrieval_algorithm_specified": "UNSPECIFIED",
+      "bm25_parameters_specified": "UNSPECIFIED",
+      "rrf_specified": "UNSPECIFIED",
+      "corpus_specified": "Reuses frozen 200-case input from Phase 15",
+      "embedding_generation_procedure_specified": "UNSPECIFIED",
+      "notes": "Protocol only specifies the LLM generation model (groq/openai/gpt-oss-120b). Retrieval architecture is inherited from the project but not explicitly constrained."
+    },
+    {
+      "file": "experiments/architecture_baseline/FREE_REPLICATION_V1_CONFIG.json",
+      "embedding_model_specified": "UNSPECIFIED",
+      "notes": "Contains only provider, model, failover, and runner_settings. No retrieval configuration."
+    },
+    {
+      "file": "experiments/architecture_baseline/CURRENT_ARCHITECTURE_SNAPSHOT.md",
+      "embedding_model_specified": "SimpleEmbeddingModel",
+      "document_type": "DESCRIPTIVE_SNAPSHOT",
+      "is_normative": false,
+      "notes": "Lists 'Dense (SimpleEmbeddingModel)' as the current dense channel. This document was created as a snapshot of the codebase state at commit 8741f59, NOT as a normative protocol requirement. It is descriptive, not prescriptive."
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "embedding_model_specified": "UNSPECIFIED_BY_NAME",
+      "vector_dimensionality_specified": "768 (VECTOR(768))",
+      "notes": "Specifies 768-dim embeddings in the database schema. This is incompatible with SimpleEmbeddingModel (7-dim) but compatible with S-PubMedBert-MS-MARCO (768-dim)."
+    },
+    {
+      "file": "experiments/runs/fusion-evaluation-v3-real/manifest.json",
+      "embedding_model_specified": "pritamdeka/S-PubMedBert-MS-MARCO",
+      "notes": "Experiment manifest explicitly recording the embedding model used. This is a HISTORICAL experiment record, not a protocol authorization."
+    },
+    {
+      "file": "experiments/runs/fusion-evaluation-v3-confirmed/manifest.json",
+      "embedding_model_specified": "pritamdeka/S-PubMedBert-MS-MARCO",
+      "notes": "Confirmed experiment also records S-PubMedBert. Second independent historical evidence."
+    }
+  ],
+  "conclusion": "No protocol document explicitly authorizes a specific embedding model. CURRENT_ARCHITECTURE_SNAPSHOT.md is descriptive, not normative. The only explicit model references are in historical experiment manifests (S-PubMedBert-MS-MARCO).",
+  "evidence_source": "manual_analysis"
+}

@@ -1,0 +1,52 @@
+{
+  "model_id": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "snapshot_path": "C:\\Users\\sunny/.cache/huggingface/hub/models--pritamdeka--S-PubMedBert-MS-MARCO\\snapshots\\96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "files": {
+    "config.json": {
+      "size": 666,
+      "sha256": "63066e2f09812fa221c4f9d1096a5869eca57b28dcffb57bfc6a3c9fa521dba7"
+    },
+    "config_sentence_transformers.json": {
+      "size": 123,
+      "sha256": "ae926078dd8607b898e553b9a613a44ed237f64e3b33a9e8ba06b5d2ef17407c"
+    },
+    "modules.json": {
+      "size": 229,
+      "sha256": "8f4b264b80206c830bebbdcae377e137925650a433b689343a63bdc9b3145460"
+    },
+    "pytorch_model.bin": {
+      "size": 438010289,
+      "sha256": "65911292f1477515dd3ac71ddf8ac54f12495b8a3eab81b1ebe3b0c86cde70eb"
+    },
+    "README.md": {
+      "size": 4557,
+      "sha256": "6deeab6836297a072976afe9d4d9e8458fe2dc7d8ea7d1368f3adc88b57cb49f"
+    },
+    "sentence_bert_config.json": {
+      "size": 53,
+      "sha256": "4e52cd0cf70ad3810a614956c69ccc1ea91de5ee497f8a31d2b17b37c8d37c00"
+    },
+    "special_tokens_map.json": {
+      "size": 112,
+      "sha256": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3"
+    },
+    "tokenizer.json": {
+      "size": 460876,
+      "sha256": "60b91b4556c419eb29e675c0b45af37fa62baa4890a5bfd97f4aa679c20d4cdf"
+    },
+    "tokenizer_config.json": {
+      "size": 388,
+      "sha256": "d45dbd49c60507da3a459293f7c0865cf0b81bd6a74e6249ab0cde80a96ac9be"
+    },
+    "vocab.txt": {
+      "size": 226150,
+      "sha256": "79489a52be45e6fa033521e8ce8e4f62aedc0a742ee2aa6fc04667e5b0b1454d"
+    },
+    "1_Pooling/config.json": {
+      "size": 190,
+      "sha256": "a37f83ada23e7887be6b88f4998927dbeac0038af301553c7cd5461413bf1a56"
+    }
+  },
+  "evidence_source": "runtime_capture"
+}

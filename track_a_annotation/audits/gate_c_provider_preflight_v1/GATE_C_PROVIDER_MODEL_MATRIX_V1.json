@@ -1,0 +1,5 @@
+{
+  "groq": "openai/gpt-oss-120b",
+  "cloudflare": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "huggingface": "meta-llama/Llama-3.3-70B-Instruct"
+}

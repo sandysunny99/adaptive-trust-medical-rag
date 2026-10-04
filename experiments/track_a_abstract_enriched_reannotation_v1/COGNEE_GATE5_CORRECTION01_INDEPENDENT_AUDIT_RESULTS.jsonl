@@ -1,0 +1,6 @@
+{"case_id": "CASE-01", "attack_class": "SOURCE_PROMPT_INJECTION", "audit_finding": "Blocked due to MISSING_PROVENANCE, not prompt injection detection. PromptInjectionDetector is only run on the user query, never on the candidate.", "validator_exercised": false}
+{"case_id": "CASE-02", "attack_class": "MALICIOUS_RELATIONSHIP", "audit_finding": "Blocked due to MISSING_PROVENANCE. RelationshipGroundingValidator result was computed but completely ignored by EvidenceEligibilityGate.", "validator_exercised": false}
+{"case_id": "CASE-03", "attack_class": "POISONED_METADATA", "audit_finding": "Blocked due to MISSING_PROVENANCE. RetrievalPoisoningDetector triggered.", "validator_exercised": false}
+{"case_id": "CASE-04", "attack_class": "PROVENANCE_MISMATCH", "audit_finding": "Blocked due to MISSING_PROVENANCE.", "validator_exercised": false}
+{"case_id": "CASE-08", "attack_class": "CONTENT_INTEGRITY_TAMPER", "audit_finding": "Blocked due to MISSING_PROVENANCE. DynamicIntegrityValidator result was computed but completely ignored by EvidenceEligibilityGate.", "validator_exercised": false}
+{"case_id": "CASE-09", "attack_class": "INCORRECT_DRUG_RELATIONSHIP", "audit_finding": "Blocked due to MISSING_PROVENANCE. RelationshipGroundingValidator result ignored.", "validator_exercised": false}

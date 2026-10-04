@@ -1,0 +1,54 @@
+{
+  "package_id": "TRUST_P0_FINDING_VALIDATION_V1",
+  "timestamp": "2026-10-03T16:35:01.641772+00:00",
+  "status": "VALIDATION_COMPLETE",
+  "integrity_preserved": true,
+  "production_modified": false,
+  "artifacts": [
+    {
+      "relative_path": "TRUST_FINDINGS_RECLASSIFICATION_V1.json",
+      "byte_size": 1499,
+      "sha256": "5fc66d770df3c8a0037a9a58d2d0e996a75fbb8bd0e1198cda95ae8ccfb8f2d8"
+    },
+    {
+      "relative_path": "TRUST_FINDINGS_RECLASSIFICATION_V1.md",
+      "byte_size": 1555,
+      "sha256": "35092302c6d59c6acd345e357709c2f04ca322de5ea2276ef62befe5237ac296"
+    },
+    {
+      "relative_path": "TRUST_P0_CALLSITE_MATRIX_V1.md",
+      "byte_size": 466,
+      "sha256": "68c2857a6d09777acfa5b46ebbb48ac7b6cb8ef74376cd26f13f25256538f074"
+    },
+    {
+      "relative_path": "TRUST_P0_FINDING_VALIDATION_REPORT_V1.md",
+      "byte_size": 766,
+      "sha256": "666df49c466d66a83621088028fc1dd820dca028a672ee5a6d903b2b32d25b42"
+    },
+    {
+      "relative_path": "TRUST_P0_MISSING_DATA_BEHAVIOR_V1.md",
+      "byte_size": 771,
+      "sha256": "6d02534b8c4960a246aa6c6ef4c9a1ff9a33167f4f20e23d99aa54b444122aa0"
+    },
+    {
+      "relative_path": "TRUST_P0_SCIENTIFIC_IMPACT_V1.md",
+      "byte_size": 637,
+      "sha256": "f9f6f187ec58eba4d5ee1dfb340ce0399e7690c5e8f2ee27951696152b204108"
+    },
+    {
+      "relative_path": "TRUST_P0_SPECIFICATION_CROSSCHECK_V1.md",
+      "byte_size": 495,
+      "sha256": "a23be8d64aaaa65f5e2cadb9a39327810bc3d154d39a1caa86615dc7bbb12eb2"
+    },
+    {
+      "relative_path": "TRUST_P0_TEST_COVERAGE_AUDIT_V1.md",
+      "byte_size": 477,
+      "sha256": "5e20ff5843a9a047524e7c51f064152b615e3cd373db31fddd54ba5396d8ba2e"
+    },
+    {
+      "relative_path": "TRUST_P0_VALIDATION_INTEGRITY_AUDIT_V1.md",
+      "byte_size": 431,
+      "sha256": "ea5767a3307b5c8fc670e7ad51bfdd1de235201f37399e829607307dc09cf081"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "Decision Origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "Provider Execution": "FALSE",
+    "Status": "ASSISTANT_ASSISTED_RESEARCHER_DECISION_DRAFT_PENDING_RESEARCHER_CONFIRMATION"
+  },
+  "decisions": [
+    {
+      "idx": 11,
+      "pos": "pos-023ac072",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "Fluconazole is frequently used as a clinical index inhibitor of cytochrome P450 (CYP) 2C9 and CYP3A4 to assess DDI liabilities involving these CYP enzymes."
+    },
+    {
+      "idx": 12,
+      "pos": "pos-38321e44",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 13,
+      "pos": "pos-bdbee728",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "The CYP2C9 enzyme metabolizes several NSAIDs, and genetic variations can lead to altered drug clearance, increasing the risk of adverse effects such as gastrointestinal bleeding."
+    },
+    {
+      "idx": 14,
+      "pos": "pos-d77341b4",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "Exploratory dose-stratified analyses suggested both standard- and low-dose apixaban regimens were associated with favorable efficacy and hemostatic safety relative to warfarin."
+    },
+    {
+      "idx": 15,
+      "pos": "pos-5cc464f4",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "Subsequently, the effect of DSY on CYP450 (CYP1A2, CYP2C19, CYP2C9, CYP3A4) and carboxylesterases 1 (CES1) were investigated by cocktail and bioluminescence assays."
+    },
+    {
+      "idx": 16,
+      "pos": "pos-d0de21af",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 17,
+      "pos": "pos-09d4924f",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 18,
+      "pos": "pos-c1c56b3c",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 19,
+      "pos": "pos-c5be96ab",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 20,
+      "pos": "pos-d14b89a0",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 21,
+      "pos": "pos-6b589a2b",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 22,
+      "pos": "pos-76e041ab",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 23,
+      "pos": "pos-e5ff8086",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 24,
+      "pos": "pos-0744bfc1",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "No major inducive effects were observed on CYP2D6 and CYP2C9."
+    },
+    {
+      "idx": 25,
+      "pos": "pos-b4c42a92",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban."
+    },
+    {
+      "idx": 26,
+      "pos": "pos-ac0d7421",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 27,
+      "pos": "pos-8a095ad6",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "Four potential herb-drug interactions were identified, namely ginger-aspirin (n=2), ginger-glibenclamide (n=1), honey-warfarin (n=1), and garlic-aspirin (n=1), suggesting a need for clinical monitoring."
+    },
+    {
+      "idx": 28,
+      "pos": "pos-551a71b7",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "CYP2D6/CYP2C9 inhibition that is quasi-irreversible through a metabolite-intermediate complex;"
+    },
+    {
+      "idx": 29,
+      "pos": "pos-60ec8372",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 30,
+      "pos": "pos-8511788b",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 31,
+      "pos": "pos-d5d28b3e",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 32,
+      "pos": "pos-0a4fc25b",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 33,
+      "pos": "pos-858d12a9",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 34,
+      "pos": "pos-e701e6b6",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 35,
+      "pos": "pos-24d8926d",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 36,
+      "pos": "pos-85c2e897",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "PR exerted reversible competitive inhibition on human hepatic CYP2C9 (IC50 = 26.16 \u00b1 3.89 \u03bcM, Ki = 34.64 \u03bcM)"
+    },
+    {
+      "idx": 37,
+      "pos": "pos-103fab76",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 38,
+      "pos": "pos-312c2bfa",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 39,
+      "pos": "pos-7f4a11a7",
+      "label": "IRRELEVANT",
+      "score": 0,
+      "span": "EMPTY"
+    },
+    {
+      "idx": 40,
+      "pos": "pos-50e306ec",
+      "label": "PARTIALLY_RELEVANT",
+      "score": 1,
+      "span": "each presenting one of four predefined high-risk DDI scenarios (ibuprofen-furosemide, omeprazole-clopidogrel, fluconazole-phenytoin, and phenytoin-warfarin)."
+    }
+  ]
+}

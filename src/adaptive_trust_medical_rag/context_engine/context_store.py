@@ -18,6 +18,13 @@ class ContextLevel(Enum):
 
 
 @dataclass
+class ContextMetadata:
+    estimated_tokens_l0: int | None = None
+    estimated_tokens_l1: int | None = None
+    estimated_tokens_l2: int | None = None
+    compression_ratio: float | None = None
+
+@dataclass
 class ContextRecord:
     """One unit of context derived from pharmacology evidence.
 
@@ -28,6 +35,7 @@ class ContextRecord:
     level: ContextLevel
     content: str
     provenance: dict[str, Any]  # source, document_id, timestamp, …
+    metadata: ContextMetadata | None = None
 
     def __post_init__(self) -> None:
         if not self.provenance:
@@ -38,10 +46,14 @@ class ContextRecord:
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d["level"] = self.level.value
+        if self.metadata is not None:
+            d["metadata"] = asdict(self.metadata)
         return d
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "ContextRecord":
+        metadata_data = data.get("metadata")
+        metadata = ContextMetadata(**metadata_data) if metadata_data else None
         return cls(
             record_id=data["record_id"],
             level=ContextLevel(data["level"]),

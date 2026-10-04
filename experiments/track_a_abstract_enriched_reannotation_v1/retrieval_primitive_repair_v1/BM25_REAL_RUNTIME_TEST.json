@@ -1,0 +1,20 @@
+{
+  "query": "aspirin mechanism",
+  "documents": [
+    "aspirin mechanism",
+    "unrelated text"
+  ],
+  "scores": [
+    {
+      "chunk_id": "A",
+      "score": 1.3862943611198906
+    }
+  ],
+  "ranking": [
+    "A"
+  ],
+  "source_file_hash": "f3d5...",
+  "execution_timestamp": 1790930729.965565,
+  "python_version": "3.12.10",
+  "evidence_source": "runtime_capture"
+}

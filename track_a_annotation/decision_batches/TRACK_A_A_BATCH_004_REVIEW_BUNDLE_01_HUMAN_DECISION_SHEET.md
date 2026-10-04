@@ -1,0 +1,2378 @@
+# TRACK A A BATCH 004 REVIEW BUNDLE 01 HUMAN DECISION SHEET
+
+## FINAL HUMAN REVIEW PREPARATION
+
+| # | Position | Query | Advisory | Pairwise Match | Key Missing Component | Human Label |
+|---|----------|-------|----------|----------------|-----------------------|-------------|
+| 1 | pos-13ca8dc0 | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 2 | pos-71c56f79 | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 3 | pos-f8a6a54c | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 4 | pos-be2c3d93 | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 5 | pos-fce9aed7 | Concomitant use of w... | PARTIALLY_RELEVANT | YES | None | BLANK |
+| 6 | pos-9b7d81e4 | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 7 | pos-b66e91cc | Concomitant use of w... | PARTIALLY_RELEVANT | NO | None | BLANK |
+| 8 | pos-f4d4d47c | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 9 | pos-c4839d51 | Concomitant use of w... | IRRELEVANT | NO | None | BLANK |
+| 10 | pos-3d27c5b0 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 11 | pos-023ac072 | CYP2C9 interaction b... | INSUFFICIENT_INFORMATION | NO | None | BLANK |
+| 12 | pos-38321e44 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 13 | pos-bdbee728 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 14 | pos-d77341b4 | CYP2C9 interaction b... | INSUFFICIENT_INFORMATION | NO | None | BLANK |
+| 15 | pos-5cc464f4 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 16 | pos-d0de21af | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 17 | pos-09d4924f | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 18 | pos-c1c56b3c | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 19 | pos-c5be96ab | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 20 | pos-d14b89a0 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 21 | pos-6b589a2b | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 22 | pos-76e041ab | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 23 | pos-e5ff8086 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 24 | pos-0744bfc1 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 25 | pos-b4c42a92 | CYP2C9 interaction b... | INSUFFICIENT_INFORMATION | NO | None | BLANK |
+| 26 | pos-ac0d7421 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 27 | pos-8a095ad6 | CYP2C9 interaction b... | INSUFFICIENT_INFORMATION | NO | None | BLANK |
+| 28 | pos-551a71b7 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 29 | pos-60ec8372 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 30 | pos-8511788b | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 31 | pos-d5d28b3e | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 32 | pos-0a4fc25b | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 33 | pos-858d12a9 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 34 | pos-e701e6b6 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 35 | pos-24d8926d | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 36 | pos-85c2e897 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 37 | pos-103fab76 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 38 | pos-312c2bfa | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 39 | pos-7f4a11a7 | CYP2C9 interaction b... | IRRELEVANT | NO | None | BLANK |
+| 40 | pos-50e306ec | CYP2C9 interaction b... | PARTIALLY_RELEVANT | NO | None | BLANK |
+
+## FULL RECORD VIEW
+
+------------------------------------------------------------
+RECORD 1
+------------------------------------------------------------
+Position ID: pos-13ca8dc0
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-39817374-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Clopidogrel, an antiplatelet drug commonly used in cardiovascular disease, is metabolized by the liver mainly through CYP2C19. Concomitant use of Proton pump inhibitors along with clopidogrel may affect the potency of clopidogrel by CYP2C19 inhibition. However, a novel PPI, ilaprazole is known to differ in its pharmacokinetic features, given the potential differences between ilaprazole's interactions and their metabolism with clopidogrel. Network pharmacology investigation could be a useful tool to evaluate the drug-drug interaction between them. METHODOLOGY: The molecular structures and targets were retrieved from PubChem and SwissTargetPrediction to establish the information related to the identified drugs. The possible shared targets between the clopidogrel and PPIs were explored by a Venn analysis. Subsequently, Protein-Protein Interaction networks were established using the STRING database. Hub genes were also determined using the Cytoscape cytoHubba plugin. RESULTS AND DISCUSSION: Ilaprazole (13.6%) and pantoprazole (13.6%) were characterized by fewer targets being shared with clopidogrel compared to conventional PPIs (14.9%). Moreover, CYP2C19 was not a hub gene in ilaprazole and pantoprazole interactions, which indicated no significant CYP2C19 involvement. On the other hand, CYP2C19 functioned as a hub gene in the interactions with rabeprazole, lansoprazole, dexlansoprazole, omeprazole, and esomeprazole. As a result, patients receiving pantoprazole and ilaprazole would be at a lower risk for developing adverse cardiovascular events by maintaining the clopidogrel therapeutic effect. CONCLUSION: The application of the network pharmacology technique allows us to consider the potential for different effects of PPIs on clopidogrel and its metabolism via CYP2C19. There is a lower chance of experiencing adverse effects from an interaction between ilaprazole and clopidogrel as ilaprazole has not been linked to CYP2C19. More research is necessary to confirm these results and provide clinical guidance for patients undergoing clopidogrel and PPI combination therapy.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 2
+------------------------------------------------------------
+Position ID: pos-71c56f79
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40272900-001
+
+EXACT RETRIEVED EVIDENCE:
+Drug-induced convulsions/seizures are a serious adverse event in the clinic; however, precise convulsion/seizure risk assessment remains challenging, particularly in the early phase of drug development. There is a demand for reliable in vitro assay systems that can predict in vivo convulsions. Here, we investigated the usefulness of in vitro microelectrode array (MEA) assays using rat primary neurons by comparing them with an in vivo convulsion study for 14 reference drugs known to cause seizure/convulsion: Paroxetine, 4-aminopyridine, pentylenetetrazol, strychnine, amoxapine, fluvoxamine, linopirdine, theophylline, pilocarpine, tramadol, bupropion, diphenhydramine, kainic acid, and veratridine. For the in vitro assay, a culture condition was established that demonstrated stable firing rates and drug responses of neurons and ensured a balanced expression of excitatory and inhibitory neuronal markers. Cultured rat primary cortical neurons were tested by MEA for electrophysiological changes induced by drugs. An MEA parameter, network burst frequency (NBF), was increased in a concentration-dependent manner by some of the drugs tested, demonstrating reproducibility. Rats were intraperitoneally or intravenously given the drugs at doses that did and did not cause convulsions. Concentrations of the drugs in cerebrospinal fluid (CSF), obtained just after convulsion onset, were measured by LC-MS/MS. The NBF threshold for seizure could be used to predict the CSF concentrations of some drugs in rats with convulsions. Thus, an in vitro MEA assay using rat primary neurons can predict the risk of in vivo convulsions, which could be useful for drug screening during the early stage of drug candidate selection.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 3
+------------------------------------------------------------
+Position ID: pos-f8a6a54c
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42483729-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Nightmares, nonrestorative sleep, and headaches co-occur, are common, underdiagnosed, and contribute to substantial disability. Pregabalin modulates excitatory neurotransmission, increases slow-wave sleep, and suppresses REM sleep, suggesting a potential therapeutic role in nightmares and sleep disturbance. Pregabalin's effect on nightmares has not been systematically studied. Although sedation is a common side effect when prescribed 2-3 times daily according to the package insert, the efficacy and tolerability of once-nightly administration remain poorly characterized. METHODS: Our retrospective case series included 23 outpatients seen in the neurology department of a tertiary care center from November 2022 to August 2025. They were prescribed once-nightly pregabalin for nightmares, nonrestorative sleep, and headaches. Clinical data were extracted from medical records, including nightmare frequency, fraction of 24-hour periods with restorative sleep, headache frequency, severity, and duration, and MIDAS scores. Within-subject pre-post comparisons were performed using paired t-tests or Wilcoxon signed-rank tests. All p-values were Holm-Bonferroni adjusted. RESULTS: Nightmare frequency decreased 81% (17.5 to 3.3/month, padj=0.006). Nightmares decreased numerically more for those who transitioned from gabapentin to pregabalin (91%) than for those not initially taking gabapentin (73%). Restorative sleep frequency increased 127% (1.8 to 4.0/week, padj=0.006). Headache frequency decreased 50% (17.0 to 8.5/month, padj=0.040). Migraine Disability Assessment Questionnaire scores decreased numerically by 34% (38.0 to 24.0) but did not reach statistical significance after correction (padj=0.084). Six patients reported side effects, and 19 continued pregabalin at three months. CONCLUSION: Once-nightly pregabalin was associated with robust reductions in nightmare frequency, nonrestorative sleep, and headache frequency. The improvement in nightmares validates two prior case reports through systematic cohort evaluation. Nightmares improved even among patients transitioning from gabapentin to pregabalin, suggesting that pregabalin may be superior to gabapentin. No prior studies have addressed these three co-occurring problems simultaneously. Larger controlled studies are needed to test the hypothesis that once-nightly pregabalin may be useful for this patient population.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 4
+------------------------------------------------------------
+Position ID: pos-be2c3d93
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42374912-001
+
+EXACT RETRIEVED EVIDENCE:
+We aimed to compare the risk of hyperkalemia in patients with heart failure initiating spironolactone while receiving sacubitril/valsartan vs. those initiating while on a RASi in a real-world clinical setting among a heterogeneous population. We conducted a new-user, active comparator cohort study of patients with heart failure initiating spironolactone from April 1, 2016, to July 31, 2024, using a large national commercial insurance database. Patients were classified as RASi users (continuous ACEi/ARB use ≥30 days prior to and including spironolactone initiation) or ARNI users (continuous sacubitril/valsartan use over the same period). Propensity score based fine-stratification weighting was used for confounding control. Outcomes included hyperkalemia (serum potassium >5.5 mmol/L) and severe hyperkalemia (>6 mmol/L), assessed over a maximum follow-up of 180 days. About 57,926 patients initiated spironolactone: 8,589 while on ARNI (mean age: 70.6 years, 39.5% female) and 49,337 while on RASi (mean age: 72.8 years, 48.6% female). Incidence rates (95% confidence intervals) for hyperkalemia were lower among ARNI users (9.44 (8.46, 10.51) vs. 12.55 (12.07, 13.04) per 100 person-years), corresponding to a weighted rate difference of -1.20 (-1.74, -0.60) events per 100 person-years. Adjusted hazard ratios (95% CI) were 0.89 (0.79-1.01) for hyperkalemia and 0.74 (0.57-0.95) for severe hyperkalemia. Findings were consistent across subgroups. Initiation of spironolactone among patients with heart failure receiving sacubitril/valsartan was associated with a lower risk of severe hyperkalemia, compared with RASi use. This study expands upon previous findings suggesting the risk of hyperkalemia when using MRAs may be mitigated through the substitution of sacubitril/valsartan for RASi.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 5
+------------------------------------------------------------
+Position ID: pos-fce9aed7
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41489241-001
+
+EXACT RETRIEVED EVIDENCE:
+An Italian multidisciplinary team of pain management experts reviewed ibuprofen and paracetamol in combination for acute pain. Effective treatment of acute pain should target both inflammation and pain signaling to reduce suffering and prevent the development of persistent pain. The combination of a non-steroidal anti-inflammatory drug (NSAID) and paracetamol appears to be a logical choice: paracetamol primarily acts centrally, while NSAIDs inhibit the inflammation that perpetuates the pain response. Both drugs are rapidly absorbed, reaching maximal concentrations within 1-2 hours. Coadministration may enhance paracetamol absorption, leading to earlier onset of pain relief. The rate of drug interactions between ibuprofen and paracetamol is low, and the two do not directly interact with each other. Multiple studies and meta-analyses have shown that the combination is more effective than placebo or either drug used alone in relieving postoperative pain and reducing the need for rescue analgesia after surgery or acute musculoskeletal injury. The most commonly evaluated daily dosage was ibuprofen/paracetamol 400/1,000 mg. A single-pill combination of ibuprofen and paracetamol also reduces the incidence of persistent pain compared with other systemic analgesics, with an adverse-effect profile similar to, or better than, placebo or monotherapy. When prescribing ibuprofen/paracetamol, physicians should consider age, blood pressure, and concomitant medications, particularly aspirin and warfarin.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: PARTIALLY_RELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 6
+------------------------------------------------------------
+Position ID: pos-9b7d81e4
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42398817-001
+
+EXACT RETRIEVED EVIDENCE:
+Digitalis glycosides are among the oldest therapies for heart failure (HF) with reduced ejection fraction, yet their contemporary role remains debated. Clinical data now indicate that the predominant clinical benefits of digitalis appear to derive from autonomic and neurohormonal modulation (enhanced vagal activity, attenuation of sympathetic drive, and suppression of renin-angiotensin-aldosterone activation) rather than from classical positive inotropy. At low serum concentrations, these effects translate into improved rate control, reduced congestion, and fewer decompensations with a lower risk of toxicity, whereas higher "inotropic" levels are associated with proarrhythmia and excess mortality. This review summarises the mechanistic and pharmacokinetic differences between digoxin and digitoxin, appraises evidence from PROVED, RADIANCE and DIG, and integrates emerging outcome data from DIGIT-HF, which showed that low-dose digitoxin added to contemporary guideline-directed therapy reduces the composite of death or HF hospitalisation. Finally, this review also provides valuable insights from a 2025 survey of Portuguese HF specialists into real-world clinical practice regarding digitalis use. With 55 experts responding, the survey highlights a predominant, selective application of digitalis glycosides, primarily after optimization of foundational HF therapies, consistent with guideline recommendations. Perceived benefits focus on rate control and symptom relief, while concerns about toxicity, the need for monitoring, and gaps in modern trial evidence continue to restrict broader adoption. Together, current data support a repositioning of digitalis as a low-dose, concentration-guided, neurohormonal modulator and rate-control agent for carefully selected patients with HF with reduced ejection fraction, an approach that ongoing and future trials should further refine.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 7
+------------------------------------------------------------
+Position ID: pos-b66e91cc
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42238941-001
+
+EXACT RETRIEVED EVIDENCE:
+Oral anticoagulants are widely used to prevent and treat thromboembolic disorders, but inappropriate use can increase adverse effects and reduce therapeutic efficacy. This study evaluated the utilization patterns, dosing appropriateness, and adverse effects of oral anticoagulants in a tertiary hospital in Iran. A retrospective cross-sectional study was conducted at Razi Educational Hospital, Birjand University of Medical Sciences, from April 2020 to September 2022. Data were collected from medical records and pharmacy databases for patients aged ≥18 years who received warfarin, rivaroxaban, or apixaban. Dosing appropriateness was assessed using 2021 European Heart Rhythm Association (EHRA) and UpToDate guidelines, while adverse effects were classified according to 2020 American College of Cardiology (ACC) criteria. Among 1,027 patients (mean age 64±16.4 years; 52.3% male), rivaroxaban was the most prescribed anticoagulant (43.5%), followed by warfarin (33.2%) and apixaban (23.3%). Warfarin was primarily used for valvular heart disease, whereas DOACs were mainly prescribed for non-valvular atrial fibrillation and venous thromboembolism. Adverse effects occurred in 12.1% of patients, mostly minor bleeding, with warfarin accounting for the majority. Guideline-based dosing was achieved in 61.9% of apixaban and 58.6% of rivaroxaban users; 46.9% of warfarin patients reached therapeutic INR (2-3). Correct renal dose adjustments were applied in 40.5% of apixaban and 33% of rivaroxaban users. Guideline adherence for oral anticoagulant dosing was suboptimal. Improved prescriber education, enhanced drug utilization evaluation, and routine renal monitoring may enhance patient safety and optimize anticoagulation outcomes.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: PARTIALLY_RELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 8
+------------------------------------------------------------
+Position ID: pos-f4d4d47c
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42647942-001
+
+EXACT RETRIEVED EVIDENCE:
+INTRODUCTION: The use of antipsychotic drugs can prolong the corrected QT (QTc) interval of the electrocardiogram and cause a life-threatening ventricular arrhythmia. There is no consensus as to what is considered normal or what cutoff indicates QTc prolongation. However, recent literature has described the biological variation of the QTc interval from healthy subjects, with researchers concluding that the best approach at establishing a normal range is to determine an individual baseline interval during health. CASE REPORT: A baseline QTc interval (460 milliseconds) had been determined for a 42-year-old female with a history of schizophrenia and depression who was prescribed antipsychotic drugs including escitalopram, olanzapine, haloperidol, clonazepam and divalproex over the course of four years. Over that time frame, she was admitted on 20 occasions with chest pain, but her QTc interval was at or above her baseline level. Acute coronary syndrome was ruled out for each episode. Her medication history was not altered or discontinued until her QTc was greatly prolonged at 530 milliseconds several years later. Fortunately, she did not suffer torsades de pointes. CONCLUSION: This case illustrates how results from biological variation studies and a personalized reference level can be helpful to alert physicians earlier of the presence of a potentially toxic condition.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 9
+------------------------------------------------------------
+Position ID: pos-c4839d51
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY REQUIREMENTS:
+Entity/entities: warfarin, aspirin
+Relationship: concomitant / co-use
+Outcome: bleeding risk
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42481856-001
+
+EXACT RETRIEVED EVIDENCE:
+PURPOSE: The interaction between proton pump inhibitors (PPIs) and clopidogrel in acute coronary syndrome (ACS) patients is mediated by CYP2C19 genetic variants. This study quantitatively assessed their CYP2C19 genotype-dependent impact on clopidogrel pharmacokinetics and pharmacodynamics using clinical data and physiologically based pharmacokinetic/pharmacodynamic (PBPK/PD) modeling. METHODS: A total of 409 ACS patients from a prospective clinical study were genotyped for CYP2C19 (*1, 2, and 3 alleles) and evaluated for platelet reactivity index (PRI) following clopidogrel therapy, with or without concomitant pantoprazole or lansoprazole use. A PBPK model was developed in PK-Sim, incorporating CYP2C19-specific metabolic pathways, and linked with a pharmacodynamic model of P2Y12 receptor inhibition to simulate the effects of genotypes and PPIs on platelet inhibition. RESULTS: In extensive metabolizer individuals, PPI coadministration modestly increased platelet reactivity, while no significant change occurred in poor metabolizers. The PBPK simulations accurately predicted pharmacokinetic parameters, with over 90% of Cmax and AUC values within 0.5-twofold of clinical data. The integrated drug-drug-gene interaction-pharmacodynamic framework effectively captured the active metabolite's exposure and platelet inhibition dynamics. CONCLUSIONS: These results provide a quantitative understanding of the genotype- and PPI-dependent effects on clopidogrel's pharmacodynamics, offering a tool to personalize therapy in ACS patients.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 10
+------------------------------------------------------------
+Position ID: pos-3d27c5b0
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_03
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-28520369-001
+
+EXACT RETRIEVED EVIDENCE:
+Celecoxib Therapy and CYP2C9 Genotype.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 11
+------------------------------------------------------------
+Position ID: pos-023ac072
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42591558-001
+
+EXACT RETRIEVED EVIDENCE:
+The accurate prediction of clinical drug-drug interactions (DDIs) in modeling analysis relies on the fraction of metabolism and transport of the substrate drugs and on the inhibitory potency and plasma exposure of index inhibitors. Fluconazole is frequently used as a clinical index inhibitor of cytochrome P450 (CYP) 2C9 and CYP3A4 to assess DDI liabilities involving these CYP enzymes. It also inhibits uridine diphosphate glucuronosyltransferase (UGT) 2B7 and exhibits gender-dependent pharmacokinetics (PK). The currently available model profile of fluconazole does not account for these population-specific PK variations. Therefore, extrapolating from one fluconazole DDI dataset to another remains questionable when it is used as an index inhibitor. In the present study, a physiologically based pharmacokinetic (PBPK) model of fluconazole was developed using PK data from male and female subjects. A minimal PBPK model with advanced dissolution, absorption, and metabolism (ADAM) for fluconazole was built in the Simcyp Simulator (V22). The base model from the Simcyp compound library captured fluconazole plasma profiles following oral administration only in male subjects, but not in female subjects. The volume of distribution at steady state (Vss) of fluconazole is close to the total body water volume, which can contribute to differences in plasma profiles between male and female subjects. Therefore, Vss in female subjects was optimized by curve fitting. The total clearance (CL) value in female subjects was also adjusted to reflect the similar fluconazole elimination half-life (t1/2) between male and female subjects. The plasma profiles of fluconazole in the general population were captured well when the predicted mean Vss and total CL were calibrated by the proportion of female subjects. The developed model was further validated by simulating reported clinical DDI studies with fluconazole. Using the refined PBPK model, the inhibitory constants (Ki) for fluconazole against CYP2C9 and UGT2B7 were optimized. The final fluconazole model captured the precipitant DDIs with midazolam (CYP3A probe substrate), tolbutamide (CYP2C9 probe substrate), omeprazole (CYP2C19 probe substrate), and zidovudine (UGT2B7 probe substrate), indicating that the refined fluconazole PBPK model in the present study can accurately predict clinical DDIs across studies in different populations with diverse gender mixes.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: INSUFFICIENT_INFORMATION
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 12
+------------------------------------------------------------
+Position ID: pos-38321e44
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42622073-001
+
+EXACT RETRIEVED EVIDENCE:
+Clopidogrel is often co-prescribed with proton pump inhibitors (PPIs) to reduce gastrointestinal bleeding risk. However, some PPIs, especially pantoprazole, inhibit CYP2C19, potentially reducing clopidogrel's activation. Ilaprazole, a newer PPI primarily metabolized via CYP3A4, may offer reduced interaction. The study was an open-label, randomized trial that involved 36 healthy male volunteers, who were divided into three groups (n = 12 each): Group 1 (Clopidogrel + Placebo), Group 2 (Clopidogrel + Pantoprazole 40 mg), and Group 3 (Clopidogrel + Ilaprazole 10 mg). After 7 days of treatment, all participants received clopidogrel 75 mg on Day 8. Pharmacokinetic (PK) parameters were analyzed using LC-MS/MS and platelet aggregation by light transmission aggregometry at 0, 4, 10, and 24 h. Pantoprazole significantly reduced clopidogrel AUC (1.96 ± 0.20 vs 8.27 ± 1.04 ng·h/mL, P < .0005), Cmax (0.76 ± 0.04 vs 2.6 ± 1.01 ng/mL, P = .0136), and t1/2 (1.72 ± 0.11 vs 2.22 ± 0.17 h, P = .0312), indicating reduced bioavailability. Geometric mean ratio (GMR) analysis showed a marked reduction in clopidogrel exposure with pantoprazole (Cmax GMR 0.31, 90% CI 0.18-0.53; AUC GMR 0.24, 90% CI 0.19-0.29), and platelet aggregation was significantly higher at 4 and 10 h (P < .05). In contrast, ilaprazole preserved PK parameters (AUC 10.18 ± 1.41, Cmax 3.06 ± 1.05), GMRs near unity (Cmax 1.20, 90% CI 0.60-2.42; AUC 1.23, 90% CI 0.97-1.55), indicating no inhibitory effect and platelet inhibition comparable to placebo (P > .05) Ilaprazole did not affect clopidogrel pharmacokinetics or pharmacodynamics, suggesting it as a safer alternative to pantoprazole in dual antiplatelet therapy.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 13
+------------------------------------------------------------
+Position ID: pos-bdbee728
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42580545-001
+
+EXACT RETRIEVED EVIDENCE:
+Chronic pain affects over a quarter of Canadians and remains a leading cause of outpatient visits. It is prevalent in both adults and children, often persisting into adulthood, and imposes a significant economic burden exceeding $40 billion annually. Nonsteroidal anti-inflammatory drugs (NSAIDs) are widely used for pain management as a safer alternative to opioids. However, the safety and efficacy of NSAIDs are influenced by genetic factors, particularly cytochrome P450 (CYP) polymorphisms, which affect drug metabolism. The CYP2C9 enzyme metabolizes several NSAIDs, and genetic variations can lead to altered drug clearance, increasing the risk of adverse effects such as gastrointestinal bleeding. Pharmacogenomic (PGx) testing, including CYP2C9 genotyping, provides insights into individual drug response, aiding personalized pain management. Guidelines from the Clinical Pharmacogenetics Implementation Consortium (CPIC) recommend NSAID dose adjustments based on CYP2C9 genotype. Additionally, drug-gene interactions, drug-drug interactions, and phenoconversion further complicate the metabolism of NSAIDs. Phenoconversion, wherein drug-induced or disease-related changes alter an individual's metabolic phenotype independent of their genotype, can significantly impact the metabolism of NSAIDs and therapeutic outcomes, highlighting the need for dynamic clinical assessments. Integrating PGx testing into clinical practice can enhance the safety and efficacy of NSAIDs, reducing adverse effects and optimizing pain treatment. Further research is needed to explore additional genetic and environmental factors, including phenoconversion mechanisms, which influence responses to NSAIDs, paving the way for precision medicine in pain management.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 14
+------------------------------------------------------------
+Position ID: pos-d77341b4
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42128628-001
+
+EXACT RETRIEVED EVIDENCE:
+This study aimed to evaluate the comparative efficacy and safety of apixaban and rivaroxaban versus vitamin K antagonists (VKAs) in anticoagulation management in a dialysis population. PubMed, Embase, and the Cochrane Library were searched for studies comparing apixaban or rivaroxaban with VKAs in patients with atrial fibrillation (AF) undergoing dialysis. The primary efficacy endpoints included stroke/systemic embolism (SSE) and all-cause mortality. Safety outcomes encompassed major bleeding, intracranial hemorrhage, and gastrointestinal bleeding. Risk ratios (RR) with 95% confidence intervals (CI) were synthesized using random-effects models. The meta-analysis included three randomized controlled trials (RCTs) and eight observational studies. Pooled analyses showed that apixaban and rivaroxaban were associated with lower risks of major bleeding (RR 0.57, 95% CI: 0.51-0.63), gastrointestinal bleeding (RR 0.66, 95% CI: 0.57-0.76), and intracranial hemorrhage (RR 0.54, 95% CI: 0.36-0.83) compared with VKAs. Additionally, apixaban and rivaroxaban were associated with reduced risk of SSE (RR 0.57, 95% CI: 0.46-0.72) and all-cause mortality (RR 0.73, 95% CI:0.63-0.83), although substantial heterogeneity was present. Exploratory dose-stratified analyses suggested both standard- and low-dose apixaban regimens were associated with favorable efficacy and hemostatic safety relative to warfarin. Consistent numerical trends were observed in the RCT-only analysis, though none reached statistical significance owing to limited sample size. In conclusion, apixaban and rivaroxaban are associated with lower risks of bleeding compared with VKAs in patients with AF and ESRD. However, evidence regarding their efficacy in preventing SSE, all-cause mortality and the optimal apixaban dosing regimen remains inconclusive and requires validation in large, dedicated RCTs.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: INSUFFICIENT_INFORMATION
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 15
+------------------------------------------------------------
+Position ID: pos-5cc464f4
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41077316-001
+
+EXACT RETRIEVED EVIDENCE:
+ETHNOPHARMACOLOGICAL RELEVANCE: Danshen Yin (DSY) as a traditional Chinese medicine (TCM) formula, has been extensively employed as a clinical adjuvant in the treatment of cardiovascular diseases, particularly acute myocardial infarction (AMI). Clinical benefits of the combined use of DSY and clopidogrel (Clop) have been documented, yet the mechanism of the combination therapy is still obscure and the herb-drug interactions (HDIs) on pharmacokinetic and pharmacodynamic of DSY and Clop is unclear. AIM OF THE STUDY: This study aims to elucidate the pharmacokinetic and pharmacodynamic interactions between DSY and Clop, with a focus on metabolic enzyme regulation, to provide mechanistic insights into their combined therapeutic efficacy in myocardial infarction treatment. MATERIALS AND METHODS: AMI rat model was established to explore therapeutic effects and pharmacodynamic interactions between DSY and Clop after co-administrations. Then, a rapid, sensitive and reliable UPLC-MS/MS method was developed to determine the dose-related pharmacokinetic interactions between DSY and Clop. Subsequently, the effect of DSY on CYP450 (CYP1A2, CYP2C19, CYP2C9, CYP3A4) and carboxylesterases 1 (CES1) were investigated by cocktail and bioluminescence assays. Finally, primary hepatocytes isolated from rats were utilized to investigate the effects of DSY, its individual herbal components and active constituents on the mRNA expression of the Clop key metabolic enzymes to elucidate the underlying mechanism of HDIs. RESULTS: Compared with the monotherapy groups, the combination therapy of DSY with Clop significantly enhanced cardiac function, mitigated pathological damage in cardiac tissue, regulated coagulation indicators, suppressed the maximum platelet aggregation ratio, and led to a decrease in the serum levels of CK-MB, vWF, TXB2 and β-TG, while increasing the level of 6-Keto-PGF1α. Besides, the combination of DSY and Clop had no obvious influence on the pharmacokinetic behaviors of the bioactive components of DSY (salvianolic acid B, salvianolic acid A, and danshensu), but significantly altered AUC0-t and AUC0-∞ of Clop and clopidogrel active metabolite derivatized (CAMD) in normal and AMI model rats. Correspondingly, the systemic exposure of CAMD relative to that of Clop was increased. DSY was inclined to promote the metabolism of tolbutamide (CYP2C9 substrate) and omeprazole (CYP2C19 substrate), and upregulated the mRNA levels of CYP2C11 and CYP2C22 in rats. Among the main active ingredients of Salvia miltiorrhiza Bunge, the monarch drug in DSY, salvianolic acid B, salvianolic acid A, tanshinone IIA, cryptotanshinone and tanshinone I elevated the mRNA expression levels of CYP2C11 and CYP2C22. CONCLUSIONS: Herein, the pharmacokinetic and pharmacodynamic interactions between DSY and Clop were investigated, revealing the promotion of metabolic activation of Clop through DSY bioactive constituents (e.g., salvianolic acid B, salvianolic acid A, tanshinone IIA, cryptotanshinone, tanshinone I) for the first time. This observation is not only expected to provide a new reference and perspective for the synergistic therapy of DSY and Clop, but also served as a helpful strategy of HDIs assessment.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 16
+------------------------------------------------------------
+Position ID: pos-d0de21af
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41004670-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Selective serotonin reuptake inhibitors, including escitalopram, sertraline, and fluoxetine, are frequently prescribed to treat depression and anxiety and obsessive-compulsive disorders in pediatric populations. These medications are associated with potential cardiac side effects, particularly corrected QT (QTc) interval prolongation. This study is the first to evaluate the association between serum concentrations of escitalopram, sertraline, and fluoxetine and QTc interval duration in children and adolescents. METHODS: This retrospective naturalistic study included 431 patients treated with escitalopram, sertraline, or fluoxetine at the Department of Child and Adolescent Psychiatry, University Hospital, Würzburg, between 2016 and 2019, for whom therapeutic drug monitoring was performed. Serum concentrations of parent compounds, active metabolites, and active moieties were correlated with QTc intervals calculated using Bazett and Fridericia correction formulae. RESULTS: A total of 287 patients were included in the study (escitalopram, n = 38; sertraline, n = 119; fluoxetine, n = 130). QTc prolongation (>450 ms) was observed in 5.3% of escitalopram, 4.2% of sertraline, and 5.4% of fluoxetine users. A positive correlation was found between QTc duration and serum concentrations of norfluoxetine, the active metabolite of fluoxetine (Bazett: r = 0.18, P = 0.02; Fridericia: r = 0.13, P = 0.07). No statistical association was identified between QTc interval and serum concentration of escitalopram or sertraline. Severe cardiac adverse events, such as Torsade de Pointes or arrhythmias, were not documented. CONCLUSIONS: These findings suggest a positive correlation between norfluoxetine serum levels and QTc interval duration in children and adolescents. Monitoring norfluoxetine concentration may support individual dose adjustments to minimize the risk of QTc prolongation. However, confirmation in a larger cohort is required before clinical recommendations can be made.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 17
+------------------------------------------------------------
+Position ID: pos-09d4924f
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-38676494-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Seizures are a common presenting symptom of the central nervous system (CNS) and could occur from infections (such as toxins) or drugs. OBJECTIVE: The aim of this study was to present a systematic review of the association between infections, seizures, and drugs. METHODS: From their inception to 18 February 2024 relevant in-depth consequent guide approach and the evidence-based choice were selected associated with a knowledgeable collection of current, high-quality manuscripts. RESULTS: Imbalance between inhibitory and excitatory neurotransmitters due to infections, drugs such as ticarcillin, amoxicillin, oxacillin, penicillin G, ampicillin, tramadol, venlafaxine, cyclosporine, tacrolimus, acyclovir, cellcept, the old generation of antiepileptic drugs, such as carbamazepine, phenytoin, and many other drugs could cause different stages of CNS disturbances ranging from seizure to encephalopathy. Infections could cause life-threatening status epilepticus by continuous unremitting seizures lasting longer than 5 minutes or recurrent seizures. Meningitis, tuberculosis, herpes simplex, cerebral toxoplasmosis, and many others could lead to status epilepticus. In fact, confusion, encephalopathy, and myoclonus were reported with drugs, such as ticarcillin, amoxicillin, oxacillin, penicillin G, ampicillin, and others. Penicillin G was reported as having the greatest epileptogenic potential. A high dose, in addition to prolonged use of metronidazole, was reported with seizure infection. Meropenem could decrease the concentration of valproic acid. Due to the inhibition of cytochrome P450 3A4, the combination of clarithromycin and erythromycin with carbamazepine needs vigilant monitoring. CONCLUSION: Due to changes in drug metabolism, co-administration of antiseizure drugs and antibiotics may lead to an enhanced risk of seizures. In patients with neurocysticercosis, cerebral malaria, viral encephalitis, bacterial meningitis, tuberculosis, and human immunodeficiency virus, the evidence-based study recommended different mechanisms mediating epileptogenic properties of toxins and drugs.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 18
+------------------------------------------------------------
+Position ID: pos-c1c56b3c
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40149400-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND/OBJECTIVES: Rhabdomyolysis, a dangerous breakdown of skeletal muscle, has been reported as an adverse event in those prescribed a statin therapy for the treatment of hypercholesterolemia. Statin drugs are some of the most prescribed treatments for elevated cholesterol levels. The purpose of this comparative study was to determine the association between the statin drugs used and the risk of rhabdomyolysis using the FDA Adverse Event Reporting System (FAERS) and transcriptomic data. METHODS: A disproportionality analysis was performed to compare the risk of rhabdomyolysis between the reference statin drug (simvastatin) and the treatment group, with patient age assessed as a possible confounder. In addition, association rule mining was utilized to both identify other adverse events that frequently presented with rhabdomyolysis and identify possible drug-drug interactions (DDIs). Finally, public transcriptomic data were explored to identify the possible genetic underpinnings highlighting these differences in rhabdomyolysis risk across statins. RESULTS: Rhabdomyolysis is a commonly reported adverse event for patients treated with statins, particularly those prescribed simvastatin. Simvastatin was associated with a more than 2-fold increased likelihood of rhabdomyolysis compared to other statins. Men were twice as likely to report rhabdomyolysis than women regardless of statin treatment, with the highest risk observed for pravastatin (ROR = 2.30, p < 0.001) and atorvastatin (ROR = 2.03, p < 0.0001). Several possible DDIs were identified, including furosemide/Lasix, allopurinol clopidogrel/Plavix, and pantoprazole, which may elevate rhabdomyolysis risk through impaired muscle function and delayed statin metabolism. Finally, nine myopathic genes were identified as possible regulators of statin-induced rhabdomyolysis, including DYSF, DES, PLEC, CAPN3, SCN4A, TNNT1, SDHA, MYH7, and PYGM in primary human muscle cells. CONCLUSIONS: Simvastatin was associated with the highest risk of rhabdomyolysis. The risk of rhabdomyolysis was more pronounced in men than women. Several possible DDIs were identified including furosemide/Lasix, allopurinol clopidogrel/Plavix, and pantoprazole.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 19
+------------------------------------------------------------
+Position ID: pos-c5be96ab
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42438581-001
+
+EXACT RETRIEVED EVIDENCE:
+Refractory hypothyroidism despite high-dose levothyroxine therapy is most commonly attributed to poor adherence or gastrointestinal malabsorption; however, drug-drug interactions remain an important and frequently under-recognised cause. Oral iron is known to impair levothyroxine absorption through chelation, and current clinical guidance recommends dose separation to mitigate this effect. We report the case of a 44-year-old woman with severe biochemical hypothyroidism, with thyroid-stimulating hormone (TSH) >100 mU/L (reference range: 0.27-4.2 mU/L), free thyroxine (FT4) 2.4 pmol/L (reference range: 11-22 pmol/L), and free triiodothyronine (FT3) 1.4 pmol/L (reference range: 3.5-6.5 pmol/L), despite reported adherence to escalating doses of levothyroxine up to 250 µg daily over nine months. She was concurrently taking oral ferrous sulphate 200 mg once nightly for iron deficiency anaemia, while levothyroxine was taken first thing in the morning, ensuring a separation interval of at least four hours in accordance with standard recommendations. A supervised levothyroxine absorption test performed according to the Manchester University NHS Foundation Trust Levothyroxine Absorption Test Protocol demonstrated adequate gastrointestinal absorption of levothyroxine, effectively excluding true malabsorption. Following discontinuation of oral iron and administration of intravenous iron, there was rapid biochemical improvement, with normalisation of TSH to 0.42 mU/L within six weeks. This case highlights that a clinically significant iron-levothyroxine interaction may persist despite appropriate dose separation. Clinicians should maintain a high index of suspicion for pharmacological interference in patients with refractory hypothyroidism.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 20
+------------------------------------------------------------
+Position ID: pos-d14b89a0
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_04
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40685887-001
+
+EXACT RETRIEVED EVIDENCE:
+Classifications of drug interaction alerts regarding clopidogrel and a proton pump inhibitor (PPI) differ between knowledge resources. In this systematic review, Medline, Embase, and the Cochrane Library were searched for randomized controlled trials (RCTs) applying PICO criteria: P = patients on clopidogrel; I = intervention: PPI (subgroup: [es]omeprazole); C = comparison: no PPI (C1) or a PPI other than (es)omeprazole (C2); O = outcomes, main: a composite of cardiovascular events (efficacy); also: overt gastrointestinal bleeding (safety). Fourteen RCTs fulfilled the PICO criteria, five without high risk of bias and with at least one clinical event per study arm. Regarding efficacy with or without a PPI, the pooled risk ratio (RR) and risk difference (RD) were 1.08 (95% confidence interval (CI) 0.78; 1.50) and 0.2 percentage points (95% CI -0.9; 1.2), respectively (four RCTs; 4341 patients [96% also used aspirin, 98% receiving I used (es)omeprazole]; moderate certainty evidence). Regarding safety, the RR and RD were 0.13 (95% CI 0.03; 0.59) and -0.7 percentage points (95% CI -1.1; -0.3), respectively (one RCT; 3761 patients; moderate certainty evidence). The available evidence did not allow conclusions regarding omeprazole versus pantoprazole. In conclusion, concurrent use of a PPI probably does not largely affect clopidogrel efficacy, but probably reduces the risk of overt gastrointestinal bleeding.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 21
+------------------------------------------------------------
+Position ID: pos-6b589a2b
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41397500-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Severe QT prolongation (SQTP) induced by antipsychotics or antidepressants remains a major safety concern, yet real-world data on its incidence and outcomes are limited. OBJECTIVE: We assessed the incidence and outcomes of SQTP among antipsychotic and antidepressant users. METHODS: This retrospective study used multicenter electronic medical records in Taiwan. Patients receiving antipsychotics or antidepressants with baseline and follow-up electrocardiograms were included. SQTP was defined as a corrected QT interval of >500 ms or a >60 ms increase from baseline. Multivariate logistic regression identified risk factors for SQTP and its association with ventricular arrhythmias (VAs) and sudden cardiac death (SCD). RESULTS: This study included 28,892 antipsychotic and 14,634 antidepressant users. Antipsychotics with a known or conditional torsades de pointes risk and the antidepressant escitalopram (known torsades de pointes risk) showed a higher SQTP incidence than the control (alprazolam). Significant risk factors for SQTP included age >65 years, impaired cardiac/renal function, and electrolyte imbalance, especially hypokalemia. A graded dose-response relationship (P for trend < .001) was observed between hypokalemia severity and SQTP risk; this risk was amplified when combining high-risk antipsychotics with hypokalemia. SQTP was associated with an approximate 3-fold higher VA risk in both groups and a 2-fold SCD risk in antipsychotic users. CONCLUSION: Specific psychotropics (high-risk antipsychotics and escitalopram) increase SQTP risk, particularly in vulnerable patients. SQTP is strongly associated with higher VA and SCD risks. These findings underscore the importance of comprehensive risk assessment, correction of electrolyte abnormalities, and regular electrocardiographic monitoring in psychotropic drug users.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 22
+------------------------------------------------------------
+Position ID: pos-76e041ab
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42294746-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Patients with chronic kidney disease (CKD) and metabolic diseases including type 2 diabetes mellitus (T2DM) have an increased cardiovascular risk. Mineralocorticoid receptor overactivation plays a key role in inflammation and fibrosis in heart and kidneys. OBJECTIVE: To review the clinical evidence and provide practical guidance on selecting mineralocorticoid receptor antagonists (MRAs) in cardiovascular-kidney-metabolic syndrome. DISCUSSION: Finerenone reduced kidney and cardiovascular events in patients with T2DM (FIDELIO-DKD, FIGARO-DKD). The CONFIDENCE trial showed reduction of proteinuria when combining finerenone with empagliflozin. Outcome studies are lacking for spironolactone and eplerenone. In heart failure with preserved ejection fraction (HFpEF), FINEARTS-HF demonstrated cardiovascular benefits with finerenone, while TOPCAT with spironolactone showed mixed results. In the Netherlands, finerenone uptake remains limited despite regulatory approval. CONCLUSION: Finerenone offers proven efficacy in CKD and DM2. For treatment-resistant hypertension, classic steroidal MRA's remain valuable. Patient-specific factors including blood pressure and susceptibility to hyperkalemia can further guide MRA selection.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 23
+------------------------------------------------------------
+Position ID: pos-e5ff8086
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40357791-001
+
+EXACT RETRIEVED EVIDENCE:
+INTRODUCTION: The concomitant use of PPIs with antiplatelet therapy remains controversial due to potential drug interactions affecting clinical outcomes. While PPIs are recommended for gastroprotection in patients receiving antiplatelet therapy, concerns persist regarding their impact on antiplatelet efficacy, particularly with dual antiplatelet therapy (DAPT). AIMS: The aim of this study is to evaluate the safety profiles of antiplatelet-proton pump inhibitors (PPIs) combinations and assess the clinical implications of their concurrent use in real-world settings through pharmacovigilance data analysis. OBJECTIVES: The objective of this study is to analyze and compare the thrombo-embolic risk profiles of various antiplatelet-PPI combinations using the FDA Adverse Event Reporting System database. METHODS: We conducted a comprehensive analysis of the FDA Adverse Event Reporting System (FAERS) database to evaluate the thrombo-embolic risk associated with antiplatelet-PPI combinations. The reporting odds ratio (ROR) and information component were calculated to detect safety signals. The interaction signal score (INTSS) was used to assess the protective or harmful effects of adding acetylsalicylic acid to clopidogrel-PPI combinations. RESULTS AND DISCUSSION: Analysis revealed significant safety signals for thrombo-embolic events with clopidogrel-rabeprazole (ROR: 62.67, 95% CI: 38.38-102.32) and clopidogrel-omeprazole (ROR: 6.87, 95% CI: 4.89-9.66) combinations. DAPT-PPI combinations showed comparable safety profiles to monotherapy-PPI combinations. The INTSS analysis suggested a potential protective effect of acetylsalicylic acid when added to clopidogrel-PPI combinations. Genderspecific analysis revealed female predominance in monotherapy complications and male predominance in combination therapy events. Clinical outcomes, including mortality and hospitalization rates, were comparable between groups. CONCLUSION: This pharmacovigilance analysis suggests that while DAPT-PPI combinations demonstrate acceptable safety profiles, careful consideration should be given to PPI selection, particularly given the unexpected safety signals with rabeprazole and confirmed risks with omeprazole. The addition of acetylsalicylic acid to clopidogrel-PPI combinations may offer protective effects against thrombo-embolic events. These findings support individualized riskbenefit assessment in selecting antiplatelet-PPI combinations while ensuring adequate gastroprotection for high-risk patients.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 24
+------------------------------------------------------------
+Position ID: pos-0744bfc1
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42663925-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND AND OBJECTIVE: The legalization of cannabis in many parts of the USA and worldwide emphasizes the need to study their potential for interaction with drugs. The Cannabis sativa plant contains over 120 phytocannabinoids, with delta-9-tetrahydrocannabinol (THC), cannabidiol (CBD), and cannabinol (CBN) being the most abundant cannabinoids. The aim of this study was to investigate the effect of treatment with individual cannabinoids or mixture of cannabinoids (mix) on the activity and expression of several cytochrome P450 (CYP) enzymes. METHODS: Primary cultures of human hepatocytes were pretreated with either vehicle or cannabinoids, followed by incubation with a cocktail of CYP substrates. The activity of various CYP enzymes was determined by quantifying the formation of the metabolites of specific CYP substrates using liquid chromatography-tandem mass spectrometry. The messenger RNA (mRNA) expression of various CYP enzymes was determined by quantitative real-time polymerase chain reaction (qrt-PCR). RESULTS: A significant (> 2-fold) increase in CYP1A2 activity was observed after chronic exposure to CBN and mix at 3 µM. Similarly, THC and mix treatments at 3 µM led to a significant (> 2-fold) increase in CYP3A4 activity and expression. No major inducive effects were observed on CYP2D6 and CYP2C9. Acute exposure to CBD, CBN, or mix inhibited CYP1A2 activity in a concentration-dependent manner; mix showed mild CYP3A4 inhibition at 3 µM with no major effects on CYP2D6 and CYP2C9 activity. CONCLUSIONS: These data suggest that cannabinoids selectively alter the activity and expression of CYP enzymes, which may lead to change in exposure of coadministered substrates owing to possible metabolic drug-drug interactions (DDI).
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 25
+------------------------------------------------------------
+Position ID: pos-b4c42a92
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40825054-001
+
+EXACT RETRIEVED EVIDENCE:
+Recombinant tissue-type plasminogen activators (rtPA) effectively dissolve blood clots and improve symptoms in patients with acute ischemic stroke and myocardial infraction. Although rtPA are used in patients taking antiplatelets or anticoagulants to improve clinical outcomes, combination therapy may increase the risk of hemorrhagic transformation (HT) and intracerebral hemorrhage (ICH). However, few studies have investigated the risk of HT and ICH associated with these combination therapies. This study aimed to investigate the adverse-event and drug-drug interaction signals for HT and ICH under combination therapy with alteplase and various antiplatelets or anticoagulants, using the Japanese Adverse Drug Event Report database. Adverse-event signals were evaluated using the reporting odds ratio and information components, and drug-drug interaction signals were studied using the Ω shrinkage measure, additive, multiplicative, and Chi-square statistics models. We also investigated predictors of HT and ICH, time-to-onset, and outcomes in patients receiving alteplase. HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban. Hypertension and diabetes mellitus were significant risk factors for alteplase-induced HT. Most HT and ICH events occurred within 1 day after alteplase administration, and more than 60% of affected patients were not in recovery. In conclusion, continued monitoring is required in patients receiving alteplase in combination with any of the eight types of antiplatelets or the aforementioned anticoagulants. Additionally, the occurrence of HT or ICH within 1 day post-alteplase administration should be considered in patients with hypertension or diabetes mellitus. The findings from this study may help in understanding the risk of HT and ICH induced by rtPA in patients taking antiplatelet or anticoagulant medications, as well as in promoting the appropriate use of rtPA. Further prospective observational studies and randomized controlled trials are needed to assess these finding.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: INSUFFICIENT_INFORMATION
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 26
+------------------------------------------------------------
+Position ID: pos-ac0d7421
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42670022-001
+
+EXACT RETRIEVED EVIDENCE:
+OBJECTIVE: To compare pharmacokinetic, clinical outcomes, and regulatory evidence for apixaban 5 mg versus 2.5 mg twice daily in kidney failure on hemodialysis with atrial fibrillation (AF), and propose a framework for individualized dose selection. DATA SOURCES: PubMed, EMBASE, and the Cochrane Library were searched from inception through June 2026 using terms including apixaban, kidney failure, hemodialysis, AF, pharmacokinetics (PK), and dosing. STUDY SELECTION AND DATA EXTRACTION: PK studies, observational cohorts, randomized controlled trials (RCTs), network meta-analyses, regulatory documents, and guidelines evaluating apixaban dosing in kidney failure and AF were included. DATA SYNTHESIS: Five PK studies (n ≈ 112) showed 2.5 mg twice daily produced steady-state levels comparable to 5 mg in normal renal function, while 5 mg produced approximately 3-fold supratherapeutic exposure. Of the 3 observational studies, 2 linked 5 mg to lower mortality; 1 found 63% higher bleeding with 5 mg and no difference in stroke/systemic embolism (subdistribution hazard ratio (SHR) 1.01; 95% CI, 0.59-1.73) or death (hazard ratio [HR] 1.03; 95% CI, 0.77-1.38). Two RCTs (RENAL-AF and AXADIA-AFNET 8) were terminated early and remain underpowered. Confounding by indication, competing risk of death, and misapplication of dose-reduction criteria likely explain this paradox. RELEVANCE TO PATIENT CARE AND CLINICAL PRACTICE: This review provides the first systematic reconciliation of this paradox, identifying confounding by indication, competing risk of death, and structural flaws in the US Food and Drug Administration (FDA) dose-reduction criteria as likely explanations for the discordance. It gives clinical pharmacists a framework for appraising the evidence rather than defaulting to the FDA label or PK data alone, and proposes a decision algorithm for individualized dosing, derived from expert opinion, PK, and observational data and requiring prospective validation. CONCLUSIONS: The optimal apixaban dose in kidney failure remains unresolved. Neither dose has been shown to reduce stroke versus no anticoagulation in this population. Dose selection should be individualized to patient-specific factors.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 27
+------------------------------------------------------------
+Position ID: pos-8a095ad6
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41347947-001
+
+EXACT RETRIEVED EVIDENCE:
+OBJECTIVES: The use of complementary and alternative medicine (CAM) is increasing worldwide, specifically among gout patients, due to the perceived safety, low cost, and accessibility, but data on the usage remain limited. Therefore, this study aimed to assess the prevalence of CAM use, the predictors associated with CAM use, the impact on medication adherence, and the potential herb-drug interactions among gout patients. METHODS: This cross-sectional study was conducted from June to November 2024 across all 47 community health centers in Makassar City, Indonesia. The entire respondents were patients aged 18 years and older diagnosed with gout. Eligible respondents were recruited through direct questionnaire distribution, collecting data on socio-demographics, CAM and conventional medicine use, CAM perceptions, and medication adherence, while potential herb-drug interactions were assessed using the UpToDate database. RESULTS: Among the 430 respondents, 52.8 % reported using CAM, with herbal medicine being the most frequently used option. CAM use was significantly associated with prior experience (p<0.001) and influence from family or friends (p<0.001). A significant association was also found between CAM use and medication adherence (p<0.001), with a higher proportion of non-CAM users exhibiting high adherence (76.8 vs. 7.9 %) and a higher proportion of CAM users demonstrating poor adherence (8.4 vs. 0.5 %). Four potential herb-drug interactions were identified, namely ginger-aspirin (n=2), ginger-glibenclamide (n=1), honey-warfarin (n=1), and garlic-aspirin (n=1), suggesting a need for clinical monitoring. CONCLUSIONS: The frequent use of CAM among gout patients highlights the crucial role of healthcare practitioners in educating patients about safety, efficacy, and potential interactions. It also underscores the need for strategies to address medication non-adherence associated with CAM use and to monitor herb-drug interactions in clinical settings.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: INSUFFICIENT_INFORMATION
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 28
+------------------------------------------------------------
+Position ID: pos-551a71b7
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42653808-001
+
+EXACT RETRIEVED EVIDENCE:
+Background: Berberine, an isoquinoline alkaloid present in Berberis spp., Coptis chinensis and Hydrastis canadensis, is among the most widely consumed metabolic-health supplements, popularized as "nature's Ozempic". Concurrent, often undisclosed use with prescription drugs is common in older adults, yet berberine is far from inert. Objective: To synthesize the evidence on berberine as a perpetrator of supplement-drug interactions, propose a four-axis mechanistic taxonomy, with product quality treated separately as a modifier of exposure rather than as a mechanism, and derive a clinically actionable risk-stratification framework. Methods: Structured narrative review, prepared per the SANRA quality criteria; PubMed/MEDLINE, Scopus, Web of Science and Embase were searched up to May 2026. Results: Despite very low systemic exposure (oral bioavailability 0.68% in rats; low ng/mL plasma concentrations in humans), high luminal, enterocytic and hepatic concentrations generate interaction liability, documented in humans for a few pairs and mechanistic for most, along four mechanistic axes: inhibition, and transcriptional induction, of CYP3A4, with CYP2D6/CYP2C9 inhibition that is quasi-irreversible through a metabolite-intermediate complex; transporter modulation (P-glycoprotein, OCT1/OCT2, and MATE1); pharmacodynamic additivity (hypoglycemia, hypotension, and QT prolongation); and microbiome- and gut-barrier-mediated effects, the last of these being a candidate axis rather than a demonstrated one. Product-quality variability is treated separately, as a modifier of exposure. The clinical anchor is increased cyclosporine exposure in renal-transplant recipients (AUC +34.5%; trough 29.3% above control). These elements are integrated into a three-tier risk-stratification framework that combines perpetrator potency, victim-drug vulnerability, and patient vulnerability, with each tier being linked to a defined pharmacy action. Conclusions: In patients on multiple medications, and particularly when berberine is co-administered with drugs of narrow therapeutic index, it should be managed as an active pharmacological perpetrator rather than as an inert supplement. Unstandardized product quality and an unsettled European regulatory framework, under which national limits differ by more than an order of magnitude, further widen the uncertainty around the dose actually delivered. Berberine use should therefore be elicited routinely at medication reconciliation and stratified by mechanism, by victim-drug vulnerability, and by patient risk, with particular attention to metabolic self-medication in the GLP-1 era.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 29
+------------------------------------------------------------
+Position ID: pos-60ec8372
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42216360-001
+
+EXACT RETRIEVED EVIDENCE:
+Apixaban plays a crucial role in preventing cardioembolic events in patients with nonvalvular atrial fibrillation (NVAF). However, in clinical practice, physicians often adjust apixaban dosing based on kidney function, deviating from guideline-recommended dosing. This study investigated the effects of real-world, off-label apixaban dosing on long-term outcomes in patients with heart failure (HF), NVAF, and end-stage kidney disease (ESKD). We analyzed data from a HF registry of patients with NVAF and ESKD between 2018 and 2024. The inclusion criteria comprised all patients treated with apixaban. Patients were categorized according to the strength of the apixaban dose administered. Outcomes, including bleeding events, systemic thromboembolic events, and all-cause mortality, were compared. Among 480 patients, 265 (55.2%), with a mean age of 77.3 ± 10.1 years, received an off-label underdose of apixaban. Baseline characteristics, including CHA2DS2-VASc and HAS-BLED scores, were similar across groups. Over a median follow-up of 48 months, no significant differences in systemic thromboembolic events or mortality were observed between the off-label underdose group and those receiving standard doses or off-label overdoses (P = .705). Similarly, no significant differences were observed in bleeding risk (underdose vs standard, P = .600; overdose vs standard, P = .395; underdose vs overdose, P = .469). In multivariate analysis, the CHA2DS2-VASc score was an independent predictor of thromboembolic events (odds ratio 1.818, 95% confidence interval 1.081-3.058; P = .024). In patients with HF, NVAF, and ESKD, off-label apixaban dosing was not associated with an increased risk of systemic thromboembolic events, mortality, or bleeding, highlighting the potential for personalized apixaban dosing based on patient-specific factors and pharmacokinetics, particularly in Asian populations.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 30
+------------------------------------------------------------
+Position ID: pos-8511788b
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_05
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42662739-001
+
+EXACT RETRIEVED EVIDENCE:
+Flavonoids are widely consumed dietary polyphenols that modulate drug disposition via membrane transporters. Increasing attention has been paid to methoxyflavones (MeO-FLVs) because methoxylation can increase membrane permeability and metabolic stability, potentially elevating transporter-mediated drug-drug interaction risk; however, position-specific effects are poorly defined. We profiled a series of structurally related flavones (3-OH-FLV, 3-MeO-FLV, 5-MeO-FLV, 6-MeO-FLV, and 7-MeO-FLV) across major uptake and efflux transporters. In vitro uptake and bidirectional transport assays demonstrated that methoxyflavones inhibited renal organic anion transporters 1 and 3 (OAT1/OAT3), organic cation transporter 2 (OCT2), and efflux transporters P-glycoprotein (MDR1)/breast cancer resistance protein (BCRP) more potently than 3-OH-FLV, although the inhibitory potency varied depending on the methoxy substitution position, particularly for OAT1 and OCT2. Cytotoxicity reversal assays supported functional inhibition of MDR1 and BCRP by the methoxyflavones. In vivo interaction studies were performed for the selected methoxyflavones using metformin and furosemide as transporter-relevant probe drugs in rats. Metformin pharmacokinetics were measurably altered by 3-MeO-FLV and 7-MeO-FLV, consistent with transporter-related modulation of metformin disposition, potentially involving OCT2. For furosemide, a clear interaction was observed with 6-MeO-FLV and 7-MeO-FLV. Overall, these findings suggest that the methoxylation pattern influences transporter inhibition profiles and in vivo pharmacokinetic effects, although further studies with larger compound sets are needed to define structure-activity relationships and transporter selectivity.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 31
+------------------------------------------------------------
+Position ID: pos-d5d28b3e
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40242084-001
+
+EXACT RETRIEVED EVIDENCE:
+Tramadol is a common pain medication used in practice across numerous specialties. Increased incidence of tramadol abuse and overdose in recent decades has led to it being classified as a controlled drug in several countries. Tramadol appears to be an increasingly popular drug of abuse, possibly related to ease of access to it on prescription, and its potential euphoric effects. We identified two cases of seizures directly related to tramadol exposure. We then reviewed recent literature on tramadol and its adverse effects, particularly looking at its effect on seizure risk and the incidence of seizures. We found that there were scarce recent studies on the relationship between tramadol and seizure risk. Of studies found, many were carried out in animal models. Tramadol-induced seizures were studied in humans more commonly in the context of overdose, and studies involving humans tended to have small patient cohorts and suggested further study in the area. We suggest that tramadol may be useful as part of multi-modal analgesia in moderate to severe pain in specific contexts, but that greater awareness of its potential adverse effects, and particularly its potential to lower seizure threshold, is warranted. We feel that more readily available information specifically about tramadol's effects on seizure threshold may be of interest to colleagues from any specialty prescribing opioid analgesia on a regular basis, but that colleagues treating patients with seizure disorders should be particularly aware of these potential adverse effects.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 32
+------------------------------------------------------------
+Position ID: pos-0a4fc25b
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-40978465-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Citalopram (CIT) is widely used as an anti-depressant and has been reported to be associated with QT interval prolongation and increased vulnerability of torsades de pointes (TdP), although the underlying mechanism remains unclear. OBJECTIVE: The aim of this study is to determine the proarrhythmic properties and underlying mechanisms of CIT. METHODS: Mice were intraperitoneally injected with CIT or saline (SAL) for 4 weeks. Echocardiograms and electrocardiograms were performed to evaluate the cardiac electrophysiological and hemodynamic properties. Proarrhythmic mechanisms of CIT were then explored using optical mapping. Finally, transcriptomic array, RT-qPCR, and whole-cell patch-clamp were conducted to explore and validate the potential ionic mechanisms of CIT-related electrical abnormalities. RESULTS: CIT treatment induced QT prolongation and increased the vulnerability of cardiac arrhythmias in the absence of structural or hemodynamic changes. Optical mapping showed that action potential duration (APD) and Ca2+ transient duration (CaTD) were prolonged, but the degree of prolongation was heterogeneous, resulting in impaired Vm-Ca2+ coupling in CIT-treated hearts. Meanwhile, CaT alternans exhibited a regional preference for initiating ventricular tachyarrhythmias in hearts treated with CIT. The transcriptomic array showed that multiple potassium channels were downregulated in hearts treated with CIT, which were confirmed by RT-qPCR. Prolonged APD and downregulated transient outward potassium current (Ito) and L-type calcium current (ICa-L) were recorded in isolated single cardiomyocytes with the patch-clamp technique after CIT treatment. CONCLUSION: CIT treatment resulted in QT prolongation and higher susceptibility of ventricular arrhythmia. Regions with serious cardiac alternans were mainly responsible for initiation of CIT-related arrhythmias. Abnormal Ca2+ handling and decreased Ito-related gene expression likely underlie the ionic mechanism and may be a novel target for CIT-related arrhythmias.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 33
+------------------------------------------------------------
+Position ID: pos-858d12a9
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42636576-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND AND AIMS: Clinical guidelines recommend statin intensities based on average low-density lipoprotein cholesterol (LDL-C) lowering in clinical trials, but individual response in routine care, especially among non-White patients, is not well described. We therefore aimed to quantify individual LDL-C response and variability of statins in real-world practice in Hong Kong Chinese. METHODS: This cohort study included 28,647 incident statin users (2004-2019) with or without cardiovascular diseases from Hong Kong's public healthcare system. Absolute and percentage changes in LDL-C at one year were assessed by statin type and daily dose (1-<10, 10-<20, 20-80 mg). Generalized estimating equations were used to identify predictors of individual LDL-C response in mmol/L. RESULTS: Despite a modest dose-response trend in absolute LDL-C reduction, interindividual variability was profound, from >80% reductions to >200% increases on the same statin and dose. Across all statin types and dose groups, over 30% of patients exhibited a suboptimal LDL-C response, while each group also included individuals achieving reductions of at least 50%. Greater LDL-C response was associated with more potent statin, higher statin dose, men, older age, chronic kidney disease, diabetes, and higher baseline LDL-C. CONCLUSIONS: This study demonstrates a discordance between the fixed statin intensities recommended in clinical guidelines and the high interindividual variability observed in clinical practice. While low-dose statin initiation is effective at the population level in Hong Kong, variability in LDL-C response supports personalized statin dosing and follow-up monitoring of LDL-C.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 34
+------------------------------------------------------------
+Position ID: pos-e701e6b6
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-39114562-001
+
+EXACT RETRIEVED EVIDENCE:
+INTRODUCTION: The objective of this research was to evaluate the risk of major adverse cardiovascular events (MACEs) associated with the use of various proton pump inhibitors (PPIs) in combination with clopidogrel in patients who underwent percutaneous coronary intervention (PCI). METHODS: To accomplish this, we analyzed data from randomized controlled trials and retrospective cohort studies sourced from key electronic databases. These studies specifically examined the effects of different PPIs, such as lansoprazole, esomeprazole, omeprazole, rabeprazole, and pantoprazole, when used in conjunction with clopidogrel on MACEs. The primary focus was on the differential impact of these PPIs, while the secondary focus was on the comparison of gastrointestinal (GI) bleeding events in groups receiving different PPIs with clopidogrel vs. a placebo group. This study's protocol was officially registered with INPLASY (INPLASY2024-2-0009). RESULTS: We conducted a network meta-analysis involving 16 studies with a total of 145,999 patients. Our findings indicated that rabeprazole when combined with clopidogrel, had the lowest increase in MACE risk (effect size, 1.05, 95% CI: 0.66-1.66), while lansoprazole was associated with the highest risk increase (effect size, 1.48, 95% CI: 1.22-1.80). Esomeprazole (effect size, 1.28, 95% CI: 1.09-1.51), omeprazole (effect size, 1.23, 95% CI: 1.07-1.43), and pantoprazole (effect size, 1.38, 95% CI: 1.18-1.60) also significantly increased MACE risk. For the secondary outcome, esomeprazole (effect size, 0.30, 95% CI: 0.09-0.94), omeprazole (effect size, 0.34, 95% CI: 0.14-0.81), and pantoprazole (effect size, 0.33, 95% CI: 0.13-0.84) demonstrated an increased potential for GI bleeding prevention. CONCLUSIONS: In conclusion, the combination of lansoprazole and clopidogrel was found to significantly elevate the risk of MACEs without offering GI protection in post-PCI patients. This study is the first network meta-analysis to identify the most effective regimen for the concurrent use of clopidogrel with individual PPIs. SYSTEMATIC REVIEW REGISTRATION: https://inplasy.com/inplasy-2024-2-0009/, identifier (INPLASY2024-2-0009).
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 35
+------------------------------------------------------------
+Position ID: pos-24d8926d
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-41754906-001
+
+EXACT RETRIEVED EVIDENCE:
+Coagulation is a physiological process necessary to achieve homeostasis. Many pathologies lead to spontaneous activation of the coagulation pathways and increase the risk of venous thrombosis (e.g., atrial fibrillation, orthopaedic surgery, cancer). Therefore, a lot of patients need anticoagulant drugs as preventive or curative treatment. In general, older molecules (unfractionated heparin, low-molecular-weight heparins, vitamin K antagonists) have good efficacy. Still, their adverse reactions, increased risk of bleeding, or difficult administration led to low adherence to treatment and had even limited their use. Recently, new molecules were authorised to improve patient adherence to treatment, mainly formulated for oral administration (e.g., dabigatran, rivaroxaban, apixaban, etc.). This therapeutic approach has a low risk of bleeding and does not require special monitoring by laboratory tests. Also, new anticoagulants for patients with heparin-induced thrombocytopenia (e.g., argatroban, lepirudin, bivalirudin, etc.) were obtained. Moreover, reversal agents for the new anticoagulant molecules used in overdoses or in situations where immediate cessation of the anticoagulant effect is required (e.g., emergency surgery) were studied, some of them being authorised on the pharmaceutical market. This narrative review aims to provide a pharmacological and therapeutic overview of anticoagulant drugs, underlining their implementation and limitations.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 36
+------------------------------------------------------------
+Position ID: pos-85c2e897
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42571795-001
+
+EXACT RETRIEVED EVIDENCE:
+Progesterone (PR) is an essential steroid hormone regulating female reproductive function, whereas fluoxetine (FLU), a selective serotonin reuptake inhibitor (SSRI), serves as a first-line antidepressant for antenatal use. The two agents may undergo cytochrome P450 (CYP)-mediated interactions, threatening maternal and fetal safety. This study integrated cocktail incubation, in vitro/in vivo assays, and mechanistic static models (MSM) to characterize PR-modulated CYP activity and FLU-associated drug-drug interactions (DDI). In human/rat liver and human placental microsomes, PR exerted reversible competitive inhibition on human hepatic CYP2C9 (IC50 = 26.16 ± 3.89 μM, Ki = 34.64 μM) and rat CYP2C11 (IC50 = 20.81 ± 3.49 μM, Ki = 38.30 μM), with no inhibitory effect on placental CYPs. It suppressed FLU metabolism in rat liver via mixed inhibition (IC50 = 16.56 ± 1.50 μM). In vivo, intramuscular progesterone (IMP) elevated rat FLU AUC0-t by 57.4% and Cmax by 123.7%, while lowering CL/F by 42.1%. MSM predicted evident perinatal DDI risks for high-dose IMP (AUCR up to 1.53), driven by altered hepatic first-pass metabolism. Though the general population faces low risks, close therapeutic monitoring is mandatory for pregnant women. This work underscores the delivery route, physiological status, and patient subgroups in DDI evaluation, supporting the safe combined use of PR and CYP2C9 substrates.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 37
+------------------------------------------------------------
+Position ID: pos-103fab76
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-39817374-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Clopidogrel, an antiplatelet drug commonly used in cardiovascular disease, is metabolized by the liver mainly through CYP2C19. Concomitant use of Proton pump inhibitors along with clopidogrel may affect the potency of clopidogrel by CYP2C19 inhibition. However, a novel PPI, ilaprazole is known to differ in its pharmacokinetic features, given the potential differences between ilaprazole's interactions and their metabolism with clopidogrel. Network pharmacology investigation could be a useful tool to evaluate the drug-drug interaction between them. METHODOLOGY: The molecular structures and targets were retrieved from PubChem and SwissTargetPrediction to establish the information related to the identified drugs. The possible shared targets between the clopidogrel and PPIs were explored by a Venn analysis. Subsequently, Protein-Protein Interaction networks were established using the STRING database. Hub genes were also determined using the Cytoscape cytoHubba plugin. RESULTS AND DISCUSSION: Ilaprazole (13.6%) and pantoprazole (13.6%) were characterized by fewer targets being shared with clopidogrel compared to conventional PPIs (14.9%). Moreover, CYP2C19 was not a hub gene in ilaprazole and pantoprazole interactions, which indicated no significant CYP2C19 involvement. On the other hand, CYP2C19 functioned as a hub gene in the interactions with rabeprazole, lansoprazole, dexlansoprazole, omeprazole, and esomeprazole. As a result, patients receiving pantoprazole and ilaprazole would be at a lower risk for developing adverse cardiovascular events by maintaining the clopidogrel therapeutic effect. CONCLUSION: The application of the network pharmacology technique allows us to consider the potential for different effects of PPIs on clopidogrel and its metabolism via CYP2C19. There is a lower chance of experiencing adverse effects from an interaction between ilaprazole and clopidogrel as ilaprazole has not been linked to CYP2C19. More research is necessary to confirm these results and provide clinical guidance for patients undergoing clopidogrel and PPI combination therapy.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 38
+------------------------------------------------------------
+Position ID: pos-312c2bfa
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42413824-001
+
+EXACT RETRIEVED EVIDENCE:
+BACKGROUND: Direct oral anticoagulants (DOACs) are metabolized by CYP3A4 and/or transported by P-glycoprotein. Cyclosporine and tacrolimus can inhibit these pathways, potentially increasing DOAC exposure and bleeding risk. However, data on the relevance of these interactions in transplant recipients are limited. OBJECTIVES: We aimed to study DOAC doses, plasma level monitoring, and interactions with calcineurin inhibitors in transplant recipients. METHODS: We retrospectively (2013-2024) included all adults treated at the University Hospitals Leuven, Belgium, who received both a DOAC and tacrolimus or cyclosporine and had at least 1 DOAC plasma level measurement. DOAC concentrations were compared with on-therapy ranges from phase 3 trials. Levels exceeding the 95th percentile of peak ranges (for peak and intermediate samples) or trough ranges (for trough samples) were classified as above range. RESULTS: Among 495 patients with coprescription, 216 patients had 360 DOAC measurements. The median age was 66 years (IQR, 59-72). Lung (31%) and kidney (29%) transplants were the most common. DOAC dosing was consistent with product labeling in 73% of measurements. Samples were obtained at peak (12%), trough (58%), or intermediate intervals (30%). Overall, 11% of measurements were above range: 4% for edoxaban, 18% for apixaban, and 20% for rivaroxaban. Above-range levels were associated with concomitant strong CYP3A4 or P-glycoprotein inhibitors, lower body weight, lower estimated glomerular filtration rate, cyclosporine use, and DOAC type. CONCLUSION: In transplant recipients selected for DOAC plasma level monitoring, above-range DOAC concentrations were observed in a minority of patients but were more frequent among those with strong CYP3A4 or P-glycoprotein inhibitors, lower body weight, impaired kidney function, or cyclosporine use.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 39
+------------------------------------------------------------
+Position ID: pos-7f4a11a7
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42481856-001
+
+EXACT RETRIEVED EVIDENCE:
+PURPOSE: The interaction between proton pump inhibitors (PPIs) and clopidogrel in acute coronary syndrome (ACS) patients is mediated by CYP2C19 genetic variants. This study quantitatively assessed their CYP2C19 genotype-dependent impact on clopidogrel pharmacokinetics and pharmacodynamics using clinical data and physiologically based pharmacokinetic/pharmacodynamic (PBPK/PD) modeling. METHODS: A total of 409 ACS patients from a prospective clinical study were genotyped for CYP2C19 (*1, 2, and 3 alleles) and evaluated for platelet reactivity index (PRI) following clopidogrel therapy, with or without concomitant pantoprazole or lansoprazole use. A PBPK model was developed in PK-Sim, incorporating CYP2C19-specific metabolic pathways, and linked with a pharmacodynamic model of P2Y12 receptor inhibition to simulate the effects of genotypes and PPIs on platelet inhibition. RESULTS: In extensive metabolizer individuals, PPI coadministration modestly increased platelet reactivity, while no significant change occurred in poor metabolizers. The PBPK simulations accurately predicted pharmacokinetic parameters, with over 90% of Cmax and AUC values within 0.5-twofold of clinical data. The integrated drug-drug-gene interaction-pharmacodynamic framework effectively captured the active metabolite's exposure and platelet inhibition dynamics. CONCLUSIONS: These results provide a quantitative understanding of the genotype- and PPI-dependent effects on clopidogrel's pharmacodynamics, offering a tool to personalize therapy in ACS patients.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: IRRELEVANT
+- Reason: Supported
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+------------------------------------------------------------
+RECORD 40
+------------------------------------------------------------
+Position ID: pos-50e306ec
+Batch: TRACK_A_A_BATCH_004
+Window: TRACK_A_A_BATCH_004_WINDOW_06
+
+EXACT QUERY:
+CYP2C9 interaction between fluconazole and warfarin
+
+QUERY REQUIREMENTS:
+Entity/entities: fluconazole, warfarin
+Relationship: CYP2C9-mediated drug-drug interaction
+Outcome: interaction effect
+Context: None specified
+
+SOURCE:
+None
+
+EVIDENCE ID:
+chunk-42063765-001
+
+EXACT RETRIEVED EVIDENCE:
+INTRODUCTION: Drug-drug interactions (DDIs) remain a significant but often overlooked threat to patient safety. While Pharmacists are expected to play a critical role in identifying and preventing DDIs, real-world practice may not reflect this responsibility. This study aimed to assess the gap between community Pharmacists' DDI knowledge and their actual dispensing practices in Western Saudi Arabia. METHODS: A sequential explanatory mixed-methods study was conducted between September and November 2025 among 356 licensed community Pharmacists in Makkah, Jeddah, Madinah, and Taif. The quantitative phase involved a validated, structured questionnaire evaluating Pharmacists' knowledge and self-reported practices regarding DDIs. This was followed by a qualitative observational phase involving 134 unannounced simulated patient (SP) visits, each presenting one of four predefined high-risk DDI scenarios (ibuprofen-furosemide, omeprazole-clopidogrel, fluconazole-phenytoin, and phenytoin-warfarin). Statistical analyses included descriptive statistics, non-parametric group comparisons (Wilcoxon and Kruskal-Wallis tests), multivariable linear regression, and Fisher's exact test, conducted using RStudio (p < 0.05). RESULTS: Survey findings demonstrated moderate to high theoretical DDI awareness, with 62-79% of Pharmacists correctly identifying major interaction pairs. Pharm. D. graduates achieved higher knowledge scores than B. Pharm graduates (median 5.0 vs. 4.0; p < 0.001). However, simulated visits revealed a substantial practice gap: only 15% of Pharmacists identified the DDI in real-time, and approximately 75% took no corrective action. Most encounters lasted less than one minute, and over 80% of interacting medications were dispensed without inquiry or reference checking. CONCLUSION: Despite adequate theoretical knowledge, community Pharmacists demonstrated limited real-world application of DDI management. This knowledge-practice gap poses a patient safety concern and underscores the need for system-level interventions, including decision-support tools, workflow optimization, and strengthened prescriber-Pharmacist communication.
+
+ABSTRACT STATUS:
+NOT AVAILABLE
+
+ABSTRACT:
+None
+
+PROVENANCE:
+None
+
+**LLM ADVISORY ONLY (NOT HUMAN GROUND TRUTH):**
+- Label: PARTIALLY_RELEVANT
+- Reason: Corrected via semantic audit to require direct pairwise relationship.
+
+============================================================
+HUMAN DECISION
+============================================================
+Human Label:
+[BLANK]
+
+Human Score:
+[BLANK]
+
+Human Exact Supporting Span:
+[BLANK]
+
+Researcher Notes:
+[BLANK]
+
+## FINAL RESPONSE TEMPLATE FOR RESEARCHER
+```text
+HUMAN_CONFIRMATION
+TRACK: TRACK_A
+BATCH: TRACK_A_A_BATCH_004
+BUNDLE: TRACK_A_A_BATCH_004_REVIEW_BUNDLE_01
+
+1. pos-13ca8dc0
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+2. pos-71c56f79
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+3. pos-f8a6a54c
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+4. pos-be2c3d93
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+5. pos-fce9aed7
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+6. pos-9b7d81e4
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+7. pos-b66e91cc
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+8. pos-f4d4d47c
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+9. pos-c4839d51
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+10. pos-3d27c5b0
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+11. pos-023ac072
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+12. pos-38321e44
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+13. pos-bdbee728
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+14. pos-d77341b4
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+15. pos-5cc464f4
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+16. pos-d0de21af
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+17. pos-09d4924f
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+18. pos-c1c56b3c
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+19. pos-c5be96ab
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+20. pos-d14b89a0
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+21. pos-6b589a2b
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+22. pos-76e041ab
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+23. pos-e5ff8086
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+24. pos-0744bfc1
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+25. pos-b4c42a92
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+26. pos-ac0d7421
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+27. pos-8a095ad6
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+28. pos-551a71b7
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+29. pos-60ec8372
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+30. pos-8511788b
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+31. pos-d5d28b3e
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+32. pos-0a4fc25b
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+33. pos-858d12a9
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+34. pos-e701e6b6
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+35. pos-24d8926d
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+36. pos-85c2e897
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+37. pos-103fab76
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+38. pos-312c2bfa
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+39. pos-7f4a11a7
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+40. pos-50e306ec
+   LABEL:
+   SCORE:
+   EXACT_SPAN:
+
+HUMAN_CONFIRMATION_STATUS: PENDING
+```

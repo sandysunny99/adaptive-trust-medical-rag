@@ -1,0 +1,247 @@
+============================================================
+TRACK A HUMAN ANNOTATION WINDOW
+============================================================
+Batch ID: TRACK_A_A_BATCH_003
+Window: 03 of 06
+Window Record count: 10
+Batch Record count: 60
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_21
+position_id: pos-814cd0c1
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+INTRODUCTION: Post-traumatic stress disorder (PTSD) is a debilitating mental disorder that can cause significant distress to patients and their families. It affects women disproportionately, presenting during pregnancy and the postpartum period. It often goes unrecognized and undertreated, with deleterious consequences for the mother and offspring. The first-line treatment for PTSD in pregnancy and during lactation is psychotherapy; however, when it is not feasible or effective, pharmacotherapy is preferred. AREAS COVERED: This is a narrative review discussing the efficacy and safety of different classes of psychoactive medications for PTSD during pregnancy and the postpartum period. Currently, there are no randomized controlled trials assessing the efficacy and safety of psychoactive medications specifically for PTSD during pregnancy and lactation. Therefore, guidelines recommend treatment with sertraline, paroxetine, or venlafaxine. EXPERT OPINION: Identifying pregnant or postpartum patients with high vulnerability for PTSD and promptly diagnosing, treating, and closely monitoring their response is crucial in the delivery of individualized, high-quality care. Few medications are recommended for the management of PTSD during pregnancy and lactation. In the future, research must focus on the development of safe and effective interventions to ensure the delivery of inclusive healthcare for women in all life stages.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_22
+position_id: pos-791c7367
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Progesterone (PR) is an essential steroid hormone regulating female reproductive function, whereas fluoxetine (FLU), a selective serotonin reuptake inhibitor (SSRI), serves as a first-line antidepressant for antenatal use. The two agents may undergo cytochrome P450 (CYP)-mediated interactions, threatening maternal and fetal safety. This study integrated cocktail incubation, in vitro/in vivo assays, and mechanistic static models (MSM) to characterize PR-modulated CYP activity and FLU-associated drug-drug interactions (DDI). In human/rat liver and human placental microsomes, PR exerted reversible competitive inhibition on human hepatic CYP2C9 (IC50 = 26.16 ± 3.89 μM, Ki = 34.64 μM) and rat CYP2C11 (IC50 = 20.81 ± 3.49 μM, Ki = 38.30 μM), with no inhibitory effect on placental CYPs. It suppressed FLU metabolism in rat liver via mixed inhibition (IC50 = 16.56 ± 1.50 μM). In vivo, intramuscular progesterone (IMP) elevated rat FLU AUC0-t by 57.4% and Cmax by 123.7%, while lowering CL/F by 42.1%. MSM predicted evident perinatal DDI risks for high-dose IMP (AUCR up to 1.53), driven by altered hepatic first-pass metabolism. Though the general population faces low risks, close therapeutic monitoring is mandatory for pregnant women. This work underscores the delivery route, physiological status, and patient subgroups in DDI evaluation, supporting the safe combined use of PR and CYP2C9 substrates.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_23
+position_id: pos-c2659179
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain. To date, the literature has not shown definitive benefit from the use of oral anticoagulants for AF in patients receiving HD. Furthermore, attaining appropriate time in the therapeutic range with vitamin K antagonists is more difficult in patients with end-stage renal disease, and their use may be harmful due to an increased risk of bleeding and vascular calcification. Direct oral anticoagulants appear safer and possibly more effective than vitamin K antagonists. Although more data are available on apixaban than other DOACs, studies have not shown direct evidence to favor apixaban over rivaroxaban. Available risk prediction tools to identify patients who would benefit from anticoagulation therapy perform poorly in patients with chronic kidney disease. As such, better thromboembolic and bleeding risk prediction tools for this subgroup are needed. This article will present and discuss evidence on the use of oral anticoagulants for AF in patients receiving HD, including that from recent randomized controlled trials, meta-analyses, and relevant pharmacokinetic studies. The optimal dosing of DOACs in this patient population will also be explored.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_24
+position_id: pos-ecb30645
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Recombinant tissue-type plasminogen activators (rtPA) effectively dissolve blood clots and improve symptoms in patients with acute ischemic stroke and myocardial infraction. Although rtPA are used in patients taking antiplatelets or anticoagulants to improve clinical outcomes, combination therapy may increase the risk of hemorrhagic transformation (HT) and intracerebral hemorrhage (ICH). However, few studies have investigated the risk of HT and ICH associated with these combination therapies. This study aimed to investigate the adverse-event and drug-drug interaction signals for HT and ICH under combination therapy with alteplase and various antiplatelets or anticoagulants, using the Japanese Adverse Drug Event Report database. Adverse-event signals were evaluated using the reporting odds ratio and information components, and drug-drug interaction signals were studied using the Ω shrinkage measure, additive, multiplicative, and Chi-square statistics models. We also investigated predictors of HT and ICH, time-to-onset, and outcomes in patients receiving alteplase. HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban. Hypertension and diabetes mellitus were significant risk factors for alteplase-induced HT. Most HT and ICH events occurred within 1 day after alteplase administration, and more than 60% of affected patients were not in recovery. In conclusion, continued monitoring is required in patients receiving alteplase in combination with any of the eight types of antiplatelets or the aforementioned anticoagulants. Additionally, the occurrence of HT or ICH within 1 day post-alteplase administration should be considered in patients with hypertension or diabetes mellitus. The findings from this study may help in understanding the risk of HT and ICH induced by rtPA in patients taking antiplatelet or anticoagulant medications, as well as in promoting the appropriate use of rtPA. Further prospective observational studies and randomized controlled trials are needed to assess these finding.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_25
+position_id: pos-9b777fd1
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Severe traumatic brain injury (TBI) remains difficult to treat because successful control of mass lesions, intracranial pressure, cerebral perfusion, oxygenation, and systemic instability does not ensure that secondary cellular injury has stopped. PubMed/MEDLINE and ClinicalTrials.gov were searched through July 28, 2026, and representative candidates were organized across five overlapping pathophysiological nodes. Evidence was described by study source, purpose, and result direction rather than assigned a formal quality grade. Human evidence was heterogeneous. Glibenclamide/glyburide and hypertonic sodium lactate produced preliminary imaging or physiological signals without demonstrated functional benefit. Riluzole was neutral in an adult randomized trial, whereas a small study in chronic TBI found that minocycline reduced a neuroinflammatory imaging signal but increased plasma neurofilament light. Metformin and N-acetylcysteine plus probenecid provided exploratory pharmacokinetic, biomarker, or safety data. Amantadine provided phenotype-specific clinical proof of principle in traumatic disorders of consciousness. Cerebrolysin showed mixed human evidence, including a favorable day-90 multidimensional ensemble signal that requires independent replication. Deferoxamine and clemastine remain preclinical. We therefore propose a modular pharmacological framework composed of separable investigational modules rather than simultaneous multidrug treatment. Module activation should require optimized foundational care, a matching phenotype, measurable target activation or engagement, and acceptable systemic safety. This framework prioritizes phenotype-enriched, single-module development before any sequential or combination design and does not support routine off-label polypharmacy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_26
+position_id: pos-9cafff14
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Medication use is highly prevalent with advanced age, but clinical studies are rarely conducted in the elderly, leading to limited knowledge regarding age-related pharmacokinetic changes. OBJECTIVE: The objective of this study was to investigate which pharmacokinetic parameters determine drug exposure changes in the elderly by conducting virtual clinical trials for ten drugs (midazolam, metoprolol, lisinopril, amlodipine, rivaroxaban, repaglinide, atorvastatin, rosuvastatin, clarithromycin and rifampicin) using our physiologically based pharmacokinetic (PBPK) framework. METHODS: PBPK models for all ten drugs were developed in young adults (20-50 years) following the best practice approach, before predicting pharmacokinetics in the elderly (≥ 65 years) without any modification of drug parameters. A descriptive relationship between age and each investigated pharmacokinetic parameter (peak concentration [Cmax], time to Cmax [tmax], area under the curve [AUC], clearance, volume of distribution, elimination-half-life) was derived using the final PBPK models, and verified with independent clinically observed data from 52 drugs. RESULTS: The age-related changes in drug exposure were successfully simulated for all ten drugs. Pharmacokinetic parameters were predicted within 1.25-fold (70%), 1.5-fold (86%) and 2-fold (100%) of clinical data. AUC increased progressively by 0.9% per year throughout adulthood from the age of 20 years, which was explained by decreased clearance, while Cmax, tmax and volume of distribution were not affected by human aging. Additional clinical data of 52 drugs were contained within the estimated variability of the established age-dependent correlations for each pharmacokinetic parameter. CONCLUSION: The progressive decrease in hepatic and renal blood flow, as well as glomerular filtration, rate led to a reduced clearance driving exposure changes in the healthy elderly, independent of the drug.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_27
+position_id: pos-b8b4f173
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: The Asia Pacific region is home to more than half of the world's 1·93 billion adolescents (aged 10-24 years). Addressing adolescent health in this region is of global importance, but to date a systematic analysis of key contributors to disease in adolescents has not been done, which is a barrier to responsive action. This systematic analysis of the Global Burden of Diseases, Injuries, and Risk Factors Study (GBD) 2023 aims to provide a comprehensive assessment of adolescent health across the Asia Pacific region, at both the subregional and national levels, encompassing burden of disease, mortality, and prevalence of adolescent risk factors. METHODS: As part of GBD 2023, we obtained estimates for cause-specific mortality, disability-adjusted life-years (DALYs), and risk factor prevalence by sex for adolescents aged 10-24 years and 5-year age groups (10-14 years, 15-19 years, and 20-24 years) across 44 countries and territories (hereafter referred to collectively as Asia Pacific), grouped by seven UN subregions, from 2000 to 2023. We extracted GBD 2023 population counts and estimates of number and rate (per 100 000 population) for mortality and disease burden (DALYs). Risk prevalence estimates were obtained directly from the Institute for Health Metrics and Evaluation, and binge drinking estimates were sourced from WHO. Estimates are reported with 95% uncertainty intervals (UIs) where possible. UIs were estimated by running 250 draws of the posterior distribution, ordering the draws, and selecting the 2·5th and 97·5th percentiles for each metric. FINDINGS: In 2023, in adolescents across Asia Pacific, there were 637 496 deaths and a total disease burden of 115·8 million DALYs, representing 34·1% of global adolescent deaths and 40·6% of the global adolescent burden of disease. Non-communicable diseases (NCDs; particularly mental disorders) were the leading causes of disease burden and mortality (64·8% of DALYs and 43·9% of deaths). Unintentional and transport injuries were also leading causes of death (14·7% of deaths due to transport injury and 13·3% of deaths due to unintentional injury) and leading causes of disease burden particularly among males in south-eastern Asia. In Melanesia, Micronesia, and some parts of south-eastern Asia (Cambodia, Indonesia, Laos, the Philippines, and Timor-Leste), respiratory infections and tuberculosis remained important contributors. Southern Asia had the largest reduction (1·5% per year) in all-cause DALYs over the study period, and Australia and New Zealand (0·2% per year) had the smallest, with females in Australia and New Zealand showing a slight increase contrary to regional trends. Eastern Asia had the largest reduction (2·8% per year) in all-cause mortality rate and Melanesia (0·8% per year) the smallest. Risk factors generally had between-subregion and within-subregion variation; however, some regional trends stood out, with overweight and obesity increasing in all countries across the region, and binge drinking increasing in more countries than not. In 2023, prevalence of smoking in males exceeded that in females in every country, from 40% difference in Timor-Leste to less than 1% difference in Australia. Anaemia prevalence is decreasing in all countries, but female prevalence was higher and reducing at a slower rate than in males. Bullying prevalence was slightly higher in Polynesia, Micronesia, and Melanesia combined, Australia and New Zealand, and eastern Asia compared with southern and south-eastern Asian subregions. INTERPRETATION: Several patterns were consistent across the region: the dominance of mental disorders and NCDs, the universal rise in overweight and obesity (particularly high in Oceanic countries but increasing rapidly in south and south-eastern Asia), and persistent sex-specific challenges across subregions: unintentional injuries and smoking in males, and anaemia in females. Actions to tackle shared risk factors (while accounting for context-specific local health profiles, workforce deficits, cultural factors, and health system capacity) should not be forgone due to local variation. Future research could focus on subnational variation, intersecting inequalities, and multi-sectoral interventions targeting shared risk factors. Priority actions should include regional investment in adolescent mental health services and obesity prevention, targeted injury reduction strategies for high-risk populations, and sex-specific approaches to smoking cessation and anaemia reduction, delivered through local health systems with the capacity and cultural responsiveness to meet local needs. FUNDING: Gates Foundation and Australian Government.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_28
+position_id: pos-3440fa6c
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Background/Objectives: Antidepressant treatment response is highly variable, and CYP2D6 metabolizer phenotype has been proposed as a contributor to this variability. It was examined whether CYP2D6 metabolizer phenotype is associated with real-world antidepressant treatment outcomes in a large population-based cohort. Methods: Using genetic and longitudinal primary care prescription data from the UK Biobank, we evaluated associations between CYP2D6 metabolizer phenotype and prescription-based proxies of treatment outcomes, including discontinuation, switching, and side effects. Analyses were stratified by antidepressant and adjusted for demographic covariates. Results: Among 26,957 individuals of European ancestry prescribed CYP2D6-metabolized antidepressants, reduced metabolic capacity was significantly associated with early discontinuation of paroxetine (N = 5718), venlafaxine (N = 2327), and mirtazapine (N = 3340). For paroxetine, poor metabolizers had higher odds of discontinuation compared with normal metabolizers and, among discontinuers, were more likely to stop immediately rather than later. Similar early discontinuation signals were observed for venlafaxine, with intermediate metabolizers showing increased risk. Mirtazapine also demonstrated increased odds of early discontinuation among poor metabolizers. No significant association was observed for fluoxetine. Associations with switching were limited, and no significant associations were detected for side effects. Conclusions: CYP2D6 variation appears to primarily influence early antidepressant discontinuation within the first 30 days of treatment, particularly for paroxetine, venlafaxine, and mirtazapine, rather than treatment switching or side effects. These findings provide observational support relevant to drug-specific gene interactions and suggest a role for CYP2D6-guided prescribing in clinical practice, notably in the first 30 days of antidepressant treatment.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_29
+position_id: pos-a00ce69f
+query_id: Clearance pathway for lisinopril
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+INTRODUCTION: Heart failure with reduced ejection fraction (HFrEF) represents a major clinical and economic burden in Italy, driven by an aging population. Mineralocorticoid receptor antagonists (MRAs) are a cornerstone of guideline-recommended therapy. Eplerenone has demonstrated efficacy in reducing mortality and hospitalizations but remains underutilized. This study assessed the budget impact of increasing eplerenone use in eligible patients with HFrEF from national and regional perspectives. METHODS: A budget impact analysis (BIA) was conducted over a 3-year horizon from the perspective of the Italian National Health Service (INHS). Two scenarios were compared: Current (observed MRA use) and Projected (increased eplerenone uptake). Model inputs included eligible population, treatment distribution, drug acquisition costs, and clinical outcomes (all-cause mortality, hospitalizations, renal impairment, hyperkalemia, and gynecomastia) with associated costs. Clinical inputs were derived from a network meta-analysis (NMA); cost inputs from Italian literature and national tariffs. RESULTS: Total expenditure increased from €598.6 million (M) to €600.6 M over 3 years, corresponding to a net budget impact of + €2.01 M (+ 0.34%), with annual increments of €880,000 (year 1), €885,000 (year 2), and €245,000 (year 3). Increased eplerenone use resulted in higher costs (+ €35.07 M), driven by drug acquisition and hospitalization costs, partially offset by mortality-related savings (-€3.62 M). These were partially counterbalanced by reductions in other MRAs (spironolactone - €6.37 M, potassium canrenoate - €8.32 M, canrenone - €18.37 M), mainly due to fewer hospitalizations, renal events, and a lower drug volume. Results were primarily driven by clinical parameters for eplerenone, particularly NMA-derived hazard ratios for hospitalization and all-cause mortality. The net budget impact was modest in relative terms (< 0.4% of total MRA-related expenditure), indicating substantial budget neutrality. CONCLUSIONS: Greater adoption of eplerenone was associated with a modest net increase in healthcare expenditure for the INHS, corresponding to approximately €3.20 per treated patient per year and consistent with substantial budget neutrality. The budget impact reflects both treatment redistribution and differences in clinical outcomes across MRAs. Expanding eplerenone use in line with guideline-recommended therapy may be achieved at a limited additional cost, while offering a more favorable renal and selectivity profile relative to other MRAs.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_03 / POSITION_30
+position_id: pos-67f09880
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+PURPOSE: Clopidogrel, an antiplatelet agent used to prevent ischemic events, may interact with proton pump inhibitors (PPIs), especially omeprazole and esomeprazole, and reduce its effectiveness. The evidence surrounding this interaction remains controversial. This study investigates whether co-prescribing clopidogrel with PPIs is associated with a higher incidence of major adverse cardiovascular events (MACEs) compared to clopidogrel monotherapy. METHODS: We conducted a retrospective cohort study analyzing data from the Real-world Evidence Research Network in Saudi Arabia from 2016 to 2023. Patients were followed from their initial clopidogrel prescription until the occurrence of MACEs or the end of follow-up. We employed stabilized inverse probability of treatment weighting (SIPTW) to adjust for potential confounders and the Cox proportional hazards model to assess risks. RESULTS: A total of 29 572 patients were included, with 21 480 in the clopidogrel + PPI group and 8092 in the clopidogrel-only group. Baseline characteristics were balanced post SIPTW, with similar mean ages (clopidogrel + PPI: 65.9 years; clopidogrel only: 66.1 years) and 64% male representation. The incidence rate of MACE was 3.22 versus 2.92 per 10 000 person-days in the clopidogrel + PPI and clopidogrel-only groups, respectively. The weighted hazard ratio for MACE was 1.20 (95% CI, 1.01-1.43). CONCLUSIONS: In this large real-world cohort study, we observed a modest but statistically significant increase in the risk of MACEs among patients who received concomitant clopidogrel and proton pump inhibitor therapy. Given the widespread use of these medications, these findings emphasize the need for individualized risk assessments when co-prescribing PPIs and clopidogrel.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION

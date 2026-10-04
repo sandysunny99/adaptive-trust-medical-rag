@@ -1,0 +1,539 @@
+============================================================
+TRACK A HUMAN ANNOTATION BATCH
+============================================================
+Batch ID: TRACK_A_A_BATCH_001
+Annotator: ANNOTATOR_A
+Packet version: 1.0
+Dataset version: TRACK_A_HUMAN_ANNOTATION_DATASET_V1
+Record count: 10
+Generated: 2026-10-02T20:21:32.066206
+
+### TRACK_A_A_BATCH_001 / POSITION_01
+position_id: pos-91b3a12f
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42671218-001
+document_id: 42671218
+source_id: 42671218
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Cisplatin is a widely used chemotherapeutic agent; however, its clinical utility is frequently limited by dose-dependent adverse effects, particularly hepatotoxicity and nephrotoxicity. Luteolin, a naturally occurring flavonoid abundant in various medicinal plants, exhibits well-documented antioxidant and anticancer activities. This study investigated whether Luteolin isolated from Pistacia terebinthus fruits could attenuate Cisplatin-induced organ toxicity while enhancing its antiproliferative effects. For the in vivo experiments, 48 male Swiss albino mice (9-10 weeks old, 26-30 g) were randomly assigned to eight groups (n = 6/group): control, Cisplatin, Luteolin (25, 50, or 100 mg/kg), and Cisplatin plus Luteolin (25, 50, or 100 mg/kg). Cisplatin (10 mg/kg/day, intraperitoneally) and/or Luteolin (25-100 mg/kg/day, orally) were administered for 14 consecutive days. Serum biochemical parameters, oxidative stress markers, antioxidant enzyme activities, and tissue injury-related biomarkers were evaluated in liver and kidney tissues. Cisplatin administration significantly increased serum alanine aminotransferase (ALT), aspartate aminotransferase (AST), bilirubin, and glucose levels, whereas co-treatment with Luteolin markedly attenuated these alterations in a dose-dependent manner. In addition, Luteolin restored Cisplatin-induced disturbances in oxidative stress and antioxidant defense markers, including malondialdehyde (MDA), 8-hydroxy-2'-deoxyguanosine (8-OHdG), HSP70 levels, superoxide dismutase (SOD), glutathione (GSH), glutathione peroxidase (GPx), glutathione reductase (GR), and glutathione S-transferase (GST) activities in liver and kidney tissues. To support the in vivo findings, in vitro antiproliferative assays were performed using Saos-2 osteosarcoma, HTB-9 bladder cancer, A549 lung cancer, and BEAS-2B normal epithelial cell lines. Cells were treated with Luteolin (5-200 µM) alone or in combination with Cisplatin IC50 concentrations for 24-48 h, and cell viability was assessed using the WST-1 assay. Co-treatment with Luteolin significantly enhanced Cisplatin-induced growth inhibition in cancer cells while exerting limited cytotoxicity in normal cells. Luteolin alone also demonstrated concentration-dependent antiproliferative activity. In conclusion, Luteolin exerted marked hepatorenal protective effects and enhanced the antiproliferative activity of Cisplatin in experimental models. These findings suggest that Luteolin may represent a promising adjunctive candidate for reducing Cisplatin-associated toxicity while improving therapeutic responsiveness.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+Cisplatin is a widely used chemotherapeutic agent; however, its clinical utility is frequently limited by dose-dependent adverse effects, particularly hepatotoxicity and nephrotoxicity. Luteolin, a naturally occurring flavonoid abundant in various medicinal plants, exhibits well-documented antioxidant and anticancer activities. This study investigated whether Luteolin isolated from Pistacia terebinthus fruits could attenuate Cisplatin-induced organ toxicity while enhancing its antiproliferative effects. For the in vivo experiments, 48 male Swiss albino mice (9-10 weeks old, 26-30 g) were randomly assigned to eight groups (n = 6/group): control, Cisplatin, Luteolin (25, 50, or 100 mg/kg), and Cisplatin plus Luteolin (25, 50, or 100 mg/kg). Cisplatin (10 mg/kg/day, intraperitoneally) and/or Luteolin (25-100 mg/kg/day, orally) were administered for 14 consecutive days. Serum biochemical parameters, oxidative stress markers, antioxidant enzyme activities, and tissue injury-related biomarkers were evaluated in liver and kidney tissues. Cisplatin administration significantly increased serum alanine aminotransferase (ALT), aspartate aminotransferase (AST), bilirubin, and glucose levels, whereas co-treatment with Luteolin markedly attenuated these alterations in a dose-dependent manner. In addition, Luteolin restored Cisplatin-induced disturbances in oxidative stress and antioxidant defense markers, including malondialdehyde (MDA), 8-hydroxy-2'-deoxyguanosine (8-OHdG), HSP70 levels, superoxide dismutase (SOD), glutathione (GSH), glutathione peroxidase (GPx), glutathione reductase (GR), and glutathione S-transferase (GST) activities in liver and kidney tissues. To support the in vivo findings, in vitro antiproliferative assays were performed using Saos-2 osteosarcoma, HTB-9 bladder cancer, A549 lung cancer, and BEAS-2B normal epithelial cell lines. Cells were treated with Luteolin (5-200 µM) alone or in combination with Cisplatin IC50 concentrations for 24-48 h, and cell viability was assessed using the WST-1 assay. Co-treatment with Luteolin significantly enhanced Cisplatin-induced growth inhibition in cancer cells while exerting limited cytotoxicity in normal cells. Luteolin alone also demonstrated concentration-dependent antiproliferative activity. In conclusion, Luteolin exerted marked hepatorenal protective effects and enhanced the antiproliferative activity of Cisplatin in experimental models. These findings suggest that Luteolin may represent a promising adjunctive candidate for reducing Cisplatin-associated toxicity while improving therapeutic responsiveness.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_01
+
+### TRACK_A_A_BATCH_001 / POSITION_02
+position_id: pos-9f4b7558
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42269153-001
+document_id: 42269153
+source_id: 42269153
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+The global rise in anticoagulant use has increased the number of major bleeding events that warrant timely and effective pharmacologic reversal. Reversal strategies should be informed by the pharmacodynamic and pharmacokinetic features of the anticoagulant and antidote, regulatory indications, quality of evidence, patient-specific factors, and availability of treatment options. Protamine sulfate neutralizes unfractionated heparin, whereas no specific antidotes exist for low-molecular-weight heparins or fondaparinux. Four-factor prothrombin complex concentrates effectively reverse vitamin K antagonists. Idarucizumab specifically reverses dabigatran, although delayed dabigatran rebound can occur. Andexanet alfa targets direct oral factor Xa inhibitors, but uncertainties regarding the efficacy-safety balance, monitoring, rebound, perioperative use, and cost have prompted off-label use of four-factor prothrombin complex concentrates, for which stronger evidence is needed. Key challenges remain, including determination of appropriate dosing, standardization and validation of laboratory monitoring, mitigation of thrombotic risk, and development of guidelines for perioperative treatment. Emerging agents aim to broaden targets and improve safety. Building high-quality evidence remains essential to advancing global, patient-centered anticoagulant and hemostatic care.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+The global rise in anticoagulant use has increased the number of major bleeding events that warrant timely and effective pharmacologic reversal. Reversal strategies should be informed by the pharmacodynamic and pharmacokinetic features of the anticoagulant and antidote, regulatory indications, quality of evidence, patient-specific factors, and availability of treatment options. Protamine sulfate neutralizes unfractionated heparin, whereas no specific antidotes exist for low-molecular-weight heparins or fondaparinux. Four-factor prothrombin complex concentrates effectively reverse vitamin K antagonists. Idarucizumab specifically reverses dabigatran, although delayed dabigatran rebound can occur. Andexanet alfa targets direct oral factor Xa inhibitors, but uncertainties regarding the efficacy-safety balance, monitoring, rebound, perioperative use, and cost have prompted off-label use of four-factor prothrombin complex concentrates, for which stronger evidence is needed. Key challenges remain, including determination of appropriate dosing, standardization and validation of laboratory monitoring, mitigation of thrombotic risk, and development of guidelines for perioperative treatment. Emerging agents aim to broaden targets and improve safety. Building high-quality evidence remains essential to advancing global, patient-centered anticoagulant and hemostatic care.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_02
+
+### TRACK_A_A_BATCH_001 / POSITION_03
+position_id: pos-6751dbeb
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42654146-001
+document_id: 42654146
+source_id: 42654146
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Background: In patients with atrial fibrillation receiving long-term anticoagulation therapy with dabigatran etexilate (DABE), moxifloxacin (MFLX) is frequently coadministered to treat concurrent infections; however, the potential drug-drug interaction (DDI) between these agents remains unclear. Herein, we examined the underlying mechanism by which MFLX attenuates DABE pharmacokinetics in rats; subsequently, we elucidated the DDI in humans by establishing a physiologically based pharmacokinetic (PBPK) model based on these animal data. Methods: The 3- and 14-day effects of 40 mg/kg MFLX once daily and secondary bile acid (SBA)-containing dietary intervention on the pharmacokinetic profile of DABE and its active form, dabigatran (DAB), were examined in a rat model. Ileum tissues were harvested to measure the expression of P-glycoprotein (P-gp), pregnane X receptor (PXR), and peroxisome proliferator-activated receptor alpha (PPARα). In addition, we examined the effects of secondary bile acids (SBAs) on P-gp expression and quantified P-gp-mediated DABE efflux transport activity in Caco-2 cells. A PBPK model was used to predict the risk of DAB exposure under this DDI scenario and under combined high-risk conditions, including renal impairment and advanced age. Results: Treatment with MFLX for 3 and 14 days inhibited SBA-producing gut microbiota, thereby suppressing the conversion of primary bile acids to SBAs. Concurrently, a marked reduction in intestinal P-gp expression was observed, along with a significant enhancement of the oral bioavailability of DABE. These effects were reversed by SBA-containing diets. In vitro experiments using Caco-2 cells revealed that physiologically relevant concentrations of SBA significantly upregulated P-gp expression and function, whereas MFLX incubation alone showed no direct modulatory effect on these transporters or regulators. PBPK simulation results showed that in vivo exposure of DAB would increase by 41.7%, 104%, 251%, and 115% when coadministered with MFLX alone, with coexisting mild renal impairment, moderate renal impairment, and aging, respectively. Conclusions: MFLX increases DAB exposure by reducing SBA-regulated intestinal P-gp function. PBPK simulations suggest a low risk of DDI from MFLX coadministration alone; however, caution is warranted in patients with aging or renal impairment.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+Background: In patients with atrial fibrillation receiving long-term anticoagulation therapy with dabigatran etexilate (DABE), moxifloxacin (MFLX) is frequently coadministered to treat concurrent infections; however, the potential drug-drug interaction (DDI) between these agents remains unclear. Herein, we examined the underlying mechanism by which MFLX attenuates DABE pharmacokinetics in rats; subsequently, we elucidated the DDI in humans by establishing a physiologically based pharmacokinetic (PBPK) model based on these animal data. Methods: The 3- and 14-day effects of 40 mg/kg MFLX once daily and secondary bile acid (SBA)-containing dietary intervention on the pharmacokinetic profile of DABE and its active form, dabigatran (DAB), were examined in a rat model. Ileum tissues were harvested to measure the expression of P-glycoprotein (P-gp), pregnane X receptor (PXR), and peroxisome proliferator-activated receptor alpha (PPARα). In addition, we examined the effects of secondary bile acids (SBAs) on P-gp expression and quantified P-gp-mediated DABE efflux transport activity in Caco-2 cells. A PBPK model was used to predict the risk of DAB exposure under this DDI scenario and under combined high-risk conditions, including renal impairment and advanced age. Results: Treatment with MFLX for 3 and 14 days inhibited SBA-producing gut microbiota, thereby suppressing the conversion of primary bile acids to SBAs. Concurrently, a marked reduction in intestinal P-gp expression was observed, along with a significant enhancement of the oral bioavailability of DABE. These effects were reversed by SBA-containing diets. In vitro experiments using Caco-2 cells revealed that physiologically relevant concentrations of SBA significantly upregulated P-gp expression and function, whereas MFLX incubation alone showed no direct modulatory effect on these transporters or regulators. PBPK simulation results showed that in vivo exposure of DAB would increase by 41.7%, 104%, 251%, and 115% when coadministered with MFLX alone, with coexisting mild renal impairment, moderate renal impairment, and aging, respectively. Conclusions: MFLX increases DAB exposure by reducing SBA-regulated intestinal P-gp function. PBPK simulations suggest a low risk of DDI from MFLX coadministration alone; however, caution is warranted in patients with aging or renal impairment.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_03
+
+### TRACK_A_A_BATCH_001 / POSITION_04
+position_id: pos-5296e2f0
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42674100-001
+document_id: 42674100
+source_id: 42674100
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+OBJECTIVE: Drug repurposing offers a cost effective approach to identify therapies for abdominal aortic aneurysm (AAA), which lacks proven medical treatment. This study assessed associations between long term cumulative drug exposure and AAA events (first time rupture or surgical repair). METHODS: This was a matched nested case-control study using nationwide Danish registries (1996 - 2021). Cases were first time AAA rupture or surgery; controls were individuals with AAA who were event free at the index date and matched 1:20 by sex and birth year. Drug exposure was assessed in defined daily doses at the Anatomical Therapeutic Chemical system chemical subgroup level. Associations were evaluated using log2 transformed unconditional logistic regression, adjusted for comorbidities and socioeconomic status. Identified associations were independently classified into four pre-defined hypothesis generating categories based on plausibility, bias, and relevance to AAA risk. RESULTS: The study included 17 536 cases (mean age 73.8 years; 80.8% male), each matched to approximately 20 controls. Of 181 chemical subgroups analysed, 29 presented significant dose-response associations. Dose doubling of statins and metformin was associated with lower odds of AAA events: odds ratio (OR) 0.93 (95% confidence interval [CI] 0.92 - 0.94) and OR 0.96 (95% CI 0.93 - 0.99), respectively. Additional inverse associations were observed with caries prophylactic agents (OR 0.91, 95% CI 0.84 - 0.99), proton pump inhibitors (OR 0.97, 95% CI 0.96 - 0.98), and antibiotic subgroups. Signals suggesting potential direct effects were observed for several additional drug classes, including antiplatelet agents, β blockers, testosterone inhibitors, non-steroidal anti-inflammatory drugs, and bisphosphonates. Overall, expert review classified 12 associations (41%) as suggestive of a direct or indirect drug effect. The findings suggest a substantial role of chronic infection in AAA pathogenesis. CONCLUSION: These findings identify several dose dependent associations between common medications and risk of AAA events, including signals consistent with protective effects of statins, metformin, and agents used for chronic infections. Chronic infection may represent a mechanistic pathway warranting further investigation.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+OBJECTIVE: Drug repurposing offers a cost effective approach to identify therapies for abdominal aortic aneurysm (AAA), which lacks proven medical treatment. This study assessed associations between long term cumulative drug exposure and AAA events (first time rupture or surgical repair). METHODS: This was a matched nested case-control study using nationwide Danish registries (1996 - 2021). Cases were first time AAA rupture or surgery; controls were individuals with AAA who were event free at the index date and matched 1:20 by sex and birth year. Drug exposure was assessed in defined daily doses at the Anatomical Therapeutic Chemical system chemical subgroup level. Associations were evaluated using log2 transformed unconditional logistic regression, adjusted for comorbidities and socioeconomic status. Identified associations were independently classified into four pre-defined hypothesis generating categories based on plausibility, bias, and relevance to AAA risk. RESULTS: The study included 17 536 cases (mean age 73.8 years; 80.8% male), each matched to approximately 20 controls. Of 181 chemical subgroups analysed, 29 presented significant dose-response associations. Dose doubling of statins and metformin was associated with lower odds of AAA events: odds ratio (OR) 0.93 (95% confidence interval [CI] 0.92 - 0.94) and OR 0.96 (95% CI 0.93 - 0.99), respectively. Additional inverse associations were observed with caries prophylactic agents (OR 0.91, 95% CI 0.84 - 0.99), proton pump inhibitors (OR 0.97, 95% CI 0.96 - 0.98), and antibiotic subgroups. Signals suggesting potential direct effects were observed for several additional drug classes, including antiplatelet agents, β blockers, testosterone inhibitors, non-steroidal anti-inflammatory drugs, and bisphosphonates. Overall, expert review classified 12 associations (41%) as suggestive of a direct or indirect drug effect. The findings suggest a substantial role of chronic infection in AAA pathogenesis. CONCLUSION: These findings identify several dose dependent associations between common medications and risk of AAA events, including signals consistent with protective effects of statins, metformin, and agents used for chronic infections. Chronic infection may represent a mechanistic pathway warranting further investigation.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_04
+
+### TRACK_A_A_BATCH_001 / POSITION_05
+position_id: pos-aa15aacd
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-40406172-001
+document_id: 40406172
+source_id: 40406172
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Digoxin for Fetal Tachyarrhythmia: Toxicity in an Underweight Mother.
+
+ABSTRACT STATUS:
+abstract_available: False
+abstract_enrichment_status: ABSTRACT_UNAVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE]
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_05
+
+### TRACK_A_A_BATCH_001 / POSITION_06
+position_id: pos-eb10f237
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42670022-001
+document_id: 42670022
+source_id: 42670022
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+OBJECTIVE: To compare pharmacokinetic, clinical outcomes, and regulatory evidence for apixaban 5 mg versus 2.5 mg twice daily in kidney failure on hemodialysis with atrial fibrillation (AF), and propose a framework for individualized dose selection. DATA SOURCES: PubMed, EMBASE, and the Cochrane Library were searched from inception through June 2026 using terms including apixaban, kidney failure, hemodialysis, AF, pharmacokinetics (PK), and dosing. STUDY SELECTION AND DATA EXTRACTION: PK studies, observational cohorts, randomized controlled trials (RCTs), network meta-analyses, regulatory documents, and guidelines evaluating apixaban dosing in kidney failure and AF were included. DATA SYNTHESIS: Five PK studies (n ≈ 112) showed 2.5 mg twice daily produced steady-state levels comparable to 5 mg in normal renal function, while 5 mg produced approximately 3-fold supratherapeutic exposure. Of the 3 observational studies, 2 linked 5 mg to lower mortality; 1 found 63% higher bleeding with 5 mg and no difference in stroke/systemic embolism (subdistribution hazard ratio (SHR) 1.01; 95% CI, 0.59-1.73) or death (hazard ratio [HR] 1.03; 95% CI, 0.77-1.38). Two RCTs (RENAL-AF and AXADIA-AFNET 8) were terminated early and remain underpowered. Confounding by indication, competing risk of death, and misapplication of dose-reduction criteria likely explain this paradox. RELEVANCE TO PATIENT CARE AND CLINICAL PRACTICE: This review provides the first systematic reconciliation of this paradox, identifying confounding by indication, competing risk of death, and structural flaws in the US Food and Drug Administration (FDA) dose-reduction criteria as likely explanations for the discordance. It gives clinical pharmacists a framework for appraising the evidence rather than defaulting to the FDA label or PK data alone, and proposes a decision algorithm for individualized dosing, derived from expert opinion, PK, and observational data and requiring prospective validation. CONCLUSIONS: The optimal apixaban dose in kidney failure remains unresolved. Neither dose has been shown to reduce stroke versus no anticoagulation in this population. Dose selection should be individualized to patient-specific factors.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+OBJECTIVE: To compare pharmacokinetic, clinical outcomes, and regulatory evidence for apixaban 5 mg versus 2.5 mg twice daily in kidney failure on hemodialysis with atrial fibrillation (AF), and propose a framework for individualized dose selection. DATA SOURCES: PubMed, EMBASE, and the Cochrane Library were searched from inception through June 2026 using terms including apixaban, kidney failure, hemodialysis, AF, pharmacokinetics (PK), and dosing. STUDY SELECTION AND DATA EXTRACTION: PK studies, observational cohorts, randomized controlled trials (RCTs), network meta-analyses, regulatory documents, and guidelines evaluating apixaban dosing in kidney failure and AF were included. DATA SYNTHESIS: Five PK studies (n ≈ 112) showed 2.5 mg twice daily produced steady-state levels comparable to 5 mg in normal renal function, while 5 mg produced approximately 3-fold supratherapeutic exposure. Of the 3 observational studies, 2 linked 5 mg to lower mortality; 1 found 63% higher bleeding with 5 mg and no difference in stroke/systemic embolism (subdistribution hazard ratio (SHR) 1.01; 95% CI, 0.59-1.73) or death (hazard ratio [HR] 1.03; 95% CI, 0.77-1.38). Two RCTs (RENAL-AF and AXADIA-AFNET 8) were terminated early and remain underpowered. Confounding by indication, competing risk of death, and misapplication of dose-reduction criteria likely explain this paradox. RELEVANCE TO PATIENT CARE AND CLINICAL PRACTICE: This review provides the first systematic reconciliation of this paradox, identifying confounding by indication, competing risk of death, and structural flaws in the US Food and Drug Administration (FDA) dose-reduction criteria as likely explanations for the discordance. It gives clinical pharmacists a framework for appraising the evidence rather than defaulting to the FDA label or PK data alone, and proposes a decision algorithm for individualized dosing, derived from expert opinion, PK, and observational data and requiring prospective validation. CONCLUSIONS: The optimal apixaban dose in kidney failure remains unresolved. Neither dose has been shown to reduce stroke versus no anticoagulation in this population. Dose selection should be individualized to patient-specific factors.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_06
+
+### TRACK_A_A_BATCH_001 / POSITION_07
+position_id: pos-7c1fb419
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42349978-001
+document_id: 42349978
+source_id: 42349978
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Acne is an inflammatory condition that can affect quality of life. New topical treatments include tazarotene lotion, trifarotene, combined microencapsulated benzoyl peroxide and tretinoin, minocycline foam, topical dapsone, and clascoterone cream. More recent systemic options include subantimicrobial doxycycline, sarecycline, combined oral contraceptives, spironolactone, and isotretinoin-lidose.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+Acne is an inflammatory condition that can affect quality of life. New topical treatments include tazarotene lotion, trifarotene, combined microencapsulated benzoyl peroxide and tretinoin, minocycline foam, topical dapsone, and clascoterone cream. More recent systemic options include subantimicrobial doxycycline, sarecycline, combined oral contraceptives, spironolactone, and isotretinoin-lidose.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_07
+
+### TRACK_A_A_BATCH_001 / POSITION_08
+position_id: pos-dd28047a
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42663925-001
+document_id: 42663925
+source_id: 42663925
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND AND OBJECTIVE: The legalization of cannabis in many parts of the USA and worldwide emphasizes the need to study their potential for interaction with drugs. The Cannabis sativa plant contains over 120 phytocannabinoids, with delta-9-tetrahydrocannabinol (THC), cannabidiol (CBD), and cannabinol (CBN) being the most abundant cannabinoids. The aim of this study was to investigate the effect of treatment with individual cannabinoids or mixture of cannabinoids (mix) on the activity and expression of several cytochrome P450 (CYP) enzymes. METHODS: Primary cultures of human hepatocytes were pretreated with either vehicle or cannabinoids, followed by incubation with a cocktail of CYP substrates. The activity of various CYP enzymes was determined by quantifying the formation of the metabolites of specific CYP substrates using liquid chromatography-tandem mass spectrometry. The messenger RNA (mRNA) expression of various CYP enzymes was determined by quantitative real-time polymerase chain reaction (qrt-PCR). RESULTS: A significant (> 2-fold) increase in CYP1A2 activity was observed after chronic exposure to CBN and mix at 3 µM. Similarly, THC and mix treatments at 3 µM led to a significant (> 2-fold) increase in CYP3A4 activity and expression. No major inducive effects were observed on CYP2D6 and CYP2C9. Acute exposure to CBD, CBN, or mix inhibited CYP1A2 activity in a concentration-dependent manner; mix showed mild CYP3A4 inhibition at 3 µM with no major effects on CYP2D6 and CYP2C9 activity. CONCLUSIONS: These data suggest that cannabinoids selectively alter the activity and expression of CYP enzymes, which may lead to change in exposure of coadministered substrates owing to possible metabolic drug-drug interactions (DDI).
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+BACKGROUND AND OBJECTIVE: The legalization of cannabis in many parts of the USA and worldwide emphasizes the need to study their potential for interaction with drugs. The Cannabis sativa plant contains over 120 phytocannabinoids, with delta-9-tetrahydrocannabinol (THC), cannabidiol (CBD), and cannabinol (CBN) being the most abundant cannabinoids. The aim of this study was to investigate the effect of treatment with individual cannabinoids or mixture of cannabinoids (mix) on the activity and expression of several cytochrome P450 (CYP) enzymes. METHODS: Primary cultures of human hepatocytes were pretreated with either vehicle or cannabinoids, followed by incubation with a cocktail of CYP substrates. The activity of various CYP enzymes was determined by quantifying the formation of the metabolites of specific CYP substrates using liquid chromatography-tandem mass spectrometry. The messenger RNA (mRNA) expression of various CYP enzymes was determined by quantitative real-time polymerase chain reaction (qrt-PCR). RESULTS: A significant (> 2-fold) increase in CYP1A2 activity was observed after chronic exposure to CBN and mix at 3 µM. Similarly, THC and mix treatments at 3 µM led to a significant (> 2-fold) increase in CYP3A4 activity and expression. No major inducive effects were observed on CYP2D6 and CYP2C9. Acute exposure to CBD, CBN, or mix inhibited CYP1A2 activity in a concentration-dependent manner; mix showed mild CYP3A4 inhibition at 3 µM with no major effects on CYP2D6 and CYP2C9 activity. CONCLUSIONS: These data suggest that cannabinoids selectively alter the activity and expression of CYP enzymes, which may lead to change in exposure of coadministered substrates owing to possible metabolic drug-drug interactions (DDI).
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_08
+
+### TRACK_A_A_BATCH_001 / POSITION_09
+position_id: pos-620006e2
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-37539955-001
+document_id: 37539955
+source_id: 37539955
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Sickle cell disease (SCD), one of the commonest severe monogenic disorders, is caused by the inheritance of two abnormal haemoglobin (beta-globin) genes. SCD can cause severe pain, significant end-organ damage, pulmonary complications, and premature death. Kidney disease is a frequent and potentially severe complication in people with SCD. Chronic kidney disease (CKD) is defined as abnormalities of kidney structure or function present for more than three months. Sickle cell nephropathy refers to the spectrum of kidney complications in SCD. Glomerular damage is a cause of microalbuminuria and can develop at an early age in children with SCD, with increased prevalence in adulthood. In people with sickle cell nephropathy, outcomes are poor as a result of the progression to proteinuria and chronic kidney insufficiency. Up to 12% of people who develop sickle cell nephropathy will develop end-stage renal disease. This is an update of a review first published in 2017. OBJECTIVES: To assess the effectiveness of any intervention for preventing or reducing kidney complications or chronic kidney disease in people with sickle cell disease. Possible interventions include red blood cell transfusions, hydroxyurea, and angiotensin-converting enzyme inhibitors (ACEIs), either alone or in combination. SEARCH METHODS: We searched for relevant trials in the Cochrane Cystic Fibrosis and Genetic Disorders Group Trials Register, CENTRAL, MEDLINE, Embase, seven other databases, and two other trials registers. SELECTION CRITERIA: Randomised controlled trials (RCTs) comparing interventions to prevent or reduce kidney complications or CKD in people with SCD. We applied no restrictions related to outcomes examined, language, or publication status. DATA COLLECTION AND ANALYSIS: Two review authors independently assessed trial eligibility, extracted data, assessed the risk of bias, and assessed the certainty of the evidence (GRADE). MAIN RESULTS: We included three RCTs with 385 participants. We rated the certainty of the evidence as low to very low across different outcomes according to GRADE methodology, downgrading for risk of bias concerns, indirectness, and imprecision. Hydroxyurea versus placebo One RCT published in 2011 compared hydroxyurea to placebo in 193 children aged nine to 18 months. We are unsure if hydroxyurea compared to placebo reduces or prevents progression of kidney disease assessed by change in glomerular filtration rate (mean difference (MD) 0.58 mL/min /1.73 m2, 95% confidence interval (CI) -14.60 to 15.76; 142 participants; very low certainty). Hydroxyurea compared to placebo may improve the ability to concentrate urine (MD 42.23 mOsm/kg, 95% CI 12.14 to 72.32; 178 participants; low certainty), and may make little or no difference to SCD-related serious adverse events, including acute chest syndrome (risk ratio (RR) 0.39, 99% CI 0.13 to 1.16; 193 participants; low certainty), painful crisis (RR 0.68, 99% CI 0.45 to 1.02; 193 participants; low certainty); and hospitalisations (RR 0.83, 99% CI 0.68 to 1.01; 193 participants; low certainty). No deaths occurred in either trial arm and the RCT did not report quality of life. Angiotensin-converting enzyme inhibitors versus placebo One RCT published in 1998 compared an ACEI (captopril) to placebo in 22 adults with normal blood pressure and microalbuminuria. We are unsure if captopril compared to placebo reduces proteinuria (MD -49.00 mg/day, 95% CI -124.10 to 26.10; 22 participants; very low certainty). We are unsure if captopril reduces or prevents kidney disease as measured by creatinine clearance; the trial authors stated that creatinine clearance remained constant over six months in both groups, but provided no comparative data (very low certainty). The RCT did not report serious adverse events, all-cause mortality, or quality of life. Angiotensin-converting enzyme inhibitors versus vitamin C One RCT published in 2020 compared an ACEI (lisinopril) with vitamin C in 170 children aged one to 18 years with normal blood pressure and microalbuminuria. It reported no data we could analyse. We are unsure if lisinopril compared to vitamin C reduces proteinuria in this population: the large drop in microalbuminuria in both arms of the trial after only one month on treatment may have been due to an overestimation of microalbuminuria at baseline rather than a true effect. The RCT did not report serious adverse events, all-cause mortality, or quality of life. AUTHORS' CONCLUSIONS: We are unsure if hydroxyurea improves glomerular filtration rate or reduces hyperfiltration in children aged nine to 18 months, but it may improve their ability to concentrate urine and may make little or no difference to the incidence of acute chest syndrome, painful crises, and hospitalisations. We are unsure if ACEI compared to placebo has any effect on preventing or reducing kidney complications in adults with normal blood pressure and microalbuminuria. We are unsure if ACEI compared to vitamin C has any effect on preventing or reducing kidney complications in children with normal blood pressure and microalbuminuria. No RCTs assessed red blood cell transfusions or any combined interventions to prevent or reduce kidney complications. Due to lack of evidence, we cannot comment on the management of children aged over 18 months or adults with any known genotype of SCD. We have identified a lack of adequately designed and powered studies, although we found four ongoing trials since the last version of this review. Only one ongoing trial addresses renal function as a primary outcome in the short term, but such interventions have long-term effects. Trials of hydroxyurea, ACEIs or red blood cell transfusion in older children and adults are urgently needed to determine any effect on prevention or reduction of kidney complications in people with SCD.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+BACKGROUND: Sickle cell disease (SCD), one of the commonest severe monogenic disorders, is caused by the inheritance of two abnormal haemoglobin (beta-globin) genes. SCD can cause severe pain, significant end-organ damage, pulmonary complications, and premature death. Kidney disease is a frequent and potentially severe complication in people with SCD. Chronic kidney disease (CKD) is defined as abnormalities of kidney structure or function present for more than three months. Sickle cell nephropathy refers to the spectrum of kidney complications in SCD. Glomerular damage is a cause of microalbuminuria and can develop at an early age in children with SCD, with increased prevalence in adulthood. In people with sickle cell nephropathy, outcomes are poor as a result of the progression to proteinuria and chronic kidney insufficiency. Up to 12% of people who develop sickle cell nephropathy will develop end-stage renal disease. This is an update of a review first published in 2017. OBJECTIVES: To assess the effectiveness of any intervention for preventing or reducing kidney complications or chronic kidney disease in people with sickle cell disease. Possible interventions include red blood cell transfusions, hydroxyurea, and angiotensin-converting enzyme inhibitors (ACEIs), either alone or in combination. SEARCH METHODS: We searched for relevant trials in the Cochrane Cystic Fibrosis and Genetic Disorders Group Trials Register, CENTRAL, MEDLINE, Embase, seven other databases, and two other trials registers. SELECTION CRITERIA: Randomised controlled trials (RCTs) comparing interventions to prevent or reduce kidney complications or CKD in people with SCD. We applied no restrictions related to outcomes examined, language, or publication status. DATA COLLECTION AND ANALYSIS: Two review authors independently assessed trial eligibility, extracted data, assessed the risk of bias, and assessed the certainty of the evidence (GRADE). MAIN RESULTS: We included three RCTs with 385 participants. We rated the certainty of the evidence as low to very low across different outcomes according to GRADE methodology, downgrading for risk of bias concerns, indirectness, and imprecision. Hydroxyurea versus placebo One RCT published in 2011 compared hydroxyurea to placebo in 193 children aged nine to 18 months. We are unsure if hydroxyurea compared to placebo reduces or prevents progression of kidney disease assessed by change in glomerular filtration rate (mean difference (MD) 0.58 mL/min /1.73 m2, 95% confidence interval (CI) -14.60 to 15.76; 142 participants; very low certainty). Hydroxyurea compared to placebo may improve the ability to concentrate urine (MD 42.23 mOsm/kg, 95% CI 12.14 to 72.32; 178 participants; low certainty), and may make little or no difference to SCD-related serious adverse events, including acute chest syndrome (risk ratio (RR) 0.39, 99% CI 0.13 to 1.16; 193 participants; low certainty), painful crisis (RR 0.68, 99% CI 0.45 to 1.02; 193 participants; low certainty); and hospitalisations (RR 0.83, 99% CI 0.68 to 1.01; 193 participants; low certainty). No deaths occurred in either trial arm and the RCT did not report quality of life. Angiotensin-converting enzyme inhibitors versus placebo One RCT published in 1998 compared an ACEI (captopril) to placebo in 22 adults with normal blood pressure and microalbuminuria. We are unsure if captopril compared to placebo reduces proteinuria (MD -49.00 mg/day, 95% CI -124.10 to 26.10; 22 participants; very low certainty). We are unsure if captopril reduces or prevents kidney disease as measured by creatinine clearance; the trial authors stated that creatinine clearance remained constant over six months in both groups, but provided no comparative data (very low certainty). The RCT did not report serious adverse events, all-cause mortality, or quality of life. Angiotensin-converting enzyme inhibitors versus vitamin C One RCT published in 2020 compared an ACEI (lisinopril) with vitamin C in 170 children aged one to 18 years with normal blood pressure and microalbuminuria. It reported no data we could analyse. We are unsure if lisinopril compared to vitamin C reduces proteinuria in this population: the large drop in microalbuminuria in both arms of the trial after only one month on treatment may have been due to an overestimation of microalbuminuria at baseline rather than a true effect. The RCT did not report serious adverse events, all-cause mortality, or quality of life. AUTHORS' CONCLUSIONS: We are unsure if hydroxyurea improves glomerular filtration rate or reduces hyperfiltration in children aged nine to 18 months, but it may improve their ability to concentrate urine and may make little or no difference to the incidence of acute chest syndrome, painful crises, and hospitalisations. We are unsure if ACEI compared to placebo has any effect on preventing or reducing kidney complications in adults with normal blood pressure and microalbuminuria. We are unsure if ACEI compared to vitamin C has any effect on preventing or reducing kidney complications in children with normal blood pressure and microalbuminuria. No RCTs assessed red blood cell transfusions or any combined interventions to prevent or reduce kidney complications. Due to lack of evidence, we cannot comment on the management of children aged over 18 months or adults with any known genotype of SCD. We have identified a lack of adequately designed and powered studies, although we found four ongoing trials since the last version of this review. Only one ongoing trial addresses renal function as a primary outcome in the short term, but such interventions have long-term effects. Trials of hydroxyurea, ACEIs or red blood cell transfusion in older children and adults are urgently needed to determine any effect on prevention or reduction of kidney complications in people with SCD.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_09
+
+### TRACK_A_A_BATCH_001 / POSITION_10
+position_id: pos-261a6c8c
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42489609-001
+document_id: 42489609
+source_id: 42489609
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Digoxin has a narrow therapeutic index, and toxicity may occur even with apparently normal serum levels, particularly when drug interactions alter its pharmacokinetics or pharmacodynamics. CASE SUMMARY: A 77-year-old man with atrial fibrillation and heart failure developed accelerated idioventricular rhythm (AIVR) after cilostazol was initiated for peripheral arterial disease. Serum digoxin appeared therapeutic, but the sample was drawn >30 hours postdose, outside the appropriate sampling window. Digoxin was discontinued and AIVR resolved completely. DISCUSSION: Cilostazol potentiates digoxin toxicity via P-glycoprotein inhibition (reduced renal clearance) and PDE-3 inhibition (elevated cAMP, enhanced calcium influx). This interaction is frequently overlooked despite cilostazol being commonly coprescribed with digoxin in older patients with peripheral arterial disease and atrial fibrillation. TAKE-HOME MESSAGES: AIVR in a digoxin-treated patient should prompt toxicity evaluation regardless of serum levels. The cilostazol-digoxin interaction is under-recognized and warrants proactive monitoring when these agents are coprescribed.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+BACKGROUND: Digoxin has a narrow therapeutic index, and toxicity may occur even with apparently normal serum levels, particularly when drug interactions alter its pharmacokinetics or pharmacodynamics. CASE SUMMARY: A 77-year-old man with atrial fibrillation and heart failure developed accelerated idioventricular rhythm (AIVR) after cilostazol was initiated for peripheral arterial disease. Serum digoxin appeared therapeutic, but the sample was drawn >30 hours postdose, outside the appropriate sampling window. Digoxin was discontinued and AIVR resolved completely. DISCUSSION: Cilostazol potentiates digoxin toxicity via P-glycoprotein inhibition (reduced renal clearance) and PDE-3 inhibition (elevated cAMP, enhanced calcium influx). This interaction is frequently overlooked despite cilostazol being commonly coprescribed with digoxin in older patients with peripheral arterial disease and atrial fibrillation. TAKE-HOME MESSAGES: AIVR in a digoxin-treated patient should prompt toxicity evaluation regardless of serum levels. The cilostazol-digoxin interaction is under-recognized and warrants proactive monitoring when these agents are coprescribed.
+
+SOURCE METADATA:
+title: NOT_AVAILABLE_IN_SOURCE_DATASET
+authors: NOT_AVAILABLE_IN_SOURCE_DATASET
+journal: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_year: NOT_AVAILABLE_IN_SOURCE_DATASET
+publication_date: NOT_AVAILABLE_IN_SOURCE_DATASET
+PMID: NOT_AVAILABLE_IN_SOURCE_DATASET
+DOI: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_type: NOT_AVAILABLE_IN_SOURCE_DATASET
+publisher: NOT_AVAILABLE_IN_SOURCE_DATASET
+source_database: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+EVIDENCE LOCATION:
+page: NOT_AVAILABLE_IN_SOURCE_DATASET
+section: NOT_AVAILABLE_IN_SOURCE_DATASET
+paragraph: NOT_AVAILABLE_IN_SOURCE_DATASET
+sentence/location: NOT_AVAILABLE_IN_SOURCE_DATASET
+character offsets: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+ENTITY METADATA:
+raw drug/entity strings: NOT_AVAILABLE_IN_SOURCE_DATASET
+RxNorm IDs: NOT_AVAILABLE_IN_SOURCE_DATASET
+other source identifiers: NOT_AVAILABLE_IN_SOURCE_DATASET
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+### END POSITION_10

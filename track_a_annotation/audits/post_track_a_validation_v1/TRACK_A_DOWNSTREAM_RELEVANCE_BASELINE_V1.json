@@ -1,0 +1,21 @@
+{
+  "total": 530,
+  "labels": {
+    "PARTIALLY_RELEVANT": 100,
+    "IRRELEVANT": 411,
+    "INSUFFICIENT_INFORMATION": 9,
+    "RELEVANT": 10
+  },
+  "scores": {
+    "1": 76,
+    "0": 5,
+    "null": 439,
+    "2": 10
+  },
+  "spans": {
+    "CURRENT_VALID_SPAN": 444,
+    "CURRENT_MISSING_SPAN": 0,
+    "CURRENT_INVALID_SPAN": 11,
+    "HISTORICAL_LEGACY_ANOMALY": 75
+  }
+}

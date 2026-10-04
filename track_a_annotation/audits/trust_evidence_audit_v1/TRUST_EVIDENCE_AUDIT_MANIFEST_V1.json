@@ -1,0 +1,93 @@
+{
+  "package_id": "TRUST_EVIDENCE_AUDIT_V1",
+  "status": "ANALYSIS_COMPLETE",
+  "track_a_benchmark": "LOCKED",
+  "track_a_mutation": false,
+  "abstract_secondary_mutation": false,
+  "retrieval_rerun": false,
+  "parameter_tuning": false,
+  "provider_execution": false,
+  "implementation_code_mutation": false,
+  "artifacts": [
+    {
+      "relative_path": "TRUST_ADAPTIVE_BEHAVIOR_AUDIT_V1.md",
+      "byte_size": 173,
+      "sha256": "ecb0f776938f13c5cc8f5f1b858f0bd94e01e1657703034b4deee1bf8b8a2d07"
+    },
+    {
+      "relative_path": "TRUST_CONTRADICTION_AUDIT_V1.md",
+      "byte_size": 217,
+      "sha256": "44d74e889d66c2e5f6a8b97ab9fc4e7dd822c90bce7140a7dbb27799b68a6164"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_AUDIT_FINDINGS_V1.jsonl",
+      "byte_size": 930,
+      "sha256": "d460a8634e76c9a7729f04c7f128926a7516f62a58106b9f34fa5bc289bf4729"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_AUDIT_FINDINGS_V1.md",
+      "byte_size": 146,
+      "sha256": "00647f2f04efe934316356978182f5efaa2dbfe2ae593f6a0f5654b20162a942"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_AUDIT_INTEGRITY_V1.md",
+      "byte_size": 144,
+      "sha256": "c044dcc5610023fcd5d75221978f98ea89bb52a7c9af0b149377c903aed1e095"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_AUDIT_V1.md",
+      "byte_size": 183,
+      "sha256": "0c42b08539979774ff596e56a0caad0b38f79cd56f69111e642f12aea23dd562"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_IMPLEMENTATION_INVENTORY_V1.md",
+      "byte_size": 813,
+      "sha256": "ad8927e6bd72cb12c5165374c1ca095818454690e8cf6add52792f183657bd55"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_INTEGRITY_AUDIT_V1.md",
+      "byte_size": 184,
+      "sha256": "9b4910b351b9a91ff935bed1f7f94795cc898ee4bd926d98ca9c3c80de5397a7"
+    },
+    {
+      "relative_path": "TRUST_EVIDENCE_SPECIFICATION_INVENTORY_V1.md",
+      "byte_size": 255,
+      "sha256": "2bc8e6de6eed6182dcf8531fc7b56e81fcb9115841bcbd8ad81ff16700a07d5d"
+    },
+    {
+      "relative_path": "TRUST_FACTOR_IMPLEMENTATION_MATRIX_V1.md",
+      "byte_size": 566,
+      "sha256": "7b3a402f537e75e0638cf374e175317e0a0546d0967b43787ebc3e8a7a67a440"
+    },
+    {
+      "relative_path": "TRUST_HARD_GATE_SOFT_SCORE_AUDIT_V1.md",
+      "byte_size": 267,
+      "sha256": "2a8918ea824f3bd8d637d9533eb191ef6775c353de5c7f6ffb836841a593f3f1"
+    },
+    {
+      "relative_path": "TRUST_MISSING_DATA_MATRIX_V1.md",
+      "byte_size": 739,
+      "sha256": "3878c5b9d41c3cdd6809363c6bf5d6e2c88de269e320511763a4559117d6a76d"
+    },
+    {
+      "relative_path": "TRUST_PROVENANCE_CHAIN_AUDIT_V1.md",
+      "byte_size": 283,
+      "sha256": "34ab9caaade2506e1504a207e7f4f46baba9f3399bb262897bd3e1620567d06a"
+    },
+    {
+      "relative_path": "TRUST_RESEARCH_GAPS_V1.md",
+      "byte_size": 168,
+      "sha256": "0bb1105417224df166d7b9ff77cbfe669ab97bf1fc16e6cd4b0859f6bdae8bca"
+    },
+    {
+      "relative_path": "TRUST_THRESHOLD_AUDIT_V1.md",
+      "byte_size": 163,
+      "sha256": "3af63aca2944fbdc9a4b05f060befe3a48d552032b983cd6c498ca661eae4e4c"
+    },
+    {
+      "relative_path": "TRUST_VALIDATION_READINESS_V1.md",
+      "byte_size": 191,
+      "sha256": "5c41106e9dd643c95d003a89d55a57f2200a3ac1861905e9a64da35845f39d6f"
+    }
+  ]
+}

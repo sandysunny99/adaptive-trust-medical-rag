@@ -1,0 +1,4 @@
+# REGISTRY CONSUMER TRACE
+Identified consumer scripts:
+c:\Users\sunny\Downloads\CASE STUDY\track_a_annotation\decision_batches\TRACK_A_BATCH_003_P11_P60_V5_INDEPENDENT_VALIDATOR.py
+c:\Users\sunny\Downloads\CASE STUDY\track_a_annotation\decision_batches\TRACK_A_BATCH_003_P11_P60_V6_INDEPENDENT_VALIDATOR.py

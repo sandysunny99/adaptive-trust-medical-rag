@@ -11,6 +11,11 @@ class MemoryType(Enum):
     DECISION = "DECISION"
     FAILURE = "FAILURE"
 
+class LifecycleState(Enum):
+    ACTIVE = "ACTIVE"
+    ARCHIVED = "ARCHIVED"
+    SUPERSEDED = "SUPERSEDED"
+
 @dataclass
 class MemoryRecord:
     memory_id: str
@@ -18,6 +23,9 @@ class MemoryRecord:
     provenance: dict[str, Any]
     metadata: dict[str, Any]
     created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    version: str = "1.0.0"
+    schema_version: str = "1.0"
+    lifecycle_state: LifecycleState = LifecycleState.ACTIVE
 
     def __post_init__(self):
         if not isinstance(self.provenance, dict) or not self.provenance:
@@ -31,5 +39,8 @@ class MemoryRecord:
             "memory_type": self.memory_type.value,
             "provenance": self.provenance,
             "metadata": self.metadata,
-            "created_at": self.created_at
+            "created_at": self.created_at,
+            "version": self.version,
+            "schema_version": self.schema_version,
+            "lifecycle_state": self.lifecycle_state.value
         }

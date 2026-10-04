@@ -1,0 +1,55 @@
+{
+  "metric_audit": {
+    "claim_support_rate": {
+      "arm_A_evaluation_method": "Currently undefined/disabled at runtime",
+      "arm_B_evaluation_method": "Enabled at runtime via Answer Safety Gate",
+      "symmetry_status": "ASYMMETRIC",
+      "common_evaluator_available": "YES (ClaimVerifier/ClaimVerifierV2 can be run post-generation)",
+      "circularity_status": "PRESENT"
+    },
+    "citation_validation_rate": {
+      "arm_A_evaluation_method": "Currently undefined/disabled at runtime",
+      "arm_B_evaluation_method": "Enabled at runtime",
+      "symmetry_status": "ASYMMETRIC",
+      "common_evaluator_available": "YES",
+      "circularity_status": "PRESENT"
+    },
+    "unsupported_answer_rate": {
+      "arm_A_evaluation_method": "Currently undefined/disabled at runtime",
+      "arm_B_evaluation_method": "Enabled at runtime",
+      "symmetry_status": "ASYMMETRIC",
+      "common_evaluator_available": "YES",
+      "circularity_status": "PRESENT"
+    },
+    "abstention_rate": {
+      "arm_A_evaluation_method": "Observed abstention count (Default)",
+      "arm_B_evaluation_method": "Observed abstention count (Controlled)",
+      "symmetry_status": "DESCRIPTIVE_ONLY",
+      "common_evaluator_available": "N/A",
+      "circularity_status": "NONE"
+    },
+    "provider_failure_rate": {
+      "arm_A_evaluation_method": "Observed provider failures",
+      "arm_B_evaluation_method": "Observed provider failures",
+      "symmetry_status": "SYMMETRIC",
+      "common_evaluator_available": "YES",
+      "circularity_status": "NONE"
+    }
+  },
+  "protocol_revision_required": true,
+  "dataset_authorization": "PENDING_RESEARCHER_DECISION",
+  "provider_requests": 0,
+  "protected_state": {
+    "Track_A": "UNCHANGED",
+    "Benchmark": "UNCHANGED",
+    "Historical_retrieval": "UNCHANGED",
+    "Trust": "UNCHANGED",
+    "Claim_Evidence": "UNCHANGED",
+    "Controlled_Abstention": "UNCHANGED",
+    "Canonical_Identity": "UNCHANGED",
+    "RG_02": "UNCHANGED",
+    "Phase_15": "UNCHANGED",
+    "Dataset": "UNCHANGED",
+    "Protocol_V1_1": "UNCHANGED"
+  }
+}

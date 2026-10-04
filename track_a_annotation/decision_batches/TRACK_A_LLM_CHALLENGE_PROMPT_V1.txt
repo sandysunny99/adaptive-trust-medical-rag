@@ -1,0 +1,34 @@
+TASK: Challenge the proposed semantic annotation. Attempt to overturn the proposed label using ONLY the supplied query and evidence.
+
+INPUT:
+<QUERY>
+{query_text}
+</QUERY>
+<RETRIEVED_EVIDENCE>
+{evidence_text}
+</RETRIEVED_EVIDENCE>
+<PROPOSED_ANNOTATION>
+{proposed_json}
+</PROPOSED_ANNOTATION>
+
+INSTRUCTIONS:
+1. Actively look for reasons why the proposed label might be incorrect.
+2. Does the evidence contradict the rationale?
+3. Is a query entity missing?
+4. Is the relationship merely implied rather than explicitly stated?
+5. Is the outcome tied to a different drug combination?
+6. Determine the strongest supporting evidence and strongest counterevidence.
+7. Identify any missing information required to achieve full relevance.
+8. Propose an alternative label if one is plausible.
+9. Conclude whether the original proposed label remains justified.
+
+OUTPUT FORMAT (Strict JSON):
+{
+  "strongest_supporting_evidence": "...",
+  "strongest_counterevidence": "...",
+  "missing_information": [],
+  "plausible_alternative_label": "...",
+  "proposed_label_remains_justified": true/false,
+  "challenge_rationale": "...",
+  "recommended_review_priority": "HIGH|MEDIUM|LOW"
+}

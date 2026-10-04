@@ -1,0 +1,6 @@
+{
+  "valid_span": "PASS",
+  "invalid_span": "SPAN_VALIDATION_FAILED",
+  "schema_missing_field": "SCHEMA_FAIL: Schema validation failed: 'best_supporting_span' is a required property",
+  "schema_wrong_type": "SCHEMA_FAIL: Schema validation failed: 123 is not of type 'string'"
+}

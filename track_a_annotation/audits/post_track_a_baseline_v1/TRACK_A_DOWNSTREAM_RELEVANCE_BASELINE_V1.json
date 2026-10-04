@@ -1,0 +1,18 @@
+{
+  "dataset": "TRACK_A_CANONICAL_STATE_V2.jsonl",
+  "annotation_population": 530,
+  "annotation_provenance": {
+    "RESEARCH_CONTROL_LLM_ASSISTED": 389,
+    "HISTORICAL_HUMAN": 141
+  },
+  "metric_definitions": "TRACK_A_METRIC_DEFINITIONS_V1.md",
+  "metric_results": "BLOCKED",
+  "exclusions": "NONE",
+  "edge_cases": {
+    "missing_rank": 530,
+    "zero_relevant_queries": 4
+  },
+  "limitations": "Rank data must be joined from retrieval logs.",
+  "reproducibility": "PASS",
+  "integrity": "PASS"
+}

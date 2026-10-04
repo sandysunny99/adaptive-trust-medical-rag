@@ -1,0 +1,247 @@
+============================================================
+TRACK A HUMAN ANNOTATION WINDOW
+============================================================
+Batch ID: TRACK_A_A_BATCH_003
+Window: 04 of 06
+Window Record count: 10
+Batch Record count: 60
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_31
+position_id: pos-53198e7b
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Nonsteroidal anti-inflammatory drugs (NSAIDs) are widely used for pain and inflammation but are associated with gastrointestinal (GI) bleeding. While this risk is well established, most studies evaluate NSAIDs as a homogenous class, limiting clinical decision-making based on individual agent safety. This systematic review and meta-analysis aimed to quantify the risk of GI bleeding associated with individual NSAIDs. We searched PubMed from inception through January 2025 using MeSH and free-text terms for "gastrointestinal bleeding" and nine commonly used NSAIDs. A random effects meta-analysis was conducted to estimate the pooled odds ratios (ORs) for GI bleeding, with hazard ratios (HRs) and relative risks (RRs) treated as approximations of ORs due to the rare event nature of GI bleeding. Of 6,711 records screened, 25 studies met the inclusion criteria. Substantial heterogeneity in study design, populations, and outcome ascertainment was observed. Celecoxib was associated with the lowest risk of GI bleeding (OR 1.16, 95% CI: 0.84-1.61). Among non-selective NSAIDs, ibuprofen had the lowest significant risk (OR 2.28, 95% CI: 1.71-3.03), while ketorolac showed the highest risk (OR 20.67, 95% CI: 14.56-29.34). Other agents, such as piroxicam and meloxicam, also demonstrated significantly elevated risks. The risk of GI bleeding varies widely among individual NSAIDs. Celecoxib appears to have the lowest GI risk, though cardiovascular safety must also be considered. These findings highlight the need for personalized NSAID selection and suggest that NSAIDs should not be treated as a uniform class when assessing bleeding risk.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_32
+position_id: pos-a3b4c771
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+This retrospective observational study was conducted to investigate the prevalence and clinical implications of drug interactions involving Ginkgo biloba extract on bleeding risk and coagulation profiles. Our analysis utilized data from patients admitted to Hai Phong International Hospital between January 2022 and December 2023. Inclusion criteria consisted of patients aged 18 years and above, those prescribed Ginkgo biloba extract alone or in combination with other medications, and the availability of complete medical records, including medication history, laboratory tests, and clinical outcomes. Out of 2,647 prescriptions meeting the inclusion criteria, 342 exhibited drug interactions with a prevalence rate of 12.94%. Notably, Ginkgo biloba extract frequent interacts with antiplatelets, anticoagulants, and nonsteroidal anti-inflammatory drugs, with Clopidogrel and Aspirin exhibiting the highest prevalence rates of 2.61% each. However, interactions with anticoagulants including direct oral anticoagulants and acenocoumarol, were not statistically significant in our analysis. Omeprazole was a frequently interacting drug (2.34%) of mild severity. Among the 747 patients analyzed for bleeding disorders, 31 (4.15%) exhibited bleeding symptoms. Correlation analysis indicated a strong association between clinical bleeding and abnormal coagulation results (OR, 1.75; p <  0.001). Moreover, significant correlations were found between Ginkgo biloba extract drug interactions and the bleeding risk (OR: 1.08, p <  0.001) and abnormal coagulation (OR: 1.49, p <  0.001). The severity of Ginkgo biloba extract drug interactions did not correlate with bleeding risk (OR: 1.01, p =  0.767) but influenced abnormal coagulation test results (OR: 0.813, p =  0.019). Specific medications, including clopidogrel, aspirin, celecoxib, loxoprofen, nifedipine, and omeprazole, were significantly associated with the risk of bleeding and abnormal coagulation (p <  0.05). Interactions with ticagrelor, etoricoxib, insulin, omeprazole, and domperidone were associated with abnormal coagulation tests without affecting the reported bleeding. These findings underscore the critical need of evaluating potential interactions involving Ginkgo biloba extract drug interactions in clinical pratice, particularly when assessing bleeding risk and managing coagulation.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_33
+position_id: pos-7e689ff1
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND AND OBJECTIVES: Concomitant use of tramadol and antidepressants with potent inhibition of the cytochrome P450 2D6 (CYP2D6) enzyme is postulated to increase risk of seizures in older adults; yet, such an association has not been empirically tested in populations. We aimed to examine the association of concomitant tramadol and CYP2D6-inhibiting vs CYP2D6-neutral antidepressant use and the risk of seizures among older nursing home (NH) residents. METHODS: This population-based cohort study was conducted using a 100% Medicare NH sample from January 2010 to December 2021. We included long-term residents aged 65 years or older who initiated antidepressants on existing tramadol use (tramadol-antidepressant users) or initiated tramadol on existing antidepressant use (antidepressant-tramadol users). Patients were followed up until the end of 1 year, NH discharge, death, or study end. The key exposure was concomitant use of tramadol with CYP2D6-inhibiting vs CYP2D6-neutral antidepressants. The key outcome was incident rates of medical encounters with a diagnosis of seizure and analyzed using negative binomial or Poisson regression models adjusted for baseline covariates (e.g., pain status and depressive, physical, and cognitive function) through the inverse probability of treatment weighting. RESULTS: We identified 11,162 concomitant tramadol-antidepressant users (mean [SD] age, 86.2 [8.5] years; 9,077 [81.3%] female) and 58,994 concomitant antidepressant-tramadol users (mean [SD] age, 85.3 [8.4] years; 47,053 [79.8%] female). The incidence rate of seizures was 16.10 and 20.17 per 100 patient-years, respectively, for the tramadol-antidepressant and antidepressant-tramadol group. In both subgroups, co-use of tramadol with CYP2D6-inhibiting (vs with CYP2D6-neutral) antidepressants was associated with higher adjusted incidence rate ratios of seizures (1.09 [95% CI 1.02-1.18] and 1.06 [95% CI 1.03-1.10]). Findings were corroborated by a negative control exposure analysis in which co-use of hydrocodone with CYPD2D6-inhibiting (vs CYP2D6-neutral) antidepressants was not associated with risk of seizures. DISCUSSION: Concomitant use of tramadol with CYP2D6-inhibiting vs CYP2D6-neutral antidepressants was associated with increased risk of seizures. Findings are only generalizable to long-term NH populations and are subject to residual confounding. Clinicians should be mindful of seizure risk in older patients who use tramadol concomitantly with antidepressants, particularly CYP2D6-inhibiting antidepressants. CLASSIFICATION OF EVIDENCE: This study provides Class II evidence that the combination of tramadol and CYP2D6-inhibiting antidepressants is associated with a higher risk of seizures compared with the combination of tramadol and CYP2D6-neutral antidepressants.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_34
+position_id: pos-6d49dc3b
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+This study aimed to evaluate the comparative efficacy and safety of apixaban and rivaroxaban versus vitamin K antagonists (VKAs) in anticoagulation management in a dialysis population. PubMed, Embase, and the Cochrane Library were searched for studies comparing apixaban or rivaroxaban with VKAs in patients with atrial fibrillation (AF) undergoing dialysis. The primary efficacy endpoints included stroke/systemic embolism (SSE) and all-cause mortality. Safety outcomes encompassed major bleeding, intracranial hemorrhage, and gastrointestinal bleeding. Risk ratios (RR) with 95% confidence intervals (CI) were synthesized using random-effects models. The meta-analysis included three randomized controlled trials (RCTs) and eight observational studies. Pooled analyses showed that apixaban and rivaroxaban were associated with lower risks of major bleeding (RR 0.57, 95% CI: 0.51-0.63), gastrointestinal bleeding (RR 0.66, 95% CI: 0.57-0.76), and intracranial hemorrhage (RR 0.54, 95% CI: 0.36-0.83) compared with VKAs. Additionally, apixaban and rivaroxaban were associated with reduced risk of SSE (RR 0.57, 95% CI: 0.46-0.72) and all-cause mortality (RR 0.73, 95% CI:0.63-0.83), although substantial heterogeneity was present. Exploratory dose-stratified analyses suggested both standard- and low-dose apixaban regimens were associated with favorable efficacy and hemostatic safety relative to warfarin. Consistent numerical trends were observed in the RCT-only analysis, though none reached statistical significance owing to limited sample size. In conclusion, apixaban and rivaroxaban are associated with lower risks of bleeding compared with VKAs in patients with AF and ESRD. However, evidence regarding their efficacy in preventing SSE, all-cause mortality and the optimal apixaban dosing regimen remains inconclusive and requires validation in large, dedicated RCTs.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_35
+position_id: pos-4b1bd9e5
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Potassium-competitive acid blockers (P-CABs) are newly introduced gastrointestinal protectants, but their interaction with clopidogrel remains uncharacterized. Proton pump inhibitors (PPIs) are often coprescribed with clopidogrel, despite potential pharmacodynamic interactions. This study evaluated the effectiveness and safety of P-CAB and PPI coadministered with clopidogrel in patients with ischemic stroke. METHODS: This population-based, longitudinal, retrospective cohort study used the Korean National Health Insurance Service database, covering 51.4 million individuals (≈97% of the Korean population) from 2016 to 2022. Patients with incident ischemic stroke were identified using predefined criteria. Propensity score matching compared the 6-month incidence of major adverse cardiovascular events (including myocardial infarction, stroke recurrence, and all-cause mortality) and gastrointestinal bleeding among 3 cohorts: clopidogrel alone, clopidogrel+P-CAB, and clopidogrel+PPI. RESULTS: Between 2017 and 2021, 40 752 of 65 180 patients with incident stroke (62.5%) received clopidogrel. A total of 6680 patients (16.4%) formed the clopidogrel-alone cohort, 578 (1.4%) the clopidogrel+P-CAB cohort, and 8806 (21.6%) the clopidogrel+PPI cohort. During the follow-up period, stroke recurred in 268 patients (4.0%) receiving clopidogrel alone, 26 patients (4.5%) receiving clopidogrel+P-CAB, and 431 patients (4.9%) receiving clopidogrel+PPI. After propensity score matching, the clopidogrel+P-CAB cohort showed a higher risk of major adverse cardiovascular events (hazard ratio [HR], 2.40 [95% CI, 1.18-4.85]) and stroke recurrence (HR, 2.64 [95% CI, 1.27-5.47]) than the clopidogrel-alone cohort. The clopidogrel+PPI cohort also had an increased risk of major adverse cardiovascular events (HR, 1.38 [95% CI, 1.17-1.63]) and stroke recurrence (HR, 1.41 [95% CI, 1.20-1.67]) relative to clopidogrel alone. Among PPIs, esomeprazole was associated with a higher risk of major adverse cardiovascular events (HR, 1.46 [95% CI, 1.10-1.92]) and stroke recurrence (HR, 1.50 [95% CI, 1.13-2.00]). Gastrointestinal bleeding did not differ significantly among the clopidogrel-alone, clopidogrel+P-CAB, and clopidogrel+PPI cohorts. CONCLUSIONS: Concomitant use of P-CABs or PPIs with clopidogrel was associated with an increased risk of ischemic events in patients with stroke. P-CABs or PPIs should, therefore, be prescribed cautiously for patients with stroke treated with clopidogrel.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_36
+position_id: pos-5a1ffded
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Clopidogrel is often co-prescribed with proton pump inhibitors (PPIs) to reduce gastrointestinal bleeding risk. However, some PPIs, especially pantoprazole, inhibit CYP2C19, potentially reducing clopidogrel's activation. Ilaprazole, a newer PPI primarily metabolized via CYP3A4, may offer reduced interaction. The study was an open-label, randomized trial that involved 36 healthy male volunteers, who were divided into three groups (n = 12 each): Group 1 (Clopidogrel + Placebo), Group 2 (Clopidogrel + Pantoprazole 40 mg), and Group 3 (Clopidogrel + Ilaprazole 10 mg). After 7 days of treatment, all participants received clopidogrel 75 mg on Day 8. Pharmacokinetic (PK) parameters were analyzed using LC-MS/MS and platelet aggregation by light transmission aggregometry at 0, 4, 10, and 24 h. Pantoprazole significantly reduced clopidogrel AUC (1.96 ± 0.20 vs 8.27 ± 1.04 ng·h/mL, P < .0005), Cmax (0.76 ± 0.04 vs 2.6 ± 1.01 ng/mL, P = .0136), and t1/2 (1.72 ± 0.11 vs 2.22 ± 0.17 h, P = .0312), indicating reduced bioavailability. Geometric mean ratio (GMR) analysis showed a marked reduction in clopidogrel exposure with pantoprazole (Cmax GMR 0.31, 90% CI 0.18-0.53; AUC GMR 0.24, 90% CI 0.19-0.29), and platelet aggregation was significantly higher at 4 and 10 h (P < .05). In contrast, ilaprazole preserved PK parameters (AUC 10.18 ± 1.41, Cmax 3.06 ± 1.05), GMRs near unity (Cmax 1.20, 90% CI 0.60-2.42; AUC 1.23, 90% CI 0.97-1.55), indicating no inhibitory effect and platelet inhibition comparable to placebo (P > .05) Ilaprazole did not affect clopidogrel pharmacokinetics or pharmacodynamics, suggesting it as a safer alternative to pantoprazole in dual antiplatelet therapy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_37
+position_id: pos-68c36127
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Direct oral anticoagulants (DOACs) are metabolized by CYP3A4 and/or transported by P-glycoprotein. Cyclosporine and tacrolimus can inhibit these pathways, potentially increasing DOAC exposure and bleeding risk. However, data on the relevance of these interactions in transplant recipients are limited. OBJECTIVES: We aimed to study DOAC doses, plasma level monitoring, and interactions with calcineurin inhibitors in transplant recipients. METHODS: We retrospectively (2013-2024) included all adults treated at the University Hospitals Leuven, Belgium, who received both a DOAC and tacrolimus or cyclosporine and had at least 1 DOAC plasma level measurement. DOAC concentrations were compared with on-therapy ranges from phase 3 trials. Levels exceeding the 95th percentile of peak ranges (for peak and intermediate samples) or trough ranges (for trough samples) were classified as above range. RESULTS: Among 495 patients with coprescription, 216 patients had 360 DOAC measurements. The median age was 66 years (IQR, 59-72). Lung (31%) and kidney (29%) transplants were the most common. DOAC dosing was consistent with product labeling in 73% of measurements. Samples were obtained at peak (12%), trough (58%), or intermediate intervals (30%). Overall, 11% of measurements were above range: 4% for edoxaban, 18% for apixaban, and 20% for rivaroxaban. Above-range levels were associated with concomitant strong CYP3A4 or P-glycoprotein inhibitors, lower body weight, lower estimated glomerular filtration rate, cyclosporine use, and DOAC type. CONCLUSION: In transplant recipients selected for DOAC plasma level monitoring, above-range DOAC concentrations were observed in a minority of patients but were more frequent among those with strong CYP3A4 or P-glycoprotein inhibitors, lower body weight, impaired kidney function, or cyclosporine use.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_38
+position_id: pos-cf4730de
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Chronic pain affects over a quarter of Canadians and remains a leading cause of outpatient visits. It is prevalent in both adults and children, often persisting into adulthood, and imposes a significant economic burden exceeding $40 billion annually. Nonsteroidal anti-inflammatory drugs (NSAIDs) are widely used for pain management as a safer alternative to opioids. However, the safety and efficacy of NSAIDs are influenced by genetic factors, particularly cytochrome P450 (CYP) polymorphisms, which affect drug metabolism. The CYP2C9 enzyme metabolizes several NSAIDs, and genetic variations can lead to altered drug clearance, increasing the risk of adverse effects such as gastrointestinal bleeding. Pharmacogenomic (PGx) testing, including CYP2C9 genotyping, provides insights into individual drug response, aiding personalized pain management. Guidelines from the Clinical Pharmacogenetics Implementation Consortium (CPIC) recommend NSAID dose adjustments based on CYP2C9 genotype. Additionally, drug-gene interactions, drug-drug interactions, and phenoconversion further complicate the metabolism of NSAIDs. Phenoconversion, wherein drug-induced or disease-related changes alter an individual's metabolic phenotype independent of their genotype, can significantly impact the metabolism of NSAIDs and therapeutic outcomes, highlighting the need for dynamic clinical assessments. Integrating PGx testing into clinical practice can enhance the safety and efficacy of NSAIDs, reducing adverse effects and optimizing pain treatment. Further research is needed to explore additional genetic and environmental factors, including phenoconversion mechanisms, which influence responses to NSAIDs, paving the way for precision medicine in pain management.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_39
+position_id: pos-9acf02db
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Recent trials for treatments of direct oral anticoagulant (DOAC) related acute haemorrhage have highlighted incidences of post treatment thrombosis. Prothrombin complex concentrate (PCC) is widely used for reversal of anticoagulant associated bleeding, yet thrombotic risks following PCC administration, particularly for DOACs, remain incompletely characterised in real-world settings. METHODS: This retrospective observational study analysed thrombotic and survival outcomes in 682 patients that received PCC for OAC associated haemorrhage in the Belfast Health and Social Care Trust between 2015-2021. Patients were categorised by OAC type (warfarin, rivaroxaban, apixaban and edoxaban). Primary outcome was thrombotic event rate at 30 days, while secondary outcomes included 30- and 90day mortality and anticoagulation resumption rates. RESULTS: The cohort comprised 393 warfarin patients, 55 rivaroxaban, 221 apixaban and 13 edoxaban patients. Intracranial haemorrhage predominated (47-69% across DOAC groups vs. 49% warfarin). Thrombotic event rates were significantly higher in DOAC patients (rivaroxaban 13%, apixaban 8%, overall DOAC 8.7%) compared to warfarin (5%). Thirty-day mortality rates ranged from 13-23% across oral anticoagulant groups. Anticoagulation was resumed in only 29-47% of patients. CONCLUSIONS: The findings suggest that PCC may be as effective as specific antidotes for DOAC reversal. In the absence of universal access to specific reversal agents, PCC continues to serve an important role in managing life threatening anticoagulant associated haemorrhage. Systematic pathways for post reversal anticoagulation resumption should be implemented to optimise patient outcomes.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_04 / POSITION_40
+position_id: pos-7fa9c744
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Tramadol is a common pain medication used in practice across numerous specialties. Increased incidence of tramadol abuse and overdose in recent decades has led to it being classified as a controlled drug in several countries. Tramadol appears to be an increasingly popular drug of abuse, possibly related to ease of access to it on prescription, and its potential euphoric effects. We identified two cases of seizures directly related to tramadol exposure. We then reviewed recent literature on tramadol and its adverse effects, particularly looking at its effect on seizure risk and the incidence of seizures. We found that there were scarce recent studies on the relationship between tramadol and seizure risk. Of studies found, many were carried out in animal models. Tramadol-induced seizures were studied in humans more commonly in the context of overdose, and studies involving humans tended to have small patient cohorts and suggested further study in the area. We suggest that tramadol may be useful as part of multi-modal analgesia in moderate to severe pain in specific contexts, but that greater awareness of its potential adverse effects, and particularly its potential to lower seizure threshold, is warranted. We feel that more readily available information specifically about tramadol's effects on seizure threshold may be of interest to colleagues from any specialty prescribing opioid analgesia on a regular basis, but that colleagues treating patients with seizure disorders should be particularly aware of these potential adverse effects.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION

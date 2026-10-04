@@ -1,0 +1,52 @@
+{
+  "integrity_pass": false,
+  "records": 530,
+  "duplicates": 0,
+  "stale_documents": [
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\MASTER_RESEARCH_EXECUTION_PROGRESS_V1.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\MASTER_RESEARCH_EXECUTION_PROGRESS_V2.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\MASTER_RESEARCH_TASK_REGISTER_V1.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\MASTER_RESEARCH_TASK_REGISTER_V2.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\ROADMAP_NEXT_GATE_V1.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\documentation\\architecture\\ROADMAP_NEXT_GATE_V2.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\audits\\post_track_a_v1\\TRACK_A_POST_COMPLETION_FORENSIC_AUDIT_V1.md",
+      "match": "499 remaining",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\audits\\post_track_a_v1\\TRACK_A_POST_COMPLETION_FORENSIC_AUDIT_V1.md",
+      "match": "141 / 530",
+      "status": "STALE_STATUS_DOCUMENT"
+    },
+    {
+      "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\decision_batches\\TRACK_A_A_BATCH_004_POST_COMMIT_QC.md",
+      "match": "141 / 530",
+      "status": "STALE_STATUS_DOCUMENT"
+    }
+  ]
+}

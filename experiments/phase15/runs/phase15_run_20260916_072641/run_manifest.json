@@ -1,0 +1,10 @@
+{
+  "run_id": "phase15_run_20260916_072641",
+  "dataset_hash": "af71c70d36081b1b68316b5ff8636969c8b964c9655f752b41112694ebc02c48",
+  "expected_cases": 200,
+  "model_identifier": "gemini-3.1-pro-preview",
+  "provider": "google",
+  "execution_mode": "PREFLIGHT",
+  "timestamp": "2026-09-16T07:26:42.054855+00:00",
+  "status": "PREFLIGHT_PASS"
+}

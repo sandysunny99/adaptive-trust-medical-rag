@@ -1,0 +1,72 @@
+{
+  "audit_timestamp": "2026-10-02T05:57:00Z",
+  "scope": "FULL_GATE5_PROTOCOL_CONFORMANCE",
+
+  "requirements": {
+    "A_all_authorized_cases_executed": {
+      "observed": true,
+      "status": "PASS",
+      "evidence": "92 records in GATE5_FULL_RESULTS.jsonl = 23 cases x 2 modes x 2 runs"
+    },
+    "B_both_retrieval_modes_executed": {
+      "observed": "PARTIALLY",
+      "status": "FAIL",
+      "evidence": "Baseline executed with synthetic mock adapter. Cognee was invoked (cognee.add + cognee.cognify + cognee.search) but cognify failed to build searchable state, so cognee.search returned NoDataError for all queries. The BridgedCogneeAdapter operated on precomputed empty cache, not live search results.",
+      "deviation": "Cognee retrieval mode was executed in the sense that code paths were invoked, but no Cognee candidate was ever successfully retrieved or evaluated."
+    },
+    "C_positive_controls_successfully_exercised": {
+      "observed": "BASELINE_ONLY",
+      "status": "FAIL",
+      "evidence": "POS-01 and POS-02 achieved RELEASE on Baseline. Both achieved BLOCK on Cognee due to 0 candidates (NoDataError fallback).",
+      "deviation": "Positive controls were NOT successfully exercised on the Cognee path."
+    },
+    "D_security_threats_actually_exercised": {
+      "observed": "BASELINE_ONLY",
+      "status": "FAIL",
+      "evidence": "INT-01 (tamper), INT-02 (provenance manipulation), META-01 (poisoning=0.99), PI-01 (injection) all exercised on Baseline with real candidates. On Cognee, all returned 0 candidates, so TamperingRetrievalWrapper had nothing to tamper.",
+      "deviation": "No tamper/injection/poisoning scenario was exercised against a real Cognee-retrieved candidate."
+    },
+    "E_RG02_exercised_through_actual_retrieval": {
+      "observed": "BASELINE_ONLY",
+      "status": "FAIL",
+      "evidence": "RG-02 was retrieved and evaluated on Baseline (UNVERIFIABLE + MISMATCH + BLOCK). On Cognee, 0 candidates returned.",
+      "deviation": "RG-02 grounding was not exercised on a Cognee candidate."
+    },
+    "F_cognee_trusted_evidence_crossed_identity_bridge": {
+      "observed": false,
+      "status": "FAIL",
+      "evidence": "No Cognee candidate was ever returned, so the BridgedCogneeAdapter's identity/provenance bridge (lines 156-192) was never exercised with real data.",
+      "deviation": "The identity bridge was structurally present in the code but never executed with a real Cognee search result."
+    },
+    "G_expected_outcomes_compared_with_observed": {
+      "observed": true,
+      "status": "PASS_WITH_CAVEAT",
+      "evidence": "The script compared POS-02 RELEASE, RG-02 BLOCK, CTRL-UNSUPPORTED BLOCK, CTRL-CONTRADICTION BLOCK. POS-02 failed (BLOCK on Cognee path), causing the overall status to be FAILED_WITH_LIMITATIONS.",
+      "deviation": "The comparison was correctly implemented but the expected outcome for Cognee POS-02 was never achievable given the empty graph."
+    },
+    "H_no_mandatory_step_replaced_by_cached_behavior": {
+      "observed": false,
+      "status": "FAIL",
+      "evidence": "Lines 368-375 precompute all Cognee search results into a dict before case execution. Lines 139-145 show BridgedCogneeAdapter.retrieve() reads from this precomputed dict, never calling cognee.search() at case execution time. This is a cache-based substitution of the live retrieval step.",
+      "deviation": "PROTOCOL VIOLATION: The Cognee retrieval step was replaced by a precomputed cache lookup. Even if the cache had contained real results, the architecture would still be cache-based rather than live-per-case."
+    },
+    "I_artifact_validation_independently_passed": {
+      "observed": true,
+      "status": "PASS",
+      "evidence": "scratch_validation.py confirmed all 10 artifacts present, 92 records counted."
+    },
+    "J_reproducibility_contract_satisfied": {
+      "observed": "ARITHMETICALLY_YES_EXPERIMENTALLY_NO",
+      "status": "FAIL",
+      "evidence": "100% match across runs. But for Cognee, this means 'same empty failure repeated', not 'same successful retrieval repeated'. For Baseline, it means 'same deterministic mock repeated'. Neither constitutes meaningful retrieval reproducibility.",
+      "deviation": "The reproducibility contract is satisfied in letter but not in spirit."
+    }
+  },
+
+  "conformance_summary": {
+    "requirements_passed": ["A", "I"],
+    "requirements_passed_with_caveat": ["G"],
+    "requirements_failed": ["B", "C", "D", "E", "F", "H", "J"],
+    "overall": "FULL_EXECUTION_PATH_FAILED_WITH_LIMITATIONS"
+  }
+}

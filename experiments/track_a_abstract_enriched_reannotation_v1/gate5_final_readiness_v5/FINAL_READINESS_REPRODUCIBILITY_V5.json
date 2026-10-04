@@ -1,0 +1,8 @@
+{
+  "DECISION_EXACT_MATCH": true,
+  "RETRIEVAL_EXACT_MATCH": true,
+  "SECURITY_CONTRACT_EXACT_MATCH": true,
+  "BASELINE_MATCH": true,
+  "COGNEE_MATCH": true,
+  "evidence_source": "runtime_capture"
+}

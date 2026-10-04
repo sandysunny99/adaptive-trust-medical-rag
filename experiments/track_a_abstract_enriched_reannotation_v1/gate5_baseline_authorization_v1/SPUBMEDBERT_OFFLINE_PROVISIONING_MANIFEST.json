@@ -1,0 +1,52 @@
+{
+  "cache_path": "C:\\Users\\sunny/.cache/huggingface/hub/models--pritamdeka--S-PubMedBert-MS-MARCO",
+  "revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "provisioned_files": [
+    {
+      "name": "config.json",
+      "size": 666
+    },
+    {
+      "name": "config_sentence_transformers.json",
+      "size": 123
+    },
+    {
+      "name": "modules.json",
+      "size": 229
+    },
+    {
+      "name": "pytorch_model.bin",
+      "size": 438010289
+    },
+    {
+      "name": "README.md",
+      "size": 4557
+    },
+    {
+      "name": "sentence_bert_config.json",
+      "size": 53
+    },
+    {
+      "name": "special_tokens_map.json",
+      "size": 112
+    },
+    {
+      "name": "tokenizer.json",
+      "size": 460876
+    },
+    {
+      "name": "tokenizer_config.json",
+      "size": 388
+    },
+    {
+      "name": "vocab.txt",
+      "size": 226150
+    },
+    {
+      "name": "1_Pooling/config.json",
+      "size": 190
+    }
+  ],
+  "offline_available": true,
+  "evidence_source": "runtime_capture"
+}

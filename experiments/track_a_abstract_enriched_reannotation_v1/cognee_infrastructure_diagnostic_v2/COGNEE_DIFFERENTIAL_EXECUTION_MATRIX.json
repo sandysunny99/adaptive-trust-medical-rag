@@ -1,0 +1,82 @@
+{
+  "comparison": "ORIGINAL_GATE5 vs DIAGNOSTIC_TRIALS",
+  "trials": [
+    {
+      "name": "EXACT_GATE5_REPRODUCTION",
+      "dataset": "diag_v2_gate5_exact",
+      "prune_data": true,
+      "prune_system": true,
+      "fixture_count": 6,
+      "metadata_schema": "gate5",
+      "cognify_elapsed_s": 61.24,
+      "any_candidates": false,
+      "status": "FAIL_EMPTY_SEARCH"
+    },
+    {
+      "name": "NO_PRUNE_GATE5_FIXTURES",
+      "dataset": "diag_v2_noprune_1790923055",
+      "prune_data": false,
+      "prune_system": false,
+      "fixture_count": 6,
+      "metadata_schema": "gate5",
+      "cognify_elapsed_s": 47.04,
+      "any_candidates": true,
+      "status": "PASS"
+    },
+    {
+      "name": "PRUNE_DATA_ONLY",
+      "dataset": "diag_v2_prunedata_1790923055",
+      "prune_data": true,
+      "prune_system": false,
+      "fixture_count": 6,
+      "metadata_schema": "gate5",
+      "cognify_elapsed_s": 35.86,
+      "any_candidates": true,
+      "status": "PASS"
+    },
+    {
+      "name": "PRUNE_SYSTEM_ONLY",
+      "dataset": "diag_v2_prunesys_1790923055",
+      "prune_data": false,
+      "prune_system": true,
+      "fixture_count": 6,
+      "metadata_schema": "gate5",
+      "cognify_elapsed_s": 95.53,
+      "any_candidates": true,
+      "status": "PASS"
+    },
+    {
+      "name": "BOTH_PRUNE_ORIGINAL_DATASET_NAME",
+      "dataset": "gate5_dataset",
+      "prune_data": true,
+      "prune_system": true,
+      "fixture_count": 6,
+      "metadata_schema": "gate5",
+      "cognify_elapsed_s": 76.25,
+      "any_candidates": false,
+      "status": "FAIL_EMPTY_SEARCH"
+    },
+    {
+      "name": "MINIMAL_2DOC_CONTROL",
+      "dataset": "diag_v2_minimal_1790923055",
+      "prune_data": false,
+      "prune_system": false,
+      "fixture_count": 2,
+      "metadata_schema": "minimal",
+      "cognify_elapsed_s": 28.78,
+      "any_candidates": true,
+      "status": "PASS"
+    },
+    {
+      "name": "GATE5_FIXTURES_MINIMAL_META",
+      "dataset": "diag_v2_minmeta_1790923055",
+      "prune_data": false,
+      "prune_system": false,
+      "fixture_count": 6,
+      "metadata_schema": "minimal",
+      "cognify_elapsed_s": 42.23,
+      "any_candidates": true,
+      "status": "PASS"
+    }
+  ]
+}

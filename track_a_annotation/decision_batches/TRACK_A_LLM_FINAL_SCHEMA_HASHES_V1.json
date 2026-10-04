@@ -1,0 +1,6 @@
+{
+  "track_a_adjudication_schema_sha256": "1318e182c6aa660fa7065e249e516a65d4670d0d75237f0cba7b18c7038d1217",
+  "system_prompt_sha256": "f6433f2c57a830088c3cf70340349c271d6b03df17935d862dfb318483604bd3",
+  "adjudication_prompt_sha256": "374351cf42f177484b26962f92ffdca3ed1d6862a73211d714816b958610cab4",
+  "challenge_prompt_sha256": "9674f37f3da4422e0f7865f1d5ebe99482ec388ced45a05b06b6ca8a327f81fa"
+}

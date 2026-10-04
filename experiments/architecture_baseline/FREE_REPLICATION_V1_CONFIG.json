@@ -1,0 +1,13 @@
+{
+    "experiment_id": "FREE_REPLICATION_V1",
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b",
+    "failover": false,
+    "provider_immutable": true,
+    "runner_settings": {
+        "quota_aware_scheduler": true,
+        "daily_token_budget": 180000,
+        "checkpoint_file": "checkpoint_free_rep_v1.json",
+        "max_retries_5xx": 3
+    }
+}

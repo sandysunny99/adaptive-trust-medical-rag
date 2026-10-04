@@ -1,0 +1,127 @@
+{
+  "CASE_A": {
+    "query": "Does statin interact with aspirin?",
+    "candidate_text": "Statin interacts with aspirin.",
+    "query_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "candidate_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "source_entities": [
+      "atorvastatin",
+      "aspirin",
+      "statin"
+    ],
+    "candidate_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "source_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "grounding_status": "SUPPORTED",
+    "reason": "Relationship supported by source."
+  },
+  "CASE_B": {
+    "query": "Does statin interact with aspirin?",
+    "candidate_text": "Statin does not interact with aspirin.",
+    "query_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "candidate_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "source_entities": [
+      "atorvastatin",
+      "aspirin",
+      "statin"
+    ],
+    "candidate_relation_types": [
+      "INTERACTS_WITH",
+      "NOT_INTERACTS_WITH"
+    ],
+    "source_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "grounding_status": "CONTRADICTED",
+    "reason": "Candidate contradicts source relationship."
+  },
+  "CASE_C": {
+    "query": "Does statin interact with aspirin?",
+    "candidate_text": "No clinically significant pharmacokinetic interaction has been observed between the relevant drugs.",
+    "query_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "candidate_entities": [],
+    "source_entities": [
+      "atorvastatin",
+      "aspirin",
+      "statin"
+    ],
+    "candidate_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "source_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "grounding_status": "ENTITY_PAIR_MISMATCH",
+    "reason": "Candidate relation endpoints do not match query endpoints."
+  },
+  "CASE_D": {
+    "query": "Does statin interact with aspirin?",
+    "candidate_text": "Statin interacts with aspirin and causes a clinically significant interaction.",
+    "query_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "candidate_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "source_entities": [
+      "atorvastatin",
+      "aspirin",
+      "statin"
+    ],
+    "candidate_relation_types": [
+      "INTERACTS_WITH",
+      "ASSOCIATED_WITH"
+    ],
+    "source_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "grounding_status": "SUPPORTED",
+    "reason": "Relationship supported by source."
+  },
+  "CASE_E": {
+    "query": "Does statin interact with aspirin?",
+    "candidate_text": "Statin and aspirin are mentioned together, but no interaction is described.",
+    "query_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "candidate_entities": [
+      "aspirin",
+      "statin"
+    ],
+    "source_entities": [
+      "atorvastatin",
+      "aspirin",
+      "statin"
+    ],
+    "candidate_relation_types": [
+      "INTERACTS_WITH",
+      "NOT_INTERACTS_WITH"
+    ],
+    "source_relation_types": [
+      "INTERACTS_WITH"
+    ],
+    "grounding_status": "CONTRADICTED",
+    "reason": "Candidate contradicts source relationship."
+  }
+}

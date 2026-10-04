@@ -1,0 +1,75 @@
+{
+  "artifact_validation_status": "PASSED",
+  "checks": [
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 8816,
+      "valid_jsonl": true,
+      "record_count": 27
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_RELATIONSHIP_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 656,
+      "valid_jsonl": true,
+      "record_count": 2
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_INTEGRITY_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 2000,
+      "valid_jsonl": true,
+      "record_count": 6
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_PROMPT_INJECTION_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 656,
+      "valid_jsonl": true,
+      "record_count": 2
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_PROVENANCE_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 626,
+      "valid_jsonl": true,
+      "record_count": 2
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_POISONING_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 660,
+      "valid_jsonl": true,
+      "record_count": 2
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_POSITIVE_CONTROL_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 1316,
+      "valid_jsonl": true,
+      "record_count": 4
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_COGNEE_OFF_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 2902,
+      "valid_jsonl": true,
+      "record_count": 9
+    },
+    {
+      "file": "COGNEE_GATE5_FINAL_VERIFICATION_V2_REPRODUCIBILITY_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 5914,
+      "valid_jsonl": true,
+      "record_count": 18
+    },
+    {
+      "file": "../../data/evidence/COGNEE_GATE5_TRUSTED_SOURCE_MANIFEST_V1.jsonl",
+      "exists": true,
+      "size_bytes": 1601,
+      "valid_jsonl": true,
+      "record_count": 5
+    }
+  ]
+}

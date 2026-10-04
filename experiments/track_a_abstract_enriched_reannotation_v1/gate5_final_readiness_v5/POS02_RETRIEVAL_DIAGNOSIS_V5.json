@@ -1,0 +1,9 @@
+{
+  "case_id": "POS-02",
+  "query": "Does statin interact with aspirin?",
+  "frozen_corpus_analysis": "POS02_SUPPORTING_EVIDENCE_ABSENT",
+  "retrieval_status": "RETRIEVAL_FAILURE_EXPECTED",
+  "diagnosis": "The frozen corpus contains 0 chunks mentioning 'statin'. It is mathematically impossible for any retrieval system (BM25, Dense, Graph) to successfully retrieve Statin-Aspirin evidence when it does not exist in the corpus. This represents a POS02_CORPUS_PROTOCOL_GAP rather than a retrieval engine defect.",
+  "security_containment": "SECURITY_BLOCK",
+  "security_reason": "The orchestrator successfully intercepted the irrelevant Warfarin-Aspirin candidates using V2 RelationshipGroundingValidator which flagged ENTITY_PAIR_MISMATCH."
+}

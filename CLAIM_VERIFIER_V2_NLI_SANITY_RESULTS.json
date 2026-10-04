@@ -1,0 +1,58 @@
+[
+  {
+    "id": "PAIR_01",
+    "premise": "Atorvastatin interacts with aspirin.",
+    "hypothesis": "Atorvastatin interacts with aspirin.",
+    "entailment_score": 0.9997665286064148,
+    "contradiction_score": 0.00017975452647078782,
+    "neutral_score": 5.375767796067521e-05,
+    "predicted_label": "entailment",
+    "model_id": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "model_revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+    "tokenizer": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "max_length": 512,
+    "inference_timestamp": "2026-10-02T00:00:00Z"
+  },
+  {
+    "id": "PAIR_02",
+    "premise": "No clinically significant pharmacokinetic drug-drug interactions have been observed.",
+    "hypothesis": "Atorvastatin interacts with aspirin.",
+    "entailment_score": 0.0004956317716278136,
+    "contradiction_score": 0.9992483258247375,
+    "neutral_score": 0.00025603818357922137,
+    "predicted_label": "contradiction",
+    "model_id": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "model_revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+    "tokenizer": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "max_length": 512,
+    "inference_timestamp": "2026-10-02T00:00:00Z"
+  },
+  {
+    "id": "PAIR_03",
+    "premise": "No clinically significant pharmacokinetic drug-drug interactions have been observed.",
+    "hypothesis": "Atorvastatin may require evaluation for interactions.",
+    "entailment_score": 0.9517320394515991,
+    "contradiction_score": 0.04806571081280708,
+    "neutral_score": 0.00020228508219588548,
+    "predicted_label": "entailment",
+    "model_id": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "model_revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+    "tokenizer": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "max_length": 512,
+    "inference_timestamp": "2026-10-02T00:00:00Z"
+  },
+  {
+    "id": "PAIR_04",
+    "premise": "No clinically significant pharmacokinetic drug-drug interactions have been observed.",
+    "hypothesis": "No clinically significant pharmacokinetic interaction was observed.",
+    "entailment_score": 0.9998107552528381,
+    "contradiction_score": 5.907371814828366e-05,
+    "neutral_score": 0.00013017983292229474,
+    "predicted_label": "entailment",
+    "model_id": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "model_revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+    "tokenizer": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+    "max_length": 512,
+    "inference_timestamp": "2026-10-02T00:00:00Z"
+  }
+]

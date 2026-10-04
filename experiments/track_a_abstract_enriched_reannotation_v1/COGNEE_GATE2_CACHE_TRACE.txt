@@ -1,0 +1,119 @@
+=== COGNEE CACHE TRACE ===
+Traceback (most recent call last):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 1550, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 1467, in get_hf_file_metadata
+    r = _request_wrapper(
+        ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 283, in _request_wrapper
+    response = _request_wrapper(
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 306, in _request_wrapper
+    response = http_backoff(method=method, url=url, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\utils\_http.py", line 307, in http_backoff
+    response = session.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\requests\sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\requests\sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\utils\_http.py", line 107, in send
+    raise OfflineModeIsEnabled(
+huggingface_hub.errors.OfflineModeIsEnabled: Cannot reach https://huggingface.co/fastino/gliner2.5-base-v1/resolve/main/config.json: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\api\v1\cognify\cognify.py", line 510, in cognify
+    result = await pipeline_executor_func(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\layers\pipeline_execution_mode.py", line 46, in run_pipeline_blocking
+    async for run_info in agen:
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\pipeline.py", line 99, in run_pipeline
+    async for run_info in run_pipeline_per_dataset(
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\pipeline.py", line 166, in run_pipeline_per_dataset
+    async for run_info in _drive_marking_held(dataset.id, _run_body()):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\pipeline.py", line 45, in _drive_marking_held
+    item = await source.__anext__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\pipeline.py", line 150, in _run_body
+    async for pipeline_run_info in pipeline_run:
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks.py", line 210, in run_tasks
+    gathered = await asyncio.gather(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks.py", line 185, in _run_item
+    return await run_tasks_data_item(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_data_item.py", line 400, in run_tasks_data_item
+    result = await _drain_item_events(events, ctx, tasks, pipeline_run_id, progress_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_data_item.py", line 102, in _drain_item_events
+    async for item in events:
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_data_item.py", line 213, in run_tasks_data_item_incremental
+    async for result in run_tasks_with_telemetry(
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_with_telemetry.py", line 36, in run_tasks_with_telemetry
+    async for result in run_tasks_base(tasks, data, user, ctx):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_base.py", line 280, in run_tasks_base
+    async for result in handle_task(
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_base.py", line 223, in handle_task
+    async for result in run_tasks_base(leftover_tasks, result_data, user, ctx):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_base.py", line 280, in run_tasks_base
+    async for result in handle_task(
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\operations\run_tasks_base.py", line 205, in handle_task
+    async for result_data in running_task.execute(args, kwargs, next_task_batch_size):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\tasks\task.py", line 340, in execute
+    async for result in self._execute_method(args, kwargs, batch_size):
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\modules\pipelines\tasks\task.py", line 318, in execute_coroutine
+    task_result = await self.run(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\tasks\graph\gliner_demo\tasks.py", line 120, in prepare_gliner_schema
+    extractor = await get_extractor(model_name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\tasks\graph\gliner_demo\extractor.py", line 112, in get_extractor
+    return await asyncio.to_thread(load_extractor, model_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\AppData\Local\Programs\Python\Python312\Lib\asyncio\threads.py", line 25, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\AppData\Local\Programs\Python\Python312\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\tasks\graph\gliner_demo\extractor.py", line 105, in load_extractor
+    extractor = AutoExtractor.from_pretrained(model_name)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\gliner2\auto.py", line 105, in from_pretrained
+    config = _load_config(pretrained_model_name_or_path, hub_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\gliner2\auto.py", line 135, in _load_config
+    config_file = checkpoint_file(str(path), "config.json", hub_kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\gliner2\models\loading.py", line 76, in checkpoint_file
+    return hf_hub_download(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\utils\_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 1014, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 1121, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\huggingface_hub\file_download.py", line 1665, in _raise_on_head_call_error
+    raise LocalEntryNotFoundError(
+huggingface_hub.errors.LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sunny\Downloads\CASE STUDY\scratch\cognee_cache_trace.py", line 31, in main
+    await cognee.cognify()
+  File "C:\Users\sunny\Downloads\CASE STUDY\.venv_cognee\Lib\site-packages\cognee\api\v1\cognify\cognify.py", line 539, in cognify
+    raise _wrap_cognify_exception(error, datasets) from error
+cognee.modules.pipelines.exceptions.exceptions.CognifyFailedError: CognifyFailedError: Cognify failed: LocalEntryNotFoundError: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on. | Pass raise_on_error=False to get the original exception instead. (Status code: 422)

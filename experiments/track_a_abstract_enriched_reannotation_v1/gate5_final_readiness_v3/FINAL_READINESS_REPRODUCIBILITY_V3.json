@@ -1,0 +1,38 @@
+{
+  "decision_exact_match": true,
+  "retrieval_exact_match": true,
+  "security_contract_exact_match": true,
+  "per_case": [
+    {
+      "case": "POS-01",
+      "status_match": true,
+      "gate_decision_match": true,
+      "candidate_count_match": true,
+      "candidate_ids_match": true,
+      "eligibility_match": true,
+      "eligible_count_match": true,
+      "injection_decision_match": true
+    },
+    {
+      "case": "POS-02",
+      "status_match": true,
+      "gate_decision_match": true,
+      "candidate_count_match": true,
+      "candidate_ids_match": true,
+      "eligibility_match": true,
+      "eligible_count_match": true,
+      "injection_decision_match": true
+    },
+    {
+      "case": "RG-02",
+      "status_match": true,
+      "gate_decision_match": true,
+      "candidate_count_match": true,
+      "candidate_ids_match": true,
+      "eligibility_match": true,
+      "eligible_count_match": true,
+      "injection_decision_match": true
+    }
+  ],
+  "evidence_source": "runtime_capture"
+}

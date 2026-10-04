@@ -1,0 +1,31 @@
+{
+  "protocol_case_count": 23,
+  "executed_unique_case_count": 23,
+  "cognee_run1_count": 23,
+  "cognee_run2_count": 23,
+  "baseline_count": 23,
+  "total_runtime_evaluations": 69,
+  "decision_reproducibility": "DIFFERENCE",
+  "retrieval_reproducibility": "OBSERVED_RETRIEVAL_EXACT_MATCH",
+  "full_reproducibility": "NOT_ESTABLISHED",
+  "rg02": {
+    "expected": "BLOCK",
+    "actual": "RELEASE",
+    "status": "FAILED"
+  },
+  "prov06": {
+    "expected": "RELEASE",
+    "actual": "RELEASE",
+    "conforms": true
+  },
+  "pos02": {
+    "retrieval_result": "CONTAMINATED",
+    "security_result": "BLOCK",
+    "protocol_conformance": true
+  },
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "FAILED_WITH_LIMITATIONS",
+  "protocol_conformance_status": "PASSED",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED"
+}

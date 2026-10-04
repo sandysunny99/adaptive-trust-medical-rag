@@ -1,13 +1,13 @@
 {
-  "corpus_version": "1.0.0",
-  "total_documents": 4,
+  "corpus_version": "2.0.0",
+  "total_documents": 5,
   "documents": [
     {
       "document_id": "doc-fda-metformin",
       "title": "FDA Prescribing Information: Metformin Hydrochloride",
       "source": "FDA Label",
       "source_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/metformin.pdf",
-      "authority_tier": "tier_1_peer_reviewed",
+      "authority_tier": "tier_1_regulatory",
       "authority_score": 1.0,
       "publication_date": "2023-01-15",
       "reputation_score": 0.98,
@@ -43,7 +43,7 @@
       "title": "FDA Safety Alert: Haloperidol and Azithromycin Co-administration",
       "source": "FDA Drug Safety Communication",
       "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-qt-prolongation",
-      "authority_tier": "tier_1_peer_reviewed",
+      "authority_tier": "tier_1_regulatory",
       "authority_score": 0.98,
       "publication_date": "2023-05-20",
       "reputation_score": 0.96,
@@ -62,7 +62,7 @@
       "title": "FDA Black Box Warning: Spironolactone Hyperkalemia Risk",
       "source": "FDA Prescribing Information",
       "source_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/spironolactone.pdf",
-      "authority_tier": "tier_1_peer_reviewed",
+      "authority_tier": "tier_1_regulatory",
       "authority_score": 1.0,
       "publication_date": "2023-11-01",
       "reputation_score": 0.99,
@@ -74,7 +74,27 @@
         "spironolactone",
         "potassium"
       ]
+    },
+    {
+      "document_id": "doc-fda-atorvastatin",
+      "title": "FDA Prescribing Information: Atorvastatin Calcium",
+      "source": "FDA Label",
+      "source_url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/atorvastatin.pdf",
+      "authority_tier": "tier_1_regulatory",
+      "authority_score": 1.0,
+      "publication_date": "2023-04-10",
+      "reputation_score": 0.98,
+      "poisoning_score": 0.0,
+      "chunk_id": "chunk-atorvastatin-001",
+      "text": "Atorvastatin (a statin) and aspirin are frequently co-administered for the secondary prevention of cardiovascular events. No clinically significant pharmacokinetic drug-drug interactions have been observed when atorvastatin is co-administered with aspirin.",
+      "entity_ids": [
+        "RxCUI:83367",
+        "RxCUI:1191",
+        "atorvastatin",
+        "statin",
+        "aspirin"
+      ]
     }
   ],
-  "manifest_sha256": "43ac6bb45c7010f6296f9f958d731fdd2a0bee2959e58aa2e3bb77a0290fa5cd"
+  "manifest_sha256": "73fa15f2c13a7be862a076c8184f34b4abdc899f39fe2e1a6afdf21375982e39"
 }

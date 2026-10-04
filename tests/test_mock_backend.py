@@ -79,6 +79,8 @@ def test_factory_raises_on_invalid_config(monkeypatch):
     monkeypatch.setenv("GEMINI_API_KEY", "")
     monkeypatch.setenv("GROQ_API_KEY", "")
     monkeypatch.setenv("HF_TOKEN", "")
+    monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "")
+    monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "")
     with pytest.raises(ConfigurationError):
         get_backend()
     monkeypatch.setenv("GEMINI_API_KEY", "dummy")

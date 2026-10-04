@@ -1,0 +1,75 @@
+[
+  {
+    "event": "INTRODUCTION",
+    "date": "2026-08-23",
+    "commit": "ea9735570ff7e40e6e03e441df6b59dcd4ab05f2",
+    "commit_message": "feat(evaluation): replace mock ablation engine with real live Medical RAG execution pipeline",
+    "file": "src/adaptive_trust_medical_rag/evaluation/live_variants.py",
+    "description": "SimpleEmbeddingModel introduced as a 7-word deterministic mock alongside SimpleLLMBackend. Part of a replacement of the old mock ablation engine with a real live execution pipeline. No SentenceTransformer or RealEmbeddingModel existed in this file.",
+    "labels_used": ["class SimpleEmbeddingModel"],
+    "vocabulary": ["metformin", "aspirin", "warfarin", "dosage", "mechanism", "renal", "indication"],
+    "evidence_source": "manual_analysis"
+  },
+  {
+    "event": "USED_IN_EXPERIMENT",
+    "date": "2026-08-27",
+    "commit": "4a704f5c8fa9036c2f85ad9ef9b4a5b244e0738d",
+    "commit_message": "feat(f0-f1-v2): real case-level evidence experiment, integrity auditor, forensic audit",
+    "file": "src/adaptive_trust_medical_rag/evaluation/live_variants.py",
+    "description": "SimpleEmbeddingModel used in the f0-f1-v2 experiment. The experiment manifest (experiments/runs/f0-f1-v2/manifest.json) records pipeline_mode as DETERMINISTIC-MOCK.",
+    "evidence_source": "manual_analysis"
+  },
+  {
+    "event": "REAL_EMBEDDING_INTRODUCED_IN_EXPERIMENT_SCRIPTS",
+    "date": "2026-09-11",
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "commit_message": "feat: complete Phase 14.7 resilient routing architecture",
+    "files": [
+      "scripts/run_fusion_evaluation.py",
+      "scripts/run_cross_encoder_fusion.py",
+      "scripts/run_biomedical_fusion.py",
+      "scripts/run_screening.py",
+      "scripts/run_screening_v2.py",
+      "scripts/run_e1_phase2c.py",
+      "scripts/run_baseline_phase2c.py",
+      "scripts/run_v3_1.py",
+      "scripts/run_v3_confirmation.py",
+      "scripts/run_v3_confirmed.py",
+      "scripts/run_diagnostic.py"
+    ],
+    "description": "RealEmbeddingModel introduced using SentenceTransformer('pritamdeka/S-PubMedBert-MS-MARCO'). Used across all fusion evaluation and screening experiment scripts. HOWEVER, in the SAME commit, scripts/run_retrieval_baseline.py and scripts/run_baseline_v2_1.py were created using SimpleEmbeddingModel instead of RealEmbeddingModel.",
+    "model_name": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "alternative_model_evaluated": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+    "cross_encoder": "ncbi/MedCPT-Cross-Encoder",
+    "evidence_source": "manual_analysis"
+  },
+  {
+    "event": "EXPERIMENT_RESULTS_RECORDED_WITH_REAL_EMBEDDING",
+    "date": "2026-09-11",
+    "commit": "1b54194c355a466aa65940d955fad29bb873f683",
+    "files": [
+      "experiments/runs/fusion-evaluation-v3-real/manifest.json",
+      "experiments/runs/fusion-evaluation-v3-confirmed/manifest.json"
+    ],
+    "description": "Experiment manifests explicitly record embedding_model as pritamdeka/S-PubMedBert-MS-MARCO. These are the only experiment manifests that name a specific embedding model.",
+    "recorded_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "evidence_source": "manual_analysis"
+  },
+  {
+    "event": "ARCHITECTURE_SNAPSHOT_CREATED",
+    "date": "2026-09-13",
+    "commit": "b18461df0f96d45fc2e8378c005e2f872f3e792e",
+    "commit_message": "docs: setup Phase 14.5 guardrail evaluation protocols and audits",
+    "file": "experiments/architecture_baseline/CURRENT_ARCHITECTURE_SNAPSHOT.md",
+    "description": "CURRENT_ARCHITECTURE_SNAPSHOT.md created. Lists 'Dense (SimpleEmbeddingModel)' as the dense channel. This document is DESCRIPTIVE (captures current code state) not NORMATIVE (does not prescribe the intended baseline). It was generated alongside the guardrail evaluation protocols.",
+    "document_type": "DESCRIPTIVE_SNAPSHOT_NOT_NORMATIVE_PROTOCOL",
+    "evidence_source": "manual_analysis"
+  },
+  {
+    "event": "ARCHITECTURE_DOC_SPECIFIES_768_DIM",
+    "date": "pre-2026-09-11",
+    "file": "docs/ARCHITECTURE.md",
+    "description": "The project ARCHITECTURE.md specifies 'evidence_chunks' table with 768-dimensional embeddings (VECTOR(768)) and IVFFlat vector index. S-PubMedBert-MS-MARCO produces 768-dim vectors. SimpleEmbeddingModel produces 7-dim vectors. This is an implicit mismatch.",
+    "evidence_source": "manual_analysis"
+  }
+]

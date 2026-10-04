@@ -1,0 +1,8 @@
+{
+  "rg02_focused_result": "PASSED",
+  "positive_controls": "PASSED",
+  "regression_tests": "PASSED",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "ready_for_gate5_rerun": true
+}

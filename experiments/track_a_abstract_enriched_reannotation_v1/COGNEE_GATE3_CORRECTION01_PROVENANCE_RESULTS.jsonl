@@ -1,0 +1,21 @@
+{"test_case": "A. complete CHUNKS result", "candidate_index": 0, "document_id": "6545fe33-784c-4353-8d20-fdc2d97ebe86", "chunk_id": "7decd3d2-a5ff-52f6-b024-a490497a6513", "provenance_status": "FULL"}
+{"test_case": "A. complete CHUNKS result", "candidate_index": 1, "document_id": "6e8e2a37-ee62-47b2-a3ee-508495ca789b", "chunk_id": "554bfe02-d6ce-5903-acfb-7d8f2db7bbf3", "provenance_status": "FULL"}
+{"test_case": "A. complete CHUNKS result", "candidate_index": 2, "document_id": "2f46b898-59bd-4c3a-a52e-7f38845be557", "chunk_id": "b9b7ff18-9532-5e59-801b-cf69a23f21a6", "provenance_status": "FULL"}
+{"test_case": "A. complete CHUNKS result", "candidate_index": 3, "document_id": "46d5d2ad-a73f-44ac-841c-cbca7b2a6871", "chunk_id": "e255ac89-48e8-5466-b8f4-b7ab948d10b0", "provenance_status": "FULL"}
+{"test_case": "A. complete CHUNKS result", "candidate_index": 4, "document_id": "a5f5ca95-2687-4252-a3d5-33c06fe626f3", "chunk_id": "5ef0463e-df72-56d0-b485-ed40d6c43090", "provenance_status": "FULL"}
+{"test_case": "B. complete HYBRID result", "candidate_index": 0, "document_id": "hybrid_compound_39d0c34e-aae6-523a-922a-f160752e7428", "chunk_id": "hybrid_compound_39d0c34e-aae6-523a-922a-f160752e7428", "provenance_status": "PROVENANCE_PARTIAL"}
+{"test_case": "C. missing metadata", "candidate_index": 0, "document_id": "6545fe33-784c-4353-8d20-fdc2d97ebe86", "chunk_id": "7decd3d2-a5ff-52f6-b024-a490497a6513", "provenance_status": "FULL"}
+{"test_case": "C. missing metadata", "candidate_index": 1, "document_id": "6e8e2a37-ee62-47b2-a3ee-508495ca789b", "chunk_id": "554bfe02-d6ce-5903-acfb-7d8f2db7bbf3", "provenance_status": "FULL"}
+{"test_case": "C. missing metadata", "candidate_index": 2, "document_id": "2f46b898-59bd-4c3a-a52e-7f38845be557", "chunk_id": "b9b7ff18-9532-5e59-801b-cf69a23f21a6", "provenance_status": "FULL"}
+{"test_case": "C. missing metadata", "candidate_index": 3, "document_id": "46d5d2ad-a73f-44ac-841c-cbca7b2a6871", "chunk_id": "e255ac89-48e8-5466-b8f4-b7ab948d10b0", "provenance_status": "FULL"}
+{"test_case": "C. missing metadata", "candidate_index": 4, "document_id": "a5f5ca95-2687-4252-a3d5-33c06fe626f3", "chunk_id": "5ef0463e-df72-56d0-b485-ed40d6c43090", "provenance_status": "FULL"}
+{"test_case": "D. missing chunk ID", "candidate_index": 0, "document_id": "6545fe33-784c-4353-8d20-fdc2d97ebe86", "chunk_id": "unknown", "provenance_status": "PROVENANCE_MISSING"}
+{"test_case": "D. missing chunk ID", "candidate_index": 1, "document_id": "6e8e2a37-ee62-47b2-a3ee-508495ca789b", "chunk_id": "554bfe02-d6ce-5903-acfb-7d8f2db7bbf3", "provenance_status": "FULL"}
+{"test_case": "D. missing chunk ID", "candidate_index": 2, "document_id": "2f46b898-59bd-4c3a-a52e-7f38845be557", "chunk_id": "b9b7ff18-9532-5e59-801b-cf69a23f21a6", "provenance_status": "FULL"}
+{"test_case": "D. missing chunk ID", "candidate_index": 3, "document_id": "46d5d2ad-a73f-44ac-841c-cbca7b2a6871", "chunk_id": "e255ac89-48e8-5466-b8f4-b7ab948d10b0", "provenance_status": "FULL"}
+{"test_case": "D. missing chunk ID", "candidate_index": 4, "document_id": "a5f5ca95-2687-4252-a3d5-33c06fe626f3", "chunk_id": "5ef0463e-df72-56d0-b485-ed40d6c43090", "provenance_status": "FULL"}
+{"test_case": "E. missing document ID", "candidate_index": 0, "document_id": "unknown", "chunk_id": "7decd3d2-a5ff-52f6-b024-a490497a6513", "provenance_status": "PROVENANCE_MISSING"}
+{"test_case": "E. missing document ID", "candidate_index": 1, "document_id": "6e8e2a37-ee62-47b2-a3ee-508495ca789b", "chunk_id": "554bfe02-d6ce-5903-acfb-7d8f2db7bbf3", "provenance_status": "FULL"}
+{"test_case": "E. missing document ID", "candidate_index": 2, "document_id": "2f46b898-59bd-4c3a-a52e-7f38845be557", "chunk_id": "b9b7ff18-9532-5e59-801b-cf69a23f21a6", "provenance_status": "FULL"}
+{"test_case": "E. missing document ID", "candidate_index": 3, "document_id": "46d5d2ad-a73f-44ac-841c-cbca7b2a6871", "chunk_id": "e255ac89-48e8-5466-b8f4-b7ab948d10b0", "provenance_status": "FULL"}
+{"test_case": "E. missing document ID", "candidate_index": 4, "document_id": "a5f5ca95-2687-4252-a3d5-33c06fe626f3", "chunk_id": "5ef0463e-df72-56d0-b485-ed40d6c43090", "provenance_status": "FULL"}

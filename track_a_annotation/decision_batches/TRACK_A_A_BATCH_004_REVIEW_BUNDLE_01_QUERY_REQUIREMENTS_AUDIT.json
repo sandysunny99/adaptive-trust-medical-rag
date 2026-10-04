@@ -1,0 +1,282 @@
+[
+  {
+    "Position": "pos-13ca8dc0",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-71c56f79",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-f8a6a54c",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-be2c3d93",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-fce9aed7",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-9b7d81e4",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-b66e91cc",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-f4d4d47c",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-c4839d51",
+    "Exact Query Group": 1,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "PASS",
+    "Corrected Requirements": "warfarin, aspirin"
+  },
+  {
+    "Position": "pos-3d27c5b0",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-023ac072",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-38321e44",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-bdbee728",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-d77341b4",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-5cc464f4",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-d0de21af",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-09d4924f",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-c1c56b3c",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-c5be96ab",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-d14b89a0",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-6b589a2b",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-76e041ab",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-e5ff8086",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-0744bfc1",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-b4c42a92",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-ac0d7421",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-8a095ad6",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-551a71b7",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-60ec8372",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-8511788b",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-d5d28b3e",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-0a4fc25b",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-858d12a9",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-e701e6b6",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-24d8926d",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-85c2e897",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-103fab76",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-312c2bfa",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-7f4a11a7",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  },
+  {
+    "Position": "pos-50e306ec",
+    "Exact Query Group": 2,
+    "Current Requirements": "warfarin, aspirin",
+    "Status": "FAIL -> corrected",
+    "Corrected Requirements": "fluconazole, warfarin"
+  }
+]

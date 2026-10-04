@@ -1,0 +1,25 @@
+{
+  "file": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\reconciliation\\canonical_v2\\TRACK_A_CANONICAL_REGISTRY_V2.json",
+  "type": "PID_BASED_DICT",
+  "top_level_keys_count": 530,
+  "pid_keys_count": 530,
+  "schema_fields": [
+    "position_id",
+    "reservation_status"
+  ],
+  "reported_committed": 0,
+  "reported_reserved": 0,
+  "reported_unreserved": 389,
+  "registry_candidates": [
+    {
+      "path": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\manifests\\TRACK_A_RESERVED_POSITIONS.json",
+      "size": 28239,
+      "entries": 140
+    },
+    {
+      "path": "c:\\Users\\sunny\\Downloads\\CASE STUDY\\track_a_annotation\\reconciliation\\canonical_v2\\TRACK_A_CANONICAL_REGISTRY_V2.json",
+      "size": 54452,
+      "entries": 530
+    }
+  ]
+}

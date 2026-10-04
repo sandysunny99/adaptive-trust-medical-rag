@@ -1,0 +1,5 @@
+{
+  "status": "BASELINE_EMBEDDING_UNSPECIFIED",
+  "model_name": "Unknown",
+  "reason": "SimpleEmbeddingModel is a 7-word mock. No authorized production embedding model is specified in the baseline architecture."
+}

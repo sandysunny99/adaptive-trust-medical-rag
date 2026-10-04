@@ -1,0 +1,20 @@
+{
+  "stage": "GATE_B",
+  "decision_id": "GATE_B_FINAL_HUMAN_DECISION",
+  "trust_option": "C",
+  "anti_injection_option": "A",
+  "decision_scope": "HISTORICAL_COMPATIBILITY",
+  "numerical_equivalence": "PRESERVED_FOR_SAFE_FROZEN_CORPUS",
+  "semantic_equivalence": "NOT_ESTABLISHED",
+  "implementation_equivalence": "NOT_ESTABLISHED",
+  "scientific_equivalence": "NOT_ESTABLISHED",
+  "r3_theoretical_status": "IMPASSABLE",
+  "r3_historical_status": "R3_HISTORICAL_IMPACT_UNVERIFIED",
+  "gate5_rerun_required": "NO_FOR_HISTORICAL_NUMERICAL_COMPATIBILITY",
+  "code_changed": "NO",
+  "historical_artifacts_changed": "NO",
+  "historical_artifacts_preserved": "YES",
+  "benchmark_executed": "NO",
+  "decision_timestamp": "2026-10-03T12:00:00+05:30",
+  "researcher_decision_status": "HUMAN_DECISION_RECORDED"
+}

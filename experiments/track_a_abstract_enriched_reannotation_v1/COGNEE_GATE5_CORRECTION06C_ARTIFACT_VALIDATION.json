@@ -1,0 +1,73 @@
+{
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "FAILED_WITH_LIMITATIONS",
+  "integrity_checks": [
+    {
+      "status": "PASSED",
+      "reason": "Cognee search log is strictly Cognee"
+    },
+    {
+      "status": "PASSED",
+      "reason": "42 Cognee calls confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "21 Baseline calls confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "63 runtime evaluations confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "21 reproducibility pairs confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "21 unique cases confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "4 unique positive controls confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "17 unique security cases confirmed"
+    },
+    {
+      "status": "PASSED",
+      "reason": "Reproducibility logic strictly enforces boolean matching and observation"
+    },
+    {
+      "status": "PASSED",
+      "reason": "Canonical C: repository tree verified"
+    }
+  ],
+  "experiment_checks": [
+    {
+      "status": "FAILED",
+      "reason": "RG-02 was NOT blocked. Known relationship grounding limitation exposed."
+    },
+    {
+      "status": "FAILED",
+      "reason": "Case POS-02 failed expectation (expected: RELEASE, actual: BLOCK)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Case POS-04 failed expectation (expected: RELEASE, actual: BLOCK)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Case RG-02 failed expectation (expected: BLOCK, actual: RELEASE)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Case INT-05 failed expectation (expected: BLOCK, actual: RELEASE)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Case PI-01 failed expectation (expected: BLOCK, actual: RELEASE)"
+    }
+  ],
+  "conflicts": []
+}

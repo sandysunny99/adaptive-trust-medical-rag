@@ -1,0 +1,19 @@
+# TRACK A CANONICAL STATE V2 SPAN RECONCILIATION
+
+PID:
+pos-85c2e897
+
+Issue:
+U+0020 vs U+00A0
+
+Historical span:
+PRESERVED
+
+Canonical span:
+EXACT SUBSTRING
+
+Normalization:
+WHITESPACE DIAGNOSTIC ONLY
+
+Scientific decision:
+UNCHANGED

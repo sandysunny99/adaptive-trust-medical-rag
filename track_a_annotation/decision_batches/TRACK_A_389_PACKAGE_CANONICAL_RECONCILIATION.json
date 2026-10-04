@@ -1,0 +1,8 @@
+{
+  "package_count": 389,
+  "canonical_count": 530,
+  "intersection": 389,
+  "package_only": 0,
+  "canonical_only": 141,
+  "all_package_pids_exist_in_canonical": true
+}

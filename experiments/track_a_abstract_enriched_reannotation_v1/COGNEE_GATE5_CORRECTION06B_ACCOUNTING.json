@@ -1,0 +1,40 @@
+{
+  "experimental_design": {
+    "unique_cases": 21,
+    "unique_positive_cases": 2,
+    "unique_security_cases": 19,
+    "cognee_runs": 2,
+    "baseline_runs": 1
+  },
+  "runtime_counts": {
+    "cognee_search_calls": 42,
+    "baseline_retrieval_calls": 21,
+    "cognee_case_executions": 42,
+    "baseline_case_executions": 21,
+    "total_runtime_case_records": 63
+  },
+  "cognee_retrieval_stats": {
+    "total_returned_results": 210,
+    "min_results_per_search": 5,
+    "max_results_per_search": 5,
+    "mean_results_per_search": 5.0,
+    "zero_result_calls": 0
+  },
+  "baseline_retrieval_stats": {
+    "total_returned_results": 21,
+    "min_results_per_search": 1,
+    "max_results_per_search": 1,
+    "mean_results_per_search": 1.0,
+    "zero_result_calls": 0
+  },
+  "positive_controls": {
+    "unique": 2,
+    "runtime_cognee": 4,
+    "runtime_baseline": 2
+  },
+  "security_cases": {
+    "unique": 19,
+    "runtime_cognee": 38,
+    "runtime_baseline": 19
+  }
+}

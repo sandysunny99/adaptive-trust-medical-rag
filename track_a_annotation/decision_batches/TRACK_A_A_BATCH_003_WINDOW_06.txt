@@ -1,0 +1,247 @@
+============================================================
+TRACK A HUMAN ANNOTATION WINDOW
+============================================================
+Batch ID: TRACK_A_A_BATCH_003
+Window: 06 of 06
+Window Record count: 10
+Batch Record count: 60
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_51
+position_id: pos-2fd215f0
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Severe QT prolongation (SQTP) induced by antipsychotics or antidepressants remains a major safety concern, yet real-world data on its incidence and outcomes are limited. OBJECTIVE: We assessed the incidence and outcomes of SQTP among antipsychotic and antidepressant users. METHODS: This retrospective study used multicenter electronic medical records in Taiwan. Patients receiving antipsychotics or antidepressants with baseline and follow-up electrocardiograms were included. SQTP was defined as a corrected QT interval of >500 ms or a >60 ms increase from baseline. Multivariate logistic regression identified risk factors for SQTP and its association with ventricular arrhythmias (VAs) and sudden cardiac death (SCD). RESULTS: This study included 28,892 antipsychotic and 14,634 antidepressant users. Antipsychotics with a known or conditional torsades de pointes risk and the antidepressant escitalopram (known torsades de pointes risk) showed a higher SQTP incidence than the control (alprazolam). Significant risk factors for SQTP included age >65 years, impaired cardiac/renal function, and electrolyte imbalance, especially hypokalemia. A graded dose-response relationship (P for trend < .001) was observed between hypokalemia severity and SQTP risk; this risk was amplified when combining high-risk antipsychotics with hypokalemia. SQTP was associated with an approximate 3-fold higher VA risk in both groups and a 2-fold SCD risk in antipsychotic users. CONCLUSION: Specific psychotropics (high-risk antipsychotics and escitalopram) increase SQTP risk, particularly in vulnerable patients. SQTP is strongly associated with higher VA and SCD risks. These findings underscore the importance of comprehensive risk assessment, correction of electrolyte abnormalities, and regular electrocardiographic monitoring in psychotropic drug users.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_52
+position_id: pos-33c679d3
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Osteoarthritis (OA) is a chronic degenerative joint disorder and a leading cause of pain and disability among the elderly. Traditional nonsteroidal anti-inflammatory drugs (NSAIDs), though effective in symptom relief, pose significant risks of gastrointestinal, cardiovascular, and renal complications, especially in long-term use. Polmacoxib (CG100649) is a newer NSAID with its dual inhibitory role on cyclooxygenase-2 (COX-2) and carbonic anhydrase (CA), planned to offer higher therapeutic efficacy and safety. This review critically examines the pharmacodynamic and pharmacokinetic properties of polmacoxib, along with its clinical efficacy and safety in OA and acute pain conditions. Clinical trials across phases I-III consistently show polmacoxib to be well tolerated and effective in pain relief and efficient improvement of the joint, with a safety profile comparable to or better than traditional COX-2 inhibitors like celecoxib. Recent trials also explore its role in combination therapies for acute pain management, including dental and postoperative settings, showing noninferiority to standard regimens and fewer adverse events. Its innovative mechanism and pharmacological profile support its potential as a next-generation NSAID for OA and pain management, particularly in populations at high risk for NSAID-induced adverse effects. Further larger long-term studies are warranted to confirm its medical benefits and broader therapeutic applications.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_53
+position_id: pos-f9f910f8
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+This study evaluated the influence of prior gabapentin administration, associated or not with integrative practices, on sedation scores, physiological parameters, and propofol requirement in cats sedated with dexmedetomidine undergoing elective orchiectomy. Forty healthy cats (3.76 ± 0.69 kg) were enrolled (T0) and randomized into four groups (n = 10). GAB group received gabapentin (100 mg administered orally) under standard housing, GAB-GCW group received the same treatment but was housed in a cat ward with integrative practices. Control groups received placebo in a cat ward with integrative practices (GCW) or standard housing (GC). After 120 minutes, all cats received dexmedetomidine (5 µg/kg IM). Heart rate (HR), respiratory rate (RR), systolic blood pressure (SBP), temperature and sedation scores were assessed before (T1) and 30 minutes after dexmedetomidine (T2). Propofol induction dose, recovery times and quality were recorded. In T1, GAB-GCW showed higher sedation scores [6 (3-9)] than GAB [3 (2-5)] and GC [3 (1-5)], but not GCW. In T2, GAB [9 (2-12)] and GAB-GCW [7.5 (5-12)] scored higher than GC and GCW. Propofol requirements were lower in GAB (4.2 ± 1.9 mg/kg) than GCW (6.8 ± 1.5 mg/kg) and GC (7.2 ± 2 mg/kg) but not GAB-GCW (5.4 ± 1.7 mg/kg). Gabapentin had no effect on physiological variables or recovery. In conclusion, 100 mg of gabapentin given 120 minutes before handling enhances dexmedetomidine sedation and provides a significant propofol-sparing effect for anesthetic induction in cats, while integrative practices independently influenced sedation but did not produce an additive effect when combined with gabapentin.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_54
+position_id: pos-878c4053
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Introduction Although opioids remain the standard of care for managing postsurgical pain, concerns persist regarding their safety, tolerability, and potential for addiction. Intravenous (IV) formulations of ketoprofen and tramadol have been widely available in numerous countries outside the United States and Canada. Methods This single-dose, single-center, double-blind, randomized study (n=185) evaluated the analgesic efficacy, dose-response relationship, duration of action, and safety of IV ketoprofen 50 mg (n=33) and 100 mg (n=31), IV tramadol 100 mg (n=33) and 150 mg (n=22), IV morphine 4 mg (n=33), and placebo (n=33) administered over two minutes upon the first occurrence of moderate-to-severe pain following surgical extraction of bony impacted mandibular third molars. Pain intensity and pain relief were assessed over eight hours. The primary efficacy endpoint was total pain relief over the first four hours (TOTPAR 0-4). Secondary efficacy endpoints included TOTPAR at additional time intervals, summed pain intensity difference (SPID), peak pain relief, peak pain intensity difference, time to rescue analgesia, patient global evaluation, and time to confirmed perceptible and meaningful pain relief. Safety assessments included volunteered and observed adverse events (AEs). Results For TOTPAR 0-4 and all other efficacy endpoints, IV ketoprofen 50 mg and 100 mg, and IV tramadol 100 mg and 150 mg were significantly superior to IV morphine 4 mg and placebo. IV ketoprofen at both doses also outperformed IV tramadol at both doses across the majority of outcome measures. No significant differences in efficacy were observed between IV morphine 4 mg and placebo. The proportion of subjects experiencing one or more AEs was comparable among the placebo, IV ketoprofen 50 mg, and IV ketoprofen 100 mg groups. In contrast, higher AE rates were reported in the IV tramadol and IV morphine groups relative to placebo. Dosing in the IV tramadol 150 mg group was discontinued early due to the occurrence of seizures in two patients (9%) immediately following administration. Conclusions Both IV ketoprofen and IV tramadol demonstrated superior analgesic efficacy compared to IV morphine and placebo in the management of postsurgical pain. Notably, IV ketoprofen consistently outperformed tramadol across efficacy endpoints. The lack of efficacy observed with IV morphine 4 mg raises concerns about potential analgesic assay insensitivity in postsurgical dental pain. The occurrence of seizures in subjects without known seizure risk factors highlights a potentially insufficient safety margin for tramadol in unselected patient populations.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_55
+position_id: pos-cbaac358
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Recombinant tissue-type plasminogen activators (rtPA) effectively dissolve blood clots and improve symptoms in patients with acute ischemic stroke and myocardial infraction. Although rtPA are used in patients taking antiplatelets or anticoagulants to improve clinical outcomes, combination therapy may increase the risk of hemorrhagic transformation (HT) and intracerebral hemorrhage (ICH). However, few studies have investigated the risk of HT and ICH associated with these combination therapies. This study aimed to investigate the adverse-event and drug-drug interaction signals for HT and ICH under combination therapy with alteplase and various antiplatelets or anticoagulants, using the Japanese Adverse Drug Event Report database. Adverse-event signals were evaluated using the reporting odds ratio and information components, and drug-drug interaction signals were studied using the Ω shrinkage measure, additive, multiplicative, and Chi-square statistics models. We also investigated predictors of HT and ICH, time-to-onset, and outcomes in patients receiving alteplase. HT and/or ICH signals were detected in patients receiving alteplase in combination with aspirin, P2Y12 inhibitors, cilostazol, ozagrel sodium, direct oral anticoagulants, warfarin potassium, heparin group, or argatroban. Hypertension and diabetes mellitus were significant risk factors for alteplase-induced HT. Most HT and ICH events occurred within 1 day after alteplase administration, and more than 60% of affected patients were not in recovery. In conclusion, continued monitoring is required in patients receiving alteplase in combination with any of the eight types of antiplatelets or the aforementioned anticoagulants. Additionally, the occurrence of HT or ICH within 1 day post-alteplase administration should be considered in patients with hypertension or diabetes mellitus. The findings from this study may help in understanding the risk of HT and ICH induced by rtPA in patients taking antiplatelet or anticoagulant medications, as well as in promoting the appropriate use of rtPA. Further prospective observational studies and randomized controlled trials are needed to assess these finding.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_56
+position_id: pos-6b51aa62
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+The current article demonstrates the clinical case of a 76-year-old man suffering from atrial fibrillation and encountering multiple thromboembolic events. Various novel anticoagulants in therapeutic doses were implemented and proved unsuccessful in preventing stroke, despite good compliance. Due to exclusion of alternative origins of thromboembolism and unfavorable interactions with the patient's medication, he was started on warfarin. He experienced a major intracranial hemorrhage, leading to cessation of antithrombotics for six weeks. Given the increased ischemic risk and scarcity of available options, he was scheduled for implantation of a Watchman left atrial appendage (LAA) occluder (Boston Scientific, Marlborough, MA, USA). Postprocedurally, the antithrombotic regimen comprised enoxaparin for six weeks, followed by dual antiplatelet therapy with aspirin and clopidogrel for six months once complete device endothelialization was confirmed, and finally lifelong aspirin monotherapy. To date, during a six-year follow-up period, the patient has not experienced hemorrhagic or thromboembolic events. Thus, our case report indicates that LAA occlusion could constitute a successful alternative method of stroke prevention in individuals with high ischemic risk despite optimal medical therapy or with contraindications to anticoagulation.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_57
+position_id: pos-41410b52
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Anticoagulant therapy is the cornerstone of stroke prevention in atrial fibrillation (AF), yet its management in elderly and frail patients remains particularly challenging. This review aims to summarize current evidence, guideline recommendations, and future perspectives regarding the optimal anticoagulant strategy in this vulnerable population. A narrative review of pivotal randomized clinical trials and major real-world registries was conducted, focusing on outcomes of direct oral anticoagulants (DOACs) versus vitamin K antagonists (VKAs) in patients aged ≥75 years or meeting frailty criteria. Across studies, DOACs consistently demonstrated similar or superior efficacy compared with VKAs for the prevention of stroke and systemic embolism, with a substantially lower risk of intracranial hemorrhage. Apixaban and edoxaban, particularly at adjusted doses, showed the most favorable balance between thromboembolic protection and bleeding risk. Conversely, switching stable elderly patients from long-term VKAs to DOACs, as in the FRAIL-AF trial, was associated with an early excess of clinically relevant nonmajor bleeding. Frailty, multimorbidity, renal impairment, and polypharmacy remain critical modifiers of both efficacy and safety, underlining the need for individualized dosing and regular renal function monitoring. Recent European Society of Cardiology/European Association for Cardio-Thoracic Surgery (ESC/EACTS) and the American Heart Association/American College of Cardiology/Heart Rhythm Society (AHA/ACC/HRS) guidelines recommend DOACs as the preferred treatment for nonvalvular AF, emphasizing comprehensive risk assessment and shared decision-making. Emerging agents, such as factor XI inhibitors, offer a promising approach to minimizing bleeding risk in the elderly, though confirmation of their efficacy against ischemic events remains to be fully established. In elderly and frail patients with AF, DOACs represent the first-line anticoagulant therapy when appropriately dosed and monitored. A personalized, multidisciplinary approach incorporating frailty assessment, renal evaluation, and patient preference is essential to optimize outcomes. Future trials specifically enrolling very old and severely frail patients are urgently needed to close existing evidence gaps.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_58
+position_id: pos-47d7ebb4
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Despite recent changes in the labeling of safety risks for prescription medications during pregnancy, information on the use of prescription medications potentially harmful or teratogenic among women of reproductive age is not known. In this study, we examine trends in the use of prescription medications potentially harmful during pregnancy based on pregnancy status and the use of contraceptives in the U.S. METHODS: We conducted a repeated cross-sectional analysis using five cycles of the National Health and Nutrition Examination Survey (NHANES), 2009-2010 through 2017-2020. Our sample included women aged 20-44 years who reported prescription medication use in the past 30 days. Medications were classified using Micromedex into three fetal risk categories: (1) contraindicated during pregnancy, (2) fetal harm has been demonstrated, and (3) may cause fetal harm. We estimated weighted prevalence of any prescription medication use and use of ≥ 1 potentially harmful medication by pregnancy status (pregnant vs. non-pregnant) and contraceptive use among non-pregnant women. Trends were examined overall, by fetal risk severity, therapeutic class, and specific medications. RESULTS: Among pregnant women aged 20-44 years, the prevalence of any prescription medication use increased from 28.5% to 37.1% (P<0.05) between 2009 and 2014 and 2015-2020, respectively, while no significant change was observed among non-pregnant women, regardless of contraceptive use. Use of at least one potentially harmful medication remained common among pregnant women (14.6% to 14.5%) and among non-pregnant women, including those not using contraceptives (27.4% to 27.1%). Importantly, the use of two or more potentially harmful medications increased among pregnant women from 1.5% to 5.0% (P<0.05). Antidepressants were the most frequently used potentially harmful medications across women of reproductive age; among pregnant women, antidepressant use increased from 2.6% to 7.1% (P = 0.12), driven largely by sertraline use, which increased from 0% to 5.4%. CONCLUSIONS: Prescription medications with potential fetal risk are commonly used among women of reproductive age, including pregnant and non-pregnant women who are not using contraceptives, especially antidepressants. These findings highlight the need for continued monitoring of maternal mental health treatment and increased awareness of medication safety during pregnancy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_59
+position_id: pos-a835aaac
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+An optimal strategy for managing thrombotic risk in patients with atrial fibrillation (AF) receiving hemodialysis (HD) remains uncertain. To date, the literature has not shown definitive benefit from the use of oral anticoagulants for AF in patients receiving HD. Furthermore, attaining appropriate time in the therapeutic range with vitamin K antagonists is more difficult in patients with end-stage renal disease, and their use may be harmful due to an increased risk of bleeding and vascular calcification. Direct oral anticoagulants appear safer and possibly more effective than vitamin K antagonists. Although more data are available on apixaban than other DOACs, studies have not shown direct evidence to favor apixaban over rivaroxaban. Available risk prediction tools to identify patients who would benefit from anticoagulation therapy perform poorly in patients with chronic kidney disease. As such, better thromboembolic and bleeding risk prediction tools for this subgroup are needed. This article will present and discuss evidence on the use of oral anticoagulants for AF in patients receiving HD, including that from recent randomized controlled trials, meta-analyses, and relevant pharmacokinetic studies. The optimal dosing of DOACs in this patient population will also be explored.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_06 / POSITION_60
+position_id: pos-5b711aba
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Cobblestone esophagus is a rare finding that has been previously described in cases of eosinophilic esophagitis (EoE), candidiasis, Barrett's esophagus, or severe reflux esophagitis from distal gastrointestinal obstruction. We describe a case of asymptomatic cobblestone esophagus secondary to bisphosphonate use.  A 67-year-old female was seen in the clinic for evaluation of microcytic anemia that was incidentally picked up on routine chronic disease follow-up. She had no gastrointestinal symptoms. She has been taking oral alendronate 70mg once a week for osteoporosis since a year ago. Barium meal was performed as the patient initially opted for non-invasive testing, which incidentally showed a diffuse "cobblestone" appearance. Subsequent oesophago-gastro-duodenoscopy (OGD) showed diffuse white nodular lesions along the esophagus with a cobblestone appearance but no ulcer or mass. Segmental esophageal biopsies were negative for fungal stain and did not show any pathology. In the absence of infection, eosinophilic esophagitis, and dysplasia, her "cobblestone" esophagus was attributed to bisphosphonate use by diagnosis of exclusion. Alendronate acid was held off, and serial barium meals over the next year showed significant interval improvement.  Bisphosphonates, such as alendronate acid, are commonly associated with drug-induced esophagitis. With the cessation of the offending medication, there was indeed a significant improvement in our patient's serial barium meal. It is important to review the medication list when encountering patients who present with cobblestone esophagus, as some of these patients with drug-induced esophagitis may be asymptomatic clinically.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION

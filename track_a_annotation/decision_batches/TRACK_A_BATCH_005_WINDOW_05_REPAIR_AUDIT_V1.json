@@ -1,0 +1,48 @@
+{
+  "batch_id": "BATCH_005",
+  "window_id": "05",
+  "forensic_status": "STATE_E: BATCH_005_DOES_NOT_EXIST_AS_FORMAL_BATCH",
+  "root_cause": "Ad-hoc staging scripts bypassed the reservation manifest, extracting unannotated IDs sequentially and erroneously tagging them as Batch 005.",
+  "master_annotations_before": 75,
+  "master_annotations_after": 75,
+  "master_modified": false,
+  "benchmark_locked": true,
+  "registry_modified": false,
+  "original_window05_ids": [
+    "pos-cbaac358",
+    "pos-6b51aa62",
+    "pos-41410b52",
+    "pos-47d7ebb4",
+    "pos-a835aaac",
+    "pos-5b711aba",
+    "pos-eb331f6c",
+    "pos-e8bcb783",
+    "pos-b043af88",
+    "pos-19c49db1"
+  ],
+  "batch003_conflicting_ids": [
+    "pos-cbaac358",
+    "pos-6b51aa62",
+    "pos-41410b52",
+    "pos-47d7ebb4",
+    "pos-a835aaac",
+    "pos-5b711aba"
+  ],
+  "missing_registry_ids": [
+    "pos-eb331f6c",
+    "pos-e8bcb783",
+    "pos-b043af88",
+    "pos-19c49db1"
+  ],
+  "canonical_next_ids": [
+    "pos-cbaac358",
+    "pos-6b51aa62",
+    "pos-41410b52",
+    "pos-47d7ebb4",
+    "pos-a835aaac",
+    "pos-5b711aba"
+  ],
+  "human_decisions_quarantined": true,
+  "new_human_annotation_required": true,
+  "repair_authorized": false
+}

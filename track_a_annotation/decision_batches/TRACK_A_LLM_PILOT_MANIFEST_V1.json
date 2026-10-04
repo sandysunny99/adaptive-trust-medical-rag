@@ -1,0 +1,42 @@
+[
+  {
+    "sequence_number": "11",
+    "reason_for_inclusion": "ordinary lisinopril case",
+    "position_id": "pos-c958f9a4"
+  },
+  {
+    "sequence_number": "16",
+    "reason_for_inclusion": "difficult lisinopril case (comparator)",
+    "position_id": "pos-865ade74"
+  },
+  {
+    "sequence_number": "18",
+    "reason_for_inclusion": "negation or bounded-negative case",
+    "position_id": "pos-fa9aa245"
+  },
+  {
+    "sequence_number": "26",
+    "reason_for_inclusion": "difficult lisinopril case (PBPK study)",
+    "position_id": "pos-9cafff14"
+  },
+  {
+    "sequence_number": "30",
+    "reason_for_inclusion": "ordinary multi-entity warfarin/aspirin case",
+    "position_id": "pos-67f09880"
+  },
+  {
+    "sequence_number": "32",
+    "reason_for_inclusion": "multi-entity complexity",
+    "position_id": "pos-a3b4c771"
+  },
+  {
+    "sequence_number": "39",
+    "reason_for_inclusion": "related topic context (DOAC bleeding)",
+    "position_id": "pos-9acf02db"
+  },
+  {
+    "sequence_number": "48",
+    "reason_for_inclusion": "entities present but in separate contexts (ginger-aspirin/honey-warfarin)",
+    "position_id": "pos-734b9fb4"
+  }
+]

@@ -1,0 +1,133 @@
+{
+  "package_id": "CLAIM_EVIDENCE_AUDIT_V1",
+  "timestamp": "2026-10-03T17:57:08.088885+00:00",
+  "head_sha": "0041c5082f8cc83018a7305e14918bb6592edefa",
+  "track_a_mutation": false,
+  "abstract_secondary_mutation": false,
+  "trust_p0_v2_mutation": false,
+  "retrieval_rerun": false,
+  "parameter_tuning": false,
+  "provider_execution": false,
+  "artifacts": [
+    {
+      "relative_path": "CLAIM_EVIDENCE_ABSTENTION_AUDIT_V1.md",
+      "byte_size": 487,
+      "sha256": "70ff6d52cedad105c96b4bb3f3c7500979163ccac8500e439ca4b7da02db6be9"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_AUDIT_FINDINGS_V1.jsonl",
+      "byte_size": 1642,
+      "sha256": "6e86085c69f6b865fa48b605eb45513e043d699444318b87a988523df9f54874"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_AUDIT_FINDINGS_V1.md",
+      "byte_size": 390,
+      "sha256": "06a652efaf9fd77660bdc3c7f1d86443c3aac5e919cb4ae14e692e9b75fe4d0e"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_AUDIT_INTEGRITY_V1.md",
+      "byte_size": 325,
+      "sha256": "be3df6ffd6bfc75cc7e77a25ca58e1605e5c7f2a36abdd1eab7a56011281ddf1"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_AUDIT_V1.md",
+      "byte_size": 1747,
+      "sha256": "3f3c27dbd33fef31f917b0bfb44ee56071ca52305c218df02590382bd73502dc"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_CONTRADICTION_AUDIT_V1.md",
+      "byte_size": 524,
+      "sha256": "5a623cde6fb77b7e50bcecf484d322b21f09476a7b54ae6d7cd11a5d41e96d77"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_ERROR_HANDLING_AUDIT_V1.md",
+      "byte_size": 447,
+      "sha256": "d722558e690bae9b165c317e1bc816441ebbfc2e23db8ff88683457668b98d25"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_IMPLEMENTATION_INVENTORY_V1.md",
+      "byte_size": 1181,
+      "sha256": "acabbd3ce3837af131af36b88ee013c336b507518197dd2be6b03a6107429bf9"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_LINK_AUDIT_V1.md",
+      "byte_size": 593,
+      "sha256": "06f3d95026f652ec486188db68805662d460bb3c78f2f5f610318d04875044fd"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_MASTER_CONTROL_MATRIX_V1.md",
+      "byte_size": 670,
+      "sha256": "03d197e62d6c8e61e7a8e9cfc0506642119df5690a4764c3c3f983d4e7e1fc46"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_MICROCASE_RESULTS_V1.md",
+      "byte_size": 731,
+      "sha256": "7de1ef59bda9e048ea10fe00124d0fcc2bac82d9298ccbea9c7f471c418a6a38"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_MIXED_EVIDENCE_AUDIT_V1.md",
+      "byte_size": 464,
+      "sha256": "4baba2e944ead0f1ed051e5471c53245cecdd4f14add935f59bae0e046dce85f"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_OUTPUT_GATE_AUDIT_V1.md",
+      "byte_size": 517,
+      "sha256": "c7b1a89967fca3ed853287128e7205cd418cfb368154e3a7969ce28f71f03739"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_PROVENANCE_CHAIN_V1.md",
+      "byte_size": 581,
+      "sha256": "351ac76eec3adabfa2c26de70f63a9a83a3eda1cd6bf39b9acd308cae3d02f1e"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_RESEARCH_GAPS_V1.md",
+      "byte_size": 509,
+      "sha256": "80d5b798cff68f619cab7b4ea0269fcafffed668664265ce492ee61feb093f91"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_TEST_COVERAGE_AUDIT_V1.md",
+      "byte_size": 465,
+      "sha256": "ce070b28516894cd8812e71d7fd8df0883328cf12ec9df34132d48877f4cd3d2"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_THRESHOLD_AUDIT_V1.md",
+      "byte_size": 650,
+      "sha256": "12b67a5e35f0926f1cb963df188333397a8796c4d4748629c39383dd55e03ad4"
+    },
+    {
+      "relative_path": "CLAIM_EVIDENCE_VALIDATION_READINESS_V1.md",
+      "byte_size": 333,
+      "sha256": "39c798b3b5f6aa3e1a0bef04c70eb214e4918e781ba76143c5ffd31bb7971f1e"
+    },
+    {
+      "relative_path": "CLAIM_REPRESENTATION_AUDIT_V1.md",
+      "byte_size": 781,
+      "sha256": "c19459738558e977e525349579989c5c4ab9e8e52e50b0a69285909fb63d448b"
+    },
+    {
+      "relative_path": "CLAIM_TRUST_PROPAGATION_AUDIT_V1.md",
+      "byte_size": 710,
+      "sha256": "ca92bccc8f19d2029d041eebbb961091088669bf76acb5db3a948d370bec48d1"
+    },
+    {
+      "relative_path": "CLAIM_VERIFIER_V2_AUDIT_V1.md",
+      "byte_size": 768,
+      "sha256": "297d6e4cc46aad79cdc55606460488b6aaca480a97ad0d7826e86f9c93686bec"
+    },
+    {
+      "relative_path": "CLAIM_VS_CHUNK_VALIDATION_LEVEL_V1.md",
+      "byte_size": 568,
+      "sha256": "cfa3a4441423385ff3cc018fe20f9dbbef740b2fe8101221d884e8d15aff949a"
+    },
+    {
+      "relative_path": "EVIDENCE_REPRESENTATION_AUDIT_V1.md",
+      "byte_size": 629,
+      "sha256": "8380e4cf4d6e2aad7ef5571a07165406f4edca878d7840cd4416b505a56a59bc"
+    },
+    {
+      "relative_path": "UNSUPPORTED_CLAIM_HANDLING_AUDIT_V1.md",
+      "byte_size": 638,
+      "sha256": "c54d71047a81d1ee42ca001e8f50dd75d6ef426bae73369ed5804f3eb1575fb0"
+    }
+  ]
+}

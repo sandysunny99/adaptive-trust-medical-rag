@@ -1,0 +1,12 @@
+# TRACK_A_LLM_CANONICAL_SCHEMA_VERIFY_V1
+- evidence_claims_items_required: PASS
+- evidence_claims_items_additionalProperties_false: PASS
+- claim_type_enums: PASS
+- polarity_enums: PASS
+- all_21_top_level_required_fields: PASS
+- no_unexpected_required_fields: PASS
+- requested_property_string_or_null: PASS
+- requested_relation_string_or_null: PASS
+- requested_outcome_string_or_null: PASS
+- proposed_grade_enums: PASS
+- alternative_label_enums: PASS

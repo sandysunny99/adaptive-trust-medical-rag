@@ -1,0 +1,16 @@
+{
+  "dataset_total": 530,
+  "historical_committed": 141,
+  "canonical_committed": 141,
+  "canonical_remaining": 389,
+  "window01_staged": 10,
+  "window01_committed": 0,
+  "duplicate_pids": 0,
+  "synthetic_records": 0,
+  "query_mismatches": 0,
+  "evidence_mismatches": 0,
+  "span_failures": 0,
+  "benchmark_state": "LOCKED",
+  "provider_execution": false,
+  "audit_status": "PASS"
+}

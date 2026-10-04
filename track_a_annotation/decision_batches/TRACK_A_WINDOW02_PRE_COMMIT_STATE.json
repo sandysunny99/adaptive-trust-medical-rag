@@ -1,0 +1,49 @@
+{
+  "status": "WINDOW02_PRE_COMMIT_READY",
+  "staged_records": 10,
+  "validation_passed": true,
+  "span_validations": [
+    {
+      "pid": "pos-0639bf30",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-0653b758",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-069cfc91",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-07a239c0",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-08b33ee5",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-092e9947",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-09607bb3",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-0ba363e7",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-0c461066",
+      "span_passed": true
+    },
+    {
+      "pid": "pos-0c63d702",
+      "span_passed": true
+    }
+  ],
+  "benchmark": "LOCKED",
+  "provider_execution": false
+}

@@ -1,0 +1,482 @@
+[
+  {
+    "sequence_number": "01",
+    "position_id": "pos-fbe4bb45",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "ANNOTATED",
+    "registry_status": "COMMITTED"
+  },
+  {
+    "sequence_number": "02",
+    "position_id": "pos-130b89fc",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "03",
+    "position_id": "pos-a5465850",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "04",
+    "position_id": "pos-2142a295",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "05",
+    "position_id": "pos-055e405a",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "06",
+    "position_id": "pos-59a4d6ce",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "07",
+    "position_id": "pos-3fb32a70",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "08",
+    "position_id": "pos-9a6c3f24",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "09",
+    "position_id": "pos-e7526603",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "10",
+    "position_id": "pos-dc2d1d00",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_01",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "11",
+    "position_id": "pos-c958f9a4",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "12",
+    "position_id": "pos-456cdfbc",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "13",
+    "position_id": "pos-223118a4",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "14",
+    "position_id": "pos-7c696aa6",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "15",
+    "position_id": "pos-c896c5d9",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "16",
+    "position_id": "pos-865ade74",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "17",
+    "position_id": "pos-074944db",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "18",
+    "position_id": "pos-fa9aa245",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "19",
+    "position_id": "pos-43b39b0f",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "20",
+    "position_id": "pos-028d95b5",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_02",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "21",
+    "position_id": "pos-814cd0c1",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "22",
+    "position_id": "pos-791c7367",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "23",
+    "position_id": "pos-c2659179",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "24",
+    "position_id": "pos-ecb30645",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "25",
+    "position_id": "pos-9b777fd1",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "26",
+    "position_id": "pos-9cafff14",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "27",
+    "position_id": "pos-b8b4f173",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "28",
+    "position_id": "pos-3440fa6c",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "29",
+    "position_id": "pos-a00ce69f",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "30",
+    "position_id": "pos-67f09880",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_03",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "31",
+    "position_id": "pos-53198e7b",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "32",
+    "position_id": "pos-a3b4c771",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "33",
+    "position_id": "pos-7e689ff1",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "34",
+    "position_id": "pos-6d49dc3b",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "35",
+    "position_id": "pos-4b1bd9e5",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "36",
+    "position_id": "pos-5a1ffded",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "37",
+    "position_id": "pos-68c36127",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "38",
+    "position_id": "pos-cf4730de",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "39",
+    "position_id": "pos-9acf02db",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "40",
+    "position_id": "pos-7fa9c744",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_04",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "41",
+    "position_id": "pos-7436f45f",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "42",
+    "position_id": "pos-d3295d06",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "43",
+    "position_id": "pos-fc86260b",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "44",
+    "position_id": "pos-0c17f293",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "45",
+    "position_id": "pos-6d33df67",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "46",
+    "position_id": "pos-7d7a2a67",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "47",
+    "position_id": "pos-e237444e",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "48",
+    "position_id": "pos-734b9fb4",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "49",
+    "position_id": "pos-c3e553c3",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "50",
+    "position_id": "pos-c8189f02",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_05",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "51",
+    "position_id": "pos-2fd215f0",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "52",
+    "position_id": "pos-33c679d3",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "53",
+    "position_id": "pos-f9f910f8",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "54",
+    "position_id": "pos-878c4053",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "55",
+    "position_id": "pos-cbaac358",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "56",
+    "position_id": "pos-6b51aa62",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "57",
+    "position_id": "pos-41410b52",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "58",
+    "position_id": "pos-47d7ebb4",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "59",
+    "position_id": "pos-a835aaac",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  },
+  {
+    "sequence_number": "60",
+    "position_id": "pos-5b711aba",
+    "batch_id": "TRACK_A_A_BATCH_003",
+    "window_id": "WINDOW_06",
+    "master_status": "UNANNOTATED",
+    "registry_status": "RESERVED"
+  }
+]

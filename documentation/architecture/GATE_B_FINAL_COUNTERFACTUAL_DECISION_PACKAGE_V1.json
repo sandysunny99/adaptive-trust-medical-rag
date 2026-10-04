@@ -1,0 +1,42 @@
+{
+  "historical_risk_tiers": ["R0", "R1", "R2", "R3"],
+  "historical_r3_cases": "NONE_OBSERVED (Standard Gate 5 queries were primarily R1/R2 DDI and ADE lookups).",
+  "historical_rejections": "None definitively caused by the 0.65 ceiling due to lack of R3 queries in baseline.",
+  "historical_scores": "Reconstructed scores using current MISSING=0.0 and AI=1.0 perfectly match Gate 5 recorded scores for the safe corpus.",
+  "option_a_simulation": {
+    "direct_retrieval_imputation": "Creates invalid circularity (Retrieval->Trust). Confounds benchmark.",
+    "engine_independent_imputation": "Valid, but requires new cross-encoder module.",
+    "score_delta": "Increases scores, fundamentally altering threshold reachability."
+  },
+  "option_b_simulation": {
+    "renormalization": "Scales remaining 7 weights by dividing by e.g., 0.65.",
+    "score_delta": "Massive upward shift (+0.35 max). Completely invalidates historical baseline comparisons."
+  },
+  "option_c_simulation": {
+    "missing_zero": "Scores depressed by 0.35. R3 remains impassable.",
+    "score_delta": "0.0. Perfectly preserves Gate 5 numerical outputs."
+  },
+  "anti_injection_comparison": {
+    "historical_value": 1.0,
+    "current_value": 1.0,
+    "numerical_difference": 0.0,
+    "methodological_difference": "Historical was dynamic (1.0 - poisoning). Current is a constant placeholder (1.0). Security relies entirely on hard gate."
+  },
+  "combination_matrix": {
+    "trust_c_plus_ai_a": "Zero numerical delta. NO_RERUN.",
+    "all_other_combinations": "Alters mathematical denominator or imputation inputs. Requires FULL_GATE5_RERUN."
+  },
+  "rerun_scope": {
+    "if_numerical_equivalence_maintained": "NO_RERUN (Counterfactual replay proves delta is 0).",
+    "if_math_changes": "FULL_GATE5_RERUN (To establish valid comparative baseline for Cognee)."
+  },
+  "protocol_gaps": {
+    "missing_value_policy": "SILENT",
+    "anti_injection_semantics": "AMBIGUOUS"
+  },
+  "thesis_implications": {
+    "trust_c": "FAIL_CLOSED_WITH_MEASUREMENT_LIMITATION",
+    "trust_b": "7_FACTOR_RENORMALIZED_MODEL",
+    "anti_inject_b": "HARD_GATE_SECURITY_MODEL"
+  }
+}

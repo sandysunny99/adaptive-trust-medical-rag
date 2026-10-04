@@ -1,0 +1,13 @@
+{
+  "model_id": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "dimension": 768,
+  "max_seq_length": 350,
+  "pooling": {
+    "embedding_dimension": 768,
+    "pooling_mode": "mean",
+    "include_prompt": true
+  },
+  "is_local": true,
+  "evidence_source": "runtime_capture"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "task": "Pharmacological RAG Retrieval Relevance Annotation",
+  "labels": [
+    {
+      "name": "RELEVANT",
+      "grade": 2,
+      "definition": "The evidence chunk directly and specifically addresses the pharmacological query (e.g., provides explicit interaction data, clearance pathways, contraindications, or risk assessments for the exact drug entities queried)."
+    },
+    {
+      "name": "PARTIALLY_RELEVANT",
+      "grade": 1,
+      "definition": "The evidence chunk contains information about one or more queried entities or the general clinical context, but lacks the specific relationship, outcome, or interaction data required to fully answer the query."
+    },
+    {
+      "name": "IRRELEVANT",
+      "grade": 0,
+      "definition": "The evidence chunk does not address the queried entities or clinical question in any meaningful way."
+    },
+    {
+      "name": "INSUFFICIENT_INFORMATION",
+      "grade": 0,
+      "definition": "The evidence chunk mentions the entities but provides no substantive clinical or pharmacological information (e.g., a title-only mention or a methodological overview without results)."
+    },
+    {
+      "name": "AMBIGUOUS",
+      "grade": null,
+      "definition": "The text is malformed, the entities are ambiguously resolved, or the annotator cannot confidently determine relevance. Requires secondary adjudication.",
+      "requires_adjudication": true
+    }
+  ]
+}

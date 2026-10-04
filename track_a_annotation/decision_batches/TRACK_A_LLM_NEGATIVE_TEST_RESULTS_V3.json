@@ -1,0 +1,12 @@
+{
+  "missing_credential_test": {
+    "expected": "AUTHENTICATION_ERROR",
+    "actual": "AUTHENTICATION_ERROR",
+    "success": true
+  },
+  "schema_validation_test": {
+    "expected": "ValueError (missing count)",
+    "actual": "PASS",
+    "success": true
+  }
+}

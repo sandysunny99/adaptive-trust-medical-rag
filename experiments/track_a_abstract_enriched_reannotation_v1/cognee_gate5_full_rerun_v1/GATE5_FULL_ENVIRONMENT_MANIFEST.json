@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-09-30T19:39:13.138523+00:00",
+  "files": {
+    "src/adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py": "a0ca6cf8162b87b61e37502f9d20041e62ca10d26210e72dfa8fa34a657d021e",
+    "src/adaptive_trust_medical_rag/security_extensions/relationship_grounding_v2.py": "4a33f900b118c4c7edcc421ae02f79253fb1944343f049426b7a0f77d51bff07",
+    "src/adaptive_trust_medical_rag/security_extensions/integrity_validator.py": "d95c8f8bd5202de18291e1b718b1a33a7a0525e82e7a73d613ea75873ab891e1",
+    "experiments/cognee_gate5_full_rerun.py": "2b4b010a6063684e73b0763d8ac623356c41cc829772d92b55dd57316436fbf8"
+  }
+}

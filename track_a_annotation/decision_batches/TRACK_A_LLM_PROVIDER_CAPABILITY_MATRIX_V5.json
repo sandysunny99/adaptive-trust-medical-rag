@@ -1,0 +1,23 @@
+{
+  "DIRECT_GROQ": {
+    "live_test": "NOT_EXECUTED",
+    "json_schema": "CODE_PRESENT_ONLY",
+    "json_object": "CODE_PRESENT_ONLY"
+  },
+  "DIRECT_CLOUDFLARE": {
+    "live_test": "NOT_EXECUTED",
+    "json_schema": "UNSUPPORTED",
+    "json_object": "CODE_PRESENT_ONLY"
+  },
+  "DIRECT_HUGGINGFACE": {
+    "live_test": "NOT_EXECUTED",
+    "json_schema": "UNSUPPORTED",
+    "json_object": "UNSUPPORTED"
+  },
+  "FREELLMAPI_GATEWAY": {
+    "live_test": "NOT_EXECUTED",
+    "json_schema": "UNSUPPORTED",
+    "json_object": "CODE_PRESENT_ONLY",
+    "routing_provenance": "CODE_PRESENT_ONLY"
+  }
+}

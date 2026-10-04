@@ -1,0 +1,10 @@
+{
+  "project_stage": "CONTROLLED_SCIENTIFIC_VALIDATION",
+  "track_a": { "status": "ACTIVE", "completed": 31, "remaining": 499, "blocker": "NONE" },
+  "gate_c": { "status": "BLOCKED", "blocker": "CREDENTIAL_MISSING" },
+  "claim_evidence": { "status": "READY_PREPARATION", "blocker": "GATE_C" },
+  "free_replication": { "status": "PENDING", "blocker": "GATE_C" },
+  "e2e_security": { "status": "PENDING", "blocker": "GATE_C" },
+  "controlled_abstention": { "status": "READY_PREPARATION", "blocker": "NONE" },
+  "cognee": { "status": "PENDING", "blocker": "FREE_REPLICATION" }
+}

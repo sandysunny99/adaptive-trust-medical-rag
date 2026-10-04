@@ -1,0 +1,18 @@
+{"query": "Idiosyncratic drug induced liver injury mechanisms", "retrieval_condition": "F0", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.7471589728148227}
+{"query": "Warfarin target INR monitoring", "retrieval_condition": "F0", "Recall@10": 0.06666666666666667, "Precision@10": 0.1, "MRR": 0.1111111111111111, "nDCG@10": 0.29991382523426074}
+{"query": "Metformin contraindication in severe renal disease", "retrieval_condition": "F0", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.36650177721905447}
+{"query": "CYP2C9 interaction between fluconazole and warfarin", "retrieval_condition": "F0", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.3971921948634016}
+{"query": "Clearance pathway for lisinopril", "retrieval_condition": "F0", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.0}
+{"query": "Concomitant use of warfarin and aspirin bleeding risk", "retrieval_condition": "F0", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.25880978898961277}
+{"query": "Risk of hyperkalemia in patients treated with spironolactone", "retrieval_condition": "F0", "Recall@10": null, "Precision@10": 0.3, "MRR": 1.0, "nDCG@10": 0.686007599264823}
+{"query": "Diagnosis of drug induced hepatotoxicity", "retrieval_condition": "F0", "Recall@10": 0.2, "Precision@10": 0.3, "MRR": 1.0, "nDCG@10": 0.6892440978727934}
+{"query": "Lisinopril and spironolactone interaction hyperkalemia risk", "retrieval_condition": "F0", "Recall@10": null, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.5517854393872873}
+{"query": "Idiosyncratic drug induced liver injury mechanisms", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.7116179486056782}
+{"query": "Warfarin target INR monitoring", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.037037037037037035, "nDCG@10": 0.3513622262692437}
+{"query": "Metformin contraindication in severe renal disease", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.5004041931001163}
+{"query": "CYP2C9 interaction between fluconazole and warfarin", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.4729327934832575}
+{"query": "Clearance pathway for lisinopril", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.0}
+{"query": "Concomitant use of warfarin and aspirin bleeding risk", "retrieval_condition": "F3", "Recall@10": 0.0, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.35031272298795885}
+{"query": "Risk of hyperkalemia in patients treated with spironolactone", "retrieval_condition": "F3", "Recall@10": null, "Precision@10": 0.5, "MRR": 1.0, "nDCG@10": 0.9579990410734266}
+{"query": "Diagnosis of drug induced hepatotoxicity", "retrieval_condition": "F3", "Recall@10": 0.2, "Precision@10": 0.3, "MRR": 0.25, "nDCG@10": 0.6097783822125279}
+{"query": "Lisinopril and spironolactone interaction hyperkalemia risk", "retrieval_condition": "F3", "Recall@10": null, "Precision@10": 0.0, "MRR": 0.0, "nDCG@10": 0.5933607200949346}

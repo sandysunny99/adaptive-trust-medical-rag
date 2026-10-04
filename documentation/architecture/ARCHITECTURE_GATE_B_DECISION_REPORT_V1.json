@@ -1,0 +1,32 @@
+{
+  "gate_status": "BLOCKED_ON_HUMAN_DECISION",
+  "gate_name": "GATE_B_ARCHITECTURE_FREEZE",
+  "audit_date": "2026-10-03",
+  "decisions": {
+    "trust_missing_value_policy": {
+      "status": "ESCALATED",
+      "issue": "query_relevance and evidence_quality default to 0.0, causing 30-35% trust penalty and rendering R3 threshold (0.75) impassable.",
+      "options": [
+        "A: Impute from formally justified existing signals",
+        "B: Exclude and Renormalize",
+        "C: Keep Current Behavior (Document MISSING=ZERO)"
+      ],
+      "blocker_reason": "Requires explicit research protocol authorization to alter baseline methodology."
+    },
+    "anti_injection_source": {
+      "status": "RESOLVED",
+      "issue": "L508 conflated poisoning_score with anti_injection.",
+      "resolution": "Code corrected to anti_injection=1.0. Injection is evaluated as a discrete hard gate downstream."
+    },
+    "dynamic_integrity_validator": {
+      "status": "RESOLVED",
+      "issue": "Unwired by default.",
+      "resolution": "Kept OPTIONAL and UNWIRED to preserve Gate 5 baseline compatibility."
+    },
+    "relationship_grounding_v2": {
+      "status": "RESOLVED",
+      "issue": "Unwired by default.",
+      "resolution": "Kept OPTIONAL and UNWIRED to preserve Gate 5 baseline recall metrics."
+    }
+  }
+}

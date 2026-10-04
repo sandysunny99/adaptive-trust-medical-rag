@@ -1,0 +1,8 @@
+{
+  "prompt_version": "LIVE_APP_PROMPT_V1",
+  "prompt_file": "src/adaptive_trust_medical_rag/prompts/LIVE_APP_PROMPT_V1.txt",
+  "prompt_sha256": "e4a63bd364718237896bc4b2667614739172564b6eaafff2fca950ccf268460c",
+  "encoding": "utf-8",
+  "byte_length": 2653,
+  "git_commit": "pending"
+}

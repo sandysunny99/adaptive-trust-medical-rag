@@ -1,0 +1,75 @@
+{
+  "artifact_validation_status": "PASSED",
+  "checks": [
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 31391,
+      "valid_jsonl": true,
+      "record_count": 54
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_RELATIONSHIP_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 1130,
+      "valid_jsonl": true,
+      "record_count": 2
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_INTEGRITY_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 8130,
+      "valid_jsonl": true,
+      "record_count": 14
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_PROMPT_INJECTION_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 2312,
+      "valid_jsonl": true,
+      "record_count": 4
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_PROVENANCE_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 3460,
+      "valid_jsonl": true,
+      "record_count": 6
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_POISONING_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 3432,
+      "valid_jsonl": true,
+      "record_count": 6
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_POSITIVE_CONTROL_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 2308,
+      "valid_jsonl": true,
+      "record_count": 4
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_COGNEE_OFF_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 10619,
+      "valid_jsonl": true,
+      "record_count": 18
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_REPRODUCIBILITY_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 8434,
+      "valid_jsonl": true,
+      "record_count": 18
+    },
+    {
+      "file": "COGNEE_GATE5_CORRECTION04_COGNEE_RETRIEVAL_RESULTS.jsonl",
+      "exists": true,
+      "size_bytes": 1345,
+      "valid_jsonl": true,
+      "record_count": 5
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "PASSED",
+  "integrity_checks": [],
+  "experiment_checks": [
+    {
+      "status": "PASSED",
+      "reason": "RG-02 properly FAILED (RELEASE) as expected limitation"
+    }
+  ],
+  "conflicts": []
+}

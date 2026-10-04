@@ -1,0 +1,252 @@
+[
+  {
+    "position_id": "pos-00134e05",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "query_requirements": {
+      "Entity 1": "drug",
+      "Entity 2": "liver injury",
+      "Relationship": "idiosyncratic mechanism",
+      "Mechanism": "idiosyncratic",
+      "Outcome": "DILI",
+      "Context": "N/A"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence discusses copper (Cu) toxicity in chickens causing liver injury via UPRmt and Sirt3/FOXO3a. Copper is not a drug, and the mechanism described is dose-dependent toxicity, not idiosyncratic drug-induced liver injury.",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "drug",
+      "liver injury"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-00cfdf17",
+    "query_text": "Warfarin target INR monitoring",
+    "query_requirements": {
+      "Entity 1": "warfarin",
+      "Entity 2": "INR",
+      "Relationship": "monitoring/target",
+      "Mechanism": "coagulation",
+      "Outcome": "INR",
+      "Context": "monitoring"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (warfarin, INR).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "warfarin",
+      "INR"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-01258043",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "query_requirements": {
+      "Entity 1": "drug",
+      "Entity 2": "liver injury",
+      "Relationship": "idiosyncratic mechanism",
+      "Mechanism": "idiosyncratic",
+      "Outcome": "DILI",
+      "Context": "N/A"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (drug, liver injury).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "drug",
+      "liver injury"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-018d5819",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "query_requirements": {
+      "Entity 1": "metformin",
+      "Entity 2": "severe renal disease",
+      "Relationship": "contraindication",
+      "Mechanism": "lactic acidosis",
+      "Outcome": "toxicity",
+      "Context": "severe renal disease"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (metformin, severe renal disease).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "metformin",
+      "severe renal disease"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-01cadfb9",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "query_requirements": {
+      "Entity 1": "metformin",
+      "Entity 2": "severe renal disease",
+      "Relationship": "contraindication",
+      "Mechanism": "lactic acidosis",
+      "Outcome": "toxicity",
+      "Context": "severe renal disease"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (metformin, severe renal disease).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "metformin",
+      "severe renal disease"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-024f1c65",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "query_requirements": {
+      "Entity 1": "drug",
+      "Entity 2": "liver injury",
+      "Relationship": "idiosyncratic mechanism",
+      "Mechanism": "idiosyncratic",
+      "Outcome": "DILI",
+      "Context": "N/A"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (drug, liver injury).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "drug",
+      "liver injury"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-038b917d",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "query_requirements": {
+      "Entity 1": "metformin",
+      "Entity 2": "severe renal disease",
+      "Relationship": "contraindication",
+      "Mechanism": "lactic acidosis",
+      "Outcome": "toxicity",
+      "Context": "severe renal disease"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence is a case report about statin-induced small-fibre neuropathy. It does not mention metformin or severe renal disease.",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "metformin",
+      "severe renal disease"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-038edd1d",
+    "query_text": "Risk of hyperkalemia in patients treated with spironolactone",
+    "query_requirements": {
+      "Entity 1": "spironolactone",
+      "Entity 2": "hyperkalemia",
+      "Relationship": "risk",
+      "Mechanism": "potassium retention",
+      "Outcome": "hyperkalemia",
+      "Context": "patient treatment"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (spironolactone, hyperkalemia).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "spironolactone",
+      "hyperkalemia"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-04077fbb",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "query_requirements": {
+      "Entity 1": "metformin",
+      "Entity 2": "severe renal disease",
+      "Relationship": "contraindication",
+      "Mechanism": "lactic acidosis",
+      "Outcome": "toxicity",
+      "Context": "severe renal disease"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence does not mention or address the requested entities for this query (metformin, severe renal disease).",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "metformin",
+      "severe renal disease"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  },
+  {
+    "position_id": "pos-04992eed",
+    "query_text": "Diagnosis of drug induced hepatotoxicity",
+    "query_requirements": {
+      "Entity 1": "drug",
+      "Entity 2": "hepatotoxicity",
+      "Relationship": "diagnosis",
+      "Mechanism": "N/A",
+      "Outcome": "hepatotoxicity",
+      "Context": "N/A"
+    },
+    "advisory_label": "IRRELEVANT",
+    "advisory_score": 0,
+    "advisory_reason": "The retrieved evidence describes a FAERS study on general drug-drug interactions (DDI). It does not discuss hepatotoxicity or its diagnosis.",
+    "pairwise_relationship_assessment": "FAIL",
+    "mechanism_assessment": "FAIL",
+    "outcome_assessment": "FAIL",
+    "missing_components": [
+      "drug",
+      "hepatotoxicity"
+    ],
+    "advisory_exact_span": "EMPTY",
+    "advisory_confidence": "HIGH",
+    "advisory_status": "ADVISORY_ONLY"
+  }
+]

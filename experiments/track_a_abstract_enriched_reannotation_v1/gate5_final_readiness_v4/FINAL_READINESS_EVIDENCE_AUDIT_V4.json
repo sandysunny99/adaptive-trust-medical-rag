@@ -1,0 +1,13 @@
+{
+  "final_status": "FINAL_READINESS_FAIL",
+  "v2_wiring_verified": true,
+  "baseline_path_verified": true,
+  "cognee_path_verified": false,
+  "pos01_correct": true,
+  "pos02_correct": false,
+  "rg02_correct": true,
+  "failure_reasons": [
+    "Cognee candidates were retrieved separately and never traversed the full orchestrator security pipeline.",
+    "POS-02 failed its positive-control retrieval requirement (retrieved irrelevant evidence, though correctly contained by security)."
+  ]
+}

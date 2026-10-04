@@ -1,0 +1,18 @@
+{
+  "nodes": [
+    {
+      "nodes": 0
+    }
+  ],
+  "edges": [
+    {
+      "edges": 0
+    },
+    {
+      "graph_relationship_ledger": 0
+    },
+    {
+      "provenance_edge_evidence": 100
+    }
+  ]
+}

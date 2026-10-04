@@ -1,0 +1,11 @@
+{
+  "session_id": "TRACK_A_A_20261002_SESSION_01",
+  "annotator_id": "ANNOTATOR_A",
+  "dataset_version": "TRACK_A_HUMAN_ANNOTATION_DATASET_V1",
+  "schema_version": "2.0.0",
+  "start_timestamp": "2026-10-02T20:10:47.988000",
+  "records_opened": 1,
+  "records_completed": 0,
+  "records_remaining": 530,
+  "qa_status": "PASS"
+}

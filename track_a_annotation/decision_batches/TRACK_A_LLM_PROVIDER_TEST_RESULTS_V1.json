@@ -1,0 +1,20 @@
+{
+  "provider_verification_status": "NOT_EXECUTED",
+  "reason": "Missing all provider credentials",
+  "tests": {
+    "authentication": "BLOCKED",
+    "model_availability": "BLOCKED",
+    "basic_generation": "BLOCKED",
+    "structured_json_response": "BLOCKED",
+    "temperature_acceptance": "BLOCKED",
+    "top_p_acceptance": "BLOCKED",
+    "seed_acceptance": "BLOCKED",
+    "max_tokens_acceptance": "BLOCKED",
+    "timeout_behavior": "BLOCKED",
+    "retry_behavior": "BLOCKED",
+    "malformed_json_handling": "BLOCKED",
+    "provider_error_handling": "BLOCKED"
+  },
+  "synthetic_dry_run": "BLOCKED",
+  "reproducibility_risk": "UNKNOWN"
+}

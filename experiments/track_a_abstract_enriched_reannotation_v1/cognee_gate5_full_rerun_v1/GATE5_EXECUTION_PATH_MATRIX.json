@@ -1,0 +1,63 @@
+{
+  "audit_timestamp": "2026-10-02T05:52:00Z",
+  "audit_scope": "FULL_GATE5_EXECUTION_PATH_VERIFICATION",
+  "script_analyzed": "experiments/cognee_gate5_full_rerun.py",
+  "script_total_lines": 465,
+
+  "architecture_summary": {
+    "cognee_initialization": {
+      "line_range": "85-118",
+      "description": "async function ingest_cognee(). Calls cognee.prune.prune_data(), cognee.prune.prune_system(), builds 6 DataItem objects from FIXTURES_CONTENT, calls cognee.add() then cognee.cognify().",
+      "cognify_called": true,
+      "cognify_line": 117,
+      "note": "cognify() was called. However, runtime logs show 'knowledge graph is empty' and 'DocumentChunk_text collection not found', indicating cognify did not produce searchable vector/graph state."
+    },
+    "precomputed_search_pass": {
+      "line_range": "368-375",
+      "description": "BEFORE case execution, main() iterates over all 23 CASES and calls 'await cognee.search(...)' for each query. Results are stored in a dict 'precomputed' keyed by query string. Exceptions (including NoDataError) are caught and replaced with empty list [].",
+      "is_live_per_case": false,
+      "is_precomputed_batch": true,
+      "exception_handling": "All exceptions silently caught, replaced with []",
+      "precompute_line": 373,
+      "exception_catch_line": 374
+    },
+    "cognee_adapter_retrieve": {
+      "line_range": "139-193",
+      "description": "BridgedCogneeAdapter.__init__ accepts 'precomputed_search' dict. Its retrieve() method (line 145) does 'results = self.precomputed_search.get(query, [])'. It NEVER calls cognee.search() at retrieval time. It ONLY looks up the precomputed cache.",
+      "live_cognee_search_at_retrieval_time": false,
+      "uses_precomputed_cache": true,
+      "cache_lookup_line": 145
+    },
+    "case_execution": {
+      "line_range": "257-348",
+      "description": "run_case() instantiates BridgedCogneeAdapter(manifest, precomputed_search) for Cognee mode, or BaseAdapterMock(manifest) for Baseline mode. Both are wrapped in TamperingRetrievalWrapper. Then AdaptiveTrustRAGOrchestrator.query() is called.",
+      "cognee_adapter_receives_precomputed": true,
+      "baseline_adapter_is_pure_mock": true
+    },
+    "main_execution_flow": {
+      "line_range": "350-461",
+      "description": "main() calls ingest_cognee(), then precomputes search for all queries, then runs all 92 cases via ThreadPoolExecutor.",
+      "execution_order": [
+        "1. generate_environment_manifest()",
+        "2. await ingest_cognee() - includes cognee.add() + cognee.cognify()",
+        "3. Precompute: for each case, await cognee.search() with exception handling -> stored in dict",
+        "4. ThreadPoolExecutor: 23 cases x 2 modes x 2 runs = 92 run_case() calls",
+        "5. Write artifacts"
+      ]
+    }
+  },
+
+  "execution_path_classification": {
+    "baseline_path": "MOCK_ADAPTER_WITH_MANIFEST",
+    "baseline_description": "BaseAdapterMock iterates over all manifest entries and returns Candidate objects directly from the manifest dict. No external search engine is involved. This is a deterministic synthetic retrieval.",
+    "cognee_path": "PRECOMPUTED_CACHE_FROM_FAILED_SEARCH",
+    "cognee_description": "cognee.search() was called once per unique query BEFORE case execution. All calls raised NoDataError (empty graph). The exception handler replaced all results with []. BridgedCogneeAdapter.retrieve() then looked up this empty cache and returned []. No live Cognee search occurred at case execution time."
+  },
+
+  "root_cause_analysis": {
+    "cognify_failure": "cognee.cognify() was called (line 117), but the runtime logs show 'knowledge graph is empty' and 'DocumentChunk_text collection not found in vector database'. This means cognify() did not successfully build a searchable vector index or knowledge graph from the ingested data items.",
+    "search_failure": "Because cognify() did not produce a searchable state, all cognee.search() calls raised NoDataError with message: 'No searchable memory in dataset gate5_dataset (id: e66674eb-2d96-50b3-acc5-3d0b3b2d3ecd): holds 6 data item(s) but its knowledge graph is empty; run cognify on this dataset before searching.'",
+    "precompute_masking": "The try/except block at lines 372-375 silently converted all NoDataError exceptions into empty lists, making the failure invisible to downstream case execution. The Cognee adapter then operated on these empty lists.",
+    "protocol_violation": "The Gate 5 protocol requires each case to execute through live retrieval. The precompute-then-cache architecture means: (a) search was not live per-case, and (b) the failed search result was reused silently."
+  }
+}

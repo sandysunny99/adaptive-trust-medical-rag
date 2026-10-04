@@ -1,0 +1,53 @@
+{
+  "models": [
+    {
+      "model_id": "SimpleEmbeddingModel",
+      "source_file": "src/adaptive_trust_medical_rag/evaluation/live_variants.py",
+      "classification": "TEST_FIXTURE",
+      "status": "IMPLEMENTED",
+      "evidence": "7-word hardcoded vocabulary, 7-dim output. Introduced alongside SimpleLLMBackend in commit ea97355 to replace mock ablation engine. Never described as 'baseline' or 'production' in any commit message or protocol document.",
+      "protocol_authorized": false,
+      "evidence_source": "manual_analysis"
+    },
+    {
+      "model_id": "pritamdeka/S-PubMedBert-MS-MARCO",
+      "source_files": [
+        "scripts/run_fusion_evaluation.py",
+        "scripts/run_cross_encoder_fusion.py",
+        "scripts/run_biomedical_fusion.py",
+        "scripts/run_screening.py",
+        "scripts/run_screening_v2.py",
+        "scripts/run_e1_phase2c.py",
+        "scripts/run_baseline_phase2c.py",
+        "scripts/run_v3_1.py",
+        "scripts/run_v3_confirmation.py",
+        "scripts/run_v3_confirmed.py",
+        "scripts/run_diagnostic.py"
+      ],
+      "classification": "HISTORICAL",
+      "status": "IMPLEMENTED_IN_EXPERIMENT_SCRIPTS",
+      "evidence": "Used via RealEmbeddingModel(SentenceTransformer) in 11+ experiment scripts. Named in experiment manifests: fusion-evaluation-v3-real/manifest.json and fusion-evaluation-v3-confirmed/manifest.json. Produces 768-dim vectors matching docs/ARCHITECTURE.md VECTOR(768) specification.",
+      "protocol_authorized": "IMPLICIT_NOT_EXPLICIT",
+      "evidence_source": "manual_analysis"
+    },
+    {
+      "model_id": "cambridgeltl/SapBERT-from-PubMedBERT-fulltext",
+      "source_files": ["scripts/run_biomedical_fusion.py"],
+      "classification": "HISTORICAL",
+      "status": "IMPLEMENTED_IN_EXPERIMENT_SCRIPTS",
+      "evidence": "Evaluated as alternative to S-PubMedBert-MS-MARCO in biomedical fusion experiment.",
+      "protocol_authorized": false,
+      "evidence_source": "manual_analysis"
+    },
+    {
+      "model_id": "sentence-transformers (dependency)",
+      "source_file": "pyproject.toml",
+      "classification": "DECLARED_DEPENDENCY_ONLY",
+      "status": "INSTALLED_BUT_NOT_USED_IN_BASELINE_PATH",
+      "evidence": "Listed as dependency >=6.0.1 in pyproject.toml. Used by experiment scripts but NOT by the orchestrator baseline retrieval path or live_variants.py.",
+      "protocol_authorized": false,
+      "evidence_source": "manual_analysis"
+    }
+  ],
+  "evidence_source": "manual_analysis"
+}

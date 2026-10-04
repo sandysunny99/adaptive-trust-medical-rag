@@ -1,0 +1,4 @@
+{"mode": "BASELINE", "case_id": "POS-01", "query": "statin therapy is common for cholesterol", "retrieval_status": "RETRIEVAL_SUCCESS", "candidates": []}
+{"mode": "BASELINE", "case_id": "POS-02", "query": "Does statin interact with aspirin?", "retrieval_status": "RETRIEVAL_SUCCESS", "candidates": []}
+{"mode": "BASELINE", "case_id": "RG-02", "query": "Statin is a drug. Cyanide is a poison.", "retrieval_status": "RETRIEVAL_SUCCESS", "candidates": []}
+{"mode": "BASELINE", "case_id": "CTRL-UNSUPPORTED", "query": "Does statin interact with ibuprofen?", "retrieval_status": "RETRIEVAL_SUCCESS", "candidates": []}

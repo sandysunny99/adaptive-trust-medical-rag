@@ -1,0 +1,268 @@
+{
+  "audit_timestamp": "2026-10-03T00:15:00+05:30",
+  "audit_version": "V1",
+  "status_taxonomy": [
+    "CONCEPTUAL", "PLANNED", "CODE_PRESENT", "IMPLEMENTED",
+    "UNIT_TESTED", "INTEGRATION_TESTED", "MOCK_TRANSPORT_TESTED",
+    "OFFLINE_EXECUTED", "LIVE_EXECUTED", "E2E_EXECUTED",
+    "FROZEN", "BLOCKED", "NOT_EXECUTED", "CONCEPTUAL", "LEGACY", "DEPRECATED"
+  ],
+  "components": {
+    "orchestrator": {
+      "component": "RAGOrchestrator",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py (767 lines). Called in Gate 5 experiments (92 executions). Full query() path: injection_check → sanitize → normalize → risk_classify → retrieve → poisoning_check → trust_score → grounding → integrity → eligibility_gate → llm_generate → answer_safety_gate → response/abstain.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "GATE_C_LIVE_PROVIDER"
+    },
+    "rxnorm_normalizer": {
+      "component": "DrugNormalizer + RxNormAdapter",
+      "status": "MOCK_TRANSPORT_TESTED",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "TWO implementations: (1) RxNormClient in drug_normalizer.py L83-143 (async httpx), (2) RxNormAdapter in evidence_sources/rxnorm_adapter.py L24-199 (EvidenceSourceAdapter subclass). Tests use AsyncMock or FROZEN_SNAPSHOT_MODE. DrugNormalizer resolves from data/drug_entity_cache.json (159 entries) before attempting API. Orchestrator falls back to regex if normalizer not injected. No live HTTP to rxnav.nlm.nih.gov recorded.",
+      "last_verified_stage": "MOCK_TRANSPORT_TEST",
+      "blocked_by": "No live RxNorm API call evidence",
+      "next_gate": "GATE_C_LIVE_PROVIDER"
+    },
+    "ncbi_eutils": {
+      "component": "PubMedAdapter (NCBI E-utilities)",
+      "status": "MOCK_TRANSPORT_TESTED",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/evidence_sources/pubmed_adapter.py L25-246. PubMedAdapter(EvidenceSourceAdapter) with httpx.get to eutils.ncbi.nlm.nih.gov. Tests in tests/test_evidence_sources.py use AdapterExecutionMode.FROZEN_SNAPSHOT_MODE. No live HTTP request recorded. Not connected to orchestrator runtime retrieval.",
+      "last_verified_stage": "MOCK_TRANSPORT_TEST",
+      "blocked_by": "Not connected to orchestrator; no live HTTP evidence",
+      "next_gate": "NOT_REQUIRED_FOR_CURRENT_BENCHMARK"
+    },
+    "europe_pmc": {
+      "component": "EuropePMCAdapter",
+      "status": "MOCK_TRANSPORT_TESTED",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/evidence_sources/europepmc_adapter.py L24-206. EuropePMCAdapter(EvidenceSourceAdapter) with httpx.get to www.ebi.ac.uk/europepmc. Tests use FROZEN_SNAPSHOT_MODE. No live HTTP request recorded.",
+      "last_verified_stage": "MOCK_TRANSPORT_TEST",
+      "blocked_by": "Not connected to orchestrator; no live HTTP evidence",
+      "next_gate": "NOT_REQUIRED_FOR_CURRENT_BENCHMARK"
+    },
+    "openfda": {
+      "component": "OpenFDAAdapter",
+      "status": "MOCK_TRANSPORT_TESTED",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/evidence_sources/openfda_adapter.py L24-226. OpenFDAAdapter(EvidenceSourceAdapter) with httpx.get to api.fda.gov/drug. Tests use FROZEN_SNAPSHOT_MODE. No live HTTP request recorded.",
+      "last_verified_stage": "MOCK_TRANSPORT_TEST",
+      "blocked_by": "Not connected to orchestrator; no live HTTP evidence",
+      "next_gate": "NOT_REQUIRED_FOR_CURRENT_BENCHMARK"
+    },
+    "clinicaltrials_gov": {
+      "component": "ClinicalTrials.gov API",
+      "status": "CONCEPTUAL",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "No adapter class exists. Only string references in query_router.py. No code, no test, no HTTP call.",
+      "last_verified_stage": "NONE",
+      "blocked_by": "No adapter code exists",
+      "next_gate": "NOT_REQUIRED_FOR_CURRENT_BENCHMARK"
+    },
+    "bm25_retrieval": {
+      "component": "BM25Retriever",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/retrieval/hybrid_retrieval.py. BM25Retriever class with TF-IDF scoring. Called from HybridRetrievalEngine.retrieve(). Executed in Gate 5 (baseline path). Test: tests/test_hybrid_retrieval.py.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "BENCHMARK"
+    },
+    "dense_retrieval": {
+      "component": "VectorRetriever / S-PubMedBERT",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/retrieval/hybrid_retrieval.py. VectorRetriever class uses EmbeddingModel protocol. S-PubMedBERT authorized and frozen for biomedical baseline. SimpleEmbeddingModel is a LEGACY test fixture only. Gate 5 used actual embedding model. Test: tests/test_hybrid_retrieval.py.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "BENCHMARK"
+    },
+    "graph_retrieval": {
+      "component": "GraphRetriever",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/retrieval/hybrid_retrieval.py. GraphRetriever class with DrugRelationship edges. Called in HybridRetrievalEngine. Gate 5 executed graph path.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "BENCHMARK"
+    },
+    "rrf_fusion": {
+      "component": "Reciprocal Rank Fusion",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "Implemented in hybrid_retrieval.py. k=60 parameter. Fuses BM25 + Vector + Graph scores.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "BENCHMARK"
+    },
+    "cognee_adapter": {
+      "component": "CogneeAdapter / EvidenceMapper",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/retrieval/cognee_adapter.py. Calls cognee.add()/cognify()/search(). POC verified with AIOSQLite + LanceDB. Security POC tested adversarial inputs. Gate 5 included Cognee path (46 executions).",
+      "last_verified_stage": "GATE_5_COGNEE_POC",
+      "blocked_by": null,
+      "next_gate": "COGNEE_FULL_BENCHMARK"
+    },
+    "trust_scorer": {
+      "component": "AdaptiveTrustScorer",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/trust_scoring/trust_scorer.py (386 lines). 9 factors, risk-weighted formula, thresholds R0=0.30/R1=0.45/R2=0.60/R3=0.75. Weights loaded from config/trust.yaml. Test: tests/test_trust_scorer.py. Called from orchestrator query() at line 510.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "TRUST_MISSING_VALUE_AUDIT",
+      "findings": {
+        "MISSING_VALUE_ISSUE": "query_relevance defaults to 0.0, evidence_quality defaults to 0.0 in TrustFactorScores. Orchestrator (line 502-508) does NOT populate query_relevance or evidence_quality. They silently remain at 0.0. With R1 weights (query_relevance=0.20, evidence_quality=0.15), this silently reduces the maximum achievable trust score by 0.35. This is the MISSING=ZERO problem identified in Gate 4.",
+        "population_match_default": "Defaults to 1.0 (optimistic). Not populated by orchestrator. Weight is small (0.03-0.05).",
+        "consistency_default": "Defaults to 1.0. Orchestrator maps to 1.0 - poisoning_score.",
+        "freshness_default": "Defaults to 1.0. Orchestrator reads from metadata or defaults to 0.8."
+      }
+    },
+    "injection_detector": {
+      "component": "PromptInjectionDetector",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/security_extensions/injection_detector.py. Called twice in orchestrator: once on query (line 425), once on each candidate text (line 540). Test: tests/test_security_extensions.py. Gate 5 exercised injection detection across 200-case dataset.",
+      "last_verified_stage": "GATE_5_COMPONENT",
+      "blocked_by": "No live generative E2E test",
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "poisoning_detector": {
+      "component": "RetrievalPoisoningDetector",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/security_extensions/poisoning_detector.py. inspect_provenance() called per-candidate in orchestrator (line 492). Checks provenance metadata. Test: tests/test_security_extensions.py.",
+      "last_verified_stage": "GATE_5_COMPONENT",
+      "blocked_by": "No live generative E2E test",
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "integrity_validator": {
+      "component": "DynamicIntegrityValidator",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/security_extensions/integrity_validator.py. SHA-256 hash comparison. Called in orchestrator eligibility loop (line 538-539). Security POC tested candidate tampering.",
+      "last_verified_stage": "GATE_5_COMPONENT",
+      "blocked_by": null,
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "relationship_grounding": {
+      "component": "RelationshipGrounding V2 (RG-02)",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/security_extensions/relationship_grounding_v2.py. States: SUPPORTED, UNSUPPORTED, CONTRADICTED, NO_RELEVANT_RELATION, AMBIGUOUS. Called from orchestrator (line 530-537). Test: tests/test_relationship_grounding_v2.py. Bounded-negative semantics corrected.",
+      "last_verified_stage": "GATE_5_COMPONENT",
+      "blocked_by": "Regex/heuristic limitations documented",
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "claim_verifier": {
+      "component": "AnswerSafetyGate (claim_verifier.py)",
+      "status": "INTEGRATION_TESTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/verification/claim_verifier.py (609 lines). AnswerSafetyGate class with verify() method. Stages: claim decomposition, claim-to-evidence alignment, citation integrity, contradiction detection, gate decision. IMPORTED and CALLED in orchestrator at line 60-65 (import) and line 659-660 (instantiation and call). Test: tests/test_claim_verifier.py. Gate 5 executed this as part of the full pipeline.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "contradiction_analysis": {
+      "component": "Contradiction Detection (within AnswerSafetyGate)",
+      "status": "IMPLEMENTED",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "Stage 4 of claim_verifier.py. Heuristic NLI: detects absolute/unsafe language patterns and internal contradictions between claims. Not a standalone ContradictionAnalyzer class; integrated into AnswerSafetyGate.verify().",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": "GATE_F_E2E_SECURITY"
+    },
+    "llm_provider_adapter": {
+      "component": "LLMProviderAdapter",
+      "status": "MOCK_TRANSPORT_TESTED",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "src/adaptive_trust_medical_rag/llm_backend/pilot_adapter.py. Supports DIRECT_GROQ, DIRECT_CLOUDFLARE, DIRECT_HUGGINGFACE, FREELLMAPI_GATEWAY. generate_structured() with JSON Schema validation, label/grade consistency, exact-span validation. 28/28 deterministic tests passed via requests.post mock. NO live provider transport executed.",
+      "last_verified_stage": "TRACK_A_V14_DETERMINISTIC",
+      "blocked_by": "No API credentials present",
+      "next_gate": "GATE_C_LIVE_PROVIDER"
+    },
+    "track_a_schema": {
+      "component": "Track A Adjudication Schema",
+      "status": "FROZEN",
+      "execution_level": "MOCK_TRANSPORT_TESTED",
+      "evidence": "track_a_annotation/decision_batches/TRACK_A_ADJUDICATION_SCHEMA_FINAL_V1.json. 21 fields, strict enums, label-grade mappings. Hashes computed and stored. Schema used by deterministic adapter tests.",
+      "last_verified_stage": "TRACK_A_V14",
+      "blocked_by": null,
+      "next_gate": "GATE_E_MEDICAL_PILOT"
+    },
+    "track_a_prompt": {
+      "component": "Track A Adjudication Prompt V2",
+      "status": "FROZEN",
+      "execution_level": "MOCK_TRANSPORT_TESTED",
+      "evidence": "track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt. All 21 fields explicitly enumerated. Semantic definitions for labels, alignment, polarity, spans. Hash computed.",
+      "last_verified_stage": "TRACK_A_V14",
+      "blocked_by": null,
+      "next_gate": "GATE_E_MEDICAL_PILOT"
+    },
+    "evidence_corpus": {
+      "component": "Frozen Evidence Corpus 2.0.0",
+      "status": "FROZEN",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "data/evidence/manifest.json. 5 documents (metformin, warfarin-aspirin, haloperidol-azithromycin, spironolactone, atorvastatin). SHA-256 manifest hash recorded. Used by Gate 5.",
+      "last_verified_stage": "GATE_5",
+      "blocked_by": null,
+      "next_gate": null
+    },
+    "gate_5": {
+      "component": "Gate 5 Execution",
+      "status": "FROZEN",
+      "execution_level": "OFFLINE_EXECUTED",
+      "evidence": "23 cases x 2 engines x 2 repeats = 92 executions. Historical evidence. DO NOT RERUN.",
+      "last_verified_stage": "GATE_5_FINAL",
+      "blocked_by": null,
+      "next_gate": null
+    },
+    "fastapi": {
+      "component": "FastAPI Service Layer",
+      "status": "CONCEPTUAL",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "No FastAPI app instance found running in current experiments. API boundary is conceptual for production deployment.",
+      "last_verified_stage": "NONE",
+      "blocked_by": "Not required for research prototype",
+      "next_gate": "PRODUCTION_DEPLOYMENT"
+    },
+    "neo4j": {
+      "component": "Neo4j Graph Database",
+      "status": "CONCEPTUAL",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "Mentioned in architecture documents. No Neo4j connection in current runtime. Cognee POC uses AIOSQLite.",
+      "last_verified_stage": "NONE",
+      "blocked_by": null,
+      "next_gate": "PRODUCTION_SCALE"
+    },
+    "qdrant": {
+      "component": "Qdrant Vector Database",
+      "status": "CONCEPTUAL",
+      "execution_level": "NOT_EXECUTED",
+      "evidence": "Mentioned in architecture documents. No Qdrant connection in current runtime. Cognee POC uses LanceDB.",
+      "last_verified_stage": "NONE",
+      "blocked_by": null,
+      "next_gate": "PRODUCTION_SCALE"
+    }
+  },
+  "evidence_acquisition_model": {
+    "LIVE_SOURCE_QUERY": "NO",
+    "FROZEN_EVIDENCE_SNAPSHOT": "YES",
+    "explanation": "The orchestrator retrieves from a pre-built local corpus loaded via manifest.json. No external API (NCBI, Europe PMC, openFDA, ClinicalTrials.gov) is called at query-time. RxNorm adapter code exists but is not injected into the orchestrator in current experiments. The frozen evidence corpus 2.0.0 is the authoritative source for the current benchmark."
+  },
+  "trust_missing_value_findings": {
+    "query_relevance": {"default": 0.0, "populated_by_orchestrator": false, "impact": "Loses 0.10-0.20 of max score depending on risk class", "classification": "MISSING_SILENTLY_ZERO"},
+    "evidence_quality": {"default": 0.0, "populated_by_orchestrator": false, "impact": "Loses 0.10-0.25 of max score depending on risk class", "classification": "MISSING_SILENTLY_ZERO"},
+    "population_match": {"default": 1.0, "populated_by_orchestrator": false, "impact": "Optimistically defaults to full match (0.03-0.05 weight)", "classification": "MISSING_OPTIMISTIC_DEFAULT"},
+    "source_authority": {"default": 0.0, "populated_by_orchestrator": true, "source": "cand.source_authority", "classification": "POPULATED"},
+    "entity_match": {"default": 0.0, "populated_by_orchestrator": true, "source": "keyword match 1.0/0.5", "classification": "POPULATED"},
+    "freshness": {"default": 1.0, "populated_by_orchestrator": true, "source": "metadata or 0.8 fallback", "classification": "POPULATED_WITH_FALLBACK"},
+    "consistency": {"default": 1.0, "populated_by_orchestrator": true, "source": "1.0 - poisoning_score", "classification": "POPULATED"},
+    "anti_poisoning": {"default": 1.0, "populated_by_orchestrator": true, "source": "1.0 - poisoning_score", "classification": "POPULATED"},
+    "anti_injection": {"default": 1.0, "populated_by_orchestrator": true, "source": "1.0 - poisoning_score (NOTE: should be from injection detection, not poisoning)", "classification": "POPULATED_INCORRECTLY"}
+  }
+}

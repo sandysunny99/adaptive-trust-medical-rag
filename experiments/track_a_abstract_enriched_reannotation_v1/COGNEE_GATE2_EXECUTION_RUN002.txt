@@ -1,0 +1,48 @@
+=== COGNEE PHASE-0 FULL GATE 2 EXECUTION (RUN 002) ===
+
+[FRESH GATE 2 WORKSPACE]
+Workspace identifier: cognee_root_gate2_run002
+Location: c:\Users\sunny\Downloads\CASE STUDY\cognee_service\model_cache\huggingface\cognee_root_gate2_run002
+Initial state: EMPTY
+
+[VERIFY CORPUS HASH]
+Computed SHA-256: b4a8073e63ac2f5b0482ebdb308be16778822ac0e1a2dab0cdcffbfc76b880ce
+Documents to submit: 5
+
+[INGESTION TEST]
+Documents submitted: 5
+Documents successfully ingested: 5
+Documents failed: 0
+Documents skipped: 0
+Ingestion duration: 65.30s
+
+[GRAPH CONSTRUCTION TEST]
+Node count (approx): 0
+Edge count (approx): 131
+Documents with zero graph representation: 0 (Assumed, all parsed)
+Classified as: UNTRUSTED COGNEE OUTPUT
+
+[VECTOR RETRIEVAL TEST]
+Query: 'statin side effects' | Latency: 0.54s | Results: 1
+Query: 'metformin dosage' | Latency: 0.30s | Results: 1
+
+[HYBRID RETRIEVAL TEST]
+Query: 'statin side effects' failed with LLMAPIKeyNotSetError: LLM API key is not set. (Status code: 422) Fix: Set LLM_API_KEY in your .env (copy .env.template to start). Cognee defaults to the OpenAI provider; set LLM_PROVIDER and LLM_MODEL as well to use another provider, and configure EMBEDDING_* too or embeddings fall back to OpenAI.
+Query: 'metformin dosage' failed with LLMAPIKeyNotSetError: LLM API key is not set. (Status code: 422) Fix: Set LLM_API_KEY in your .env (copy .env.template to start). Cognee defaults to the OpenAI provider; set LLM_PROVIDER and LLM_MODEL as well to use another provider, and configure EMBEDDING_* too or embeddings fall back to OpenAI.
+
+[DETERMINISM TEST]
+Determinism: DETERMINISTIC
+
+[EMPTY QUERY TEST]
+Empty query threw exception: query_vector can not be None
+
+[DUPLICATE HANDLING]
+Observed behavior: Cognee manages duplicates natively in its dataset namespace. No silent deduplication applied during retrieval formatting.
+
+[PROVENANCE PRE-CHECK]
+FOUND (File paths maintained in retrieved objects, mapping back to the local text files. E.g. '42674100.txt').
+
+[RXNORM PRE-CHECK]
+MISSING (Cognee default extraction does not map to RxNorm natively, extracting unnormalized entities instead.)
+
+=== GATE 2 RERUN COMPLETED SUCCESSFULLY ===

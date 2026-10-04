@@ -1,0 +1,3 @@
+# TRUST RESEARCH GAPS V1
+**CURRENTLY READY** -> **TRUST AUDIT FINDINGS**
+-> [BLOCKER: Missing values default silently to 0.0 or 1.0] -> **OFFLINE FIX / VALIDATION**

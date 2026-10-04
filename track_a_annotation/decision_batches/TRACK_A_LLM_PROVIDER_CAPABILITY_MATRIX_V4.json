@@ -1,0 +1,30 @@
+{
+  "DIRECT_GROQ": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "json_object": "CODE_PRESENT",
+    "json_schema": "CODE_PRESENT"
+  },
+  "DIRECT_CLOUDFLARE": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "json_object": "CODE_PRESENT",
+    "json_schema": "UNSUPPORTED"
+  },
+  "DIRECT_HUGGINGFACE": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "json_object": "UNSUPPORTED",
+    "json_schema": "UNSUPPORTED"
+  },
+  "FREELLMAPI_GATEWAY": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "json_object": "CODE_PRESENT",
+    "json_schema": "UNSUPPORTED"
+  }
+}

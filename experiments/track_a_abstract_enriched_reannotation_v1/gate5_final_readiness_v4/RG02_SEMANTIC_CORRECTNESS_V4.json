@@ -1,0 +1,12 @@
+{
+  "case_id": "RG-02",
+  "query": "Statin is a drug. Cyanide is a poison.",
+  "query_entities": ["statin", "cyanide"],
+  "retrieved_candidates": ["chunk-warfarin-001", "chunk-spironolactone-001", "chunk-metformin-001", "chunk-haloperidol-001"],
+  "entity_pair_alignment": "MISMATCH",
+  "grounding_state": "NO_RELEVANT_RELATION",
+  "aggregate_decision": "BLOCK",
+  "retrieval_correctness": "RETRIEVAL_IRRELEVANT",
+  "security_correctness": "SECURITY_BLOCK",
+  "status": "PASS"
+}

@@ -1,0 +1,49 @@
+{
+  "models": {
+    "SimpleEmbeddingModel": {
+      "dimension": 7,
+      "tokenization": "simple substring match (Python 'in')",
+      "pooling": "binary sum",
+      "normalization": "L2",
+      "semantic_domain": "toy (7 words)",
+      "retrieval_usage": "Orchestrator baseline, retrieval-baseline-v1/v2_1",
+      "determinism": "fully deterministic",
+      "offline_availability": "local class",
+      "reproducibility": "high"
+    },
+    "pritamdeka/S-PubMedBert-MS-MARCO": {
+      "dimension": 768,
+      "tokenization": "WordPiece",
+      "pooling": "mean/cls (via sentence-transformers)",
+      "normalization": "L2",
+      "semantic_domain": "Biomedical text",
+      "retrieval_usage": "Fusion evaluation v3 experiments",
+      "determinism": "deterministic given frozen weights",
+      "offline_availability": "requires HuggingFace cache",
+      "reproducibility": "high if revision hash is frozen"
+    }
+  },
+  "comparability": {
+    "fusion-evaluation-v3-real": {
+      "if_SimpleEmbeddingModel": "NOT_COMPARABLE",
+      "if_S_PubMedBert": "FULLY_COMPARABLE"
+    },
+    "fusion-evaluation-v3-confirmed": {
+      "if_SimpleEmbeddingModel": "NOT_COMPARABLE",
+      "if_S_PubMedBert": "FULLY_COMPARABLE"
+    },
+    "retrieval-baseline-v1": {
+      "if_SimpleEmbeddingModel": "FULLY_COMPARABLE",
+      "if_S_PubMedBert": "NOT_COMPARABLE"
+    },
+    "retrieval-baseline-v2_1": {
+      "if_SimpleEmbeddingModel": "FULLY_COMPARABLE",
+      "if_S_PubMedBert": "NOT_COMPARABLE"
+    },
+    "FREE_REPLICATION_V1": {
+      "if_SimpleEmbeddingModel": "FULLY_COMPARABLE",
+      "if_S_PubMedBert": "NOT_COMPARABLE (requires protocol amendment)"
+    }
+  },
+  "evidence_source": "manual_analysis"
+}

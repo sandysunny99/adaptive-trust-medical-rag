@@ -1,0 +1,16 @@
+{
+  "benchmark_name": "CLAIM_EVIDENCE_BENCHMARK_V1",
+  "version": "1.0.0",
+  "status": "PREPARATION_PHASE",
+  "description": "Evaluates LLM generation fidelity against retrieved authoritative evidence.",
+  "schema": {
+    "case_id": "string",
+    "query": "string",
+    "evidence_chunks": [{"chunk_id": "string", "text": "string"}],
+    "generated_claim": "string",
+    "expected_support_level": ["DIRECT", "PARTIAL", "NO_SUPPORT", "CONTRADICTED"],
+    "citation_target_chunk": "string",
+    "abstention_expected": "boolean",
+    "evaluation_status": "PENDING"
+  }
+}

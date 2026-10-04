@@ -1,0 +1,9 @@
+{
+  "stage": "GATE_C_PREFLIGHT",
+  "block_reason": "CREDENTIAL_MISSING",
+  "evidence": "No LLM API keys detected in execution environment.",
+  "affected_provider": "ALL",
+  "affected_model": "ALL",
+  "required_remediation": "Researcher must provision valid API credentials into environment.",
+  "execution_authorized": false
+}

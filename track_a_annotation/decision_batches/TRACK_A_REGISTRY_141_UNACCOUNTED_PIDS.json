@@ -1,0 +1,989 @@
+[
+  {
+    "position_id": "pos-9fd6f046",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-91b3a12f",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9f4b7558",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6751dbeb",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-5296e2f0",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-aa15aacd",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-eb10f237",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7c1fb419",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-dd28047a",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-620006e2",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-261a6c8c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-fa5a07d1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-aac68713",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d4370b56",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-167d7b99",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c5c84573",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-964cd77c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b8a86f71",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-706dd1e6",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-4820f698",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-f33c31e5",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-fbe4bb45",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-130b89fc",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-a5465850",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-2142a295",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-055e405a",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-59a4d6ce",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-3fb32a70",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9a6c3f24",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e7526603",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-dc2d1d00",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c958f9a4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-456cdfbc",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-223118a4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7c696aa6",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c896c5d9",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-865ade74",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-074944db",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-fa9aa245",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-43b39b0f",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-028d95b5",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-814cd0c1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-791c7367",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c2659179",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-ecb30645",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9b777fd1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9cafff14",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b8b4f173",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-3440fa6c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-a00ce69f",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-67f09880",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-53198e7b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-a3b4c771",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7e689ff1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6d49dc3b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-4b1bd9e5",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-5a1ffded",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-68c36127",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-cf4730de",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9acf02db",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7fa9c744",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7436f45f",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d3295d06",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-fc86260b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-0c17f293",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6d33df67",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7d7a2a67",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e237444e",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-734b9fb4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c3e553c3",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c8189f02",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-2fd215f0",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-33c679d3",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-f9f910f8",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-878c4053",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-cbaac358",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6b51aa62",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-41410b52",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-47d7ebb4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-a835aaac",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-5b711aba",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-eb331f6c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e8bcb783",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b043af88",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-19c49db1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-0b8f9433",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6451c410",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-8e78b6f8",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b3ee840d",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-02f6b94c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c6137634",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-8a294cff",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-77352d30",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-55170595",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-4170dd36",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d287c7dc",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-ea0492d8",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e52b4c9e",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b4063d90",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-86bb114a",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-5ca415c6",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-13ca8dc0",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-71c56f79",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-f8a6a54c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-be2c3d93",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-fce9aed7",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-9b7d81e4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b66e91cc",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-f4d4d47c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c4839d51",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-3d27c5b0",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-023ac072",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-38321e44",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-bdbee728",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d77341b4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-5cc464f4",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d0de21af",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-09d4924f",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c1c56b3c",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-c5be96ab",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d14b89a0",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-6b589a2b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-76e041ab",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e5ff8086",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-0744bfc1",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-b4c42a92",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-ac0d7421",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-8a095ad6",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-551a71b7",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-60ec8372",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-8511788b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-d5d28b3e",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-0a4fc25b",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-858d12a9",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-e701e6b6",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-24d8926d",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-85c2e897",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-103fab76",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-312c2bfa",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-7f4a11a7",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  },
+  {
+    "position_id": "pos-50e306ec",
+    "reservation_status": "COMMITTED",
+    "status_type": "VALID_OTHER",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED"
+  }
+]

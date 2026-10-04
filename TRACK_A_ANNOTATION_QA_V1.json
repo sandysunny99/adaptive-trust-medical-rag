@@ -1,0 +1,11 @@
+{
+  "missing_labels": 530,
+  "invalid_grades": 0,
+  "invalid_position_ids": 0,
+  "duplicate_annotator_entries": 0,
+  "contradictory_labels": 0,
+  "malformed_rationale": 0,
+  "missing_evidence_references": 0,
+  "details": [],
+  "qa_status": "FAIL"
+}

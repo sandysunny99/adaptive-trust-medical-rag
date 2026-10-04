@@ -1,0 +1,371 @@
+BATCH HEADER
+
+Batch ID: TRACK_A_A_BATCH_002
+Dataset: TRACK_A_HUMAN_ANNOTATION_DATASET_V1
+Schema: 2.0.0
+Record count: 10
+Current annotated count: 11
+Current remaining count: 519
+Batch reservation status: RESERVED
+
+============================================================
+POSITION 01
+============================================================
+position_id: pos-fa5a07d1
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-41141842-001
+document_id: 41141842
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Andexanet alfa (andexanet) is the only approved reversal agent for patients with acute major bleeding during apixaban or rivaroxaban treatment. Its mechanism suggests it may also reverse the effects of low-molecular-weight heparin. AIM: To evaluate the effects of andexanet in healthy volunteers and in patients with acute major bleeding on enoxaparin. METHODS: In the first study, healthy volunteers received enoxaparin 1 mg/kg twice daily for ≥3 doses and were randomized to receive either andexanet or placebo in high- or low-dose regimens, given 3 hours (high dose) or 8 hours (low dose) after the last dose. In the second study (Andexanet Alfa, a Novel Antidote to the Anticoagulant Effects of FXa Inhibitors 4), dosing depended on timing and amount of last enoxaparin dose: high dose if > 40 mg or <8 hours since last dose (or unknown), low dose if ≤ 40 mg or ≥8 hours. The high dose consisted of an 800 mg bolus followed by 960 mg >2 hours, while low dose consisted of a 400 mg bolus followed by 480 mg >2 hours. The primary outcome was change in anti-Xa activity. Hemostatic efficacy was assessed in patients with confirmed bleeding and baseline anti-Xa ≥ 0.25 IU/mL. RESULTS: In the first study, 24 volunteers received andexanet (12 at a high dose and 12 at a low dose), and 7 received a placebo. Median anti-Xa activity decreased by 83% (0.92-0.17 IU/mL) in the high-dose cohort, and by 73% (0.78-0.22 IU/mL) in the low-dose cohort. In the second study, 22 patients received andexanet; anti-Xa activity decreased by 75% (95% CI, 67%-79%; 0.48-0.14 IU/mL). Good/excellent hemostasis was achieved in 14 of 16 assessable patients (88%). CONCLUSION: In enoxaparin-treated subjects, andexanet reduced anti-Xa activity and achieved effective hemostasis in 88% of patients. Results align with findings of patients using apixaban, rivaroxaban, or edoxaban.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 02
+============================================================
+position_id: pos-aac68713
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-39430173-001
+document_id: 39430173
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+INTRODUCTION: Hemodialysis patients (HDPs) exhibit extensive cardiovascular risk. The widely prescribed anti-platelet agent clopidogrel is metabolically activated by cytochrome enzymes, which may be impaired by uremia and chronic low-grade inflammation, typically present in HDPs. We conducted a prospective multicenter study to investigate the pharmacokinetics and pharmacodynamics of clopidogrel in HDPs and healthy volunteers (HVs). METHODS: We enrolled HDPs receiving long-term clopidogrel (75 mg) and pantoprazole treatment (40 mg). Healthy volunteers received a loading dose of 300 mg clopidogrel, followed by 75 mg once daily. Pantoprazole, a substrate and probe drug of CYP2C19, was administered intravenously (40 mg). Plasma concentrations were quantified by mass spectrometry. Pharmacokinetics were calculated, and a population pharmacokinetic model was developed. The primary endpoint was the maximum concentration of clopidogrel's active metabolite. Platelet aggregation was measured using adenosine diphosphate-induced whole-blood aggregometry. RESULTS: Seventeen HDPs and 16 HVs were included. The maximum concentration of clopidogrel's active metabolite was significantly lower in HDPs compared to HVs (median [interquartile range] 12.2 [4.6-23.4] vs. 24.7 [17.8-36.5] ng/ml, P = 0.02). The maximum concentration ratio of clopidogrel's active metabolite to prodrug was 8.5-fold lower in HDPs, and an 82.7% reduced clopidogrel clearance, including clopidogrel's active metabolite formation, was found using population pharmacokinetic modeling. From previous studies, adenosine diphosphate-induced platelet aggregation at 120 minutes was significantly higher in HDPs than in HVs (median [interquartile range]: 26 U [14 U-43 U] vs. 12 U [11 U-18 U], P = 0.004. Pantoprazole terminal half-life was ∼1.7-fold higher in HDPs compared to HVs. CONCLUSION: Our data demonstrate an altered metabolism of clopidogrel in HDPs in the context of lower CYP2C19 activity, with potential implications for other substances metabolized by this enzyme.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 03
+============================================================
+position_id: pos-d4370b56
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42448258-001
+document_id: 42448258
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Anticoagulant therapy is the cornerstone of stroke prevention in atrial fibrillation (AF), yet its management in elderly and frail patients remains particularly challenging. This review aims to summarize current evidence, guideline recommendations, and future perspectives regarding the optimal anticoagulant strategy in this vulnerable population. A narrative review of pivotal randomized clinical trials and major real-world registries was conducted, focusing on outcomes of direct oral anticoagulants (DOACs) versus vitamin K antagonists (VKAs) in patients aged ≥75 years or meeting frailty criteria. Across studies, DOACs consistently demonstrated similar or superior efficacy compared with VKAs for the prevention of stroke and systemic embolism, with a substantially lower risk of intracranial hemorrhage. Apixaban and edoxaban, particularly at adjusted doses, showed the most favorable balance between thromboembolic protection and bleeding risk. Conversely, switching stable elderly patients from long-term VKAs to DOACs, as in the FRAIL-AF trial, was associated with an early excess of clinically relevant nonmajor bleeding. Frailty, multimorbidity, renal impairment, and polypharmacy remain critical modifiers of both efficacy and safety, underlining the need for individualized dosing and regular renal function monitoring. Recent European Society of Cardiology/European Association for Cardio-Thoracic Surgery (ESC/EACTS) and the American Heart Association/American College of Cardiology/Heart Rhythm Society (AHA/ACC/HRS) guidelines recommend DOACs as the preferred treatment for nonvalvular AF, emphasizing comprehensive risk assessment and shared decision-making. Emerging agents, such as factor XI inhibitors, offer a promising approach to minimizing bleeding risk in the elderly, though confirmation of their efficacy against ischemic events remains to be fully established. In elderly and frail patients with AF, DOACs represent the first-line anticoagulant therapy when appropriately dosed and monitored. A personalized, multidisciplinary approach incorporating frailty assessment, renal evaluation, and patient preference is essential to optimize outcomes. Future trials specifically enrolling very old and severely frail patients are urgently needed to close existing evidence gaps.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 04
+============================================================
+position_id: pos-167d7b99
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42622073-001
+document_id: 42622073
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Clopidogrel is often co-prescribed with proton pump inhibitors (PPIs) to reduce gastrointestinal bleeding risk. However, some PPIs, especially pantoprazole, inhibit CYP2C19, potentially reducing clopidogrel's activation. Ilaprazole, a newer PPI primarily metabolized via CYP3A4, may offer reduced interaction. The study was an open-label, randomized trial that involved 36 healthy male volunteers, who were divided into three groups (n = 12 each): Group 1 (Clopidogrel + Placebo), Group 2 (Clopidogrel + Pantoprazole 40 mg), and Group 3 (Clopidogrel + Ilaprazole 10 mg). After 7 days of treatment, all participants received clopidogrel 75 mg on Day 8. Pharmacokinetic (PK) parameters were analyzed using LC-MS/MS and platelet aggregation by light transmission aggregometry at 0, 4, 10, and 24 h. Pantoprazole significantly reduced clopidogrel AUC (1.96 ± 0.20 vs 8.27 ± 1.04 ng·h/mL, P < .0005), Cmax (0.76 ± 0.04 vs 2.6 ± 1.01 ng/mL, P = .0136), and t1/2 (1.72 ± 0.11 vs 2.22 ± 0.17 h, P = .0312), indicating reduced bioavailability. Geometric mean ratio (GMR) analysis showed a marked reduction in clopidogrel exposure with pantoprazole (Cmax GMR 0.31, 90% CI 0.18-0.53; AUC GMR 0.24, 90% CI 0.19-0.29), and platelet aggregation was significantly higher at 4 and 10 h (P < .05). In contrast, ilaprazole preserved PK parameters (AUC 10.18 ± 1.41, Cmax 3.06 ± 1.05), GMRs near unity (Cmax 1.20, 90% CI 0.60-2.42; AUC 1.23, 90% CI 0.97-1.55), indicating no inhibitory effect and platelet inhibition comparable to placebo (P > .05) Ilaprazole did not affect clopidogrel pharmacokinetics or pharmacodynamics, suggesting it as a safer alternative to pantoprazole in dual antiplatelet therapy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 05
+============================================================
+position_id: pos-c5c84573
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42595037-001
+document_id: 42595037
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Although mineralocorticoid receptor (MR) antagonism is a mechanistically plausible target of therapy in patients with kidney failure, prior small trials failed to elucidate the safety and efficacy of spironolactone and eplerenone in this population. More conclusive evidence was provided by the ALCHEMIST and ACHIEVE trials, in which spironolactone was not superior to placebo in improving cardiovascular outcomes in patients with kidney failure. The incidence of moderate hyperkalemia in these trials was higher with spironolactone than with placebo. Accordingly, the use of spironolactone or eplerenone for cardiovascular protection in this population is not justified by the currently available clinical-trial data.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 06
+============================================================
+position_id: pos-964cd77c
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42618000-001
+document_id: 42618000
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+INTRODUCTION: The evaluation of pharmacokinetic interactions is based on the knowledge of enzymatic metabolization by cytochrome 450 enzymes or cellular transport processes. Research on the metabolism of pipamperone, an antipsychotic of the butyrophenone family, has not yet yielded conclusive results. In the present in vitro study, human cytochrome enzymes were investigated for their possible involvement in the metabolism of pipamperone. METHODS: The recombinant human cytochrome enzymes tested, i.e. CYP1A2, CYP2B6, CYP2C9, CYP2C19, CYP2D6, and CYP3A4, were commercially available. The U.S. Food and Drug Administration-recommended clinical index substrates were used to establish appropriate incubation conditions for each enzyme. All substrates and their metabolites were analyzed by gas chromatography-mass spectrometry. After incubation, the amount of metabolites formed and the concentration of remaining pipamperone were measured. In addition, the metabolites from these in vitro experiments were compared with the metabolites found in the urine of pipamperone-treated patients and with those produced in a cell culture experiment. RESULTS: Overall, various cytochrome enzymes showed a low turnover of pipamperone. Only CYP2D6 and CYP3A4 caused statistically significant changes in both a decrease in pipamperone concentrations and an increase in metabolites. CYP3A4 proved to be the isoform that metabolized pipamperone most strongly, producing the same metabolite as all other CYP isoenzymes. It is noteworthy that this and other metabolites were also detected in the patients' urine samples. CONCLUSIONS: Our results suggest that, alongside the tested cytochrome enzymes, other phase I metabolizing systems likely play a role in pipamperone metabolism.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 07
+============================================================
+position_id: pos-b8a86f71
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-40771914-001
+document_id: 40771914
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+The document comprehensively reviews proton pump inhibitors (PPIs), focusing on their pharmacodynamics, pharmacokinetics, drug interactions, toxicity, and clinical efficacy. PPIs irreversibly inhibit the H+/K+-ATPase enzyme in gastric parietal cells, effectively reducing gastric acid secretion. These drugs are widely prescribed for conditions like gastroesophageal reflux disease (GERD), peptic ulcer disease, eradication of Helicobacter pylori and as a prevention against bleeding from gastrointestinal tract. The review article highlights significant drug interactions associated with PPIs. Omeprazole, for instance, can interfere with the metabolism of clopidogrel, reducing its antiplatelet efficacy, which may have clinical implications. The article also discusses other drug interactions, including anticoagulants (e.g., warfarin), selective serotonin reuptake inhibitors (SSRIs), and immunosuppressive and chemotherapeutic drugs, as well as the side effects associated with taking PPIs. Long-term use of PPIs is linked to plenty of adverse effects, such as vitamin B12 and calcium deficiencies, which can lead to bone fractures. An increased risk of infections, including Clostridium difficile and small intestinal bacterial overgrowth (SIBO), is also noted. Cardiovascular risks, such as myocardial infarction and stroke, are observed in some patients on high-dose or prolonged PPI therapy. In rare cases, nephrotoxicity and hepatotoxicity are reported. Additionally, the document examines the potential role of PPIs in exacerbating certain cancers, such as gastric adenocarcinoma, and in influencing the severity of COVID-19 symptoms. PPIs are proven effective in treating GERD and preventing complications from nonsteroidal anti-inflammatory drugs (NSAIDs), particularly in reducing the risk of NSAID-induced ulcers. The document stresses the importance of understanding drug interactions and the need for individualized treatment to minimize adverse effects. Ongoing research into PPIs' long-term safety and efficacy remains essential, particularly given their widespread use in clinical practice.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 08
+============================================================
+position_id: pos-706dd1e6
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42586461-001
+document_id: 42586461
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Cardio-oncology patients may face complex treatment regimens due to the concurrent existence of cancer and cardiovascular disease, leading to a considerable polypharmacy burden. This significantly increases the prospect of drug-drug interactions (DDIs) and gene-drug interactions. The majority of these interactions arise from comparable pharmacokinetic and pharmacological pathways associated with drug transporters and cytochrome P450 enzymes. The significance of pharmacogenomics in tailored treatment strategies are emphasised by the fact that genetic variability enhances individual differences in drug response, safety, and efficacy. This narrative review focus on the effects of key genetic polymorphisms (e.g., DPYD, CYP2C19, and CYP2C9) on the metabolism and efficacy of commonly prescribed anticancer and cardiovascular medications such as fluoropyrimidines, clopidogrel, and warfarin. In addition it explore the role of pharmacogenomic variants on drug-drug interactions within the field of cardio-oncology. The study ultimately emphasizes the necessity of precision medicine in India to address the genetic diversity and underrepresentation in global genomic databases. The absence of pharmacogenomic testing, infrastructural deficiencies, financial constraints, and insufficient clinical integration hinder the widespread use of this technology in India. The Genome India Project and other national initiatives establish the foundation for pharmacogenomic-guided therapy. Utilizing genetic data, together with artificial intelligence-based predictive tools, for clinical decision-making may enhance medication safety and yield optimal outcomes in Indian cardio-oncology patients.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 09
+============================================================
+position_id: pos-4820f698
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42628776-001
+document_id: 42628776
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Acetaminophen (APAP) overdose is the leading cause of acute liver failure (ALF), with acute kidney injury (AKI) contributing substantially to morbidity and mortality in those patients. To determine whether APAP-induced AKI depends on hepatic CYP2E1-mediated bioactivation, we used CYP2E1^flox/flox^ mice treated with AAV8-TBG-Cre to selectively delete hepatic CYP2E1 while preserving renal metabolism. Male and female mice received APAP (600 mg/kg) and were evaluated up to 48 h for liver and kidney injury. Liver-specific CYP2E1 deletion reduced APAP hepatotoxicity, confirming the reduction of hepatic NAPQI formation. Despite this protection, both male and female mice treated with AAV8-TBG-Cre and APAP developed progressive renal injury, with marked increases in blood urea nitrogen (BUN) and creatinine, tubular vacuolation, and strong induction of KIM-1 and osteopontin, along with cell death at 48 h. Notably, female mice lacking renal CYP2E1 and showing no detectable renal protein adducts still progressed to AKI, demonstrating that kidney injury can occur through CYP-independent mechanisms. Given that APAP-induced AKI is a delayed injury, we further considered p-aminophenol (PAP), a deacetylation product of APAP, as a potential CYP-independent contributor. These findings support the concept that non-CYP pathways, including PAP formation, may contribute to kidney injury during the later phase of toxicity, although this pathway likely represents only one component of a multifactorial injury process. Together, these results demonstrate that APAP-induced AKI is a kidney-intrinsic process that can develop independently of both hepatic and renal CYP2E1 activity, emphasizing the need for kidney-specific therapeutic strategies for preventing APAP-induced renal injury.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+============================================================
+POSITION 10
+============================================================
+position_id: pos-f33c31e5
+query_id: Clearance pathway for lisinopril
+chunk_id: chunk-42662744-001
+document_id: 42662744
+source_id: 
+
+QUERY:
+Clearance pathway for lisinopril
+
+PRIMARY RETRIEVED EVIDENCE:
+Hepatocellular carcinoma is difficult to treat owing to poor tumor selectivity, rapid hepatic clearance, intrinsic drug resistance, and the high susceptibility of healthy liver tissue to off-target toxicity. Although doxorubicin (Dox) is a potent and widely used chemotherapeutic agent, its application in liver cancer is severely constrained by nonspecific biodistribution, rapid systemic elimination, and dose-dependent cardiotoxicity, necessitating the development of safer and more efficient delivery systems. Herein, we report a peptide-based artificial viral capsid system constructed through the coassembly of β-annulus peptides with a novel perfluoroether (PFE)-modified β-annulus peptide as a biocompatible nanoplatform for the delivery of Dox to liver cancer cells. The artificial capsids spontaneously form directly in buffer or biological media, overcoming formulation limitations associated with toxic organic solvents or complex processing. In this design, β-annulus peptides provide the structural scaffold and encapsulation reservoir, whereas PFE modification introduces hydrophobicity and cell-penetrating capability, thereby enhancing intracellular delivery without added toxicity. The resulting PFE-modified capsids exhibit a uniform spherical morphology with an average diameter of ∼150 nm, as confirmed by dynamic light scattering and transmission electron microscopy, and efficiently encapsulate Dox during self-assembly. Compared with unmodified capsids and free Dox, the PFE-modified capsids show markedly improved intracellular delivery and considerably enhanced anticancer activity in human liver cancer (HepG2) cells, along with reduced cytotoxicity toward normal cells. This virus-mimetic, fully peptide-based nanocarrier integrates biocompatibility, efficient drug encapsulation, and enhanced intracellular transport, providing a versatile materials platform for safer and more effective liver cancer chemotherapy.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+SOURCE METADATA:
+
+EVIDENCE LOCATION:
+
+ENTITY METADATA:
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+timestamp: [WAITING_FOR_HUMAN_INPUT]
+annotation_status: UNANNOTATED
+
+HUMAN DECISION REMAINS REQUIRED FOR ALL 10 POSITIONS

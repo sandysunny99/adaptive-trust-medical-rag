@@ -1,0 +1,9 @@
+{"test_case": "A. COMPLETE provenance", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "B. PROVENANCE_PARTIAL", "chunk_id": "hybrid_compound_1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "C. PROVENANCE_MISSING", "chunk_id": "unknown", "passed": false, "reason": "Insufficient eligible evidence: 0 chunk(s) passed all gates (trust >= 0.45, poisoning <= 0.4, authority >= 0.3). 1 chunk(s) rejected.", "is_eligible": false}
+{"test_case": "D. valid RxNorm entity", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "E. failed RxNorm normalization", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "F. valid content integrity", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "G. content integrity failure", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "H. valid authority", "chunk_id": "c1", "passed": true, "reason": null, "is_eligible": true}
+{"test_case": "I. low/invalid authority", "chunk_id": "c1", "passed": false, "reason": "Insufficient eligible evidence: 0 chunk(s) passed all gates (trust >= 0.45, poisoning <= 0.4, authority >= 0.3). 1 chunk(s) rejected.", "is_eligible": false}

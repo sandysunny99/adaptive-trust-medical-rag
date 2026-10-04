@@ -1,0 +1,6 @@
+{
+  "status": "GATE_C_BLOCKED_BY_REAL_INTERFACE_GAP",
+  "interface_gap_status": "REAL",
+  "sync_adapter_status": "IMPLEMENTED_NOT_CONNECTED",
+  "provisional_provider": "groq"
+}

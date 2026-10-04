@@ -1,0 +1,14 @@
+{
+  "source_package": "TRACK_A_FINAL_COMPLETION_389",
+  "source_population": 389,
+  "Window01_excluded": 10,
+  "Window02_excluded": 10,
+  "final_review_population": 369,
+  "active_review_window": "FINAL_REMAINING_369",
+  "historical_windows": "provenance_only",
+  "benchmark": "LOCKED",
+  "provider_execution": "FALSE",
+  "synthetic_records": 0,
+  "duplicate_PIDs": 0,
+  "generated_at": "2026-10-03T19:26:06.388347"
+}

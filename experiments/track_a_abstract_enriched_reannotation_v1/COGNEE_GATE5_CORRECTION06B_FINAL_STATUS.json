@@ -1,0 +1,49 @@
+{
+  "artifact_delivery": {
+    "status": "DELIVERED_TO_PROJECT_TREE",
+    "repository_root": "C:\\Users\\sunny\\Downloads\\CASE STUDY",
+    "canonical_drive": "C:",
+    "w_drive_available": false,
+    "target_artifact_directory": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\experiments\\track_a_abstract_enriched_reannotation_v1"
+  },
+  "cognee_execution": {
+    "cognee_search_calls": 42,
+    "baseline_retrieval_calls": 21,
+    "cognee_returned_results": 210,
+    "baseline_returned_results": 21
+  },
+  "positive_controls": {
+    "unique": 2,
+    "runtime_cognee_executions": 4,
+    "passed": 1
+  },
+  "security_cases": {
+    "unique": 19,
+    "runtime_cognee_executions": 38,
+    "blocked": 10,
+    "released": 9,
+    "conforms_to_expectation": 17,
+    "nonconforming_cases": [
+      "POS-02",
+      "RG-02",
+      "INT-05",
+      "PI-01"
+    ]
+  },
+  "reproducibility": {
+    "cases": 21,
+    "exact_matches": 21,
+    "partial_observation_matches": 0,
+    "differences": 0
+  },
+  "known_failures": [
+    "POS-02",
+    "RG-02",
+    "INT-05",
+    "PI-01"
+  ],
+  "llm_mode": "MOCK",
+  "embedding_mode": "MOCK",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED"
+}

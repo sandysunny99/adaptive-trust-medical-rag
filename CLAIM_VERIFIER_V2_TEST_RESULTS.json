@@ -1,0 +1,10 @@
+[
+  {"test": "test_fully_entailed", "status": "passed"},
+  {"test": "test_paraphrased_supported", "status": "passed"},
+  {"test": "test_contradicted_claim", "status": "passed"},
+  {"test": "test_unsupported_claim", "status": "passed"},
+  {"test": "test_bounded_negative", "status": "passed"},
+  {"test": "test_mixed_claims", "status": "passed"},
+  {"test": "test_wrong_citation", "status": "passed"},
+  {"test": "test_ambiguous_semantic_relation", "status": "passed"}
+]

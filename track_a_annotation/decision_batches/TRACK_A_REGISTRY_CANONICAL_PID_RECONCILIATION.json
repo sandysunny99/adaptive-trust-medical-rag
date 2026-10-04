@@ -1,0 +1,9 @@
+{
+  "canonical_count": 530,
+  "registry_count": 530,
+  "intersection_count": 530,
+  "canonical_only_count": 0,
+  "registry_only_count": 0,
+  "canonical_committed_pids": 141,
+  "registry_committed_pids": 0
+}

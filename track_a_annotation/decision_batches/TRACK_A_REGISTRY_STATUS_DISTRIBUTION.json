@@ -1,0 +1,11 @@
+{
+  "distribution": {
+    "COMMITTED": 141,
+    "UNRESERVED": 389
+  },
+  "total": 530,
+  "missing_pos_id": 0,
+  "missing_res_status": 0,
+  "null_res_status": 0,
+  "empty_res_status": 0
+}

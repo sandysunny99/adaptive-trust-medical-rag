@@ -1,0 +1,12 @@
+{"query": "statin side effects", "search_type": "CHUNKS", "candidate_index": 0, "extracted_entities": ["statin", "metformin"], "rxnorm_status": "PARTIAL"}
+{"query": "statin side effects", "search_type": "CHUNKS", "candidate_index": 1, "extracted_entities": ["metformin"], "rxnorm_status": "PARTIAL"}
+{"query": "statin side effects", "search_type": "CHUNKS", "candidate_index": 2, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "statin side effects", "search_type": "CHUNKS", "candidate_index": 3, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "statin side effects", "search_type": "CHUNKS", "candidate_index": 4, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "metformin dosage", "search_type": "CHUNKS", "candidate_index": 0, "extracted_entities": ["statin", "metformin"], "rxnorm_status": "PARTIAL"}
+{"query": "metformin dosage", "search_type": "CHUNKS", "candidate_index": 1, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "metformin dosage", "search_type": "CHUNKS", "candidate_index": 2, "extracted_entities": ["metformin"], "rxnorm_status": "PARTIAL"}
+{"query": "metformin dosage", "search_type": "CHUNKS", "candidate_index": 3, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "metformin dosage", "search_type": "CHUNKS", "candidate_index": 4, "extracted_entities": [], "rxnorm_status": "MISSING"}
+{"query": "statin side effects", "search_type": "HYBRID_COMPLETION", "candidate_index": 0, "extracted_entities": ["statins", "metformin", "metformin", "protective effects", "antiplatelet agents", "glutathione", "proton pump inhibitors", "thrombotic risk", "heparin", "vitamin k antagonists"], "rxnorm_status": "PARTIAL"}
+{"query": "metformin dosage", "search_type": "HYBRID_COMPLETION", "candidate_index": 0, "extracted_entities": ["metformin", "metformin", "dose dependent associations", "statins", "40 mg/kg", "pharmacokinetic features", "oral bioavailability", "proton pump inhibitors", "\u03b2 blockers", "moxifloxacin"], "rxnorm_status": "PARTIAL"}

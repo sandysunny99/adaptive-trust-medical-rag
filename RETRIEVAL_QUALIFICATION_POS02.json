@@ -1,0 +1,58 @@
+{
+  "query": "Does statin interact with aspirin?",
+  "baseline_retrieval": [
+    {
+      "chunk_id": "chunk-atorvastatin-001",
+      "score": 0.03278688524590164,
+      "text": "Atorvastatin (a statin) and aspirin are frequently co-administered for the secondary prevention of cardiovascular events. No clinically significant pharmacokinetic drug-drug interactions have been observed when atorvastatin is co-administered with aspirin."
+    },
+    {
+      "chunk_id": "chunk-warfarin-001",
+      "score": 0.03225806451612903,
+      "text": "Co-administration of warfarin and aspirin significantly increases the risk of major gastrointestinal and intracranial bleeding. Combination therapy requires close INR monitoring and risk-benefit evaluation."
+    },
+    {
+      "chunk_id": "chunk-haloperidol-001",
+      "score": 0.03149801587301587,
+      "text": "Combining haloperidol with azithromycin causes additive QTc interval prolongation, increasing the risk of life-threatening ventricular arrhythmias including Torsades de Pointes."
+    },
+    {
+      "chunk_id": "chunk-spironolactone-001",
+      "score": 0.03149801587301587,
+      "text": "Spironolactone can cause severe hyperkalemia, which can lead to cardiac arrhythmias and sudden death. Concomitant administration with potassium supplements or potassium-sparing diuretics is strictly contraindicated."
+    },
+    {
+      "chunk_id": "chunk-metformin-001",
+      "score": 0.015384615384615385,
+      "text": "Metformin decreases hepatic glucose production, decreases intestinal absorption of glucose, and improves insulin sensitivity by increasing peripheral glucose uptake and utilization."
+    }
+  ],
+  "cognee_retrieval": [
+    {
+      "chunk_id": "chunk_0",
+      "score": 0.12126171588897705,
+      "text": "Atorvastatin (a statin) and aspirin are frequently co-administered for the secondary prevention of cardiovascular events. No clinically significant pharmacokinetic drug-drug interactions have been observed when atorvastatin is co-administered with aspirin."
+    },
+    {
+      "chunk_id": "chunk_0",
+      "score": 0.22107982635498047,
+      "text": "Co-administration of warfarin and aspirin significantly increases the risk of major gastrointestinal and intracranial bleeding. Combination therapy requires close INR monitoring and risk-benefit evaluation."
+    },
+    {
+      "chunk_id": "chunk_0",
+      "score": 0.3546963930130005,
+      "text": "Spironolactone can cause severe hyperkalemia, which can lead to cardiac arrhythmias and sudden death. Concomitant administration with potassium supplements or potassium-sparing diuretics is strictly contraindicated."
+    },
+    {
+      "chunk_id": "chunk_0",
+      "score": 0.36420971155166626,
+      "text": "Combining haloperidol with azithromycin causes additive QTc interval prolongation, increasing the risk of life-threatening ventricular arrhythmias including Torsades de Pointes."
+    },
+    {
+      "chunk_id": "chunk_0",
+      "score": 0.3802978992462158,
+      "text": "Metformin decreases hepatic glucose production, decreases intestinal absorption of glucose, and improves insulin sensitivity by increasing peripheral glucose uptake and utilization."
+    }
+  ],
+  "classification": "RETRIEVAL_POSITIVE_RETRIEVED"
+}

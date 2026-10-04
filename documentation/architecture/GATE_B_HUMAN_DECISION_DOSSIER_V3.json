@@ -1,0 +1,37 @@
+{
+  "project": "Adaptive Trust-Aware Medical RAG",
+  "gate": "GATE_B",
+  "current_state": "BLOCKED_ON_HUMAN_DECISIONS",
+  "decisions": [
+    {
+      "question": "Trust Missing-Value Policy",
+      "options": ["A: Impute", "B: Exclude/Renormalize", "C: Keep Missing = Zero"],
+      "normative_protocol_status": "SILENT. No explicit fallback behavior defined.",
+      "actual_implementation": "Defaults to 0.0. Max score capped at 0.65.",
+      "experimental_evidence": "R3 threshold (0.75) is mathematically impassable.",
+      "mathematical_impact": "A/B restores R3 reachability. C locks R3.",
+      "historical_impact": "A/B breaks Gate 5 comparability. C preserves it.",
+      "methodology_impact": "A alters 9-factor model to include retrieval confidence. B reduces to 7-factor model. C acts as fail-closed measurement deficiency.",
+      "benchmark_impact": "A risks circularity, destroying independent Baseline vs Cognee comparability.",
+      "security_impact": "None directly.",
+      "rerun_scope": "Full 92-run Gate 5 baseline required if A or B selected.",
+      "unknowns": "Did Gate 5 contain actual R3 queries? (Requires query log audit).",
+      "human_decision_required": true
+    },
+    {
+      "question": "Anti-Injection Representation",
+      "options": ["A: Keep constant 1.0", "B: Hard gate only / remove", "C: New continuous signal"],
+      "normative_protocol_status": "Ambiguous if continuous factor or structural placeholder.",
+      "actual_implementation": "Constant 1.0. Hard detector executes afterwards.",
+      "experimental_evidence": "Zero discriminative value in continuous score.",
+      "mathematical_impact": "A preserves denominator (1.0). B/C alters denominator.",
+      "historical_impact": "Because Gate 5 used a safe corpus (poisoning=0), old mapping mathematically equaled 1.0. Opt A perfectly preserves Gate 5.",
+      "methodology_impact": "B formally removes injection from continuous trust equation.",
+      "benchmark_impact": "None directly.",
+      "security_impact": "Logging defect under Opt A (malicious chunks may log high trust before being hard-blocked).",
+      "rerun_scope": "Full 92-run Gate 5 baseline required if B or C selected.",
+      "unknowns": "None.",
+      "human_decision_required": true
+    }
+  ]
+}

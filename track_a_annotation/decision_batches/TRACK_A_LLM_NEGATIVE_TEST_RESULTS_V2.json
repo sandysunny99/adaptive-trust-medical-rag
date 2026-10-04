@@ -1,0 +1,22 @@
+{
+  "success": false,
+  "provider": "UNKNOWN_PENDING_RESPONSE",
+  "gateway": "FREELLMAPI",
+  "model": "llama3-8b-8192",
+  "model_revision": "UNKNOWN",
+  "request_id": "UNKNOWN",
+  "latency_ms": 0,
+  "retry_count": 0,
+  "fallback_attempts": "0",
+  "routing_changed": false,
+  "prompt_hash": "ffd46328cceaa5e3ea4cd54ff88bcbf5a6386a9fbaf8dc3db9973b6e315c72bb",
+  "schema_hash": "cee70ab75cce82909fcf336ea239e0b5b5746a0c750db6dd6191e3bdb414eebb",
+  "response_sha256": null,
+  "parsed_output": null,
+  "error_type": "AUTHENTICATION_ERROR",
+  "error_message": "MISSING_PROVIDER_CREDENTIAL",
+  "system_prompt_sha256": "ffd46328cceaa5e3ea4cd54ff88bcbf5a6386a9fbaf8dc3db9973b6e315c72bb",
+  "user_prompt_sha256": "1eded2a281aba123b453019b69085e9e605b535e3fce00d834b0e8273cab2527",
+  "evidence_sha256": "557be7eca214f1889cdb6dfa348eb7c937648c9d6be72bfc1b8204adf7552a43",
+  "evidence_character_count": 31
+}

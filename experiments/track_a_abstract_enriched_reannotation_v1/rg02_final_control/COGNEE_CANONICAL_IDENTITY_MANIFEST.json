@@ -1,0 +1,85 @@
+{
+  "manifest_version": "1.0",
+  "records": {
+    "doc_rg02": {
+      "doc_rg02_chunk_0": {
+        "canonical_document_id": "doc_rg02",
+        "canonical_chunk_id": "doc_rg02_chunk_0",
+        "content_hash": "2fd7de367d84663d262acce8948832d45837c9b9fceb2e2ff9bb5fad3f75a73a",
+        "source_id": "test_fixture",
+        "trust_class": "UNTRUSTED_CONTROL",
+        "provenance_status": "CONTROLLED"
+      }
+    },
+    "doc_pos01": {
+      "doc_pos01_chunk_0": {
+        "canonical_document_id": "doc_pos01",
+        "canonical_chunk_id": "doc_pos01_chunk_0",
+        "content_hash": "0b91ef784fe347c402c68f776072296d964d16a8a69a35b8ba4aae487839c72f",
+        "source_id": "test_fixture",
+        "trust_class": "TRUSTED",
+        "provenance_status": "FULL"
+      }
+    },
+    "doc_pos02": {
+      "doc_pos02_chunk_0": {
+        "canonical_document_id": "doc_pos02",
+        "canonical_chunk_id": "doc_pos02_chunk_0",
+        "content_hash": "8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070",
+        "source_id": "test_fixture",
+        "trust_class": "TRUSTED",
+        "provenance_status": "FULL"
+      }
+    },
+    "doc_ctrl_contra": {
+      "doc_ctrl_contra_chunk_0": {
+        "canonical_document_id": "doc_ctrl_contra",
+        "canonical_chunk_id": "doc_ctrl_contra_chunk_0",
+        "content_hash": "14cab1095ba8e9518ddf7eaa9ab8edee1141db8cf054ad08cb784331b3a47801",
+        "source_id": "test_fixture",
+        "trust_class": "UNTRUSTED_CONTROL",
+        "provenance_status": "CONTROLLED"
+      }
+    },
+    "doc_ctrl_unsupp": {
+      "doc_ctrl_unsupp_chunk_0": {
+        "canonical_document_id": "doc_ctrl_unsupp",
+        "canonical_chunk_id": "doc_ctrl_unsupp_chunk_0",
+        "content_hash": "012d0ecb7fbdc5d6c0f93ea073b7ee55c80db05ba009936edd1cb9a52f6757d7",
+        "source_id": "test_fixture",
+        "trust_class": "UNTRUSTED_CONTROL",
+        "provenance_status": "CONTROLLED"
+      }
+    },
+    "doc_ctrl_unrel": {
+      "doc_ctrl_unrel_chunk_0": {
+        "canonical_document_id": "doc_ctrl_unrel",
+        "canonical_chunk_id": "doc_ctrl_unrel_chunk_0",
+        "content_hash": "0839546d4f2e23cfc00c58962c9e06de73b97a0a179fb7dabca5d042344adc31",
+        "source_id": "test_fixture",
+        "trust_class": "TRUSTED",
+        "provenance_status": "FULL"
+      }
+    },
+    "doc_similar_trusted": {
+      "doc_similar_trusted_chunk_0": {
+        "canonical_document_id": "doc_similar_trusted",
+        "canonical_chunk_id": "doc_similar_trusted_chunk_0",
+        "content_hash": "a83ba8c2521dc8ae27a7bb51480e619910c6151f8e31925d22613bdd454d397f",
+        "source_id": "test_fixture",
+        "trust_class": "TRUSTED",
+        "provenance_status": "FULL"
+      }
+    },
+    "doc_similar_untrusted": {
+      "doc_similar_untrusted_chunk_0": {
+        "canonical_document_id": "doc_similar_untrusted",
+        "canonical_chunk_id": "doc_similar_untrusted_chunk_0",
+        "content_hash": "a83ba8c2521dc8ae27a7bb51480e619910c6151f8e31925d22613bdd454d397f",
+        "source_id": "test_fixture",
+        "trust_class": "UNTRUSTED_CONTROL",
+        "provenance_status": "CONTROLLED"
+      }
+    }
+  }
+}

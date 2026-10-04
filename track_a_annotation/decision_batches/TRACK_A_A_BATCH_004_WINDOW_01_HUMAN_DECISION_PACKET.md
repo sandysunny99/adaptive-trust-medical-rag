@@ -1,0 +1,392 @@
+# TRACK A TRACK_A_A_BATCH_004 WINDOW 01 RAW EVIDENCE
+
+------------------------------------------------------------
+POSITION 01
+------------------------------------------------------------
+
+Position ID:
+pos-eb331f6c
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+Bisphosphonates can cause mucosal irritation. Although esophageal ulceration is a well-recognized adverse effect of bisphosphonates, pharyngolaryngeal ulcers associated with the improper use of oral bisphosphonates have rarely been described. A previously healthy 78-year-old woman presented with refractory pharyngolaryngeal ulcers. Extensive evaluation, including biopsy, bacterial culture, and blood tests did not identify any findings that indicated a specific disease diagnosis. Antibiotics and oral prednisolone were ineffective. Ultimately, it was found that the patient regularly took a tablet of alendronate, a type of bisphosphonate, by dissolving it in the oral cavity. Within 2 weeks after withdrawal of the use of the medication, her symptoms were eliminated, and the lesions were completely healed. This case illustrates the importance of correct administration of bisphosphonates. Given the widespread use of bisphosphonates, physicians need to be aware that their improper use can cause pharyngolaryngeal ulcers.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 27956102
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 02
+------------------------------------------------------------
+
+Position ID:
+pos-e8bcb783
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+BACKGROUND: Pharmacogenetic testing offers a pathway to safer prescribing and improved outcomes in older adults, who face heightened risks of adverse drug reactions due to polypharmacy and age-related metabolic changes. This study evaluates the prevalence of actionable pharmacogenetic biomarker use and estimates the potential impact of genotype-guided dosing in Chinese older adults. METHODS: This retrospective cross-sectional analysis utilized 2015-2017 claims data from the China Health Insurance Research Association (CHIRA), encompassing 3,309,025 older patients (≥ 65 years) and 74,415,484 prescriptions. Drugs with Clinical Pharmacogenomics Implementation Consortium (CPIC) Level A evidence for actionable pharmacogenetic variants (n = 53) were identified. Key measures included the prescribing prevalence of Level A drugs and projected rates of actionable phenotype-driven dosing changes, calculated using population-specific genotype frequencies from PharmGKB and published sources. RESULTS: Among older adults, 43.4% (433.8 per 1000) were prescribed ≥ 1 CPIC Level A drug. Atorvastatin (131.1 per 1000), omeprazole (124.3 per 1000), and clopidogrel (75.7 per 1000) were the most common. Over one-third (36.5%; 365.3 per 1000) of exposures required genotype-guided dose adjustments, with clopidogrel (CYP2C19) and statins (SLCO1B1) representing the highest-priority gene-drug interactions (259.6 and 221.8 per 1000, respectively). CONCLUSIONS: CPIC Level A pharmacogenetic biomarkers are prevalent in Chinese older adults, with over 40% exposed to actionable gene-drug pairs and 36.5% requiring dose adjustments. These findings highlight the clinical imperative to integrate pharmacogenetic testing into geriatric care, prioritize CYP2C19 and SLCO1B1 testing, and develop region-specific guidelines to mitigate polypharmacy risks. Policymakers and clinicians should consider targeted implementation strategies to optimize prescribing safety and efficacy in aging populations.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 41017291
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 03
+------------------------------------------------------------
+
+Position ID:
+pos-b043af88
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+BACKGROUND: Direct oral anticoagulants (rivaroxaban, apixaban, dabigatran) and warfarin treatment are associated with an increased risk of intracerebral haemorrhage (ICH). Specific reversal exists for warfarin (vitamin K/prothrombin complex concentrate (PCC)) and dabigatran (idarucizumab). Data on protocol-guided non-specific 3-factor PCC for factor Xa inhibitor reversal are lacking. AIMS: Our retrospective cohort study aimed to assess anticoagulation-related ICH secular trends. We also aimed to compare administration of reversal and antihypertensive treatments, where specific reversal agents were (dabigatran and warfarin) and were not (apixaban and rivaroxaban) available. METHODS: We included patients with anticoagulation-related non-traumatic ICH of <24 hours duration from South Australian Stroke units (January 2017-December 2023). Outcomes analysed included 30-day mortality and discharge modified Rankin Scale. Secondary outcomes included time to administration of reversal agent, intravenous antihypertensives and time to systolic blood pressure (BP) lowering <140 mm Hg. RESULTS: Of 310 included patients (median age 83 (76, 87)), 208 (67%) were in the factor Xa inhibitor group and 102 (33%) in the warfarin/dabigatran group. The proportion of factor Xa inhibitor-associated ICH increased from 3.7% in 2017 to 19.8% in 2023 (p<0.0001). The warfarin/dabigatran group was more likely to receive reversal (57% warfarin/dabigatran vs factor Xa inhibitor 39%, p=0.005). Where administered, time from hospital arrival to reversal did not differ between groups (132 min (94, 231) warfarin/dabigatran vs factor Xa inhibitor 126 (60, 225); p=0.3), nor did time to first dose of intravenous antihypertensives, time to BP <140 mm Hg and 30-day mortality. CONCLUSION: Factor Xa inhibitor-related ICH increased proportionally over the study period. These patients were less likely to receive reversal treatment than warfarin/dabigatran-related ICH. There was no difference between time to administration of PCC and time to antihypertensive metrics. The high mortality in our study underscores the need for effective optimised and timely treatments.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42206096
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 04
+------------------------------------------------------------
+
+Position ID:
+pos-19c49db1
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+This scoping review examined existing research on the oral administration of anxiolytic, sedative, hypnotic, dissociative, and anaesthetic medications in domestic cats, with the aim of identifying agents that could reduce stress, fear, and defensive behaviours during capture and handling. Thirty-seven studies from 1908 to 2024 were included, encompassing domestic cats sourced from pharmaceutical and university research colonies, animal shelters, client-owned and free-roaming semi-owned and unowned cats. Administered drugs included GABA derivatives (gabapentin, pregabalin), serotonin receptor modulators (trazodone), benzodiazepines, α2-adrenoreceptor agonists, NMDA receptor blockers (ketamine, tiletamine), opioid analgesics, antihistamines, and cannabinoids, as well as medications that have been archived from contemporary clinical practice. Outcome measures included a range of descriptive sedation and behavioural scoring tools for stress and compliance. Many agents demonstrated potential for reducing fear-based behaviours or achieving sedation when given orally, though palatability, variable absorption, and adverse effects such as hypersalivation and vomiting were common limitations. The results of this review suggest that oral sedatives could be effective alternatives to injectable administration in particular contexts, but further field-based research - especially involving fractious cats - is needed to optimise drug choice, dosing, and delivery methods.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42431357
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 05
+------------------------------------------------------------
+
+Position ID:
+pos-0b8f9433
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+RATIONALE & OBJECTIVE: Endogenous biomarkers reflecting impaired kidney tubular secretion are associated with risk of hyperkalemia in patients with hypertension and chronic kidney disease. Whether these biomarkers are associated with risk of hyperkalemia, therapeutic response, and adverse cardiovascular and kidney events in heart failure (HF) patients receiving mineralocorticoid receptor antagonists is unknown. STUDY DESIGN: An observational cohort study. SETTING & PARTICIPANTS: Individuals with HF with preserved ejection fraction (HFpEF) enrolled in the TOPCAT study. PREDICTORS: Summary secretion score incorporating urine-to-plasma ratios of 9 secretion markers measured in paired samples at baseline. OUTCOMES: Change in serum potassium during follow-up, measures of treatment response assessed by change in Kansas City Cardiomyopathy Questionnaire (KCCQ) score and N-terminal pro-B-type natriuretic peptide over 12 months, and adverse cardiovascular and kidney events. ANALYTIC APPROACH: Linear mixed-effects models, Cox proportional hazards models, and linear regression adjusting for risk factors, estimated glomerular filtration rate, and urine albumin-to-creatinine ratio. RESULTS: Among 372 TOPCAT participants, 179 (48%) were randomized to spironolactone, 45% were women, the mean age was 70 ± 10 years and estimated glomerular filtration rate was 66 ± 18 mL/min/1.73 m2. In adjusted models, higher secretion score was not associated with changes in serum potassium, change in KCCQ ≥5 points, change in N-terminal pro-B-type natriuretic peptide, adverse cardiovascular or kidney events. In adjusted models, a higher secretion score was associated with lower KCCQ at 12 months (change -3.5, 95% CI, -6.6 to -0.4) in the spironolactone arm, but not in the placebo arm. LIMITATIONS: Low number of events, confounding from Eastern Europe participants who may have not had HFpEF or taken prescribed therapies. CONCLUSIONS: Biomarkers of tubular secretion are not associated with risk of hyperkalemia, treatment response, or cardiovascular and kidney events in individuals with HFpEF.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42499456
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 06
+------------------------------------------------------------
+
+Position ID:
+pos-6451c410
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+INTRODUCTION: The objective of this research was to evaluate the risk of major adverse cardiovascular events (MACEs) associated with the use of various proton pump inhibitors (PPIs) in combination with clopidogrel in patients who underwent percutaneous coronary intervention (PCI). METHODS: To accomplish this, we analyzed data from randomized controlled trials and retrospective cohort studies sourced from key electronic databases. These studies specifically examined the effects of different PPIs, such as lansoprazole, esomeprazole, omeprazole, rabeprazole, and pantoprazole, when used in conjunction with clopidogrel on MACEs. The primary focus was on the differential impact of these PPIs, while the secondary focus was on the comparison of gastrointestinal (GI) bleeding events in groups receiving different PPIs with clopidogrel vs. a placebo group. This study's protocol was officially registered with INPLASY (INPLASY2024-2-0009). RESULTS: We conducted a network meta-analysis involving 16 studies with a total of 145,999 patients. Our findings indicated that rabeprazole when combined with clopidogrel, had the lowest increase in MACE risk (effect size, 1.05, 95% CI: 0.66-1.66), while lansoprazole was associated with the highest risk increase (effect size, 1.48, 95% CI: 1.22-1.80). Esomeprazole (effect size, 1.28, 95% CI: 1.09-1.51), omeprazole (effect size, 1.23, 95% CI: 1.07-1.43), and pantoprazole (effect size, 1.38, 95% CI: 1.18-1.60) also significantly increased MACE risk. For the secondary outcome, esomeprazole (effect size, 0.30, 95% CI: 0.09-0.94), omeprazole (effect size, 0.34, 95% CI: 0.14-0.81), and pantoprazole (effect size, 0.33, 95% CI: 0.13-0.84) demonstrated an increased potential for GI bleeding prevention. CONCLUSIONS: In conclusion, the combination of lansoprazole and clopidogrel was found to significantly elevate the risk of MACEs without offering GI protection in post-PCI patients. This study is the first network meta-analysis to identify the most effective regimen for the concurrent use of clopidogrel with individual PPIs. SYSTEMATIC REVIEW REGISTRATION: https://inplasy.com/inplasy-2024-2-0009/, identifier (INPLASY2024-2-0009).
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 39114562
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 07
+------------------------------------------------------------
+
+Position ID:
+pos-8e78b6f8
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+BACKGROUND: Neonates in the Neonatal Intensive Care Units (NICU) often receive medications requiring therapeutic drug monitoring (TDM) due to their immature organ function and the narrow therapeutic windows of these drugs. Despite its critical role in optimizing dosing and minimizing toxicity, data on the prevalence and risk factors associated with TDM-requiring drugs in neonates is limited. This study aims to estimate the potential burden of TDM-requiring drug use in a NICU where routine TDM is not implemented and to identify key clinical and demographic factors associated with their use. METHODS: A retrospective, descriptive study was conducted on neonates admitted to a NICU between January 1, 2019, and July 1, 2024. Patients who received at least one TDM-requiring drug were included. The drugs included in the patients' treatments that required TDM were accepted as antibiotics (vancomycin, gentamicin, amikacin), antiepileptics (phenytoin, phenobarbital, carbamazepine, valproic acid, levetiracetam) and digoxin. Data were analyzed using chi-square, Mann-Whitney U, Kruskal-Wallis, and binary logistic regression tests. RESULTS: Among 3754 neonates, 1404 (37.4%) received TDM-requiring drugs, with 1375 meeting inclusion criteria. The most commonly TDM-requiring drugs were gentamicin (62.5%), vancomycin (13.6%), and amikacin (11.5%). Risk factors significantly associated with TDM included mechanical ventilation (OR = 4.3, 95% CI: 3.2-5.5), total parenteral nutrition (OR = 4.0, 95% CI: 3.1-5.2), and NICU hospitalization ≥ 10 days (OR = 7.3, 95% CI: 5.4-9.9). CONCLUSION: A substantial proportion of neonates in the NICU are exposed to medications requiring TDM. In a setting where routine TDM is not implemented, this finding highlights a potential unmet need for monitoring. Mechanical ventilation, prolonged NICU hospitalization, and total parenteral nutrition were identified as key risk factors. Identifying these high-risk groups may support targeted monitoring strategies and optimize resource allocation in NICUs where TDM is not routinely available. TRIAL REGISTRATION: Not applicable.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42121128
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 08
+------------------------------------------------------------
+
+Position ID:
+pos-b3ee840d
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+INTRODUCTION: The concomitant use of PPIs with antiplatelet therapy remains controversial due to potential drug interactions affecting clinical outcomes. While PPIs are recommended for gastroprotection in patients receiving antiplatelet therapy, concerns persist regarding their impact on antiplatelet efficacy, particularly with dual antiplatelet therapy (DAPT). AIMS: The aim of this study is to evaluate the safety profiles of antiplatelet-proton pump inhibitors (PPIs) combinations and assess the clinical implications of their concurrent use in real-world settings through pharmacovigilance data analysis. OBJECTIVES: The objective of this study is to analyze and compare the thrombo-embolic risk profiles of various antiplatelet-PPI combinations using the FDA Adverse Event Reporting System database. METHODS: We conducted a comprehensive analysis of the FDA Adverse Event Reporting System (FAERS) database to evaluate the thrombo-embolic risk associated with antiplatelet-PPI combinations. The reporting odds ratio (ROR) and information component were calculated to detect safety signals. The interaction signal score (INTSS) was used to assess the protective or harmful effects of adding acetylsalicylic acid to clopidogrel-PPI combinations. RESULTS AND DISCUSSION: Analysis revealed significant safety signals for thrombo-embolic events with clopidogrel-rabeprazole (ROR: 62.67, 95% CI: 38.38-102.32) and clopidogrel-omeprazole (ROR: 6.87, 95% CI: 4.89-9.66) combinations. DAPT-PPI combinations showed comparable safety profiles to monotherapy-PPI combinations. The INTSS analysis suggested a potential protective effect of acetylsalicylic acid when added to clopidogrel-PPI combinations. Genderspecific analysis revealed female predominance in monotherapy complications and male predominance in combination therapy events. Clinical outcomes, including mortality and hospitalization rates, were comparable between groups. CONCLUSION: This pharmacovigilance analysis suggests that while DAPT-PPI combinations demonstrate acceptable safety profiles, careful consideration should be given to PPI selection, particularly given the unexpected safety signals with rabeprazole and confirmed risks with omeprazole. The addition of acetylsalicylic acid to clopidogrel-PPI combinations may offer protective effects against thrombo-embolic events. These findings support individualized riskbenefit assessment in selecting antiplatelet-PPI combinations while ensuring adequate gastroprotection for high-risk patients.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 40357791
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 09
+------------------------------------------------------------
+
+Position ID:
+pos-02f6b94c
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+BACKGROUND: Gabapentinoids are increasingly being prescribed in older adults (aged 60 years or older), but concerns have been raised that their adverse effects on the CNS can increase the risk of fractures. Previous studies have reported associations between gabapentinoid use and fracture, but many have not adequately addressed confounding by indication or examined risk across the treatment journey. Therefore, we aimed to investigate the temporal association between gabapentinoid treatment and fracture in older adults, and to assess whether concomitant opioid or benzodiazepine use further modifies this risk. METHODS: In this retrospective multinational population-based study, we used data from the UK Clinical Practice Research Datalink (CPRD) Aurum database and the South Korea National Health Insurance Service-National Health Screening Cohort (NHIS-HEALS). The analysis included individuals aged 60 years or older prescribed a gabapentinoid and who had a hospitalised fracture between Jan 1, 2010, and Dec 31, 2020, in the UK and between Jan 1, 2003, and Dec 31, 2019, in South Korea. The observation period for each included individual was divided into four mutually exclusive windows: 90 days before gabapentinoid treatment (pre-exposure window), first 60 days of treatment period (focal window 1), remaining time of the treatment period (focal window 2), and all other non-treatment periods (referent window), to capture how risk varied across the treatment course. Adjusted incidence rate ratios (aIRRs) with 95% CI of fracture during different risk windows were estimated using conditional Poisson models within each country, and the country-specific aIRRs for the same risk window were then pooled using a random-effects model. FINDINGS: We included 20 030 participants in CPRD and 2935 in NHIS-HEALS in the analysis. In the CPRD cohort, 15 366 (76·7%) were women and the mean age at event was 77·85 years. In the NHIS-HEALS cohort, 2007 (68·4%) were women and the mean age at event was 69·24 years. The pooled results showed an increased risk of fracture during the pre-exposure window (aIRR 2·92, 95% CI 1·61-5·28, p=0·0004). The aIRR was 1·31 (95% CI 1·00-1·71, p=0·051) in the first 60 days of the treatment period and did not increase for the remainder of the treatment period (0·84, 0·54-1·32, p=0·45). Concurrent prescription of opioids or benzodiazepines elevated the risk of fracture, with an aIRR of 3·15 (95% CI 2·85-3·48, p<0·0001) for opioids and 1·91 (1·50-2·44, p<0·0001) for benzodiazepines during the first 60 days of gabapentinoid treatment period. INTERPRETATION: The risk of fracture was the highest in the period before the commencement of gabapentinoid treatment and declined after initiation of treatment. The results do not support a sustained causal relationship between gabapentinoid use and risk of fracture in older adults but warrant fall and fracture-prevention measures around gabapentinoid initiation. The elevated fracture risk observed with concomitant opioid or benzodiazepine use highlights the need for careful review of concurrent sedating medicines when initiating gabapentinoids. FUNDING: UK National Institute for Health and Care Research; Hong Kong Innovation and Technology Commission; Ministry of Food and Drug Safety, South Korea.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42462752
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+
+------------------------------------------------------------
+POSITION 10
+------------------------------------------------------------
+
+Position ID:
+pos-c6137634
+
+Query:
+Concomitant use of warfarin and aspirin bleeding risk
+
+Retrieved Evidence:
+Apixaban plays a crucial role in preventing cardioembolic events in patients with nonvalvular atrial fibrillation (NVAF). However, in clinical practice, physicians often adjust apixaban dosing based on kidney function, deviating from guideline-recommended dosing. This study investigated the effects of real-world, off-label apixaban dosing on long-term outcomes in patients with heart failure (HF), NVAF, and end-stage kidney disease (ESKD). We analyzed data from a HF registry of patients with NVAF and ESKD between 2018 and 2024. The inclusion criteria comprised all patients treated with apixaban. Patients were categorized according to the strength of the apixaban dose administered. Outcomes, including bleeding events, systemic thromboembolic events, and all-cause mortality, were compared. Among 480 patients, 265 (55.2%), with a mean age of 77.3 ± 10.1 years, received an off-label underdose of apixaban. Baseline characteristics, including CHA2DS2-VASc and HAS-BLED scores, were similar across groups. Over a median follow-up of 48 months, no significant differences in systemic thromboembolic events or mortality were observed between the off-label underdose group and those receiving standard doses or off-label overdoses (P = .705). Similarly, no significant differences were observed in bleeding risk (underdose vs standard, P = .600; overdose vs standard, P = .395; underdose vs overdose, P = .469). In multivariate analysis, the CHA2DS2-VASc score was an independent predictor of thromboembolic events (odds ratio 1.818, 95% confidence interval 1.081-3.058; P = .024). In patients with HF, NVAF, and ESKD, off-label apixaban dosing was not associated with an increased risk of systemic thromboembolic events, mortality, or bleeding, highlighting the potential for personalized apixaban dosing based on patient-specific factors and pharmacokinetics, particularly in Asian populations.
+
+Abstract Status:
+Not explicitly provided
+
+Abstract:
+None
+
+Source Metadata:
+Document ID: 42216360
+
+Evidence Location:
+Unknown
+
+------------------------------------------------------------
+ADVISORY REVIEW
+------------------------------------------------------------
+
+Proposed label: PENDING
+Proposed grade: 0
+Proposed rationale: PENDING
+Proposed exact evidence span: PENDING
+
+RESEARCH_CONTROL_LLM_ASSISTED
+ADVISORY ONLY
+NOT HUMAN FINAL DECISION
+
+

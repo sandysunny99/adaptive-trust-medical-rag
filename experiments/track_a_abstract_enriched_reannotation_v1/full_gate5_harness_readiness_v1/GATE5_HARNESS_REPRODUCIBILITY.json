@@ -1,0 +1,58 @@
+[
+  {
+    "mode": "COGNEE",
+    "case": "POS-01",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "COGNEE",
+    "case": "POS-02",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "COGNEE",
+    "case": "RG-02",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "COGNEE",
+    "case": "CTRL-UNSUPPORTED",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "BASELINE",
+    "case": "POS-01",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "BASELINE",
+    "case": "POS-02",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "BASELINE",
+    "case": "RG-02",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  },
+  {
+    "mode": "BASELINE",
+    "case": "CTRL-UNSUPPORTED",
+    "decision_match": true,
+    "candidates_match": true,
+    "status_match": true
+  }
+]

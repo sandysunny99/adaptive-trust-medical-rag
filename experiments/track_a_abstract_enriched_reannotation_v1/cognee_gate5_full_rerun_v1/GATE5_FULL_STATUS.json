@@ -1,0 +1,8 @@
+{
+  "status": "FULL_GATE5_FAILED_WITH_LIMITATIONS",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "pos02_release": false,
+  "rg02_block": true,
+  "ctrl_unsupp_block": true,
+  "ctrl_contra_block": true
+}

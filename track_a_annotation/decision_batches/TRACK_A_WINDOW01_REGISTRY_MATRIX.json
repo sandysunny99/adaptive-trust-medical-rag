@@ -1,0 +1,72 @@
+[
+  {
+    "PID": "pos-018d5819",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-024f1c65",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-04077fbb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-038b917d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-01258043",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-038edd1d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-01cadfb9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-00cfdf17",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-04992eed",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-00134e05",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  }
+]

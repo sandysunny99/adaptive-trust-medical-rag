@@ -1,0 +1,4242 @@
+[
+  {
+    "position_id": "pos-00134e05",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-00cfdf17",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-01258043",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-018d5819",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-01cadfb9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-023ac072",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-024f1c65",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-028d95b5",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-02f6b94c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-038b917d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-038edd1d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-04077fbb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-04992eed",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-055e405a",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-0639bf30",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0653b758",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-069cfc91",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0744bfc1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-074944db",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-07a239c0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-08b33ee5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-092e9947",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-09607bb3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-09d4924f",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-0a4fc25b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-0b8f9433",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-0ba363e7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0c17f293",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-0c461066",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0c63d702",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0c71044d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0d682d47",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0dc4c28c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0e0e7552",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0e9b0e48",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0ecee8e5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0ed3c261",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0fb57dc0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-0fbf37ff",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-10330d5a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-103fab76",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-1072c8e7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-10a07981",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-10aae2c8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-11edf16a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-123df287",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-12dfecc7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-130b89fc",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-1324eb2d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-135bab42",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-137cf51f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-13ca8dc0",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-14cbfa08",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-150b442e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-15db4894",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-15ec2514",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-160f30c9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-161142cb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-167d7b99",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-168d3479",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-177c66a0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-17a02d6b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1826615d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-190bb5e7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-191c157d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1942e741",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-199d1a39",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-19a7a534",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-19a8f0e5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-19c49db1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-1a6cf53f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1b9b8ecc",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1ca67038",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1d3c0fd3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1db768f3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1dc12820",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1dc33aa5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1ee9e50b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-1ffa32f8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-20448911",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-208c01b5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2137f49d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2142a295",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-216968f4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-222940c0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-223118a4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-2342ab1a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-23bd1ae5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-24d8926d",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-259669f2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-261a6c8c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-27e8af75",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2931b279",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2966d122",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-29d46e8a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2a26a1ae",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2a360e0b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2a865c6f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2bb7e83b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2cb3af33",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2cecfb91",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2d6954ed",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2d75075e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2dd560e4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2e6534d9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-2fd215f0",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-3077ee89",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3105d83d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-312c2bfa",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-328c1652",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-32a742c4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-32fe4fb6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-33420f62",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-33c679d3",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-340fe2cd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3440fa6c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-3480203c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-34987e2f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-34be68cd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-34c7006d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-35452395",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-35c623b2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3621794d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-368892b8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3705c902",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-381bea0d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-38321e44",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-3bd21ccb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3bd31132",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3c43f065",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3ca1168e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3cd1f387",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3d27c5b0",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-3d5c2f1d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3e13d6ff",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3e80d398",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3f43e5ce",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-3fb32a70",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-3fbeb9d2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4098f547",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-40bcd180",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-40c132f8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-40c66f91",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-41410b52",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-4170dd36",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-41ddb1a6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-41f4b198",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-42161d33",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-42538927",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-433e9cfd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-433f3c2c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-43b39b0f",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-43cc30d6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4415f9b2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-456cdfbc",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-45edd8ee",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-45fca501",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-468146f9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-46ba8001",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-479ddba0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-47d7ebb4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-4820f698",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-48cab46e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4a209007",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4a8aca14",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4b060fe2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4b1bd9e5",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-4be87ae2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4c8cc2be",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4d62756f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4d9ab1aa",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4dd777be",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4ed66379",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4f58eab7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-4fcf4081",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-500701b8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5016bbc4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-50e306ec",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-51442a6c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-51abda0c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-51d59df1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5296e2f0",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-53198e7b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-533997c0",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-533c4858",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5357d5c1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5391628f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-55170595",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-551a71b7",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-558b931c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-564283d5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5689870b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-57591dad",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-59a4d6ce",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-5a1ffded",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-5b451f2a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5b711aba",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-5bb2c336",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5ca415c6",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-5cc464f4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-5d68fdd5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5db25115",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5ee9fb19",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-5f27f640",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-60d2f8f5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-60ec8372",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-61564af7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-61b0973b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-620006e2",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-622a7f99",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-642faf7b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6451c410",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-646e8d57",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-650021fe",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-66d45746",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-66fd97db",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6751dbeb",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-67771a11",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-678dcfe5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-67e07d74",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-67f09880",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-68b1f58d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-68bd871d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-68c36127",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-691ff797",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6a5c8588",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6aa7de10",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6b433456",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6b51aa62",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-6b589a2b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-6d33df67",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-6d49dc3b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-6dfe0028",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6ea635d9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-6f78c16e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7036d1ca",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-706dd1e6",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-70e6f69e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-71c56f79",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-727d4d96",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-730c4226",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-734b9fb4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7387b69f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-741d89cc",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-741fef35",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7436f45f",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-76e041ab",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-77352d30",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-782fe4f6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-784d0439",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-785d70c6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7875d016",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7913ce1a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-791c7367",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-791da89f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-796ce87e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7a1b2980",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7ab07005",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7bff739f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7c1fb419",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7c696aa6",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7d6e71bf",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7d7a2a67",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7d7bc7ac",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7e689ff1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7f4a11a7",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-7f65e476",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7fa3f671",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-7fa9c744",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-814cd0c1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-815d0c54",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-82740cfd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8283dab7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8295a6d7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-82e07716",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8339e5f1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-83cc950b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8443b55a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-849f05b2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8511788b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-85682804",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-858d12a9",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-85c2e897",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-865ade74",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-86bb114a",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-874aee6b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-878c4053",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-8a095ad6",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-8a294cff",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-8cb0273b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8e78b6f8",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-8ee6cef4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-8f5fc082",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-91b3a12f",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-927eadc4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-951aaeae",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-958d1465",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-964cd77c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-966e265b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-969b8ca5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-96af2ec3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-96b95b31",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9747a828",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-98b4e25b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-98dd4796",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-99b732ba",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9a6c3f24",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9acf02db",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9b777fd1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9b7d81e4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9b89029a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9be4ffd7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9c0c6de6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9c6b7f60",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9cafff14",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9d89b769",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9f4b7558",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-9fb1e8cf",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-9fd6f046",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-a00ce69f",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-a0522f74",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a24a28c3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a3b4c771",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-a491b520",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a4f616c7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a5465850",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-a54ae29e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a54b6f64",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a61d7d8e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a835aaac",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-a85283d4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a8f6113b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-a9e7c46c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-aa06e1cb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-aa15aacd",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-aac68713",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ab46ce5c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ab9d2c60",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ac0d7421",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ac6e4c77",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-adbf3dbe",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-aefbd1dd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-af686ae7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-afe85c36",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b043af88",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b162a84a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b1aeb42e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b1b5fdac",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b2912c9d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b2fa6f2a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b3bf8912",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b3ee840d",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b3f086a1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b4063d90",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b43b9275",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b49b4898",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b4c42a92",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b52dea1e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b66e91cc",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b680e6e7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b6f14465",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b783e603",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b787afa2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b7a21a83",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b7c5c36b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b7dd8a5b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b8a78b41",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-b8a86f71",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-b8b4f173",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ba8859c3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bab8f0ab",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bae7c0fd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bc7bb827",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bc885354",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bcf7dbca",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bd8afeb5",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bd8cfd23",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-bdbee728",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-be2c3d93",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c0aa524c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c16c3f88",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c1b2078b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c1c56b3c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c24ec8f6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c2659179",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c30c8635",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c321d2dd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c3e553c3",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c443d7e9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c4726940",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c4839d51",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c5be96ab",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c5c84573",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c5e9252c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c6137634",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c6786159",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c6d99579",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c704a5c3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c7a8c599",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c7ac282c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8189f02",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8545ef9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c871cd9c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c876a75b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c896c5d9",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8c6b255",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8c8265d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8dfa17e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c8fbe715",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c94b0319",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-c958f9a4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-cb07b50e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cbaac358",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-cc3aa6e2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cc3ac633",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cc53830c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cc6ab14a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ccc0bc7e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cccfc016",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ccd44dae",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cce9a8c1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ccf5027b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cdcc59c7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ce1182ac",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ce304c47",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ce461586",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cf039177",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-cf4730de",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-cfdb189c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d0de21af",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d14b89a0",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d1798e41",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d1dfeacb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d287c7dc",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d28e8ae4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d2b0345d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d2e0ba78",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d3295d06",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d4370b56",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d5d28b3e",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d607b141",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d690fd08",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d69ab96b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d6e58b0f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d77341b4",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-d86061c8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d892bd82",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-d99d8c31",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-da396760",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-da6a3543",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-db907b04",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dbea1374",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dc2d1d00",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-dc37de5d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dd279b7e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dd28047a",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-de2e1d0a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-debabd8b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-df6bde0e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-df9a450b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dfc8cec1",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-dfd438e2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e00e6ad6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e07b08fc",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e0c2152b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e0d556dd",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e12a77da",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e187344e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e1bed0b7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e21268b4",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e237444e",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-e238995e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e23fd1e9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e2f3b724",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e31a1d4d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e35ea01b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e3f5f23b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e40921e8",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e45cea44",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e46e32e2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e4f5e38f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e52b4c9e",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-e5ea559d",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e5ff8086",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-e6ac3ed6",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e701e6b6",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-e72159c9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e7526603",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-e890db48",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-e8bcb783",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ea0492d8",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ea73e951",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-eb10f237",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-eb331f6c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-ebc6042f",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ecb30645",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-eea6f2ad",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ef57b2b7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ef989031",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-efefeb0c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f147400a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f17b4d49",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f1d44c72",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f2030619",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f2ba3fd2",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f310e96b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f33c31e5",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-f3548a6a",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f42d5286",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f4d4d47c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-f4ee5f82",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f51ebc3c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Lisinopril and spironolactone interaction hyperkalemia risk",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f55c442e",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Warfarin target INR monitoring",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f6438aed",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f6730088",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "CYP2C9 interaction between fluconazole and warfarin",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f762ccf7",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f821bce3",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f8a6a54c",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-f909bf4b",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f92e65cb",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Idiosyncratic drug induced liver injury mechanisms",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-f9f910f8",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fa5a07d1",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fa9aa245",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fbe4bb45",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Clearance pathway for lisinopril",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fbfc994c",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Diagnosis of drug induced hepatotoxicity",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-fc86260b",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fce9aed7",
+    "annotation_status": "ANNOTATED",
+    "commit_status": "COMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Concomitant use of warfarin and aspirin bleeding risk",
+    "review_eligibility": "INELIGIBLE"
+  },
+  {
+    "position_id": "pos-fcee0b89",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-fd4e97d9",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Metformin contraindication in severe renal disease",
+    "review_eligibility": "ELIGIBLE"
+  },
+  {
+    "position_id": "pos-ff8311ea",
+    "annotation_status": "UNANNOTATED",
+    "commit_status": "UNCOMMITTED",
+    "historical_window": "UNKNOWN",
+    "query": "Risk of hyperkalemia in patients treated with spironolactone",
+    "review_eligibility": "ELIGIBLE"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "artifact_integrity_status": "PASSED",
+  "experiment_validation_status": "PASSED",
+  "unique_cases": 22,
+  "unique_positive_cases": 4,
+  "unique_security_cases": 18,
+  "cognee_run1_evaluations": 22,
+  "cognee_run2_evaluations": 22,
+  "baseline_evaluations": 22,
+  "cognee_search_calls": 44,
+  "baseline_search_calls": 22,
+  "decision_reproducibility": "DIFFERENCE",
+  "retrieval_reproducibility": "RETRIEVAL_EXACT_MATCH",
+  "full_reproducibility": "NOT_ESTABLISHED",
+  "rg02_status": "FAILED",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED"
+}

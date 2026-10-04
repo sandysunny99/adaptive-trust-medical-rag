@@ -1,0 +1,102 @@
+[
+  {
+    "position_id": "pos-00134e05",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "label": "PARTIALLY_RELEVANT",
+    "score": 1,
+    "exact_span": "Cu exposure causes liver injury and activates UPRmt (upregulated HSP60 and LonP1)",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-00cfdf17",
+    "query_text": "Warfarin target INR monitoring",
+    "label": "IRRELEVANT",
+    "score": 0,
+    "exact_span": "EMPTY",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-01258043",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "label": "PARTIALLY_RELEVANT",
+    "score": 1,
+    "exact_span": "drug-induced esophageal ulcer",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-018d5819",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "label": "PARTIALLY_RELEVANT",
+    "score": 1,
+    "exact_span": "Periprocedural management is guided by procedural bleeding risk, renal function, and drug pharmacokinetics",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-01cadfb9",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "label": "PARTIALLY_RELEVANT",
+    "score": 1,
+    "exact_span": "Scope is restricted to renal drug clearance for maintenance-dose selection.",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-024f1c65",
+    "query_text": "Idiosyncratic drug induced liver injury mechanisms",
+    "label": "IRRELEVANT",
+    "score": 0,
+    "exact_span": "EMPTY",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-038b917d",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "label": "IRRELEVANT",
+    "score": 0,
+    "exact_span": "EMPTY",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-038edd1d",
+    "query_text": "Risk of hyperkalemia in patients treated with spironolactone",
+    "label": "IRRELEVANT",
+    "score": 0,
+    "exact_span": "EMPTY",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-04077fbb",
+    "query_text": "Metformin contraindication in severe renal disease",
+    "label": "PARTIALLY_RELEVANT",
+    "score": 1,
+    "exact_span": "attaining appropriate time in the therapeutic range with vitamin K antagonists is more difficult in patients with end-stage renal disease",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  },
+  {
+    "position_id": "pos-04992eed",
+    "query_text": "Diagnosis of drug induced hepatotoxicity",
+    "label": "IRRELEVANT",
+    "score": 0,
+    "exact_span": "EMPTY",
+    "notes": "",
+    "decision_origin": "RESEARCH_CONTROL_LLM_ASSISTED",
+    "researcher_confirmation_status": "PENDING_EXPLICIT_CONFIRMATION"
+  }
+]

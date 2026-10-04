@@ -1,0 +1,49 @@
+TASK: Perform a deep semantic adjudication of the provided QUERY against the RETRIEVED_EVIDENCE.
+
+INPUT:
+<QUERY>
+{query_text}
+</QUERY>
+
+<RETRIEVED_EVIDENCE>
+{evidence_text}
+</RETRIEVED_EVIDENCE>
+
+INSTRUCTIONS:
+1. Identify all queried entities, the requested property, relation, and outcome.
+2. Carefully read the retrieved evidence. Extract actual entities, claims, relations, and outcomes present.
+3. Determine alignment for each component (Direct Match, Component Only, Unsupported, Absent, etc.).
+4. Pay special attention to:
+   - "Concomitant use": Ensure BOTH entities are explicitly studied/discussed together, not merely present in the same abstract.
+   - "Clearance pathway": Ensure explicit pharmacokinetic clearance info is present, not just a mention of the drug or a general PBPK model.
+5. Select the smallest contiguous exact text span from the evidence that supports your decision. If irrelevant, select the most representative span showing it is about a different topic.
+6. Provide a concise, evidence-grounded rationale.
+7. Assign the proposed label: [RELEVANT, PARTIALLY_RELEVANT, IRRELEVANT, INSUFFICIENT_INFORMATION, AMBIGUOUS].
+8. Assign the proposed grade: [2, 1, 0, 0, null].
+
+OUTPUT FORMAT (Strict JSON):
+{
+  "query_entities": [],
+  "requested_property": "...",
+  "requested_relation": "...",
+  "requested_outcome": "...",
+  "entity_alignment": "...",
+  "relationship_alignment": "...",
+  "relationship_polarity": "...",
+  "outcome_alignment": "...",
+  "outcome_polarity": "...",
+  "evidence_claims": [
+    {"claim_text": "...", "evidence_span": "...", "claim_type": "...", "polarity": "..."}
+  ],
+  "supported_claims": [],
+  "unsupported_claims": [],
+  "missing_information": [],
+  "counterevidence": [],
+  "uncertainties": [],
+  "best_supporting_span": "...",
+  "proposed_label": "...",
+  "proposed_grade": 0,
+  "proposed_rationale": "...",
+  "confidence": "HIGH|MEDIUM|LOW",
+  "alternative_label_considered": "..."
+}

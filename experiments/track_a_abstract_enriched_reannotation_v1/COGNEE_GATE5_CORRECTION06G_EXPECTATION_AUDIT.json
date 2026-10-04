@@ -1,0 +1,232 @@
+[
+  {
+    "case_id": "POS-01",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "POS-02",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "POS-03",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction06d.py (Prompt Instruction)",
+    "source_location": "Prompt Parameter"
+  },
+  {
+    "case_id": "POS-04",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": false,
+    "conformance_run2": false,
+    "expected_source": "experiments/cognee_gate5_correction06d.py (Prompt Instruction)",
+    "source_location": "Prompt Parameter"
+  },
+  {
+    "case_id": "RG-02",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": false,
+    "conformance_run2": false,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-01",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-02",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-03",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-TRUST-ANCHOR-01",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-04",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-05",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": false,
+    "conformance_run2": false,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "INT-06",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PI-01",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": false,
+    "conformance_run2": false,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-01",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-02",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-03",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-04",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-05",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "PROV-06",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "META-01",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "META-02",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "META-03",
+    "expected_outcome": "BLOCK",
+    "actual_outcome_run1": "BLOCK",
+    "actual_outcome_run2": "BLOCK",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  },
+  {
+    "case_id": "META-04",
+    "expected_outcome": "RELEASE",
+    "actual_outcome_run1": "RELEASE",
+    "actual_outcome_run2": "RELEASE",
+    "conformance_run1": true,
+    "conformance_run2": true,
+    "expected_source": "experiments/cognee_gate5_correction05.py",
+    "source_location": "EXPECTED_OUTCOMES dict definition"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "authoritative_source": {
+    "path": "experiments/cognee_gate5_correction05.py",
+    "sha256": "7389cdd2877606e8500ac9d9506715ea6328de0073f2521e086a1b6ff43a0033",
+    "last_modified": "2026-09-30T21:42:33.007416",
+    "format": "PYTHON_SCRIPT_AS_DESIGN_DOCUMENT",
+    "case_matrix_available": true,
+    "expected_outcomes_available": true
+  },
+  "secondary_sources": [
+    {
+      "path": "experiments/cognee_gate5_correction06.py",
+      "sha256": "UNKNOWN_NOT_HASHED_YET",
+      "role": "historical/reference"
+    }
+  ]
+}

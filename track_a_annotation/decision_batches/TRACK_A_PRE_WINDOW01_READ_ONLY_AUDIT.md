@@ -1,0 +1,40 @@
+# TRACK A PRE-WINDOW 01 READ-ONLY AUDIT
+Generated: 2026-10-03T18:47:09.366091
+
+## 1. CANONICAL STATE
+TOTAL: 530
+COMMITTED: 141
+REMAINING: 389
+
+## 2. REGISTRY STATE
+COMMITTED: 0
+ACTIVE_RESERVED: 0
+UNRESERVED: 0
+
+## 3. WINDOW 01 STAGING
+Records Staged: 10
+Expected PIDs Present: True
+
+## 4. INTEGRITY
+Query Mismatches: 0
+Evidence Mismatches: 0
+Span Failures: 0
+Synthetic Records: 0
+Duplicates: 0
+
+## 5. 389 PACKAGE
+Record Count: 389
+Abstract Available: 0
+Abstract Unavailable: 389
+
+## 6. FIELD COMPLETENESS (389 Package)
+All core fields present. 
+
+## 7. BENCHMARK
+LOCKED
+
+## 8. HASHES
+Canonical V2: 0832670a46f65e4498aa52e8a2a8fe2347793a943f0ad7c1494e26a6c9fa0479
+Registry: 1f7dbe3429a07578f0d45f792af96e70f0fa3f87a57fa90a3a0fe08f185ffeb3
+Staging: 0f217ada392c31364c55bde545141c574b3c94ac2c694bc728a7336920103d18
+389 RAW: 0de3c17e93af88591be5ce6b7f4ea6b01631b712ecedb866cae28a25b81932c2

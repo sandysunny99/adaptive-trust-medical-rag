@@ -1,0 +1,14 @@
+{
+  "status": "COGNEE_TARGETED_CONTROL_VALIDATED",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED",
+  "success_conditions": {
+    "A_canonical_identity_resolved": true,
+    "B_content_hash_matches": true,
+    "C_POS02_release": true,
+    "D_RG02_block": true,
+    "E_unsupported_block": true,
+    "F_contradiction_block": true,
+    "G_no_case_id_hardcoding": true
+  }
+}

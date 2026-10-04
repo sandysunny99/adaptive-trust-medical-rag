@@ -1,0 +1,50 @@
+{
+  "summary": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "regressions": 0
+  },
+  "tests": [
+    {
+      "name": "test_1_explicit_supported_relationship",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_2_lexical_paraphrase",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_3_unsupported_relationship",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_4_absent_relationship",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_5_contradictory_relationship",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_6_entity_alias",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_7_unrelated_factual_statement",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_8_multiple_candidate_relations",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_9_no_relation_requested",
+      "status": "PASSED"
+    },
+    {
+      "name": "test_10_ambiguous_relation",
+      "status": "PASSED"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "DIRECT_GROQ": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "structured_output": "CODE_PRESENT"
+  },
+  "DIRECT_CLOUDFLARE": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "structured_output": "CODE_PRESENT"
+  },
+  "DIRECT_HUGGINGFACE": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "structured_output": "CODE_PRESENT"
+  },
+  "FREELLMAPI_GATEWAY": {
+    "temperature": "CODE_PRESENT",
+    "top_p": "CODE_PRESENT",
+    "seed": "CODE_PRESENT",
+    "structured_output": "CODE_PRESENT"
+  }
+}

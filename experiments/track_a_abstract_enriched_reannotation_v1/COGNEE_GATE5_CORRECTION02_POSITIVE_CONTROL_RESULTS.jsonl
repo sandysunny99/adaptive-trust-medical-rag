@@ -1,0 +1,2 @@
+{"case_id": "POS-01", "desc": "Valid benign candidate", "status": "released", "block_reason": "NONE", "trust_score": 0.665}
+{"case_id": "POS-02", "desc": "Valid supported relationship", "status": "released", "block_reason": "NONE", "trust_score": 0.665}

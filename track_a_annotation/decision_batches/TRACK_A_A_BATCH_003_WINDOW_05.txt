@@ -1,0 +1,247 @@
+============================================================
+TRACK A HUMAN ANNOTATION WINDOW
+============================================================
+Batch ID: TRACK_A_A_BATCH_003
+Window: 05 of 06
+Window Record count: 10
+Batch Record count: 60
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_41
+position_id: pos-7436f45f
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+There are no real-world data on the modalities and outcomes of managing major or life-threatening bleeding related to oral anticoagulants in the emergency room (ER). The primary endpoint of this prospective observational study was to evaluate the therapeutic regimen ER physicians started to manage bleeding and 30-day mortality. The secondary endpoint was to evaluate the appropriateness of DOACs prescription and hospital admissions. Data were collected using RedCap. Patient's general characteristics, laboratory test results, therapy started in the ER to manage bleeding, patient transfer to another hospital department or discharge home, and 30-day mortality were recorded. A total of 526 consecutive patients were enrolled, 67% treated with DOACs and 33% with VKAs. Reversal of oral anticoagulants was successfully performed in a minority of patients, while in a percentage ranging from 30.5% for dabigatran to 60.2% for VKAs, patients did not receive any treatment, even if necessary. Thirty-day mortality was 11% and 17% for patients treated with DOACs and VKAs, respectively. Major bleeding conferred a higher risk of death (OR = 2.95, 1.42-6.16). Compared with VKAs, DOACs therapy reduced the risk of death by 57% (OR = 0.43, 0.26-0.72). Excessive doses were administered to 10.8%, 13%, 18%, and 19% of patients treated with rivaroxaban, edoxaban, apixaban, and dabigatran, respectively. In these patients, major bleeding occurred in a percentage ranging from 66.7% to 94.7% depending on the drug administered. Overall, 25.8% of patients, treated primarily with DOACs, were discharged. The management of oral anticoagulant-related major or life-threatening bleeding in the ER appears poor.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_42
+position_id: pos-d3295d06
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+AIMS: Andexanet alfa was recommended by the National Institute for Health and Clinical Excellence (NICE) as an option in the management of life-threatening gastrointestinal bleeding in patients taking apixaban or rivaroxaban in May 2021. A recent UK-wide survey of local hospital protocols for the use of andexanet alfa suggested that practice across the United Kingdom is highly variable. In January 2025, NICE was unable to make a recommendation on the use of andexanet alfa for reversing anticoagulation in adults with intracranial haemorrhage. We set out to report trends and variation in the uptake of andexanet alfa across the NHS in England, using the new OpenPrescribing Hospitals platform. METHODS: To assess the uptake of andexanet alfa, we analysed pharmacy stock control data from NHS trusts in England using the openly available Secondary Care Medicines Dataset. Analysis was restricted to NHS trusts with 24-h consultant-led emergency care activity. RESULTS: Between May 2021 and June 2025, 19 608 vials of andexanet alfa were issued in NHS trusts in England. There was wide variation in the timing and speed of uptake across NHS trusts. Substantial variation was also observed between NHS Regions in England. CONCLUSIONS: The use of andexanet alfa varies markedly between NHS regions and between NHS trusts in England. This study is the first analysis of adoption of a new treatment using the OpenPrescribing Hospitals platform, which is expected to provide a generalizable framework for similar analyses in the future.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_43
+position_id: pos-fc86260b
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Andexanet alfa (AA), a recombinant coagulation factor Xa, is approved as an antidote for the treatment of bleeding secondary to rivaroxaban and apixaban. While thromboembolism may serve as a risk with reversal of therapeutic anticoagulation, several landmark trials demonstrate higher rates with AA versus usual care. OBJECTIVE: The purpose of this study was to identify independent patient-specific and hospital-associated risk factors corresponding to the development of thrombus in patients who have received AA. METHODS: This was a retrospective cohort study conducted across six institutions comprised of academic and community settings. Patients aged 18 years and older who received AA from November 1, 2021 through June 30, 2024 during an inpatient hospitalization were included. The primary outcome evaluated the presence of select risk factors on thrombus development within 45 days of AA administration. RESULTS: One hundred thirty-eight patients met inclusion criteria. Identification of thrombus occurred in 19/138 (13.8%) after receiving AA. Of the risk factors evaluated, a multivariate analysis demonstrated major surgery within 30 days of reversal (OR 3.72, 95% CI: 1.14-12.08, P = .03) served as a strong predictor for the development of thrombus after AA administration. CONCLUSION: A strong association existed between major surgery within 30 days and thrombotic complications following AA administration. Larger studies are needed to validate these findings and refine risk stratification post-AA administration.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_44
+position_id: pos-0c17f293
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Background: Berberine, an isoquinoline alkaloid present in Berberis spp., Coptis chinensis and Hydrastis canadensis, is among the most widely consumed metabolic-health supplements, popularized as "nature's Ozempic". Concurrent, often undisclosed use with prescription drugs is common in older adults, yet berberine is far from inert. Objective: To synthesize the evidence on berberine as a perpetrator of supplement-drug interactions, propose a four-axis mechanistic taxonomy, with product quality treated separately as a modifier of exposure rather than as a mechanism, and derive a clinically actionable risk-stratification framework. Methods: Structured narrative review, prepared per the SANRA quality criteria; PubMed/MEDLINE, Scopus, Web of Science and Embase were searched up to May 2026. Results: Despite very low systemic exposure (oral bioavailability 0.68% in rats; low ng/mL plasma concentrations in humans), high luminal, enterocytic and hepatic concentrations generate interaction liability, documented in humans for a few pairs and mechanistic for most, along four mechanistic axes: inhibition, and transcriptional induction, of CYP3A4, with CYP2D6/CYP2C9 inhibition that is quasi-irreversible through a metabolite-intermediate complex; transporter modulation (P-glycoprotein, OCT1/OCT2, and MATE1); pharmacodynamic additivity (hypoglycemia, hypotension, and QT prolongation); and microbiome- and gut-barrier-mediated effects, the last of these being a candidate axis rather than a demonstrated one. Product-quality variability is treated separately, as a modifier of exposure. The clinical anchor is increased cyclosporine exposure in renal-transplant recipients (AUC +34.5%; trough 29.3% above control). These elements are integrated into a three-tier risk-stratification framework that combines perpetrator potency, victim-drug vulnerability, and patient vulnerability, with each tier being linked to a defined pharmacy action. Conclusions: In patients on multiple medications, and particularly when berberine is co-administered with drugs of narrow therapeutic index, it should be managed as an active pharmacological perpetrator rather than as an inert supplement. Unstandardized product quality and an unsettled European regulatory framework, under which national limits differ by more than an order of magnitude, further widen the uncertainty around the dose actually delivered. Berberine use should therefore be elicited routinely at medication reconciliation and stratified by mechanism, by victim-drug vulnerability, and by patient risk, with particular attention to metabolic self-medication in the GLP-1 era.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_45
+position_id: pos-6d33df67
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Classifications of drug interaction alerts regarding clopidogrel and a proton pump inhibitor (PPI) differ between knowledge resources. In this systematic review, Medline, Embase, and the Cochrane Library were searched for randomized controlled trials (RCTs) applying PICO criteria: P = patients on clopidogrel; I = intervention: PPI (subgroup: [es]omeprazole); C = comparison: no PPI (C1) or a PPI other than (es)omeprazole (C2); O = outcomes, main: a composite of cardiovascular events (efficacy); also: overt gastrointestinal bleeding (safety). Fourteen RCTs fulfilled the PICO criteria, five without high risk of bias and with at least one clinical event per study arm. Regarding efficacy with or without a PPI, the pooled risk ratio (RR) and risk difference (RD) were 1.08 (95% confidence interval (CI) 0.78; 1.50) and 0.2 percentage points (95% CI -0.9; 1.2), respectively (four RCTs; 4341 patients [96% also used aspirin, 98% receiving I used (es)omeprazole]; moderate certainty evidence). Regarding safety, the RR and RD were 0.13 (95% CI 0.03; 0.59) and -0.7 percentage points (95% CI -1.1; -0.3), respectively (one RCT; 3761 patients; moderate certainty evidence). The available evidence did not allow conclusions regarding omeprazole versus pantoprazole. In conclusion, concurrent use of a PPI probably does not largely affect clopidogrel efficacy, but probably reduces the risk of overt gastrointestinal bleeding.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_46
+position_id: pos-7d7a2a67
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+BACKGROUND: Direct oral anticoagulants (DOACs) are widely prescribed but present challenges when patients require urgent invasive procedures. While idarucizumab is licensed for preprocedural reversal of dabigatran, 4-factor prothrombin complex concentrates (4F-PCCs) are often used off-label for oral factor (F)Xa inhibitors. OBJECTIVES: We aimed to describe real-world UK use of reversal agents prior to urgent procedures. METHODS: We conducted a UK-wide audit of adults receiving andexanet alfa, idarucizumab, or 4F-PCC to reverse apixaban, dabigatran, edoxaban, or rivaroxaban, before urgent procedures between October 2020 and June 2023. Data were collected by members of HaemSTAR, a UK-wide network led by hematology resident doctors. Primary outcomes were (1) receipt of reversal ≤24 hours before procedure and (2) adherence to recommended dosing. Secondary outcomes included procedural bleeding risk, 90-day mortality, and 30-day thrombosis rate. RESULTS: Data were collected on 198 patients, with 48% undergoing high-risk procedures. Median time from reversal to procedure was 1.6 hours and 76% took place within 24 hours. 4F-PCC was used in 87%, idarucizumab in 8%, and andexanet alfa in 5%. Tranexamic acid was administered in 20%, 90-day mortality was 24%, and thromboembolic events occurred in 3%, all following 4F-PCC. CONCLUSION: Reversal agents are frequently used prior to urgent procedures in direct oral anticoagulant-treated patients, including for low-risk interventions. There is limited evidence to support the off-label use of 4F-PCC; the risks, benefits, and cost effectiveness are uncertain. Delays to intervention, low use of tranexamic acid, and infrequent drug-level testing highlight opportunities to improve clinical workflows and inform future trials.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_47
+position_id: pos-e237444e
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Although mineralocorticoid receptor (MR) antagonism is a mechanistically plausible target of therapy in patients with kidney failure, prior small trials failed to elucidate the safety and efficacy of spironolactone and eplerenone in this population. More conclusive evidence was provided by the ALCHEMIST and ACHIEVE trials, in which spironolactone was not superior to placebo in improving cardiovascular outcomes in patients with kidney failure. The incidence of moderate hyperkalemia in these trials was higher with spironolactone than with placebo. Accordingly, the use of spironolactone or eplerenone for cardiovascular protection in this population is not justified by the currently available clinical-trial data.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_48
+position_id: pos-734b9fb4
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+OBJECTIVES: The use of complementary and alternative medicine (CAM) is increasing worldwide, specifically among gout patients, due to the perceived safety, low cost, and accessibility, but data on the usage remain limited. Therefore, this study aimed to assess the prevalence of CAM use, the predictors associated with CAM use, the impact on medication adherence, and the potential herb-drug interactions among gout patients. METHODS: This cross-sectional study was conducted from June to November 2024 across all 47 community health centers in Makassar City, Indonesia. The entire respondents were patients aged 18 years and older diagnosed with gout. Eligible respondents were recruited through direct questionnaire distribution, collecting data on socio-demographics, CAM and conventional medicine use, CAM perceptions, and medication adherence, while potential herb-drug interactions were assessed using the UpToDate database. RESULTS: Among the 430 respondents, 52.8 % reported using CAM, with herbal medicine being the most frequently used option. CAM use was significantly associated with prior experience (p<0.001) and influence from family or friends (p<0.001). A significant association was also found between CAM use and medication adherence (p<0.001), with a higher proportion of non-CAM users exhibiting high adherence (76.8 vs. 7.9 %) and a higher proportion of CAM users demonstrating poor adherence (8.4 vs. 0.5 %). Four potential herb-drug interactions were identified, namely ginger-aspirin (n=2), ginger-glibenclamide (n=1), honey-warfarin (n=1), and garlic-aspirin (n=1), suggesting a need for clinical monitoring. CONCLUSIONS: The frequent use of CAM among gout patients highlights the crucial role of healthcare practitioners in educating patients about safety, efficacy, and potential interactions. It also underscores the need for strategies to address medication non-adherence associated with CAM use and to monitor herb-drug interactions in clinical settings.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_49
+position_id: pos-c3e553c3
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Oral bisphosphonates are approved for the treatment of bone loss associated with several conditions including postmenopausal osteoporosis. Although generally well tolerated, adverse effects such as gastroesophageal reflux and oesophageal and peptic ulceration may occur. Oral mucositis and ulceration are lesser-known side effects. Proper counselling and rigorous adherence to the administration instructions are crucial. We describe a case of bisphosphonate-induced severe oral mucosal ulceration in an elderly woman that was caused by incorrect instructions and/or incorrect understanding of instructions for oral alendronate intake.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION
+
+### TRACK_A_A_BATCH_003_WINDOW_05 / POSITION_50
+position_id: pos-c8189f02
+query_id: Concomitant use of warfarin and aspirin bleeding risk
+
+QUERY:
+Concomitant use of warfarin and aspirin bleeding risk
+
+PRIMARY RETRIEVED EVIDENCE:
+Coagulation is a physiological process necessary to achieve homeostasis. Many pathologies lead to spontaneous activation of the coagulation pathways and increase the risk of venous thrombosis (e.g., atrial fibrillation, orthopaedic surgery, cancer). Therefore, a lot of patients need anticoagulant drugs as preventive or curative treatment. In general, older molecules (unfractionated heparin, low-molecular-weight heparins, vitamin K antagonists) have good efficacy. Still, their adverse reactions, increased risk of bleeding, or difficult administration led to low adherence to treatment and had even limited their use. Recently, new molecules were authorised to improve patient adherence to treatment, mainly formulated for oral administration (e.g., dabigatran, rivaroxaban, apixaban, etc.). This therapeutic approach has a low risk of bleeding and does not require special monitoring by laboratory tests. Also, new anticoagulants for patients with heparin-induced thrombocytopenia (e.g., argatroban, lepirudin, bivalirudin, etc.) were obtained. Moreover, reversal agents for the new anticoagulant molecules used in overdoses or in situations where immediate cessation of the anticoagulant effect is required (e.g., emergency surgery) were studied, some of them being authorised on the pharmaceutical market. This narrative review aims to provide a pharmacological and therapeutic overview of anticoagulant drugs, underlining their implementation and limitations.
+
+ABSTRACT STATUS:
+abstract_available: True
+abstract_enrichment_status: ABSTRACT_AVAILABLE
+
+ABSTRACT:
+[ABSTRACT NOT AVAILABLE IN SOURCE DATASET]
+
+HUMAN ANNOTATION:
+label: [WAITING_FOR_HUMAN_INPUT]
+grade: [WAITING_FOR_HUMAN_INPUT]
+rationale: [WAITING_FOR_HUMAN_INPUT]
+evidence_span: [WAITING_FOR_HUMAN_INPUT]
+### END POSITION

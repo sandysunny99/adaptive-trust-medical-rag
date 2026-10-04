@@ -1,0 +1,31 @@
+{
+  "gate": "GATE_B",
+  "audit_version": "FINAL_FORENSIC_CHALLENGE",
+  "status": "BLOCKED_ON_HUMAN_RESEARCH_DECISION",
+  "contradictions_corrected": [
+    {
+      "component": "Prompt Injection",
+      "previous": "LIVE_GENERATIVE_E2E",
+      "corrected": "INTEGRATION_TESTED",
+      "reason": "No live LLM exists in the pipeline; cannot be generative E2E."
+    },
+    {
+      "component": "Retrieval Poisoning",
+      "previous": "LIVE_GENERATIVE_E2E",
+      "corrected": "INTEGRATION_TESTED",
+      "reason": "No generative step involved."
+    },
+    {
+      "component": "Contradiction Detection",
+      "previous": "LIVE_GENERATIVE_E2E",
+      "corrected": "INTEGRATION_TESTED",
+      "reason": "Tests run on synthetic mocked strings, not real LLM generations."
+    },
+    {
+      "component": "anti_injection fix",
+      "previous": "RESOLVED",
+      "corrected": "REQUIRES_RESEARCH_DECISION",
+      "reason": "Setting to constant 1.0 removes discriminative security value from continuous trust score."
+    }
+  ]
+}

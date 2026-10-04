@@ -1,0 +1,16 @@
+{
+  "dataset_total": 530,
+  "historically_verified_committed": 141,
+  "current_workspace_committed": 40,
+  "current_master_annotated": 101,
+  "current_registry_committed": 96,
+  "current_registry_reserved": 44,
+  "master_workspace_drift": 101,
+  "registry_drift": 45,
+  "final_committed": 141,
+  "final_remaining": 389,
+  "benchmark": "LOCKED",
+  "canonical_state_file": "TRACK_A_CANONICAL_STATE_V2.jsonl",
+  "canonical_registry_file": "TRACK_A_CANONICAL_REGISTRY_V2.json",
+  "legacy_sources_preserved": true
+}

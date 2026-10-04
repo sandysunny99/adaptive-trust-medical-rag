@@ -1,0 +1,25 @@
+{
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "tests": [
+    "test_cv2_01_fully_supported",
+    "test_cv2_02_paraphrased_support",
+    "test_cv2_03_partial_support",
+    "test_cv2_04_contradiction",
+    "test_cv2_05_unsupported",
+    "test_cv2_06_bounded_negative",
+    "test_cv2_07_positive_against_bounded_negative",
+    "test_cv2_08_overgeneralization",
+    "test_cv2_09_mixed_clauses",
+    "test_cv2_10_wrong_citation",
+    "test_cv2_11_multiple_conflicting_evidence",
+    "test_cv2_12_ambiguous_case",
+    "test_cv2_13_insufficient_evidence",
+    "test_cv2_14_multiple_evidence_aggregation",
+    "test_cv2_15_citation_resolves_but_does_not_support",
+    "test_statin_aspirin_matrix"
+  ]
+}

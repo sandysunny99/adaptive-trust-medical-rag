@@ -1,0 +1,64 @@
+{
+  "project": "Adaptive Trust-Aware Medical RAG",
+  "date": "2026-10-03",
+  "gate": "GATE_B",
+  "current_state": "BLOCKED_ON_HUMAN_RESEARCH_DECISION",
+  "open_decisions": 2,
+  "decisions": [
+    {
+      "decision_id": "trust_missing_value_policy",
+      "question": "How should the pipeline handle the unpopulated query_relevance and evidence_quality factors?",
+      "options": [
+        "A: Impute from existing signals",
+        "B: Exclude and renormalize",
+        "C: Keep MISSING = 0.0"
+      ],
+      "evidence": "Weights total 30-35% of score. 0.0 defaults cap max score at 0.65. R3 threshold (0.75) is mathematically impassable.",
+      "unknowns": "Whether formal metadata for evidence_quality exists uniformly.",
+      "risks": [
+        "Option A introduces circularity (making Trust dependent on Retrieval).",
+        "Option B fundamentally alters the 9-factor model.",
+        "Option C sacrifices the R3 tier."
+      ],
+      "required_experiments": "Gate 5 baseline rerun if A or B is selected.",
+      "historical_impact": "Option A and B break comparability with frozen Gate 5 scores.",
+      "methodology_impact": "Major methodology amendment required for A or B.",
+      "human_decision_required": true
+    },
+    {
+      "decision_id": "anti_injection_representation",
+      "question": "Should anti_injection remain a constant 1.0 structural placeholder?",
+      "options": [
+        "A: Keep constant structural value",
+        "B: Remove from continuous trust / Hard gate only",
+        "C: Other research-defined approach"
+      ],
+      "evidence": "Currently fixed to 1.0. Provides no discriminative value in the continuous score, as injection is handled by a hard downstream gate.",
+      "unknowns": "None.",
+      "risks": [
+        "Option A applies an artificial bonus to all chunks, masking its binary nature.",
+        "Option B requires renormalizing the remaining trust weights."
+      ],
+      "required_experiments": "Gate 5 baseline rerun if B is selected.",
+      "historical_impact": "Option B breaks comparability with frozen Gate 5 scores.",
+      "methodology_impact": "Option B formally removes anti_injection from the continuous trust equation.",
+      "human_decision_required": true
+    }
+  ],
+  "trust_analysis": "R0 (Max 0.70), R1 (Max 0.65), R2 (Max 0.65) are reachable. R3 (Threshold 0.75) is unreachable due to 0.0 defaults.",
+  "anti_injection_analysis": "Constant 1.0 structurally preserves the denominator but holds no discriminative security value.",
+  "historical_impact": "Gate 5 was executed with the 0.0 defaults and impassable R3. Changing this requires a baseline rerun.",
+  "benchmark_impact": "Imputing trust from retrieval scores (Option A) introduces circularity and confounds Baseline vs Cognee comparability.",
+  "security_impact": "Generative E2E security validation cannot exist without a live LLM. All security components are INTEGRATION_TESTED offline.",
+  "architecture_impact": "DynamicIntegrityValidator and RG-02 are confirmed OPTIONAL and UNWIRED by default.",
+  "required_code_changes": "Pending human decision.",
+  "required_document_changes": "Pending human decision.",
+  "required_reruns": "Pending human decision.",
+  "gate_closure_conditions": [
+    "Human decision recorded for Trust Policy",
+    "Human decision recorded for Anti-Injection",
+    "Code/Config updated per authorized decision",
+    "Architecture Freeze Certificate Generated"
+  ],
+  "next_gate": "GATE_C"
+}

@@ -1,0 +1,14 @@
+{
+  "total_records": 369,
+  "annotated_records": 40,
+  "unannotated_records": 329,
+  "committed_records": 0,
+  "chunks_processed": 4,
+  "last_position_id": "pos-10330d5a",
+  "current_chunk_id": "CHUNK_005",
+  "benchmark": "LOCKED",
+  "provider_execution": false,
+  "automatic_relabeling": 0,
+  "synthetic_records": 0,
+  "duplicate_positions": 0
+}

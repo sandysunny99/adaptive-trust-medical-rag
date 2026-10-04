@@ -1,0 +1,11 @@
+{
+    "experiment_id": "FREE_REPLICATION_V1",
+    "run_state": "PREPARING",
+    "protocol_hash": null,
+    "configuration_hash": null,
+    "dataset_hash": "af71c70d36081b1b68316b5ff8636969c8b964c9655f752b41112694ebc02c48",
+    "observations": [],
+    "total_calls": 0,
+    "start_time": null,
+    "end_time": null
+}

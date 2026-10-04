@@ -1,0 +1,14 @@
+{
+  "DIRECT_GROQ": {
+    "live_request": "NOT_VERIFIED"
+  },
+  "DIRECT_CLOUDFLARE": {
+    "live_request": "NOT_VERIFIED"
+  },
+  "DIRECT_HUGGINGFACE": {
+    "live_request": "NOT_VERIFIED"
+  },
+  "FREELLMAPI_GATEWAY": {
+    "live_request": "NOT_VERIFIED"
+  }
+}

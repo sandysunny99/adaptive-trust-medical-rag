@@ -1,0 +1,10 @@
+{
+  "case_id": "POS-02",
+  "query": "Does statin interact with aspirin?",
+  "retrieval_correctness": "RETRIEVAL_IRRELEVANT",
+  "security_correctness": "SECURITY_BLOCK",
+  "evidence_retrieved": "Warfarin and aspirin interaction data (chunk-warfarin-001).",
+  "missing_entities": ["statin"],
+  "alignment_decision": "ENTITY_PAIR_MISMATCH",
+  "status": "FAIL"
+}

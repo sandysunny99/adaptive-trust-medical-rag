@@ -1,0 +1,13 @@
+{
+  "total": 530,
+  "annotated": 101,
+  "remaining": 429,
+  "current_batch": "004",
+  "current_window": "02",
+  "positions_prepared": 10,
+  "positions_attempted": 10,
+  "positions_completed": 10,
+  "positions_committed": 10,
+  "next_window": "03",
+  "human_decisions_pending": 0
+}

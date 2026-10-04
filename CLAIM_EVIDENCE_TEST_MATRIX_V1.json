@@ -1,0 +1,67 @@
+{
+  "matrix_version": "1.0.0",
+  "domain": "Pharmacology RAG Claim Verification",
+  "evidence": "No clinically significant pharmacokinetic drug-drug interactions have been observed when atorvastatin is co-administered with aspirin.",
+  "cases": [
+    {
+      "id": "CE-01",
+      "claim": "No clinically significant pharmacokinetic interaction was observed.",
+      "expected_status": "SUPPORTED",
+      "description": "Claim fully supported by retrieved evidence"
+    },
+    {
+      "id": "CE-02",
+      "claim": "Atorvastatin and aspirin were studied together.",
+      "expected_status": "PARTIALLY_SUPPORTED",
+      "description": "Claim partially supported (mentions entities and study context but omits the main finding)"
+    },
+    {
+      "id": "CE-03",
+      "claim": "Statin causes severe bleeding when combined with aspirin.",
+      "expected_status": "UNSUPPORTED",
+      "description": "Claim unsupported by retrieved evidence"
+    },
+    {
+      "id": "CE-04",
+      "claim": "Statin interacts with aspirin.",
+      "expected_status": "CONTRADICTED",
+      "description": "Claim contradicted by retrieved bounded-negative evidence"
+    },
+    {
+      "id": "CE-05",
+      "claim": "Aspirin is an NSAID used for pain relief.",
+      "expected_status": "UNSUPPORTED",
+      "description": "Claim contains factual information absent from retrieved evidence"
+    },
+    {
+      "id": "CE-06",
+      "claim": "No clinically significant pharmacokinetic interaction was observed, and therefore the combination is completely safe for all patients.",
+      "expected_status": "PARTIALLY_SUPPORTED",
+      "description": "Claim combines supported and unsupported clauses (overgeneralization)"
+    },
+    {
+      "id": "CE-07",
+      "claim": "There is no interaction of any kind between statin and aspirin.",
+      "expected_status": "UNSUPPORTED",
+      "description": "Claim exceeds evidence qualification/scope"
+    },
+    {
+      "id": "CE-08",
+      "claim": "Pharmacokinetic drug-drug interactions have been observed.",
+      "expected_status": "CONTRADICTED",
+      "description": "Claim uses a negated source as if it were positive"
+    },
+    {
+      "id": "CE-09",
+      "claim": "No clinically significant pharmacokinetic interaction was observed [Source 2].",
+      "expected_status": "CITATION_UNSUPPORTED",
+      "description": "Citation points to evidence that does not support the claim (assuming Source 2 is a different, irrelevant chunk)"
+    },
+    {
+      "id": "CE-10",
+      "claim": "Studies are conflicting on whether statin interacts with aspirin.",
+      "expected_status": "AMBIGUOUS",
+      "description": "Multiple evidence items contain conflicting claims"
+    }
+  ]
+}

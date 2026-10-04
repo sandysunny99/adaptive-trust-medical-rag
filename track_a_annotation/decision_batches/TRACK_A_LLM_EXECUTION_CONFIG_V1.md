@@ -1,0 +1,20 @@
+# TRACK_A_LLM_EXECUTION_CONFIG_V1
+
+> **STATUS**: PENDING RESEARCHER SELECTION
+> *This configuration must be explicitly filled and frozen before the pilot execution.*
+
+PROVIDER = [TBD]
+MODEL = [TBD]
+MODEL_VERSION_OR_REVISION = [TBD]
+ENDPOINT_OR_LOCAL_PATH = [TBD]
+INFERENCE_FRAMEWORK = [TBD]
+TEMPERATURE = 0.0
+TOP_P = 0.1
+MAX_TOKENS = 2048
+SEED = 42
+RETRY_POLICY = 3_retries_on_parsing_failure
+TIMEOUT = 120s
+STRUCTURED_OUTPUT_FORMAT = JSON_Schema_Enforced
+SYSTEM_PROMPT_HASH = [TBD_post_freeze]
+ADJUDICATION_PROMPT_HASH = [TBD_post_freeze]
+CHALLENGE_PROMPT_HASH = [TBD_post_freeze]

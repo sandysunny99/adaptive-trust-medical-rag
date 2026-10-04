@@ -1,0 +1,32 @@
+{"case_id": "UC-838cedc0", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T10:44:03.707977+00:00"}
+{"case_id": "UC-06234246", "condition": "HARDENED", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T10:47:10.757800+00:00"}
+{"case_id": "UC-cf0ab7ae", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T10:53:47.250244+00:00"}
+{"case_id": "UC-fc993ace", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T10:59:33.256098+00:00"}
+{"case_id": "UC-5658c7f3", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T11:13:19.025326+00:00"}
+{"case_id": "UC-38042d2a", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T11:30:06.335031+00:00"}
+{"case_id": "UC-bdecaf66", "condition": "BASELINE", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T11:44:09.537198+00:00"}
+{"case_id": "UC-1c819c28", "condition": "HARDENED", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T11:48:37.804606+00:00"}
+{"case_id": "UC-71e99a29", "condition": "HARDENED", "error": "Max retries (3) exhausted on rate limit", "attempts": 3, "timestamp": "2026-09-24T11:51:24.352432+00:00"}
+{"case_id": "UC-63e8943b", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:45.169292+00:00"}
+{"case_id": "UC-fbf83a13", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:45.447932+00:00"}
+{"case_id": "UC-6c324128", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:45.716782+00:00"}
+{"case_id": "UC-2daa4e0c", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:45.993857+00:00"}
+{"case_id": "UC-53974f5f", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:46.248828+00:00"}
+{"case_id": "UC-8a5b4e97", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:46.435688+00:00"}
+{"case_id": "UC-21f19662", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:46.624500+00:00"}
+{"case_id": "UC-f733d904", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:46.821660+00:00"}
+{"case_id": "UC-cfca5655", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:47.011583+00:00"}
+{"case_id": "UC-83cda464", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:47.224903+00:00"}
+{"case_id": "UC-2190e2c4", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:47.481481+00:00"}
+{"case_id": "UC-21cb9c5c", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:47.697876+00:00"}
+{"case_id": "CT-abeb1788", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:47.915756+00:00"}
+{"case_id": "CT-f81d8c42", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.099593+00:00"}
+{"case_id": "CT-2e0e3ce3", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.244158+00:00"}
+{"case_id": "CT-4519b938", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.378722+00:00"}
+{"case_id": "CT-e9d585c9", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.531822+00:00"}
+{"case_id": "CT-e50d3367", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.686754+00:00"}
+{"case_id": "CT-f799639a", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.834458+00:00"}
+{"case_id": "CT-29d0a34f", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:48.968611+00:00"}
+{"case_id": "CT-57310627", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:49.105286+00:00"}
+{"case_id": "CT-d07d09ae", "condition": "BASELINE", "error": "Unexpected error: [Errno 11001] getaddrinfo failed", "attempts": 1, "timestamp": "2026-09-24T22:18:49.256232+00:00"}
+{"case_id": "CT-38104df0", "condition": "BASELINE", "error": "Groq API request timed out", "attempts": 1, "timestamp": "2026-09-25T05:15:49.057415+00:00"}

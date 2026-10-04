@@ -1,0 +1,14 @@
+{
+  "baseline_name": "Gate5 Dense Retrieval Baseline",
+  "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "dimension": 768,
+  "library": "sentence-transformers",
+  "pooling": "mean",
+  "normalize_embeddings": "True",
+  "similarity_metric": "cosine",
+  "retrieval_engine": "HybridRetrievalEngine",
+  "fusion": "RRF",
+  "rrf_k": 60,
+  "offline": true
+}

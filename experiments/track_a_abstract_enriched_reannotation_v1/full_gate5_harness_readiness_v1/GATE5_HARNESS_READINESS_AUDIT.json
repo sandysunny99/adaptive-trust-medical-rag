@@ -1,0 +1,15 @@
+{
+  "root_cause_claim": "stale/corrupted gate5_dataset namespace in concurrent execution context",
+  "root_cause_evidence": "COGNEE_DIFFERENTIAL_EXECUTION_MATRIX.json Trial 1 used a fresh dataset name 'diag_v2_gate5_exact' sequentially and failed with FAIL_EMPTY_SEARCH because prune_data and prune_system were both true. Trial 3 and Trial 4 passed when only one prune method was used. The failure is driven by the interaction between prune_data and prune_system, not dataset identity or concurrency.",
+  "root_cause_status": "ROOT_CAUSE_NOT_PROVEN",
+  "live_cognee_status": "PASS - LIVE_COGNEE_RETRIEVAL_PROOF.jsonl confirms live await cognee.search() was executed without exception swallowing, though it yielded 0 candidates.",
+  "baseline_status": "PASS - BASELINE_REAL_RETRIEVAL_AUDIT.md and GATE5_HARNESS_EXECUTION_LOG.jsonl confirm HybridRetrievalEngine was used with no target-doc filtering or mock fixtures.",
+  "retrieval_error_semantics_status": "PASS - GATE5_HARNESS_EXECUTION_LOG.jsonl records 'RETRIEVAL_SUCCESS' with 0 candidates, distinguishing it from 'RETRIEVAL_ERROR' and 'RETRIEVAL_EMPTY'. Exception swallowing was removed.",
+  "observability_status": "PASS - GATE5_HARNESS_EXECUTION_LOG.jsonl shows dynamic fields like provenance_status, identity_status, trust_score, and decision dynamically read from the orchestrator's res.audit_log.",
+  "reproducibility_status": "PASS - GATE5_HARNESS_REPRODUCIBILITY.json demonstrates 100% contract match between runs on decision, candidates, and status, although candidate sets were empty.",
+  "positive_control_status": "FAIL - POS-01 and POS-02 retrieved 0 candidates (raw_result_count: 0) across both COGNEE and BASELINE engines, failing to traverse the security pipeline with actual candidates.",
+  "negative_control_status": "FAIL - CTRL-UNSUPPORTED retrieved 0 candidates, failing to evaluate the security pipeline's rejection logic.",
+  "event_loop_status": "PASS - Sequential await logic with nest_asyncio was used to bridge the synchronous orchestrator, avoiding concurrent task collisions.",
+  "artifact_integrity_status": "PASS - JSONL files are parseable, and datasets were dynamically namespaced.",
+  "readiness_status": "GATE5_HARNESS_NOT_READY"
+}

@@ -1,0 +1,3712 @@
+[
+  {
+    "PID": "pos-df6bde0e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-11edf16a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4415f9b2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-48cab46e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-17a02d6b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c0aa524c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6dfe0028",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e8bcb783",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0ba363e7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e6ac3ed6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c8fbe715",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7036d1ca",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ab46ce5c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c5e9252c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-41f4b198",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b162a84a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8a294cff",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d28e8ae4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f3548a6a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d690fd08",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ccd44dae",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b7dd8a5b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4a8aca14",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5391628f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-32fe4fb6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-83cc950b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-fc86260b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-190bb5e7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-42161d33",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-77352d30",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-791da89f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8443b55a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3077ee89",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-55170595",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-09d4924f",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-2cecfb91",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a61d7d8e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-32a742c4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-96b95b31",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a24a28c3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-46ba8001",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1ee9e50b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-018d5819",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6ea635d9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b680e6e7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7f4a11a7",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0639bf30",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3c43f065",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dd279b7e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-47d7ebb4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-9747a828",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f6730088",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5357d5c1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e35ea01b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1dc12820",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c30c8635",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1db768f3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f909bf4b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-debabd8b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-796ce87e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a0522f74",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-34c7006d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2cb3af33",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e7526603",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-865ade74",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-6b51aa62",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-5016bbc4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3fbeb9d2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5296e2f0",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-6f78c16e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b66e91cc",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-9c0c6de6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e2f3b724",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5689870b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9b7d81e4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4d62756f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9be4ffd7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b1aeb42e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-024f1c65",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-328c1652",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8339e5f1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-51abda0c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dbea1374",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4b1bd9e5",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-815d0c54",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6d49dc3b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-312c2bfa",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-fbe4bb45",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-15ec2514",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a835aaac",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-8511788b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-cfdb189c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7875d016",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-969b8ca5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b6f14465",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e701e6b6",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-04077fbb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0c63d702",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3440fa6c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c6137634",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c24ec8f6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-61564af7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7436f45f",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4a209007",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1072c8e7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0fbf37ff",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c443d7e9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4ed66379",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dfd438e2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c1b2078b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0ecee8e5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-60ec8372",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-7a1b2980",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e0c2152b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0e9b0e48",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2d6954ed",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b3f086a1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-aa15aacd",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e1bed0b7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-68c36127",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-bd8cfd23",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5f27f640",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-51442a6c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d99d8c31",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-38321e44",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c4726940",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f2030619",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9b89029a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-433f3c2c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cf4730de",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-f2ba3fd2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b8a78b41",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5bb2c336",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f310e96b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0b8f9433",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-103fab76",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-706dd1e6",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-99b732ba",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a54ae29e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cce9a8c1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-074944db",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-a00ce69f",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-092e9947",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f17b4d49",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3fb32a70",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-df9a450b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-15db4894",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2142a295",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-691ff797",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-456cdfbc",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-82e07716",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a8f6113b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0a4fc25b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-70e6f69e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b8b4f173",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4d9ab1aa",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d3295d06",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e187344e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-53198e7b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-a9e7c46c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f147400a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-40bcd180",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-68b1f58d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7c1fb419",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0744bfc1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-3bd21ccb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4be87ae2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b4063d90",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c896c5d9",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-a5465850",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-9fb1e8cf",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e3f5f23b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-45edd8ee",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ccc0bc7e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-055e405a",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-fa5a07d1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-038b917d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7387b69f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-de2e1d0a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9fd6f046",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-fd4e97d9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1ffa32f8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8f5fc082",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-eb331f6c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d69ab96b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-468146f9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f92e65cb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4dd777be",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1dc33aa5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6b589a2b",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-34be68cd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bab8f0ab",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-433e9cfd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7bff739f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bc885354",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-42538927",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-261a6c8c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-2d75075e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ff8311ea",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-85682804",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c876a75b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-13ca8dc0",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-bd8afeb5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-161142cb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0c17f293",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4098f547",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4170dd36",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-1d3c0fd3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ac6e4c77",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-785d70c6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5ca415c6",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c8189f02",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-19a7a534",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a54b6f64",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-564283d5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5ee9fb19",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-eb10f237",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-123df287",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1942e741",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c871cd9c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b4c42a92",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-150b442e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-741fef35",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0dc4c28c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-784d0439",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cccfc016",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d0de21af",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-7f65e476",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-14cbfa08",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-66d45746",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3705c902",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-fbfc994c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e890db48",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8e78b6f8",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0c71044d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-40c132f8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ce1182ac",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-98b4e25b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-67771a11",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b043af88",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-96af2ec3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5b451f2a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-222940c0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ce304c47",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ab9d2c60",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e5ea559d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-927eadc4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cf039177",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e40921e8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-33c679d3",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c7ac282c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f4d4d47c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d14b89a0",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-951aaeae",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-41ddb1a6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7913ce1a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d2e0ba78",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-620006e2",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-1ca67038",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d6e58b0f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-01258043",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4b060fe2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7d6e71bf",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c1c56b3c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-730c4226",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-76e041ab",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-ce461586",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-da396760",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5a1ffded",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-27e8af75",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-db907b04",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f33c31e5",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-6a5c8588",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c8dfa17e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2bb7e83b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1a6cf53f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-43b39b0f",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b3bf8912",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-558b931c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-82740cfd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-646e8d57",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-45fca501",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-07a239c0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0fb57dc0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bdbee728",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c8c6b255",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-35452395",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c5be96ab",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c16c3f88",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dd28047a",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-2931b279",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-479ddba0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-551a71b7",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-381bea0d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c8545ef9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3105d83d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f42d5286",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3bd31132",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b787afa2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2dd560e4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-038edd1d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-216968f4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e00e6ad6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-130b89fc",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-5d68fdd5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-208c01b5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-aa06e1cb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-958d1465",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-782fe4f6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cc6ab14a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e45cea44",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-34987e2f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3cd1f387",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f762ccf7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-10aae2c8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-98dd4796",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-59a4d6ce",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-67f09880",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b2912c9d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ecb30645",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0c461066",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-167d7b99",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-24d8926d",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-3d27c5b0",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d86061c8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4f58eab7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-71c56f79",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-da6a3543",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-aefbd1dd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2a26a1ae",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-223118a4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-9acf02db",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-7fa3f671",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cc3aa6e2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d1798e41",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ef989031",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-66fd97db",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3480203c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8283dab7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c4839d51",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-135bab42",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3621794d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3ca1168e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cb07b50e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1324eb2d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e237444e",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-ea73e951",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1b9b8ecc",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-af686ae7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-02f6b94c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-20448911",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2137f49d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f55c442e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-741d89cc",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b52dea1e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f51ebc3c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9f4b7558",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-be2c3d93",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-08b33ee5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b783e603",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9c6b7f60",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cc53830c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-57591dad",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-12dfecc7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-622a7f99",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-10330d5a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-533c4858",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-eea6f2ad",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b1b5fdac",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a3b4c771",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b7c5c36b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dfc8cec1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f4ee5f82",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2e6534d9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0e0e7552",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ef57b2b7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c704a5c3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-fce9aed7",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d892bd82",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-137cf51f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e07b08fc",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-878c4053",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e21268b4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bae7c0fd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7fa9c744",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e46e32e2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2a360e0b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-aac68713",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-dc37de5d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2fd215f0",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-533997c0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f821bce3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bcf7dbca",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9b777fd1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d77341b4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d607b141",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c2659179",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-cc3ac633",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3e13d6ff",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-d1dfeacb",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-966e265b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-67e07d74",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c6d99579",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5b711aba",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c3e553c3",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d287c7dc",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e4f5e38f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-849f05b2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-40c66f91",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-168d3479",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2a865c6f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7ab07005",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-09607bb3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-500701b8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3e80d398",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6451c410",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-2966d122",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a4f616c7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7d7a2a67",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-a85283d4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-43cc30d6",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c7a8c599",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9d89b769",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b43b9275",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-642faf7b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e23fd1e9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7d7bc7ac",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-199d1a39",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f6438aed",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5db25115",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8a095ad6",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-85c2e897",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b2fa6f2a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c958f9a4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-7c696aa6",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-19a8f0e5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-61b0973b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-10a07981",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cbaac358",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-adbf3dbe",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-814cd0c1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-678dcfe5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6b433456",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-160f30c9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-340fe2cd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ccf5027b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-8295a6d7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0ed3c261",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-afe85c36",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-86bb114a",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-3f43e5ce",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-727d4d96",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-1826615d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c321d2dd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-51d59df1",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-dc2d1d00",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-01cadfb9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-23bd1ae5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-c94b0319",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-7e689ff1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-fcee0b89",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-2342ab1a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f9f910f8",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-791c7367",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-858d12a9",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-50e306ec",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d5d28b3e",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c5c84573",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c6786159",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-35c623b2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-a491b520",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-028d95b5",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-68bd871d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-023ac072",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-8ee6cef4",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e238995e",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-650021fe",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-3d5c2f1d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-91b3a12f",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-00cfdf17",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-069cfc91",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b49b4898",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-bc7bb827",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-0653b758",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ea0492d8",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-0d682d47",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-874aee6b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-734b9fb4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-33420f62",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-259669f2",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-29d46e8a",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f8a6a54c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-8cb0273b",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-f1d44c72",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9cafff14",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e72159c9",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e12a77da",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ba8859c3",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-cdcc59c7",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-9a6c3f24",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4820f698",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b8a86f71",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-ac0d7421",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-c8c8265d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-efefeb0c",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-4fcf4081",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-964cd77c",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-b7a21a83",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-6751dbeb",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-4c8cc2be",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-177c66a0",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-fa9aa245",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-04992eed",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-368892b8",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-60d2f8f5",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-19c49db1",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d2b0345d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-41410b52",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e0d556dd",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-ebc6042f",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-e5ff8086",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e31a1d4d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-00134e05",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-191c157d",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-b3ee840d",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-6aa7de10",
+    "canonical_annotation_status": "UNANNOTATED",
+    "canonical_commit_status": "UNCOMMITTED",
+    "registry_reservation_status": "UNRESERVED",
+    "classification": "CANONICAL_UNCOMMITTED + REGISTRY_UNRESERVED"
+  },
+  {
+    "PID": "pos-5cc464f4",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-6d33df67",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-d4370b56",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  },
+  {
+    "PID": "pos-e52b4c9e",
+    "canonical_annotation_status": "ANNOTATED",
+    "canonical_commit_status": "COMMITTED",
+    "registry_reservation_status": "COMMITTED",
+    "classification": "CANONICAL_COMMITTED + REGISTRY_COMMITTED"
+  }
+]

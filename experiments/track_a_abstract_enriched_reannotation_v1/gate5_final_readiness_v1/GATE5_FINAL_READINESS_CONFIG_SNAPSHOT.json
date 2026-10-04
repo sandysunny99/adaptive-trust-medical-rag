@@ -1,0 +1,17 @@
+{
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "sentence_transformers_version": "6.0.1",
+  "transformers_version": "5.3.0",
+  "torch_version": "2.14.0+cpu",
+  "model_id": "pritamdeka/S-PubMedBert-MS-MARCO",
+  "revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+  "dimension": 768,
+  "pooling": "mean",
+  "normalization": "L2",
+  "similarity": "cosine",
+  "retrieval_engine": "HybridRetrievalEngine",
+  "rrf_k": 60,
+  "offline_mode": true,
+  "local_files_only": true,
+  "evidence_source": "runtime_capture"
+}

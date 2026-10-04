@@ -1,0 +1,38 @@
+{
+  "case": "RG-02",
+  "query": "Statin is a drug. Cyanide is a poison.",
+  "query_endpoint_A": "statin",
+  "query_endpoint_B": "cyanide",
+  "candidates": [
+    {
+      "chunk_id": "chunk-spironolactone-001",
+      "candidate_endpoints": ["spironolactone"],
+      "exact_ordered_pair_match": false,
+      "unordered_pair_match": false,
+      "canonicalized_pair_match": false
+    },
+    {
+      "chunk_id": "chunk-metformin-001",
+      "candidate_endpoints": ["metformin", "insulin"],
+      "exact_ordered_pair_match": false,
+      "unordered_pair_match": false,
+      "canonicalized_pair_match": false
+    },
+    {
+      "chunk_id": "chunk-warfarin-001",
+      "candidate_endpoints": ["warfarin", "aspirin"],
+      "exact_ordered_pair_match": false,
+      "unordered_pair_match": false,
+      "canonicalized_pair_match": false
+    },
+    {
+      "chunk_id": "chunk-haloperidol-001",
+      "candidate_endpoints": ["haloperidol", "azithromycin"],
+      "exact_ordered_pair_match": false,
+      "unordered_pair_match": false,
+      "canonicalized_pair_match": false
+    }
+  ],
+  "alignment_decision": "MISMATCH",
+  "error": "The system evaluated unrelated candidate entity pairs as SUPPORTED without checking alignment against the query endpoints."
+}

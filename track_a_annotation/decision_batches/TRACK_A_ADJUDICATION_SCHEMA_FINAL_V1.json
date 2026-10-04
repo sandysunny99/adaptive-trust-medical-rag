@@ -1,0 +1,218 @@
+{
+  "type": "object",
+  "properties": {
+    "query_entities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requested_property": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requested_relation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requested_outcome": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "entity_alignment": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "PARTIAL",
+        "MISMATCH",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "relationship_alignment": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "PARTIAL",
+        "MISMATCH",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "relationship_polarity": {
+      "type": "string",
+      "enum": [
+        "POSITIVE",
+        "NEGATIVE",
+        "UNCERTAIN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "outcome_alignment": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "PARTIAL",
+        "MISMATCH",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "outcome_polarity": {
+      "type": "string",
+      "enum": [
+        "POSITIVE",
+        "NEGATIVE",
+        "UNCERTAIN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "evidence_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "claim_text": {
+            "type": "string"
+          },
+          "evidence_span": {
+            "type": "string"
+          },
+          "claim_type": {
+            "type": "string",
+            "enum": [
+              "PHARMACOKINETIC",
+              "PHARMACODYNAMIC",
+              "CLINICAL_OUTCOME",
+              "MECHANISM",
+              "ADVERSE_EVENT",
+              "OTHER"
+            ]
+          },
+          "polarity": {
+            "type": "string",
+            "enum": [
+              "POSITIVE",
+              "NEGATIVE",
+              "UNCERTAIN"
+            ]
+          }
+        },
+        "required": [
+          "claim_text",
+          "evidence_span",
+          "claim_type",
+          "polarity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "supported_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsupported_claims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "missing_information": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counterevidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "best_supporting_span": {
+      "type": "string"
+    },
+    "proposed_label": {
+      "type": "string",
+      "enum": [
+        "RELEVANT",
+        "PARTIALLY_RELEVANT",
+        "IRRELEVANT",
+        "INSUFFICIENT_INFORMATION",
+        "AMBIGUOUS"
+      ]
+    },
+    "proposed_grade": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        2,
+        null
+      ]
+    },
+    "proposed_rationale": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    },
+    "alternative_label_considered": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "RELEVANT",
+        "PARTIALLY_RELEVANT",
+        "IRRELEVANT",
+        "INSUFFICIENT_INFORMATION",
+        "AMBIGUOUS",
+        null
+      ]
+    }
+  },
+  "required": [
+    "query_entities",
+    "requested_property",
+    "requested_relation",
+    "requested_outcome",
+    "entity_alignment",
+    "relationship_alignment",
+    "relationship_polarity",
+    "outcome_alignment",
+    "outcome_polarity",
+    "evidence_claims",
+    "supported_claims",
+    "unsupported_claims",
+    "missing_information",
+    "counterevidence",
+    "uncertainties",
+    "best_supporting_span",
+    "proposed_label",
+    "proposed_grade",
+    "proposed_rationale",
+    "confidence",
+    "alternative_label_considered"
+  ],
+  "additionalProperties": false
+}

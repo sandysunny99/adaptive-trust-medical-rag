@@ -1,0 +1,1 @@
+{"status": "BLOCKED_REAL_LLM", "message": "The real LLM backend (e.g., GoogleGeminiBackend) could not be executed due to missing API credentials in the environment."}

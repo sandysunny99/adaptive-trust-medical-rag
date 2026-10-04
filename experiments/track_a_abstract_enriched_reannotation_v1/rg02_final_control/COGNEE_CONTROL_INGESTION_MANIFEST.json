@@ -1,0 +1,53 @@
+{
+  "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+  "fixtures": [
+    {
+      "doc_id": "doc_rg02",
+      "chunk_id": "chunk_0",
+      "text": "Statin is a medication. Cyanide is a poison. They are both chemicals.",
+      "content_hash": "2fd7de367d84663d262acce8948832d45837c9b9fceb2e2ff9bb5fad3f75a73a",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    },
+    {
+      "doc_id": "doc_pos01",
+      "chunk_id": "chunk_0",
+      "text": "Statin therapy is common for cholesterol.",
+      "content_hash": "0b91ef784fe347c402c68f776072296d964d16a8a69a35b8ba4aae487839c72f",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    },
+    {
+      "doc_id": "doc_pos02",
+      "chunk_id": "chunk_0",
+      "text": "Statin interacts with aspirin causing increased bleeding risk.",
+      "content_hash": "8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    },
+    {
+      "doc_id": "doc_ctrl_contra",
+      "chunk_id": "chunk_0",
+      "text": "Metformin does not interact with aspirin. They are safe together.",
+      "content_hash": "14cab1095ba8e9518ddf7eaa9ab8edee1141db8cf054ad08cb784331b3a47801",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    },
+    {
+      "doc_id": "doc_ctrl_unsupp",
+      "chunk_id": "chunk_0",
+      "text": "Statin interacts with ibuprofen causing severe bleeding.",
+      "content_hash": "012d0ecb7fbdc5d6c0f93ea073b7ee55c80db05ba009936edd1cb9a52f6757d7",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    },
+    {
+      "doc_id": "doc_ctrl_unrel",
+      "chunk_id": "chunk_0",
+      "text": "Statin is a medication. Ibuprofen is a medication.",
+      "content_hash": "0839546d4f2e23cfc00c58962c9e06de73b97a0a179fb7dabca5d042344adc31",
+      "ingestion_timestamp": "2026-09-30T18:37:15.225132+00:00",
+      "dataset_id": "rg02_final_dataset"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "audit_timestamp": "2026-10-02T05:56:00Z",
+  "scope": "REPRODUCIBILITY_CLASSIFICATION",
+
+  "reported_claim": "100% reproducibility across all 46 case-mode pairs",
+  "reported_claim_accurate": true,
+  "but_misleading": true,
+
+  "classification": {
+    "baseline_cases": {
+      "count": 23,
+      "reproducibility_type": "DETERMINISTIC_MOCK_RETRIEVAL",
+      "description": "BaseAdapterMock returns the same manifest-based candidates every time. Reproducibility is a tautology because the retrieval is deterministic and synthetic. Run1 == Run2 is expected and not informative about real-world retrieval stability.",
+      "DECISION_REPRODUCIBILITY": "VALID_BUT_TRIVIAL",
+      "RETRIEVAL_REPRODUCIBILITY": "VALID_BUT_TRIVIAL",
+      "CANONICAL_ID_REPRODUCIBILITY": "VALID_BUT_TRIVIAL"
+    },
+    "cognee_cases": {
+      "count": 23,
+      "reproducibility_type": "SAME_FAILURE_REPEATED",
+      "description": "All 23 Cognee cases returned 0 candidates because the precomputed search cache contained empty lists (from NoDataError). Run1 and Run2 both read the same precomputed empty cache. 'Exact match' means the same empty failure was repeated, not that two successful retrievals matched.",
+      "DECISION_REPRODUCIBILITY": "SAME_FAILURE_REPEATED",
+      "RETRIEVAL_REPRODUCIBILITY": "SAME_EMPTY_RESULT_REPEATED",
+      "COGNEE_INTERNAL_ID_REPRODUCIBILITY": "NOT_APPLICABLE_NO_CANDIDATES",
+      "CANONICAL_ID_REPRODUCIBILITY": "NOT_APPLICABLE_NO_CANDIDATES"
+    }
+  },
+
+  "corrected_interpretation": {
+    "baseline_reproducibility": "46 BASELINE execution records show deterministic reproducibility of a mock retrieval adapter. This is expected behavior, not evidence of production retrieval stability.",
+    "cognee_reproducibility": "46 COGNEE execution records show the same empty-graph failure repeated twice per case. 'DECISION_EXACT_MATCH: true' means both runs produced the same 0-candidate BLOCK, not that two successful Cognee retrievals matched.",
+    "combined": "The 100% reproducibility figure is arithmetically correct but experimentally vacuous for the Cognee path. It proves cache consistency, not retrieval consistency."
+  }
+}

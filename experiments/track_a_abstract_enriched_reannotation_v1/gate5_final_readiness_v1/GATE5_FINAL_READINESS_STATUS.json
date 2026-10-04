@@ -1,0 +1,22 @@
+{
+  "final_status": "GATE5_FINAL_READINESS_PASS",
+  "conditions": {
+    "frozen_config_loaded": true,
+    "offline_only": true,
+    "revision_verified": true,
+    "768dim_nonzero": true,
+    "baseline_retrieval_genuine": true,
+    "no_target_filtering": true,
+    "no_hardcoded_results": true,
+    "orchestrator_executed": true,
+    "no_security_modified": true,
+    "two_run_decision_match": true,
+    "two_run_retrieval_match": true,
+    "two_run_security_match": true,
+    "pos01_candidates_retrieved": true,
+    "pos02_candidates_retrieved": true,
+    "rg02_candidates_retrieved": true
+  },
+  "limitations": [],
+  "evidence_source": "runtime_capture"
+}

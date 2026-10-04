@@ -1,0 +1,81 @@
+{"test_case": "A. COMPLETE provenance", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "A. COMPLETE provenance", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "A. COMPLETE provenance", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "A. COMPLETE provenance", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "A. COMPLETE provenance", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "A. COMPLETE provenance", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "A. COMPLETE provenance", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "A. COMPLETE provenance", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "A. COMPLETE provenance", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "source_authority", "input_value": 0.5, "default_behavior": "Used mapped value", "final_contribution": 0.5}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "query_relevance", "input_value": 0.5, "default_behavior": "Used mapped value", "final_contribution": 0.5}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "B. PROVENANCE_PARTIAL", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "C. PROVENANCE_MISSING", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "C. PROVENANCE_MISSING", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "C. PROVENANCE_MISSING", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "C. PROVENANCE_MISSING", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "D. valid RxNorm entity", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "D. valid RxNorm entity", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "D. valid RxNorm entity", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "D. valid RxNorm entity", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "D. valid RxNorm entity", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "D. valid RxNorm entity", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "D. valid RxNorm entity", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "D. valid RxNorm entity", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "D. valid RxNorm entity", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "E. failed RxNorm normalization", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "E. failed RxNorm normalization", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "E. failed RxNorm normalization", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "E. failed RxNorm normalization", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "E. failed RxNorm normalization", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "E. failed RxNorm normalization", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "E. failed RxNorm normalization", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "E. failed RxNorm normalization", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "E. failed RxNorm normalization", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "F. valid content integrity", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "F. valid content integrity", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "F. valid content integrity", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "F. valid content integrity", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "F. valid content integrity", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "F. valid content integrity", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "F. valid content integrity", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "F. valid content integrity", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "F. valid content integrity", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "G. content integrity failure", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "G. content integrity failure", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "G. content integrity failure", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "G. content integrity failure", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "G. content integrity failure", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "G. content integrity failure", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "G. content integrity failure", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "G. content integrity failure", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "G. content integrity failure", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "H. valid authority", "component": "source_authority", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "H. valid authority", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "H. valid authority", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "H. valid authority", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "H. valid authority", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "H. valid authority", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "H. valid authority", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "H. valid authority", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "H. valid authority", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "I. low/invalid authority", "component": "source_authority", "input_value": 0.1, "default_behavior": "Used mapped value", "final_contribution": 0.1}
+{"test_case": "I. low/invalid authority", "component": "query_relevance", "input_value": 0.9, "default_behavior": "Used mapped value", "final_contribution": 0.9}
+{"test_case": "I. low/invalid authority", "component": "evidence_quality", "input_value": 0.0, "default_behavior": "Defaulted to 0.0", "final_contribution": 0.0}
+{"test_case": "I. low/invalid authority", "component": "freshness", "input_value": 0.8, "default_behavior": "Used mapped value", "final_contribution": 0.8}
+{"test_case": "I. low/invalid authority", "component": "consistency", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "I. low/invalid authority", "component": "entity_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "I. low/invalid authority", "component": "population_match", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "I. low/invalid authority", "component": "anti_poisoning", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}
+{"test_case": "I. low/invalid authority", "component": "anti_injection", "input_value": 1.0, "default_behavior": "Used mapped value", "final_contribution": 1.0}

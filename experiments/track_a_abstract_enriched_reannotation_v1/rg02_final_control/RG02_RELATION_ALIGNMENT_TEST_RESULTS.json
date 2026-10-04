@@ -1,0 +1,11 @@
+{
+  "exact_endpoint_match_statin_aspirin": true,
+  "wrong_second_endpoint_statin_cyanide_vs_statin_aspirin": true,
+  "no_aligned_support_aggregate_block": true,
+  "unrelated_supported_plus_unsupported_target_aggregate_block": true,
+  "exact_supported_candidate_aggregate_release": true,
+  "contradictory_target_block": true,
+  "unsupported_target_block": true,
+  "security_invariant_holds": true,
+  "invariant_violations": []
+}

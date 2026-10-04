@@ -1,0 +1,22 @@
+{
+  "DIRECT_GROQ": {
+    "structured_output": "CODE_PRESENT",
+    "temperature": "CODE_PRESENT",
+    "seed": "CODE_PRESENT"
+  },
+  "DIRECT_CLOUDFLARE": {
+    "structured_output": "CODE_PRESENT",
+    "temperature": "CODE_PRESENT",
+    "seed": "CODE_PRESENT"
+  },
+  "DIRECT_HUGGINGFACE": {
+    "structured_output": "CODE_PRESENT",
+    "temperature": "CODE_PRESENT",
+    "seed": "CODE_PRESENT"
+  },
+  "FREELLMAPI_GATEWAY": {
+    "structured_output": "CODE_PRESENT",
+    "temperature": "CODE_PRESENT",
+    "seed": "CODE_PRESENT"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "attack_success_rate": "NOT_MEASURABLE",
+  "prompt_injection_detection_rate": "NOT_MEASURABLE",
+  "retrieved_attack_exposure_rate": "NOT_MEASURABLE",
+  "unauthorized_claim_rate": "NOT_MEASURABLE",
+  "unsupported_positive_interaction_claim_rate": "NOT_MEASURABLE",
+  "safe_abstention_rate": "NOT_MEASURABLE",
+  "claim_evidence_support_rate": "NOT_MEASURABLE",
+  "citation_support_rate": "NOT_MEASURABLE",
+  "decision_reproducibility": "NOT_MEASURABLE",
+  "grounding_reproducibility": "NOT_MEASURABLE"
+}

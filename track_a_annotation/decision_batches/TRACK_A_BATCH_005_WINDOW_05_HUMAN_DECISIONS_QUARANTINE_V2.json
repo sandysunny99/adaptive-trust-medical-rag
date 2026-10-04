@@ -1,0 +1,78 @@
+[
+  {
+    "position_id": "pos-cbaac358",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-6b51aa62",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-41410b52",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-47d7ebb4",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-a835aaac",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-5b711aba",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_batch": "TRACK_A_A_BATCH_003",
+    "human_decision": "PRESERVED",
+    "provenance_correction": "REQUIRED",
+    "committable_to_batch003": true
+  },
+  {
+    "position_id": "pos-eb331f6c",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_reservation": "NOT FOUND",
+    "committable": false,
+    "reason": "no authoritative reservation"
+  },
+  {
+    "position_id": "pos-e8bcb783",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_reservation": "NOT FOUND",
+    "committable": false,
+    "reason": "no authoritative reservation"
+  },
+  {
+    "position_id": "pos-b043af88",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_reservation": "NOT FOUND",
+    "committable": false,
+    "reason": "no authoritative reservation"
+  },
+  {
+    "position_id": "pos-19c49db1",
+    "original_packet": "TRACK_A_BATCH_005_WINDOW_05_HUMAN_DECISION_PACKET.md",
+    "authoritative_reservation": "NOT FOUND",
+    "committable": false,
+    "reason": "no authoritative reservation"
+  }
+]

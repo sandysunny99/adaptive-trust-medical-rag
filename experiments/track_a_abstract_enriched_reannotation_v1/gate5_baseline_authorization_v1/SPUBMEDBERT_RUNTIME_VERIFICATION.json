@@ -1,0 +1,29 @@
+[
+  {
+    "query": "statin therapy is common",
+    "vector_dimension": 768,
+    "vector_norm": 0.9999999203790025,
+    "zero_vector": false,
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "model_revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+    "evidence_source": "runtime_capture"
+  },
+  {
+    "query": "Does statin interact with aspirin?",
+    "vector_dimension": 768,
+    "vector_norm": 0.9999999348486307,
+    "zero_vector": false,
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "model_revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+    "evidence_source": "runtime_capture"
+  },
+  {
+    "query": "Statin is a drug. Cyanide is a poison.",
+    "vector_dimension": 768,
+    "vector_norm": 1.0000000007897172,
+    "zero_vector": false,
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "model_revision": "96786c7024f95c5aac7f2b9a18086c7b97b23036",
+    "evidence_source": "runtime_capture"
+  }
+]

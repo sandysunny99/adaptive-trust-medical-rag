@@ -5,9 +5,29 @@ Defines a structured, deterministically serializable representation of an experi
 """
 
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, field
+from enum import Enum
 from typing import Any
 
+class RunState(Enum):
+    DESIGNED = "DESIGNED"
+    FROZEN = "FROZEN"
+    PREFLIGHT = "PREFLIGHT"
+    AUTHORIZED = "AUTHORIZED"
+    RUNNING = "RUNNING"
+    CHECKPOINTED = "CHECKPOINTED"
+    COMPLETED = "COMPLETED"
+    ANALYZED = "ANALYZED"
+    LOCKED = "LOCKED"
+
+@dataclass
+class ExperimentCheckpoint:
+    checkpoint_id: str
+    run_id: str
+    last_completed_case: int
+    total_cases: int
+    state: dict[str, Any]
+    timestamp: str
 
 @dataclass
 class RunManifest:

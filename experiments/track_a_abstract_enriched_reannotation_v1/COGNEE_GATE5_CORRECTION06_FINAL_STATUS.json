@@ -1,0 +1,37 @@
+{
+  "artifact_delivery": {
+    "status": "DELIVERED",
+    "audit_md_exists": true,
+    "validation_json_exists": true,
+    "absolute_paths": [
+      "C:\\Users\\sunny\\Downloads\\CASE STUDY\\experiments\\track_a_abstract_enriched_reannotation_v1\\COGNEE_GATE5_CORRECTION06_AUDIT.md",
+      "C:\\Users\\sunny\\Downloads\\CASE STUDY\\experiments\\track_a_abstract_enriched_reannotation_v1\\COGNEE_GATE5_CORRECTION06_ARTIFACT_VALIDATION.json",
+      "C:\\Users\\sunny\\Downloads\\CASE STUDY\\experiments\\track_a_abstract_enriched_reannotation_v1\\COGNEE_GATE5_CORRECTION06_FINAL_STATUS.json"
+    ]
+  },
+  "cognee_execution": {
+    "search_calls": 63,
+    "successful_searches": 63,
+    "returned_results": 231
+  },
+  "positive_controls": {
+    "total": 4,
+    "passed": 2
+  },
+  "security_cases": {
+    "total": 38,
+    "blocked": 20,
+    "released": 18
+  },
+  "reproducibility": {
+    "cases": 21,
+    "exact_matches": 21,
+    "differences": 0
+  },
+  "known_failures": [
+    "RG-02"
+  ],
+  "llm_mode": "MOCK",
+  "gate5_status": "NOT PASSED / STOPPED",
+  "gate6_status": "NOT AUTHORIZED / STOPPED"
+}

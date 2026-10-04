@@ -1,0 +1,138 @@
+{
+  "timestamp": "2026-10-02T06:07:32.899161+00:00",
+  "phases": {
+    "environment": {
+      "cognee_version": "1.6.1",
+      "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "platform": "win32",
+      "HF_HOME": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface",
+      "cognee_system_dir": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\.venv_cognee\\Lib\\site-packages\\cognee\\.cognee_system\\databases",
+      "cognee_system_exists": true
+    },
+    "model_check": {
+      "fastembed_cache": "C:\\Users\\sunny\\AppData\\Local\\Temp\\fastembed_cache",
+      "bge_model_exists": false,
+      "gliner_path": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface\\hub\\models--fastino--gliner2.5-base-v1",
+      "gliner_exists": true
+    },
+    "cognee_add": {
+      "add_success": true,
+      "add_result_type": "<class 'cognee.modules.pipelines.models.PipelineRunInfo.PipelineRunCompleted'>",
+      "add_result": "status='PipelineRunCompleted' pipeline_run_id=UUID('5fc244a8-f1f3-4815-b9de-12a787b820c7') dataset_id=UUID('a9712fc2-3e80-5cd3-8cec-21d8fa54b5e2') dataset_name='gate5_cognify_diag_v1' payload=None data_ingestion_info=[{'run_info': PipelineRunCompleted(status='PipelineRunCompleted', pipeline_run_id=UUID('5fc244a8-f1f3-4815-b9de-12a787b820c7'), dataset_id=UUID('a9712fc2-3e80-5cd3-8cec-21d8fa54b5e2'), dataset_name='gate5_cognify_diag_v1', payload=None, data_ingestion_info=None), 'data_id': UUID('bf"
+    },
+    "cognify": {
+      "cognify_success": true,
+      "cognify_duration_s": 32.21,
+      "cognify_result_type": "<class 'dict'>",
+      "cognify_result": "{UUID('45521053-8f6b-58a5-9fbd-4b48120e3f7b'): PipelineRunCompleted(status='PipelineRunCompleted', pipeline_run_id=UUID('7d5b7e7c-025f-449a-8b4b-9086c1e4b3ac'), dataset_id=UUID('45521053-8f6b-58a5-9fbd-4b48120e3f7b'), dataset_name='final_poc_v3', payload=None, data_ingestion_info=[{'run_info': PipelineRunAlreadyCompleted(status='PipelineRunAlreadyCompleted', pipeline_run_id=UUID('7d5b7e7c-025f-449a-8b4b-9086c1e4b3ac'), dataset_id=UUID('45521053-8f6b-58a5-9fbd-4b48120e3f7b'), dataset_name='final_poc_v3', payload=None, data_ingestion_info=None), 'data_id': UUID('cccb7a37-7454-404d-b3db-46b56969e88e')}, {'run_info': PipelineRunAlreadyCompleted(status='PipelineRunAlreadyCompleted', pipeline_run_id=UUID('7d5b7e7c-025f-449a-8b4b-9086c1e4b3ac'), dataset_id=UUID('45521053-8f6b-58a5-9fbd-4b48120e3f7b'), dataset_name='final_poc_v3', payload=None, data_ingestion_info=None), 'data_id': UUID('8cf06959-6e40-4cdd-82fa-52e6728c048a')}, {'run_info': PipelineRunAlreadyCompleted(status='PipelineRunAlread"
+    },
+    "search": {
+      "statin": {
+        "success": true,
+        "raw_result_count": 1,
+        "flat_count": 2,
+        "items": [
+          {
+            "id": "8aff3a29-9963-5e06-a4fc-10fb1eb480a5",
+            "text": "Statin interacts with aspirin causing increased bleeding risk.",
+            "score": 0.16071194410324097,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_a\", \"canonical_chunk_id\": \"diag_doc_a_chunk_0\", \"content_hash\": \"8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070\", \"trust_class\": \"TRUSTED\"}"
+          },
+          {
+            "id": "bf048748-2f61-548a-bbf0-d55abc0a92ee",
+            "text": "Cyanide is a poison that inhibits cytochrome c oxidase.",
+            "score": 0.43769383430480957,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_b\", \"canonical_chunk_id\": \"diag_doc_b_chunk_0\", \"content_hash\": \"7eace96855ee5d5012c45e7db107d83cbe813153d8ac51414eb356649abec8ce\", \"trust_class\": \"UNTRUSTED_CONTROL\"}"
+          }
+        ]
+      },
+      "aspirin": {
+        "success": true,
+        "raw_result_count": 1,
+        "flat_count": 2,
+        "items": [
+          {
+            "id": "8aff3a29-9963-5e06-a4fc-10fb1eb480a5",
+            "text": "Statin interacts with aspirin causing increased bleeding risk.",
+            "score": 0.21309566497802734,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_a\", \"canonical_chunk_id\": \"diag_doc_a_chunk_0\", \"content_hash\": \"8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070\", \"trust_class\": \"TRUSTED\"}"
+          },
+          {
+            "id": "bf048748-2f61-548a-bbf0-d55abc0a92ee",
+            "text": "Cyanide is a poison that inhibits cytochrome c oxidase.",
+            "score": 0.4273606538772583,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_b\", \"canonical_chunk_id\": \"diag_doc_b_chunk_0\", \"content_hash\": \"7eace96855ee5d5012c45e7db107d83cbe813153d8ac51414eb356649abec8ce\", \"trust_class\": \"UNTRUSTED_CONTROL\"}"
+          }
+        ]
+      },
+      "cyanide": {
+        "success": true,
+        "raw_result_count": 1,
+        "flat_count": 2,
+        "items": [
+          {
+            "id": "bf048748-2f61-548a-bbf0-d55abc0a92ee",
+            "text": "Cyanide is a poison that inhibits cytochrome c oxidase.",
+            "score": 0.15536576509475708,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_b\", \"canonical_chunk_id\": \"diag_doc_b_chunk_0\", \"content_hash\": \"7eace96855ee5d5012c45e7db107d83cbe813153d8ac51414eb356649abec8ce\", \"trust_class\": \"UNTRUSTED_CONTROL\"}"
+          },
+          {
+            "id": "8aff3a29-9963-5e06-a4fc-10fb1eb480a5",
+            "text": "Statin interacts with aspirin causing increased bleeding risk.",
+            "score": 0.46200382709503174,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_a\", \"canonical_chunk_id\": \"diag_doc_a_chunk_0\", \"content_hash\": \"8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070\", \"trust_class\": \"TRUSTED\"}"
+          }
+        ]
+      },
+      "Statin interacts with aspirin": {
+        "success": true,
+        "raw_result_count": 1,
+        "flat_count": 2,
+        "items": [
+          {
+            "id": "8aff3a29-9963-5e06-a4fc-10fb1eb480a5",
+            "text": "Statin interacts with aspirin causing increased bleeding risk.",
+            "score": 0.05549514293670654,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_a\", \"canonical_chunk_id\": \"diag_doc_a_chunk_0\", \"content_hash\": \"8fdbcda52488535008117df97abddecaeefa93a4db0992c2b038592bad1f5070\", \"trust_class\": \"TRUSTED\"}"
+          },
+          {
+            "id": "bf048748-2f61-548a-bbf0-d55abc0a92ee",
+            "text": "Cyanide is a poison that inhibits cytochrome c oxidase.",
+            "score": 0.4367726445198059,
+            "external_metadata": "{\"canonical_document_id\": \"diag_doc_b\", \"canonical_chunk_id\": \"diag_doc_b_chunk_0\", \"content_hash\": \"7eace96855ee5d5012c45e7db107d83cbe813153d8ac51414eb356649abec8ce\", \"trust_class\": \"UNTRUSTED_CONTROL\"}"
+          }
+        ]
+      }
+    },
+    "alternative_search": {
+      "no_dataset_filter": {
+        "success": true,
+        "raw_count": 7,
+        "flat_count": 2,
+        "items": [
+          "{'id': '8aff3a29-9963-5e06-a4fc-10fb1eb480a5', 'created_at': 1790921378697, 'updated_at': 1790921378697, 'ontology_valid': False, 'ontology_uri': None, 'version': 1, 'topological_rank': 0, 'valid_to':",
+          "{'id': 'bf048748-2f61-548a-bbf0-d55abc0a92ee', 'created_at': 1790921378705, 'updated_at': 1790921378705, 'ontology_valid': False, 'ontology_uri': None, 'version': 1, 'topological_rank': 0, 'valid_to':"
+        ]
+      },
+      "insights_search": {
+        "success": false,
+        "error_type": "AttributeError",
+        "error": "type object 'SearchType' has no attribute 'INSIGHTS'"
+      }
+    },
+    "dataset_state": {
+      "datasets_error": "get_datasets() missing 1 required positional argument: 'user_id'"
+    },
+    "cognify_analysis": {
+      "error": "'function' object has no attribute '__file__'"
+    },
+    "summary": {
+      "status": "COGNEE_COGNIFY_REPAIRED_DIAGNOSTIC_SEARCH_PASS",
+      "add_success": true,
+      "cognify_success": true,
+      "any_search_returned_candidates": true,
+      "gate5_status": "FULL_GATE5_FAILED_WITH_LIMITATIONS",
+      "gate6_status": "NOT_AUTHORIZED_STOPPED"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "gate5_cognify_diag_v1_config": {
+    "cognee_version": "1.6.1",
+    "python_version": "3.12.10",
+    "HF_HOME": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface",
+    "bge_model": "BAAI/bge-small-en-v1.5",
+    "gliner_model": "fastino/gliner2.5-base-v1",
+    "dataset_name": "gate5_cognify_diag_v1",
+    "prune_data_called": false,
+    "prune_system_called": false,
+    "data_item_count": 2,
+    "cognify_success": true,
+    "search_success": true
+  },
+  "gate5_full_rerun_config": {
+    "cognee_version": "1.6.1",
+    "python_version": "3.12.10",
+    "HF_HOME": "C:\\Users\\sunny\\Downloads\\CASE STUDY\\cognee_service\\model_cache\\huggingface",
+    "bge_model": "BAAI/bge-small-en-v1.5",
+    "gliner_model": "fastino/gliner2.5-base-v1",
+    "dataset_name": "gate5_dataset",
+    "prune_data_called": true,
+    "prune_system_called": true,
+    "data_item_count": 6,
+    "cognify_success": false,
+    "search_success": false
+  },
+  "diff": {
+    "prune_system_called": {
+      "gate5_cognify_diag_v1": false,
+      "gate5_full_rerun": true
+    },
+    "prune_data_called": {
+      "gate5_cognify_diag_v1": false,
+      "gate5_full_rerun": true
+    }
+  },
+  "conclusion": "The configuration is identical in terms of models, environment variables, and Cognee version. The critical difference is the invocation of `cognee.prune.prune_system()`."
+}

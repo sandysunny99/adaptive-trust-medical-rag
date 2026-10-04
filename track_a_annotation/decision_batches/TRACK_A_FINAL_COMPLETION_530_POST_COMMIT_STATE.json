@@ -1,0 +1,18 @@
+{
+  "dataset_total": 530,
+  "committed_total": 530,
+  "remaining_total": 0,
+  "registry_committed": 530,
+  "registry_unreserved": 0,
+  "registry_reserved": 0,
+  "existing_final369_annotations": 40,
+  "new_final329_annotations": 329,
+  "final_pending_369": 369,
+  "benchmark": "LOCKED",
+  "provider": false,
+  "duplicates": 0,
+  "synthetic": 0,
+  "validation_status": "PASS",
+  "commit_status": "SUCCESS",
+  "post_commit_audit_status": "PASS"
+}

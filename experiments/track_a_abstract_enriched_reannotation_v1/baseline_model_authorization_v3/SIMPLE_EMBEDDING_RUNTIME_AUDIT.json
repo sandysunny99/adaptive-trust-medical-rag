@@ -1,0 +1,39 @@
+{
+  "model": "SimpleEmbeddingModel",
+  "vocabulary": ["metformin", "aspirin", "warfarin", "dosage", "mechanism", "renal", "indication"],
+  "tokenization": "substring match (Python 'in' operator on lowercased text)",
+  "vector_construction": "binary presence vector normalized to unit length",
+  "oov_behavior": "all OOV tokens contribute 0.0; full-OOV queries produce a zero vector",
+  "zero_vector_behavior": "zero cosine similarity with all documents; invisible to dense retrieval",
+  "vector_dimension": 7,
+  "normalization": "L2 normalization (sqrt of sum of squares)",
+  "similarity_function": "cosine similarity (via dot product of normalized vectors)",
+  "runtime_diagnostic": {
+    "query_known_tokens": {
+      "query": "aspirin mechanism",
+      "vector": [0.0, 0.7071, 0.0, 0.0, 0.7071, 0.0, 0.0],
+      "nonzero_dimensions": 2,
+      "status": "MATCHES_TWO_VOCABULARY_TERMS"
+    },
+    "query_unknown_tokens": {
+      "query": "statin therapy is common",
+      "vector": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      "nonzero_dimensions": 0,
+      "status": "ZERO_VECTOR_INVISIBLE_TO_DENSE_RETRIEVAL"
+    },
+    "query_mixed": {
+      "query": "Does statin interact with aspirin?",
+      "vector": [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      "nonzero_dimensions": 1,
+      "status": "MATCHES_ONE_VOCABULARY_TERM"
+    },
+    "query_fully_unk": {
+      "query": "pharmacokinetics of lisinopril in elderly patients",
+      "vector": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+      "nonzero_dimensions": 0,
+      "status": "ZERO_VECTOR_INVISIBLE_TO_DENSE_RETRIEVAL"
+    }
+  },
+  "gate5_impact": "POS-01 query ('statin therapy is common') and RG-02 query ('Statin is a drug. Cyanide is a poison.') produce zero vectors. Dense retrieval is completely non-functional for these cases.",
+  "evidence_source": "runtime_capture"
+}

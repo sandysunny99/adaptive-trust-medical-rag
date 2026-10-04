@@ -1,0 +1,22 @@
+{
+  "expected_hash": "1d461a83fd6ade33291ce565a0032cdb01c73d2b76386dc68c5dc12aa0970c09",
+  "current_implementation_hash": "b8c8516bc00c880e7bd10d18485cc68ca94ca08ebb96ac3c272b9b782cfe24aa",
+  "hash_semantics": "UNVERIFIED_MANUAL_HASH",
+  "hash_generation_expression": "HARDCODED_STRING_LITERAL",
+  "first_hash_occurrence_commit": "b86a98e941b6f9bcd2400caaa16a63a0a90682eb",
+  "hash_manifest_source": "TRACK_A_LLM_PROMPT_HASHES_FINAL_V1.json (Does not contain REAL_LLM_PROMPT_V1)",
+  "freeze_script_source": "freeze_real_llm_protocol.py (untracked)",
+  "historical_prompt_source": "UNRECOVERABLE",
+  "historical_prompt_commit": "UNRECOVERABLE",
+  "historical_prompt_recovered": false,
+  "exact_hash_match": false,
+  "instantiated_prompt_hash_match": false,
+  "composite_hash_candidate": null,
+  "unverified_reconstruction_detected": true,
+  "dataset_integrity": "PASS",
+  "case_order_integrity": "PASS",
+  "frozen_retrieval": "PASS",
+  "authorization": false,
+  "medical_evaluation_requests": 0,
+  "final_classification": "PROMPT_FREEZE_SOURCE_MISSING"
+}

@@ -1,0 +1,4 @@
+{
+  "timeout_handling": "present",
+  "rate_limit_handling": "present"
+}

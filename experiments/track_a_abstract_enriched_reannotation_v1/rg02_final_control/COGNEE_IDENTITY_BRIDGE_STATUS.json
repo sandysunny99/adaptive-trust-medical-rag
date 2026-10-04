@@ -1,0 +1,15 @@
+{
+  "status": "COGNEE_IDENTITY_BRIDGE_VALIDATED",
+  "success_conditions": {
+    "A_pos02_full_provenance": true,
+    "B_pos02_release": true,
+    "C_wrong_id_block": true,
+    "D_wrong_hash_block": true,
+    "E_missing_meta_block": true,
+    "F_unknown_id_block": true,
+    "G_untrusted_block": true,
+    "H_rg02_block": true,
+    "I_case_id_indep": true,
+    "J_reproducibility": true
+  }
+}

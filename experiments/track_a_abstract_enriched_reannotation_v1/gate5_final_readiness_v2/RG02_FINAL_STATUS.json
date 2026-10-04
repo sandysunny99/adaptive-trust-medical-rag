@@ -1,0 +1,7 @@
+{
+  "gate5_readiness": "FULL_GATE5_MUST_REMAIN_STOPPED",
+  "rg02_semantic_status": "RG02_SECURITY_RELEASE_ERROR",
+  "reproducibility": "REPRODUCIBLY_INCORRECT",
+  "reason": "The readiness harness imported the V1 RelationshipGroundingValidator which bypassed query-level entity alignment. This caused unrelated candidates to evaluate as SUPPORTED, incorrectly causing the negative control RG-02 to RELEASE.",
+  "action_required": "Correct the readiness harness to use RelationshipGroundingValidatorV2 and ensure aggregate gate logic enforces aligned_supporting_candidate_count > 0 before proceeding to Gate 5."
+}
