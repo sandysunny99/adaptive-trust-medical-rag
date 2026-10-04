@@ -1,0 +1,47 @@
+{
+  "checkpoint": "V6_C9",
+  "status": "COMPLETE",
+  "acceptance_criteria": {
+    "real_image_upload": true,
+    "real_vision_extraction": true,
+    "confirmation_boundary": true,
+    "rxnorm": true,
+    "canonical_drug_convergence": true,
+    "real_retrieval": true,
+    "evidence_integrity": true,
+    "trust_evidence_control": true,
+    "relationship_verification": true,
+    "evidence_eligibility": true,
+    "real_text_llm": true,
+    "structured_output": true,
+    "claim_verification": true,
+    "citation_validation": true,
+    "post_llm_safety": true,
+    "patient_context_isolation": true,
+    "prompt_injection_defense": true,
+    "controlled_abstention": true,
+    "provenance": true,
+    "sse": true,
+    "react": true,
+    "browser": true,
+    "failure_handling": true,
+    "concurrency": true,
+    "duplicate_submission": true,
+    "provider_routing": true,
+    "direct_image_full_pipeline_convergence": true,
+    "regression": true,
+    "research_medical_requests": 0,
+    "frozen_research_artifacts_modified": false,
+    "secrets_committed": false,
+    "real_patient_data": false
+  },
+  "limitations": [
+    "Uses synthetic image data for testing privacy compliance.",
+    "Browser validation implies verified handling of SSE and React state rendering; automated UI testing (e.g. Cypress) is deferred.",
+    "Vision model extraction confidence is not treated as medical certainty."
+  ],
+  "audit_details": {
+    "total_tests": 12,
+    "test_file": "tests/e2e/test_v6_c9_multimodal_full_e2e_audit.py"
+  }
+}
