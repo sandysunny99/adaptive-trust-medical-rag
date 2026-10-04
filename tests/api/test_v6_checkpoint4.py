@@ -41,6 +41,20 @@ def setup_mock_normalizer(app):
         rxnorm_client=MockRxNormClient(),
         use_api=True
     )
+    from adaptive_trust_medical_rag.llm_backend.vision_interfaces import VisionProviderAdapter, ExtractionResult, MedicationCandidate, ExtractionConfidence
+    class MockVisionBackend(VisionProviderAdapter):
+        provider_name = "mock_vision"
+        model_name = "mock_model"
+        async def extract_medications(self, image_bytes: bytes, mime_type: str) -> ExtractionResult:
+            return ExtractionResult(
+                raw_text="Warfarin 5mg",
+                candidate_medications=[
+                    MedicationCandidate(raw_text="Warfarin 5mg", normalized_text="warfarin", confidence=ExtractionConfidence.HIGH)
+                ],
+                warnings=[]
+            )
+    app.state.vision_backend = MockVisionBackend()
+    
     # Ensure retrieval is mocked so it doesn't fail if we reach it
     class MockRetrievalEngine:
         async def retrieve_evidence(self, *args, **kwargs):

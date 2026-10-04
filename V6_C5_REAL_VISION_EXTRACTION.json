@@ -1,0 +1,32 @@
+{
+  "checkpoint": "V6_C5",
+  "status": "COMPLETE",
+  "live_nvidia_vision_requests": 1,
+  "research_evaluation_requests": 0,
+  "frozen_artifacts_modified": false,
+  "acceptance_criteria": {
+    "nvidia_vision_configured": true,
+    "credential_handling_secure": true,
+    "image_validation": true,
+    "real_image_sent": true,
+    "structured_extraction": true,
+    "medication_candidates": true,
+    "extraction_confidence": true,
+    "multiple_medications": true,
+    "ambiguous_extraction": true,
+    "malformed_output": true,
+    "provider_failure": true,
+    "malicious_image_text": true,
+    "no_patient_inference": true,
+    "no_prescription_modification": true,
+    "no_automatic_rxnorm": true,
+    "no_automatic_rag": true,
+    "confirmation_boundary": true,
+    "sse": true,
+    "react_candidate_display": true,
+    "browser_validation": true,
+    "provider_request_counter": true,
+    "no_secrets_committed": true,
+    "tests_passing": true
+  }
+}

@@ -63,38 +63,84 @@ class LiveMedicalRAGService:
         """Execute the live pipeline and yield SSE event dicts."""
         
         try:
-            # Checkpoint 3: Handle image upload and extraction pause
+            # Checkpoint 3 & 5: Handle image upload and real vision extraction
             if image_bytes is not None and analysis_state is not None:
                 yield _sse("stage_update", {
                     "stage": "extracting",
                     "status": "running",
-                    "message": "Extracting medications from prescription image...",
+                    "message": "Extracting medications from prescription image via NVIDIA Vision...",
                     "timestamp": _ts(),
                 })
                 
-                # Mock OCR Extraction for Checkpoint 3 (Before V6-C5 integration)
-                # We yield the extracted candidates so the UI can render them
-                yield _sse("medication_candidates_extracted", {
-                    "candidates": [
-                        {
-                            "id": "ocr-1",
-                            "raw_text": "Warfarin 5mg",
-                            "normalized_text": "warfarin",
-                            "confidence": "HIGH",
-                            "status": "DETECTED",
-                            "source": "VISION"
-                        },
-                        {
-                            "id": "ocr-2",
-                            "raw_text": "Asp...n",
-                            "normalized_text": "aspirin",
-                            "confidence": "LOW",
-                            "status": "UNCERTAIN",
-                            "source": "VISION",
-                            "warnings": ["Low confidence extraction"]
+                vision_backend = getattr(self.app_state, "vision_backend", None)
+                
+                # V6-C5: Real Vision Extraction
+                if vision_backend:
+                    import hashlib
+                    import time
+                    import uuid
+                    
+                    original_image_sha256 = hashlib.sha256(image_bytes).hexdigest()
+                    mime = image_meta.get("content_type", "image/jpeg") if image_meta else "image/jpeg"
+                    
+                    try:
+                        # Ensure we increment only on actual attempt
+                        if not hasattr(self.app_state, "live_nvidia_vision_requests"):
+                            self.app_state.live_nvidia_vision_requests = 0
+                        self.app_state.live_nvidia_vision_requests += 1
+                        
+                        ext_res = await vision_backend.extract_medications(image_bytes, mime)
+                        
+                        candidates_payload = []
+                        for idx, cand in enumerate(ext_res.candidate_medications):
+                            candidates_payload.append({
+                                "id": f"ocr-{idx}",
+                                "raw_text": cand.raw_text,
+                                "normalized_text": cand.normalized_text,
+                                "confidence": cand.confidence.value,
+                                "status": "DETECTED" if cand.confidence.value in ["HIGH", "MEDIUM"] else "UNCERTAIN",
+                                "source": "VISION"
+                            })
+                            
+                        # Keep record for provenance
+                        analysis_state["image_provenance"] = {
+                            "image_id": str(uuid.uuid4()),
+                            "original_image_sha256": original_image_sha256,
+                            "mime": mime,
+                            "timestamp": _ts(),
+                            "vision_provider": vision_backend.provider_name,
+                            "vision_model": vision_backend.model_name,
+                            "extraction_result": candidates_payload
                         }
-                    ]
-                })
+                        
+                        yield _sse("medication_candidates_extracted", {
+                            "candidates": candidates_payload,
+                            "warnings": ext_res.warnings
+                        })
+                    except Exception as e:
+                        log.error("Vision extraction failed: %s", e)
+                        yield _sse("error", {
+                            "code": "VISION_EXTRACTION_ERROR",
+                            "message": f"Vision extraction failed: {str(e)}"
+                        })
+                        yield _sse("stage_update", {
+                            "stage": "extracting",
+                            "status": "failed",
+                            "timestamp": _ts(),
+                        })
+                        return
+                else:
+                    # Fallback if no backend configured
+                    yield _sse("error", {
+                        "code": "PROVIDER_CONFIGURATION_REQUIRED",
+                        "message": "NVIDIA Vision Backend is not configured."
+                    })
+                    yield _sse("stage_update", {
+                        "stage": "extracting",
+                        "status": "failed",
+                        "timestamp": _ts(),
+                    })
+                    return
                 
                 yield _sse("stage_update", {
                     "stage": "extracting",
