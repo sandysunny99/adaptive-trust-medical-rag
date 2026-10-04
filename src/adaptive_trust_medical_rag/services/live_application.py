@@ -356,7 +356,7 @@ class LiveMedicalRAGService:
             
             if not llm_backend:
                 yield _sse("error", {
-                    "code": "PROVIDER_FAILURE",
+                    "code": "PROVIDER_CONFIGURATION_REQUIRED",
                     "message": "LLM Provider is not configured or unavailable."
                 })
                 yield _sse("stage_update", {
@@ -367,23 +367,16 @@ class LiveMedicalRAGService:
                 return
 
             try:
-                # In GroqBackend, max_tokens or response_format isn't easily supported 
-                # by the interface, so we just prompt it and expect JSON.
-                # We modify the prompt temporarily if needed, but it's already in the prompt.
-                gen_result = await llm_backend.generate(prompt)
+                # Use JSON output mode for the provider
+                gen_result = await llm_backend.generate(prompt, response_format={"type": "json_object"})
                 raw_text = gen_result.response_text
                 
-                # Extract JSON from markdown if necessary
-                import re
-                json_match = re.search(r"```json\n(.*?)\n```", raw_text, re.DOTALL)
-                if json_match:
-                    raw_text = json_match.group(1)
-                else:
-                    json_match = re.search(r"(\{.*\})", raw_text, re.DOTALL)
-                    if json_match:
-                        raw_text = json_match.group(1)
-                        
-                structured_result = json.loads(raw_text)
+                try:
+                    structured_result = json.loads(raw_text)
+                except json.JSONDecodeError:
+                    log.error("LLM Output Validation Failure: output is not valid JSON")
+                    yield _sse("error", {"code": "LLM_OUTPUT_VALIDATION_FAILURE", "message": "Failed to parse LLM structured output."})
+                    return
                     
             except Exception as e:
                 log.error("LLM Generation failed: %s", e)

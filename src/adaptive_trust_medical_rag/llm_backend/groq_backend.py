@@ -33,7 +33,7 @@ class GroqBackend:
         self.max_tokens = max_tokens
         self.last_rate_limit_info = None
 
-    async def generate(self, prompt: str) -> ModelGenerationResult:
+    async def generate(self, prompt: str, response_format: dict[str, str] | None = None) -> ModelGenerationResult:
         request_started_at = datetime.now(timezone.utc).isoformat()
         t0 = time.perf_counter()
 
@@ -49,6 +49,8 @@ class GroqBackend:
         }
         if self.max_tokens is not None:
             payload["max_tokens"] = self.max_tokens
+        if response_format is not None:
+            payload["response_format"] = response_format
         
         response: Any = None
         async with httpx.AsyncClient() as client:
