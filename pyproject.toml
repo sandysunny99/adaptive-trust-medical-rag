@@ -30,6 +30,8 @@ dependencies = [
     "transformers>=5.3.0",
     "torch>=2.14.0",
     "uvicorn>=0.54.0",
+    "python-multipart>=0.0.32",
+    "pillow>=12.3.0",
 ]
 
 # Phase 8:  uv add google-genai openai

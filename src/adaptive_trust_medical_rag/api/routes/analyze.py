@@ -15,7 +15,7 @@ import time
 import uuid
 from typing import Any
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, UploadFile, File, Form, HTTPException
 from fastapi.responses import StreamingResponse
 
 from adaptive_trust_medical_rag.api.live_schemas import (
@@ -34,6 +34,7 @@ from adaptive_trust_medical_rag.api.live_schemas import (
     ProvenanceStep,
 )
 from adaptive_trust_medical_rag.security.sanitizer import sanitize_query
+from adaptive_trust_medical_rag.services.image_validator import ImageValidator, ImageValidationError
 
 log = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["live"])
@@ -85,6 +86,62 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
         stream_url=f"/api/v1/stream/{request_id}",
     )
 
+@router.post(
+    "/analyze/prescription",
+    summary="Upload a prescription image for extraction and analysis",
+)
+async def post_analyze_prescription(
+    request: Request,
+    image: UploadFile = File(...),
+    patient_context: str = Form(None)
+):
+    """
+    Accept a prescription image upload.
+    Validates the image and queues it for extraction.
+    """
+    try:
+        file_bytes = await image.read()
+        validation_meta = ImageValidator.validate_and_preprocess(
+            file_bytes=file_bytes,
+            filename=image.filename,
+            content_type=image.content_type
+        )
+    except ImageValidationError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        log.error(f"Image processing error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error during image validation")
+
+    request_id = str(uuid.uuid4())
+    
+    pending = getattr(request.app.state, "pending_analyses", None)
+    if pending is None:
+        request.app.state.pending_analyses = {}
+        pending = request.app.state.pending_analyses
+
+    # Parse patient context if provided
+    context_data = None
+    if patient_context:
+        try:
+            context_data = json.loads(patient_context)
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid patient_context JSON")
+
+    pending[request_id] = {
+        "type": "prescription_image",
+        "image_bytes": file_bytes,
+        "image_meta": validation_meta,
+        "patient_context": context_data,
+        "created_at": time.time(),
+    }
+
+    log.info(f"POST /api/v1/analyze/prescription request_id={request_id} size={len(file_bytes)}")
+
+    return {
+        "request_id": request_id,
+        "stream_url": f"/api/v1/stream/{request_id}",
+        "validation": validation_meta
+    }
 
 @router.get(
     "/stream/{request_id}",
