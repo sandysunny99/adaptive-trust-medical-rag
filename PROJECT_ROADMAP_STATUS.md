@@ -17,11 +17,11 @@ APP-10 Provenance validation                   ✅
 APP-11 Trust integration                       ✅
 APP-12 Security integration                    ✅
 APP-13 PRE-LLM eligibility                     ✅
-APP-14 REAL LLM GENERATION                     🟢 CURRENT
-APP-15 Claim verification                      ⏳
-APP-16 Citation validation                     ⏳
-APP-17 Post-LLM safety                         ⏳
-APP-18 Provenance UI                           ⏳
+APP-14 Real LLM integration                    ✅
+APP-15 Claim verification                      ✅
+APP-16 Citation validation                     ✅
+APP-17 Post-LLM safety                         ✅
+APP-18 Final verified answer                   ✅
 APP-19 DDI output                              ⏳
 APP-20 ADE output                              ⏳
 APP-21 Food/admin                              ⏳

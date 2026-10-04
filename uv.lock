@@ -1,11 +1,9 @@
 version = 1
 revision = 3
-requires-python = ">=3.12.10, <3.13"
-
-[manifest]
-members = [
-    "adaptive-trust-medical-rag",
-    "cognee-service",
+requires-python = "==3.12.*"
+resolution-markers = [
+    "python_full_version >= '3.12.4'",
+    "python_full_version < '3.12.4'",
 ]
 
 [[package]]
@@ -318,11 +316,6 @@ sdist = { url = "https://files.pythonhosted.org/packages/27/fb/576f067976d320f5f
 wheels = [
     { url = "https://files.pythonhosted.org/packages/88/39/799be3f2f0f38cc727ee3b4f1445fe6d5e4133064ec2e4115069418a5bb6/cloudpickle-3.1.2-py3-none-any.whl", hash = "sha256:9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a", size = 22228, upload-time = "2025-11-03T09:25:25.534Z" },
 ]
-
-[[package]]
-name = "cognee-service"
-version = "0.1.0"
-source = { editable = "cognee_service" }
 
 [[package]]
 name = "colorama"

@@ -1,0 +1,154 @@
+[
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "uploading",
+      "status": "running",
+      "message": "Sanitizing input...",
+      "timestamp": "2026-10-04T11:03:53.119178+00:00"
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "uploading",
+      "status": "complete",
+      "message": "1 drug(s) accepted",
+      "timestamp": "2026-10-04T11:03:53.120163+00:00"
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "normalizing",
+      "status": "running",
+      "message": "Resolving drug entities via RxNorm...",
+      "timestamp": "2026-10-04T11:03:53.120163+00:00"
+    }
+  },
+  {
+    "event": "rxnorm",
+    "data": {
+      "entities": [
+        {
+          "raw_text": "warfarin overdose",
+          "canonical_name": "warfarin",
+          "rxcui": "11289",
+          "brand_name": null,
+          "formulation": null,
+          "confidence": 0.8,
+          "source": "rxnorm_approx",
+          "status": "MATCHED"
+        }
+      ]
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "normalizing",
+      "status": "complete",
+      "timestamp": "2026-10-04T11:03:58.145713+00:00"
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "retrieving",
+      "status": "running",
+      "message": "Retrieving evidence...",
+      "timestamp": "2026-10-04T11:03:58.145713+00:00"
+    }
+  },
+  {
+    "event": "retrieval",
+    "data": {
+      "evidence_count": 5,
+      "sources": [
+        "DAILYMED",
+        "OPENFDA",
+        "PUBMED"
+      ]
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "retrieving",
+      "status": "complete",
+      "timestamp": "2026-10-04T11:03:58.145713+00:00"
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "security_checking",
+      "status": "running",
+      "timestamp": "2026-10-04T11:03:58.145713+00:00"
+    }
+  },
+  {
+    "event": "security",
+    "data": {
+      "injection_status": "ALLOW",
+      "poisoning_status": "ALLOW",
+      "poisoning_reason": null
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "security_checking",
+      "status": "complete",
+      "timestamp": "2026-10-04T11:03:58.146714+00:00"
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "trust_evaluating",
+      "status": "running",
+      "timestamp": "2026-10-04T11:03:58.146714+00:00"
+    }
+  },
+  {
+    "event": "trust",
+    "data": {
+      "overall_score": 0.545,
+      "threshold": 0.75,
+      "risk_class": "R3",
+      "is_eligible": false,
+      "factors": {
+        "source_authority": 0.95,
+        "query_relevance": null,
+        "evidence_quality": null,
+        "freshness": 0.9,
+        "consistency": 1.0,
+        "entity_match": 0.5,
+        "population_match": null,
+        "anti_poisoning": 1.0,
+        "anti_injection": 1.0
+      },
+      "missing_factors": []
+    }
+  },
+  {
+    "event": "stage_update",
+    "data": {
+      "stage": "trust_evaluating",
+      "status": "complete",
+      "timestamp": "2026-10-04T11:03:58.147767+00:00"
+    }
+  },
+  {
+    "event": "abstention",
+    "data": {
+      "reason": "Insufficient eligible evidence retrieved to meet trust threshold.",
+      "trust": {
+        "overall_score": 0.545,
+        "threshold": 0.75,
+        "risk_class": "R3"
+      }
+    }
+  }
+]

@@ -107,6 +107,13 @@ def create_app(
     app.state.drug_normalizer = DrugNormalizer(use_api=True)
     
     import os
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(".env.local")
+        load_dotenv()
+    except ImportError:
+        pass
+        
     groq_api_key = os.environ.get("GROQ_API_KEY")
     if groq_api_key:
         from adaptive_trust_medical_rag.llm_backend.groq_backend import GroqBackend

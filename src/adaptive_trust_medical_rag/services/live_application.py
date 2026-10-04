@@ -432,7 +432,7 @@ class LiveMedicalRAGService:
                             "text": claim_text,
                             "support_state": support_state,
                             "citation_present": True,
-                            "entailment": v_report.confidence,
+                            "entailment": v_report.grounding_ratio,
                             "canonical_identity_status": None,
                         })
                     except Exception as e:
