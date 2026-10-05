@@ -8,18 +8,15 @@ from adaptive_trust_medical_rag.llm_routing.types import FailureClass
 log = logging.getLogger(__name__)
 
 class LiveProviderRouter:
-    def __init__(self, primary_provider: str, secondary_provider: Optional[str] = None):
-        self.primary_provider = primary_provider
-        self.secondary_provider = secondary_provider
+    def __init__(self, provider_priority: list[str] = None):
+        self.provider_priority = provider_priority or []
         self.providers: Dict[str, ProviderAdapter] = {}
 
     def register_provider(self, name: str, adapter: ProviderAdapter) -> None:
         self.providers[name] = adapter
 
     async def generate_structured(self, prompt: str, response_format: Dict[str, Any]) -> ProviderResponse:
-        providers_to_try = [self.primary_provider]
-        if self.secondary_provider and self.secondary_provider != self.primary_provider:
-            providers_to_try.append(self.secondary_provider)
+        providers_to_try = self.provider_priority if self.provider_priority else list(self.providers.keys())
 
         last_error = None
         for provider_name in providers_to_try:

@@ -126,8 +126,19 @@ def create_app(
     )
 
     primary_provider = os.environ.get("LLM_PROVIDER", "nvidia").lower()
-
-    router = LiveProviderRouter(primary_provider=primary_provider, secondary_provider="groq" if primary_provider == "nvidia" else "nvidia")
+    
+    provider_priority = []
+    if os.environ.get("NVIDIA_API_KEY"): provider_priority.append("nvidia")
+    if os.environ.get("GROQ_API_KEY"): provider_priority.append("groq")
+    if os.environ.get("HF_TOKEN"): provider_priority.append("huggingface")
+    if os.environ.get("CLOUDFLARE_API_TOKEN"): provider_priority.append("cloudflare")
+    if os.environ.get("FREELLMAPI_API_KEY"): provider_priority.append("freellm")
+    
+    if primary_provider in provider_priority:
+        provider_priority.remove(primary_provider)
+        provider_priority.insert(0, primary_provider)
+        
+    router = LiveProviderRouter(provider_priority=provider_priority)
 
     if groq_api_key:
         groq_backend = OpenAICompatibleBackend(
@@ -146,6 +157,25 @@ def create_app(
             model_name="nvidia/nemotron-3-super-120b-a12b"
         )
         router.register_provider("nvidia", nvidia_backend)
+        
+    if os.environ.get("HF_TOKEN"):
+        # Note: HF backend does not currently implement ProviderAdapter structured generation natively
+        # we will register it for future completeness, but the router should handle it cleanly
+        try:
+            from adaptive_trust_medical_rag.llm_backend.huggingface_backend import HuggingFaceBackend
+            router.register_provider("huggingface", HuggingFaceBackend(os.environ["HF_TOKEN"]))
+        except ImportError:
+            pass
+            
+    if os.environ.get("CLOUDFLARE_API_TOKEN") and os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
+        try:
+            from adaptive_trust_medical_rag.llm_backend.cloudflare_backend import CloudflareBackend
+            router.register_provider("cloudflare", CloudflareBackend(
+                os.environ["CLOUDFLARE_API_TOKEN"], 
+                os.environ["CLOUDFLARE_ACCOUNT_ID"]
+            ))
+        except ImportError:
+            pass
 
         from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
         app.state.vision_backend = OpenAIVisionBackend(
