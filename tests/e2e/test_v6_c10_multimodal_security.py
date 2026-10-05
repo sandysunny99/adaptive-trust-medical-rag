@@ -6,7 +6,7 @@ from PIL import Image
 from fastapi.testclient import TestClient
 
 # Mock retrieval to prevent long initialization delays during test setup
-with patch("adaptive_trust_medical_rag.api.app.HybridRetrievalEngine") as mock_engine:
+with patch("adaptive_trust_medical_rag.retrieval.hybrid_retrieval.HybridRetrievalEngine") as mock_engine:
     instance = mock_engine.return_value
     instance.retrieve.return_value = []
     from adaptive_trust_medical_rag.api.app import app

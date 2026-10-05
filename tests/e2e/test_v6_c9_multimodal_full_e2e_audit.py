@@ -7,7 +7,7 @@ from unittest.mock import patch
 from PIL import Image
 
 # Patch HybridRetrievalEngine globally before app loads to prevent model downloads during TestClient lifespan
-with patch("adaptive_trust_medical_rag.api.app.HybridRetrievalEngine") as mock_engine:
+with patch("adaptive_trust_medical_rag.retrieval.hybrid_retrieval.HybridRetrievalEngine") as mock_engine:
     # Setup mock to return an empty list or predefined chunks
     instance = mock_engine.return_value
     instance.retrieve.return_value = []

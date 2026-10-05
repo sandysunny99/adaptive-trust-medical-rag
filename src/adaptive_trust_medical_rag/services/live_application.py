@@ -9,6 +9,9 @@ from __future__ import annotations
 
 import asyncio
 import json
+import hashlib
+import uuid
+
 import logging
 import time
 from typing import AsyncGenerator, Any
@@ -364,7 +367,7 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
             
-            import hashlib
+            
             poisoning_blocked = 0
             safe_candidates = []
             for sc in candidates:
