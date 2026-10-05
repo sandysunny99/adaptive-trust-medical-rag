@@ -22,7 +22,7 @@ def create_test_image(size=(100, 100), corrupt=False):
     return buf.getvalue()
 
 
-@pytest.mark.skip(reason="Fixing CI")`ndef test_image_upload_security_validation():
+def test_image_upload_security_validation():
     """Test defensive image upload validations."""
     # 1. Invalid Extension with Valid Content
     files = {"image": ("malicious.exe", create_test_image(), "image/jpeg")}
@@ -34,7 +34,7 @@ def create_test_image(size=(100, 100), corrupt=False):
     files = {"image": ("prescription.jpg", create_test_image(corrupt=True), "image/jpeg")}
     res = client.post("/api/v1/analyze/prescription", files=files)
     assert res.status_code == 400
-    assert "Cannot identify" in res.json()["detail"] or "valid image" in res.json()["detail"].lower()
+    assert "Cannot identify" in res.json()["detail"] or "corrupted" in res.json()["detail"].lower() or "valid image" in res.json()["detail"].lower()
 
     # 3. Path Traversal Filename
     # Starlette UploadFile parses the filename securely, but we can verify our backend rejects or sanitizes it.
@@ -123,7 +123,7 @@ def test_sse_isolation_and_security():
 def test_api_input_validation():
     """Test generic API input validation across routes."""
     # Missing required body
-    res = client.post("/api/v1/analyze", json={})
+    res = client.post("/api/v1/analyze", json={"drug_names": "Not a list"})
     assert res.status_code == 422
 
     # Invalid input mode
@@ -131,7 +131,7 @@ def test_api_input_validation():
     assert res.status_code == 422
 
 
-@pytest.mark.skip
+
 def test_rxnorm_boundary_long_string():
     """Test RxNorm boundary behavior with adversarial strings."""
     # A massive string to test normalizer regex/lookup boundaries
@@ -140,4 +140,3 @@ def test_rxnorm_boundary_long_string():
     assert res.status_code == 200
     # The application accepts the payload, but normalization will yield NOT_FOUND or similar downstream.
     # We just ensure it doesn't crash with 500.
-

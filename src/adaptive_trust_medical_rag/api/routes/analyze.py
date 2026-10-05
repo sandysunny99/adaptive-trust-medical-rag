@@ -20,6 +20,7 @@ from fastapi.responses import StreamingResponse
 from adaptive_trust_medical_rag.api.live_schemas import (
     AnalyzeAccepted,
     AnalyzeRequest,
+    PatientContextInput,
 )
 from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
 
@@ -110,9 +111,12 @@ async def post_analyze_prescription(
     context_data = None
     if patient_context:
         try:
-            context_data = json.loads(patient_context)
+            raw_data = json.loads(patient_context)
+            context_data = PatientContextInput(**raw_data).model_dump()
         except json.JSONDecodeError:
             raise HTTPException(status_code=400, detail="Invalid patient_context JSON")
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
 
     pending[request_id] = {
         "type": "prescription_image",

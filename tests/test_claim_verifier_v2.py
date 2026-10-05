@@ -69,11 +69,8 @@ def test_T08_true_nli_pair_path_only(verifier):
 
 def test_T09_nli_pair_failure_fail_closed(verifier):
     evidence = [EvidenceChunk("c1", "Aspirin cures headaches.", citation_index=1)]
-    try:
+    with pytest.raises(NLIInferenceError):
         verifier._evaluate_pair({"invalid": 123}, "test")
-        assert False
-    except NLIInferenceError:
-        assert True
 
 def test_T10_actual_model_id2label_normalization(verifier):
     assert "entailment" in verifier.label_map.values()

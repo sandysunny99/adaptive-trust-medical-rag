@@ -82,8 +82,8 @@ class OpenAICompatibleBackend(ProviderAdapter):
         if response_format:
             try:
                 structured = json.loads(content)
-            except Exception:
-                pass  # nosec B110
+            except json.JSONDecodeError:
+                pass
 
         usage = data.get("usage", {})
 
