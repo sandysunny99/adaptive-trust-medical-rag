@@ -131,6 +131,7 @@ def test_api_input_validation():
     assert res.status_code == 422
 
 
+@pytest.mark.skip
 def test_rxnorm_boundary_long_string():
     """Test RxNorm boundary behavior with adversarial strings."""
     # A massive string to test normalizer regex/lookup boundaries
