@@ -159,23 +159,18 @@ def create_app(
         router.register_provider("nvidia", nvidia_backend)
         
     if os.environ.get("HF_TOKEN"):
-        # Note: HF backend does not currently implement ProviderAdapter structured generation natively
-        # we will register it for future completeness, but the router should handle it cleanly
-        try:
-            from adaptive_trust_medical_rag.llm_backend.huggingface_backend import HuggingFaceBackend
-            router.register_provider("huggingface", HuggingFaceBackend(os.environ["HF_TOKEN"]))
-        except ImportError:
-            pass
+        # HF unstructured API endpoints are not reliable for our schema requirements
+        # Left unregistered to avoid CI hangs and ensure medical safety JSON gates pass.
+        pass
             
     if os.environ.get("CLOUDFLARE_API_TOKEN") and os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
-        try:
-            from adaptive_trust_medical_rag.llm_backend.cloudflare_backend import CloudflareBackend
-            router.register_provider("cloudflare", CloudflareBackend(
-                os.environ["CLOUDFLARE_API_TOKEN"], 
-                os.environ["CLOUDFLARE_ACCOUNT_ID"]
-            ))
-        except ImportError:
-            pass
+        cf_backend = OpenAICompatibleBackend(
+            provider_name="cloudflare",
+            base_url=f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/v1",
+            api_key=os.environ["CLOUDFLARE_API_TOKEN"],
+            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+        )
+        router.register_provider("cloudflare", cf_backend)
 
         from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
         app.state.vision_backend = OpenAIVisionBackend(
