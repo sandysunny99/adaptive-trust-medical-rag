@@ -14,6 +14,7 @@ Or programmatically:
 from __future__ import annotations
 
 import logging
+
 import os
 import time
 from contextlib import asynccontextmanager
@@ -28,8 +29,8 @@ from adaptive_trust_medical_rag.api.middleware import (
     RequestIDMiddleware,
     SecurityHeadersMiddleware,
 )
-from adaptive_trust_medical_rag.api.routes import audit, health, ingest, query
 from adaptive_trust_medical_rag.api.routes import analyze as analyze_route
+from adaptive_trust_medical_rag.api.routes import audit, health, ingest, query
 from adaptive_trust_medical_rag.api.schemas import ErrorResponse
 
 log = logging.getLogger(__name__)
@@ -84,8 +85,8 @@ def create_app(
 
     # ── Middleware (applied last-to-first) ────────────────────────────────────
     app.add_middleware(SecurityHeadersMiddleware)
-    import os as _os
-    if _os.environ.get("GITHUB_ACTIONS") != "true" and _os.environ.get("TESTING") != "1": 
+
+    if os.environ.get("GITHUB_ACTIONS") != "true" and os.environ.get("TESTING") != "1":
         app.add_middleware(RateLimitMiddleware, limit=rate_limit, window=rate_window)
     app.add_middleware(RequestIDMiddleware)
     # CORS for frontend dev server
@@ -104,29 +105,30 @@ def create_app(
     app.state.audit_store = audit_store
     app.state.start_time = time.monotonic()
     app.state.pending_analyses = {}
-    
+
     # Initialize real components for live app
     from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
     app.state.drug_normalizer = DrugNormalizer(use_api=True)
-    
-    import os
+
     try:
         from dotenv import load_dotenv
         load_dotenv(".env.local")
         load_dotenv()
     except ImportError:
         pass
-        
+
     groq_api_key = os.environ.get("GROQ_API_KEY")
     nvidia_api_key = os.environ.get("NVIDIA_API_KEY")
-    
-    from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import OpenAICompatibleBackend
+
     from adaptive_trust_medical_rag.llm_backend.live_provider_router import LiveProviderRouter
+    from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import (
+        OpenAICompatibleBackend,
+    )
 
     primary_provider = os.environ.get("LLM_PROVIDER", "nvidia").lower()
-    
+
     router = LiveProviderRouter(primary_provider=primary_provider, secondary_provider="groq" if primary_provider == "nvidia" else "nvidia")
-    
+
     if groq_api_key:
         groq_backend = OpenAICompatibleBackend(
             provider_name="groq",
@@ -144,7 +146,7 @@ def create_app(
             model_name="nvidia/nemotron-3-super-120b-a12b"
         )
         router.register_provider("nvidia", nvidia_backend)
-        
+
         from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
         app.state.vision_backend = OpenAIVisionBackend(
             provider_name="nvidia_vision",
@@ -152,23 +154,27 @@ def create_app(
             api_key=nvidia_api_key,
             model_name="meta/llama-3.2-11b-vision-instruct"
         )
-        
+
     if not router.providers:
         log.warning("No LLM API keys set; LLM functionality will be disabled.")
         app.state.llm_backend = None
         app.state.vision_backend = None
     else:
         app.state.llm_backend = router
-        
+
     from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
     app.state.claim_verifier = ClaimVerifierV2()
-    
+
     # Load the Live Medical Corpus for the HybridRetrievalEngine
     try:
-        from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import HybridRetrievalEngine, Candidate
         import json
-        import os
-        
+
+
+        from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
+            Candidate,
+            HybridRetrievalEngine,
+        )
+
         corpus_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "LIVE_MEDICAL_CORPUS_V2.json")
         live_corpus = []
         if os.path.exists(corpus_path):
@@ -187,13 +193,13 @@ def create_app(
                         "source_type": item.get("source_type")
                     }
                 ))
-            
+
             class LiveEmbeddingModel:
                 def __init__(self, data_items):
                     self.text_to_emb = {i["text"]: i["embedding"] for i in data_items if "embedding" in i}
                     from sentence_transformers import SentenceTransformer
                     self.model = SentenceTransformer("all-MiniLM-L6-v2")
-                    
+
                 def encode(self, texts):
                     results = []
                     texts_to_compute = []
