@@ -49,7 +49,7 @@ def test_case_3_partial_context_missing_values():
     
     # Validating the stored context has None for missing fields
     req_id = res.json()["request_id"]
-    state = from adaptive_trust_medical_rag.api.routes.analyze import _analysis_store; _analysis_store[req_id]["patient_context"]
+    state = app.state.analysis_store[req_id]["patient_context"]
     assert state.age == 68
     assert state.pregnancy_status is None
     assert state.kidney_impairment is None
@@ -118,9 +118,9 @@ def test_case_15_request_isolation():
     id2 = r2.json()["request_id"]
     id3 = r3.json()["request_id"]
     
-    s1 = from adaptive_trust_medical_rag.api.routes.analyze import _analysis_store; _analysis_store[id1]["patient_context"]
-    s2 = from adaptive_trust_medical_rag.api.routes.analyze import _analysis_store; _analysis_store[id2]["patient_context"]
-    s3 = from adaptive_trust_medical_rag.api.routes.analyze import _analysis_store; _analysis_store[id3]["patient_context"]
+    s1 = app.state.analysis_store[id1]["patient_context"]
+    s2 = app.state.analysis_store[id2]["patient_context"]
+    s3 = app.state.analysis_store[id3]["patient_context"]
     
     assert s1.age == 30
     assert s2.age == 80
