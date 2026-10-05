@@ -1,12 +1,13 @@
 ﻿from adaptive_trust_medical_rag.security.sanitizer import sanitize_document_chunk
 from adaptive_trust_medical_rag.security.security_context import SecurityDecision, SecurityState
 
+
 class PromptInjectionDetector:
     """Detects instruction-like content originating from evidence/context/memory."""
 
     def inspect(self, text: str, request_id: str) -> SecurityDecision:
         result = sanitize_document_chunk(text)
-        
+
         if result.rejected:
             state = SecurityState.BLOCK
             reason = "INJECTION_DETECTED"

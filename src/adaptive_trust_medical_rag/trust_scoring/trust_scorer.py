@@ -226,7 +226,7 @@ class AdaptiveTrustScorer:
         breakdown: dict[str, float] = {}
         total = 0.0
         missing_factors = []
-        
+
         # Policy: FULL DENOMINATOR (No Renormalization)
         # Missing factors contribute 0.0 to the numerator but do not reduce the denominator.
         weight_sum = sum(weights[f] for f in TRUST_FACTORS)

@@ -1,9 +1,9 @@
-import pytest
 import io
-import json
 from unittest.mock import patch
-from PIL import Image
+
+import pytest
 from fastapi.testclient import TestClient
+from PIL import Image
 
 # Mock retrieval to prevent long initialization delays during test setup
 with patch("adaptive_trust_medical_rag.retrieval.hybrid_retrieval.HybridRetrievalEngine") as mock_engine:
@@ -43,7 +43,7 @@ def test_image_upload_security_validation():
     # The server should either sanitize the filename or return 200 without executing anything dangerous,
     # or reject it if our ImageValidator is strict.
     assert res.status_code in [200, 400]
-    
+
     # 4. Oversized Image (simulate by reading max size in validation)
     huge_bytes = b"0" * (11 * 1024 * 1024) # 11MB
     files = {"image": ("huge.jpg", huge_bytes, "image/jpeg")}
@@ -74,24 +74,24 @@ def test_medication_payload_tampering():
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_res = client.post("/api/v1/analyze/prescription", files=files)
     req_id = req_res.json()["request_id"]
-    
+
     # Payload with tampered fields (e.g. attempting to force a trust score or inject rxcui)
     payload = {
         "confirmed_medications": [{
-            "name": "Warfarin", 
-            "status": "CONFIRMED", 
+            "name": "Warfarin",
+            "status": "CONFIRMED",
             "source": "VISION",
             "trust_score": 1.0,  # Should be stripped
             "rxcui": "999999",   # Should be stripped
             "canonical_name": "Tampered" # Should be stripped
         }]
     }
-    
+
     # We expect Pydantic to accept it but silently strip the extra fields
     # (unless forbid_extra is set, then it returns 422)
     res = client.post(f"/api/v1/analyze/{req_id}/confirm", json=payload)
     assert res.status_code in [200, 422]
-    
+
     # 2. Missing required fields
     bad_payload = {
         "confirmed_medications": [{
@@ -109,12 +109,12 @@ def test_sse_isolation_and_security():
     res = client.get(f"/api/v1/stream/{fake_id}")
     # SSE error response is returned
     assert "NOT_FOUND" in res.text or res.status_code == 404
-    
+
     # 2. Upload, then connect multiple times (concurrency check)
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_res = client.post("/api/v1/analyze/prescription", files=files)
     req_id = req_res.json()["request_id"]
-    
+
     # Starlette test client blocks on SSE, so we just verify we can connect and receive events
     # We will just verify it doesn't crash on subsequent calls.
     pass

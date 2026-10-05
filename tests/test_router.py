@@ -1,21 +1,20 @@
-import pytest
-import asyncio
-from datetime import datetime, UTC
-from typing import Any
+from datetime import UTC, datetime
 
-from adaptive_trust_medical_rag.llm_routing.router import LLMProviderRouter
-from adaptive_trust_medical_rag.llm_routing.config import RoutingConfig, ProviderConfig
-from adaptive_trust_medical_rag.llm_routing.types import (
-    RoutingMode,
-    FailureClass,
-    CircuitState,
-    AllProvidersUnavailableError,
-    ExperimentProviderUnavailable
-)
+import pytest
+
 from adaptive_trust_medical_rag.common.model_result import (
+    ModelExecutionError,
     ModelGenerationResult,
-    ModelExecutionError
 )
+from adaptive_trust_medical_rag.llm_routing.config import ProviderConfig, RoutingConfig
+from adaptive_trust_medical_rag.llm_routing.router import LLMProviderRouter
+from adaptive_trust_medical_rag.llm_routing.types import (
+    CircuitState,
+    ExperimentProviderUnavailable,
+    FailureClass,
+    RoutingMode,
+)
+
 
 class DummyBackend:
     def __init__(self, provider_name: str, should_fail: bool = False, failure_class: FailureClass = FailureClass.TIMEOUT):
@@ -87,7 +86,7 @@ async def test_router_failover_to_secondary(routing_config, mock_backends):
     # Primary will fail twice (initial + 1 retry) then router failover to secondary
     router = LLMProviderRouter(config=routing_config, backends=mock_backends)
     result = await router.generate("test prompt")
-    
+
     assert result.success
     assert result.provider == "secondary"
     assert result.expected_provider == "primary"
@@ -99,17 +98,17 @@ async def test_router_failover_to_secondary(routing_config, mock_backends):
 async def test_circuit_breaker_opens(routing_config, mock_backends):
     mock_backends["primary"].should_fail = True
     router = LLMProviderRouter(config=routing_config, backends=mock_backends)
-    
+
     # First call - primary fails 2 times (initial + 1 retry). Circuit breaker threshold is 2!
     # Primary circuit breaker should now be OPEN.
     await router.generate("test prompt")
     assert router.circuit_breakers["primary"].state == CircuitState.OPEN
-    
+
     # Second call - should skip primary instantly and use secondary
     mock_backends["primary"].calls = 0
     mock_backends["secondary"].calls = 0
     await router.generate("test prompt")
-    
+
     assert mock_backends["primary"].calls == 0
     assert mock_backends["secondary"].calls == 1
 
@@ -117,12 +116,12 @@ async def test_circuit_breaker_opens(routing_config, mock_backends):
 async def test_scientific_mode_no_failover(routing_config, mock_backends):
     routing_config.mode = RoutingMode.SCIENTIFIC
     mock_backends["primary"].should_fail = True
-    
+
     router = LLMProviderRouter(config=routing_config, backends=mock_backends)
-    
+
     # Scientific mode should NOT failover. If primary fails, it throws ExperimentProviderUnavailable
     with pytest.raises(ExperimentProviderUnavailable):
         await router.generate("test prompt")
-    
+
     assert mock_backends["primary"].calls == 2
     assert mock_backends["secondary"].calls == 0

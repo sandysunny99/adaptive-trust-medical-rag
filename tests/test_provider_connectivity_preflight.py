@@ -5,7 +5,9 @@ They validate that provider clients can initialize and credentials
 are detectable without submitting any frozen Phase 15 query.
 """
 import os
+
 import pytest
+
 from adaptive_trust_medical_rag.llm_routing.config import RoutingConfig, load_env_local
 
 

@@ -35,10 +35,13 @@ All logic is pure-Python and fully unit-testable without a live LLM.
 """
 
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from adaptive_trust_medical_rag.verification.canonical_identity import CanonicalRelationshipIdentity
+    from adaptive_trust_medical_rag.verification.canonical_identity import (
+        CanonicalRelationshipIdentity,
+    )
 
 import re
 from dataclasses import dataclass, field

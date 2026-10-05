@@ -1,8 +1,9 @@
 """Vision and OCR provider abstractions for the Medical RAG system."""
 
-from typing import Protocol, List, Optional
 from dataclasses import dataclass
 from enum import Enum
+from typing import List, Optional, Protocol
+
 
 class ExtractionConfidence(str, Enum):
     HIGH = "HIGH"
@@ -24,10 +25,10 @@ class ExtractionResult:
 
 class VisionProviderAdapter(Protocol):
     """Protocol for providers that extract text/entities from images."""
-    
+
     async def extract_medications(
-        self, 
-        image_bytes: bytes, 
+        self,
+        image_bytes: bytes,
         mime_type: str
     ) -> ExtractionResult:
         """

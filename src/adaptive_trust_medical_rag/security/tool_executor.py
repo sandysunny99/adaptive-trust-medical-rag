@@ -1,5 +1,7 @@
 from __future__ import annotations
-from dataclasses import dataclass, field
+
+from dataclasses import dataclass
+
 from adaptive_trust_medical_rag.security.agent_action import AgentActionRequest
 
 
@@ -21,10 +23,10 @@ class ToolExecutor:
     implementation, actual tool operations are no-ops — the executor
     exists to establish the authorization → execution boundary.
     """
-    
+
     def __init__(self) -> None:
         self.execution_log: list[ToolExecutionRecord] = []
-    
+
     def execute(self, action_request: AgentActionRequest) -> ToolExecutionRecord:
         """Execute a pre-authorized action request and return an audit record."""
         record = ToolExecutionRecord(
@@ -36,7 +38,7 @@ class ToolExecutor:
         )
         self.execution_log.append(record)
         return record
-    
+
     @property
     def execution_count(self) -> int:
         return len(self.execution_log)

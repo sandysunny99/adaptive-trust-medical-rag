@@ -1,8 +1,14 @@
 import json
-import os
-from pathlib import Path
+
 import pytest
-from adaptive_trust_medical_rag.evaluation.phase15_runner import Phase15Runner, PreflightError, ExecutionError, FROZEN_DATASET_HASH
+
+from adaptive_trust_medical_rag.evaluation.phase15_runner import (
+    FROZEN_DATASET_HASH,
+    ExecutionError,
+    Phase15Runner,
+    PreflightError,
+)
+
 
 @pytest.fixture
 def temp_dataset(tmp_path):
@@ -31,24 +37,24 @@ def test_hash_mismatch(mock_runner):
 def test_wrong_case_count(mock_runner, temp_dataset):
     # Fix hash check for this specific test by mocking the _compute_file_hash
     mock_runner._compute_file_hash = lambda x: FROZEN_DATASET_HASH
-    
+
     # Append an extra line to mess up the count
     with open(temp_dataset, "a") as f:
         f.write('{"case_id": "C201"}\n')
-        
+
     with pytest.raises(PreflightError, match="Case count mismatch"):
         mock_runner.preflight_check()
 
 def test_duplicate_cases(mock_runner, temp_dataset):
     mock_runner._compute_file_hash = lambda x: FROZEN_DATASET_HASH
-    
+
     # Write exactly 200 cases, but make two of them have the same ID
     cases = [{"case_id": f"C{str(i).zfill(3)}"} for i in range(199)]
     cases.append({"case_id": "C000"}) # Duplicate
     with open(temp_dataset, "w") as f:
         for case in cases:
             f.write(json.dumps(case) + "\n")
-            
+
     with pytest.raises(PreflightError, match="Duplicate case_id found: C000"):
         mock_runner.preflight_check()
 
@@ -69,8 +75,8 @@ def test_execute_without_flag_halts(mock_runner):
 def test_execute_missing_credentials(mock_runner, monkeypatch):
     mock_runner._compute_file_hash = lambda x: FROZEN_DATASET_HASH
     mock_runner.preflight_check()
-    
+
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
-    
+
     with pytest.raises(ExecutionError, match="Missing GEMINI_API_KEY"):
         mock_runner.execute(require_execute_flag=True, execute_flag_passed=True)

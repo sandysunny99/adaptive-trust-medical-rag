@@ -3,21 +3,16 @@ Tests for provenance propagation in the evidence corpus loader.
 Verifies that V2 provenance repair is correct and that the security policy remains intact.
 """
 import hashlib
-import json
-import os
 import sys
 from pathlib import Path
-
-import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from adaptive_trust_medical_rag.evaluation.live_variants import load_evidence_corpus
+from adaptive_trust_medical_rag.security.security_context import SecurityState
 from adaptive_trust_medical_rag.security_extensions.poisoning_detector import (
     RetrievalPoisoningDetector,
 )
-from adaptive_trust_medical_rag.security.security_context import SecurityState
-from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate
 
 
 class TestProvenancePropagation:

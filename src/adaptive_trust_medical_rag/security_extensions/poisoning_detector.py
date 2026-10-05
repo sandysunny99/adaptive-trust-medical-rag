@@ -1,5 +1,7 @@
 ﻿from typing import Any
+
 from adaptive_trust_medical_rag.security.security_context import SecurityDecision, SecurityState
+
 
 class RetrievalPoisoningDetector:
     """Detects suspicious source/document metadata patterns indicating poisoning."""

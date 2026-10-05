@@ -1,8 +1,11 @@
 from __future__ import annotations
+
 import asyncio
 import threading
-from typing import Protocol, Any
+from typing import Protocol
+
 from adaptive_trust_medical_rag.common.model_result import ModelGenerationResult
+
 
 class AsyncLLMBackend(Protocol):
     async def generate(self, prompt: str) -> ModelGenerationResult:

@@ -1,8 +1,9 @@
-from typing import Any, Dict, List, Optional
-from adaptive_trust_medical_rag.llm_backend.interfaces import ProviderAdapter, ProviderResponse
-from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
-from adaptive_trust_medical_rag.llm_routing.types import FailureClass
 import logging
+from typing import Any, Dict, Optional
+
+from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
+from adaptive_trust_medical_rag.llm_backend.interfaces import ProviderAdapter, ProviderResponse
+from adaptive_trust_medical_rag.llm_routing.types import FailureClass
 
 log = logging.getLogger(__name__)
 
@@ -25,7 +26,7 @@ class LiveProviderRouter:
             if provider_name not in self.providers:
                 log.warning(f"Provider {provider_name} not registered in LiveProviderRouter")
                 continue
-            
+
             adapter = self.providers[provider_name]
             try:
                 log.info(f"Attempting generation with provider: {provider_name}")
@@ -43,10 +44,10 @@ class LiveProviderRouter:
                 ]:
                     log.error(f"Provider {provider_name} failed with non-transport error, not failing over. Error: {e}")
                     raise e
-                
+
                 log.warning(f"Provider {provider_name} failed with transport error {e}, attempting failover if configured.")
-                
+
         if last_error:
             raise last_error
-        
+
         raise ModelExecutionError("No providers available", status_code="NO_PROVIDERS")

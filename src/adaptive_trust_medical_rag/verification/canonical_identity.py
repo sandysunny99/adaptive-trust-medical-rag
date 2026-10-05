@@ -103,17 +103,17 @@ def compare_identity(
         return CanonicalMatchStatus.UNAVAILABLE, "Source canonical identity not available"
     if claim is None:
         return CanonicalMatchStatus.UNAVAILABLE, "Claim canonical identity not resolved"
-    
+
     if not source.subject_rxcui or not source.object_rxcui:
         return CanonicalMatchStatus.UNAVAILABLE, "Source identity has unresolved RxCUI"
     if not claim.subject_rxcui or not claim.object_rxcui:
         return CanonicalMatchStatus.AMBIGUOUS, "Claim identity has unresolved RxCUI"
-    
+
     if source.direction == CanonicalDirection.UNKNOWN:
         return CanonicalMatchStatus.AMBIGUOUS, "Source direction is unknown"
     if claim.direction == CanonicalDirection.UNKNOWN:
         return CanonicalMatchStatus.AMBIGUOUS, "Claim direction is unknown"
-    
+
     if source.subject_rxcui != claim.subject_rxcui:
         return CanonicalMatchStatus.MISMATCH, f"Subject RxCUI mismatch: source={source.subject_rxcui} claim={claim.subject_rxcui}"
     if source.object_rxcui != claim.object_rxcui:
@@ -122,7 +122,7 @@ def compare_identity(
         return CanonicalMatchStatus.MISMATCH, f"Predicate mismatch: source={source.predicate} claim={claim.predicate}"
     if source.direction != claim.direction:
         return CanonicalMatchStatus.MISMATCH, f"Direction mismatch: source={source.direction.value} claim={claim.direction.value}"
-    
+
     return CanonicalMatchStatus.MATCH, "All identity fields match"
 
 
@@ -164,10 +164,10 @@ def extract_claim_identity(
     # Deduplicate while preserving text-order (first occurrence wins)
     drugs_found = list(dict.fromkeys(m.lower() for m in _DRUG_PATTERN.findall(claim_text)))
     predicates_found = _PREDICATE_PATTERN.findall(claim_text)
-    
+
     if len(drugs_found) < 2 or not predicates_found:
         return None
-    
+
     # Resolve RxCUIs
     resolved = []
     for d in drugs_found[:2]:  # Take first two drugs found
@@ -175,18 +175,18 @@ def extract_claim_identity(
         if not rxcui:
             return None  # Cannot resolve -> return None (will become AMBIGUOUS)
         resolved.append((d, rxcui))
-    
+
     predicate = normalize_predicate(predicates_found[0])
-    
+
     # Direction: first drug mentioned is subject, second is object
     # This matches the "A affects B" convention from the annotation guide
     subject_name, subject_rxcui = resolved[0]
     object_name, object_rxcui = resolved[1]
-    
+
     # Determine position in text for direction
     subj_pos = claim_text.lower().find(subject_name)
     obj_pos = claim_text.lower().find(object_name)
-    
+
     if subj_pos < obj_pos:
         direction = CanonicalDirection.A_TO_B
     elif obj_pos < subj_pos:
@@ -195,7 +195,7 @@ def extract_claim_identity(
         subject_rxcui, object_rxcui = object_rxcui, subject_rxcui
     else:
         direction = CanonicalDirection.UNKNOWN
-    
+
     return CanonicalRelationshipIdentity(
         subject_rxcui=subject_rxcui,
         object_rxcui=object_rxcui,

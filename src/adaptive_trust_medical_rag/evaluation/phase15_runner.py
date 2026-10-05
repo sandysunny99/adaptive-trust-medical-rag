@@ -6,7 +6,7 @@ import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 
@@ -27,7 +27,7 @@ class Phase15Runner:
         self.cases = []
         self.run_id = f"phase15_run_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
         self.run_dir = self.output_dir / self.run_id
-        
+
     def _compute_file_hash(self, path: Path) -> str:
         sha256 = hashlib.sha256()
         with open(path, "rb") as f:
@@ -37,27 +37,27 @@ class Phase15Runner:
 
     def preflight_check(self) -> Dict[str, Any]:
         logging.info("Starting Phase 15 Preflight Check...")
-        
+
         if not self.dataset_path.exists():
             raise PreflightError(f"Dataset not found at {self.dataset_path}")
-            
+
         dataset_hash = self._compute_file_hash(self.dataset_path)
         if dataset_hash != FROZEN_DATASET_HASH:
             raise PreflightError(f"Dataset hash mismatch. Expected {FROZEN_DATASET_HASH}, got {dataset_hash}")
-            
+
         with open(self.dataset_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
-            
+
         if len(lines) != EXPECTED_CASE_COUNT:
             raise PreflightError(f"Case count mismatch. Expected {EXPECTED_CASE_COUNT}, got {len(lines)}")
-            
+
         case_ids = set()
         for i, line in enumerate(lines):
             try:
                 case = json.loads(line)
             except json.JSONDecodeError as e:
                 raise PreflightError(f"Malformed JSON on line {i+1}: {e}")
-                
+
             cid = case.get("case_id")
             if not cid:
                 raise PreflightError(f"Missing case_id on line {i+1}")
@@ -65,7 +65,7 @@ class Phase15Runner:
                 raise PreflightError(f"Duplicate case_id found: {cid}")
             case_ids.add(cid)
             self.cases.append(case)
-            
+
         # Write Preflight Manifest
         self.run_dir.mkdir(parents=True, exist_ok=True)
         manifest = {
@@ -78,10 +78,10 @@ class Phase15Runner:
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "status": "PREFLIGHT_PASS"
         }
-        
+
         with open(self.run_dir / "run_manifest.json", "w", encoding="utf-8") as f:
             json.dump(manifest, f, indent=2)
-            
+
         logging.info("Preflight check passed successfully.")
         return manifest
 
@@ -91,10 +91,10 @@ class Phase15Runner:
             return
 
         logging.info("Execution requested. Validating runtime requirements...")
-        
+
         if not os.environ.get("GEMINI_API_KEY"):
             raise ExecutionError("Missing GEMINI_API_KEY in environment.")
-            
+
         logging.info("API Key found. Commencing paired execution...")
         self.run_paired_evaluation()
 
@@ -110,12 +110,12 @@ def main():
     parser.add_argument("--output", type=str, default="experiments/phase15/runs")
     parser.add_argument("--execute", action="store_true", help="Authorize actual model execution")
     args = parser.parse_args()
-    
+
     dataset_path = Path(args.dataset)
     output_dir = Path(args.output)
-    
+
     runner = Phase15Runner(dataset_path, output_dir)
-    
+
     try:
         runner.preflight_check()
         runner.execute(require_execute_flag=True, execute_flag_passed=args.execute)
@@ -125,6 +125,6 @@ def main():
     except ExecutionError as e:
         logging.error(f"EXECUTION BLOCKED: {e}")
         sys.exit(1)
-        
+
 if __name__ == "__main__":
     main()

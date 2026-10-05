@@ -8,33 +8,20 @@ Live requests are NEVER counted as research evaluation requests.
 from __future__ import annotations
 
 import asyncio
-import hashlib
 import json
 import logging
 import time
 import uuid
 from typing import Any
 
-from fastapi import APIRouter, Request, UploadFile, File, Form, HTTPException
+from fastapi import APIRouter, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import StreamingResponse
 
 from adaptive_trust_medical_rag.api.live_schemas import (
     AnalyzeAccepted,
     AnalyzeRequest,
-    AnalyzeResponse,
-    MedicationResult,
-    TrustFactorsResult,
-    TrustResult,
-    SecurityResult,
-    EvidenceResult,
-    ClaimResult,
-    DrugInteractionResult,
-    FoodGuidanceResult,
-    PatientConsiderationResult,
-    ProvenanceStep,
 )
-from adaptive_trust_medical_rag.security.sanitizer import sanitize_query
-from adaptive_trust_medical_rag.services.image_validator import ImageValidator, ImageValidationError
+from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
 
 log = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["live"])
@@ -113,7 +100,7 @@ async def post_analyze_prescription(
         raise HTTPException(status_code=500, detail="Internal server error during image validation")
 
     request_id = str(uuid.uuid4())
-    
+
     pending = getattr(request.app.state, "pending_analyses", None)
     if pending is None:
         request.app.state.pending_analyses = {}
@@ -143,8 +130,10 @@ async def post_analyze_prescription(
         "validation": validation_meta
     }
 
-from pydantic import BaseModel
 from typing import Optional
+
+from pydantic import BaseModel
+
 
 class ConfirmedMedicationItem(BaseModel):
     name: str
@@ -162,14 +151,14 @@ class ConfirmMedicationsRequest(BaseModel):
 async def confirm_medications(request_id: str, body: ConfirmMedicationsRequest, request: Request):
     pending = getattr(request.app.state, "pending_analyses", {})
     analysis = pending.get(request_id)
-    
+
     if not analysis:
         raise HTTPException(status_code=404, detail="Analysis request not found or expired")
-        
+
     analysis["confirmed_medications"] = body.confirmed_medications
     if "confirmation_event" in analysis:
         analysis["confirmation_event"].set()
-        
+
     return {"status": "success", "confirmed": body.confirmed_medications}
 
 @router.get(
@@ -197,17 +186,17 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
     async def pipeline_stream():
         """Execute the analysis pipeline and emit SSE events."""
         start_time = time.time()
-        
+
         try:
             from adaptive_trust_medical_rag.services.live_application import LiveMedicalRAGService
             service = LiveMedicalRAGService(request.app.state)
-            
+
             # Support both direct_drugs and prescription_image
             drug_names = []
             patient_context_dict = None
             image_bytes = None
             image_meta = None
-            
+
             if analysis.get("type") == "prescription_image":
                 image_bytes = analysis.get("image_bytes")
                 image_meta = analysis.get("image_meta")
@@ -230,7 +219,7 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 analysis_state=analysis
             ):
                 yield await _sse_event(event_dict["event"], event_dict["data"])
-                
+
         except Exception as e:
             log.error("Pipeline error for %s: %s", request_id, e)
             import traceback
@@ -256,7 +245,7 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
 
 def _ts() -> str:
     """Current ISO timestamp."""
-    from datetime import datetime, UTC
+    from datetime import UTC, datetime
     return datetime.now(UTC).isoformat()
 
 

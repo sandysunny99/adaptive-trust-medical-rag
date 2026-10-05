@@ -1,7 +1,10 @@
-import pytest
 from io import BytesIO
+
+import pytest
 from PIL import Image
-from adaptive_trust_medical_rag.services.image_validator import ImageValidator, ImageValidationError
+
+from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
+
 
 def create_test_image_bytes(format="JPEG", size=(100, 100)):
     img = Image.new("RGB", size, color="white")

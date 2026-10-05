@@ -16,7 +16,6 @@ from adaptive_trust_medical_rag.llm_backend.provider_errors import (
     classify_provider_error,
 )
 from adaptive_trust_medical_rag.llm_backend.provider_rate_limit import (
-    RateLimitObservation,
     TelemetryConfidence,
     from_rate_limit_info,
 )
@@ -31,7 +30,6 @@ from adaptive_trust_medical_rag.llm_routing.types import (
     RateLimitInfo,
     RoutingMode,
 )
-
 
 # ═══════════════════════════════════════════════════════════════════════
 # A. ERROR CLASSIFICATION TESTS

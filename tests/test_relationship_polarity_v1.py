@@ -1,6 +1,10 @@
 import unittest
-from adaptive_trust_medical_rag.security_extensions.relationship_grounding_v2 import RelationshipGroundingValidatorV2
+
 from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate
+from adaptive_trust_medical_rag.security_extensions.relationship_grounding_v2 import (
+    RelationshipGroundingValidatorV2,
+)
+
 
 class TestRelationshipPolarity(unittest.TestCase):
     def setUp(self):
@@ -12,7 +16,7 @@ class TestRelationshipPolarity(unittest.TestCase):
                 }
             }
         }
-    
+
     def run_case(self, query, candidate_text):
         store = {
             "doc_test": {
@@ -65,7 +69,7 @@ class TestRelationshipPolarity(unittest.TestCase):
         query = "Does atorvastatin interact with aspirin?"
         candidate_text = "Atorvastatin interacts with aspirin and no interaction exists."
         decision = self.run_case(query, candidate_text)
-        # In our implementation, multiple contradictory relations will end up setting the polarity to NEGATED 
+        # In our implementation, multiple contradictory relations will end up setting the polarity to NEGATED
         # because of the `elif` priority in `_extract_relations`, or it might extract just one.
         # Given "no interaction exists" has higher priority in our code:
         # It's better to update our code to return AMBIGUOUS for this.

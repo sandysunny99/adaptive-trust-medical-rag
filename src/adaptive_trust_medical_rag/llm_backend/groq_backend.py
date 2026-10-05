@@ -41,7 +41,7 @@ class GroqBackend:
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
         }
-        
+
         payload = {
             "model": self.model_name,
             "messages": [{"role": "user", "content": prompt}],
@@ -51,7 +51,7 @@ class GroqBackend:
             payload["max_tokens"] = self.max_tokens
         if response_format is not None:
             payload["response_format"] = response_format
-        
+
         response: Any = None
         async with httpx.AsyncClient() as client:
             try:
@@ -64,7 +64,7 @@ class GroqBackend:
                 raise ModelExecutionError(f"Unexpected error: {e}", status_code="INTERNAL_ERROR") from e
 
         from adaptive_trust_medical_rag.llm_routing.types import RateLimitInfo
-        
+
         # Extract rate limits
         rate_limit_info = None
         if response is not None:
@@ -81,7 +81,7 @@ class GroqBackend:
                 self.last_rate_limit_info = rate_limit_info
             except Exception:
                 pass  # nosec B110
-            
+
         if response.status_code != 200:
             error_msg = f"Groq API error (status {response.status_code})"
             try:
@@ -96,14 +96,14 @@ class GroqBackend:
         t1 = time.perf_counter()
 
         data = response.json()
-        
+
         choices = data.get("choices", [])
         if not choices:
             raise ModelExecutionError("Empty response from Groq API", status_code="EMPTY_RESPONSE")
-            
+
         message = choices[0].get("message", {})
         response_text = message.get("content", "")
-        
+
         if not response_text:
             raise ModelExecutionError("Empty content from Groq API", status_code="EMPTY_RESPONSE")
 

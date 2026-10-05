@@ -1,10 +1,12 @@
+from unittest.mock import AsyncMock, patch
+
 import pytest
-import httpx
-from unittest.mock import patch, AsyncMock
-from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import OpenAICompatibleBackend
-from adaptive_trust_medical_rag.llm_backend.live_provider_router import LiveProviderRouter
+
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
+from adaptive_trust_medical_rag.llm_backend.live_provider_router import LiveProviderRouter
+from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import OpenAICompatibleBackend
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
+
 
 @pytest.fixture
 def nvidia_backend():
@@ -52,29 +54,29 @@ async def test_nvidia_structured_parsing(nvidia_backend):
 @pytest.mark.asyncio
 async def test_live_router_fallback():
     router = LiveProviderRouter(primary_provider="nvidia", secondary_provider="groq")
-    
+
     mock_nvidia = AsyncMock()
     # Simulate a network/timeout error that should trigger fallback
     err = ModelExecutionError("Timeout", status_code="TIMEOUT")
     err.failure_class = FailureClass.TIMEOUT
     mock_nvidia.generate_structured.side_effect = err
-    
+
     mock_groq = AsyncMock()
     class DummyRes:
         pass
     mock_groq.generate_structured.return_value = DummyRes()
-    
+
     router.register_provider("nvidia", mock_nvidia)
     router.register_provider("groq", mock_groq)
-    
+
     res = await router.generate_structured("test", {})
     assert isinstance(res, DummyRes)
-    
+
     # Simulate a non-fallback error (semantic/content)
     err_semantic = ModelExecutionError("Schema error", status_code="400")
     err_semantic.failure_class = FailureClass.INVALID_REQUEST
     mock_nvidia.generate_structured.side_effect = err_semantic
-    
+
     try:
         await router.generate_structured("test", {})
         assert False, "Should not fallback for INVALID_REQUEST"

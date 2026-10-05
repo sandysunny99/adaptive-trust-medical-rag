@@ -1,24 +1,22 @@
 """LLM Provider Router — availability-only routing with retry, circuit breaking, and failover."""
 from __future__ import annotations
 
-import asyncio
 import logging
 import time
-import uuid
 from datetime import UTC, datetime
 from typing import Any
 
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 from adaptive_trust_medical_rag.llm_routing.circuit_breaker import CircuitBreaker
-from adaptive_trust_medical_rag.llm_routing.config import ProviderConfig, RoutingConfig
+from adaptive_trust_medical_rag.llm_routing.config import RoutingConfig
 from adaptive_trust_medical_rag.llm_routing.health import ProviderHealthRegistry
 from adaptive_trust_medical_rag.llm_routing.retry import RetryPolicy
 from adaptive_trust_medical_rag.llm_routing.types import (
+    FAILOVER_ELIGIBLE,
     AllProvidersUnavailableError,
     CircuitState,
     ExperimentProviderUnavailable,
     FailureClass,
-    FAILOVER_ELIGIBLE,
     ProviderAttemptResult,
     RateLimitInfo,
     RoutingMode,
@@ -45,7 +43,7 @@ class LLMProviderRouter:
 
     async def generate(self, prompt: str, case_id: str | None = None) -> ProviderAttemptResult:
         is_scientific = self.config.mode == RoutingMode.SCIENTIFIC
-        
+
         # Build eligible provider list
         providers_to_try = []
         for p in self.config.providers:
@@ -62,7 +60,7 @@ class LLMProviderRouter:
             if p.priority >= 3 and p.name not in ("cloudflare", "huggingface") and not self.config.tertiary_enabled:
                 continue
             providers_to_try.append(p.name)
-            
+
         if not providers_to_try:
             raise AllProvidersUnavailableError([])
 
@@ -75,11 +73,11 @@ class LLMProviderRouter:
             circuit_breaker = self.circuit_breakers.get(provider_name)
             backend = self.backends[provider_name]
             retry_policy = RetryPolicy(
-                self.config.retry_base_delay, 
-                self.config.retry_max_delay, 
+                self.config.retry_base_delay,
+                self.config.retry_max_delay,
                 self.config.retry_jitter
             )
-            
+
             if circuit_breaker and circuit_breaker.state == CircuitState.OPEN:
                 logger.warning(f"Skipping {provider_name}, circuit is OPEN.")
                 continue
@@ -91,23 +89,23 @@ class LLMProviderRouter:
                 start_time = time.monotonic()
                 try:
                     result = await backend.generate(prompt)
-                    
+
                     latency = time.monotonic() - start_time
-                    
+
                     rate_limit = getattr(result, "rate_limit", None)
                     if not isinstance(rate_limit, RateLimitInfo):
                         rate_limit = None
-                        
+
                     self.health_registry.record_success(provider_name, latency)
                     if circuit_breaker:
                         circuit_breaker.record_success()
-                        
+
                     logger.info(f"Attempt {attempt_num} for {provider_name} succeeded in {latency:.2f}s")
-                    
+
                     expected_prov = self.config.providers[0].name if self.config.providers else None
                     expected_mod = self.providers_by_name[expected_prov].model_id if expected_prov in self.providers_by_name else None
                     actual_mod = getattr(result, "model", None)
-                    
+
                     return ProviderAttemptResult(
                         provider=provider_name,
                         model=actual_mod or "",
@@ -126,13 +124,13 @@ class LLMProviderRouter:
                         provider_match=(provider_name == expected_prov),
                         experimental_mode=self.config.mode
                     )
-                    
+
                 except Exception as e:
                     latency = time.monotonic() - start_time
                     error_msg = str(e)
-                    
+
                     failure_class = getattr(e, "failure_class", FailureClass.UNKNOWN)
-                    
+
                     # Fallback classification if not explicitly marked
                     if failure_class == FailureClass.UNKNOWN:
                         lower_msg = error_msg.lower()
@@ -146,17 +144,17 @@ class LLMProviderRouter:
                             failure_class = FailureClass.INVALID_REQUEST
                         elif "500" in error_msg or "502" in error_msg or "503" in error_msg:
                             failure_class = FailureClass.TRANSIENT_PROVIDER
-                            
+
                     self.health_registry.record_failure(provider_name, failure_class)
                     if circuit_breaker:
                         circuit_breaker.record_failure(failure_class)
-                        
+
                     logger.warning(f"Attempt {attempt_num} for {provider_name} failed: {error_msg}")
-                    
+
                     if failure_class not in FAILOVER_ELIGIBLE:
                         # Non-transient error, raise immediately without retry or failover
                         raise ModelExecutionError(f"Non-transient error from {provider_name}: {error_msg}") from e
-                    
+
                     if attempt_num < max_attempts:
                         delay = retry_policy.get_delay(attempt_num)
                         logger.info(f"Retrying {provider_name} in {delay:.2f}s")
@@ -165,7 +163,7 @@ class LLMProviderRouter:
                     else:
                         logger.error(f"Exhausted retries for {provider_name}")
                         break
-                    
+
             if not is_scientific:
                 # In non-scientific mode, we just break out of this provider loop if it fails, and move to next
                 pass

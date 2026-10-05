@@ -1,11 +1,10 @@
 """RoutedLLMBackend — adapts LLMProviderRouter to the orchestrator's LLMBackend protocol."""
 from __future__ import annotations
 
-from adaptive_trust_medical_rag.llm_routing.router import LLMProviderRouter
 from typing import Any
+
+from adaptive_trust_medical_rag.llm_routing.router import LLMProviderRouter
 from adaptive_trust_medical_rag.llm_routing.types import (
-    AllProvidersUnavailableError,
-    ExperimentProviderUnavailable,
     ProviderAttemptResult,
 )
 
@@ -26,14 +25,14 @@ class RoutedLLMBackend:
 
     async def generate(self, prompt: str) -> Any:
         """Generate via the provider router. Returns a ModelGenerationResult."""
-        from adaptive_trust_medical_rag.common.model_result import ModelGenerationResult
-        import uuid
-        from datetime import datetime, UTC
         import hashlib
-        
+        import uuid
+
+        from adaptive_trust_medical_rag.common.model_result import ModelGenerationResult
+
         result = await self._router.generate(prompt)
         self.last_result = result
-        
+
         return ModelGenerationResult(
             provider=result.actual_provider or result.provider,
             model=result.actual_model or result.model,

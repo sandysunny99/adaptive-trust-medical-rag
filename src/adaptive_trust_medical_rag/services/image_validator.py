@@ -1,7 +1,8 @@
-import io
 import hashlib
+import io
 import logging
-from typing import Tuple, Dict, Any
+from typing import Any, Dict
+
 from PIL import Image
 
 log = logging.getLogger(__name__)
@@ -16,7 +17,7 @@ class ImageValidationError(Exception):
 
 class ImageValidator:
     """Validates and preprocesses untrusted image uploads."""
-    
+
     @staticmethod
     def validate_and_preprocess(file_bytes: bytes, filename: str, content_type: str) -> Dict[str, Any]:
         """
@@ -34,7 +35,7 @@ class ImageValidator:
         # 2. MIME/Extension Check
         if content_type not in ALLOWED_MIME_TYPES:
             raise ImageValidationError(f"Unsupported MIME type: {content_type}")
-        
+
         ext = filename.lower().split('.')[-1]
         if f".{ext}" not in ALLOWED_EXTENSIONS:
             raise ImageValidationError(f"Unsupported file extension: .{ext}")
@@ -55,7 +56,7 @@ class ImageValidator:
             with Image.open(io.BytesIO(file_bytes)) as img:
                 width, height = img.size
                 img_format = img.format
-                
+
                 # We could do resize/orientation here if needed, but for now we just validate.
                 # Returning metadata
                 return {

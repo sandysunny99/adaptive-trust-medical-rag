@@ -1,8 +1,13 @@
 from __future__ import annotations
+
+import re
 from dataclasses import dataclass
 from typing import Any
-import re
-from adaptive_trust_medical_rag.security_extensions.boundary_enforcer import EntityDomain, ActionType
+
+from adaptive_trust_medical_rag.security_extensions.boundary_enforcer import (
+    ActionType,
+    EntityDomain,
+)
 
 
 class ActionParseError(Exception):
@@ -41,10 +46,10 @@ def parse_action_request(
     match = _ACTION_PATTERN.search(llm_output)
     if not match:
         return None  # No action in output — it's a normal claim response
-    
+
     action_type_str = match.group(1)
     domain_str = match.group(2)
-    
+
     # Validate action type — fail closed on unknown
     try:
         action_type = ActionType(action_type_str)
@@ -53,7 +58,7 @@ def parse_action_request(
             f"Unknown action type: '{action_type_str}'. "
             f"Valid types: {[a.value for a in ActionType]}"
         )
-    
+
     # Validate domain — fail closed on unknown
     try:
         domain = EntityDomain(domain_str)
@@ -62,7 +67,7 @@ def parse_action_request(
             f"Unknown entity domain: '{domain_str}'. "
             f"Valid domains: {[d.value for d in EntityDomain]}"
         )
-    
+
     return AgentActionRequest(
         principal=principal,
         entity_domain=domain,

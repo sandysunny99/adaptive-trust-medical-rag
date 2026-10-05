@@ -34,11 +34,6 @@ from typing import Any
 
 import pytest
 
-from adaptive_trust_medical_rag.evaluation.evaluator import (
-    DatasetSplit,
-    EvalCase,
-    QueryType,
-)
 from adaptive_trust_medical_rag.evaluation.live_variants import SimpleEmbeddingModel
 from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
 from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
@@ -46,7 +41,6 @@ from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
     HybridRetrievalEngine,
     ScoredCandidate,
 )
-
 
 # ---------------------------------------------------------------------------
 # Synthetic corpus — deterministic, NOT from Phase 15

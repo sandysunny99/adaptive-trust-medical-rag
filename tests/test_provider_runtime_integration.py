@@ -18,29 +18,20 @@ These tests prove safety for future runs only.
 import json
 import time
 
-import pytest
-
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 from adaptive_trust_medical_rag.llm_backend.provider_errors import (
-    ProviderErrorClassification,
     classify_provider_error,
 )
 from adaptive_trust_medical_rag.llm_backend.provider_rate_limit import (
-    RateLimitObservation,
-    TelemetryConfidence,
     from_rate_limit_info,
 )
 from adaptive_trust_medical_rag.llm_backend.provider_redaction import (
     redact_secrets,
-    redact_secrets_detailed,
 )
 from adaptive_trust_medical_rag.llm_routing.types import (
-    FAILOVER_ELIGIBLE,
-    FailureClass,
     RateLimitInfo,
     RoutingMode,
 )
-
 
 # ═══════════════════════════════════════════════════════════════════════
 # A. INTEGRATED ERROR CLASSIFICATION → LEDGER RECORDING

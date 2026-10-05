@@ -1,7 +1,8 @@
-import pytest
 import asyncio
-from typing import Any
+
+import pytest
 from fastapi.testclient import TestClient
+
 from adaptive_trust_medical_rag.api.app import app
 from adaptive_trust_medical_rag.services.live_application import LiveMedicalRAGService
 
@@ -23,12 +24,12 @@ class MockRxNormClient:
         if name.lower() == "warfarin": return "11289"
         if name.lower() == "aspirin": return "1191"
         return None
-        
+
     async def get_generic_name(self, rxcui: str) -> str | None:
         if rxcui == "11289": return "warfarin"
         if rxcui == "1191": return "aspirin"
         return None
-        
+
     async def get_rxcui_approximate(self, name: str):
         if name.lower() == "warfarn": return "11289", "warfarin"
         if name.lower() == "ambiguous_drug": return None, None
@@ -41,7 +42,12 @@ def setup_mock_normalizer(app):
         rxnorm_client=MockRxNormClient(),
         use_api=True
     )
-    from adaptive_trust_medical_rag.llm_backend.vision_interfaces import VisionProviderAdapter, ExtractionResult, MedicationCandidate, ExtractionConfidence
+    from adaptive_trust_medical_rag.llm_backend.vision_interfaces import (
+        ExtractionConfidence,
+        ExtractionResult,
+        MedicationCandidate,
+        VisionProviderAdapter,
+    )
     class MockVisionBackend(VisionProviderAdapter):
         provider_name = "mock_vision"
         model_name = "mock_model"
@@ -54,13 +60,13 @@ def setup_mock_normalizer(app):
                 warnings=[]
             )
     app.state.vision_backend = MockVisionBackend()
-    
+
     # Ensure retrieval is mocked so it doesn't fail if we reach it
     class MockRetrievalEngine:
         async def retrieve_evidence(self, *args, **kwargs):
             return [], {}
     app.state.retrieval_engine = MockRetrievalEngine()
-    
+
     # Mock LLM backend
     class MockLLMBackend:
         async def generate_structured(self, *args, **kwargs):
@@ -135,14 +141,14 @@ async def test_7_rxnorm_failure_handled():
     class FailingRxNormClient(MockRxNormClient):
         async def get_rxcui_exact(self, name: str):
             raise Exception("API Timeout")
-    
+
     from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
     app.state.drug_normalizer = DrugNormalizer(
         cache=MockEntityCache(),
         rxnorm_client=FailingRxNormClient(),
         use_api=True
     )
-    
+
     service = LiveMedicalRAGService(app.state)
     # Use a name not in the mock cache to force RxNorm call
     events = [e async for e in service.execute("req7", ["trigger_failure_drug"], None, 0)]
@@ -156,7 +162,7 @@ async def test_7_rxnorm_failure_handled():
 async def test_8_edited_candidate_preserves_raw_ocr_value():
     """TEST 8: edited candidate preserves raw OCR value"""
     service = LiveMedicalRAGService(app.state)
-    
+
     analysis_state = {
         "confirmed_medications": [
             {
@@ -169,10 +175,10 @@ async def test_8_edited_candidate_preserves_raw_ocr_value():
         "confirmation_event": asyncio.Event()
     }
     analysis_state["confirmation_event"].set()
-    
+
     events = [e async for e in service.execute("req8", [], None, 0, b"image", {}, analysis_state)]
     rxnorm_event = next(e for e in events if e["event"] == "rxnorm")
-    
+
     entity = rxnorm_event["data"]["entities"][0]
     assert entity["raw_detected_name"] == "Warf...rin"
     assert entity["source"] == "USER_EDITED"
@@ -211,13 +217,13 @@ async def test_10_user_added_medication_retains_origin():
 @pytest.mark.asyncio
 async def test_11_unconfirmed_medication_blocked():
     """TEST 11: unconfirmed medication cannot proceed"""
-    # The API layer blocks this by waiting indefinitely on the event, 
+    # The API layer blocks this by waiting indefinitely on the event,
     # but we can verify the service doesn't advance past extraction if the event isn't set.
     service = LiveMedicalRAGService(app.state)
     analysis_state = {
         "confirmation_event": asyncio.Event() # NOT set
     }
-    
+
     async def run_pipeline():
         events = []
         async for e in service.execute("req11", [], None, 0, b"img", {}, analysis_state):
@@ -225,7 +231,7 @@ async def test_11_unconfirmed_medication_blocked():
             if e["event"] == "confirmation_required":
                 break
         return events
-        
+
     events = await asyncio.wait_for(run_pipeline(), timeout=1.0)
     assert events[-1]["event"] == "confirmation_required"
 
@@ -262,11 +268,11 @@ async def test_14_no_llm_before_successful_normalization():
 async def test_15_paths_converge():
     """TEST 15: direct-drug path and prescription-confirmed path both invoke the same DrugNormalizer implementation"""
     service = LiveMedicalRAGService(app.state)
-    
+
     # Path 1: Direct
     events1 = [e async for e in service.execute("req15a", ["warfarin"], None, 0)]
     rxnorm1 = next(e for e in events1 if e["event"] == "rxnorm")
-    
+
     # Path 2: Prescription confirmed
     analysis_state = {
         "confirmed_medications": [{"name": "warfarin", "status": "CONFIRMED", "source": "VISION"}],
@@ -275,13 +281,14 @@ async def test_15_paths_converge():
     analysis_state["confirmation_event"].set()
     events2 = [e async for e in service.execute("req15b", [], None, 0, b"img", {}, analysis_state)]
     rxnorm2 = next(e for e in events2 if e["event"] == "rxnorm")
-    
+
     assert rxnorm1["data"]["entities"][0]["rxcui"] == rxnorm2["data"]["entities"][0]["rxcui"]
     assert rxnorm2["data"]["entities"][0]["source"] == "VISION"
 
 # Also do a quick API integration test to satisfy C4 requirements
 def create_test_image_bytes(format="JPEG", size=(100, 100)):
     import io
+
     from PIL import Image
     img = Image.new("RGB", size, color="white")
     buf = io.BytesIO()
@@ -295,7 +302,7 @@ def test_api_integration():
     response1 = client.post("/api/v1/analyze/prescription", files=files)
     assert response1.status_code == 200
     request_id = response1.json()["request_id"]
-    
+
     confirm_payload = {
         "confirmed_medications": [
             {"name": "warfarin", "status": "CONFIRMED", "source": "VISION"},

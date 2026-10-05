@@ -1,10 +1,11 @@
 import pytest
-from adaptive_trust_medical_rag.security_extensions.relationship_grounding_v2 import (
-    RelationshipGroundingValidatorV2,
-    RelationshipGroundingStatus,
-    GroundingDecision
-)
+
 from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate
+from adaptive_trust_medical_rag.security_extensions.relationship_grounding_v2 import (
+    RelationshipGroundingStatus,
+    RelationshipGroundingValidatorV2,
+)
+
 
 @pytest.fixture
 def registry():
@@ -31,7 +32,7 @@ def test_1_explicit_supported_relationship(validator):
     cand = Candidate(text="Statin interacts with aspirin.", document_id="doc_1", chunk_id="chunk_1", metadata={})
     query = "Does statin interact with aspirin?"
     decision = validator.validate(cand, query)
-    
+
     assert decision.status == RelationshipGroundingStatus.SUPPORTED
     assert decision.reason == "Relationship supported by source."
 
@@ -48,7 +49,7 @@ def test_3_unsupported_relationship(validator):
     cand = Candidate(text="Statin interacts with aspirin.", document_id="doc_2", chunk_id="chunk_1", metadata={})
     query = "Does statin interact with aspirin?"
     decision = validator.validate(cand, query)
-    
+
     assert decision.status == RelationshipGroundingStatus.UNSUPPORTED
     assert decision.reason == "Candidate introduces a relationship absent from source."
 
@@ -57,7 +58,7 @@ def test_4_absent_relationship(validator):
     cand = Candidate(text="Statin is a drug. Cyanide is a poison.", document_id="doc_2", chunk_id="chunk_1", metadata={})
     query = "Does statin interact with cyanide?"
     decision = validator.validate(cand, query)
-    
+
     assert decision.status == RelationshipGroundingStatus.NO_RELEVANT_RELATION
     assert "Candidate contains no relationship" in decision.reason
 
@@ -66,7 +67,7 @@ def test_5_contradictory_relationship(validator):
     cand = Candidate(text="Metformin interacts with aspirin.", document_id="doc_3", chunk_id="chunk_1", metadata={})
     query = "interaction metformin aspirin"
     decision = validator.validate(cand, query)
-    
+
     assert decision.status == RelationshipGroundingStatus.CONTRADICTED
 
 def test_6_entity_alias(validator):

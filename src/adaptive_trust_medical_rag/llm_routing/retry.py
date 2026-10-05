@@ -1,8 +1,9 @@
 from __future__ import annotations
+
 import random
-import time
 from dataclasses import dataclass
-from adaptive_trust_medical_rag.llm_routing.types import FailureClass, FAILOVER_ELIGIBLE
+
+from adaptive_trust_medical_rag.llm_routing.types import FAILOVER_ELIGIBLE, FailureClass
 
 
 @dataclass

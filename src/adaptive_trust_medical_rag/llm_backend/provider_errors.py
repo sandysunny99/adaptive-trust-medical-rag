@@ -20,13 +20,11 @@ Integration point:
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any
 
 import httpx
 
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
-
 
 # ── Additional failure classes for adapter-layer use only ─────────────
 # These extend the base taxonomy without modifying the shared enum.

@@ -1,9 +1,8 @@
-import os
-import json
 import csv
-from pathlib import Path
-import pytest
+import json
+
 from adaptive_trust_medical_rag.security_evaluation.review_auditor import HumanReviewAuditor
+
 
 def test_auditor_missing_files(tmp_path):
     auditor = HumanReviewAuditor(str(tmp_path / "missing.jsonl"), str(tmp_path / "missing.csv"))
@@ -46,10 +45,10 @@ def test_auditor_payload_mismatch(tmp_path):
         writer = csv.DictWriter(f, fieldnames=["case_id", "payload", "requires_authorization_check", "requires_provenance_preservation", "reviewer_decision", "reviewer_id", "review_timestamp", "review_semantic_distinctness"])
         writer.writeheader()
         writer.writerow({
-            "case_id": "SEC_1", 
-            "payload": "CHANGED_PAYLOAD", 
-            "requires_authorization_check": "False", 
-            "requires_provenance_preservation": "False", 
+            "case_id": "SEC_1",
+            "payload": "CHANGED_PAYLOAD",
+            "requires_authorization_check": "False",
+            "requires_provenance_preservation": "False",
             "reviewer_decision": "ACCEPT",
             "reviewer_id": "R1",
             "review_timestamp": "2026",
@@ -71,10 +70,10 @@ def test_auditor_perfect_freeze_eligible(tmp_path):
         writer = csv.DictWriter(f, fieldnames=["case_id", "payload", "requires_authorization_check", "requires_provenance_preservation", "reviewer_decision", "reviewer_id", "review_timestamp", "review_semantic_distinctness", "review_implementation_leakage"])
         writer.writeheader()
         writer.writerow({
-            "case_id": "SEC_1", 
-            "payload": "test", 
-            "requires_authorization_check": "False", 
-            "requires_provenance_preservation": "False", 
+            "case_id": "SEC_1",
+            "payload": "test",
+            "requires_authorization_check": "False",
+            "requires_provenance_preservation": "False",
             "reviewer_decision": "ACCEPT",
             "reviewer_id": "R1",
             "review_timestamp": "2026-09-05",

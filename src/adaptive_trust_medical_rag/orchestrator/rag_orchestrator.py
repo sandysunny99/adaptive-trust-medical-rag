@@ -31,19 +31,10 @@ import hashlib
 import re
 import uuid
 from dataclasses import dataclass, field
-from adaptive_trust_medical_rag.security.security_context import SecurityDecision, SecurityState, SecurityContext
-from adaptive_trust_medical_rag.security_extensions.injection_detector import PromptInjectionDetector
-from adaptive_trust_medical_rag.security_extensions.poisoning_detector import RetrievalPoisoningDetector
-from adaptive_trust_medical_rag.security_extensions.boundary_enforcer import AuthorizationBoundary, EntityDomain, ActionType
-from adaptive_trust_medical_rag.security.agent_action import parse_action_request, ActionParseError, AgentActionRequest
-from adaptive_trust_medical_rag.security.tool_executor import ToolExecutor
 from datetime import UTC, datetime
 from enum import Enum
 from typing import Protocol, runtime_checkable
 
-from adaptive_trust_medical_rag.ingestion.evidence_ingestion import (
-    inspect_for_poisoning,
-)
 from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
     Candidate,
     DrugRelationship,
@@ -51,22 +42,40 @@ from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
     HybridRetrievalEngine,
     ScoredCandidate,
 )
+from adaptive_trust_medical_rag.security.agent_action import (
+    ActionParseError,
+    parse_action_request,
+)
 from adaptive_trust_medical_rag.security.sanitizer import sanitize_query
+from adaptive_trust_medical_rag.security.security_context import (
+    SecurityContext,
+    SecurityDecision,
+    SecurityState,
+)
+from adaptive_trust_medical_rag.security.tool_executor import ToolExecutor
+from adaptive_trust_medical_rag.security_extensions.boundary_enforcer import (
+    AuthorizationBoundary,
+)
+from adaptive_trust_medical_rag.security_extensions.injection_detector import (
+    PromptInjectionDetector,
+)
+from adaptive_trust_medical_rag.security_extensions.poisoning_detector import (
+    RetrievalPoisoningDetector,
+)
 from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     AdaptiveTrustScorer,
     TrustFactorScores,
     classify_query_risk,
+)
+from adaptive_trust_medical_rag.verification.canonical_identity import (
+    CanonicalDirection,
+    CanonicalRelationshipIdentity,
 )
 from adaptive_trust_medical_rag.verification.claim_verifier import (
     AnswerSafetyGate,
     EvidenceChunk,
     GateDecision,
     VerificationReport,
-)
-from adaptive_trust_medical_rag.verification.canonical_identity import (
-    CanonicalRelationshipIdentity,
-    CanonicalDirection,
-    normalize_predicate,
 )
 
 # ---------------------------------------------------------------------------
@@ -166,6 +175,8 @@ class RAGResponse:
 
 
 from dataclasses import field
+
+
 @dataclass
 
 class EvidenceEligibilityResult:
@@ -286,7 +297,7 @@ class EvidenceEligibilityGate:
                     rejected_ids.append(cand.chunk_id)
                     reasons[cand.chunk_id] = retrieval_security_states[cand.chunk_id].reason_code
                     continue
-                    
+
             if integrity_states and cand.chunk_id in integrity_states:
                 if integrity_states[cand.chunk_id].status.name == 'MISMATCH':
                     rejected_ids.append(cand.chunk_id)
@@ -411,13 +422,13 @@ class AdaptiveTrustRAGOrchestrator:
         import uuid
         session_id = request.session_id or f"sess_{uuid.uuid4().hex[:8]}"
         request_id = f"req_{uuid.uuid4().hex[:8]}"
-        
+
         security_context = SecurityContext(
             request_id=request_id,
             session_id=session_id,
             principal="USER"
         )
-        
+
         audit: list[dict[str, Any]] = []
 
         def _log(step: str, detail: dict) -> None:
@@ -431,7 +442,7 @@ class AdaptiveTrustRAGOrchestrator:
         security_context.injection_status = injection_decision
         security_context.add_decision(injection_decision)
         _log("prompt_injection_detection", {"decision": injection_decision.decision.value, "reason": injection_decision.reason_code})
-        
+
         if injection_decision.decision == SecurityState.BLOCK:
             return self._abstain(
                 session_id=session_id,
@@ -470,7 +481,7 @@ class AdaptiveTrustRAGOrchestrator:
         # Step 2.5: Build canonical drug RxCUI map
         drug_rxcui_map: dict[str, str] = {}
         if hasattr(self._drug_normalizer, '_cache'):
-            cache = getattr(self._drug_normalizer, '_cache')
+            cache = self._drug_normalizer._cache
             for drug_name in query_drugs:
                 cached = cache.lookup(drug_name)
                 if cached and cached.get('rxcui'):
@@ -498,7 +509,7 @@ class AdaptiveTrustRAGOrchestrator:
                 "chunk_ids": [sc.candidate.chunk_id for sc in candidates],
             },
         )
-        
+
         # Phase 14: Step 4.5 - Retrieval Poisoning Detection
         retrieval_security_states = {}
         for sc in candidates:
@@ -608,14 +619,14 @@ class AdaptiveTrustRAGOrchestrator:
                 audit=audit,
                 security_context=security_context
             )
-        
+
         if action_request is not None:
             _log("action_request_parsed", {
                 "action_type": action_request.action_type.value,
                 "domain": action_request.entity_domain.value,
                 "principal": action_request.principal,
             })
-            
+
             auth_decision = self._auth_boundary.authorize(
                 domain=action_request.entity_domain,
                 action=action_request.action_type,
@@ -628,7 +639,7 @@ class AdaptiveTrustRAGOrchestrator:
                 "decision": auth_decision.decision.value,
                 "reason": auth_decision.reason_code,
             })
-            
+
             if auth_decision.decision == SecurityState.UNAUTHORIZED_ACTION_REJECTED:
                 return self._abstain(
                     session_id=session_id,
@@ -638,7 +649,7 @@ class AdaptiveTrustRAGOrchestrator:
                     audit=audit,
                     security_context=security_context
                 )
-            
+
             # Authorized â€” execute via controlled executor
             exec_record = self._tool_executor.execute(action_request)
             _log("tool_execution", {

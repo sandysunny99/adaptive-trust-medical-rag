@@ -10,7 +10,6 @@ import time
 import uuid
 from datetime import datetime, timezone
 from hashlib import sha256
-from typing import Any
 
 from adaptive_trust_medical_rag.common.model_result import (
     ModelExecutionError,

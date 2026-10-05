@@ -1,5 +1,7 @@
 ﻿from enum import Enum
+
 from adaptive_trust_medical_rag.security.security_context import SecurityDecision, SecurityState
+
 
 class EntityDomain(Enum):
     SYSTEM = "SYSTEM"            # Trusted Control Plane
@@ -41,7 +43,7 @@ class AuthorizationBoundary:
     def authorize(self, domain: EntityDomain, action: ActionType, request_id: str, principal: str) -> SecurityDecision:
         """Check if a principal is authorized to perform an action on a target domain."""
         allowed_actions = self._policy.get(principal, {}).get(domain, set())
-        
+
         if action not in allowed_actions:
             return SecurityDecision(
                 decision=SecurityState.UNAUTHORIZED_ACTION_REJECTED,

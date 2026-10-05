@@ -1,18 +1,22 @@
-import pytest
-import base64
 import json
-import httpx
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
 
-from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
-from adaptive_trust_medical_rag.llm_backend.vision_interfaces import ExtractionConfidence, ExtractionResult
+import httpx
+import pytest
+
 from adaptive_trust_medical_rag.llm_backend.interfaces import ModelExecutionError
+from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
+from adaptive_trust_medical_rag.llm_backend.vision_interfaces import (
+    ExtractionConfidence,
+)
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
-from adaptive_trust_medical_rag.services.image_validator import ImageValidator, ImageValidationError
+from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
+
 
 @pytest.fixture
 def valid_image_bytes():
     import io
+
     from PIL import Image
     img = Image.new("RGB", (100, 100), color="white")
     buf = io.BytesIO()
@@ -44,14 +48,14 @@ async def test_1_successful_structured_extraction(vision_backend, valid_image_by
         "raw_text": "Warfarin 5mg daily",
         "warnings": []
     }
-    
+
     mock_resp_json = {
         "choices": [{"message": {"content": json.dumps(mock_payload)}}]
     }
-    
+
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
-        
+
         result = await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
         assert len(result.candidate_medications) == 1
         assert result.candidate_medications[0].raw_text == "Warfarin 5mg"
@@ -61,17 +65,17 @@ async def test_1_successful_structured_extraction(vision_backend, valid_image_by
 async def test_2_invalid_api_key(vision_backend, valid_image_bytes):
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(401, text="Unauthorized")
-        
+
         with pytest.raises(ModelExecutionError) as exc:
             await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
         assert exc.value.failure_class == FailureClass.AUTHENTICATION
 
 @pytest.mark.asyncio
 async def test_3_missing_api_key():
-    # A missing API key would fail instantiation or validation usually. 
+    # A missing API key would fail instantiation or validation usually.
     # Here we just verify that passing empty string results in the same behavior.
     backend = OpenAIVisionBackend("https://test.api/v1", "", "test-model")
-    
+
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(401, text="Unauthorized")
         with pytest.raises(ModelExecutionError) as exc:
@@ -83,7 +87,7 @@ async def test_4_malformed_json(vision_backend, valid_image_bytes):
     mock_resp_json = {
         "choices": [{"message": {"content": "This is not json { [ "}}]
     }
-    
+
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
         with pytest.raises(ModelExecutionError) as exc:
@@ -95,7 +99,7 @@ async def test_5_schema_failure(vision_backend, valid_image_bytes):
     # Valid JSON, but missing candidates array
     mock_payload = {"some_other_field": True}
     mock_resp_json = {"choices": [{"message": {"content": json.dumps(mock_payload)}}]}
-    
+
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
         result = await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
@@ -181,14 +185,12 @@ async def test_12_empty_extraction(vision_backend, valid_image_bytes):
 
 def test_13_oversized_image_handling():
     # Tested by ImageValidator
-    import io
     oversized = b"0" * (6 * 1024 * 1024) # 6MB
     with pytest.raises(ImageValidationError):
         ImageValidator.validate_and_preprocess(oversized, "test.jpg", "image/jpeg")
 
 def test_14_invalid_image_handling():
     # Tested by ImageValidator
-    import io
     invalid = b"not an image"
     with pytest.raises(ImageValidationError):
         ImageValidator.validate_and_preprocess(invalid, "test.jpg", "image/jpeg")

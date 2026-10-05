@@ -1,7 +1,9 @@
-﻿from enum import Enum
+﻿from datetime import datetime
+from enum import Enum
+from typing import Optional
+
 from pydantic import BaseModel, Field
-from typing import Optional, Any
-from datetime import datetime
+
 
 class SecurityState(str, Enum):
     ALLOW = "ALLOW"

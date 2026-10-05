@@ -1,12 +1,14 @@
 from __future__ import annotations
+
 import re
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Any
+
 from transformers import pipeline
+
 from adaptive_trust_medical_rag.verification.canonical_identity import (
-    CanonicalRelationshipIdentity,
     CanonicalMatchStatus,
+    CanonicalRelationshipIdentity,
     compare_identity,
     extract_claim_identity,
 )
@@ -90,23 +92,23 @@ def decompose_into_claims(answer: str) -> list[AtomicClaim]:
     raw_sentences = sentence_re.split(answer.strip())
     claims = []
     clause_re = re.compile(r",\s*(?:and\s+therefore|and|but|therefore|however|because|while)\s+", re.IGNORECASE)
-    
+
     claim_idx = 0
     for sent in raw_sentences:
         sent = sent.strip()
         if not sent or len(sent) < 10:
             continue
-        
+
         clauses = clause_re.split(sent)
         for clause in clauses:
             clause = clause.strip()
             if len(clause) < 5:
                 continue
-            
+
             citation_ids = [int(m) for m in _CITATION_RE.findall(clause)]
             if not citation_ids:
                 citation_ids = [int(m) for m in _CITATION_RE.findall(sent)]
-                
+
             claims.append(
                 AtomicClaim(
                     text=clause,
@@ -130,7 +132,7 @@ class ClaimVerifierV2:
             kwargs["model_kwargs"] = {"cache_dir": cache_dir}
             kwargs["tokenizer_kwargs"] = {"cache_dir": cache_dir}
         self.classifier = pipeline("text-classification", model=model_id, revision=revision, top_k=None, **kwargs)
-        
+
         self.id2label = self.classifier.model.config.id2label
         self.label_map = {}
         for k, v in self.id2label.items():
@@ -139,10 +141,10 @@ class ClaimVerifierV2:
             elif "contradict" in vl: self.label_map[vl] = "contradiction"
             elif "neutral" in vl: self.label_map[vl] = "neutral"
             else: self.label_map[vl] = vl
-            
+
         if not {"entailment", "contradiction", "neutral"}.issubset(set(self.label_map.values())):
             raise RuntimeError(f"Cannot unambiguously map model labels: {self.id2label}")
-        
+
     def _evaluate_pair(self, premise: str, hypothesis: str) -> dict:
         inputs = {"text": premise, "text_pair": hypothesis}
         try:
@@ -165,7 +167,7 @@ class ClaimVerifierV2:
         interaction_scope = "clinically significant" in p_lower
         mechanism_scope = "pharmacokinetic" in p_lower
         polarity_neg = "no " in p_lower or "not " in p_lower
-        
+
         if polarity_neg and interaction_scope and mechanism_scope:
             overclaims = [
                 "completely safe", "no interaction of any kind",
@@ -180,7 +182,7 @@ class ClaimVerifierV2:
     def _map_to_state(self, max_ent: float, max_con: float, max_neu: float, best_ent_chunk: EvidenceChunk|None, best_con_chunk: EvidenceChunk|None, scope_violated: bool) -> FinalSupportState:
         if scope_violated:
             return FinalSupportState.UNSUPPORTED
-            
+
         if max_con > 0.4 and max_ent > 0.4:
             if max_con - max_ent >= 0.3:
                 return FinalSupportState.CONTRADICTED
@@ -188,16 +190,16 @@ class ClaimVerifierV2:
                 return FinalSupportState.AMBIGUOUS
             if abs(max_ent - max_con) < 0.1:
                 return FinalSupportState.AMBIGUOUS
-                
+
         if max_con > max_ent and max_con > max_neu:
             return FinalSupportState.CONTRADICTED
-            
+
         if max_ent > max_con and max_ent > max_neu:
             return FinalSupportState.SUPPORTED
-            
+
         if max_neu > 0.7:
             return FinalSupportState.INSUFFICIENT_EVIDENCE
-            
+
         return FinalSupportState.UNSUPPORTED
 
     def _determine_parent_state(self, atomic_states: list[FinalSupportState]) -> FinalSupportState:
@@ -216,28 +218,28 @@ class ClaimVerifierV2:
     def verify(self, answer: str, evidence: list[EvidenceChunk], risk_tier="R1", critical_claim_indices: list[int] = None, drug_rxcui_map: dict[str, str] | None = None) -> VerificationReportV2:
         if critical_claim_indices is None:
             critical_claim_indices = []
-            
+
         claims = decompose_into_claims(answer)
-        
+
         for claim in claims:
             if claim.claim_index in critical_claim_indices:
                 claim.is_critical = True
-                
+
         if not claims:
             return VerificationReportV2([], [], 0.0, GateDecision.abstain, "No claims.")
-            
+
         judgments = []
         for claim in claims:
             max_ent = max_con = max_neu = 0.0
             best_ent_chunk = best_con_chunk = best_neu_chunk = None
-            
+
             nli_status = NLIStatus.SUCCESS
             nli_errors = []
-            
+
             citation_present = len(claim.citation_ids) > 0
             cited_chunks = [c for c in evidence if c.citation_index in claim.citation_ids]
             citation_resolves = citation_present and len(cited_chunks) > 0
-            
+
             chunk_evals = {}
             for chunk in evidence:
                 try:
@@ -247,11 +249,11 @@ class ClaimVerifierV2:
                     chunk_evals[chunk.chunk_id] = {"entailment": 0.0, "contradiction": 0.0, "neutral": 1.0}
                     nli_status = NLIStatus.INFERENCE_ERROR
                     nli_errors.append(str(e))
-                    
+
                 ent = chunk_evals[chunk.chunk_id].get("entailment", 0.0)
                 con = chunk_evals[chunk.chunk_id].get("contradiction", 0.0)
                 neu = chunk_evals[chunk.chunk_id].get("neutral", 0.0)
-                
+
                 if ent > max_ent:
                     max_ent = ent
                     best_ent_chunk = chunk
@@ -261,36 +263,36 @@ class ClaimVerifierV2:
                 if neu > max_neu:
                     max_neu = neu
                     best_neu_chunk = chunk
-                    
+
             scope_violated = self._scope_protection(best_ent_chunk, claim.text)
             global_state = self._map_to_state(max_ent, max_con, max_neu, best_ent_chunk, best_con_chunk, scope_violated)
-            
+
             citation_supports = False
             citation_contradicts = False
             claim_missing_factors = []
             claim_trust_score = 0.0
             claim_relationship_scope = None
-            
+
             if citation_resolves:
                 cit_ent = max([chunk_evals[c.chunk_id].get("entailment", 0.0) for c in cited_chunks])
                 cit_con = max([chunk_evals[c.chunk_id].get("contradiction", 0.0) for c in cited_chunks])
                 cit_scope_violated = any(self._scope_protection(c, claim.text) for c in cited_chunks)
-                
+
                 if cit_ent > max(cit_con, max([chunk_evals[c.chunk_id].get("neutral", 0.0) for c in cited_chunks])) and not cit_scope_violated:
                     citation_supports = True
                 if cit_con > max(cit_ent, max([chunk_evals[c.chunk_id].get("neutral", 0.0) for c in cited_chunks])):
                     citation_contradicts = True
-                    
+
                 factors_set = set()
                 for c in cited_chunks:
                     factors_set.update(c.missing_factors)
                 claim_missing_factors = sorted(list(factors_set))
-                
+
                 claim_trust_score = min([c.trust_score for c in cited_chunks]) if cited_chunks else 0.0
                 scopes = [c.relationship_scope for c in cited_chunks if c.relationship_scope]
                 if scopes:
                     claim_relationship_scope = scopes[0]
-                    
+
             # Enforce Provenance (P0)
             if citation_present:
                 if citation_contradicts:
@@ -305,7 +307,7 @@ class ClaimVerifierV2:
                     state = global_state
             else:
                 state = FinalSupportState.UNSUPPORTED
-                
+
             # Canonical Relationship Identity Verification
             canonical_id_status = None
             canonical_id_reason = None
@@ -316,15 +318,15 @@ class ClaimVerifierV2:
                     if c.relationship_identity is not None
                 ]
                 source_identity = source_identities[0] if source_identities else None
-                
+
                 # Extract claim canonical identity
                 claim_identity = extract_claim_identity(claim.text, drug_rxcui_map)
-                
+
                 # Deterministic comparison
                 id_status, id_reason = compare_identity(source_identity, claim_identity)
                 canonical_id_status = id_status.value
                 canonical_id_reason = id_reason
-                
+
                 # Canonical identity enforcement: mismatch or ambiguity overrides
                 if id_status == CanonicalMatchStatus.MISMATCH:
                     state = FinalSupportState.UNSUPPORTED
@@ -333,7 +335,7 @@ class ClaimVerifierV2:
                 elif id_status == CanonicalMatchStatus.UNAVAILABLE:
                     state = FinalSupportState.UNSUPPORTED
                 # MATCH: state remains as determined by NLI/citation/provenance
-                
+
             judgments.append(
                 SemanticJudgment(
                     claim=claim,
@@ -360,22 +362,22 @@ class ClaimVerifierV2:
                     canonical_identity_reason=canonical_id_reason
                 )
             )
-            
+
         parent_groupings = {}
         for j in judgments:
             parent_groupings.setdefault(j.claim.parent_sentence, []).append(j)
-            
+
         for parent, j_list in parent_groupings.items():
             parent_state = self._determine_parent_state([j.support_state for j in j_list])
             for j in j_list:
                 j.parent_sentence_state = parent_state
-        
+
         grounded = sum(1 for j in judgments if j.support_state in (FinalSupportState.SUPPORTED, FinalSupportState.PARTIALLY_SUPPORTED))
         grounding_ratio = grounded / len(claims) if claims else 0.0
-        
+
         states = [j.support_state for j in judgments]
         is_criticals = [j.claim.is_critical for j in judgments]
-        
+
         if any(s == FinalSupportState.CONTRADICTED for s in states):
             decision = GateDecision.abstain
         elif any(s == FinalSupportState.AMBIGUOUS for s in states):
@@ -392,5 +394,5 @@ class ClaimVerifierV2:
             decision = GateDecision.qualify
         else:
             decision = GateDecision.abstain
-            
+
         return VerificationReportV2(claims, judgments, grounding_ratio, decision, f"Gate policy matched: {decision.value}")

@@ -1,9 +1,8 @@
 import csv
 import json
-import hashlib
 from dataclasses import dataclass
-from typing import Dict, List, Optional
 from pathlib import Path
+from typing import Dict, List
 
 
 @dataclass
@@ -34,7 +33,7 @@ class HumanReviewAuditor:
         errors = []
         if not self.candidate_path.exists():
             return ReviewAuditResult(False, False, ["Candidate JSONL missing."], 0, 0, 0, 0, 0)
-        
+
         if not self.review_path.exists():
             return ReviewAuditResult(False, False, ["Review CSV missing."], 0, 0, 0, 0, 0)
 
@@ -60,7 +59,7 @@ class HumanReviewAuditor:
             return ReviewAuditResult(False, False, [f"Failed to load reviews: {e}"], len(canonical_cases), 0, 0, 0, 0)
 
         total_cases = len(canonical_cases)
-        
+
         # 1. Coverage Checks
         if len(reviewed_rows) != total_cases:
             errors.append(f"Row count mismatch. Expected {total_cases}, found {len(reviewed_rows)}.")
@@ -68,7 +67,7 @@ class HumanReviewAuditor:
         review_ids = [r.get("case_id") for r in reviewed_rows]
         if len(set(review_ids)) != len(review_ids):
             errors.append("Duplicate case_id found in review worksheet.")
-            
+
         for cid in canonical_cases:
             if cid not in review_ids:
                 errors.append(f"Missing case_id in review worksheet: {cid}")
@@ -84,9 +83,9 @@ class HumanReviewAuditor:
             if not cid or cid not in canonical_cases:
                 errors.append(f"Unknown or missing case_id in review row: {cid}")
                 continue
-                
+
             canonical = canonical_cases[cid]
-            
+
             # Hash/Payload Verification
             if row.get("payload") != canonical.get("payload"):
                 errors.append(f"Payload mismatch for {cid}.")
@@ -100,12 +99,12 @@ class HumanReviewAuditor:
             if not decision:
                 errors.append(f"Missing reviewer_decision for {cid}")
                 continue
-            
+
             reviewed_cases += 1
-            
+
             if decision not in self.ALLOWED_DECISIONS:
                 errors.append(f"Invalid reviewer_decision for {cid}: {decision}")
-                
+
             if decision == "ACCEPT":
                 accept_count += 1
             elif decision == "REVISE":
@@ -122,19 +121,19 @@ class HumanReviewAuditor:
             sem = row.get("review_semantic_distinctness", "").strip()
             if sem not in ["PASS", "FAIL"]:
                 errors.append(f"Invalid semantic_distinctness for {cid}: {sem}")
-                
+
             leakage = row.get("review_implementation_leakage", "").strip()
             if leakage not in self.ALLOWED_LEAKAGE:
                 errors.append(f"Invalid implementation_leakage for {cid}: {leakage}")
-                
+
             overlap = row.get("cross_taxonomy_overlap", row.get("review_cross_taxonomy_overlap", "")).strip()
             # If the CSV doesn't have cross_taxonomy_overlap exactly, we just ignore if it's not present at all.
             if "cross_taxonomy_overlap" in row or "review_cross_taxonomy_overlap" in row:
                 if overlap not in self.ALLOWED_OVERLAP and overlap != "":
                     errors.append(f"Invalid cross_taxonomy_overlap for {cid}: {overlap}")
 
-            for b_field in ["review_attack_realism", "review_ground_truth_consistency", 
-                            "review_target_consistency", "review_provenance_consistency", 
+            for b_field in ["review_attack_realism", "review_ground_truth_consistency",
+                            "review_target_consistency", "review_provenance_consistency",
                             "review_authorization_consistency", "review_benign_realism"]:
                 val = row.get(b_field, "").strip()
                 if val and val not in self.ALLOWED_BOOLEAN:

@@ -1,7 +1,10 @@
 from __future__ import annotations
-from typing import Protocol, Any, Dict, Optional
+
 from dataclasses import dataclass
+from typing import Any, Dict, Optional, Protocol
+
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
+
 
 @dataclass
 class ProviderResponse:

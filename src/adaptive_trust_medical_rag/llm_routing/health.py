@@ -1,7 +1,8 @@
 from __future__ import annotations
-import statistics
+
 import threading
 from datetime import UTC, datetime
+
 from adaptive_trust_medical_rag.llm_routing.types import (
     CircuitState,
     FailureClass,

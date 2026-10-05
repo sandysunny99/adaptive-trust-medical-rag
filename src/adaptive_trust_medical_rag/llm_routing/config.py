@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
+
 from adaptive_trust_medical_rag.llm_routing.types import RoutingMode
 
 
@@ -74,7 +76,7 @@ class RoutingConfig:
         # Scientific mode forces failover off
         if self.mode == RoutingMode.SCIENTIFIC:
             self.failover_enabled = False
-        
+
         # Load environment preferences if available
         if os.getenv("LLM_SECRET_REDACTION", "").lower() == "false":
             self.secret_redaction = False

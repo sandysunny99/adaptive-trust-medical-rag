@@ -1,7 +1,7 @@
 from __future__ import annotations
+
 import enum
 from dataclasses import dataclass, field
-from datetime import datetime
 
 
 class FailureClass(str, enum.Enum):

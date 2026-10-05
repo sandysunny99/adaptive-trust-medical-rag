@@ -1,11 +1,13 @@
 from __future__ import annotations
+
 import threading
 import time
 from dataclasses import dataclass, field
+
 from adaptive_trust_medical_rag.llm_routing.types import (
+    FAILOVER_ELIGIBLE,
     CircuitState,
     FailureClass,
-    FAILOVER_ELIGIBLE,
 )
 
 

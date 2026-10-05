@@ -54,14 +54,12 @@ async def get_audit(session_id: str, request: Request) -> AuditResponse:
         events=items,
     )
 
-from pydantic import BaseModel
 import hashlib
 import json
 import os as std_os
 
+from pydantic import BaseModel
 
-from pydantic import BaseModel, Field
-from typing import Dict, Any, Optional
 
 class ControlState(BaseModel):
     status: str
@@ -90,12 +88,9 @@ class ResearchState(BaseModel):
     tags=["audit"],
 )
 async def get_research_state() -> ResearchState:
-    import json
-    import hashlib
-    import os as std_os
 
     state = {}
-    
+
     # Dataset Integrity
     dataset_path = 'experiments/manifests/v3_1_human_cases.json'
     try:
@@ -104,7 +99,7 @@ async def get_research_state() -> ResearchState:
             h = hashlib.sha256(raw).hexdigest()
             data = json.loads(raw)
             cases = data if isinstance(data, list) else data.get('cases', [])
-            
+
             if len(cases) == 80 and h == "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc":
                 state['dataset_integrity'] = ControlState(
                     status="PASS",
@@ -117,7 +112,7 @@ async def get_research_state() -> ResearchState:
                     reason="Dataset hash or count mismatch",
                     reference=dataset_path
                 )
-                
+
             # Case Order Integrity
             case_ids = [c.get('case_id') for c in cases if 'case_id' in c]
             if len(case_ids) == 80 and len(set(case_ids)) == 80:
@@ -190,7 +185,7 @@ async def get_research_state() -> ResearchState:
                     reason=info.get('notes', 'Missing notes'),
                     reference=info.get('validation_test', manifest_path)
                 )
-    except Exception as e:
+    except Exception:
         for ctrl in ['trust_evidence_control', 'claim_verification', 'controlled_abstention']:
             state[ctrl] = ControlState(status="NOT_VALIDATED", reason="Manifest missing or invalid", reference=manifest_path)
 
@@ -207,13 +202,13 @@ async def get_research_state() -> ResearchState:
             reason="GROQ_API_KEY environment variable missing",
             reference="os.environ"
         )
-        
+
     state['researcher_authorization'] = ControlState(
         status="PENDING",
         reason="Authorization blocked until all prerequisites pass",
         reference="Manual Researcher Action"
     )
-    
+
     state['real_llm_evaluation'] = ControlState(
         status="NOT_STARTED",
         reason="Experiment has not been started",

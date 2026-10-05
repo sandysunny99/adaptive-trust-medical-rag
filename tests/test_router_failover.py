@@ -6,17 +6,19 @@ and git protection.
 """
 import os
 import subprocess
-import pytest
 from unittest.mock import AsyncMock, MagicMock
-from adaptive_trust_medical_rag.llm_routing.config import RoutingConfig, ProviderConfig
+
+import pytest
+
+from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
+from adaptive_trust_medical_rag.llm_routing.config import ProviderConfig, RoutingConfig
 from adaptive_trust_medical_rag.llm_routing.router import LLMProviderRouter
 from adaptive_trust_medical_rag.llm_routing.types import (
-    FailureClass,
     AllProvidersUnavailableError,
     ExperimentProviderUnavailable,
+    FailureClass,
     RoutingMode,
 )
-from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 
 
 def _make_config(mode=RoutingMode.APPLICATION, tertiary_enabled=False, cloudflare_enabled=False, retry=0):

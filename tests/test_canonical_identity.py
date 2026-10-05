@@ -14,6 +14,7 @@ No external provider. No network. No real LLM.
 from __future__ import annotations
 
 import pytest
+
 from adaptive_trust_medical_rag.verification.canonical_identity import (
     CanonicalDirection,
     CanonicalMatchStatus,
@@ -22,7 +23,6 @@ from adaptive_trust_medical_rag.verification.canonical_identity import (
     extract_claim_identity,
     normalize_predicate,
 )
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Fixtures

@@ -5,9 +5,7 @@ import json
 import math
 import subprocess
 import time
-import uuid
 from dataclasses import dataclass, field
-from datetime import UTC
 from pathlib import Path
 from typing import Any
 
@@ -134,7 +132,7 @@ class LiveModelAdapter:
 
         backend = get_backend()
         import inspect
-        
+
         if not inspect.iscoroutinefunction(backend.generate):
             # Synchronous backend (e.g. SyncLLMBackendAdapter)
             backend.generate(prompt)

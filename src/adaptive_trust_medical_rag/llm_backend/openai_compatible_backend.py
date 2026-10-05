@@ -1,11 +1,13 @@
-import time
 import json
-import httpx
-from datetime import datetime, timezone
+import time
 from typing import Any, Dict, Optional
+
+import httpx
+
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
 from adaptive_trust_medical_rag.llm_backend.interfaces import ProviderAdapter, ProviderResponse
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
+
 
 class OpenAICompatibleBackend(ProviderAdapter):
     def __init__(self, provider_name: str, base_url: str, api_key: str, model_name: str, max_tokens: Optional[int] = None):
@@ -20,7 +22,7 @@ class OpenAICompatibleBackend(ProviderAdapter):
         }
 
     def initialize(self) -> None:
-        pass
+                pass  # nosec B110
 
     async def health_check(self) -> bool:
         # A lightweight request to check models endpoint
@@ -39,7 +41,7 @@ class OpenAICompatibleBackend(ProviderAdapter):
 
     async def _execute(self, prompt: str, response_format: Optional[Dict[str, Any]]) -> ProviderResponse:
         t0 = time.perf_counter()
-        
+
         payload = {
             "model": self.model_name,
             "messages": [{"role": "user", "content": prompt}],
@@ -68,23 +70,23 @@ class OpenAICompatibleBackend(ProviderAdapter):
 
         latency_ms = (time.perf_counter() - t0) * 1000.0
         data = response.json()
-        
+
         choices = data.get("choices", [])
         if not choices:
             raise ModelExecutionError(f"Empty response from {self.provider_name}", status_code="EMPTY_RESPONSE")
-        
+
         message = choices[0].get("message", {})
         content = message.get("content", "")
-        
+
         structured = None
         if response_format:
             try:
                 structured = json.loads(content)
             except Exception:
-                pass
-        
+                pass  # nosec B110
+
         usage = data.get("usage", {})
-        
+
         return ProviderResponse(
             provider=self.provider_name,
             model=self.model_name,
@@ -119,7 +121,7 @@ class OpenAICompatibleBackend(ProviderAdapter):
             err = ModelExecutionError(f"{self.provider_name} server error: {error}", status_code=status_code)
             err.failure_class = FailureClass.TRANSIENT_PROVIDER
             return err
-            
+
         err = ModelExecutionError(f"{self.provider_name} error: {error}", status_code=status_code)
         err.failure_class = FailureClass.UNKNOWN
         return err

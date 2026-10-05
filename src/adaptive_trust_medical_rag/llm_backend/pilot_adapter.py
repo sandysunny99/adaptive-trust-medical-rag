@@ -1,7 +1,8 @@
-﻿import json
-import hashlib
-import time
+﻿import hashlib
+import json
 import os
+import time
+
 import requests
 
 try:
@@ -15,7 +16,7 @@ class LLMProviderAdapter:
         self.execution_mode = execution_mode
         self.model = model
         self.structured_output_method = structured_output_method
-        
+
         if execution_mode == "DIRECT_GROQ":
             self.gateway = "NONE"
             self.provider = "GROQ"
@@ -34,15 +35,15 @@ class LLMProviderAdapter:
             self.base_url = f"https://api-inference.huggingface.co/models/{model}/v1/chat/completions"
         elif execution_mode == "FREELLMAPI_GATEWAY":
             self.gateway = "FREELLMAPI"
-            self.provider = "UNKNOWN_PENDING_RESPONSE" 
+            self.provider = "UNKNOWN_PENDING_RESPONSE"
             self.env_key = "FREELLMAPI_API_KEY"
             self.base_url = os.environ.get("FREELLMAPI_BASE_URL", "https://api.freellmapi.com/v1/chat/completions")
         else:
             raise ValueError(f"Unknown execution mode: {execution_mode}")
-            
+
     def _hash(self, text: str) -> str:
         return hashlib.sha256(text.encode("utf-8")).hexdigest()
-        
+
     def _validate_schema(self, data, schema):
         if HAS_JSONSCHEMA:
             try:
@@ -71,11 +72,11 @@ class LLMProviderAdapter:
                     elif expected == "integer":
                         if not isinstance(node, int) and not (s_node.get("nullable", False) and node is None):
                             raise ValueError(f"{path} must be integer")
-                    
+
                     if "enum" in s_node:
                         if node not in s_node["enum"] and not (s_node.get("nullable", False) and node is None):
                             raise ValueError(f"{path} must be one of {s_node['enum']}")
-            
+
             validate_node(data, schema, "root")
             return True
 
@@ -86,14 +87,14 @@ class LLMProviderAdapter:
         max_tokens = generation_config.get("max_tokens", 2048)
         seed = generation_config.get("seed", 42)
         timeout = generation_config.get("timeout", 120)
-        
+
         start_time = time.time()
         sys_hash = self._hash(system_prompt)
         usr_hash = self._hash(user_prompt)
         ev_hash = self._hash(evidence_text)
-        
+
         canon_schema = json.dumps(schema, sort_keys=True, separators=(',', ':'))
-        
+
         result = {
             "success": False,
             "provider": self.provider,
@@ -117,7 +118,7 @@ class LLMProviderAdapter:
             "evidence_character_count": len(evidence_text),
             "structured_output_method": self.structured_output_method
         }
-        
+
         if self.execution_mode == "DIRECT_CLOUDFLARE" and "MISSING_ACCOUNT_ID" in self.base_url:
             result["error_type"] = "CONFIGURATION_ERROR"
             result["error_message"] = "CLOUDFLARE_ACCOUNT_ID environment variable is missing"
@@ -135,7 +136,7 @@ class LLMProviderAdapter:
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json"
         }
-        
+
         payload = {
             "model": self.model,
             "messages": [
@@ -146,7 +147,7 @@ class LLMProviderAdapter:
             "top_p": top_p,
             "max_tokens": max_tokens
         }
-        
+
         if self.structured_output_method == "NATIVE_JSON_SCHEMA":
             payload["response_format"] = {
                 "type": "json_schema",
@@ -158,16 +159,16 @@ class LLMProviderAdapter:
             }
         elif self.structured_output_method == "JSON_OBJECT":
             payload["response_format"] = {"type": "json_object"}
-            
+
         if seed is not None: payload["seed"] = seed
-        
+
         max_retries = 3
         raw_text = None
-        
+
         for attempt in range(max_retries + 1):
             try:
                 response = requests.post(self.base_url, headers=headers, json=payload, timeout=timeout)
-                
+
                 if self.gateway == "FREELLMAPI":
                     resolved_provider = response.headers.get("X-Routed-Via", "UNKNOWN")
                     fallbacks = response.headers.get("X-Fallback-Attempts", "0")
@@ -176,7 +177,7 @@ class LLMProviderAdapter:
                     result["request_id"] = response.headers.get("x-request-id", "UNKNOWN")
                     if fallbacks != "0" or resolved_provider == "UNKNOWN":
                         result["routing_changed"] = True
-                
+
                 if response.status_code == 400:
                     result["error_type"] = "INVALID_REQUEST"
                     result["error_message"] = response.text
@@ -191,14 +192,14 @@ class LLMProviderAdapter:
                     break
                 elif response.status_code == 429:
                     raise requests.exceptions.RequestException("RATE_LIMIT")
-                    
+
                 response.raise_for_status()
-                
+
                 data = response.json()
                 raw_text = data["choices"][0]["message"]["content"]
                 result["response_sha256"] = self._hash(raw_text)
                 break
-                
+
             except requests.exceptions.Timeout as e:
                 result["retry_count"] = attempt
                 result["error_type"] = "TIMEOUT"
@@ -221,12 +222,12 @@ class LLMProviderAdapter:
                 result["error_message"] = str(e)
                 if attempt == max_retries: break
                 time.sleep(2 ** attempt)
-        
+
         if raw_text:
             try:
                 parsed = json.loads(raw_text)
                 self._validate_schema(parsed, schema)
-                
+
                 # INTEGRATION: ENFORCE LABEL-GRADE CONSISTENCY
                 label = parsed.get("proposed_label")
                 grade = parsed.get("proposed_grade")
@@ -262,7 +263,7 @@ class LLMProviderAdapter:
                     result["success"] = False
                     result["latency_ms"] = int((time.time() - start_time) * 1000)
                     return result
-                    
+
                 claims = parsed.get("evidence_claims", [])
                 for claim in claims:
                     span = claim.get("evidence_span", "")
@@ -272,18 +273,18 @@ class LLMProviderAdapter:
                         result["success"] = False
                         result["latency_ms"] = int((time.time() - start_time) * 1000)
                         return result
-                        
+
                 result["parsed_output"] = parsed
                 result["success"] = True
                 result["error_type"] = None
                 result["error_message"] = None
-                
+
             except json.JSONDecodeError as e:
                 result["error_type"] = "MALFORMED_JSON"
                 result["error_message"] = str(e)
             except ValueError as e:
                 result["error_type"] = "SCHEMA_VALIDATION_FAILED"
                 result["error_message"] = str(e)
-                
+
         result["latency_ms"] = int((time.time() - start_time) * 1000)
         return result

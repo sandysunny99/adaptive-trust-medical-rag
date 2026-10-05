@@ -367,9 +367,10 @@ def test_no_canonical_artifact_mutation():
 # -- 13. Phase 13C Dataset Integrity -------------------------------
 
 def test_v2_dataset_schema():
-    import pytest
     from pathlib import Path
-    
+
+    import pytest
+
     cases_path = Path("experiments/security_evaluation/security_cases_v2.jsonl")
     if not cases_path.exists():
         pytest.skip("v2 dataset not generated yet")

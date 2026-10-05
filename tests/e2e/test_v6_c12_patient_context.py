@@ -1,11 +1,10 @@
-import pytest
 import io
 import json
-import asyncio
 from unittest.mock import patch
-from PIL import Image
-from fastapi.testclient import TestClient
 
+import pytest
+from fastapi.testclient import TestClient
+from PIL import Image
 
 # Mock retrieval to prevent long initialization delays during test setup
 with patch("adaptive_trust_medical_rag.retrieval.hybrid_retrieval.HybridRetrievalEngine") as mock_engine:
@@ -27,7 +26,7 @@ def test_case_1_image_only_no_context():
     res = client.post("/api/v1/analyze/prescription", files=files)
     assert res.status_code == 200
     req_id = res.json()["request_id"]
-    
+
     # Send empty confirm (no patient context was supplied)
     res_confirm = client.post(f"/api/v1/analyze/{req_id}/confirm", json={
         "confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED", "source": "VISION"}]
@@ -48,7 +47,7 @@ def test_case_3_partial_context_missing_values():
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     res = client.post("/api/v1/analyze/prescription", files=files, data={"patient_context": context})
     assert res.status_code == 200
-    
+
     # Validating the stored context has None for missing fields
     req_id = res.json()["request_id"]
     state = _analysis_store[req_id]["patient_context"]
@@ -88,14 +87,14 @@ def test_case_18_malformed_context():
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     res = client.post("/api/v1/analyze/prescription", files=files, data={"patient_context": "{bad_json"})
     assert res.status_code == 400
-    
+
     # Invalid Type (string for age)
     context = json.dumps({"age": "elderly"})
     files2 = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     res2 = client.post("/api/v1/analyze/prescription", files=files2, data={"patient_context": context})
     assert res2.status_code == 400
     assert "age" in res2.json()["detail"].lower()
-    
+
     # Invalid Enum (kidney_impairment = bad)
     context3 = json.dumps({"kidney_impairment": "total_failure"})
     files3 = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
@@ -108,24 +107,24 @@ def test_case_15_request_isolation():
     """Multiple concurrent requests retain strict patient context isolation."""
     c1 = json.dumps({"age": 30})
     c2 = json.dumps({"age": 80})
-    
+
     f1 = {"image": ("p1.jpg", create_test_image(), "image/jpeg")}
     r1 = client.post("/api/v1/analyze/prescription", files=f1, data={"patient_context": c1})
-    
+
     f2 = {"image": ("p2.jpg", create_test_image(), "image/jpeg")}
     r2 = client.post("/api/v1/analyze/prescription", files=f2, data={"patient_context": c2})
-    
+
     f3 = {"image": ("p3.jpg", create_test_image(), "image/jpeg")}
     r3 = client.post("/api/v1/analyze/prescription", files=f3)
-    
+
     id1 = r1.json()["request_id"]
     id2 = r2.json()["request_id"]
     id3 = r3.json()["request_id"]
-    
+
     s1 = _analysis_store[id1]["patient_context"]
     s2 = _analysis_store[id2]["patient_context"]
     s3 = _analysis_store[id3]["patient_context"]
-    
+
     assert s1.age == 30
     assert s2.age == 80
     assert s3 is None

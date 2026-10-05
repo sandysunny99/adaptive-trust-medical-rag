@@ -1,4 +1,4 @@
-﻿import pytest
+﻿from adaptive_trust_medical_rag.security.security_context import SecurityState
 from adaptive_trust_medical_rag.security_extensions import (
     ActionType,
     AuthorizationBoundary,
@@ -6,7 +6,7 @@ from adaptive_trust_medical_rag.security_extensions import (
     PromptInjectionDetector,
     RetrievalPoisoningDetector,
 )
-from adaptive_trust_medical_rag.security.security_context import SecurityState
+
 
 def test_prompt_injection_detection():
     detector = PromptInjectionDetector()
@@ -35,7 +35,7 @@ def test_poisoning_detector_suspicious_source():
 
 def test_policy_context_cannot_alter_policy():
     boundary = AuthorizationBoundary()
-    # Principal "SYSTEM" can alter trust config on SYSTEM domain. 
+    # Principal "SYSTEM" can alter trust config on SYSTEM domain.
     # Let's test if an untrusted principal like "USER" can do it.
     res = boundary.authorize(EntityDomain.SYSTEM, ActionType.MODIFY_TRUST_CONFIG, "req_1", "USER")
     assert res.decision == SecurityState.UNAUTHORIZED_ACTION_REJECTED
@@ -62,7 +62,7 @@ def test_principal_not_equal_to_domain():
     # "USER" (principal) reading "EVIDENCE" (domain) is allowed
     res1 = boundary.authorize(domain=EntityDomain.EVIDENCE, action=ActionType.READ_DATA, request_id="req_1", principal="USER")
     assert res1.decision == SecurityState.ALLOW
-    
+
     # "EVIDENCE" (principal) reading "USER" (domain) is blocked
     res2 = boundary.authorize(domain=EntityDomain.USER, action=ActionType.READ_DATA, request_id="req_1", principal="EVIDENCE")
     assert res2.decision == SecurityState.UNAUTHORIZED_ACTION_REJECTED

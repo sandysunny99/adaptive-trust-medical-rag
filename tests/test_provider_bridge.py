@@ -1,12 +1,15 @@
 import asyncio
-import os
-import pytest
-from unittest.mock import AsyncMock, patch
 
-from adaptive_trust_medical_rag.common.model_result import ModelGenerationResult, ModelExecutionError
-from adaptive_trust_medical_rag.llm_backend.sync_adapter import SyncLLMBackendAdapter
+import pytest
+
+from adaptive_trust_medical_rag.common.model_result import (
+    ModelExecutionError,
+    ModelGenerationResult,
+)
 from adaptive_trust_medical_rag.llm_backend import get_backend
+from adaptive_trust_medical_rag.llm_backend.sync_adapter import SyncLLMBackendAdapter
 from adaptive_trust_medical_rag.llm_routing.routed_llm_backend import RoutedLLMBackend
+
 
 class DummyAsyncBackend:
     async def generate(self, prompt: str) -> ModelGenerationResult:
@@ -111,7 +114,7 @@ def test_gc07_gc08_provider_factory_returns_orchestrator_compatible_backend(monk
     monkeypatch.setenv("LLM_MODE", "LIVE_LLM")
     monkeypatch.setenv("GROQ_API_KEY", "dummy_key")
     backend = get_backend()
-    
+
     assert isinstance(backend, SyncLLMBackendAdapter)
     assert isinstance(backend.async_backend, RoutedLLMBackend)
     import inspect
@@ -122,18 +125,18 @@ def test_gc09_gc10_groq_request_parameters():
     groq = GroqBackend(api_key="key", temperature=0.0)
     assert groq.temperature == 0.0
     assert not hasattr(groq, "seed") # Seed is unsupported in the current config
-    
+
 def test_event_loop_safety():
-    # Calling the sync adapter inside an already running event loop should not crash 
+    # Calling the sync adapter inside an already running event loop should not crash
     # (avoid asyncio.run() conflict)
     adapter = SyncLLMBackendAdapter(DummyAsyncBackend())
-    
+
     async def run_in_loop():
         return adapter.generate("test prompt in loop")
-        
+
     loop = asyncio.new_event_loop()
     result = loop.run_until_complete(run_in_loop())
     loop.close()
-    
+
     assert result == "Response for: test prompt in loop"
 

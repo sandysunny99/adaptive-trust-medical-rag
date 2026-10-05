@@ -1,10 +1,12 @@
 ﻿import asyncio
 import time
-from typing import Any
-from uuid import UUID
 from dataclasses import dataclass
+from typing import Any
+
 import cognee
+
 from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate, ScoredCandidate
+
 
 @dataclass
 class CogneeOutput:
@@ -16,24 +18,24 @@ class CogneeOutput:
 
 class EvidenceMapper:
     """Maps raw Cognee output shapes into the rigorous EvidenceCandidate (Candidate) contract."""
-    
+
     @staticmethod
     def map_chunks(output: CogneeOutput) -> list[Candidate]:
         candidates = []
         if not isinstance(output.result_data, list):
             return candidates
-            
+
         for item in output.result_data:
             # Deterministic identity mapping
             raw_doc_name = item.get('document_name', '')
             doc_id = raw_doc_name.replace('.txt', '') if raw_doc_name else item.get('document_id')
             chunk_idx = item.get('chunk_index', 0)
             chunk_id = f"chunk_{chunk_idx}"
-            
+
             score = item.get('score')
             rank = item.get('rank')
             source_authority = item.get('source_authority', 0.5)
-            
+
             status = "FULL" if (chunk_id and doc_id) else "PROVENANCE_MISSING"
             provenance_dict = {
                 "source": item.get("source", "pubmed"),
@@ -42,7 +44,7 @@ class EvidenceMapper:
                 "status": status,
                 "cognee_internal_id": str(item.get('id', ''))
             } if status == "FULL" else {}
-            
+
             c = Candidate(
                 chunk_id=chunk_id,
                 document_id=str(doc_id) if doc_id else "unknown",
@@ -60,7 +62,7 @@ class EvidenceMapper:
             )
             candidates.append(c)
         return candidates
-        
+
     @staticmethod
     def map_hybrid_completion(output: CogneeOutput) -> list[Candidate]:
         if not isinstance(output.result_data, str):
@@ -72,7 +74,7 @@ class EvidenceMapper:
             source_authority=0.5,
             poisoning_score=0.0,
             metadata={
-                "search_type": output.search_type, 
+                "search_type": output.search_type,
                 "is_compound": True,
                 "score": "NOT_AVAILABLE",
                 "rank": "NOT_AVAILABLE",
@@ -106,35 +108,35 @@ class CogneeRetrievalAdapter:
     async def retrieve_async(self, query: str, top_k: int = 5) -> list[ScoredCandidate]:
         start_time = time.time()
         search_enum = getattr(cognee.SearchType, self.search_type)
-        
+
         if self.dataset_ids:
             results = await cognee.search(query, search_enum, datasets=self.dataset_ids)
         else:
             results = await cognee.search(query, search_enum)
-            
+
         flat_results = []
         for d in results:
             if isinstance(d, dict) and 'search_result' in d:
                 flat_results.extend(d['search_result'])
             else:
                 flat_results.append(d)
-                
+
         latency = time.time() - start_time
-        
+
         output = CogneeOutput(
-            query=query, 
-            search_type=self.search_type, 
-            dataset_id=self.dataset_ids[0] if self.dataset_ids else "unknown", 
-            result_data=flat_results, 
+            query=query,
+            search_type=self.search_type,
+            dataset_id=self.dataset_ids[0] if self.dataset_ids else "unknown",
+            result_data=flat_results,
             latency=latency
         )
-        
+
         candidates = EvidenceMapper.map(output)
-        
+
         scored_candidates = []
         for cand in candidates[:top_k]:
             score = cand.metadata.get("score", 1.0)
             if score == "NOT_AVAILABLE": score = 1.0
             scored_candidates.append(ScoredCandidate(candidate=cand, rrf_score=float(score)))
-            
+
         return scored_candidates

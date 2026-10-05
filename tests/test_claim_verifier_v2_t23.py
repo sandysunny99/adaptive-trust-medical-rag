@@ -1,6 +1,14 @@
-﻿import pytest
-from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2, EvidenceChunk, GateDecision, FinalSupportState, NLIInferenceError, NLIStatus
-import os
+﻿import os
+
+import pytest
+
+from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
+    ClaimVerifierV2,
+    EvidenceChunk,
+    FinalSupportState,
+    NLIInferenceError,
+    NLIStatus,
+)
 
 cache_dir = os.path.abspath('cognee_service/model_cache/huggingface')
 

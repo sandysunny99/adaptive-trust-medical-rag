@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from typing import Any
 
+
 class ModelExecutionError(Exception):
     """Raised when external LLM execution fails or returns an invalid/empty response."""
 

@@ -1,5 +1,7 @@
 import pytest
+
 from experiments.real_llm_evaluation.runner import ExperimentRunner
+
 
 class MockConfig:
     provider = "Groq"
@@ -23,26 +25,26 @@ class MockBackend:
 
 def test_runner_unauthorized_blocks_execution():
     config = MockConfig()
-    
+
     # Initialization should raise an error immediately because it's unauthorized
     with pytest.raises(RuntimeError, match="NOT AUTHORIZED"):
         runner = ExperimentRunner(config)
-        
+
     # Even if initialized somehow, execute_case should block
     config.execution_authorized = True
     runner = ExperimentRunner(config)
     config.execution_authorized = False
-    
+
     backend = MockBackend()
-    
+
     with pytest.raises(RuntimeError, match="NOT AUTHORIZED"):
         runner.execute_case(
-            case_id="case1", 
-            query="test", 
-            evidence=[], 
-            risk_tier="R1", 
-            arm="ARM_A", 
+            case_id="case1",
+            query="test",
+            evidence=[],
+            risk_tier="R1",
+            arm="ARM_A",
             backend_mock=backend
         )
-        
+
     assert backend.call_count == 0

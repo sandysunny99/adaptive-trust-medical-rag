@@ -1,8 +1,9 @@
-import pytest
-from fastapi.testclient import TestClient
-from adaptive_trust_medical_rag.api.app import app
 import io
+
+from fastapi.testclient import TestClient
 from PIL import Image
+
+from adaptive_trust_medical_rag.api.app import app
 
 client = TestClient(app)
 
@@ -15,7 +16,7 @@ def create_test_image_bytes(format="JPEG", size=(100, 100)):
 def test_post_analyze_prescription_valid():
     file_bytes = create_test_image_bytes("JPEG")
     files = {"image": ("test.jpg", file_bytes, "image/jpeg")}
-    
+
     response = client.post("/api/v1/analyze/prescription", files=files)
     assert response.status_code == 200
     data = response.json()
