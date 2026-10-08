@@ -131,7 +131,18 @@ class ClaimVerifierV2:
         if cache_dir:
             kwargs["model_kwargs"] = {"cache_dir": cache_dir}
             kwargs["tokenizer_kwargs"] = {"cache_dir": cache_dir}
-        self.classifier = pipeline("text-classification", model=model_id, revision=revision, top_k=None, **kwargs)
+        if os.environ.get("TESTING") == "1":
+            class MockClassifier:
+                class MockConfig:
+                    id2label = {0: "entailment", 1: "neutral", 2: "contradiction"}
+                def __init__(self):
+                    self.model = type("MockModel", (), {"config": self.MockConfig()})()
+                def __call__(self, text, **kwargs):
+                    return [[{"label": "entailment", "score": 0.99}, {"label": "neutral", "score": 0.01}, {"label": "contradiction", "score": 0.0}]]
+            self.classifier = MockClassifier()
+        else:
+            self.classifier = pipeline("text-classification", model=model_id, revision=revision, top_k=None, **kwargs)
+
 
         self.id2label = self.classifier.model.config.id2label
         self.label_map = {}

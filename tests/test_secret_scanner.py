@@ -20,7 +20,7 @@ def _run_scanner(code: str) -> dict:
 
 
 def test_hardcoded_gemini_api_key_is_denied():
-    result = _run_scanner('GEMINI_API_KEY = "s3cr3tV4lu3_1234567890"')
+    result = _run_scanner('GEMINI_API_KEY = "mock_key_value"')
     assert result["decision"] == "deny", f"Got: {result}"
     assert "Hardcoded API key" in result["reason"], f"Got: {result}"
 

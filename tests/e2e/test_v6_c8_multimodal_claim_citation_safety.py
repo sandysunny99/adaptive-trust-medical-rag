@@ -178,6 +178,17 @@ def base_mocks():
             return [MockScoredCandidate()]
 
     app.state.retrieval_engine = MockRetrievalEngine()
+
+    class MockClaimVerifier:
+        def verify(self, answer, evidence, risk_tier="R1", critical_claim_indices=None, drug_rxcui_map=None):
+            from adaptive_trust_medical_rag.verification.claim_verifier_v2 import VerificationReportV2
+            return VerificationReportV2(
+                all_supported=True,
+                support_states={"claim_1": "SUPPORTED"},
+                judgments=[]
+            )
+    app.state.claim_verifier = MockClaimVerifier()
+
     yield
 
 def _run_full_flow(scenario):

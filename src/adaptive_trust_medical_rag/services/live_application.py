@@ -26,6 +26,7 @@ from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     TrustFactorScores,
     classify_query_risk,
 )
+from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
 )
@@ -160,7 +161,7 @@ class LiveMedicalRAGService:
 
                 # Wait for the frontend to confirm
                 confirmation_event = analysis_state.get("confirmation_event")
-                if confirmation_event:
+                if confirmation_event and "confirmed_medications" not in analysis_state:
                     await confirmation_event.wait()
 
                 # User confirmed, use the confirmed medications for the rest of the pipeline
@@ -700,3 +701,64 @@ class LiveMedicalRAGService:
             })
 
 
+
+
+
+
+def _lazy_init_models(app_state):
+    import os
+    import logging
+    log = logging.getLogger(__name__)
+    
+    if getattr(app_state, "claim_verifier", None) is None:
+        log.info("Lazy loading ClaimVerifierV2 (heavy model download)")
+        app_state.claim_verifier = ClaimVerifierV2()
+        
+    if getattr(app_state, "retrieval_engine", None) is None:
+        try:
+            import json
+            corpus_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "LIVE_MEDICAL_CORPUS_V2.json")
+            live_corpus = []
+            if os.path.exists(corpus_path):
+                with open(corpus_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                for item in data:
+                    live_corpus.append(Candidate(
+                        chunk_id=item["chunk_id"],
+                        document_id=item["document_id"],
+                        text=item["text"],
+                        source_url=item.get("document_url", ""),
+                        source_authority=item.get("authority", 0.5),
+                        metadata={
+                            "provenance": item.get("provenance", {}),
+                            "freshness_score": item.get("freshness", 0.8),
+                            "source_type": item.get("source_type")
+                        }
+                    ))
+                class LiveEmbeddingModel:
+                    def __init__(self, data_items):
+                        self.text_to_emb = {i["text"]: i["embedding"] for i in data_items if "embedding" in i}
+                    def encode(self, texts):
+                        results = []
+                        texts_to_compute = []
+                        indices_to_compute = []
+                        for i, t in enumerate(texts):
+                            if t in self.text_to_emb:
+                                results.append(self.text_to_emb[t])
+                            else:
+                                results.append(None)
+                                texts_to_compute.append(t)
+                                indices_to_compute.append(i)
+                        if texts_to_compute:
+                            computed = self.model.encode(texts_to_compute).tolist()
+                            for i, idx in enumerate(indices_to_compute):
+                                results[idx] = computed[i]
+                        return results
+                
+                log.info("Lazy loading HybridRetrievalEngine (heavy model download)")
+                app_state.retrieval_engine = HybridRetrievalEngine(live_corpus, LiveEmbeddingModel(data))
+            else:
+                app_state.retrieval_engine = HybridRetrievalEngine([], None)
+        except Exception as e:
+            log.warning("Could not lazy init retrieval engine: %s", e)
+            app_state.retrieval_engine = None

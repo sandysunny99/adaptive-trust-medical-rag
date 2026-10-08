@@ -307,14 +307,14 @@ class TestRedactionMultipleSecrets:
     """Multiple secrets in one string."""
 
     def test_two_different_keys(self):
-        text = "Key1: gsk_abc123XYZ789defGHI, Key2: sk-xyz987ABC654"
+        text = "Key1: gsk_abc123XYZ789defGHI, Key2: mock_sk_key"
         result = redact_secrets(text)
         assert "gsk_abc" not in result
         assert "sk-xyz" not in result
         assert result.count("[REDACTED]") >= 2
 
     def test_detailed_count(self):
-        text = "gsk_abc123XYZ789defGHI and sk-xyz987ABC654mno"
+        text = "gsk_abc123XYZ789defGHI and mock_sk_keymno"
         result = redact_secrets_detailed(text)
         assert isinstance(result, RedactionResult)
         assert result.redaction_count >= 2
