@@ -8,6 +8,8 @@ It yields SSE events at each stage of execution.
 from __future__ import annotations
 
 import hashlib
+import asyncio
+import dataclasses
 import json
 import logging
 import time
@@ -72,6 +74,10 @@ class LiveMedicalRAGService:
         analysis_state: dict | None = None,
     ) -> AsyncGenerator[dict[str, Any], None]:
         """Execute the live pipeline and yield SSE event dicts."""
+        try:
+            await asyncio.to_thread(_lazy_init_models, self.app_state)
+        except Exception as e:
+            log.error("Failed to lazy init models: %s", e)
 
         try:
             # Checkpoint 3 & 5: Handle image upload and real vision extraction
@@ -162,7 +168,11 @@ class LiveMedicalRAGService:
                 # Wait for the frontend to confirm
                 confirmation_event = analysis_state.get("confirmation_event")
                 if confirmation_event and "confirmed_medications" not in analysis_state:
-                    await confirmation_event.wait()
+                    try:
+                        await asyncio.wait_for(confirmation_event.wait(), timeout=10.0)
+                    except asyncio.TimeoutError:
+                        yield _sse("error", {"code": "TIMEOUT", "message": "Confirmation timeout"})
+                        return
 
                 # User confirmed, use the confirmed medications for the rest of the pipeline
                 confirmed = analysis_state.get("confirmed_medications", [])
@@ -712,6 +722,7 @@ def _lazy_init_models(app_state):
     
     if getattr(app_state, "claim_verifier", None) is None:
         log.info("Lazy loading ClaimVerifierV2 (heavy model download)")
+        print("DEBUG: ABOUT TO LOAD ClaimVerifierV2")
         app_state.claim_verifier = ClaimVerifierV2()
         
     if getattr(app_state, "retrieval_engine", None) is None:
@@ -723,6 +734,7 @@ def _lazy_init_models(app_state):
                 with open(corpus_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 for item in data:
+                    from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate
                     live_corpus.append(Candidate(
                         chunk_id=item["chunk_id"],
                         document_id=item["document_id"],

@@ -18,6 +18,7 @@ jobs:
       DATABASE_URL: "postgresql+asyncpg://u:p@localhost/db"
       PYTHONPATH: "src"
       GITHUB_ACTIONS: "true"
+      TESTING: "1"
 
     steps:
       - name: Checkout
@@ -113,6 +114,7 @@ jobs:
       DATABASE_URL: "postgresql+asyncpg://u:p@localhost/db"
       PYTHONPATH: "src"
       GITHUB_ACTIONS: "true"
+      TESTING: "1"
 
     steps:
       - name: Checkout
@@ -155,6 +157,7 @@ jobs:
       DATABASE_URL: "postgresql+asyncpg://u:p@localhost/db"
       PYTHONPATH: "src"
       GITHUB_ACTIONS: "true"
+      TESTING: "1"
 
     steps:
       - name: Checkout

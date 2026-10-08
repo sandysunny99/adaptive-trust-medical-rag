@@ -1,3 +1,6 @@
+> **WARNING: HISTORICAL / SUPERSEDED BY V3**
+> This document is maintained for research provenance. For the current LIVE application provider status, refer to the V3 documents.
+
 # POS02_PROTOCOL_CONFORMANCE_V2
 
 ## POS-02 Benchmark Construct Amendment

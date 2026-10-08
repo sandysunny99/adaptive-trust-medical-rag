@@ -1,0 +1,17 @@
+{
+  "version": "1.3",
+  "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
+  "prompt_hash": "e5aeb4fa105d30f9df23c6d3815a45d4d63c7e83b82ab30e5fbb9f4721e4301c",
+  "case_id_hash": "bb47d3c18a0c9bf5488437bc0bca873c4cd5ee4a2d6c7f8ce133ac6cd505da2f",
+  "retrieval_identity": "FROZEN_HISTORICAL_OUTPUT",
+  "provider": "Groq",
+  "model": "openai/gpt-oss-120b",
+  "retry_policy": {
+    "allowed": true,
+    "max_retries": 3,
+    "errors": [
+      "HTTP 429"
+    ]
+  },
+  "failover_policy": "None"
+}

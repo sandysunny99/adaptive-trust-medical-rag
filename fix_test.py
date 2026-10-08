@@ -1,0 +1,5 @@
+content = open('tests/e2e/test_v6_c6_image_confirmation_rxnorm.py').read()
+content = content.replace('"drug_entities_resolved"', '"normalization"')
+content = content.replace('entities_event["data"]["entities"]', 'entities_event["data"]["medications"]')
+content = content.replace("MockRetrievalEngine:\n        async def retrieve_evidence", "MockRetrievalEngine:\n        def retrieve")
+open('tests/e2e/test_v6_c6_image_confirmation_rxnorm.py', 'w').write(content)

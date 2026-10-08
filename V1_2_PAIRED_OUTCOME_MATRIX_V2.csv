@@ -1,0 +1,4 @@
+Arm A,Arm B,Count
+SUCCESS,abstained,8
+provider_failure,abstained,64
+provider_failure,provider_failure,8

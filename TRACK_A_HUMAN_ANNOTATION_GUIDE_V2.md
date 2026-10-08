@@ -1,3 +1,6 @@
+> **WARNING: HISTORICAL / SUPERSEDED BY V3**
+> This document is maintained for research provenance. For the current LIVE application provider status, refer to the V3 documents.
+
 # TRACK_A_HUMAN_ANNOTATION_GUIDE_V2
 
 ## Purpose and Scope

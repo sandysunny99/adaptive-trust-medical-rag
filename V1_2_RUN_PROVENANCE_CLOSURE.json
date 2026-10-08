@@ -1,0 +1,6 @@
+{
+  "classification": "CLOSED - SAME RUNNER VERSION FOR ALL 160 REQUESTS",
+  "evidence": "Execution attempts 1-6 crashed before writing to results.jsonl. Attempt 7 wrote all 160 records continuously.",
+  "runner_changes_during_generation": false,
+  "multiple_runs_appended": false
+}

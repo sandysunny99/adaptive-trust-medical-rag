@@ -1,0 +1,9 @@
+case_id,arm,status,answer_present,claim_count,supported_claim_count,unsupported_claim_count,claim_support_rate,citation_validation_rate,unsupported_answer_rate,citation_count,valid_citation_count
+v3.1h-001,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-002,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-003,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-004,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-005,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-024,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-050,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0
+v3.1h-077,arm_a,SUCCESS,True,0,0,0,0.0,0.0,1.0,0,0

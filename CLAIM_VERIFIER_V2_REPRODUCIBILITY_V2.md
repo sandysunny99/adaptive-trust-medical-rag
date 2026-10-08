@@ -1,3 +1,6 @@
+> **WARNING: HISTORICAL / SUPERSEDED BY V3**
+> This document is maintained for research provenance. For the current LIVE application provider status, refer to the V3 documents.
+
 # CLAIM_VERIFIER_V2_REPRODUCIBILITY_V2
 
 ## Reproducibility Verification
