@@ -36,17 +36,12 @@ export type SSEEventHandler = (event: string, data: unknown) => void;
 // ── REST Client ──────────────────────────────────────────────────────────────
 
 export async function fetchModelCatalog(): Promise<LLMModelInfo[]> {
-  try {
-    const response = await fetch(`${API_BASE}/api/v1/llm/models`);
-    if (!response.ok) {
-      return [];
-    }
-    const data = await response.json();
-    return data.models || [];
-  } catch (err) {
-    console.warn('Failed to fetch LLM model catalog:', err);
-    return [];
+  const response = await fetch(`${API_BASE}/api/v1/llm/models`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch model catalog: HTTP ${response.status}`);
   }
+  const data = await response.json();
+  return data.models || [];
 }
 
 export async function submitAnalysis(

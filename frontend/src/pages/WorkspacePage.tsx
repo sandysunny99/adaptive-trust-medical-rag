@@ -29,6 +29,8 @@ export function WorkspacePage() {
   // Model selector state
   const [models, setModels] = useState<LLMModelInfo[]>([]);
   const [selectedModelId, setSelectedModelId] = useState<string>('auto');
+  const [isLoadingModels, setIsLoadingModels] = useState<boolean>(true);
+  const [modelCatalogError, setModelCatalogError] = useState<string | null>(null);
 
   // Patient Context state
   const [age, setAge] = useState<string>('');
@@ -38,7 +40,19 @@ export function WorkspacePage() {
   const [currentMeds, setCurrentMeds] = useState<string>('');
 
   useEffect(() => {
-    fetchModelCatalog().then(setModels);
+    setIsLoadingModels(true);
+    fetchModelCatalog()
+      .then(catalog => {
+        setModels(catalog);
+        setModelCatalogError(null);
+      })
+      .catch(err => {
+        console.error('Failed to fetch LLM models:', err);
+        setModelCatalogError('Could not load remote model catalog. Defaulting to automatic routing.');
+      })
+      .finally(() => {
+        setIsLoadingModels(false);
+      });
   }, []);
 
   const { 
@@ -251,17 +265,26 @@ export function WorkspacePage() {
               Choose the model used to generate your analysis.
             </p>
             <select
+              aria-label="Answer-generation model"
               value={selectedModelId}
               onChange={e => setSelectedModelId(e.target.value)}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              disabled={isProcessing || isLoadingModels}
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              <option value="auto">Automatic selection (recommended)</option>
+              <option value="auto">
+                {isLoadingModels ? 'Loading model catalog...' : 'Automatic selection (recommended)'}
+              </option>
               {models.map(m => (
                 <option key={m.id} value={m.id} disabled={!m.is_available}>
                   {m.name} ({m.provider}){m.is_available ? '' : ' — Not configured'}
                 </option>
               ))}
             </select>
+            {modelCatalogError && (
+              <p className="text-[11px] text-amber-600 mt-1">
+                {modelCatalogError}
+              </p>
+            )}
             <p className="text-[11px] text-slate-400 mt-2">
               {selectedModelId === 'auto'
                 ? 'Automatic mode uses the existing provider router and its eligible failover policy.'
