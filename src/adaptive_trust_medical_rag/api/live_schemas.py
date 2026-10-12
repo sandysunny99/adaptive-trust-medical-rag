@@ -46,6 +46,14 @@ class PatientContextInput(BaseModel):
         return [item.strip() for item in v if item.strip()]
 
 
+class LLMSelectionInput(BaseModel):
+    """User-selected answer-generation model configuration."""
+
+    mode: str = Field(default="auto", pattern=r"^(auto|manual)$")
+    model_id: str | None = None
+    provider: str | None = None
+
+
 class AnalyzeRequest(BaseModel):
     """POST /api/v1/analyze request body (JSON mode)."""
 
@@ -56,6 +64,7 @@ class AnalyzeRequest(BaseModel):
         description="Drug names to analyze (max 20).",
     )
     patient_context: PatientContextInput | None = None
+    llm_selection: LLMSelectionInput | None = None
 
     @field_validator("drug_names")
     @classmethod
@@ -241,6 +250,7 @@ class AnalyzeResponse(BaseModel):
     conclusion: str | None = None
     gate_decision: str = "abstain"
     abstention_reason: str | None = None
+    used_model: dict[str, Any] | None = None
 
     disclaimer: str = (
         "RESEARCH OUTPUT ONLY. Not reviewed by clinicians. "
@@ -253,3 +263,16 @@ class AnalyzeAccepted(BaseModel):
 
     request_id: str
     stream_url: str
+
+
+class LLMModelInfo(BaseModel):
+    id: str
+    provider: str
+    name: str
+    description: str
+    is_available: bool
+
+
+class LLMModelsResponse(BaseModel):
+    models: list[LLMModelInfo]
+    default_mode: str = "auto"

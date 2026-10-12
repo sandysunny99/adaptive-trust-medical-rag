@@ -206,6 +206,11 @@ export interface AnalysisResult {
   gate_decision: GateDecision;
   abstention_reason: string | null;
   disclaimer: string;
+  used_model?: {
+    mode: string;
+    provider: string;
+    model_id: string;
+  };
 }
 
 export interface StageUpdate {
@@ -215,4 +220,18 @@ export interface StageUpdate {
   timestamp: string;
   duration_ms?: number;
   data?: unknown;
+}
+
+export interface LLMModelInfo {
+  id: string;
+  provider: string;
+  name: string;
+  description: string;
+  is_available: boolean;
+}
+
+export interface LLMSelection {
+  mode: 'auto' | 'manual';
+  model_id?: string;
+  provider?: string;
 }

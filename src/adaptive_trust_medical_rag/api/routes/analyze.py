@@ -20,12 +20,30 @@ from fastapi.responses import StreamingResponse
 from adaptive_trust_medical_rag.api.live_schemas import (
     AnalyzeAccepted,
     AnalyzeRequest,
+    LLMModelInfo,
+    LLMModelsResponse,
+    LLMSelectionInput,
     PatientContextInput,
 )
+from adaptive_trust_medical_rag.llm_backend.model_registry import get_available_models
 from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
 
 log = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["live"])
+
+
+@router.get(
+    "/llm/models",
+    response_model=LLMModelsResponse,
+    summary="Get available LLM models for medication safety analysis",
+)
+async def get_llm_models(request: Request) -> LLMModelsResponse:
+    """Return catalog of supported answer-generation models and their availability."""
+    models_data = get_available_models(request.app.state)
+    return LLMModelsResponse(
+        models=[LLMModelInfo(**m) for m in models_data],
+        default_mode="auto",
+    )
 
 
 async def _sse_event(event: str, data: dict[str, Any]) -> str:
@@ -59,6 +77,7 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
 
     pending[request_id] = {
         "body": body,
+        "llm_selection": body.llm_selection.model_dump() if body.llm_selection else None,
         "created_at": time.time(),
     }
 
@@ -81,7 +100,8 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
 async def post_analyze_prescription(
     request: Request,
     image: UploadFile = File(...),
-    patient_context: str = Form(None)
+    patient_context: str = Form(None),
+    llm_selection: str = Form(None),
 ):
     """
     Accept a prescription image upload.
@@ -118,11 +138,21 @@ async def post_analyze_prescription(
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
+    # Parse optional llm_selection if provided
+    selection_data = None
+    if llm_selection:
+        try:
+            raw_sel = json.loads(llm_selection)
+            selection_data = LLMSelectionInput(**raw_sel).model_dump()
+        except Exception as e:
+            log.warning("Invalid llm_selection JSON in prescription upload: %s", e)
+
     pending[request_id] = {
         "type": "prescription_image",
         "image_bytes": file_bytes,
         "image_meta": validation_meta,
         "patient_context": context_data,
+        "llm_selection": selection_data,
         "created_at": time.time(),
     }
 
@@ -142,7 +172,7 @@ from pydantic import BaseModel
 class ConfirmedMedicationItem(BaseModel):
     name: str
     status: str
-    source: str
+    source: str = "VISION"
     raw_detected_name: Optional[str] = None
 
 class ConfirmMedicationsRequest(BaseModel):
@@ -213,6 +243,12 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 drug_names = body.drug_names
                 patient_context_dict = body.patient_context.model_dump() if body.patient_context else None
 
+            llm_selection_data = analysis.get("llm_selection")
+            if not llm_selection_data and "body" in analysis:
+                body_obj = analysis["body"]
+                if getattr(body_obj, "llm_selection", None):
+                    llm_selection_data = body_obj.llm_selection.model_dump()
+
             async for event_dict in service.execute(
                 request_id=request_id,
                 drug_names=drug_names,
@@ -220,7 +256,8 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 start_time=start_time,
                 image_bytes=image_bytes,
                 image_meta=image_meta,
-                analysis_state=analysis
+                analysis_state=analysis,
+                llm_selection=llm_selection_data,
             ):
                 yield await _sse_event(event_dict["event"], event_dict["data"])
 
@@ -233,8 +270,9 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 "message": str(e),
             })
         finally:
-            # Clean up pending analysis
-            pending.pop(request_id, None)
+            # Clean up completed or terminated pending analysis
+            if analysis.get("finished", False):
+                pending.pop(request_id, None)
 
     return StreamingResponse(
         pipeline_stream(),

@@ -74,7 +74,7 @@ class RelationshipGroundingValidatorV2:
             is_negated = True
 
         # Check positive relations
-        if any(k in text_lower for k in ["interacts with", "interacts", "contraindicat"]) and not is_negated:
+        if any(k in text_lower for k in ["interacts with", "interacts", "interaction", "interact", "contraindicat"]) and not is_negated:
             rel_type = "INTERACTS_WITH"
             is_positive = True
         elif any(k in text_lower for k in ["cause", "associat"]):

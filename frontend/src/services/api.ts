@@ -10,6 +10,8 @@
 import type {
   PatientContext,
   InputMode,
+  LLMModelInfo,
+  LLMSelection,
 } from '../types';
 
 const API_BASE = '';  // proxied by Vite in dev
@@ -33,10 +35,25 @@ export type SSEEventHandler = (event: string, data: unknown) => void;
 
 // ── REST Client ──────────────────────────────────────────────────────────────
 
+export async function fetchModelCatalog(): Promise<LLMModelInfo[]> {
+  try {
+    const response = await fetch(`${API_BASE}/api/v1/llm/models`);
+    if (!response.ok) {
+      return [];
+    }
+    const data = await response.json();
+    return data.models || [];
+  } catch (err) {
+    console.warn('Failed to fetch LLM model catalog:', err);
+    return [];
+  }
+}
+
 export async function submitAnalysis(
   drugNames: string[],
   patientContext?: PatientContext | null,
   inputMode: InputMode = 'direct_drugs',
+  llmSelection?: LLMSelection | null,
 ): Promise<AnalyzeAccepted> {
   const response = await fetch(`${API_BASE}/api/v1/analyze`, {
     method: 'POST',
@@ -45,6 +62,7 @@ export async function submitAnalysis(
       input_mode: inputMode,
       drug_names: drugNames,
       patient_context: patientContext || null,
+      llm_selection: llmSelection || null,
     }),
   });
 
@@ -59,11 +77,15 @@ export async function submitAnalysis(
 export async function submitPrescriptionImage(
   file: File,
   patientContext?: PatientContext | null,
+  llmSelection?: LLMSelection | null,
 ): Promise<AnalyzeAccepted & { validation: any }> {
   const formData = new FormData();
   formData.append('image', file);
   if (patientContext) {
     formData.append('patient_context', JSON.stringify(patientContext));
+  }
+  if (llmSelection) {
+    formData.append('llm_selection', JSON.stringify(llmSelection));
   }
 
   const response = await fetch(`${API_BASE}/api/v1/analyze/prescription`, {

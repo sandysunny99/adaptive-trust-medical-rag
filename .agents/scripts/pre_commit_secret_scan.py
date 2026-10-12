@@ -28,7 +28,7 @@ from pathlib import Path
 SECRET_PATTERNS = [
     # Generic assignment patterns
     (r'(?i)(password|passwd|pwd)\s*=\s*["\'][^"\'${\s]{6,}["\']', "Hardcoded password"),
-    (r'(?i)(api[_-]?key|apikey)\s*=\s*["\'][A-Za-z0-9_-]{16,}["\']', "Hardcoded API key"),
+    (r'(?i)(api[_-]?key|apikey)\s*=\s*["\'][A-Za-z0-9_-]{8,}["\']', "Hardcoded API key"),
     (r'(?i)(secret|token|auth)\s*=\s*["\'][A-Za-z0-9_-]{16,}["\']', "Hardcoded secret/token"),
     # Well-known token formats
     (r"ghp_[A-Za-z0-9]{36,}", "GitHub PAT (ghp_)"),
@@ -92,6 +92,8 @@ def is_exempt_path(path: str) -> bool:
 
 
 def is_safe_value(content_snippet: str) -> bool:
+    if re.search(r'(?i)gemini_api_key\s*=\s*["\']', content_snippet):
+        return False
     for pattern in SAFE_VALUE_PATTERNS:
         if re.search(pattern, content_snippet, re.IGNORECASE):
             return True
