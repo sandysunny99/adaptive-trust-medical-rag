@@ -34,6 +34,18 @@ from adaptive_trust_medical_rag.llm_routing.types import FailureClass
 client = TestClient(app)
 
 
+@pytest.fixture(autouse=True)
+def clean_app_state():
+    """Ensure test_model_selector runs with isolated, clean app.state."""
+    old_llm = getattr(app.state, "llm_backend", None)
+    old_vision = getattr(app.state, "vision_backend", None)
+    app.state.llm_backend = None
+    app.state.vision_backend = None
+    yield
+    app.state.llm_backend = old_llm
+    app.state.vision_backend = old_vision
+
+
 class MockTestProvider(ProviderAdapter):
     def __init__(self, name: str, model: str, should_fail: bool = False, failure_class: FailureClass = FailureClass.UNKNOWN):
         self.provider_name = name

@@ -116,6 +116,11 @@ def extract_sse_events(response_lines):
 
 @pytest.fixture
 def setup_c9_mocks():
+    old_llm = getattr(app.state, "llm_backend", None)
+    old_retrieval = getattr(app.state, "retrieval_engine", None)
+    old_verifier = getattr(app.state, "claim_verifier", None)
+    old_vision = getattr(app.state, "vision_backend", None)
+
     app.state.vision_backend = MockC9VisionBackend()
 
     class MockRouter:
@@ -175,6 +180,11 @@ def setup_c9_mocks():
     app.state.claim_verifier = MockClaimVerifier()
 
     yield
+
+    app.state.llm_backend = old_llm
+    app.state.retrieval_engine = old_retrieval
+    app.state.claim_verifier = old_verifier
+    app.state.vision_backend = old_vision
 
 def test_1_e2e_primary_image_scenario(setup_c9_mocks):
     """Primary Real Image E2E Scenario + SSE Validation."""

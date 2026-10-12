@@ -151,6 +151,11 @@ def extract_sse_events(response_lines):
 
 @pytest.fixture
 def base_mocks():
+    old_llm = getattr(app.state, "llm_backend", None)
+    old_retrieval = getattr(app.state, "retrieval_engine", None)
+    old_verifier = getattr(app.state, "claim_verifier", None)
+    old_vision = getattr(app.state, "vision_backend", None)
+
     class MockRouter:
         def __init__(self):
             self.providers = {"mock": MockC8LLMBackend()}
@@ -192,6 +197,11 @@ def base_mocks():
     app.state.claim_verifier = MockClaimVerifier()
 
     yield
+
+    app.state.llm_backend = old_llm
+    app.state.retrieval_engine = old_retrieval
+    app.state.claim_verifier = old_verifier
+    app.state.vision_backend = old_vision
 
 def _run_full_flow(scenario):
     app.state.vision_backend = MockC8VisionBackend(scenario)
