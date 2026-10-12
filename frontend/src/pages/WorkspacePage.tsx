@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { Upload, Pill, UserCog, Search, AlertTriangle, X } from 'lucide-react';
-import type { InputMode, PatientContext, PipelineStage } from '../types';
+import { useState, useEffect } from 'react';
+import { Upload, Pill, UserCog, Search, AlertTriangle, X, Cpu } from 'lucide-react';
+import type { InputMode, PatientContext, PipelineStage, LLMModelInfo } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
 import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
 import { useAnalysis } from '../hooks/useAnalysis';
+import { fetchModelCatalog } from '../services/api';
 
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
@@ -25,12 +26,20 @@ export function WorkspacePage() {
   const [drugInputs, setDrugInputs] = useState<string[]>(['']);
   const [imageFile, setImageFile] = useState<File | null>(null);
   
+  // Model selector state
+  const [models, setModels] = useState<LLMModelInfo[]>([]);
+  const [selectedModelId, setSelectedModelId] = useState<string>('auto');
+
   // Patient Context state
   const [age, setAge] = useState<string>('');
   const [sex, setSex] = useState<string>('');
   const [allergies, setAllergies] = useState<string>('');
   const [conditions, setConditions] = useState<string>('');
   const [currentMeds, setCurrentMeds] = useState<string>('');
+
+  useEffect(() => {
+    fetchModelCatalog().then(setModels);
+  }, []);
 
   const { 
     analyze, 
@@ -82,7 +91,8 @@ export function WorkspacePage() {
       drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
       imageFile: inputMode === 'prescription_image' ? (imageFile || undefined) : undefined,
       patientContext,
-      inputMode
+      inputMode,
+      llmSelection: selectedModelId === 'auto' ? { mode: 'auto' } : { mode: 'manual', model_id: selectedModelId },
     });
   };
 
@@ -223,6 +233,41 @@ export function WorkspacePage() {
               and never inferred from prescriptions.
             </p>
           </details>
+
+          {/* Answer-generation Model Selector */}
+          <div className="mt-5 p-4 bg-slate-50 rounded-lg border border-slate-200">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <Cpu size={16} className="text-blue-600" />
+                <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                  Answer-generation model
+                </span>
+              </div>
+              <span className="text-[11px] font-medium text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+                {selectedModelId === 'auto' ? 'Automatic Failover' : 'Direct Selection'}
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 mb-2">
+              Choose the model used to generate your analysis.
+            </p>
+            <select
+              value={selectedModelId}
+              onChange={e => setSelectedModelId(e.target.value)}
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="auto">Automatic selection (recommended)</option>
+              {models.map(m => (
+                <option key={m.id} value={m.id} disabled={!m.is_available}>
+                  {m.name} ({m.provider}){m.is_available ? '' : ' — Not configured'}
+                </option>
+              ))}
+            </select>
+            <p className="text-[11px] text-slate-400 mt-2">
+              {selectedModelId === 'auto'
+                ? 'Automatic mode uses the existing provider router and its eligible failover policy.'
+                : 'Direct mode routes your query directly to the selected model without silent failover.'}
+            </p>
+          </div>
 
           {/* Submit */}
           <div className="mt-5 flex items-center justify-between">

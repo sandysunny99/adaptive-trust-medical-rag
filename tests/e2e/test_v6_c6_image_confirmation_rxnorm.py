@@ -86,6 +86,11 @@ def extract_sse_events(response_lines):
 
 @pytest.fixture
 def setup_c6_mocks():
+    orig_vision = getattr(app.state, "vision_backend", None)
+    orig_rxnorm = getattr(getattr(app.state, "drug_normalizer", None), "_rxnorm_client", None)
+    orig_retrieval = getattr(app.state, "retrieval_engine", None)
+    orig_verifier = getattr(app.state, "claim_verifier", None)
+
     app.state.vision_backend = MockC6VisionBackend()
 
     class MockRxNormClient:
@@ -117,6 +122,12 @@ def setup_c6_mocks():
     app.state.claim_verifier = MockClaimVerifier()
 
     yield
+
+    app.state.vision_backend = orig_vision
+    if hasattr(app.state, "drug_normalizer"):
+        app.state.drug_normalizer._rxnorm_client = orig_rxnorm
+    app.state.retrieval_engine = orig_retrieval
+    app.state.claim_verifier = orig_verifier
 
 @pytest.mark.asyncio
 async def test_1_e2e_image_upload_to_confirmation(setup_c6_mocks):

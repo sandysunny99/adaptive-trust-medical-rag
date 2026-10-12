@@ -5,7 +5,8 @@ import type {
   AnalysisResult, 
   StageUpdate,
   PipelineStage,
-  MedicationCandidate
+  MedicationCandidate,
+  LLMSelection,
 } from '../types';
 import { submitAnalysis, submitPrescriptionImage, confirmMedications, connectStream } from '../services/api';
 
@@ -120,6 +121,7 @@ export function useAnalysis() {
       imageFile?: File;
       patientContext?: PatientContext | null;
       inputMode: InputMode;
+      llmSelection?: LLMSelection | null;
     }
   ) => {
     cleanup();
@@ -149,11 +151,11 @@ export function useAnalysis() {
       let req_id = '';
       
       if (payload.inputMode === 'prescription_image' && payload.imageFile) {
-        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext);
+        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext, payload.llmSelection);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else if (payload.drugNames) {
-        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode);
+        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode, payload.llmSelection);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else {

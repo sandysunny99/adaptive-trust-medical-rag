@@ -48,7 +48,7 @@ def create_app(
     ingester: Callable | None = None,
     db_health_checker: Callable | None = None,
     audit_store: Any | None = None,
-    rate_limit: int = 60,
+    rate_limit: int | None = None,
     rate_window: int = 60,
 ) -> FastAPI:
     """
@@ -60,7 +60,7 @@ def create_app(
         ingester:           Document ingestion callable.
         db_health_checker:  Async callable returning {db: bool, pgvector: bool}.
         audit_store:        Audit log store with get_events(session_id) method.
-        rate_limit:         Max requests per IP per window (default: 60).
+        rate_limit:         Max requests per IP per window (default: 60, or 10000 in testing).
         rate_window:        Rate limit window in seconds (default: 60).
 
     Returns:
@@ -86,8 +86,12 @@ def create_app(
     # ── Middleware (applied last-to-first) ────────────────────────────────────
     app.add_middleware(SecurityHeadersMiddleware)
 
-    if os.environ.get("GITHUB_ACTIONS") != "true" and os.environ.get("TESTING") != "1":
-        app.add_middleware(RateLimitMiddleware, limit=rate_limit, window=rate_window)
+    effective_rate_limit = rate_limit
+    if effective_rate_limit is None:
+        effective_rate_limit = 10000 if os.getenv("TESTING") == "1" else 60
+
+    if effective_rate_limit > 0:
+        app.add_middleware(RateLimitMiddleware, limit=effective_rate_limit, window=rate_window)
     app.add_middleware(RequestIDMiddleware)
     # CORS for frontend dev server
     app.add_middleware(

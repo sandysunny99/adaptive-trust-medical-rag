@@ -62,11 +62,6 @@ packages = ["src/adaptive_trust_medical_rag"]
 [tool.uv]
 package = false
 
-[tool.uv.workspace]
-members = [
-    "cognee_service",
-]
-
 [dependency-groups]
 dev = [
     "bandit>=1.9.4",

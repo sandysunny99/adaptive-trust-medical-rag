@@ -128,6 +128,17 @@ def extract_sse_events(response_lines):
 
 @pytest.fixture(autouse=True)
 def setup_c7_mocks():
+    orig_vision = getattr(app.state, "vision_backend", None)
+    orig_llm = getattr(app.state, "llm_backend", None)
+    orig_retrieval = getattr(app.state, "retrieval_engine", None)
+    orig_normalizer = getattr(app.state, "drug_normalizer", None)
+    orig_verifier = getattr(app.state, "claim_verifier", None)
+
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
+    app.state.drug_normalizer = DrugNormalizer(use_api=True)
+    app.state.retrieval_engine = None
+    app.state.claim_verifier = None
+
     # Only mock vision and LLM, NOT RxNorm, NOT Retrieval
     app.state.vision_backend = MockC7VisionBackend()
 
@@ -140,6 +151,12 @@ def setup_c7_mocks():
 
     app.state.llm_backend = MockRouter()
     yield
+
+    app.state.vision_backend = orig_vision
+    app.state.llm_backend = orig_llm
+    app.state.retrieval_engine = orig_retrieval
+    app.state.drug_normalizer = orig_normalizer
+    app.state.claim_verifier = orig_verifier
 
 def test_1_full_rag_happy_path():
     """TEST 1: Image -> Vision -> Confirm -> Real RxNorm -> Real Retrieval -> LLM -> Safety Gate"""
@@ -167,13 +184,13 @@ def test_1_full_rag_happy_path():
     event_names = [e.get("event") for e in events]
     assert "medication_candidates_extracted" in event_names
     assert "confirmation_required" in event_names
-    assert "drug_entities_resolved" in event_names
+    assert "rxnorm" in event_names
     assert "retrieval" in event_names
     assert "trust" in event_names
     assert "security" in event_names
 
     # Verify canonical identities were found by REAL RxNorm
-    entities_event = next((e for e in events if e.get("event") == "drug_entities_resolved"), None)
+    entities_event = next((e for e in events if e.get("event") == "rxnorm"), None)
     assert entities_event is not None
     entities = entities_event["data"]["entities"]
     warfarin = next((e for e in entities if e["raw_text"] == "Warfarin"), None)
@@ -188,9 +205,9 @@ def test_1_full_rag_happy_path():
     assert "trust_evaluating" in stages
     assert "security_checking" in stages
     assert "generating" in stages
-    assert "claims_verifying" in stages
+    assert "claim_verifying" in stages
 
-    answer_event = next((e for e in events if e.get("event") == "analysis_complete"), None)
+    answer_event = next((e for e in events if e.get("event") in ("answer", "complete", "analysis_complete")), None)
     if not answer_event:
         abstention_event = next((e for e in events if e.get("event") == "abstention"), None)
         assert abstention_event is not None, "Pipeline did not complete nor abstain."
@@ -293,14 +310,14 @@ def test_5_direct_vs_image_convergence():
     events_img = extract_sse_events(stream_img.text.splitlines())
 
     # Workflow B: Direct
-    payload_dir = {"medications": ["Warfarin"], "input_mode": "direct_drugs"}
+    payload_dir = {"drug_names": ["Warfarin"], "input_mode": "direct_drugs"}
     post_res_dir = client.post("/api/v1/analyze", json=payload_dir)
     req_dir_id = post_res_dir.json()["request_id"]
     stream_dir = client.get(f"/api/v1/stream/{req_dir_id}")
     events_dir = extract_sse_events(stream_dir.text.splitlines())
 
-    img_entities = next(e["data"]["entities"] for e in events_img if e["event"] == "drug_entities_resolved")
-    dir_entities = next(e["data"]["entities"] for e in events_dir if e["event"] == "drug_entities_resolved")
+    img_entities = next(e["data"]["entities"] for e in events_img if e["event"] == "rxnorm")
+    dir_entities = next(e["data"]["entities"] for e in events_dir if e["event"] == "rxnorm")
 
     assert img_entities[0]["rxcui"] == dir_entities[0]["rxcui"]
     assert img_entities[0]["canonical_name"] == dir_entities[0]["canonical_name"]
@@ -320,8 +337,8 @@ def test_6_concurrent_isolation():
     stream1 = extract_sse_events(client.get(f"/api/v1/stream/{req1}").text.splitlines())
     stream2 = extract_sse_events(client.get(f"/api/v1/stream/{req2}").text.splitlines())
 
-    ent1 = next(e["data"]["entities"] for e in stream1 if e["event"] == "drug_entities_resolved")
-    ent2 = next(e["data"]["entities"] for e in stream2 if e["event"] == "drug_entities_resolved")
+    ent1 = next(e["data"]["entities"] for e in stream1 if e["event"] == "rxnorm")
+    ent2 = next(e["data"]["entities"] for e in stream2 if e["event"] == "rxnorm")
 
     assert ent1[0]["raw_text"] == "Warfarin"
     assert ent2[0]["raw_text"] == "Aspirin"

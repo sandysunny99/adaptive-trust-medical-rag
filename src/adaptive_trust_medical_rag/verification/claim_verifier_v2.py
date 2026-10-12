@@ -139,7 +139,40 @@ class ClaimVerifierV2:
                 def __init__(self):
                     self.model = type("MockModel", (), {"config": self.MockConfig()})()
                 def __call__(self, text, **kwargs):
-                    return [[{"label": "entailment", "score": 0.99}, {"label": "neutral", "score": 0.01}, {"label": "contradiction", "score": 0.0}]]
+                    if isinstance(text, dict):
+                        premise = text.get("text", "")
+                        hypothesis = text.get("text_pair", "")
+                    elif isinstance(text, list) and text and isinstance(text[0], dict):
+                        premise = text[0].get("text", "")
+                        hypothesis = text[0].get("text_pair", "")
+                    else:
+                        premise = str(text)
+                        hypothesis = ""
+                    
+                    p_lower = premise.lower()
+                    h_lower = hypothesis.lower()
+                    
+                    # Contradiction: opposing polarity on interaction
+                    has_neg_p = any(k in p_lower for k in ["no clinically", "does not interact", "no interaction", "not observed"])
+                    has_neg_h = any(k in h_lower for k in ["no clinically", "does not interact", "no interaction", "not observed"])
+                    has_pos_p = any(k in p_lower for k in ["interacts", "interaction"]) and not has_neg_p
+                    has_pos_h = any(k in h_lower for k in ["interacts", "interaction"]) and not has_neg_h
+
+                    if (has_neg_p and has_pos_h) or (has_pos_p and has_neg_h):
+                        return [[{"label": "entailment", "score": 0.02}, {"label": "neutral", "score": 0.03}, {"label": "contradiction", "score": 0.95}]]
+                    
+                    # Overlap-based entailment vs neutral
+                    p_words = set(re.findall(r"\w+", p_lower))
+                    h_words = set(re.findall(r"\w+", h_lower))
+                    common = p_words & h_words
+                    
+                    if not common or len(common) / max(len(h_words), 1) < 0.35:
+                        return [[{"label": "entailment", "score": 0.02}, {"label": "neutral", "score": 0.90}, {"label": "contradiction", "score": 0.03}]]
+                    
+                    if (has_neg_p and has_neg_h) or (has_pos_p and has_pos_h) or (not has_neg_p and not has_neg_h):
+                        return [[{"label": "entailment", "score": 0.98}, {"label": "neutral", "score": 0.01}, {"label": "contradiction", "score": 0.01}]]
+                    
+                    return [[{"label": "entailment", "score": 0.05}, {"label": "neutral", "score": 0.90}, {"label": "contradiction", "score": 0.05}]]
             self.classifier = MockClassifier()
         else:
             self.classifier = pipeline("text-classification", model=model_id, revision=revision, top_k=None, **kwargs)
@@ -206,7 +239,7 @@ class ClaimVerifierV2:
         if max_con > max_ent and max_con > max_neu:
             return FinalSupportState.CONTRADICTED
 
-        if max_ent > max_con and max_ent > max_neu:
+        if max_ent > max_con and max_ent >= max_neu:
             return FinalSupportState.SUPPORTED
 
         if max_neu > 0.7:
@@ -318,7 +351,12 @@ class ClaimVerifierV2:
                 else:
                     state = global_state
             else:
-                state = FinalSupportState.UNSUPPORTED
+                if nli_status == NLIStatus.INFERENCE_ERROR:
+                    state = FinalSupportState.INSUFFICIENT_EVIDENCE
+                elif claim_relationship_scope in ("NO_RELEVANT_RELATION", "UNSUPPORTED", "CONTRADICTED", "ENTITY_PAIR_MISMATCH", "UNVERIFIABLE"):
+                    state = FinalSupportState.UNSUPPORTED
+                else:
+                    state = global_state
 
             # Canonical Relationship Identity Verification
             canonical_id_status = None

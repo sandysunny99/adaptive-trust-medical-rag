@@ -77,7 +77,16 @@ def setup_mock_normalizer(app):
 
 @pytest.fixture(autouse=True)
 def setup_state():
+    old_normalizer = getattr(app.state, "drug_normalizer", None)
+    old_vision = getattr(app.state, "vision_backend", None)
+    old_retrieval = getattr(app.state, "retrieval_engine", None)
+    old_llm = getattr(app.state, "llm_backend", None)
     setup_mock_normalizer(app)
+    yield
+    app.state.drug_normalizer = old_normalizer
+    app.state.vision_backend = old_vision
+    app.state.retrieval_engine = old_retrieval
+    app.state.llm_backend = old_llm
 
 @pytest.mark.asyncio
 async def test_1_warfarin_resolves():

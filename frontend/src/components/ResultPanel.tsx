@@ -89,8 +89,13 @@ export function ResultPanel({ result }: ResultPanelProps) {
 
       {/* Conclusion */}
       <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-4 border-b border-slate-100">
+        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
           <h3 className="text-sm font-semibold text-slate-900">Overall Conclusion</h3>
+          {result.used_model && (
+            <span className="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200 font-medium">
+              Model: <span className="font-semibold text-blue-700">{result.used_model.model_id}</span> ({result.used_model.provider})
+            </span>
+          )}
         </div>
         <div className="p-4">
           <p className="text-sm text-slate-700">{result.conclusion}</p>

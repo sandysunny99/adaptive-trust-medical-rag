@@ -181,11 +181,13 @@ def base_mocks():
 
     class MockClaimVerifier:
         def verify(self, answer, evidence, risk_tier="R1", critical_claim_indices=None, drug_rxcui_map=None):
-            from adaptive_trust_medical_rag.verification.claim_verifier_v2 import VerificationReportV2
+            from adaptive_trust_medical_rag.verification.claim_verifier_v2 import VerificationReportV2, GateDecision
             return VerificationReportV2(
-                all_supported=True,
-                support_states={"claim_1": "SUPPORTED"},
-                judgments=[]
+                claims=[],
+                judgments=[],
+                grounding_ratio=1.0,
+                decision=GateDecision.release,
+                explanation="Mock verified",
             )
     app.state.claim_verifier = MockClaimVerifier()
 

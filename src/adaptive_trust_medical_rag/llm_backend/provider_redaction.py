@@ -49,6 +49,8 @@ _PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\bhf_[A-Za-z0-9]{16,}"), REDACTED),
     # Cerebras keys: csk- prefix
     (re.compile(r"\bcsk-[A-Za-z0-9_\-]{8,}"), REDACTED),
+    # Synthetic/mock provider keys in test fixtures
+    (re.compile(r"\bmock_sk_[A-Za-z0-9_\-]+"), REDACTED),
 
     # Bearer tokens in text or headers (generic catch-all for auth)
     # Negative lookahead prevents double-redacting already-redacted text

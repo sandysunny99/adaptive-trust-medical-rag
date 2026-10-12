@@ -137,7 +137,15 @@ def setup_c9_mocks():
                     self.source_authority = 0.9
                     self.source_url = "http://test"
                     self.poisoning_score = 0.0
-                    self.metadata = {"source_type": "BIOMEDICAL_LITERATURE", "freshness_score": 0.9}
+                    self.metadata = {
+                        "source_type": "BIOMEDICAL_LITERATURE",
+                        "freshness_score": 0.9,
+                        "provenance": {
+                            "source": "pubmed",
+                            "document_id": "doc_1",
+                            "content_hash": "70c3eebb6f06fc4ee825852d654cb7803f8cb7a1200c897114fdce2d00d3ace8",
+                        },
+                    }
             class MockScoredCandidate:
                 def __init__(self):
                     self.candidate = MockCandidate()
@@ -153,6 +161,18 @@ def setup_c9_mocks():
             return None
         def get_properties(self, rxcui): return {"name": "MockDrug", "synonym": ""}
     app.state.drug_normalizer._rxnorm_client = FastRxNormClient()
+
+    class MockClaimVerifier:
+        def verify(self, answer, evidence, risk_tier="R1", critical_claim_indices=None, drug_rxcui_map=None):
+            from adaptive_trust_medical_rag.verification.claim_verifier_v2 import VerificationReportV2, GateDecision
+            return VerificationReportV2(
+                claims=[],
+                judgments=[],
+                grounding_ratio=1.0,
+                decision=GateDecision.release,
+                explanation="All claims supported."
+            )
+    app.state.claim_verifier = MockClaimVerifier()
 
     yield
 
@@ -200,16 +220,18 @@ def test_2_concurrency_audit(setup_c9_mocks):
     events_2 = extract_sse_events(client.get(f"/api/v1/stream/{req_2}").text.splitlines())
 
     # Request 1 provenance should have Warfarin
-    prov_1 = next((e for e in events_1 if e.get("event") == "medications"), None)
+    prov_1 = next((e for e in events_1 if e.get("event") in ["rxnorm", "medications"]), None)
     assert prov_1 is not None
-    names_1 = [m["raw_text"].lower() for m in prov_1["data"]["medications"]]
+    entities_1 = prov_1["data"].get("entities") or prov_1["data"].get("medications", [])
+    names_1 = [m["raw_text"].lower() for m in entities_1]
     assert "warfarin" in names_1
     assert "aspirin" not in names_1
 
     # Request 2 provenance should have Aspirin
-    prov_2 = next((e for e in events_2 if e.get("event") == "medications"), None)
+    prov_2 = next((e for e in events_2 if e.get("event") in ["rxnorm", "medications"]), None)
     assert prov_2 is not None
-    names_2 = [m["raw_text"].lower() for m in prov_2["data"]["medications"]]
+    entities_2 = prov_2["data"].get("entities") or prov_2["data"].get("medications", [])
+    names_2 = [m["raw_text"].lower() for m in entities_2]
     assert "aspirin" in names_2
     assert "warfarin" not in names_2
 
