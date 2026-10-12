@@ -265,6 +265,7 @@ export function WorkspacePage() {
               Choose the model used to generate your analysis.
             </p>
             <select
+              aria-label="Answer-generation model"
               value={selectedModelId}
               onChange={e => setSelectedModelId(e.target.value)}
               disabled={isProcessing || isLoadingModels}

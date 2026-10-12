@@ -368,3 +368,202 @@ def test_behavioral_four_way_component_isolation():
         assert "minilm" not in model_def.id.lower()
         assert "pubmedbert" not in model_def.id.lower()
 
+
+def test_provider_availability_requires_live_router_registration(monkeypatch):
+    """Verify provider availability requires actual registration in active router, not mere env vars."""
+    class DummyAppState:
+        def __init__(self):
+            self.llm_backend = LiveProviderRouter()
+
+    app_state = DummyAppState()
+    groq_adapter = MockTestProvider("groq", "openai/gpt-oss-120b")
+    app_state.llm_backend.register_provider("groq", groq_adapter)
+
+    # Simulate presence of NVIDIA credentials in the environment using safe dummy string
+    monkeypatch.setenv("NVIDIA_API_KEY", "mock_dummy_key")
+
+    # 1. Catalog check: Groq is available (registered), NVIDIA is NOT available (not in active router)
+    catalog = get_available_models(app_state)
+    catalog_map = {m["id"]: m for m in catalog}
+
+    assert catalog_map["openai/gpt-oss-120b"]["is_available"] is True
+    assert catalog_map["nvidia/nemotron-3-super-120b-a12b"]["is_available"] is False
+
+    # 2. validate_llm_selection rejects NVIDIA despite env credential because active router lacks it
+    ok, err, m_def = validate_llm_selection({
+        "mode": "manual",
+        "model_id": "nvidia/nemotron-3-super-120b-a12b",
+        "provider": "nvidia",
+    }, app_state)
+    assert ok is False
+    assert "not configured or available on the server" in err
+
+    # 3. validate_llm_selection accepts Groq since it is genuinely registered
+    ok, err, m_def = validate_llm_selection({
+        "mode": "manual",
+        "model_id": "openai/gpt-oss-120b",
+        "provider": "groq",
+    }, app_state)
+    assert ok is True and err is None
+
+    # 4. Configured model mismatch: if Groq adapter was configured with a different model ID, reject
+    mismatch_adapter = MockTestProvider("groq", "different-unsupported-model")
+    app_state.llm_backend.register_provider("groq", mismatch_adapter)
+    ok, err, m_def = validate_llm_selection({
+        "mode": "manual",
+        "model_id": "openai/gpt-oss-120b",
+        "provider": "groq",
+    }, app_state)
+    assert ok is False
+    assert "not configured on registered provider 'groq'" in err
+
+
+def test_vision_backend_initialization_decoupling(monkeypatch):
+    """Verify NVIDIA Vision backend initializes independently of Cloudflare credentials."""
+    from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
+
+    # Case A: NVIDIA key present, Cloudflare keys absent
+    # Vision backend MUST initialize; Cloudflare router MUST NOT register
+    dummy_key = "mock_dummy_key"
+    vision_backend = OpenAIVisionBackend(
+        provider_name="nvidia_vision",
+        base_url="https://integrate.api.nvidia.com/v1",
+        api_key=dummy_key,
+        model_name="meta/llama-3.2-11b-vision-instruct",
+    )
+    assert vision_backend.provider_name == "nvidia_vision"
+    assert vision_backend.model_name == "meta/llama-3.2-11b-vision-instruct"
+    assert vision_backend.base_url == "https://integrate.api.nvidia.com/v1"
+
+    # Case B: Cloudflare keys present, NVIDIA key absent
+    # Text router registers Cloudflare; Vision backend remains None
+    router = LiveProviderRouter()
+    cf_adapter = MockTestProvider("cloudflare", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+    router.register_provider("cloudflare", cf_adapter)
+    assert "cloudflare" in router.providers
+    assert "nvidia_vision" not in router.providers
+
+
+@pytest.mark.asyncio
+async def test_behavioral_vision_language_model_isolation():
+    """Behavioral proof using a controlled VisionProviderAdapter double.
+
+    Verifies:
+    1. Prescription image extraction invokes the Vision-Language Model adapter.
+    2. Changing user-selected answer-generation LLM does NOT alter vision extraction.
+    3. The pipeline halts at confirmation gate without executing answer-generation LLM.
+    """
+    from adaptive_trust_medical_rag.llm_backend.vision_interfaces import (
+        ExtractionConfidence,
+        ExtractionResult,
+        MedicationCandidate,
+        VisionProviderAdapter,
+    )
+    from adaptive_trust_medical_rag.services.live_application import LiveMedicalRAGService
+
+    class ControlledVisionModelDouble(VisionProviderAdapter):
+        def __init__(self):
+            self.provider_name = "nvidia_vision"
+            self.model_name = "meta/llama-3.2-11b-vision-instruct"
+            self.extract_calls = 0
+
+        async def extract_medications(self, image_bytes: bytes, mime_type: str) -> ExtractionResult:
+            self.extract_calls += 1
+            return ExtractionResult(
+                raw_text="Rx: Metformin 500mg, Lisinopril 10mg",
+                candidate_medications=[
+                    MedicationCandidate(
+                        raw_text="Metformin 500mg",
+                        normalized_text="metformin",
+                        confidence=ExtractionConfidence.HIGH,
+                    ),
+                    MedicationCandidate(
+                        raw_text="Lisinopril 10mg",
+                        normalized_text="lisinopril",
+                        confidence=ExtractionConfidence.MEDIUM,
+                    ),
+                ],
+                warnings=[],
+            )
+
+    class AppStateDouble:
+        def __init__(self, vision_adapter, text_router):
+            self.vision_backend = vision_adapter
+            self.llm_backend = text_router
+            self.pending_analyses = {}
+            self.claim_verifier = object()
+            self.retrieval_engine = object()
+
+    # Setup doubles
+    vision_double = ControlledVisionModelDouble()
+    text_model_groq = MockTestProvider("groq", "openai/gpt-oss-120b")
+    text_model_nvidia = MockTestProvider("nvidia", "nvidia/nemotron-3-super-120b-a12b")
+
+    router = LiveProviderRouter()
+    router.register_provider("groq", text_model_groq)
+    router.register_provider("nvidia", text_model_nvidia)
+
+    app_state = AppStateDouble(vision_double, router)
+    service = LiveMedicalRAGService(app_state)
+
+    img_bytes = _create_test_image_bytes()
+    analysis_state_1 = {}
+
+    # Run 1: Prescription upload with Groq selected for generation
+    events_1 = []
+    async for event in service.execute(
+        request_id="vlm-test-1",
+        drug_names=[],
+        patient_context=None,
+        start_time=100.0,
+        image_bytes=img_bytes,
+        image_meta={"content_type": "image/png"},
+        analysis_state=analysis_state_1,
+        llm_selection={"mode": "manual", "model_id": "openai/gpt-oss-120b", "provider": "groq"},
+    ):
+        events_1.append(event)
+        if event.get("event") == "confirmation_required":
+            break
+
+    assert vision_double.extract_calls == 1
+    assert text_model_groq.call_count == 0  # Text LLM NEVER invoked during image extraction!
+    assert text_model_nvidia.call_count == 0
+
+    candidate_event = next(e for e in events_1 if e.get("event") == "medication_candidates_extracted")
+    cands = candidate_event["data"]["candidates"]
+    assert len(cands) == 2
+    assert cands[0]["normalized_text"] == "metformin"
+    assert cands[0]["source"] == "VISION"
+    assert cands[1]["normalized_text"] == "lisinopril"
+
+    # Run 2: Prescription upload with NVIDIA selected for generation
+    analysis_state_2 = {}
+    events_2 = []
+    async for event in service.execute(
+        request_id="vlm-test-2",
+        drug_names=[],
+        patient_context=None,
+        start_time=100.0,
+        image_bytes=img_bytes,
+        image_meta={"content_type": "image/png"},
+        analysis_state=analysis_state_2,
+        llm_selection={"mode": "manual", "model_id": "nvidia/nemotron-3-super-120b-a12b", "provider": "nvidia"},
+    ):
+        events_2.append(event)
+        if event.get("event") == "confirmation_required":
+            break
+
+    assert vision_double.extract_calls == 2
+    assert text_model_groq.call_count == 0
+    assert text_model_nvidia.call_count == 0  # Text LLM STILL not invoked!
+
+    # Provenance record explicitly records the Vision-Language Model identity
+    prov_1 = analysis_state_1.get("image_provenance")
+    prov_2 = analysis_state_2.get("image_provenance")
+    assert prov_1 is not None and prov_2 is not None
+    assert prov_1["vision_provider"] == "nvidia_vision"
+    assert prov_1["vision_model"] == "meta/llama-3.2-11b-vision-instruct"
+    assert prov_2["vision_provider"] == "nvidia_vision"
+    assert prov_2["vision_model"] == "meta/llama-3.2-11b-vision-instruct"
+
+

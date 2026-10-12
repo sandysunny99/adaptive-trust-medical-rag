@@ -176,6 +176,7 @@ def create_app(
         )
         router.register_provider("cloudflare", cf_backend)
 
+    if nvidia_api_key:
         from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
         app.state.vision_backend = OpenAIVisionBackend(
             provider_name="nvidia_vision",
@@ -183,11 +184,12 @@ def create_app(
             api_key=nvidia_api_key,
             model_name="meta/llama-3.2-11b-vision-instruct"
         )
+    else:
+        app.state.vision_backend = None
 
     if not router.providers:
         log.warning("No LLM API keys set; LLM functionality will be disabled.")
         app.state.llm_backend = None
-        app.state.vision_backend = None
     else:
         app.state.llm_backend = router
 

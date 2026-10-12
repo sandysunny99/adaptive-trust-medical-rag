@@ -79,9 +79,10 @@ def get_available_models(app_state: Any = None) -> list[dict[str, Any]]:
     """
     is_testing = os.getenv("TESTING") == "1"
     router = getattr(app_state, "llm_backend", None) if app_state else None
+    has_active_router = router is not None and hasattr(router, "providers") and len(router.providers) > 0
     registered_providers: set[str] = set()
 
-    if router and hasattr(router, "providers"):
+    if has_active_router:
         registered_providers = set(router.providers.keys())
 
     models = []
@@ -90,9 +91,17 @@ def get_available_models(app_state: Any = None) -> list[dict[str, Any]]:
         req_vars = m.required_env_vars if m.required_env_vars else ((m.env_key,) if m.env_key else ())
         has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
-        if is_testing:
-            is_available = True
-        elif m.provider in registered_providers:
+        if has_active_router:
+            if m.provider in registered_providers:
+                adapter = router.providers.get(m.provider)
+                configured_model = getattr(adapter, "model_name", None)
+                if configured_model:
+                    is_available = (configured_model == m.id)
+                else:
+                    is_available = True
+            else:
+                is_available = False
+        elif is_testing:
             is_available = True
         elif has_credentials and not m.is_test_only:
             is_available = True
@@ -163,18 +172,32 @@ def validate_llm_selection(
     # Verify availability/configuration
     is_testing = os.getenv("TESTING") == "1"
     router = getattr(app_state, "llm_backend", None) if app_state else None
+    has_active_router = router is not None and hasattr(router, "providers") and len(router.providers) > 0
     registered_providers: set[str] = set()
-    if router and hasattr(router, "providers"):
+    if has_active_router:
         registered_providers = set(router.providers.keys())
 
     req_vars = model_def.required_env_vars if model_def.required_env_vars else ((model_def.env_key,) if model_def.env_key else ())
     has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
-    is_available = (
-        is_testing
-        or model_def.provider in registered_providers
-        or (has_credentials and not model_def.is_test_only)
-    )
+    if has_active_router:
+        if model_def.provider in registered_providers:
+            adapter = router.providers.get(model_def.provider)
+            configured_model = getattr(adapter, "model_name", None)
+            if configured_model and configured_model != model_def.id:
+                return False, (
+                    f"Model '{model_id}' is not configured on registered provider '{model_def.provider}' "
+                    f"(configured with '{configured_model}')."
+                ), None
+            is_available = True
+        else:
+            is_available = False
+    elif is_testing:
+        is_available = True
+    elif has_credentials and not model_def.is_test_only:
+        is_available = True
+    else:
+        is_available = False
 
     if not is_available:
         return False, (
