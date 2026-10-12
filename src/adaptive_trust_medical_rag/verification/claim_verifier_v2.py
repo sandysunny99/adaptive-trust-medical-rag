@@ -128,6 +128,8 @@ class NLIInferenceError(Exception):
 
 class ClaimVerifierV2:
     def __init__(self, model_id: str = "pritamdeka/PubMedBERT-MNLI-MedNLI", revision: str = "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab", cache_dir: str = None):
+        self.model_id = model_id
+        self.revision = revision
         kwargs = {}
         if cache_dir:
             kwargs["model_kwargs"] = {"cache_dir": cache_dir}

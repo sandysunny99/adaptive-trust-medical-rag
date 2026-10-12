@@ -25,7 +25,10 @@ from adaptive_trust_medical_rag.api.live_schemas import (
     LLMSelectionInput,
     PatientContextInput,
 )
-from adaptive_trust_medical_rag.llm_backend.model_registry import get_available_models
+from adaptive_trust_medical_rag.llm_backend.model_registry import (
+    get_available_models,
+    validate_llm_selection,
+)
 from adaptive_trust_medical_rag.services.image_validator import ImageValidationError, ImageValidator
 
 log = logging.getLogger(__name__)
@@ -67,6 +70,11 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
     **Privacy:** Drug names are sanitized. No PHI accepted.
     **Disclaimer:** Research output only. Not for clinical use.
     """
+    if body.llm_selection:
+        is_valid, err_msg, _ = validate_llm_selection(body.llm_selection, request.app.state)
+        if not is_valid:
+            raise HTTPException(status_code=400, detail=err_msg)
+
     request_id = str(uuid.uuid4())
 
     # Store the pending analysis request in app state
@@ -138,14 +146,21 @@ async def post_analyze_prescription(
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
-    # Parse optional llm_selection if provided
+    # Parse optional llm_selection if provided (strict validation: reject invalid JSON or model)
     selection_data = None
     if llm_selection:
         try:
             raw_sel = json.loads(llm_selection)
-            selection_data = LLMSelectionInput(**raw_sel).model_dump()
+            selection_input = LLMSelectionInput(**raw_sel)
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid llm_selection JSON")
         except Exception as e:
-            log.warning("Invalid llm_selection JSON in prescription upload: %s", e)
+            raise HTTPException(status_code=400, detail=f"Invalid llm_selection schema: {e}")
+
+        is_valid, err_msg, _ = validate_llm_selection(selection_input, request.app.state)
+        if not is_valid:
+            raise HTTPException(status_code=400, detail=err_msg)
+        selection_data = selection_input.model_dump()
 
     pending[request_id] = {
         "type": "prescription_image",

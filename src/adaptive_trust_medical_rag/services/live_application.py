@@ -29,6 +29,7 @@ from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     TrustFactorScores,
     classify_query_risk,
 )
+from adaptive_trust_medical_rag.llm_backend.model_registry import get_model_definition
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
@@ -556,36 +557,25 @@ class LiveMedicalRAGService:
 
             # Determine provider routing from user-specified llm_selection
             target_provider = None
+            target_model_id = None
             used_model_info = {"mode": "auto", "provider": "auto", "model_id": "auto"}
 
             if llm_selection:
                 mode = llm_selection.get("mode", "auto")
-                model_id = llm_selection.get("model_id")
-                provider = llm_selection.get("provider")
-
                 if mode == "manual":
-                    if provider:
-                        target_provider = provider
-                    elif model_id:
-                        from adaptive_trust_medical_rag.llm_backend.model_registry import SUPPORTED_LLM_MODELS
-                        for m_def in SUPPORTED_LLM_MODELS:
-                            if m_def.id == model_id:
-                                target_provider = m_def.provider
-                                break
-                        if not target_provider:
-                            if "groq" in model_id.lower():
-                                target_provider = "groq"
-                            elif "nvidia" in model_id.lower():
-                                target_provider = "nvidia"
-                            elif "cloudflare" in model_id.lower() or "@cf" in model_id.lower():
-                                target_provider = "cloudflare"
-                            elif "mock" in model_id.lower():
-                                target_provider = "mock"
-
+                    model_id = llm_selection.get("model_id")
+                    if model_id:
+                        model_def = get_model_definition(model_id)
+                        if model_def:
+                            target_provider = model_def.provider
+                            target_model_id = model_def.id
+                        else:
+                            target_provider = llm_selection.get("provider")
+                            target_model_id = model_id
                     used_model_info = {
                         "mode": "manual",
                         "provider": target_provider or "unknown",
-                        "model_id": model_id or target_provider or "unknown",
+                        "model_id": target_model_id or model_id or "unknown",
                     }
 
             try:
