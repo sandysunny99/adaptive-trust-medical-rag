@@ -1,10 +1,15 @@
-import { FileSearch, ExternalLink, Shield } from 'lucide-react';
+import { FileSearch, Shield } from 'lucide-react';
 import type { AnalysisResult } from '../types';
+import { EvidenceList } from '../components/results/EvidenceList';
 
 interface EvidencePageProps {
   latestResult?: AnalysisResult | null;
 }
 
+/**
+ * Standalone evidence view. No longer a top-level tab: the same list now renders
+ * inside the Analyze results ("Evidence & Sources"). Kept for reuse.
+ */
 export function EvidencePage({ latestResult }: EvidencePageProps) {
   const evidence = latestResult?.evidence || [];
   const trust = latestResult?.trust;
@@ -18,7 +23,7 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
           <h2 className="text-base font-semibold text-foreground">Evidence Explorer</h2>
         </div>
         <p className="text-sm text-muted-foreground">
-          Run a medication analysis from the Medical RAG workspace to see retrieved evidence sources,
+          Run a medication analysis to see retrieved evidence sources,
           trust scores, and provenance chains here.
         </p>
       </div>
@@ -74,38 +79,8 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
         <div className="p-4 border-b border-border">
           <h3 className="text-sm font-semibold text-foreground">Retrieved Evidence</h3>
         </div>
-        <div className="divide-y divide-border">
-          {evidence.map((ev, i) => (
-            <div key={ev.chunk_id || i} className="p-4">
-              <div className="flex items-start justify-between">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-muted-foreground">[{i + 1}]</span>
-                    <span className="text-sm font-medium text-foreground truncate">{ev.source_name || ev.title}</span>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                      ev.provenance_status === 'VERIFIED' ? 'bg-success-soft text-success' : 'bg-muted text-muted-foreground'
-                    }`}>
-                      {ev.provenance_status}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1 line-clamp-3">{ev.text}</p>
-                  <div className="flex flex-wrap gap-3 mt-2 text-[11px] text-muted-foreground">
-                    {ev.pmid && <span>PMID: {ev.pmid}</span>}
-                    {ev.doi && <span>DOI: {ev.doi}</span>}
-                    <span>Authority: {(ev.source_authority ?? 0).toFixed(2)}</span>
-                    <span>Trust: {(ev.trust_score ?? 0).toFixed(2)}</span>
-                    <span>Freshness: {(ev.freshness ?? 0).toFixed(2)}</span>
-                    <span>Method: {ev.retrieval_method}</span>
-                  </div>
-                </div>
-                {ev.url && (
-                  <a href={ev.url} target="_blank" rel="noopener noreferrer" className="p-1.5 text-muted-foreground hover:text-primary shrink-0">
-                    <ExternalLink size={14} />
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
+        <div className="p-4">
+          <EvidenceList evidence={evidence} />
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@
  */
 
 import type { HistoryEntry } from './historyDb';
+import { RESEARCH_DISCLAIMER, disclaimerFor } from '../constants/disclaimer';
 
 export function exportAsJson(entry: HistoryEntry, includePatientContext = false): string {
   const data = { ...entry.result };
@@ -18,7 +19,7 @@ export function exportAsMarkdown(entry: HistoryEntry, _includePatientContext = f
   const lines: string[] = [
     '# Medical RAG Analysis Report',
     '',
-    '> ⚠️ RESEARCH OUTPUT ONLY. Not reviewed by clinicians. Not for clinical use.',
+    `> ⚠️ ${RESEARCH_DISCLAIMER}`,
     '',
     `**Date:** ${entry.timestamp}`,
     `**Input Mode:** ${entry.inputMode}`,
@@ -57,7 +58,7 @@ export function exportAsMarkdown(entry: HistoryEntry, _includePatientContext = f
     }
   }
 
-  lines.push('', '---', '', r.disclaimer || 'RESEARCH OUTPUT ONLY. Not for clinical use.');
+  lines.push('', '---', '', disclaimerFor(r.disclaimer));
   return lines.join('\n');
 }
 

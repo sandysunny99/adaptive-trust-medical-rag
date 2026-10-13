@@ -411,7 +411,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       {/* Results */}
       {result && currentStage !== 'confirming' && (
         <div className="space-y-4">
-          <ResultPanel result={result} />
+          <ResultPanel result={result} showDetails={!isProcessing} />
           <div className="flex items-center gap-3 mt-2">
             <button
               onClick={handleSaveToHistory}

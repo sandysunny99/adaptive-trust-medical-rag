@@ -1,12 +1,19 @@
 import type { AnalysisResult } from '../types';
 import { MedicationCard } from './MedicationCard';
-import { AlertTriangle, Utensils, FileText } from 'lucide-react';
+import { AlertTriangle, Utensils, FileText, Shield } from 'lucide-react';
+import { disclaimerFor } from '../constants/disclaimer';
+import { Disclosure } from './ui/Disclosure';
+import { TrustSummary } from './results/TrustSummary';
+import { EvidenceList } from './results/EvidenceList';
+import { SecurityChecks } from './results/SecurityChecks';
 
 interface ResultPanelProps {
   result: AnalysisResult;
+  /** Show Evidence & Sources and Security Checks (only once an analysis has finished). */
+  showDetails?: boolean;
 }
 
-export function ResultPanel({ result }: ResultPanelProps) {
+export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
   return (
     <div className="space-y-4">
       {/* Medications Identified */}
@@ -88,49 +95,48 @@ export function ResultPanel({ result }: ResultPanelProps) {
       )}
 
       {/* Conclusion */}
-      <section className="bg-card rounded-lg border border-border shadow-sm">
-        <div className="p-4 border-b border-border flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-foreground">Overall Conclusion</h3>
+      <section aria-labelledby="conclusion-heading" className="bg-card rounded-lg border border-border shadow-sm">
+        <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-2">
+          <h3 id="conclusion-heading" className="text-sm font-semibold text-foreground">Overall Conclusion</h3>
           {result.used_model && (
-            <span className="text-xs bg-muted text-foreground px-2.5 py-1 rounded border border-border font-medium">
+            <span className="text-xs bg-muted text-foreground px-2.5 py-1 rounded border border-border font-medium break-all">
               Model: <span className="font-semibold text-primary">{result.used_model.model_id}</span> ({result.used_model.provider})
             </span>
           )}
         </div>
         <div className="p-4">
           <p className="text-sm text-foreground">{result.conclusion}</p>
-          <div className="mt-3 p-3 bg-primary-soft rounded-lg border border-primary/20">
-            <p className="text-xs text-primary">{result.disclaimer}</p>
+          <div role="note" aria-label="Research disclaimer" className="mt-3 flex items-start gap-2 p-3 bg-warning-soft rounded-lg border border-warning/30">
+            <AlertTriangle size={14} className="mt-0.5 shrink-0 text-warning" aria-hidden="true" />
+            <p className="text-xs font-medium text-foreground">{disclaimerFor(result.disclaimer)}</p>
           </div>
         </div>
       </section>
 
-      {/* Verified Evidence */}
-      {(result.evidence || []).length > 0 && (
-        <section className="bg-card rounded-lg border border-border shadow-sm">
-          <div className="p-4 border-b border-border">
-            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-              <FileText size={16} className="text-primary" />
-              Verified Evidence ({(result.evidence || []).length})
-            </h3>
-          </div>
-          <div className="p-4 space-y-2">
-            {(result.evidence || []).map((ev, i) => (
-              <div key={i} className="p-3 rounded border border-border text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-medium text-foreground">[{i + 1}] {ev.source_name}</span>
-                  <span className="text-muted-foreground">{ev.retrieval_method}</span>
-                </div>
-                <p className="text-muted-foreground mt-1 line-clamp-2">{ev.text}</p>
-                <div className="flex gap-3 mt-1 text-muted-foreground">
-                  {ev.pmid && <span>PMID: {ev.pmid}</span>}
-                  <span>Authority: {ev.source_authority.toFixed(2)}</span>
-                  <span>Trust: {ev.trust_score.toFixed(2)}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+      <TrustSummary trust={result.trust} />
+
+      {showDetails && (
+        <>
+          <Disclosure
+            defaultOpen
+            className="bg-card shadow-sm"
+            icon={<FileText size={16} />}
+            title={`Evidence & Sources (${(result.evidence || []).length})`}
+          >
+            {(result.evidence || []).length > 0
+              ? <EvidenceList evidence={result.evidence} />
+              : <p className="text-sm text-muted-foreground">No evidence items were returned for this analysis.</p>}
+          </Disclosure>
+
+          <Disclosure
+            defaultOpen
+            className="bg-card shadow-sm"
+            icon={<Shield size={16} />}
+            title="Security Checks"
+          >
+            <SecurityChecks result={result} />
+          </Disclosure>
+        </>
       )}
     </div>
   );
