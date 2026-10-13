@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import { Icons } from '../ui/icons';
-import type { MedicationCandidate } from '../types';
+import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
   candidates: MedicationCandidate[];
-  onConfirm: (confirmedNames: string[]) => void;
+  onConfirm: (confirmed: ConfirmedMedication[]) => void;
+}
+
+/** The confirmation item for a reviewed candidate, keeping who supplied the name. */
+function toConfirmedMedication(c: MedicationCandidate): ConfirmedMedication {
+  const name = (c.normalized_text || c.raw_text).trim();
+  if (c.source === 'USER') {
+    return { name, status: 'USER_ADDED', source: 'USER', raw_detected_name: null };
+  }
+  if (c.status === 'EDITED') {
+    return { name, status: 'EDITED', source: 'USER_EDITED', raw_detected_name: c.raw_text };
+  }
+  return { name, status: 'CONFIRMED', source: c.source === 'OCR' ? 'OCR' : 'VISION', raw_detected_name: c.raw_text };
 }
 
 export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm }: Props) {
@@ -235,9 +247,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
         <button
           onClick={() => {
             if (hasConfirmed) {
-              // Submit array of strings for confirmed med names
-              const resolved = activeCandidates.map(c => c.normalized_text || c.raw_text);
-              onConfirm(resolved);
+              onConfirm(activeCandidates.map(toConfirmedMedication));
             }
           }}
           disabled={!hasConfirmed}

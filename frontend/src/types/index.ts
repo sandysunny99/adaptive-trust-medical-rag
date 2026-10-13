@@ -39,6 +39,17 @@ export interface MedicationCandidate {
   warnings?: string[];
 }
 
+/**
+ * One item of POST /api/v1/analyze/{request_id}/confirm. The backend model
+ * (ConfirmedMedicationItem in api/routes/analyze.py) takes objects, never bare names.
+ */
+export interface ConfirmedMedication {
+  name: string;
+  status: 'CONFIRMED' | 'EDITED' | 'USER_ADDED';
+  source: 'VISION' | 'OCR' | 'USER' | 'USER_EDITED';
+  raw_detected_name: string | null;
+}
+
 export type SupportState =
   | 'SUPPORTED'
   | 'PARTIALLY_SUPPORTED'

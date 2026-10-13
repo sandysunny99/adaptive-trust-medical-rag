@@ -108,7 +108,16 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
           )}
         </div>
         <div className="p-4">
-          <p className="text-sm text-foreground">{result.conclusion}</p>
+          {result.gate_decision === 'abstain' ? (
+            <div role="status" className="rounded-lg border border-border bg-muted p-3">
+              <p className="text-sm font-semibold text-foreground">The system abstained from answering.</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {result.abstention_reason || 'The evidence was not strong enough to answer safely.'}
+              </p>
+            </div>
+          ) : (
+            <p className="text-sm text-foreground">{result.conclusion}</p>
+          )}
           <div role="note" aria-label="Research disclaimer" className="mt-3 flex items-start gap-2 p-3 bg-warning-soft rounded-lg border border-warning/30">
             <Icons.caution size={14} className="mt-0.5 shrink-0 text-warning" aria-hidden="true" />
             <p className="text-xs font-medium text-foreground">{disclaimerFor(result.disclaimer)}</p>

@@ -117,6 +117,40 @@ describe('MedicationConfirmationPanel', () => {
     expect(submitBtn).not.toBeDisabled();
     
     fireEvent.click(submitBtn);
-    expect(onConfirmMock).toHaveBeenCalledWith(['warfarin']);
+    // The backend's ConfirmedMedicationItem takes objects; bare names get HTTP 422.
+    expect(onConfirmMock).toHaveBeenCalledWith([
+      { name: 'warfarin', status: 'CONFIRMED', source: 'VISION', raw_detected_name: 'Warfarin 5mg' },
+    ]);
+  });
+
+  it('TEST 11: Confirmation sends one object per kept medication, in order, with who supplied the name', async () => {
+    const onConfirmMock = vi.fn();
+    const candidates: MedicationCandidate[] = [
+      { id: 'ocr-0', raw_text: 'Simvastatin 40 mg', normalized_text: 'Simvastatin', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' },
+      { id: 'ocr-1', raw_text: 'Clarithro..', normalized_text: 'Clarithromycn', confidence: 'LOW', status: 'UNCERTAIN', source: 'VISION' },
+      { id: 'ocr-2', raw_text: 'Vitamin D', normalized_text: 'Vitamin D', confidence: 'MEDIUM', status: 'DETECTED', source: 'VISION' },
+    ];
+    render(<MedicationConfirmationPanel candidates={candidates} onConfirm={onConfirmMock} />);
+
+    fireEvent.click(screen.getAllByRole('button', { name: 'Confirm' })[0]);
+    // Fix the misread name; the edit is attributed to the user.
+    fireEvent.click(screen.getAllByTitle('Edit')[1]);
+    const input = screen.getByDisplayValue('Clarithromycn');
+    await userEvent.clear(input);
+    await userEvent.type(input, 'Clarithromycin');
+    fireEvent.click(input.nextSibling as HTMLButtonElement);
+    fireEvent.click(screen.getAllByTitle('Remove')[2]);
+    fireEvent.click(screen.getByText(/Add medication manually/i));
+    await userEvent.type(screen.getByPlaceholderText(/Enter medication name/i), 'Aspirin');
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+
+    fireEvent.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/i }));
+    expect(onConfirmMock).toHaveBeenCalledTimes(1);
+    expect(onConfirmMock.mock.calls[0][0]).toEqual([
+      { name: 'Simvastatin', status: 'CONFIRMED', source: 'VISION', raw_detected_name: 'Simvastatin 40 mg' },
+      { name: 'Clarithromycin', status: 'EDITED', source: 'USER_EDITED', raw_detected_name: 'Clarithro..' },
+      { name: 'Aspirin', status: 'USER_ADDED', source: 'USER', raw_detected_name: null },
+    ]);
+    for (const item of onConfirmMock.mock.calls[0][0]) expect(typeof item).toBe('object');
   });
 });

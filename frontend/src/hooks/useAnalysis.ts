@@ -7,6 +7,7 @@ import type {
   PipelineStage,
   MedicationCandidate,
   LLMSelection,
+  ConfirmedMedication,
 } from '../types';
 import { submitAnalysis, submitPrescriptionImage, confirmMedications, connectStream } from '../services/api';
 
@@ -90,6 +91,9 @@ export function useAnalysis() {
         break;
         
       case 'abstention':
+        // A valid safety outcome, not an error. The backend closes the stream
+        // right after it without a 'complete' event, so end the run here or the
+        // close is reported as a disconnect.
         partialResult = {
           ...partialResult,
           gate_decision: 'abstain',
@@ -98,6 +102,8 @@ export function useAnalysis() {
         };
         setResult(partialResult as AnalysisResult);
         setCurrentStage('abstained');
+        setIsProcessing(false);
+        cleanup();
         break;
 
       case 'error':
@@ -165,12 +171,16 @@ export function useAnalysis() {
       
       setCurrentRequestId(req_id);
 
+      // Once a terminal event arrives, the stream closing is expected, not a failure.
+      let ended = false;
       disconnectRef.current = connectStream(
         stream_url,
         (event, data: any) => {
           partialResult = handleStreamEvent(event, data, partialResult);
+          if (event === 'abstention' || event === 'complete' || event === 'error') ended = true;
         },
         (err) => {
+          if (ended) return;
           console.error("Stream error", err);
           setError(prev => prev || "Analysis stream disconnected unexpectedly. Check the backend server status.");
           setCurrentStage('error');
@@ -185,12 +195,12 @@ export function useAnalysis() {
     }
   }, [cleanup, handleStreamEvent]);
 
-  const confirm = useCallback(async (confirmedNames: string[]) => {
+  const confirm = useCallback(async (confirmed: ConfirmedMedication[]) => {
     if (!currentRequestId) return;
     try {
       // Transition from confirming -> running immediately in UI
       setCurrentStage('normalizing'); 
-      await confirmMedications(currentRequestId, confirmedNames);
+      await confirmMedications(currentRequestId, confirmed);
     } catch (err: any) {
       setError(err.message || String(err));
       setCurrentStage('error');

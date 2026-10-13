@@ -14,7 +14,7 @@ import { createElement, type ComponentType } from 'react';
 import {
   ArrowDown, BadgeCheck, BookmarkCheck, BookmarkPlus, BookOpen, BookOpenCheck, Bug, ChartColumn,
   ChevronDown, ChevronsUpDown, Circle, CircleAlert, CircleCheck, CircleDashed, CircleDot, CircleHelp,
-  CircleSlash, CircleX, ClipboardList, Cpu, DatabaseZap, Download, ExternalLink, Eye, FileCheck2,
+  CircleMinus, CircleSlash, CircleX, ClipboardList, Cpu, DatabaseZap, Download, ExternalLink, Eye, FileCheck2,
   FileDown, FileJson, FilePlus2, FileText, Fingerprint, Gauge, GitCompareArrows, History, ImageUp,
   Info, Keyboard, Layers, Loader2, Moon, NotebookPen, OctagonX, Pencil, Pill, Plus,
   RotateCw, ScanSearch, ScrollText, SearchCheck, ShieldAlert, ShieldCheck, ShieldHalf, ShieldPlus,
@@ -78,6 +78,7 @@ export const ICON_SOURCES = {
   stepIdle: Circle,
   stepRunningStatic: CircleDot, // running step under prefers-reduced-motion
   stepFailed: CircleX,
+  stepSkipped: CircleMinus,  // stage the backend never ran
 
   // Evidence source types
   sourceLiterature: BookOpen,

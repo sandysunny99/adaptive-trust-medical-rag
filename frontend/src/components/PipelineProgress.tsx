@@ -11,12 +11,23 @@ interface PipelineProgressProps {
   processingTimeMs?: number | null;
 }
 
-type StepStatus = 'complete' | 'running' | 'pending' | 'failed';
+type StepStatus = 'complete' | 'running' | 'pending' | 'failed' | 'skipped';
 
-function getStageStatus(stageKey: PipelineStage, currentStage: PipelineStage, stages: { key: PipelineStage }[]): StepStatus {
+function getStageStatus(
+  stageKey: PipelineStage,
+  currentStage: PipelineStage,
+  stages: { key: PipelineStage }[],
+  updates: StageUpdate[],
+): StepStatus {
   const currentIdx = stages.findIndex(s => s.key === currentStage);
   const stageIdx = stages.findIndex(s => s.key === stageKey);
-  if (currentStage === 'complete' || currentStage === 'abstained') return 'complete';
+  if (currentStage === 'complete') return 'complete';
+  // An abstention can stop the pipeline early; only stages the backend reported actually ran.
+  if (currentStage === 'abstained') {
+    const ran = updates.some(u => u.stage === stageKey)
+      || (stageKey === 'confirming' && updates.some(u => u.stage === 'extracting'));
+    return ran ? 'complete' : 'skipped';
+  }
   if (currentStage === 'error' || currentStage === 'blocked') {
     if (stageIdx < currentIdx) return 'complete';
     if (stageIdx === currentIdx) return 'failed';
@@ -36,7 +47,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
   return (
     <ol className="space-y-2">
       {stages.map(({ key, label }) => {
-        const status = getStageStatus(key, currentStage, stages);
+        const status = getStageStatus(key, currentStage, stages, updates);
         const update = updates.find(u => u.stage === key);
         return (
           <li key={key} className="flex items-center gap-3">
@@ -47,6 +58,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
                 : <Icons.loading size={16} className="text-primary animate-spin" />)}
               {status === 'pending' && <Icons.stepIdle size={16} className="text-muted-foreground" />}
               {status === 'failed' && <Icons.stepFailed size={16} className="text-destructive" />}
+              {status === 'skipped' && <Icons.stepSkipped size={16} className="text-muted-foreground" />}
             </span>
             <span className={`text-sm ${
               status === 'complete' ? 'text-foreground' :
@@ -58,6 +70,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
               {status === 'running' && <span className="sr-only"> (in progress)</span>}
               {status === 'failed' && <span className="sr-only"> (failed)</span>}
             </span>
+            {status === 'skipped' && <span className="text-xs text-muted-foreground">Not run</span>}
             {update?.duration_ms && (
               <span className="text-xs text-muted-foreground ml-auto">{update.duration_ms}ms</span>
             )}
@@ -74,7 +87,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
  * to the list. The time is the backend's processing_time_ms, omitted if absent.
  */
 export function PipelineProgress(props: PipelineProgressProps) {
-  const { stages, currentStage, processingTimeMs } = props;
+  const { stages, currentStage, updates, processingTimeMs } = props;
   const finished = currentStage === 'complete' || currentStage === 'abstained';
 
   if (!finished) {
@@ -86,7 +99,7 @@ export function PipelineProgress(props: PipelineProgressProps) {
     );
   }
 
-  const done = stages.filter(s => getStageStatus(s.key, currentStage, stages) === 'complete').length;
+  const done = stages.filter(s => getStageStatus(s.key, currentStage, stages, updates) === 'complete').length;
   const summary = [
     `${done} of ${stages.length} steps completed`,
     typeof processingTimeMs === 'number' && Number.isFinite(processingTimeMs) ? formatSeconds(processingTimeMs) : null,
@@ -95,7 +108,9 @@ export function PipelineProgress(props: PipelineProgressProps) {
   return (
     <Disclosure
       className="bg-card shadow-sm"
-      icon={<Icons.pass size={16} className="text-success" />}
+      icon={done === stages.length
+        ? <Icons.pass size={16} className="text-success" />
+        : <Icons.abstained size={16} className="text-muted-foreground" />}
       title="Pipeline Progress"
       hint={summary}
     >

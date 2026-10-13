@@ -12,6 +12,7 @@ import type {
   InputMode,
   LLMModelInfo,
   LLMSelection,
+  ConfirmedMedication,
 } from '../types';
 
 const API_BASE = '';  // proxied by Vite in dev
@@ -104,9 +105,9 @@ export async function submitPrescriptionImage(
 
 export async function confirmMedications(
   requestId: string,
-  confirmedMedications: string[]
+  confirmedMedications: ConfirmedMedication[]
 ): Promise<{ status: string }> {
-  const response = await fetch(`${API_BASE}/api/v1/analyze/${requestId}/confirm`, {
+  const response = await fetch(`${API_BASE}/api/v1/analyze/${encodeURIComponent(requestId)}/confirm`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ confirmed_medications: confirmedMedications }),
@@ -114,10 +115,22 @@ export async function confirmMedications(
 
   if (!response.ok) {
     const errBody = await response.text();
-    throw new Error(`Confirmation failed (${response.status}): ${errBody}`);
+    // The raw validation payload is for developers, not the page.
+    if (import.meta.env.DEV) console.warn(`Confirmation failed (${response.status})`, errBody);
+    throw new Error(confirmationErrorMessage(response.status));
   }
 
   return response.json();
+}
+
+export function confirmationErrorMessage(status: number): string {
+  if (status === 422) {
+    return 'The server rejected the medication confirmation as invalid (HTTP 422). Nothing was analyzed. Confirm the medications again.';
+  }
+  if (status === 404) {
+    return 'This analysis request has expired or no longer exists (HTTP 404). Upload the prescription again.';
+  }
+  return `The medication confirmation could not be sent (HTTP ${status}). Nothing was analyzed. Try again.`;
 }
 
 export async function checkHealth(): Promise<HealthStatus> {

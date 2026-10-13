@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { WorkspacePage } from './WorkspacePage';
@@ -13,6 +13,7 @@ vi.mock('../services/api', async (importOriginal) => {
     fetchModelCatalog: vi.fn(),
     submitAnalysis: vi.fn(),
     submitPrescriptionImage: vi.fn(),
+    confirmMedications: vi.fn(),
     connectStream: vi.fn(),
   };
 });
@@ -310,3 +311,110 @@ describe('WorkspacePage prescription upload', () => {
     expect(api.connectStream).toHaveBeenCalledWith('/api/v1/stream/req-1', expect.any(Function), expect.any(Function));
   });
 });
+
+describe('WorkspacePage prescription confirmation', () => {
+  type Handler = (event: string, data: unknown) => void;
+  let emit: Handler = () => undefined;
+  let streamClosed: () => void = () => undefined;
+  let disconnect = vi.fn();
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(api.fetchModelCatalog).mockResolvedValue([]);
+    vi.mocked(api.submitPrescriptionImage).mockResolvedValue({ request_id: 'req-7', stream_url: '/api/v1/stream/req-7', validation: {} });
+    disconnect = vi.fn();
+    vi.mocked(api.connectStream).mockImplementation((_url, onEvent, onError) => {
+      emit = onEvent as Handler;
+      streamClosed = () => onError?.(new Event('error'));
+      return disconnect;
+    });
+    Object.defineProperty(URL, 'createObjectURL', { configurable: true, writable: true, value: vi.fn(() => 'blob:rx') });
+    Object.defineProperty(URL, 'revokeObjectURL', { configurable: true, writable: true, value: vi.fn() });
+  });
+
+  async function reachConfirmation() {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', {
+        candidates: [
+          { id: 'ocr-0', raw_text: 'Simvastatin 40 mg', normalized_text: 'Simvastatin', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' },
+          { id: 'ocr-1', raw_text: 'Clarithromycin 500 mg', normalized_text: 'Clarithromycin', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' },
+        ],
+      });
+      emit('confirmation_required', {});
+    });
+    for (const button of screen.getAllByRole('button', { name: 'Confirm' })) await user.click(button);
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/i }));
+    return user;
+  }
+
+  it('sends the reviewed candidates as objects to the same request', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    expect(api.confirmMedications).toHaveBeenCalledTimes(1);
+    expect(api.confirmMedications).toHaveBeenCalledWith('req-7', [
+      { name: 'Simvastatin', status: 'CONFIRMED', source: 'VISION', raw_detected_name: 'Simvastatin 40 mg' },
+      { name: 'Clarithromycin', status: 'CONFIRMED', source: 'VISION', raw_detected_name: 'Clarithromycin 500 mg' },
+    ]);
+    // A 200 from /confirm is not a finished analysis: the page waits for the stream.
+    expect(screen.getByText('Analyzing…')).toBeInTheDocument();
+  });
+
+  it('shows an abstention after confirmation as a result, not a disconnected stream', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => {
+      emit('rxnorm', { entities: [{ raw_text: 'Simvastatin', canonical_name: 'simvastatin', rxcui: '36567', status: 'MATCHED', source: 'VISION' }] });
+      emit('trust', { overall_score: 0, threshold: 0.3, risk_class: 'R0', is_eligible: false, factors: {}, missing_factors: [] });
+      emit('abstention', {
+        reason: 'Insufficient eligible evidence retrieved to meet trust threshold.',
+        trust: { overall_score: 0, threshold: 0.3, risk_class: 'R0' },
+      });
+    });
+    // The backend closes the stream right after an abstention; that close is not a failure.
+    expect(disconnect).toHaveBeenCalled();
+    act(() => streamClosed());
+    expect(screen.getByText('The system abstained from answering.')).toBeInTheDocument();
+    expect(screen.getByText('Insufficient eligible evidence retrieved to meet trust threshold.')).toBeInTheDocument();
+    expect(screen.queryByText(/Analysis Failed|disconnected unexpectedly/)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Analyze Medications' })).toBeEnabled();
+  });
+
+  it('does not mark stages after an early abstention as completed', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => {
+      for (const stage of ['uploading', 'extracting', 'normalizing', 'retrieving', 'security_checking', 'trust_evaluating']) {
+        emit('stage_update', { stage, status: 'complete', timestamp: '2026-10-13T00:00:00Z' });
+      }
+      emit('abstention', { reason: 'Insufficient eligible evidence retrieved to meet trust threshold.', trust: { overall_score: 0, threshold: 0.3, risk_class: 'R0' } });
+    });
+    const row = (label: string) => screen.getByText(label).parentElement as HTMLElement;
+    for (const label of ['LLM Analysis', 'Claim Verification', 'Safety Gate', 'Relationship Verification']) {
+      expect(within(row(label)).getByText('Not run')).toBeInTheDocument();
+    }
+    for (const label of ['Trust Evaluation', 'Evidence Retrieval', 'User Confirmation']) {
+      expect(within(row(label)).queryByText('Not run')).not.toBeInTheDocument();
+    }
+  });
+
+  it('still reports a stream that drops before any terminal event', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => streamClosed());
+    expect(screen.getByText(/disconnected unexpectedly/)).toBeInTheDocument();
+  });
+
+  it('shows a readable confirmation error instead of the raw validation payload', async () => {
+    vi.mocked(api.confirmMedications).mockRejectedValue(new Error(api.confirmationErrorMessage(422)));
+    await reachConfirmation();
+    expect(await screen.findByText(/rejected the medication confirmation as invalid \(HTTP 422\)/)).toBeInTheDocument();
+    expect(screen.queryByText(/model_attributes_type|confirmed_medications/)).not.toBeInTheDocument();
+  });
+});
+
