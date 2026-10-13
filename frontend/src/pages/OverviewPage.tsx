@@ -9,12 +9,6 @@ export function OverviewPage() {
           Evidence-grounded pharmacology QA with multimodal input, real-time RAG pipeline,
           trust-aware evidence control, and controlled abstention.
         </p>
-        <div className="mt-4 p-3 bg-warning-soft border border-warning/30 rounded-lg">
-          <p className="text-xs text-warning">
-            <strong>Research Prototype</strong> — This system is NOT an autonomous clinical decision-maker.
-            All outputs require clinical verification by a qualified healthcare professional.
-          </p>
-        </div>
       </div>
 
       <div className="grid grid-cols-3 gap-4">

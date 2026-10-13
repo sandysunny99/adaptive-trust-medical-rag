@@ -9,21 +9,29 @@ import { useHashRoute } from './routing/useHashRoute';
 export default function App() {
   const { page, navigate, showResearchTabs } = useHashRoute();
 
-  const renderPage = () => {
+  // Every page except Analyze mounts on demand.
+  const renderOtherPage = () => {
     switch (page) {
       case 'history': return <HistoryPage />;
       // Temporary: the methodology content still lives in OverviewPage until the About page lands.
       case 'about': return <OverviewPage />;
       case 'evaluation': return <EvaluationPage />;
       case 'audit': return <AuditPage />;
-      case 'analyze':
-      default: return <AnalyzePage />;
+      default: return null;
     }
   };
 
   return (
     <Layout currentPage={page} onNavigate={navigate} showResearchTabs={showResearchTabs}>
-      {renderPage()}
+      {/*
+        Analyze stays mounted so an in-progress or finished analysis survives
+        visits to other pages. `hidden` removes it from layout, the
+        accessibility tree and the tab order while another page is shown.
+      */}
+      <div hidden={page !== 'analyze'}>
+        <AnalyzePage />
+      </div>
+      {page !== 'analyze' && renderOtherPage()}
     </Layout>
   );
 }

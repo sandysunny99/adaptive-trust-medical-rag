@@ -3,6 +3,7 @@ import type { Page } from '../routing/routes';
 import { ThemeToggle } from './ui/ThemeToggle';
 import { FlaskConical, Info, BarChart3, Activity, Clock } from 'lucide-react';
 import { cn } from '../utils/cn';
+import { RESEARCH_DISCLAIMER } from '../constants/disclaimer';
 
 interface NavItem {
   page: Page;
@@ -39,7 +40,7 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="flex min-h-screen flex-col bg-background">
       <header className="sticky top-0 z-40 border-b border-border bg-glass backdrop-blur-md">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
           <a
@@ -58,8 +59,12 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
             </div>
           </a>
           <div className="flex shrink-0 items-center gap-2">
-            <span className="px-2 py-0.5 text-xs font-medium bg-warning-soft text-warning rounded">
+            <span
+              title={RESEARCH_DISCLAIMER}
+              className="cursor-help px-2 py-0.5 text-xs font-semibold bg-warning-soft text-warning rounded"
+            >
               RESEARCH USE ONLY
+              <span className="sr-only">. {RESEARCH_DISCLAIMER}</span>
             </span>
             <ThemeToggle />
           </div>
@@ -92,18 +97,20 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
         </nav>
       </header>
 
-      <main className="max-w-[1600px] mx-auto px-4 sm:px-6 py-6">
+      <main className="w-full flex-1 max-w-[1600px] mx-auto px-4 sm:px-6 py-6">
         {children}
       </main>
 
-      {/* Footer disclaimer */}
-      <footer className="border-t border-border bg-card mt-8">
-        <div className="max-w-[1600px] mx-auto px-6 py-3">
-          <p className="text-xs text-muted-foreground text-center">
-            ⚠️ This is an evidence-grounded research prototype. It is NOT an autonomous clinical
-            decision-maker and does NOT replace a doctor, pharmacist, or other healthcare professional.
-            All outputs are research-grade and require clinical verification.
-          </p>
+      <footer className="border-t border-border">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 text-xs text-muted-foreground">
+          Research prototype.{' '}
+          <a
+            href="#about"
+            onClick={e => onNavClick(e, 'about')}
+            className="rounded underline underline-offset-2 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Methodology and full disclaimer
+          </a>
         </div>
       </footer>
     </div>

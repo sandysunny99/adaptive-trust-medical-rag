@@ -340,12 +340,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           </div>
 
           {/* Submit */}
-          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-2 text-xs text-warning">
-              <AlertTriangle size={14} aria-hidden="true" />
-              <span>Research prototype - does not replace clinical advice</span>
-            </div>
-            <div className="flex flex-col items-stretch gap-1 sm:items-end">
+          <div className="flex sm:justify-end">
+            <div className="flex w-full flex-col items-stretch gap-1 sm:w-auto sm:items-end">
               <button
                 type="button"
                 onClick={handleSubmit}
