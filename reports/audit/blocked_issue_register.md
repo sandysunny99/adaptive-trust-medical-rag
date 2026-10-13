@@ -1,6 +1,6 @@
 # Blocked Issue Register
 
-**Current revision:** `298593f115bee9ff4c0c2f075077bbe5e5da897d` plus current remediation changes
+**Current revision:** `30dc4617554ef7254970b813e998afabd06423d0`
 
 | ID | Severity | Type | Evidence | Required action | Owner | Dependencies | Acceptance criteria | Status |
 |---|---|---|---|---|---|---|---|---|
@@ -12,6 +12,7 @@
 | BLK-006 | High | Researcher authorization | Security Phase 13D/Gate 6 was stopped/blocked | Authorize frozen end-to-end evaluation | Researcher | provider access, frozen cases | case-family metrics and failure taxonomy recorded | BLOCKED BY RESEARCHER AUTHORIZATION |
 | BLK-007 | Medium | Documentation | Historical audit reports describe older pre-UI/pre-remediation state | Treat this status document and addenda as current source of truth | Maintainer | none | no conflicting “complete” claim remains in current status docs | ENGINEERING VERIFIED |
 | BLK-008 | Medium | Engineering | Trust metadata was previously discarded and retrieved evidence injection was hardcoded clean | Preserve current remediation and regression coverage | Maintainer | focused tests | trust telemetry and evidence security state are traceable | ENGINEERING VERIFIED |
+| BLK-009 | Medium | Research integrity | V3.1 strict audit rejects heuristic ground truth as independently verified | Keep the benchmark diagnostic-only until human review/adjudication exists | Researcher | reviewer availability | independent labels and integrity manifest pass without changing frozen inputs | BLOCKED BY MISSING GROUND TRUTH |
 
 No blocker is marked complete merely because a report exists. Configuration,
 authorization, ground truth, and scientific-validity blockers require the

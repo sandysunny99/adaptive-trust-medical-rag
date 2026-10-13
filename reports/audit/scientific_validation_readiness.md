@@ -26,11 +26,14 @@ manifest, Free Replication manifest/protocol, and Cognee Gate 5 failure
 artifacts. They remain historical inputs/results and were not rewritten by this
 remediation.
 
-## Validation commands
+## Current deterministic validation
 
-- `TESTING=1 uv run pytest -q` — previously verified **1,211 passed, 4 skipped**.
-- Focused post-remediation run — **61 passed, 182 warnings**, exit code 0.
-- Frontend tests/build/static/security checks — previously verified green.
+- `TESTING=1 uv run pytest -q` — **1,211 passed, 4 skipped, 729 warnings**, exit code 0.
+- `Set-Location frontend; npm test -- --run` — **20 passed across 4 files**, exit code 0.
+- `Set-Location frontend; npm run build` — passed.
+- `Set-Location frontend; npm run lint` — passed with one existing warning.
+- Targeted Ruff and Bandit — passed.
+- `uv run python scripts/verify_v3_1_integrity_strict.py` — completed with `FAIL`; heuristic ground truth is correctly classified as diagnostic-only.
 - No live provider request was issued.
 
 ## Disposition

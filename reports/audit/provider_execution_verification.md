@@ -1,6 +1,25 @@
 # Provider Execution Verification Report
 
-**Status:** `PROVIDER EXECUTION PROVEN / LIVE RUNTIME VERIFIED`  
+> **Current-state correction (2026-10-13):** The execution record below is a
+> historical report from 2026-08-23 and must not be treated as evidence for the
+> current checkout. The current environment has no authorized provider
+> credentials, so no live provider request was issued during the current
+> validation. Current evidence is in
+> `reports/audit/VALIDATION_PACKAGE_2026-10-13.md`.
+
+## Current status
+
+- Real prescription-image extraction: **BLOCKED BY CONFIGURATION**.
+- Provider credentials: not configured; secret values were not printed or
+  fabricated.
+- Deterministic image workflow: covered by the existing mocked-provider tests.
+- A mocked or historical provider result is not evidence of current live
+  connectivity.
+
+The historical record is preserved below for provenance and is explicitly
+superseded for current status.
+
+**Historical status:** `PROVIDER EXECUTION PROVEN / LIVE RUNTIME VERIFIED`
 **Timestamp:** 2026-08-23T14:52:00+00:00  
 
 ---
