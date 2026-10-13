@@ -104,10 +104,20 @@ export function HistoryPage() {
         {isLoading ? (
           <div className="p-8 text-center text-sm text-muted-foreground">Loading history...</div>
         ) : entries.length === 0 ? (
-          <div className="p-8 text-center">
-            <Clock size={32} className="mx-auto text-muted-foreground mb-3" />
-            <p className="text-sm text-muted-foreground">No saved analyses yet.</p>
-            <p className="text-xs text-muted-foreground mt-1">Completed analyses can be saved from the Medical RAG workspace.</p>
+          <div className="flex flex-col items-center gap-2 px-6 py-6 text-center sm:flex-row sm:text-left">
+            <Clock size={24} className="shrink-0 text-muted-foreground" aria-hidden="true" />
+            <div className="flex-1">
+              <p className="text-sm font-medium text-foreground">No saved analyses yet.</p>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Saved analyses stay in this browser only. Patient context is excluded from exports by default.
+              </p>
+            </div>
+            <a
+              href="#analyze"
+              className="mt-2 inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:mt-0"
+            >
+              Start an analysis
+            </a>
           </div>
         ) : (
           <div className="divide-y divide-border">
@@ -149,9 +159,11 @@ export function HistoryPage() {
           </div>
         )}
       </div>
-      <p className="text-xs text-muted-foreground text-center">
-        ⚠️ History is stored locally in your browser. Patient context is excluded from exports by default.
-      </p>
+      {entries.length > 0 && (
+        <p className="text-xs text-muted-foreground text-center">
+          History is stored locally in your browser. Patient context is excluded from exports by default.
+        </p>
+      )}
     </div>
   );
 }
