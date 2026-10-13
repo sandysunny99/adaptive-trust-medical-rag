@@ -56,3 +56,13 @@ describe('parseHash', () => {
     expect(parseHash('#audit', true)).toBe('audit');
   });
 });
+
+describe('header title', () => {
+  it('keeps the full app name for assistive tech and as a tooltip', () => {
+    render(<Layout currentPage="analyze" onNavigate={() => {}}>content</Layout>);
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toHaveAccessibleName('Adaptive Trust-Aware Medical RAG');
+    expect(heading).toHaveAttribute('title', 'Adaptive Trust-Aware Medical RAG');
+    expect(heading).toHaveTextContent('Medical RAG');
+  });
+});

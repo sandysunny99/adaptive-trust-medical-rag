@@ -12,6 +12,8 @@ interface NavItem {
   icon: ReactNode;
 }
 
+const APP_NAME = 'Adaptive Trust-Aware Medical RAG';
+
 const PUBLIC_NAV: NavItem[] = [
   { page: 'analyze', label: 'Analyze', icon: <Icons.analyze size={16} /> },
   { page: 'history', label: 'History', icon: <Icons.history size={16} /> },
@@ -51,8 +53,10 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
           >
             <IconChip icon={Icons.brand} tone="primary" size="md" />
             <div className="min-w-0">
-              <h1 className="truncate text-base sm:text-lg font-semibold text-foreground">
-                Adaptive Trust-Aware Medical RAG
+              <h1 title={APP_NAME} className="truncate text-base sm:text-lg font-semibold text-foreground">
+                {/* Under 640px the visible title is short; screen readers always get the full name. */}
+                <span aria-hidden="true" className="sm:hidden">Medical RAG</span>
+                <span className="sr-only sm:not-sr-only">{APP_NAME}</span>
               </h1>
               <p className="hidden sm:block text-xs text-muted-foreground">
                 Medication Safety &amp; Evidence Analysis — Research Prototype
