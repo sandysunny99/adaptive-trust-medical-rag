@@ -525,13 +525,40 @@ class AdaptiveTrustRAGOrchestrator:
         for sc in candidates:
             cand = sc.candidate
             entity_match = 1.0 if any(d in cand.text.lower() for d in query_drugs) else 0.5
+            injection_decision = self._prompt_detector.inspect(cand.text, request_id)
+            query_relevance = cand.metadata.get("query_relevance")
+            evidence_quality = cand.metadata.get("evidence_quality")
+            population_match = cand.metadata.get("population_match")
             factors = TrustFactorScores(
                 source_authority=cand.source_authority,
+                query_relevance=(
+                    float(query_relevance)
+                    if query_relevance is not None
+                    else None
+                ),
+                evidence_quality=(
+                    float(evidence_quality)
+                    if evidence_quality is not None
+                    else None
+                ),
                 entity_match=entity_match,
-                freshness=float(cand.metadata.get("freshness_score", 0.8)),
+                freshness=(
+                    float(cand.metadata["freshness_score"])
+                    if cand.metadata.get("freshness_score") is not None
+                    else None
+                ),
                 consistency=1.0 - cand.poisoning_score,
+                population_match=(
+                    float(population_match)
+                    if population_match is not None
+                    else None
+                ),
                 anti_poisoning=1.0 - cand.poisoning_score,
-                anti_injection=1.0,  # FIXED: Default clean; injection is evaluated as a hard gate later
+                anti_injection=(
+                    0.0
+                    if injection_decision.decision != SecurityState.ALLOW
+                    else 1.0
+                ),
             )
             result = self._trust_scorer.score(
                 chunk_id=cand.chunk_id,
@@ -818,4 +845,3 @@ class AdaptiveTrustRAGOrchestrator:
             re.IGNORECASE,
         )
         return list({m.lower() for m in pattern.findall(query)})
-

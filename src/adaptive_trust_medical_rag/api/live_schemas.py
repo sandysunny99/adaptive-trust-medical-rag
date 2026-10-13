@@ -64,7 +64,16 @@ class AnalyzeRequest(BaseModel):
         description="Drug names to analyze (max 20).",
     )
     patient_context: PatientContextInput | None = None
+    additional_instructions: str | None = Field(default=None, max_length=2000)
     llm_selection: LLMSelectionInput | None = None
+
+    @field_validator("additional_instructions")
+    @classmethod
+    def normalize_instructions(cls, v: str | None) -> str | None:
+        if v is None:
+            return None
+        value = v.strip()
+        return value or None
 
     @field_validator("drug_names")
     @classmethod

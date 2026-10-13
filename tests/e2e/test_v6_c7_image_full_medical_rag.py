@@ -189,6 +189,14 @@ def test_1_full_rag_happy_path():
     assert "trust" in event_names
     assert "security" in event_names
 
+    security_event = next(e for e in events if e.get("event") == "security")
+    assert security_event["data"]["injection_status"] == "ALLOW"
+
+    trust_event = next(e for e in events if e.get("event") == "trust")
+    assert isinstance(trust_event["data"]["missing_factors"], list)
+    assert trust_event["data"]["config_hash"]
+    assert "score_breakdown" in trust_event["data"]
+
     # Verify canonical identities were found by REAL RxNorm
     entities_event = next((e for e in events if e.get("event") == "rxnorm"), None)
     assert entities_event is not None

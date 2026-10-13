@@ -49,6 +49,7 @@ export async function submitAnalysis(
   patientContext?: PatientContext | null,
   inputMode: InputMode = 'direct_drugs',
   llmSelection?: LLMSelection | null,
+  additionalInstructions?: string | null,
 ): Promise<AnalyzeAccepted> {
   const response = await fetch(`${API_BASE}/api/v1/analyze`, {
     method: 'POST',
@@ -57,6 +58,7 @@ export async function submitAnalysis(
       input_mode: inputMode,
       drug_names: drugNames,
       patient_context: patientContext || null,
+      additional_instructions: additionalInstructions?.trim() || null,
       llm_selection: llmSelection || null,
     }),
   });
@@ -73,11 +75,15 @@ export async function submitPrescriptionImage(
   file: File,
   patientContext?: PatientContext | null,
   llmSelection?: LLMSelection | null,
+  additionalInstructions?: string | null,
 ): Promise<AnalyzeAccepted & { validation: any }> {
   const formData = new FormData();
   formData.append('image', file);
   if (patientContext) {
     formData.append('patient_context', JSON.stringify(patientContext));
+  }
+  if (additionalInstructions?.trim()) {
+    formData.append('additional_instructions', additionalInstructions.trim());
   }
   if (llmSelection) {
     formData.append('llm_selection', JSON.stringify(llmSelection));
@@ -103,7 +109,13 @@ export async function confirmMedications(
   const response = await fetch(`${API_BASE}/api/v1/analyze/${requestId}/confirm`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ confirmed_medications: confirmedMedications }),
+    body: JSON.stringify({
+      confirmed_medications: confirmedMedications.map(name => ({
+        name,
+        status: 'CONFIRMED',
+        source: 'USER',
+      })),
+    }),
   });
 
   if (!response.ok) {
@@ -165,11 +177,13 @@ export function connectStream(
   onClose?: () => void,
 ): () => void {
   const eventSource = new EventSource(`${API_BASE}${streamUrl}`);
+  let terminalEventSeen = false;
 
   // Known event types from the backend
   const EVENT_TYPES = [
     'stage_update',
     'extraction',
+    'medication_candidates_extracted',
     'confirmation_required',
     'rxnorm',
     'retrieval',
@@ -185,8 +199,14 @@ export function connectStream(
 
   for (const eventType of EVENT_TYPES) {
     eventSource.addEventListener(eventType, (event: MessageEvent) => {
+      if (typeof event.data !== 'string' || event.data.trim() === '') {
+        return;
+      }
       try {
         const data = JSON.parse(event.data);
+        if (eventType === 'complete' || eventType === 'error') {
+          terminalEventSeen = true;
+        }
         onEvent(eventType, data);
       } catch (e) {
         console.error(`Failed to parse SSE event '${eventType}':`, e);
@@ -196,7 +216,9 @@ export function connectStream(
 
   eventSource.onerror = (event) => {
     console.error('SSE connection error:', event);
-    onError?.(event);
+    if (!terminalEventSeen) {
+      onError?.(event);
+    }
     eventSource.close();
     onClose?.();
   };

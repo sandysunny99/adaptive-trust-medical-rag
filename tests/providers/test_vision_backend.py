@@ -102,8 +102,41 @@ async def test_5_schema_failure(vision_backend, valid_image_bytes):
 
     with patch("httpx.AsyncClient.post") as mock_post:
         mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
+        with pytest.raises(ModelExecutionError) as exc:
+            await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
+        assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
+
+@pytest.mark.asyncio
+async def test_5b_embedded_json_prose_is_rejected(vision_backend, valid_image_bytes):
+    content = 'Here is the result: {"candidate_medications": []}'
+    mock_resp_json = {"choices": [{"message": {"content": content}}]}
+
+    with patch("httpx.AsyncClient.post") as mock_post:
+        mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
+        with pytest.raises(ModelExecutionError) as exc:
+            await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
+        assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
+
+@pytest.mark.asyncio
+async def test_5c_json_fence_is_supported(vision_backend, valid_image_bytes):
+    payload = {"candidate_medications": [], "raw_text": "", "warnings": []}
+    mock_resp_json = {"choices": [{"message": {"content": f"```json\n{json.dumps(payload)}\n```"}}]}
+
+    with patch("httpx.AsyncClient.post") as mock_post:
+        mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
         result = await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
-        assert len(result.candidate_medications) == 0
+        assert result.candidate_medications == []
+
+@pytest.mark.asyncio
+async def test_5d_invalid_candidate_is_rejected(vision_backend, valid_image_bytes):
+    payload = {"candidate_medications": [{"raw_text": {"not": "text"}}]}
+    mock_resp_json = {"choices": [{"message": {"content": json.dumps(payload)}}]}
+
+    with patch("httpx.AsyncClient.post") as mock_post:
+        mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
+        with pytest.raises(ModelExecutionError) as exc:
+            await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
+        assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
 
 @pytest.mark.asyncio
 async def test_6_provider_timeout(vision_backend, valid_image_bytes):

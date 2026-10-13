@@ -278,3 +278,29 @@ on the same `HybridRetrievalEngine` with the same corpus. The logged metadata di
 11. Final test set evaluation (once only)
 
 **Total estimated remaining effort: 6-10 weeks of focused work.**
+
+---
+
+## 2026-10-13 Current-State Addendum
+
+The historical findings above are retained for provenance and are not the
+current application status. The published remediation added the web
+application, History/export flows, prescription confirmation, SSE recovery,
+and provider-safe error handling. The current focused remediation additionally
+fixed retrieved-evidence injection handling, canonical RxNorm matching,
+trust-score telemetry, approximate-match ambiguity, canonical identity output,
+and fail-closed claim verification.
+
+Current authoritative status is in:
+
+- `docs/MASTER_PROJECT_STATUS.md`
+- `reports/audit/scientific_validation_readiness.md`
+- `reports/audit/blocked_issue_register.md`
+- `reports/audit/TRUST_SCORE_COMPONENT_AUDIT.md`
+- `reports/audit/RXNORM_VALIDATION_REPORT.md`
+- `reports/audit/E2E_SECURITY_EVALUATION.md`
+
+The repository is not scientifically complete. Real-provider extraction,
+Track A human adjudication, the valid 200-case Free Replication, complete
+claim-evidence labels, live E2E security evaluation, and a valid Cognee
+comparison remain blocked or pending.

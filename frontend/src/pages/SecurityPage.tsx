@@ -1,6 +1,7 @@
-import { Shield, ShieldCheck } from 'lucide-react';
+import { Shield } from 'lucide-react';
+import type { AnalysisResult } from '../types';
 
-export function SecurityPage() {
+export function SecurityPage({ result }: { result: AnalysisResult | null }) {
   return (
     <div className="space-y-4">
       <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
@@ -8,19 +9,13 @@ export function SecurityPage() {
           <Shield size={20} className="text-blue-600" />
           <h2 className="text-base font-semibold text-slate-900">Security Dashboard</h2>
         </div>
-        <div className="grid grid-cols-3 gap-4">
-          {[
-            { icon: ShieldCheck, label: 'Prompt Injection', status: 'MONITORING', color: 'text-emerald-600' },
-            { icon: ShieldCheck, label: 'Retrieval Poisoning', status: 'MONITORING', color: 'text-emerald-600' },
-            { icon: ShieldCheck, label: 'Evidence Integrity', status: 'MONITORING', color: 'text-emerald-600' },
-          ].map(({ icon: Icon, label, status, color }) => (
-            <div key={label} className="p-4 rounded-lg border border-slate-200">
-              <Icon size={18} className={color} />
-              <h3 className="text-sm font-medium text-slate-900 mt-2">{label}</h3>
-              <span className={`text-xs font-medium ${color}`}>{status}</span>
-            </div>
-          ))}
-        </div>
+        {!result?.security ? <p className="text-sm text-slate-500">No analysis security events are available yet.</p> : (
+          <div className="grid grid-cols-2 gap-4">
+            <div className="p-4 rounded border"><h3 className="text-sm font-medium">Prompt injection</h3><p className="text-sm mt-1">{result.security.injection_status}</p></div>
+            <div className="p-4 rounded border"><h3 className="text-sm font-medium">Retrieval poisoning</h3><p className="text-sm mt-1">{result.security.poisoning_status}</p><p className="text-xs text-slate-500 mt-1">{result.security.poisoning_reason || 'No blocking reason reported.'}</p></div>
+            <div className="col-span-2 text-xs text-slate-500">Request: {result.request_id} · Gate: {result.gate_decision}</div>
+          </div>
+        )}
       </div>
     </div>
   );

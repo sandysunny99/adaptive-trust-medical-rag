@@ -47,3 +47,12 @@
 - GREEN: 13 components
 - YELLOW: 10 components  
 - RED: 10 components
+
+## 2026-10-13 Reconciliation
+
+This matrix is a historical snapshot from 2026-08-30. For current status,
+use `docs/MASTER_PROJECT_STATUS.md` and
+`reports/audit/scientific_validation_readiness.md`. In particular, the former
+“frontend not implemented” and pre-remediation trust/security descriptions are
+stale. They remain preserved as historical evidence rather than being silently
+rewritten.

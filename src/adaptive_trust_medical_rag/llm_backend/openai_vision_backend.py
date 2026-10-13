@@ -1,6 +1,7 @@
 import base64
 import json
 import logging
+import re
 
 import httpx
 
@@ -100,31 +101,57 @@ class OpenAIVisionBackend(VisionProviderAdapter):
                 err.failure_class = FailureClass.RATE_LIMIT
                 raise err
             elif resp.status_code != 200:
-                err = ModelExecutionError(message=f"Vision Provider HTTP {resp.status_code}: {resp.text}", status_code=str(resp.status_code))
+                err = ModelExecutionError(
+                    message=f"Vision Provider HTTP {resp.status_code}",
+                    status_code=str(resp.status_code),
+                )
                 err.failure_class = FailureClass.TRANSIENT_PROVIDER
                 raise err
 
             data = resp.json()
             content = data["choices"][0]["message"]["content"]
 
-            # Clean possible markdown formatting
             cleaned = content.strip()
-            if cleaned.startswith("```json"):
-                cleaned = cleaned[7:]
-            if cleaned.endswith("```"):
-                cleaned = cleaned[:-3]
+            fenced = re.fullmatch(r"```json\s*\n?(.*?)\n?```", cleaned, flags=re.DOTALL | re.IGNORECASE)
+            if fenced:
+                cleaned = fenced.group(1).strip()
 
             try:
                 parsed = json.loads(cleaned)
-            except json.JSONDecodeError:
+            except (json.JSONDecodeError, TypeError):
                 err = ModelExecutionError(message="Vision provider failed to return valid JSON", status_code="SCHEMA_ERROR")
                 err.failure_class = FailureClass.SCHEMA_ERROR
-                err.details = {"raw_content": content}
+                err.details = {"response_type": type(content).__name__}
+                raise err
+
+            if not isinstance(parsed, dict) or "candidate_medications" not in parsed:
+                err = ModelExecutionError(
+                    message="Vision provider response is missing candidate_medications",
+                    status_code="SCHEMA_ERROR",
+                )
+                err.failure_class = FailureClass.SCHEMA_ERROR
+                err.details = {"response_type": type(parsed).__name__}
+                raise err
+            if not isinstance(parsed["candidate_medications"], list):
+                err = ModelExecutionError(
+                    message="Vision provider candidate_medications must be a list",
+                    status_code="SCHEMA_ERROR",
+                )
+                err.failure_class = FailureClass.SCHEMA_ERROR
+                err.details = {"field": "candidate_medications"}
                 raise err
 
             # Map back to our dataclass
             candidates = []
-            for c in parsed.get("candidate_medications", []):
+            for c in parsed["candidate_medications"]:
+                if not isinstance(c, dict) or not isinstance(c.get("raw_text"), str) or not c["raw_text"].strip():
+                    err = ModelExecutionError(
+                        message="Vision provider returned an invalid medication candidate",
+                        status_code="SCHEMA_ERROR",
+                    )
+                    err.failure_class = FailureClass.SCHEMA_ERROR
+                    err.details = {"field": "candidate_medications"}
+                    raise err
                 # Ensure confidence maps to our Enum
                 conf_str = str(c.get("confidence", "UNCERTAIN")).upper()
                 try:
@@ -132,9 +159,19 @@ class OpenAIVisionBackend(VisionProviderAdapter):
                 except ValueError:
                     conf_enum = ExtractionConfidence.UNCERTAIN
 
+                normalized_text = c.get("normalized_text")
+                if normalized_text is not None and not isinstance(normalized_text, str):
+                    err = ModelExecutionError(
+                        message="Vision provider returned an invalid normalized medication name",
+                        status_code="SCHEMA_ERROR",
+                    )
+                    err.failure_class = FailureClass.SCHEMA_ERROR
+                    err.details = {"field": "normalized_text"}
+                    raise err
+
                 candidates.append(MedicationCandidate(
-                    raw_text=c.get("raw_text", ""),
-                    normalized_text=c.get("normalized_text"),
+                    raw_text=c["raw_text"].strip(),
+                    normalized_text=normalized_text.strip() if normalized_text else None,
                     confidence=conf_enum
                 ))
 
@@ -149,6 +186,7 @@ class OpenAIVisionBackend(VisionProviderAdapter):
             err.failure_class = FailureClass.TIMEOUT
             raise err
         except httpx.RequestError as e:
-            err = ModelExecutionError(message=f"Vision Provider Network Error: {e}", status_code="NETWORK_ERROR")
+            log.warning("Vision provider network request failed: %s", type(e).__name__)
+            err = ModelExecutionError(message="Vision Provider Network Error", status_code="NETWORK_ERROR")
             err.failure_class = FailureClass.NETWORK
             raise err
