@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import { Activity, Check, X, Clock, AlertTriangle } from 'lucide-react';
-import { fetchResearchState } from '../services/api';
+import { useResearchState } from '../hooks/useResearchState';
+import { ErrorState } from '../components/ui/ErrorState';
 
 const STATUS_CONFIG = {
   PASS: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
@@ -15,27 +15,21 @@ const STATUS_CONFIG = {
 } as const;
 
 export function AuditPage() {
-  const [state, setState] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const { state, error, loading, reload } = useResearchState();
 
-  useEffect(() => {
-    fetchResearchState()
-      .then(res => {
-        setState(res);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch research state:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <div className="p-6">Loading research state...</div>;
+  if (loading && !state && !error) {
+    return <div className="p-6 text-sm text-slate-600" role="status">Loading research state…</div>;
   }
 
   if (!state) {
-    return <div className="p-6 text-red-500">Failed to load research state.</div>;
+    return (
+      <ErrorState
+        title="Couldn't load research state"
+        message={error}
+        onRetry={reload}
+        retrying={loading}
+      />
+    );
   }
 
   const AUDIT_ITEMS = [

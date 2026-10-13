@@ -25,6 +25,12 @@ export default defineConfig({
         target: 'http://localhost:8000',
         changeOrigin: true,
       },
+      // Used by the Evaluation and Research Audit views. Without this entry Vite's
+      // SPA fallback answers with index.html and the JSON parse fails.
+      '/research-state': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+      },
     },
   },
 })

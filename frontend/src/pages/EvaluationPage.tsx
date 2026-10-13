@@ -1,29 +1,23 @@
-import { useState, useEffect } from 'react';
 import { BarChart3, AlertTriangle, CheckCircle2 } from 'lucide-react';
-import { fetchResearchState } from '../services/api';
+import { useResearchState } from '../hooks/useResearchState';
+import { ErrorState } from '../components/ui/ErrorState';
 
 export function EvaluationPage() {
-  const [state, setState] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const { state, error, loading, reload } = useResearchState();
 
-  useEffect(() => {
-    fetchResearchState()
-      .then(res => {
-        setState(res);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch research state:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <div className="p-6">Loading research state...</div>;
+  if (loading && !state && !error) {
+    return <div className="p-6 text-sm text-slate-600" role="status">Loading research state…</div>;
   }
 
   if (!state) {
-    return <div className="p-6 text-red-500">Failed to load research state.</div>;
+    return (
+      <ErrorState
+        title="Couldn't load research state"
+        message={error}
+        onRetry={reload}
+        retrying={loading}
+      />
+    );
   }
 
   const isBlocked = state.prompt_freeze.status === 'BLOCKED' || state.provider_readiness.status === 'BLOCKED' || state.dataset_integrity.status === 'BLOCKED';

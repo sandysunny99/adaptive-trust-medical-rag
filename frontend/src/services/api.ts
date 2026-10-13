@@ -161,6 +161,13 @@ export async function fetchResearchState(): Promise<ResearchState> {
   if (!response.ok) {
     throw new Error(`Failed to fetch research state: ${response.status}`);
   }
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(
+      `Research state endpoint returned ${contentType || 'no content type'} instead of JSON. ` +
+      'Check that /research-state is forwarded to the backend.'
+    );
+  }
   return response.json();
 }
 
