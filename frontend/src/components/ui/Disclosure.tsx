@@ -1,5 +1,5 @@
 import { useId, useState, type ReactNode } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Icons } from '../../ui/icons';
 import { cn } from '../../utils/cn';
 
 interface DisclosureProps {
@@ -31,7 +31,7 @@ export function Disclosure({ title, icon, hint, defaultOpen = false, className, 
           {title}
           {hint && <>{' '}<span className="ml-1 text-xs font-normal text-muted-foreground">({hint})</span></>}
         </span>
-        <ChevronDown
+        <Icons.expand
           size={16}
           aria-hidden="true"
           className={cn(

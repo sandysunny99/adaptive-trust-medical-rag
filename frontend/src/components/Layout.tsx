@@ -1,7 +1,8 @@
 import type { MouseEvent, ReactNode } from 'react';
 import type { Page } from '../routing/routes';
 import { ThemeToggle } from './ui/ThemeToggle';
-import { FlaskConical, Info, BarChart3, Activity, Clock } from 'lucide-react';
+import { IconChip } from './ui/IconChip';
+import { Icons } from '../ui/icons';
 import { cn } from '../utils/cn';
 import { RESEARCH_DISCLAIMER } from '../constants/disclaimer';
 
@@ -12,14 +13,14 @@ interface NavItem {
 }
 
 const PUBLIC_NAV: NavItem[] = [
-  { page: 'analyze', label: 'Analyze', icon: <FlaskConical size={18} /> },
-  { page: 'history', label: 'History', icon: <Clock size={18} /> },
-  { page: 'about', label: 'About', icon: <Info size={18} /> },
+  { page: 'analyze', label: 'Analyze', icon: <Icons.analyze size={16} /> },
+  { page: 'history', label: 'History', icon: <Icons.history size={16} /> },
+  { page: 'about', label: 'About', icon: <Icons.about size={16} /> },
 ];
 
 const RESEARCH_NAV: NavItem[] = [
-  { page: 'evaluation', label: 'Evaluation', icon: <BarChart3 size={18} /> },
-  { page: 'audit', label: 'Research Audit', icon: <Activity size={18} /> },
+  { page: 'evaluation', label: 'Evaluation', icon: <Icons.evaluation size={16} /> },
+  { page: 'audit', label: 'Research Audit', icon: <Icons.audit size={16} /> },
 ];
 
 interface LayoutProps {
@@ -48,7 +49,7 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
             onClick={e => onNavClick(e, 'analyze')}
             className="flex min-w-0 items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <FlaskConical className="shrink-0 text-primary" size={24} aria-hidden="true" />
+            <IconChip icon={Icons.brand} tone="primary" size="md" />
             <div className="min-w-0">
               <h1 className="truncate text-base sm:text-lg font-semibold text-foreground">
                 Adaptive Trust-Aware Medical RAG
@@ -61,8 +62,9 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
           <div className="flex shrink-0 items-center gap-2">
             <span
               title={RESEARCH_DISCLAIMER}
-              className="cursor-help px-2 py-0.5 text-xs font-semibold bg-warning-soft text-warning rounded"
+              className="cursor-help inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold bg-warning-soft text-warning rounded"
             >
+              <Icons.caution size={14} />
               RESEARCH USE ONLY
               <span className="sr-only">. {RESEARCH_DISCLAIMER}</span>
             </span>

@@ -1,13 +1,14 @@
-import { FlaskConical, Shield, Activity, Pill, FileSearch, BarChart3, AlertTriangle } from 'lucide-react';
+import { Icons } from '../ui/icons';
+import { IconChip } from '../components/ui/IconChip';
 import { RESEARCH_DISCLAIMER } from '../constants/disclaimer';
 
 const COMPONENTS = [
-  { icon: Pill, label: 'RxNorm Alignment', desc: 'Drug entity canonicalization via NLM RxNorm.' },
-  { icon: FileSearch, label: 'Multi-Source Retrieval', desc: 'BM25 + Vector + Graph + RRF hybrid retrieval.' },
-  { icon: Activity, label: 'Trust-Aware Evidence Control', desc: '9-factor weighted trust scoring with risk-tier thresholds.' },
-  { icon: Shield, label: 'Security Defense', desc: 'Prompt injection + retrieval poisoning detection.' },
-  { icon: FlaskConical, label: 'Claim Verification', desc: 'PubMedBERT NLI-based claim-level verification.' },
-  { icon: BarChart3, label: 'Controlled Abstention', desc: 'Evidence-driven abstention when evidence is insufficient.' },
+  { icon: Icons.medication, label: 'RxNorm Alignment', desc: 'Drug entity canonicalization via NLM RxNorm.' },
+  { icon: Icons.retrieval, label: 'Multi-Source Retrieval', desc: 'BM25 + Vector + Graph + RRF hybrid retrieval.' },
+  { icon: Icons.trust, label: 'Trust-Aware Evidence Control', desc: '9-factor weighted trust scoring with risk-tier thresholds.' },
+  { icon: Icons.securityDefense, label: 'Security Defense', desc: 'Prompt injection + retrieval poisoning detection.' },
+  { icon: Icons.claimVerification, label: 'Claim Verification', desc: 'PubMedBERT NLI-based claim-level verification.' },
+  { icon: Icons.abstained, label: 'Controlled Abstention', desc: 'Evidence-driven abstention when evidence is insufficient.' },
 ];
 
 const PIPELINE = [
@@ -45,7 +46,7 @@ export function AboutPage() {
 
       <section aria-labelledby="disclaimer-heading" className="rounded-xl border border-warning/30 bg-warning-soft p-6">
         <h2 id="disclaimer-heading" className="flex items-center gap-2 text-base font-semibold text-foreground">
-          <AlertTriangle size={18} className="text-warning" aria-hidden="true" />
+          <Icons.caution size={18} className="text-warning" aria-hidden="true" />
           Disclaimer
         </h2>
         <p className="mt-2 text-sm font-medium text-foreground">{RESEARCH_DISCLAIMER}</p>
@@ -62,7 +63,7 @@ export function AboutPage() {
         <ul className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {COMPONENTS.map(({ icon: Icon, label, desc }) => (
             <li key={label} className="bg-card rounded-lg border border-border shadow-sm p-4">
-              <Icon size={20} className="text-primary mb-2" aria-hidden="true" />
+              <IconChip icon={Icon} tone="primary" size="md" className="mb-2" />
               <h3 className="text-sm font-semibold text-foreground">{label}</h3>
               <p className="text-sm text-muted-foreground mt-1">{desc}</p>
             </li>

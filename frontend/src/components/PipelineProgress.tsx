@@ -1,4 +1,4 @@
-import { Check, Loader2, Circle, AlertCircle } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import type { PipelineStage, StageUpdate } from '../types';
 
 interface PipelineProgressProps {
@@ -32,10 +32,10 @@ export function PipelineProgress({ stages, currentStage, updates }: PipelineProg
           return (
             <div key={key} className="flex items-center gap-3">
               <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                {status === 'complete' && <Check size={16} className="text-success" />}
-                {status === 'running' && <Loader2 size={16} className="text-primary animate-spin" />}
-                {status === 'pending' && <Circle size={16} className="text-muted-foreground" />}
-                {status === 'failed' && <AlertCircle size={16} className="text-destructive" />}
+                {status === 'complete' && <Icons.pass size={16} className="text-success" />}
+                {status === 'running' && <Icons.loading size={16} className="text-primary animate-spin" />}
+                {status === 'pending' && <Icons.stepIdle size={16} className="text-muted-foreground" />}
+                {status === 'failed' && <Icons.stepFailed size={16} className="text-destructive" />}
               </div>
               <span className={`text-sm ${
                 status === 'complete' ? 'text-foreground' :

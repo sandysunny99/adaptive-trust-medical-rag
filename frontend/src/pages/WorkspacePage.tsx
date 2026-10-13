@@ -1,5 +1,5 @@
 import { useState, useEffect, useId } from 'react';
-import { Upload, Pill, UserCog, Search, AlertTriangle, X, Cpu, FileText, Download, Check, Clock, Loader2 } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import type { InputMode, PatientContext, PipelineStage, LLMModelInfo, AnalysisResult } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
@@ -170,8 +170,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
             value={inputMode}
             onChange={setInputMode}
             options={[
-              { value: 'prescription_image', label: 'Upload Prescription', icon: <Upload size={16} /> },
-              { value: 'direct_drugs', label: 'Enter Drug Names', icon: <Pill size={16} /> },
+              { value: 'prescription_image', label: 'Upload Prescription', icon: <Icons.upload size={16} /> },
+              { value: 'direct_drugs', label: 'Enter Drug Names', icon: <Icons.enterDrugs size={16} /> },
             ]}
           />
 
@@ -184,7 +184,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               {drugInputs.map((drug, i) => (
                 <div key={i} className="flex gap-2">
                   <div className="flex-1 relative">
-                    <Pill className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} aria-hidden="true" />
+                    <Icons.medication className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} aria-hidden="true" />
                     <input
                       type="text"
                       value={drug}
@@ -200,8 +200,9 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                       onClick={() => removeDrugInput(i)}
                       className="px-3 py-2 rounded-lg text-muted-foreground hover:text-destructive transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       aria-label={`Remove drug ${i + 1}`}
+                      title={`Remove drug ${i + 1}`}
                     >
-                      <X size={16} aria-hidden="true" />
+                      <Icons.remove size={16} aria-hidden="true" />
                     </button>
                   )}
                 </div>
@@ -217,7 +218,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           )}
 
           <div className="space-y-3">
-            <Disclosure title="Patient Context" hint="Optional" icon={<UserCog size={16} />}>
+            <Disclosure title="Patient Context" hint="Optional" icon={<Icons.patientContext size={16} />}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   type="number"
@@ -269,7 +270,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               </p>
             </Disclosure>
 
-            <Disclosure title="Additional Instructions" hint="Optional" icon={<FileText size={16} />}>
+            <Disclosure title="Additional Instructions" hint="Optional" icon={<Icons.instructions size={16} />}>
               <textarea
                 placeholder="Add any specific analysis instructions or questions (e.g., 'Focus on renal dosing adjustments' or 'Check for QT prolongation risk')."
                 aria-label="Additional instructions"
@@ -284,8 +285,9 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               </p>
             </Disclosure>
 
-            <Disclosure title="Advanced settings" icon={<Cpu size={16} />}>
-              <label htmlFor={modelSelectId} className="block text-sm font-medium text-foreground">
+            <Disclosure title="Advanced settings" icon={<Icons.advancedSettings size={16} />}>
+              <label htmlFor={modelSelectId} className="flex items-center gap-1.5 text-sm font-medium text-foreground">
+                <Icons.model size={16} className="text-muted-foreground" />
                 Answer-generation model
               </label>
               <p className="text-xs text-muted-foreground mt-0.5 mb-2">
@@ -338,8 +340,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 )}
               >
                 {isProcessing
-                  ? <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-                  : <Search size={16} aria-hidden="true" />}
+                  ? <Icons.loading size={16} className="animate-spin" aria-hidden="true" />
+                  : <Icons.runAnalysis size={16} aria-hidden="true" />}
                 {isProcessing ? 'Analyzing…' : 'Analyze Medications'}
               </button>
               {submitHint && (
@@ -372,7 +374,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       {/* Error Message */}
       {error && (
         <div className="bg-destructive-soft border border-destructive/30 rounded-lg p-4 flex items-start gap-3">
-          <AlertTriangle className="text-destructive shrink-0 mt-0.5" size={18} />
+          <Icons.error className="text-destructive shrink-0 mt-0.5" size={18} />
           <div className="flex-1">
             <h3 className="text-sm font-medium text-destructive">Analysis Failed</h3>
             <p className="text-sm text-destructive mt-1">{error}</p>
@@ -400,7 +402,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                   : 'border-input text-foreground hover:bg-muted'
               }`}
             >
-              {savedToHistory ? <><Check size={14} /> Saved</> : <><Clock size={14} /> Save to History</>}
+              {savedToHistory ? <><Icons.saved size={14} /> Saved</> : <><Icons.save size={14} /> Save to History</>}
             </button>
             <button
               onClick={() => {
@@ -416,7 +418,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               }}
               className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted cursor-pointer"
             >
-              <Download size={14} /> Download Report
+              <Icons.download size={14} /> Download Report
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { BarChart3, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import { useResearchState } from '../hooks/useResearchState';
 import { ErrorState } from '../components/ui/ErrorState';
 
@@ -26,13 +26,13 @@ export function EvaluationPage() {
     <div className="space-y-4">
       <div className="bg-card rounded-lg border border-border shadow-sm p-6">
         <div className="flex items-center gap-2 mb-4">
-          <BarChart3 size={20} className="text-primary" />
+          <Icons.evaluation size={20} className="text-primary" />
           <h2 className="text-base font-semibold text-foreground">Research Evaluation</h2>
         </div>
 
         <div className={`p-4 border rounded-lg ${isBlocked ? 'bg-warning-soft border-warning/30' : 'bg-primary-soft border-primary/30'}`}>
           <div className="flex items-center gap-2">
-            {isBlocked ? <AlertTriangle size={16} className="text-warning" /> : <CheckCircle2 size={16} className="text-primary" />}
+            {isBlocked ? <Icons.caution size={16} className="text-warning" /> : <Icons.pass size={16} className="text-primary" />}
             <span className={`text-sm font-medium ${isBlocked ? 'text-warning' : 'text-primary'}`}>
               REAL-LLM {state.protocol.replace('REAL_LLM_EVALUATION_PROTOCOL_', '')} EVALUATION
             </span>

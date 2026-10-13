@@ -1,17 +1,17 @@
-import { Activity, Check, X, Clock, AlertTriangle } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import { useResearchState } from '../hooks/useResearchState';
 import { ErrorState } from '../components/ui/ErrorState';
 
 const STATUS_CONFIG = {
-  PASS: { icon: Check, color: 'text-success', bg: 'bg-success-soft' },
-  BLOCKED: { icon: X, color: 'text-destructive', bg: 'bg-destructive-soft' },
-  PENDING: { icon: Clock, color: 'text-warning', bg: 'bg-warning-soft' },
-  READY: { icon: Check, color: 'text-success', bg: 'bg-success-soft' },
-  VALIDATED: { icon: Check, color: 'text-success', bg: 'bg-success-soft' },
-  NOT_VALIDATED: { icon: AlertTriangle, color: 'text-warning', bg: 'bg-warning-soft' },
-  NOT_CONFIGURED: { icon: AlertTriangle, color: 'text-warning', bg: 'bg-warning-soft' },
-  CONFIGURED: { icon: Check, color: 'text-success', bg: 'bg-success-soft' },
-  NOT_STARTED: { icon: AlertTriangle, color: 'text-muted-foreground', bg: 'bg-muted' },
+  PASS: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  BLOCKED: { icon: Icons.block, color: 'text-destructive', bg: 'bg-destructive-soft' },
+  PENDING: { icon: Icons.pending, color: 'text-warning', bg: 'bg-warning-soft' },
+  READY: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  VALIDATED: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  NOT_VALIDATED: { icon: Icons.caution, color: 'text-warning', bg: 'bg-warning-soft' },
+  NOT_CONFIGURED: { icon: Icons.caution, color: 'text-warning', bg: 'bg-warning-soft' },
+  CONFIGURED: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  NOT_STARTED: { icon: Icons.pending, color: 'text-muted-foreground', bg: 'bg-muted' },
 } as const;
 
 export function AuditPage() {
@@ -48,7 +48,7 @@ export function AuditPage() {
   return (
     <div className="bg-card rounded-lg border border-border shadow-sm p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Activity size={20} className="text-primary" />
+        <Icons.audit size={20} className="text-primary" />
         <h2 className="text-base font-semibold text-foreground">Research Audit Status</h2>
       </div>
       <div className="space-y-2">

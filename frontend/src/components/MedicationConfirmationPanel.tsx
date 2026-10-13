@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pill, Check, Edit2, X, Plus, AlertTriangle } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import type { MedicationCandidate } from '../types';
 
 interface Props {
@@ -105,15 +105,15 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                     autoFocus
                   />
                   <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90">
-                    <Check size={14} />
+                    <Icons.pass size={14} />
                   </button>
                   <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground">
-                    <X size={14} />
+                    <Icons.remove size={14} />
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Pill size={16} className={c.status === 'UNCERTAIN' ? 'text-warning' : 'text-muted-foreground'} />
+                  <Icons.medication size={16} className={c.status === 'UNCERTAIN' ? 'text-warning' : 'text-muted-foreground'} />
                   <span className="font-semibold text-foreground">
                     {c.normalized_text || c.raw_text}
                   </span>
@@ -172,15 +172,17 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                 }}
                 className="p-1.5 text-muted-foreground hover:text-primary"
                 title="Edit"
+                aria-label={`Edit ${c.normalized_text || c.raw_text}`}
               >
-                <Edit2 size={16} />
+                <Icons.edit size={16} />
               </button>
               <button 
                 onClick={() => handleRemove(c.id)}
                 className="p-1.5 text-muted-foreground hover:text-destructive"
                 title="Remove"
+                aria-label={`Remove ${c.normalized_text || c.raw_text}`}
               >
-                <X size={16} />
+                <Icons.remove size={16} />
               </button>
             </div>
           </div>
@@ -200,8 +202,8 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
             <button onClick={handleAdd} className="px-3 py-2 bg-primary text-primary-foreground rounded text-sm font-medium hover:bg-primary/90">
               Add
             </button>
-            <button onClick={() => setIsAdding(false)} className="p-2 text-muted-foreground hover:text-foreground">
-              <X size={16} />
+            <button onClick={() => setIsAdding(false)} className="p-2 text-muted-foreground hover:text-foreground" aria-label="Cancel adding a medication" title="Cancel">
+              <Icons.remove size={16} />
             </button>
           </div>
         ) : (
@@ -209,7 +211,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
             onClick={() => setIsAdding(true)}
             className="flex items-center gap-2 text-sm text-primary font-medium hover:text-primary"
           >
-            <Plus size={16} /> Add medication manually
+            <Icons.add size={16} /> Add medication manually
           </button>
         )}
       </div>
@@ -218,13 +220,13 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
         <div className="text-sm text-warning flex items-center gap-2">
           {hasUncertain && (
             <>
-              <AlertTriangle size={16} />
+              <Icons.caution size={16} />
               Please review and confirm all uncertain medications.
             </>
           )}
           {!hasUncertain && activeCandidates.length === 0 && (
             <>
-              <AlertTriangle size={16} />
+              <Icons.caution size={16} />
               No medications to analyze.
             </>
           )}

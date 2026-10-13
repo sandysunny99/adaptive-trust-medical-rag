@@ -1,4 +1,5 @@
-import { Gauge } from 'lucide-react';
+import { Icons } from '../../ui/icons';
+import { RiskTierPill } from '../ui/StatusPill';
 import type { TrustInfo } from '../../types';
 
 export const NOT_AVAILABLE = 'Not available';
@@ -27,7 +28,7 @@ export function TrustSummary({ trust }: { trust: TrustInfo | null | undefined })
     <section aria-labelledby="trust-heading" className="bg-card rounded-lg border border-border shadow-sm">
       <div className="p-4 border-b border-border">
         <h3 id="trust-heading" className="text-sm font-semibold text-foreground flex items-center gap-2">
-          <Gauge size={16} className="text-primary" aria-hidden="true" />
+          <Icons.trust size={20} className="text-primary" />
           Evidence Trust
         </h3>
       </div>
@@ -42,7 +43,7 @@ export function TrustSummary({ trust }: { trust: TrustInfo | null | undefined })
                   : 'mt-1 text-lg font-semibold text-foreground font-mono'
               }
             >
-              {value}
+              {label === 'Risk tier' && value !== NOT_AVAILABLE ? <RiskTierPill tier={value} /> : value}
             </dd>
           </div>
         ))}

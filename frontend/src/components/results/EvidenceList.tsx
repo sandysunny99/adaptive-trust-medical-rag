@@ -1,4 +1,11 @@
-import { ExternalLink } from 'lucide-react';
+import { Icons, SOURCE_TYPE_ICONS } from '../../ui/icons';
+
+function SourceTypeIcon({ sourceType }: { sourceType: string }) {
+  const name = SOURCE_TYPE_ICONS[sourceType];
+  if (!name) return null;
+  const Icon = Icons[name];
+  return <Icon size={12} />;
+}
 import type { EvidenceItem } from '../../types';
 
 /**
@@ -22,7 +29,8 @@ export function EvidenceList({ evidence }: { evidence: EvidenceItem[] }) {
                   </span>
                 )}
                 {ev.source_type && (
-                  <span className="rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
+                  <span className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
+                    <SourceTypeIcon sourceType={ev.source_type} />
                     {ev.source_type}
                   </span>
                 )}
@@ -48,10 +56,11 @@ export function EvidenceList({ evidence }: { evidence: EvidenceItem[] }) {
                 href={ev.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`Open source ${i + 1} in a new tab`}
+                aria-label={`Open source ${i + 1} (opens in new tab)`}
+                title="Opens in new tab"
                 className="shrink-0 rounded p-1.5 text-muted-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <ExternalLink size={14} aria-hidden="true" />
+                <Icons.externalLink size={14} aria-hidden="true" />
               </a>
             )}
           </div>

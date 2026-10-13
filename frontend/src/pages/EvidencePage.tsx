@@ -1,4 +1,4 @@
-import { FileSearch, Shield } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import type { AnalysisResult } from '../types';
 import { EvidenceList } from '../components/results/EvidenceList';
 
@@ -19,7 +19,7 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
     return (
       <div className="bg-card rounded-lg border border-border shadow-sm p-6">
         <div className="flex items-center gap-2 mb-4">
-          <FileSearch size={20} className="text-primary" />
+          <Icons.evidence size={20} className="text-primary" />
           <h2 className="text-base font-semibold text-foreground">Evidence Explorer</h2>
         </div>
         <p className="text-sm text-muted-foreground">
@@ -35,7 +35,7 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
       {/* Summary */}
       <div className="bg-card rounded-lg border border-border shadow-sm p-5">
         <div className="flex items-center gap-2 mb-3">
-          <FileSearch size={20} className="text-primary" />
+          <Icons.evidence size={20} className="text-primary" />
           <h2 className="text-base font-semibold text-foreground">Evidence Explorer</h2>
           <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">
             {evidence.length} sources
@@ -59,7 +59,7 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
                 : 'bg-warning-soft border-warning/30'
             }`}>
               <div className="flex items-center justify-center gap-1">
-                <Shield size={16} className={security.poisoning_status === 'ALLOW' ? 'text-success' : 'text-warning'} />
+                <Icons.security size={16} className={security.poisoning_status === 'ALLOW' ? 'text-success' : 'text-warning'} />
                 <span className={`text-lg font-bold ${
                   security.poisoning_status === 'ALLOW' ? 'text-success' : 'text-warning'
                 }`}>

@@ -1,9 +1,24 @@
 import { useState, useEffect } from 'react';
-import { Clock, Trash2, FileText, FileJson, Eye } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import type { HistoryEntry } from '../services/historyDb';
 import { getAllAnalyses, deleteAnalysis, clearAllAnalyses } from '../services/historyDb';
 import { exportAsJson, exportAsMarkdown, downloadFile } from '../services/exportService';
 import { ResultPanel } from '../components/ResultPanel';
+import { StatusPill } from '../components/ui/StatusPill';
+import type { Tone } from '../ui/tones';
+import type { IconComponent } from '../ui/icons';
+
+const GATE_DECISIONS: Record<string, { icon: IconComponent; tone: Tone }> = {
+  release: { icon: Icons.pass, tone: 'success' },
+  qualify: { icon: Icons.caution, tone: 'warning' },
+  abstain: { icon: Icons.abstained, tone: 'muted' },
+};
+
+/** The saved gate decision as stored (release / qualify / abstain), with its text always visible. */
+function GateDecisionPill({ decision }: { decision: string }) {
+  const config = GATE_DECISIONS[decision] ?? { icon: Icons.pending, tone: 'muted' as Tone };
+  return <StatusPill icon={config.icon} label={decision} tone={config.tone} />;
+}
 
 export function HistoryPage() {
   const [entries, setEntries] = useState<HistoryEntry[]>([]);
@@ -64,13 +79,13 @@ export function HistoryPage() {
               onClick={() => handleDownloadMd(selectedEntry)}
               className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-input rounded-lg hover:bg-muted cursor-pointer"
             >
-              <FileText size={14} /> Markdown
+              <Icons.exportMarkdown size={14} /> Markdown
             </button>
             <button
               onClick={() => handleDownloadJson(selectedEntry)}
               className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-input rounded-lg hover:bg-muted cursor-pointer"
             >
-              <FileJson size={14} /> JSON
+              <Icons.exportJson size={14} /> JSON
             </button>
           </div>
         </div>
@@ -87,7 +102,7 @@ export function HistoryPage() {
       <div className="bg-card rounded-lg border border-border shadow-sm">
         <div className="p-5 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Clock size={20} className="text-primary" />
+            <Icons.history size={20} className="text-primary" />
             <h2 className="text-base font-semibold text-foreground">Analysis History</h2>
             <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">{entries.length} saved</span>
           </div>
@@ -105,7 +120,7 @@ export function HistoryPage() {
           <div className="p-8 text-center text-sm text-muted-foreground">Loading history...</div>
         ) : entries.length === 0 ? (
           <div className="flex flex-col items-center gap-2 px-6 py-6 text-center sm:flex-row sm:text-left">
-            <Clock size={24} className="shrink-0 text-muted-foreground" aria-hidden="true" />
+            <Icons.history size={40} className="shrink-0 text-muted-foreground" />
             <div className="flex-1">
               <p className="text-sm font-medium text-foreground">No saved analyses yet.</p>
               <p className="text-xs text-muted-foreground mt-0.5">
@@ -128,30 +143,24 @@ export function HistoryPage() {
                     <span className="text-sm font-medium text-foreground truncate">
                       {entry.drugNames.join(', ')}
                     </span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      entry.gateDecision === 'release' ? 'bg-success-soft text-success' :
-                      entry.gateDecision === 'qualify' ? 'bg-warning-soft text-warning' :
-                      'bg-muted text-muted-foreground'
-                    }`}>
-                      {entry.gateDecision}
-                    </span>
+                    <GateDecisionPill decision={entry.gateDecision} />
                   </div>
                   <div className="text-xs text-muted-foreground mt-0.5">
                     {new Date(entry.timestamp).toLocaleString()} · {entry.inputMode}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 ml-4">
-                  <button onClick={() => setSelectedEntry(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="View">
-                    <Eye size={16} />
+                  <button onClick={() => setSelectedEntry(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="View" aria-label={`View analysis of ${entry.drugNames.join(', ')}`}>
+                    <Icons.view size={16} />
                   </button>
-                  <button onClick={() => handleDownloadMd(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download Markdown">
-                    <FileText size={16} />
+                  <button onClick={() => handleDownloadMd(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download Markdown" aria-label={`Download Markdown for analysis of ${entry.drugNames.join(', ')}`}>
+                    <Icons.exportMarkdown size={16} />
                   </button>
-                  <button onClick={() => handleDownloadJson(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download JSON">
-                    <FileJson size={16} />
+                  <button onClick={() => handleDownloadJson(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download JSON" aria-label={`Download JSON for analysis of ${entry.drugNames.join(', ')}`}>
+                    <Icons.exportJson size={16} />
                   </button>
-                  <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-muted-foreground hover:text-destructive cursor-pointer" title="Delete">
-                    <Trash2 size={16} />
+                  <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-muted-foreground hover:text-destructive cursor-pointer" title="Delete" aria-label={`Delete analysis of ${entry.drugNames.join(', ')}`}>
+                    <Icons.delete size={16} />
                   </button>
                 </div>
               </div>

@@ -1,8 +1,9 @@
 import type { AnalysisResult } from '../types';
 import { MedicationCard } from './MedicationCard';
-import { AlertTriangle, Utensils, FileText, Shield } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import { disclaimerFor } from '../constants/disclaimer';
 import { Disclosure } from './ui/Disclosure';
+import { StatusPill } from './ui/StatusPill';
 import { TrustSummary } from './results/TrustSummary';
 import { EvidenceList } from './results/EvidenceList';
 import { SecurityChecks } from './results/SecurityChecks';
@@ -19,7 +20,10 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
       {/* Medications Identified */}
       <section className="bg-card rounded-lg border border-border shadow-sm">
         <div className="p-4 border-b border-border">
-          <h3 className="text-sm font-semibold text-foreground">Medications Identified</h3>
+          <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Icons.medication size={20} className="text-primary" />
+            Medications Identified
+          </h3>
         </div>
         <div className="p-4 grid gap-3">
           {(result.medications || []).map((med, i) => (
@@ -33,7 +37,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
         <section className="bg-card rounded-lg border border-border shadow-sm">
           <div className="p-4 border-b border-border">
             <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-              <AlertTriangle size={16} className="text-warning" />
+              <Icons.interactions size={20} className="text-primary" />
               Drug-Drug Interactions
             </h3>
           </div>
@@ -48,13 +52,9 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
                   <span className="text-sm font-medium">
                     {interaction.drug_a} ↔ {interaction.drug_b}
                   </span>
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                    interaction.interaction_detected
-                      ? 'bg-warning-soft text-warning'
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {interaction.interaction_detected ? '⚠ VERIFIED' : 'No verified evidence'}
-                  </span>
+                  {interaction.interaction_detected
+                    ? <StatusPill icon={Icons.caution} label="VERIFIED" tone="warning" />
+                    : <StatusPill icon={Icons.pending} label="No verified evidence" tone="muted" />}
                 </div>
                 {interaction.potential_effect && (
                   <p className="text-xs text-muted-foreground mt-1">{interaction.potential_effect}</p>
@@ -70,7 +70,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
         <section className="bg-card rounded-lg border border-border shadow-sm">
           <div className="p-4 border-b border-border">
             <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-              <Utensils size={16} className="text-success" />
+              <Icons.food size={20} className="text-primary" />
               Food &amp; Administration
             </h3>
           </div>
@@ -97,7 +97,10 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
       {/* Conclusion */}
       <section aria-labelledby="conclusion-heading" className="bg-card rounded-lg border border-border shadow-sm">
         <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-2">
-          <h3 id="conclusion-heading" className="text-sm font-semibold text-foreground">Overall Conclusion</h3>
+          <h3 id="conclusion-heading" className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Icons.conclusion size={20} className="text-primary" />
+            Overall Conclusion
+          </h3>
           {result.used_model && (
             <span className="text-xs bg-muted text-foreground px-2.5 py-1 rounded border border-border font-medium break-all">
               Model: <span className="font-semibold text-primary">{result.used_model.model_id}</span> ({result.used_model.provider})
@@ -107,7 +110,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
         <div className="p-4">
           <p className="text-sm text-foreground">{result.conclusion}</p>
           <div role="note" aria-label="Research disclaimer" className="mt-3 flex items-start gap-2 p-3 bg-warning-soft rounded-lg border border-warning/30">
-            <AlertTriangle size={14} className="mt-0.5 shrink-0 text-warning" aria-hidden="true" />
+            <Icons.caution size={14} className="mt-0.5 shrink-0 text-warning" aria-hidden="true" />
             <p className="text-xs font-medium text-foreground">{disclaimerFor(result.disclaimer)}</p>
           </div>
         </div>
@@ -120,7 +123,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
           <Disclosure
             defaultOpen
             className="bg-card shadow-sm"
-            icon={<FileText size={16} />}
+            icon={<Icons.evidence size={20} />}
             title={`Evidence & Sources (${(result.evidence || []).length})`}
           >
             {(result.evidence || []).length > 0
@@ -131,7 +134,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
           <Disclosure
             defaultOpen
             className="bg-card shadow-sm"
-            icon={<Shield size={16} />}
+            icon={<Icons.security size={20} />}
             title="Security Checks"
           >
             <SecurityChecks result={result} />

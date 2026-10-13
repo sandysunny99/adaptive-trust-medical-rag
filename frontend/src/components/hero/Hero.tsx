@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
-import { ArrowDown } from 'lucide-react';
+import { Icons } from '../../ui/icons';
 
 // The only entry point to the 3D layer; see ParticleField.tsx.
 const ParticleField = lazy(() => import('./ParticleField'));
@@ -48,7 +48,7 @@ export function Hero({ targetId }: HeroProps) {
           className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_-10px_var(--accent-glow)] hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           Start an analysis
-          <ArrowDown size={16} aria-hidden="true" />
+          <Icons.scrollToForm size={16} aria-hidden="true" />
         </button>
       </div>
     </section>

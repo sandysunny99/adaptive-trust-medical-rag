@@ -1,4 +1,5 @@
-import { Shield, ShieldCheck, ShieldAlert, AlertTriangle } from 'lucide-react';
+import { Icons } from '../../ui/icons';
+import { SecurityStatusPill } from '../ui/StatusPill';
 import type { AnalysisResult } from '../../types';
 
 /** The three security gate cards, moved from the former Security tab unchanged in logic. */
@@ -8,6 +9,7 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
   const gates = [
     {
       label: 'Prompt Injection',
+      icon: Icons.promptInjection,
       status: security?.injection_status || 'NO_DATA',
       detail: security ? (
         (security.injection_markers || []).length > 0
@@ -17,11 +19,13 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
     },
     {
       label: 'Retrieval Poisoning',
+      icon: Icons.retrievalPoisoning,
       status: security?.poisoning_status || 'NO_DATA',
       detail: security?.poisoning_reason || (security ? 'No poisoned chunks detected' : null),
     },
     {
       label: 'Evidence Integrity',
+      icon: Icons.evidenceIntegrity,
       status: result?.trust?.is_eligible ? 'ALLOW' : (result ? 'FLAG' : 'NO_DATA'),
       detail: result?.trust
         ? `Trust: ${result.trust.overall_score.toFixed(2)} / threshold ${result.trust.threshold.toFixed(2)} (${result.trust.risk_class})`
@@ -29,36 +33,28 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
     },
   ];
 
-  const getStatusConfig = (status: string) => {
-    switch (status) {
-      case 'ALLOW':
-        return { Icon: ShieldCheck, color: 'text-success', bg: 'bg-success-soft', border: 'border-success/30', badge: 'bg-card text-success' };
-      case 'FLAG':
-        return { Icon: ShieldAlert, color: 'text-warning', bg: 'bg-warning-soft', border: 'border-warning/30', badge: 'bg-card text-warning' };
-      case 'BLOCK':
-        return { Icon: AlertTriangle, color: 'text-destructive', bg: 'bg-destructive-soft', border: 'border-destructive/30', badge: 'bg-card text-destructive' };
-      default:
-        return { Icon: Shield, color: 'text-muted-foreground', bg: 'bg-muted', border: 'border-border', badge: 'bg-card text-muted-foreground' };
-    }
+  const surface: Record<string, string> = {
+    ALLOW: 'border-success/30 bg-success-soft',
+    FLAG: 'border-warning/30 bg-warning-soft',
+    BLOCK: 'border-destructive/30 bg-destructive-soft',
   };
 
   return (
     <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
-      {gates.map(({ label, status, detail }) => {
-        const cfg = getStatusConfig(status);
-        return (
-          <li key={label} className={`p-4 rounded-lg border ${cfg.border} ${cfg.bg}`}>
-            <cfg.Icon size={18} className={cfg.color} aria-hidden="true" />
-            <h4 className="text-sm font-medium text-foreground mt-2">{label}</h4>
-            <span className={`text-xs font-semibold px-2 py-0.5 rounded-full inline-block mt-1 ${cfg.badge}`}>
-              {status === 'NO_DATA' ? 'PENDING' : status}
-            </span>
-            {detail && (
-              <p className="text-xs text-foreground mt-2">{detail}</p>
-            )}
-          </li>
-        );
-      })}
+      {gates.map(({ label, icon: GateIcon, status, detail }) => (
+        <li key={label} className={`p-4 rounded-lg border ${surface[status] ?? 'border-border bg-muted'}`}>
+          <h4 className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <GateIcon size={20} className="text-muted-foreground" />
+            {label}
+          </h4>
+          <div className="mt-2">
+            <SecurityStatusPill status={status === 'NO_DATA' ? null : status} />
+          </div>
+          {detail && (
+            <p className="text-xs text-foreground mt-2">{detail}</p>
+          )}
+        </li>
+      ))}
     </ul>
   );
 }

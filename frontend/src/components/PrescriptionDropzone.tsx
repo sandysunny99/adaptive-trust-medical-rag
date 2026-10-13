@@ -1,5 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState, type ChangeEvent, type DragEvent } from 'react';
-import { AlertTriangle, Upload } from 'lucide-react';
+import { Icons } from '../ui/icons';
 import { ALLOWED_PRESCRIPTION_IMAGE_TYPES, validatePrescriptionImage } from '../services/prescriptionImage';
 import { cn } from '../utils/cn';
 
@@ -166,7 +166,7 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
           </div>
         ) : (
           <>
-            <Upload className="mx-auto text-muted-foreground mb-3" size={32} aria-hidden="true" />
+            <Icons.upload className="mx-auto text-muted-foreground mb-3" size={40} aria-hidden="true" />
             <p className="text-sm text-foreground">
               {isDragging ? 'Drop the image to upload it' : 'Drag & drop a prescription image here, or'}
             </p>
@@ -196,7 +196,7 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
       />
       {uploadError && (
         <p role="alert" className="mt-2 flex items-start gap-1.5 text-sm text-destructive">
-          <AlertTriangle size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
+          <Icons.error size={14} className="mt-0.5 shrink-0" aria-hidden="true" />
           {uploadError}
         </p>
       )}
