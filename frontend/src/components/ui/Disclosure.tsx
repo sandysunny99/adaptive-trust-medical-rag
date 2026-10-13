@@ -29,7 +29,7 @@ export function Disclosure({ title, icon, hint, defaultOpen = false, className, 
         {icon && <span className="text-muted-foreground" aria-hidden="true">{icon}</span>}
         <span className="flex-1">
           {title}
-          {hint && <span className="ml-2 text-xs font-normal text-muted-foreground">{hint}</span>}
+          {hint && <>{' '}<span className="ml-1 text-xs font-normal text-muted-foreground">({hint})</span></>}
         </span>
         <ChevronDown
           size={16}
