@@ -1,5 +1,5 @@
 import { Layout } from './components/Layout';
-import { WorkspacePage } from './pages/WorkspacePage';
+import { AnalyzePage } from './pages/AnalyzePage';
 import { EvaluationPage } from './pages/EvaluationPage';
 import { AuditPage } from './pages/AuditPage';
 import { OverviewPage } from './pages/OverviewPage';
@@ -17,7 +17,7 @@ export default function App() {
       case 'evaluation': return <EvaluationPage />;
       case 'audit': return <AuditPage />;
       case 'analyze':
-      default: return <WorkspacePage />;
+      default: return <AnalyzePage />;
     }
   };
 
