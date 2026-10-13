@@ -1,0 +1,5 @@
+Source: https://github.com/nidhinjs/prompt-master
+Commit: 769bf64d8e11f78fee2d183ad8891f9403f365e6 (2026-10-12)
+Skill version: 1.8.2
+License: MIT (see LICENSE)
+Reviewed 2026-10-13: Markdown only, no scripts, no network calls, activates only on explicit prompt-writing requests.

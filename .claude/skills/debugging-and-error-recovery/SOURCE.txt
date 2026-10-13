@@ -1,0 +1,4 @@
+Source: https://github.com/addyosmani/agent-skills/tree/1be8e34187e34647bb83adc3a1323b26ae6f6abe/skills/debugging-and-error-recovery
+Commit: 1be8e34187e34647bb83adc3a1323b26ae6f6abe (2026-10-10)
+License: MIT (see LICENSE)
+Installed 2026-10-13 by manual copy (no skills CLI, no telemetry). Approved by Sandeep.
