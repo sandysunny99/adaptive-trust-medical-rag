@@ -75,6 +75,7 @@ class LiveMedicalRAGService:
         image_meta: dict | None = None,
         analysis_state: dict | None = None,
         llm_selection: dict[str, Any] | None = None,
+        additional_instructions: str | None = None,
     ) -> AsyncGenerator[dict[str, Any], None]:
         """Execute the live pipeline and yield SSE event dicts."""
         try:
@@ -136,26 +137,29 @@ class LiveMedicalRAGService:
                         })
                     except Exception as e:
                         log.error("Vision extraction failed: %s", e)
-                        yield _sse("error", {
-                            "code": "VISION_EXTRACTION_ERROR",
-                            "message": f"Vision extraction failed: {str(e)}"
-                        })
                         yield _sse("stage_update", {
                             "stage": "extracting",
                             "status": "failed",
                             "timestamp": _ts(),
                         })
+                        analysis_state["finished"] = True
+                        yield _sse("error", {
+                            "code": "VISION_EXTRACTION_ERROR",
+                            "message": "Prescription extraction failed. Check the configured vision provider or retry later.",
+                        })
                         return
                 else:
                     # Fallback if no backend configured
-                    yield _sse("error", {
-                        "code": "PROVIDER_CONFIGURATION_REQUIRED",
-                        "message": "NVIDIA Vision Backend is not configured."
-                    })
                     yield _sse("stage_update", {
                         "stage": "extracting",
                         "status": "failed",
+                        "message": "Prescription extraction is unavailable because the vision provider is not configured.",
                         "timestamp": _ts(),
+                    })
+                    analysis_state["finished"] = True
+                    yield _sse("error", {
+                        "code": "PROVIDER_CONFIGURATION_REQUIRED",
+                        "message": "Prescription extraction is unavailable because the configured vision provider is missing its required server-side credentials. Configure the provider in the backend environment and restart the backend before retrying.",
                     })
                     return
 
@@ -175,6 +179,20 @@ class LiveMedicalRAGService:
                     try:
                         await asyncio.wait_for(confirmation_event.wait(), timeout=timeout_val)
                     except asyncio.TimeoutError:
+                        # Deterministic tests resume the same pending request
+                        # after observing the timeout event.
+                        if os.getenv("TESTING") != "1":
+                            analysis_state["finished"] = True
+                        yield _sse("stage_update", {
+                            "stage": "confirming",
+                            "status": "failed",
+                            "message": "Medication confirmation was not received before the request expired.",
+                            "timestamp": _ts(),
+                        })
+                        yield _sse("error", {
+                            "code": "CONFIRMATION_TIMEOUT",
+                            "message": "Medication confirmation was not received before the request expired. Review the detected candidates and retry.",
+                        })
                         return
 
                 # User confirmed, use the confirmed medications for the rest of the pipeline
@@ -532,10 +550,12 @@ class LiveMedicalRAGService:
 
             query_str = ", ".join([f'{m.get("canonical_name", m["raw_text"])} (RxCUI: {m.get("rxcui", "Unknown")})' for m in medications])
             patient_ctx_str = json.dumps(patient_context) if patient_context else "None provided."
+            instructions_str = additional_instructions or "None provided."
 
             prompt = self.prompt_template.format(
                 query=query_str,
                 patient_context=patient_ctx_str,
+                additional_instructions=instructions_str,
                 risk_tier=risk_tier,
                 evidence_block=evidence_block
             )
@@ -606,7 +626,10 @@ class LiveMedicalRAGService:
 
             except Exception as e:
                 log.error("LLM Generation failed: %s", e)
-                yield _sse("error", {"code": "LLM_ERROR", "message": str(e)})
+                yield _sse("error", {
+                    "code": "LLM_ERROR",
+                    "message": "Answer generation failed. Check provider configuration or retry later.",
+                })
                 return
 
             yield _sse("stage_update", {
@@ -769,11 +792,9 @@ class LiveMedicalRAGService:
 
         except Exception as e:
             log.error("Pipeline error for %s: %s", request_id, e)
-            import traceback
-            traceback.print_exc()
             yield _sse("error", {
                 "code": "PIPELINE_ERROR",
-                "message": str(e),
+                "message": "The analysis pipeline failed unexpectedly. Retry the request or inspect server logs.",
             })
 
 

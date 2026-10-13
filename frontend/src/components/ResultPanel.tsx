@@ -1,12 +1,15 @@
 import type { AnalysisResult } from '../types';
 import { MedicationCard } from './MedicationCard';
 import { AlertTriangle, Utensils, FileText } from 'lucide-react';
+import { Download, Save } from 'lucide-react';
+import { downloadJson, downloadMarkdown } from '../services/exportService';
 
 interface ResultPanelProps {
   result: AnalysisResult;
+  onSave?: () => void;
 }
 
-export function ResultPanel({ result }: ResultPanelProps) {
+export function ResultPanel({ result, onSave }: ResultPanelProps) {
   return (
     <div className="space-y-4">
       {/* Medications Identified */}
@@ -91,11 +94,16 @@ export function ResultPanel({ result }: ResultPanelProps) {
       <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
         <div className="p-4 border-b border-slate-100 flex items-center justify-between">
           <h3 className="text-sm font-semibold text-slate-900">Overall Conclusion</h3>
-          {result.used_model && (
-            <span className="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200 font-medium">
-              Model: <span className="font-semibold text-blue-700">{result.used_model.model_id}</span> ({result.used_model.provider})
-            </span>
-          )}
+          <div className="flex items-center gap-2">
+            {onSave && <button onClick={onSave} className="flex items-center gap-1 px-2 py-1 text-xs text-blue-700 border border-blue-200 rounded"><Save size={13} /> Save</button>}
+            <button onClick={() => downloadMarkdown(result)} className="flex items-center gap-1 px-2 py-1 text-xs text-slate-700 border border-slate-200 rounded"><Download size={13} /> Markdown</button>
+            <button onClick={() => downloadJson(result)} className="flex items-center gap-1 px-2 py-1 text-xs text-slate-700 border border-slate-200 rounded"><Download size={13} /> JSON</button>
+            {result.used_model && (
+              <span className="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200 font-medium">
+                Model: <span className="font-semibold text-blue-700">{result.used_model.model_id}</span> ({result.used_model.provider})
+              </span>
+            )}
+          </div>
         </div>
         <div className="p-4">
           <p className="text-sm text-slate-700">{result.conclusion}</p>

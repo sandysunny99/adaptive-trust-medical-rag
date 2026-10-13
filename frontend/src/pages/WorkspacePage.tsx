@@ -6,6 +6,8 @@ import { ResultPanel } from '../components/ResultPanel';
 import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
 import { useAnalysis } from '../hooks/useAnalysis';
 import { fetchModelCatalog } from '../services/api';
+import type { AnalysisResult } from '../types';
+import { createHistoryRecord, saveHistoryRecord } from '../services/historyDb';
 
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
@@ -21,7 +23,12 @@ const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'safety_gating', label: 'Safety Gate' },
 ];
 
-export function WorkspacePage() {
+interface WorkspacePageProps {
+  result?: AnalysisResult | null;
+  onResultChange?: (result: AnalysisResult | null) => void;
+}
+
+export function WorkspacePage({ result: savedResult = null, onResultChange = () => undefined }: WorkspacePageProps) {
   const [inputMode, setInputMode] = useState<InputMode>('direct_drugs');
   const [drugInputs, setDrugInputs] = useState<string[]>(['']);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -38,6 +45,7 @@ export function WorkspacePage() {
   const [allergies, setAllergies] = useState<string>('');
   const [conditions, setConditions] = useState<string>('');
   const [currentMeds, setCurrentMeds] = useState<string>('');
+  const [additionalInstructions, setAdditionalInstructions] = useState('');
 
   useEffect(() => {
     setIsLoadingModels(true);
@@ -66,6 +74,22 @@ export function WorkspacePage() {
     extractedCandidates
   } = useAnalysis();
 
+  useEffect(() => {
+    if (result) onResultChange(result);
+  }, [result, onResultChange]);
+
+  const displayedResult = result || savedResult;
+
+  const saveResult = async () => {
+    if (!result) return;
+    try {
+      await saveHistoryRecord(createHistoryRecord(result));
+      window.alert('Analysis saved to this browser\'s local history.');
+    } catch (err) {
+      window.alert(err instanceof Error ? err.message : 'Unable to save this analysis.');
+    }
+  };
+
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
   const updateDrugInput = (index: number, value: string) => {
     setDrugInputs(prev => prev.map((v, i) => i === index ? value : v));
@@ -87,6 +111,7 @@ export function WorkspacePage() {
     
     if (inputMode === 'direct_drugs' && validDrugs.length === 0) return;
     if (inputMode === 'prescription_image' && !imageFile) return;
+    onResultChange(null);
 
     let patientContext: PatientContext | null = {};
     if (age || sex || allergies || conditions || currentMeds) {
@@ -105,6 +130,7 @@ export function WorkspacePage() {
       drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
       imageFile: inputMode === 'prescription_image' ? (imageFile || undefined) : undefined,
       patientContext,
+      additionalInstructions,
       inputMode,
       llmSelection: selectedModelId === 'auto' ? { mode: 'auto' } : { mode: 'manual', model_id: selectedModelId },
     });
@@ -248,6 +274,24 @@ export function WorkspacePage() {
             </p>
           </details>
 
+          <div className="mt-5">
+            <label htmlFor="additional-instructions" className="block text-sm font-medium text-slate-700">
+              Additional Instructions (Optional)
+            </label>
+            <textarea
+              id="additional-instructions"
+              value={additionalInstructions}
+              onChange={e => setAdditionalInstructions(e.target.value.slice(0, 2000))}
+              maxLength={2000}
+              rows={3}
+              placeholder="Describe the focus of this research analysis (do not request diagnosis or treatment)."
+              className="mt-2 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm resize-y"
+            />
+            <p className="text-xs text-slate-400 mt-1 text-right">
+              {additionalInstructions.length}/2000
+            </p>
+          </div>
+
           {/* Answer-generation Model Selector */}
           <div className="mt-5 p-4 bg-slate-50 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between mb-2">
@@ -343,7 +387,9 @@ export function WorkspacePage() {
       )}
 
       {/* Results */}
-      {result && currentStage !== 'confirming' && <ResultPanel result={result} />}
+      {displayedResult && currentStage !== 'confirming' && (
+        <ResultPanel result={displayedResult} onSave={result ? saveResult : undefined} />
+      )}
     </div>
   );
 }

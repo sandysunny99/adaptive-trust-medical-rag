@@ -109,6 +109,7 @@ async def post_analyze_prescription(
     request: Request,
     image: UploadFile = File(...),
     patient_context: str = Form(None),
+    additional_instructions: str = Form(None),
     llm_selection: str = Form(None),
 ):
     """
@@ -146,6 +147,11 @@ async def post_analyze_prescription(
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
+    if additional_instructions is not None:
+        additional_instructions = additional_instructions.strip() or None
+        if additional_instructions and len(additional_instructions) > 2000:
+            raise HTTPException(status_code=422, detail="additional_instructions must be at most 2000 characters")
+
     # Parse optional llm_selection if provided (strict validation: reject invalid JSON or model)
     selection_data = None
     if llm_selection:
@@ -167,6 +173,7 @@ async def post_analyze_prescription(
         "image_bytes": file_bytes,
         "image_meta": validation_meta,
         "patient_context": context_data,
+        "additional_instructions": additional_instructions,
         "llm_selection": selection_data,
         "created_at": time.time(),
     }
@@ -181,7 +188,7 @@ async def post_analyze_prescription(
 
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class ConfirmedMedicationItem(BaseModel):
@@ -191,7 +198,18 @@ class ConfirmedMedicationItem(BaseModel):
     raw_detected_name: Optional[str] = None
 
 class ConfirmMedicationsRequest(BaseModel):
-    confirmed_medications: list[ConfirmedMedicationItem]
+    confirmed_medications: list[ConfirmedMedicationItem | str]
+
+    @field_validator("confirmed_medications", mode="before")
+    @classmethod
+    def normalize_string_items(cls, value):
+        if not isinstance(value, list):
+            return value
+        return [
+            {"name": item, "status": "CONFIRMED", "source": "USER"}
+            if isinstance(item, str) else item
+            for item in value
+        ]
 
 @router.post(
     "/analyze/{request_id}/confirm",
@@ -273,16 +291,17 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 image_meta=image_meta,
                 analysis_state=analysis,
                 llm_selection=llm_selection_data,
+                additional_instructions=analysis.get("additional_instructions")
+                if analysis.get("type") == "prescription_image"
+                else body.additional_instructions,
             ):
                 yield await _sse_event(event_dict["event"], event_dict["data"])
 
         except Exception as e:
             log.error("Pipeline error for %s: %s", request_id, e)
-            import traceback
-            traceback.print_exc()
             yield await _sse_event("error", {
                 "code": "PIPELINE_ERROR",
-                "message": str(e),
+                "message": "The analysis pipeline failed unexpectedly. Retry the request or inspect server logs.",
             })
         finally:
             # Clean up completed or terminated pending analysis

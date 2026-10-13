@@ -31,3 +31,22 @@ def test_c5_vision_e2e():
     # We won't test SSE stream directly here unless we mock the backend to avoid burning tokens,
     # but the prompt allows mocked provider results for automated tests.
     pass
+
+
+def test_missing_vision_configuration_emits_terminal_error():
+    """A missing vision provider must not degrade into an unexplained disconnect."""
+    original_backend = getattr(app.state, "vision_backend", None)
+    app.state.vision_backend = None
+    try:
+        file_bytes = create_test_image_bytes("JPEG")
+        files = {"image": ("prescription.jpg", file_bytes, "image/jpeg")}
+        upload = client.post("/api/v1/analyze/prescription", files=files)
+        assert upload.status_code == 200
+
+        stream = client.get(upload.json()["stream_url"])
+        assert stream.status_code == 200
+        assert "event: error" in stream.text
+        assert "PROVIDER_CONFIGURATION_REQUIRED" in stream.text
+        assert "status\": \"failed\"" in stream.text
+    finally:
+        app.state.vision_backend = original_backend

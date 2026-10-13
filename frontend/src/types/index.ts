@@ -192,6 +192,7 @@ export interface AnalysisResult {
   input_mode: InputMode;
   medications: MedicationInfo[];
   patient_context: PatientContext | null;
+  additional_instructions?: string | null;
   interactions: DrugInteraction[];
   adverse_reactions: AdverseDrugReaction[];
   warnings: string[];
