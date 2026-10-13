@@ -45,13 +45,13 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <header className="sticky top-0 z-40 border-b border-border bg-glass backdrop-blur-md">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2 sm:gap-3">
           <a
             href="#analyze"
             onClick={e => onNavClick(e, 'analyze')}
-            className="flex min-w-0 items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex min-w-0 items-center gap-2 sm:gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <IconChip icon={Icons.brand} tone="primary" size="md" />
+            <IconChip icon={Icons.brand} tone="primary" size="md" className="h-8 w-8 sm:h-9 sm:w-9" />
             <div className="min-w-0">
               <h1 title={APP_NAME} className="truncate text-base sm:text-lg font-semibold text-foreground">
                 {/* Under 640px the visible title is short; screen readers always get the full name. */}
@@ -66,7 +66,7 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
           <div className="flex shrink-0 items-center gap-2">
             <span
               title={RESEARCH_DISCLAIMER}
-              className="cursor-help inline-flex items-center gap-1 px-2 py-0.5 text-xs font-semibold bg-warning-soft text-warning rounded"
+              className="cursor-help inline-flex items-center gap-1 px-1.5 sm:px-2 py-0.5 text-[11px] sm:text-xs font-semibold bg-warning-soft text-warning rounded"
             >
               <Icons.caution size={14} />
               RESEARCH USE ONLY
