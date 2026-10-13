@@ -109,7 +109,7 @@ export function HistoryPage() {
             <div className="flex-1">
               <p className="text-sm font-medium text-foreground">No saved analyses yet.</p>
               <p className="text-xs text-muted-foreground mt-0.5">
-                Saved analyses stay in this browser only. Patient context is excluded from exports by default.
+                Saved analyses, including any patient context, are stored only in this browser. Patient context is left out of exports.
               </p>
             </div>
             <a
@@ -161,7 +161,7 @@ export function HistoryPage() {
       </div>
       {entries.length > 0 && (
         <p className="text-xs text-muted-foreground text-center">
-          History is stored locally in your browser. Patient context is excluded from exports by default.
+          Saved analyses, including any patient context, are stored only in this browser. Patient context is left out of exports.
         </p>
       )}
     </div>
