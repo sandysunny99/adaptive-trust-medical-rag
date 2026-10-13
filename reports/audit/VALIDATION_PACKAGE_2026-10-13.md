@@ -19,6 +19,8 @@
 | `uv run ruff check src/adaptive_trust_medical_rag/services/live_application.py src/adaptive_trust_medical_rag/orchestrator/rag_orchestrator.py tests/e2e/test_v6_c7_image_full_medical_rag.py` | Passed |
 | `uv run bandit -r src -x tests -s B101,B105,B311,B404,B603,B607 -q` | Passed |
 | `git diff --check` | Passed |
+| `uv run pytest -q tests/test_research_harness.py tests/test_security_evaluation.py tests/test_phase15_runner.py tests/test_provider_runtime_future_path.py tests/test_provider_runtime_integration.py tests/test_v2_provenance.py tests/test_f0_f1_integrity.py` | **121 passed, 19 warnings**, exit 0 |
+| `$env:TESTING='1'; uv run pytest -q tests/test_claim_verifier.py tests/test_claim_verifier_v2.py tests/test_claim_verifier_v2_t23.py tests/e2e/test_v6_c8_multimodal_claim_citation_safety.py` | **69 passed, 13 warnings**, exit 0 |
 
 The broader exploratory command `uv run ruff check src tests scripts experiments`
 still reports legacy style findings in historical experiment scripts. That
@@ -47,6 +49,13 @@ known generated outputs:
   provider configuration.
 - Full live security evaluation, complete claim-evidence labels, and valid
   Cognee retrieval remain unproven.
+- Claim Verifier V2 has deterministic support-state tests, but this does not
+  establish a scientifically valid benchmark without approved labels and the
+  authorized E2E generation protocol.
+- The same claim/E2E subset fails in non-test mode because the deliberate
+  confirmation timeout expires before the test's follow-up confirmation; this
+  is an environment-contract mismatch, not a production regression. The
+  repository's accepted deterministic command sets `TESTING=1`.
 - Existing historical reports with live-provider language are preserved but
   are not current evidence unless explicitly linked to the current revision.
 
