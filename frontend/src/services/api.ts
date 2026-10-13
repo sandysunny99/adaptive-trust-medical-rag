@@ -49,6 +49,7 @@ export async function submitAnalysis(
   patientContext?: PatientContext | null,
   inputMode: InputMode = 'direct_drugs',
   llmSelection?: LLMSelection | null,
+  additionalInstructions?: string,
 ): Promise<AnalyzeAccepted> {
   const response = await fetch(`${API_BASE}/api/v1/analyze`, {
     method: 'POST',
@@ -58,6 +59,7 @@ export async function submitAnalysis(
       drug_names: drugNames,
       patient_context: patientContext || null,
       llm_selection: llmSelection || null,
+      additional_instructions: additionalInstructions || null,
     }),
   });
 
@@ -73,6 +75,7 @@ export async function submitPrescriptionImage(
   file: File,
   patientContext?: PatientContext | null,
   llmSelection?: LLMSelection | null,
+  additionalInstructions?: string,
 ): Promise<AnalyzeAccepted & { validation: any }> {
   const formData = new FormData();
   formData.append('image', file);
@@ -81,6 +84,9 @@ export async function submitPrescriptionImage(
   }
   if (llmSelection) {
     formData.append('llm_selection', JSON.stringify(llmSelection));
+  }
+  if (additionalInstructions) {
+    formData.append('additional_instructions', additionalInstructions);
   }
 
   const response = await fetch(`${API_BASE}/api/v1/analyze/prescription`, {
@@ -170,6 +176,7 @@ export function connectStream(
   const EVENT_TYPES = [
     'stage_update',
     'extraction',
+    'medication_candidates_extracted',
     'confirmation_required',
     'rxnorm',
     'retrieval',

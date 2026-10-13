@@ -6,21 +6,25 @@ import { SecurityPage } from './pages/SecurityPage';
 import { EvaluationPage } from './pages/EvaluationPage';
 import { AuditPage } from './pages/AuditPage';
 import { OverviewPage } from './pages/OverviewPage';
+import { HistoryPage } from './pages/HistoryPage';
+import type { AnalysisResult } from './types';
 
-export type Page = 'overview' | 'workspace' | 'evidence' | 'security' | 'evaluation' | 'audit';
+export type Page = 'overview' | 'workspace' | 'evidence' | 'security' | 'evaluation' | 'audit' | 'history';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('workspace');
+  const [latestResult, setLatestResult] = useState<AnalysisResult | null>(null);
 
   const renderPage = () => {
     switch (currentPage) {
       case 'overview': return <OverviewPage />;
-      case 'workspace': return <WorkspacePage />;
-      case 'evidence': return <EvidencePage />;
-      case 'security': return <SecurityPage />;
+      case 'workspace': return <WorkspacePage onResultComplete={setLatestResult} />;
+      case 'evidence': return <EvidencePage latestResult={latestResult} />;
+      case 'security': return <SecurityPage latestResult={latestResult} />;
       case 'evaluation': return <EvaluationPage />;
       case 'audit': return <AuditPage />;
-      default: return <WorkspacePage />;
+      case 'history': return <HistoryPage />;
+      default: return <WorkspacePage onResultComplete={setLatestResult} />;
     }
   };
 

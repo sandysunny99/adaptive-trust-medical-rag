@@ -2,12 +2,13 @@ import type { ReactNode } from 'react';
 import type { Page } from '../App';
 import {
   FlaskConical, Shield, BarChart3, FileSearch,
-  Activity, LayoutDashboard
+  Activity, LayoutDashboard, Clock
 } from 'lucide-react';
 
 const NAV_ITEMS: { page: Page; label: string; icon: ReactNode }[] = [
   { page: 'overview', label: 'Overview', icon: <LayoutDashboard size={18} /> },
   { page: 'workspace', label: 'Medical RAG', icon: <FlaskConical size={18} /> },
+  { page: 'history', label: 'History', icon: <Clock size={18} /> },
   { page: 'evidence', label: 'Evidence', icon: <FileSearch size={18} /> },
   { page: 'security', label: 'Security', icon: <Shield size={18} /> },
   { page: 'evaluation', label: 'Evaluation', icon: <BarChart3 size={18} /> },

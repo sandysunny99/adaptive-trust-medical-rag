@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Upload, Pill, UserCog, Search, AlertTriangle, X, Cpu } from 'lucide-react';
-import type { InputMode, PatientContext, PipelineStage, LLMModelInfo } from '../types';
+import { Upload, Pill, UserCog, Search, AlertTriangle, X, Cpu, FileText, Download, Check, Clock } from 'lucide-react';
+import type { InputMode, PatientContext, PipelineStage, LLMModelInfo, AnalysisResult } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
 import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
 import { useAnalysis } from '../hooks/useAnalysis';
 import { fetchModelCatalog } from '../services/api';
+import { exportAsMarkdown, downloadFile } from '../services/exportService';
+import { saveAnalysis } from '../services/historyDb';
 
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
@@ -21,7 +23,11 @@ const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'safety_gating', label: 'Safety Gate' },
 ];
 
-export function WorkspacePage() {
+interface WorkspacePageProps {
+  onResultComplete?: (result: AnalysisResult | null) => void;
+}
+
+export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
   const [inputMode, setInputMode] = useState<InputMode>('direct_drugs');
   const [drugInputs, setDrugInputs] = useState<string[]>(['']);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -31,6 +37,9 @@ export function WorkspacePage() {
   const [selectedModelId, setSelectedModelId] = useState<string>('auto');
   const [isLoadingModels, setIsLoadingModels] = useState<boolean>(true);
   const [modelCatalogError, setModelCatalogError] = useState<string | null>(null);
+
+  // Additional Instructions state
+  const [additionalInstructions, setAdditionalInstructions] = useState<string>('');
 
   // Patient Context state
   const [age, setAge] = useState<string>('');
@@ -58,6 +67,7 @@ export function WorkspacePage() {
   const { 
     analyze, 
     confirm,
+    reset,
     isProcessing, 
     currentStage, 
     stageUpdates, 
@@ -65,6 +75,28 @@ export function WorkspacePage() {
     error,
     extractedCandidates
   } = useAnalysis();
+
+  const [savedToHistory, setSavedToHistory] = useState(false);
+
+  useEffect(() => {
+    if (result && onResultComplete) {
+      onResultComplete(result);
+    }
+    setSavedToHistory(false);
+  }, [result, onResultComplete]);
+
+  const handleSaveToHistory = async () => {
+    if (!result) return;
+    await saveAnalysis({
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(),
+      drugNames: (result.medications || []).map(m => m.canonical_name || m.raw_text),
+      inputMode: result.input_mode || inputMode,
+      gateDecision: result.gate_decision || 'unknown',
+      result,
+    });
+    setSavedToHistory(true);
+  };
 
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
   const updateDrugInput = (index: number, value: string) => {
@@ -105,6 +137,7 @@ export function WorkspacePage() {
       drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
       imageFile: inputMode === 'prescription_image' ? (imageFile || undefined) : undefined,
       patientContext,
+      additionalInstructions: additionalInstructions.trim() || undefined,
       inputMode,
       llmSelection: selectedModelId === 'auto' ? { mode: 'auto' } : { mode: 'manual', model_id: selectedModelId },
     });
@@ -248,6 +281,27 @@ export function WorkspacePage() {
             </p>
           </details>
 
+          {/* Additional Instructions */}
+          <details className="mt-3">
+            <summary className="flex items-center gap-2 text-sm font-medium text-slate-700 cursor-pointer">
+              <FileText size={16} />
+              Additional Instructions (Optional)
+            </summary>
+            <div className="mt-3">
+              <textarea
+                placeholder="Add any specific analysis instructions or questions (e.g., 'Focus on renal dosing adjustments' or 'Check for QT prolongation risk')."
+                value={additionalInstructions}
+                onChange={e => setAdditionalInstructions(e.target.value)}
+                maxLength={2000}
+                rows={3}
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="text-xs text-slate-400 mt-1">
+                Instructions guide analysis focus but cannot override safety gates or evidence requirements.
+              </p>
+            </div>
+          </details>
+
           {/* Answer-generation Model Selector */}
           <div className="mt-5 p-4 bg-slate-50 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between mb-2">
@@ -335,15 +389,54 @@ export function WorkspacePage() {
       {error && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
           <AlertTriangle className="text-red-500 shrink-0 mt-0.5" size={18} />
-          <div>
+          <div className="flex-1">
             <h3 className="text-sm font-medium text-red-800">Analysis Failed</h3>
             <p className="text-sm text-red-600 mt-1">{error}</p>
+            <button
+              onClick={reset}
+              className="mt-2 text-sm text-red-700 hover:text-red-900 font-medium underline"
+            >
+              ← Back to input
+            </button>
           </div>
         </div>
       )}
 
       {/* Results */}
-      {result && currentStage !== 'confirming' && <ResultPanel result={result} />}
+      {result && currentStage !== 'confirming' && (
+        <div className="space-y-4">
+          <ResultPanel result={result} />
+          <div className="flex items-center gap-3 mt-2">
+            <button
+              onClick={handleSaveToHistory}
+              disabled={savedToHistory}
+              className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border transition-colors cursor-pointer ${
+                savedToHistory
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700 cursor-default'
+                  : 'border-slate-300 text-slate-700 hover:bg-slate-50'
+              }`}
+            >
+              {savedToHistory ? <><Check size={14} /> Saved</> : <><Clock size={14} /> Save to History</>}
+            </button>
+            <button
+              onClick={() => {
+                const md = exportAsMarkdown({
+                  id: 'export',
+                  timestamp: new Date().toISOString(),
+                  drugNames: (result.medications || []).map(m => m.canonical_name || m.raw_text),
+                  inputMode: result.input_mode || inputMode,
+                  gateDecision: result.gate_decision || 'unknown',
+                  result,
+                });
+                downloadFile(md, `analysis-${Date.now()}.md`, 'text/markdown');
+              }}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer"
+            >
+              <Download size={14} /> Download Report
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

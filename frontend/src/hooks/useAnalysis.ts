@@ -120,6 +120,7 @@ export function useAnalysis() {
       drugNames?: string[];
       imageFile?: File;
       patientContext?: PatientContext | null;
+      additionalInstructions?: string;
       inputMode: InputMode;
       llmSelection?: LLMSelection | null;
     }
@@ -151,11 +152,11 @@ export function useAnalysis() {
       let req_id = '';
       
       if (payload.inputMode === 'prescription_image' && payload.imageFile) {
-        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext, payload.llmSelection);
+        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext, payload.llmSelection, payload.additionalInstructions);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else if (payload.drugNames) {
-        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode, payload.llmSelection);
+        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode, payload.llmSelection, payload.additionalInstructions);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else {
@@ -171,7 +172,7 @@ export function useAnalysis() {
         },
         (err) => {
           console.error("Stream error", err);
-          setError(prev => prev || "Analysis Failed: LLM provider authentication failed or connection lost. Please verify the configured provider credentials and restart the backend if required.");
+          setError(prev => prev || "Analysis stream disconnected unexpectedly. Check the backend server status.");
           setCurrentStage('error');
           setIsProcessing(false);
         }
@@ -198,9 +199,21 @@ export function useAnalysis() {
     }
   }, [currentRequestId, cleanup]);
 
+  const reset = useCallback(() => {
+    cleanup();
+    setIsProcessing(false);
+    setCurrentStage('idle');
+    setStageUpdates([]);
+    setResult(null);
+    setError(null);
+    setExtractedCandidates([]);
+    setCurrentRequestId(null);
+  }, [cleanup]);
+
   return {
     analyze,
     confirm,
+    reset,
     isProcessing,
     currentStage,
     stageUpdates,
