@@ -1,7 +1,4 @@
-// ── Prescription image limits ────────────────────────────────────────────────
-// Mirror src/adaptive_trust_medical_rag/services/image_validator.py
-// (MAX_IMAGE_SIZE_BYTES, ALLOWED_MIME_TYPES, ALLOWED_EXTENSIONS, empty check).
-// POST /api/v1/analyze/prescription takes a single `image` part.
+// Limits mirror src/adaptive_trust_medical_rag/services/image_validator.py; the endpoint takes one `image` part.
 
 export const MAX_PRESCRIPTION_IMAGE_BYTES = 5 * 1024 * 1024;
 export const ALLOWED_PRESCRIPTION_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
