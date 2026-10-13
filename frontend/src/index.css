@@ -1,19 +1,134 @@
 @import 'tailwindcss';
 
+/*
+ * Design tokens: the single place colours, radius and motion are defined.
+ * Adapted from Magic UI's shadcn-style token names (apps/www/styles/globals.css, MIT),
+ * with a calm clinical teal primary. Components use the Tailwind utilities generated
+ * from @theme below (bg-card, text-muted-foreground, border-border, text-success, ...)
+ * and never hard-coded palette colours.
+ *
+ * Dark mode: the `dark` class on <html>, set by src/theme/theme.ts from the stored
+ * choice or prefers-color-scheme.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --color-primary: #1e40af;
-  --color-success: #059669;
-  --color-warning: #d97706;
-  --color-danger: #dc2626;
-  --color-info: #2563eb;
-  --color-muted: #6b7280;
-  --color-surface: #f8fafc;
-  --color-surface-elevated: #ffffff;
-  --color-border: #e2e8f0;
+  --radius: 0.625rem;
+
+  --background: oklch(0.985 0.004 220);
+  --foreground: oklch(0.18 0.02 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 240);
+  --glass: oklch(1 0 0 / 0.6);
+  --muted: oklch(0.96 0.005 220);
+  --muted-foreground: oklch(0.47 0.02 240);
+  --border: oklch(0.91 0.006 220);
+  --input: oklch(0.86 0.008 220);
+
+  --primary: oklch(0.5 0.1 200);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: oklch(0.96 0.025 200);
+  --ring: oklch(0.5 0.1 200);
+
+  --success: oklch(0.48 0.11 160);
+  --success-soft: oklch(0.96 0.04 160);
+  --warning: oklch(0.5 0.12 60);
+  --warning-soft: oklch(0.97 0.05 85);
+  --destructive: oklch(0.52 0.2 27);
+  --destructive-soft: oklch(0.96 0.03 20);
+
+  --accent-glow: oklch(0.75 0.12 195 / 0.35);
+  --hero-from: oklch(0.93 0.04 200);
+  --hero-to: oklch(0.985 0.004 220);
+  --particle: oklch(0.55 0.1 200);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-hover: 150ms;
+  --duration-enter: 300ms;
+}
+
+.dark {
+  --background: oklch(0.16 0.02 240);
+  --foreground: oklch(0.97 0.005 220);
+  --card: oklch(0.21 0.02 240);
+  --card-foreground: oklch(0.97 0.005 220);
+  --glass: oklch(0.25 0.02 240 / 0.55);
+  --muted: oklch(0.26 0.02 240);
+  --muted-foreground: oklch(0.76 0.01 220);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 20%);
+
+  --primary: oklch(0.76 0.11 190);
+  --primary-foreground: oklch(0.16 0.02 240);
+  --primary-soft: oklch(0.3 0.04 200);
+  --ring: oklch(0.76 0.11 190);
+
+  --success: oklch(0.8 0.13 160);
+  --success-soft: oklch(0.29 0.05 160);
+  --warning: oklch(0.83 0.13 80);
+  --warning-soft: oklch(0.3 0.05 75);
+  --destructive: oklch(0.75 0.15 22);
+  --destructive-soft: oklch(0.3 0.06 20);
+
+  --accent-glow: oklch(0.72 0.14 190 / 0.4);
+  --hero-from: oklch(0.28 0.05 205);
+  --hero-to: oklch(0.16 0.02 240);
+  --particle: oklch(0.8 0.1 190);
+}
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-glass: var(--glass);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-accent-glow: var(--accent-glow);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--color-surface);
-  color: #1e293b;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

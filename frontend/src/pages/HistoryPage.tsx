@@ -55,26 +55,26 @@ export function HistoryPage() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => setSelectedEntry(null)}
-            className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium cursor-pointer"
+            className="flex items-center gap-2 text-sm text-primary hover:text-primary font-medium cursor-pointer"
           >
             ← Back to History
           </button>
           <div className="flex gap-2">
             <button
               onClick={() => handleDownloadMd(selectedEntry)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-slate-300 rounded-lg hover:bg-slate-50 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-input rounded-lg hover:bg-muted cursor-pointer"
             >
               <FileText size={14} /> Markdown
             </button>
             <button
               onClick={() => handleDownloadJson(selectedEntry)}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-slate-300 rounded-lg hover:bg-slate-50 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-input rounded-lg hover:bg-muted cursor-pointer"
             >
               <FileJson size={14} /> JSON
             </button>
           </div>
         </div>
-        <div className="text-xs text-slate-500">
+        <div className="text-xs text-muted-foreground">
           Saved: {new Date(selectedEntry.timestamp).toLocaleString()} · Drugs: {selectedEntry.drugNames.join(', ')}
         </div>
         <ResultPanel result={selectedEntry.result} />
@@ -84,17 +84,17 @@ export function HistoryPage() {
 
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+      <div className="bg-card rounded-lg border border-border shadow-sm">
+        <div className="p-5 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Clock size={20} className="text-blue-600" />
-            <h2 className="text-base font-semibold text-slate-900">Analysis History</h2>
-            <span className="text-xs text-slate-400 bg-slate-100 px-2 py-0.5 rounded">{entries.length} saved</span>
+            <Clock size={20} className="text-primary" />
+            <h2 className="text-base font-semibold text-foreground">Analysis History</h2>
+            <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">{entries.length} saved</span>
           </div>
           {entries.length > 0 && (
             <button
               onClick={handleClearAll}
-              className="text-xs text-red-600 hover:text-red-800 font-medium cursor-pointer"
+              className="text-xs text-destructive hover:text-destructive font-medium cursor-pointer"
             >
               Clear All
             </button>
@@ -102,45 +102,45 @@ export function HistoryPage() {
         </div>
 
         {isLoading ? (
-          <div className="p-8 text-center text-sm text-slate-500">Loading history...</div>
+          <div className="p-8 text-center text-sm text-muted-foreground">Loading history...</div>
         ) : entries.length === 0 ? (
           <div className="p-8 text-center">
-            <Clock size={32} className="mx-auto text-slate-300 mb-3" />
-            <p className="text-sm text-slate-500">No saved analyses yet.</p>
-            <p className="text-xs text-slate-400 mt-1">Completed analyses can be saved from the Medical RAG workspace.</p>
+            <Clock size={32} className="mx-auto text-muted-foreground mb-3" />
+            <p className="text-sm text-muted-foreground">No saved analyses yet.</p>
+            <p className="text-xs text-muted-foreground mt-1">Completed analyses can be saved from the Medical RAG workspace.</p>
           </div>
         ) : (
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-border">
             {entries.map(entry => (
-              <div key={entry.id} className="p-4 flex items-center justify-between hover:bg-slate-50">
+              <div key={entry.id} className="p-4 flex items-center justify-between hover:bg-muted">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-slate-900 truncate">
+                    <span className="text-sm font-medium text-foreground truncate">
                       {entry.drugNames.join(', ')}
                     </span>
                     <span className={`text-xs px-2 py-0.5 rounded-full ${
-                      entry.gateDecision === 'release' ? 'bg-emerald-100 text-emerald-800' :
-                      entry.gateDecision === 'qualify' ? 'bg-amber-100 text-amber-800' :
-                      'bg-slate-100 text-slate-600'
+                      entry.gateDecision === 'release' ? 'bg-success-soft text-success' :
+                      entry.gateDecision === 'qualify' ? 'bg-warning-soft text-warning' :
+                      'bg-muted text-muted-foreground'
                     }`}>
                       {entry.gateDecision}
                     </span>
                   </div>
-                  <div className="text-xs text-slate-400 mt-0.5">
+                  <div className="text-xs text-muted-foreground mt-0.5">
                     {new Date(entry.timestamp).toLocaleString()} · {entry.inputMode}
                   </div>
                 </div>
                 <div className="flex items-center gap-1 ml-4">
-                  <button onClick={() => setSelectedEntry(entry)} className="p-1.5 text-slate-400 hover:text-blue-600 cursor-pointer" title="View">
+                  <button onClick={() => setSelectedEntry(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="View">
                     <Eye size={16} />
                   </button>
-                  <button onClick={() => handleDownloadMd(entry)} className="p-1.5 text-slate-400 hover:text-blue-600 cursor-pointer" title="Download Markdown">
+                  <button onClick={() => handleDownloadMd(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download Markdown">
                     <FileText size={16} />
                   </button>
-                  <button onClick={() => handleDownloadJson(entry)} className="p-1.5 text-slate-400 hover:text-blue-600 cursor-pointer" title="Download JSON">
+                  <button onClick={() => handleDownloadJson(entry)} className="p-1.5 text-muted-foreground hover:text-primary cursor-pointer" title="Download JSON">
                     <FileJson size={16} />
                   </button>
-                  <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-slate-400 hover:text-red-600 cursor-pointer" title="Delete">
+                  <button onClick={() => handleDelete(entry.id)} className="p-1.5 text-muted-foreground hover:text-destructive cursor-pointer" title="Delete">
                     <Trash2 size={16} />
                   </button>
                 </div>
@@ -149,7 +149,7 @@ export function HistoryPage() {
           </div>
         )}
       </div>
-      <p className="text-xs text-slate-400 text-center">
+      <p className="text-xs text-muted-foreground text-center">
         ⚠️ History is stored locally in your browser. Patient context is excluded from exports by default.
       </p>
     </div>

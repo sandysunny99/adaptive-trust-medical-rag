@@ -6,10 +6,10 @@ interface MedicationCardProps {
 }
 
 const STATUS_CONFIG = {
-  MATCHED: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50', label: 'Verified' },
-  AMBIGUOUS: { icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50', label: 'Ambiguous' },
-  NOT_FOUND: { icon: X, color: 'text-red-600', bg: 'bg-red-50', label: 'Not Found' },
-  UNAVAILABLE: { icon: HelpCircle, color: 'text-slate-500', bg: 'bg-slate-50', label: 'Unavailable' },
+  MATCHED: { icon: Check, color: 'text-success', bg: 'bg-success-soft', label: 'Verified' },
+  AMBIGUOUS: { icon: AlertTriangle, color: 'text-warning', bg: 'bg-warning-soft', label: 'Ambiguous' },
+  NOT_FOUND: { icon: X, color: 'text-destructive', bg: 'bg-destructive-soft', label: 'Not Found' },
+  UNAVAILABLE: { icon: HelpCircle, color: 'text-muted-foreground', bg: 'bg-muted', label: 'Unavailable' },
 } as const;
 
 export function MedicationCard({ medication }: MedicationCardProps) {
@@ -17,11 +17,11 @@ export function MedicationCard({ medication }: MedicationCardProps) {
   const StatusIcon = config.icon;
 
   return (
-    <div className={`rounded-lg border border-slate-200 p-4 ${config.bg}`}>
+    <div className={`rounded-lg border border-border p-4 ${config.bg}`}>
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
-          <Pill size={16} className="text-blue-600" />
-          <span className="font-medium text-slate-900">
+          <Pill size={16} className="text-primary" />
+          <span className="font-medium text-foreground">
             {medication.canonical_name || medication.raw_text}
           </span>
         </div>
@@ -30,7 +30,7 @@ export function MedicationCard({ medication }: MedicationCardProps) {
           {config.label}
         </div>
       </div>
-      <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
+      <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-muted-foreground">
         {medication.rxcui && <div>RxCUI: <span className="font-mono">{medication.rxcui}</span></div>}
         {medication.strength && <div>Strength: {medication.strength}</div>}
         {medication.formulation && <div>Form: {medication.formulation}</div>}

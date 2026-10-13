@@ -146,22 +146,22 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
   return (
     <div className="space-y-6">
       {/* Input Section */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-5 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-900">Medication Safety Analysis</h2>
-          <p className="text-sm text-slate-500 mt-1">
+      <div className="bg-card rounded-lg border border-border shadow-sm">
+        <div className="p-5 border-b border-border">
+          <h2 className="text-base font-semibold text-foreground">Medication Safety Analysis</h2>
+          <p className="text-sm text-muted-foreground mt-1">
             Upload a prescription image or enter drug names for evidence-grounded safety analysis.
           </p>
         </div>
 
         {/* Input Mode Tabs */}
-        <div className="flex border-b border-slate-100">
+        <div className="flex border-b border-border">
           <button
             onClick={() => setInputMode('prescription_image')}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
               inputMode === 'prescription_image'
-                ? 'border-blue-600 text-blue-700 bg-blue-50/50'
-                : 'border-transparent text-slate-500 hover:text-slate-700'
+                ? 'border-primary text-primary bg-primary-soft'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <Upload size={16} /> Upload Prescription
@@ -170,8 +170,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
             onClick={() => setInputMode('direct_drugs')}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
               inputMode === 'direct_drugs'
-                ? 'border-blue-600 text-blue-700 bg-blue-50/50'
-                : 'border-transparent text-slate-500 hover:text-slate-700'
+                ? 'border-primary text-primary bg-primary-soft'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <Pill size={16} /> Enter Drug Names
@@ -180,12 +180,12 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
         <div className="p-5">
           {inputMode === 'prescription_image' && (
-            <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer relative">
-              <Upload className="mx-auto text-slate-400 mb-3" size={32} />
-              <p className="text-sm text-slate-600">
+            <div className="border-2 border-dashed border-input rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer relative">
+              <Upload className="mx-auto text-muted-foreground mb-3" size={32} />
+              <p className="text-sm text-muted-foreground">
                 {imageFile ? imageFile.name : "Drag & drop a prescription image, or click to browse"}
               </p>
-              <p className="text-xs text-slate-400 mt-1">PNG, JPG, or WEBP • Max 5MB</p>
+              <p className="text-xs text-muted-foreground mt-1">PNG, JPG, or WEBP • Max 5MB</p>
               <input 
                 type="file" 
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
@@ -200,19 +200,19 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               {drugInputs.map((drug, i) => (
                 <div key={i} className="flex gap-2">
                   <div className="flex-1 relative">
-                    <Pill className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <Pill className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
                     <input
                       type="text"
                       value={drug}
                       onChange={e => updateDrugInput(i, e.target.value)}
                       placeholder={`Drug name ${i + 1} (e.g., Amoxicillin, Metformin)`}
-                      className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full pl-10 pr-4 py-2.5 border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                     />
                   </div>
                   {drugInputs.length > 1 && (
                     <button
                       onClick={() => removeDrugInput(i)}
-                      className="px-3 py-2 text-slate-400 hover:text-red-500 transition-colors"
+                      className="px-3 py-2 text-muted-foreground hover:text-destructive transition-colors"
                       aria-label="Remove drug"
                     >
                       <X size={16} />
@@ -222,7 +222,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               ))}
               <button
                 onClick={addDrugInput}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                className="text-sm text-primary hover:text-primary font-medium"
               >
                 + Add another drug
               </button>
@@ -231,7 +231,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
           {/* Patient Context Toggle */}
           <details className="mt-5">
-            <summary className="flex items-center gap-2 text-sm font-medium text-slate-700 cursor-pointer">
+            <summary className="flex items-center gap-2 text-sm font-medium text-foreground cursor-pointer">
               <UserCog size={16} />
               Patient Context (Optional)
             </summary>
@@ -241,12 +241,12 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 placeholder="Age"
                 value={age}
                 onChange={e => setAge(e.target.value)}
-                className="px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="px-3 py-2 border border-input rounded-lg text-sm"
               />
               <select 
                 value={sex}
                 onChange={e => setSex(e.target.value)}
-                className="px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-600"
+                className="px-3 py-2 border border-input rounded-lg text-sm text-muted-foreground"
               >
                 <option value="">Sex</option>
                 <option value="male">Male</option>
@@ -258,24 +258,24 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 placeholder="Known allergies (comma-separated)"
                 value={allergies}
                 onChange={e => setAllergies(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="col-span-2 px-3 py-2 border border-input rounded-lg text-sm"
               />
               <input
                 type="text"
                 placeholder="Known medical conditions"
                 value={conditions}
                 onChange={e => setConditions(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="col-span-2 px-3 py-2 border border-input rounded-lg text-sm"
               />
               <input
                 type="text"
                 placeholder="Current other medications"
                 value={currentMeds}
                 onChange={e => setCurrentMeds(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="col-span-2 px-3 py-2 border border-input rounded-lg text-sm"
               />
             </div>
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-xs text-muted-foreground mt-2">
               Only provide information relevant to medication safety. Patient context is optional
               and never inferred from prescriptions.
             </p>
@@ -283,7 +283,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
           {/* Additional Instructions */}
           <details className="mt-3">
-            <summary className="flex items-center gap-2 text-sm font-medium text-slate-700 cursor-pointer">
+            <summary className="flex items-center gap-2 text-sm font-medium text-foreground cursor-pointer">
               <FileText size={16} />
               Additional Instructions (Optional)
             </summary>
@@ -294,28 +294,28 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 onChange={e => setAdditionalInstructions(e.target.value)}
                 maxLength={2000}
                 rows={3}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-input rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
               />
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 Instructions guide analysis focus but cannot override safety gates or evidence requirements.
               </p>
             </div>
           </details>
 
           {/* Answer-generation Model Selector */}
-          <div className="mt-5 p-4 bg-slate-50 rounded-lg border border-slate-200">
+          <div className="mt-5 p-4 bg-muted rounded-lg border border-border">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Cpu size={16} className="text-blue-600" />
-                <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                <Cpu size={16} className="text-primary" />
+                <span className="text-xs font-semibold text-foreground uppercase tracking-wider">
                   Answer-generation model
                 </span>
               </div>
-              <span className="text-[11px] font-medium text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
+              <span className="text-[11px] font-medium text-muted-foreground bg-card px-2 py-0.5 rounded border border-border">
                 {selectedModelId === 'auto' ? 'Automatic Failover' : 'Direct Selection'}
               </span>
             </div>
-            <p className="text-xs text-slate-500 mb-2">
+            <p className="text-xs text-muted-foreground mb-2">
               Choose the model used to generate your analysis.
             </p>
             <select
@@ -323,7 +323,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               value={selectedModelId}
               onChange={e => setSelectedModelId(e.target.value)}
               disabled={isProcessing || isLoadingModels}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full px-3 py-2 border border-input rounded-lg text-sm bg-card focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60 disabled:cursor-not-allowed"
             >
               <option value="auto">
                 {isLoadingModels ? 'Loading model catalog...' : 'Automatic selection (recommended)'}
@@ -335,11 +335,11 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               ))}
             </select>
             {modelCatalogError && (
-              <p className="text-[11px] text-amber-600 mt-1">
+              <p className="text-[11px] text-warning mt-1">
                 {modelCatalogError}
               </p>
             )}
-            <p className="text-[11px] text-slate-400 mt-2">
+            <p className="text-[11px] text-muted-foreground mt-2">
               {selectedModelId === 'auto'
                 ? 'Automatic mode uses the existing provider router and its eligible failover policy.'
                 : 'Direct mode routes your query directly to the selected model without silent failover.'}
@@ -348,7 +348,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
           {/* Submit */}
           <div className="mt-5 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs text-amber-600">
+            <div className="flex items-center gap-2 text-xs text-warning">
               <AlertTriangle size={14} />
               <span>Research prototype - does not replace clinical advice</span>
             </div>
@@ -359,7 +359,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 (inputMode === 'direct_drugs' && drugInputs.every(d => !d.trim())) ||
                 (inputMode === 'prescription_image' && !imageFile)
               }
-              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               <Search size={16} />
               Analyze Medications
@@ -387,14 +387,14 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-          <AlertTriangle className="text-red-500 shrink-0 mt-0.5" size={18} />
+        <div className="bg-destructive-soft border border-destructive/30 rounded-lg p-4 flex items-start gap-3">
+          <AlertTriangle className="text-destructive shrink-0 mt-0.5" size={18} />
           <div className="flex-1">
-            <h3 className="text-sm font-medium text-red-800">Analysis Failed</h3>
-            <p className="text-sm text-red-600 mt-1">{error}</p>
+            <h3 className="text-sm font-medium text-destructive">Analysis Failed</h3>
+            <p className="text-sm text-destructive mt-1">{error}</p>
             <button
               onClick={reset}
-              className="mt-2 text-sm text-red-700 hover:text-red-900 font-medium underline"
+              className="mt-2 text-sm text-destructive hover:text-destructive font-medium underline"
             >
               ← Back to input
             </button>
@@ -412,8 +412,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
               disabled={savedToHistory}
               className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border transition-colors cursor-pointer ${
                 savedToHistory
-                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700 cursor-default'
-                  : 'border-slate-300 text-slate-700 hover:bg-slate-50'
+                  ? 'bg-success-soft border-success/30 text-success cursor-default'
+                  : 'border-input text-foreground hover:bg-muted'
               }`}
             >
               {savedToHistory ? <><Check size={14} /> Saved</> : <><Clock size={14} /> Save to History</>}
@@ -430,7 +430,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                 });
                 downloadFile(md, `analysis-${Date.now()}.md`, 'text/markdown');
               }}
-              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer"
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted cursor-pointer"
             >
               <Download size={14} /> Download Report
             </button>

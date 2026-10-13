@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { Page } from '../App';
+import { ThemeToggle } from './ui/ThemeToggle';
 import {
   FlaskConical, Shield, BarChart3, FileSearch,
   Activity, LayoutDashboard, Clock
@@ -23,31 +24,32 @@ interface LayoutProps {
 
 export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 shadow-sm">
+      <header className="bg-card border-b border-border shadow-sm">
         <div className="max-w-[1600px] mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <FlaskConical className="text-blue-700" size={24} />
+            <FlaskConical className="text-primary" size={24} />
             <div>
-              <h1 className="text-lg font-semibold text-slate-900">
+              <h1 className="text-lg font-semibold text-foreground">
                 Adaptive Trust-Aware Medical RAG
               </h1>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-muted-foreground">
                 Medication Safety &amp; Evidence Analysis — Research Prototype
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-800 rounded">
+            <span className="px-2 py-0.5 text-xs font-medium bg-warning-soft text-warning rounded">
               RESEARCH USE ONLY
             </span>
+            <ThemeToggle />
           </div>
         </div>
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white border-b border-slate-200">
+      <nav className="bg-card border-b border-border">
         <div className="max-w-[1600px] mx-auto px-6 flex gap-1">
           {NAV_ITEMS.map(({ page, label, icon }) => (
             <button
@@ -55,8 +57,8 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
               onClick={() => onNavigate(page)}
               className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${
                 currentPage === page
-                  ? 'border-blue-600 text-blue-700'
-                  : 'border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground hover:border-input'
               }`}
             >
               {icon}
@@ -72,9 +74,9 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
       </main>
 
       {/* Footer disclaimer */}
-      <footer className="border-t border-slate-200 bg-white mt-8">
+      <footer className="border-t border-border bg-card mt-8">
         <div className="max-w-[1600px] mx-auto px-6 py-3">
-          <p className="text-xs text-slate-500 text-center">
+          <p className="text-xs text-muted-foreground text-center">
             ⚠️ This is an evidence-grounded research prototype. It is NOT an autonomous clinical
             decision-maker and does NOT replace a doctor, pharmacist, or other healthcare professional.
             All outputs are research-grade and require clinical verification.
