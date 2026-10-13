@@ -4,6 +4,7 @@ import type { InputMode, PatientContext, PipelineStage, LLMModelInfo, AnalysisRe
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
 import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
+import { PrescriptionDropzone } from '../components/PrescriptionDropzone';
 import { useAnalysis } from '../hooks/useAnalysis';
 import { fetchModelCatalog } from '../services/api';
 import { exportAsMarkdown, downloadFile } from '../services/exportService';
@@ -115,12 +116,6 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
-    }
-  };
-
   const handleSubmit = async () => {
     const validDrugs = drugInputs.map(d => d.trim()).filter(Boolean);
     
@@ -181,20 +176,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           />
 
           {inputMode === 'prescription_image' && (
-            <label className="block border-2 border-dashed border-input rounded-lg p-8 text-center hover:border-primary focus-within:border-primary focus-within:ring-2 focus-within:ring-ring transition-colors cursor-pointer relative">
-              <Upload className="mx-auto text-muted-foreground mb-3" size={32} aria-hidden="true" />
-              <span className="block text-sm text-foreground">
-                {imageFile ? imageFile.name : "Drag & drop a prescription image, or click to browse"}
-              </span>
-              <span className="block text-xs text-muted-foreground mt-1">PNG, JPG, or WEBP • Max 5MB</span>
-              <input
-                type="file"
-                aria-label="Prescription image"
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                accept="image/jpeg,image/png,image/webp"
-                onChange={handleImageChange}
-              />
-            </label>
+            <PrescriptionDropzone file={imageFile} onFileChange={setImageFile} disabled={isProcessing} />
           )}
 
           {inputMode === 'direct_drugs' && (
