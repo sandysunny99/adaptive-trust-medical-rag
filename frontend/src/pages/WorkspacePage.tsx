@@ -106,6 +106,14 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     setSavedToHistory(true);
   };
 
+  // Clears the result (inputs are kept so they can be adjusted) and returns to the form.
+  const startNewAnalysis = () => {
+    reset();
+    const form = document.querySelector<HTMLElement>('[aria-labelledby="analysis-heading"]');
+    form?.scrollIntoView({ block: 'start' });
+    form?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')?.focus();
+  };
+
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
   const updateDrugInput = (index: number, value: string) => {
     setDrugInputs(prev => prev.map((v, i) => i === index ? value : v));
@@ -360,6 +368,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           stages={PIPELINE_STAGES}
           currentStage={currentStage}
           updates={stageUpdates}
+          processingTimeMs={result?.processing_time_ms}
         />
       )}
 
@@ -392,7 +401,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       {result && currentStage !== 'confirming' && (
         <div className="space-y-4">
           <ResultPanel result={result} showDetails={!isProcessing} />
-          <div className="flex items-center gap-3 mt-2">
+          <div className="flex flex-wrap items-center gap-3 mt-2">
             <button
               onClick={handleSaveToHistory}
               disabled={savedToHistory}
@@ -420,6 +429,15 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
             >
               <Icons.download size={14} /> Download Report
             </button>
+            {!isProcessing && (
+              <button
+                type="button"
+                onClick={startNewAnalysis}
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Icons.newAnalysis size={14} /> New analysis
+              </button>
+            )}
           </div>
         </div>
       )}

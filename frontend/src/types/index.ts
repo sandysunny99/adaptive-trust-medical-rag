@@ -206,6 +206,8 @@ export interface AnalysisResult {
   gate_decision: GateDecision;
   abstention_reason: string | null;
   disclaimer: string;
+  /** Total pipeline time reported by the backend in the answer payload. */
+  processing_time_ms?: number;
   used_model?: {
     mode: string;
     provider: string;

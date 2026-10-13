@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { ResultPanel } from './ResultPanel';
 import { RESEARCH_DISCLAIMER } from '../constants/disclaimer';
@@ -120,5 +121,33 @@ describe('ResultPanel evidence and security sections', () => {
     render(<ResultPanel result={makeResult({ evidence: items })} showDetails={false} />);
     expect(screen.queryByRole('button', { name: /Evidence & Sources/ })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /Security Checks/ })).not.toBeInTheDocument();
+  });
+
+  it('clamps long evidence text with a per-item toggle and Expand all, keeping every item', async () => {
+    const long = 'Synthetic evidence sentence. '.repeat(12);
+    const many = Array.from({ length: 14 }, (_, i) => evidence(`DOC-${i + 1}`, i === 0 ? long : `Short text ${i + 1}`));
+    render(<ResultPanel result={makeResult({ evidence: many })} />);
+
+    expect(screen.getAllByText(/^Document: /)).toHaveLength(14);
+    expect(screen.getByRole('button', { name: /Evidence & Sources \(14\)/ })).toBeInTheDocument();
+
+    const more = screen.getByRole('button', { name: 'Show more of source 1' });
+    expect(more).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.getByText(long.trim())).toHaveClass('line-clamp-3');
+    await userEvent.click(more);
+    expect(screen.getByRole('button', { name: 'Show less of source 1' })).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByText(long.trim())).not.toHaveClass('line-clamp-3');
+
+    await userEvent.click(screen.getByRole('button', { name: 'Expand all' }));
+    for (let i = 2; i <= 14; i++) expect(screen.getByText(`Short text ${i}`)).not.toHaveClass('line-clamp-3');
+    await userEvent.click(screen.getByRole('button', { name: 'Collapse all' }));
+    expect(screen.getByText('Short text 2')).toHaveClass('line-clamp-3');
+  });
+
+  it('shows security checks as rows with visible status text', () => {
+    render(<ResultPanel result={makeResult()} />);
+    const rows = screen.getAllByRole('listitem').filter(li => /Prompt Injection|Retrieval Poisoning|Evidence Integrity/.test(li.textContent ?? ''));
+    expect(rows).toHaveLength(3);
+    for (const row of rows) expect(row).toHaveTextContent('ALLOW');
   });
 });

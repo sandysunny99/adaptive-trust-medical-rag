@@ -2,7 +2,7 @@ import { Icons } from '../../ui/icons';
 import { SecurityStatusPill } from '../ui/StatusPill';
 import type { AnalysisResult } from '../../types';
 
-/** The three security gate cards, moved from the former Security tab unchanged in logic. */
+/** The three security gates as compact rows: icon, name, status pill, detail. Gate logic unchanged. */
 export function SecurityChecks({ result }: { result: AnalysisResult | null | undefined }) {
   const security = result?.security;
 
@@ -33,26 +33,18 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
     },
   ];
 
-  const surface: Record<string, string> = {
-    ALLOW: 'border-success/30 bg-success-soft',
-    FLAG: 'border-warning/30 bg-warning-soft',
-    BLOCK: 'border-destructive/30 bg-destructive-soft',
-  };
-
   return (
-    <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
+    <ul className="divide-y divide-border">
       {gates.map(({ label, icon: GateIcon, status, detail }) => (
-        <li key={label} className={`p-4 rounded-lg border ${surface[status] ?? 'border-border bg-muted'}`}>
-          <h4 className="flex items-center gap-2 text-sm font-medium text-foreground">
-            <GateIcon size={20} className="text-muted-foreground" />
-            {label}
-          </h4>
-          <div className="mt-2">
-            <SecurityStatusPill status={status === 'NO_DATA' ? null : status} />
+        <li key={label} className="flex flex-wrap items-start gap-x-3 gap-y-1 py-3 first:pt-0 last:pb-0">
+          <GateIcon size={20} className="mt-0.5 shrink-0 text-muted-foreground" />
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h4 className="text-sm font-medium text-foreground">{label}</h4>
+              <SecurityStatusPill status={status === 'NO_DATA' ? null : status} />
+            </div>
+            {detail && <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>}
           </div>
-          {detail && (
-            <p className="text-xs text-foreground mt-2">{detail}</p>
-          )}
         </li>
       ))}
     </ul>
