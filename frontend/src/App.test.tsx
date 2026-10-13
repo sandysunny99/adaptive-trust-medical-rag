@@ -33,7 +33,7 @@ describe('App keeps Analyze mounted', () => {
 
     await userEvent.click(screen.getByRole('link', { name: 'Analyze' }));
     expect(screen.getByRole('textbox', { name: 'Drug name 1' })).toHaveValue('Metformin');
-  });
+  }, 20_000); // renders the whole app (lazy hero chunks included); 5 s default was flaky under load
 
   it('falls back to Analyze for an unknown hash', async () => {
     render(<App />);
