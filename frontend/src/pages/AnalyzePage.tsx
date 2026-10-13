@@ -17,7 +17,7 @@ export function AnalyzePage() {
       <Suspense fallback={<div className="h-40" aria-hidden="true" />}>
         <HowItWorks />
       </Suspense>
-      <div id={ANALYSIS_FORM_ID} tabIndex={-1} className="scroll-mt-32 focus:outline-none">
+      <div id={ANALYSIS_FORM_ID} tabIndex={-1} className="scroll-mt-32 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
         <WorkspacePage />
       </div>
     </div>
