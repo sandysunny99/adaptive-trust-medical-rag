@@ -49,3 +49,15 @@
 | TD-017 | No rate limiting implementation in P0 adapters | evidence_sources/ | Risk of API abuse if deployed; acceptable for research |
 | TD-018 | Docker-compose.yml defines postgres but is not used in experiments | docker-compose.yml | Development friction only |
 | TD-019 | RESULT_HASH_SPECIFICATION.md referenced in verifier but not confirmed in repo | docs/ | Documentation completeness |
+
+---
+
+## 2026-10-13 Reconciliation
+
+The entries above describe an earlier architecture snapshot. Current
+application remediation and research blockers are tracked in
+`reports/audit/blocked_issue_register.md`. The current audit's high-priority
+engineering findings were retrieved-evidence injection handling, canonical
+entity matching, discarded trust telemetry, approximate RxNorm acceptance,
+hidden canonical identity status, and fail-open claim verification; these are
+fixed and covered by the focused regression suite.

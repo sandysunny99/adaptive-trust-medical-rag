@@ -13,6 +13,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import time
 import uuid
 from typing import Any, AsyncGenerator
@@ -274,7 +275,7 @@ class LiveMedicalRAGService:
                     for entity in entities:
                         if entity.confidence == 0.0:
                             status = "NOT_FOUND"
-                        elif entity.confidence < 0.8:
+                        elif entity.confidence <= 0.8:
                             status = "AMBIGUOUS"
                         else:
                             status = "MATCHED"
@@ -379,7 +380,10 @@ class LiveMedicalRAGService:
                     if pc_terms:
                         query_text += " " + " ".join(pc_terms)
 
-                drug_names_lower = [m["raw_text"].lower() for m in medications]
+                drug_names_lower = [
+                    (m.get("canonical_name") or m["raw_text"]).lower()
+                    for m in medications
+                ]
                 try:
                     # Execute synchronous retrieval (may block event loop in dev, but acceptable for now)
                     candidates = retrieval_engine.retrieve(
@@ -409,6 +413,8 @@ class LiveMedicalRAGService:
 
 
             poisoning_blocked = 0
+            injection_blocked = 0
+            injection_allowed_by_chunk = {}
             safe_candidates = []
             for sc in candidates:
                 cand = sc.candidate
@@ -420,21 +426,26 @@ class LiveMedicalRAGService:
                         "content_hash": hashlib.sha256(cand.text.encode("utf-8")).hexdigest(),
                     }
                 poison_dec = self.poisoning_detector.inspect_provenance(prov, cand.chunk_id, request_id)
+                injection_dec = self.prompt_detector.inspect(cand.text, request_id)
+                injection_allowed_by_chunk[cand.chunk_id] = injection_dec.decision.name == "ALLOW"
 
                 # Check cryptographic provenance hash
                 expected_hash = prov.get("content_hash")
                 actual_hash = hashlib.sha256(cand.text.encode("utf-8")).hexdigest()
 
+                if injection_dec.decision.name != "ALLOW":
+                    injection_blocked += 1
                 if poison_dec.decision.name == "BLOCK" or cand.poisoning_score > 0.4:
                     poisoning_blocked += 1
                 elif expected_hash and actual_hash != expected_hash:
                     log.warning("Hash mismatch for %s: expected %s, got %s", cand.chunk_id, expected_hash, actual_hash)
                     poisoning_blocked += 1
-                else:
+                elif injection_dec.decision.name == "ALLOW":
                     safe_candidates.append(sc)
 
             yield _sse("security", {
-                "injection_status": "ALLOW",
+                "injection_status": "BLOCK" if injection_blocked > 0 else "ALLOW",
+                "injection_reason": f"Blocked {injection_blocked} chunks" if injection_blocked > 0 else None,
                 "poisoning_status": "BLOCK" if poisoning_blocked > 0 else "ALLOW",
                 "poisoning_reason": f"Blocked {poisoning_blocked} chunks" if poisoning_blocked > 0 else None
             })
@@ -458,25 +469,53 @@ class LiveMedicalRAGService:
             elif risk_tier == "R3": trust_threshold = 0.75
 
             eligible_candidates = []
-            max_trust_score = 0.0
-            best_factors = None
+            trust_results = []
+            eligible_trust_results = []
 
             for sc in safe_candidates:
                 cand = sc.candidate
-                drug_names_lower = [m["raw_text"].lower() for m in medications]
-                entity_match = 1.0 if any(d in cand.text.lower() for d in drug_names_lower) else 0.5
+                canonical_names = [
+                    (m.get("canonical_name") or m["raw_text"]).lower()
+                    for m in medications
+                ]
+                entity_match = 1.0 if any(
+                    re.search(rf"\b{re.escape(name)}\b", cand.text.lower())
+                    for name in canonical_names
+                ) else 0.0
 
-                rel_score = float(getattr(sc, "score", 0.85))
+                rel_score = cand.metadata.get("query_relevance")
+                if rel_score is not None:
+                    rel_score = float(rel_score)
                 factors = TrustFactorScores(
                     source_authority=cand.source_authority,
-                    query_relevance=min(1.0, max(0.0, rel_score)),
-                    evidence_quality=float(cand.metadata.get("evidence_quality", cand.source_authority)),
-                    freshness=float(cand.metadata.get("freshness_score", 0.8)),
+                    query_relevance=(
+                        min(1.0, max(0.0, rel_score))
+                        if rel_score is not None
+                        else None
+                    ),
+                    evidence_quality=(
+                        float(cand.metadata["evidence_quality"])
+                        if cand.metadata.get("evidence_quality") is not None
+                        else None
+                    ),
+                    freshness=(
+                        float(cand.metadata["freshness_score"])
+                        if cand.metadata.get("freshness_score") is not None
+                        else None
+                    ),
                     consistency=1.0 - cand.poisoning_score,
                     entity_match=entity_match,
-                    population_match=float(cand.metadata.get("population_match", 0.8)),
+                    population_match=(
+                        float(cand.metadata["population_match"])
+                        if cand.metadata.get("population_match") is not None
+                        else None
+                    ),
                     anti_poisoning=1.0 - cand.poisoning_score,
-                    anti_injection=1.0,
+                    anti_injection=(
+                        1.0
+                        if injection_allowed_by_chunk.get(cand.chunk_id, False)
+                        else 0.0
+                    ),
                 )
 
                 result = self.trust_scorer.score(
@@ -485,21 +524,39 @@ class LiveMedicalRAGService:
                     factors=factors,
                 )
 
+                trust_results.append(result)
                 # Pre-LLM evidence eligibility
                 if result.trust_score >= trust_threshold and cand.source_authority >= 0.3:
                     eligible_candidates.append((sc, result.trust_score, result.missing_factors))
+                    eligible_trust_results.append(result)
 
-                if result.trust_score > max_trust_score:
-                    max_trust_score = result.trust_score
-                    best_factors = factors
+            aggregate_trust = min(
+                eligible_trust_results or trust_results,
+                key=lambda result: result.trust_score,
+                default=None,
+            )
+            overall_trust_score = (
+                aggregate_trust.trust_score if aggregate_trust is not None else 0.0
+            )
+            aggregate_missing_factors = sorted({
+                factor
+                for result in trust_results
+                for factor in result.missing_factors
+            })
 
             yield _sse("trust", {
-                "overall_score": max_trust_score,
+                "overall_score": overall_trust_score,
                 "threshold": trust_threshold,
                 "risk_class": risk_tier,
                 "is_eligible": len(eligible_candidates) > 0,
-                "factors": best_factors.__dict__ if best_factors else {},
-                "missing_factors": []
+                "factors": (
+                    aggregate_trust.factor_scores.as_dict()
+                    if aggregate_trust else {}
+                ),
+                "missing_factors": aggregate_missing_factors,
+                "score_breakdown": aggregate_trust.score_breakdown if aggregate_trust else {},
+                "weights": aggregate_trust.weights if aggregate_trust else {},
+                "config_hash": aggregate_trust.config_hash if aggregate_trust else None,
             })
             yield _sse("stage_update", {
                 "stage": "trust_evaluating",
@@ -512,7 +569,7 @@ class LiveMedicalRAGService:
                 yield _sse("abstention", {
                     "reason": "Insufficient eligible evidence retrieved to meet trust threshold.",
                     "trust": {
-                        "overall_score": max_trust_score,
+                        "overall_score": overall_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
                     }
@@ -650,7 +707,7 @@ class LiveMedicalRAGService:
 
             # Very basic claim verification since the full VerificationReport requires EvidenceChunks
             verifier = getattr(self.app_state, "claim_verifier", None)
-            all_supported = True
+            all_supported = bool(verifier and claims_made)
 
             if verifier and claims_made:
                 evidence_chunk_objs = []
@@ -678,16 +735,29 @@ class LiveMedicalRAGService:
                         else:
                             all_supported = False
 
+                        judgment = (
+                            v_report.judgments[0]
+                            if getattr(v_report, "judgments", None)
+                            else None
+                        )
                         claims_out.append({
                             "claim_id": cid,
                             "text": claim_text,
                             "support_state": support_state,
                             "citation_present": True,
-                            "entailment": getattr(v_report, "grounding_ratio", 1.0),
-                            "canonical_identity_status": None,
+                            "entailment": getattr(v_report, "grounding_ratio", 0.0),
+                            "canonical_identity_status": (
+                                judgment.canonical_identity_status
+                                if judgment else None
+                            ),
+                            "canonical_identity_reason": (
+                                judgment.canonical_identity_reason
+                                if judgment else None
+                            ),
                         })
                     except Exception as e:
                         log.error("Claim verification error: %s", e)
+                        all_supported = False
 
             yield _sse("stage_update", {
                 "stage": "claim_verifying",
@@ -715,7 +785,7 @@ class LiveMedicalRAGService:
                 yield _sse("abstention", {
                     "reason": abstention_reason,
                     "trust": {
-                        "overall_score": max_trust_score,
+                        "overall_score": overall_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
                     }
@@ -752,15 +822,22 @@ class LiveMedicalRAGService:
                 "food_guidance": structured_result.get("food_guidance", []),
                 "patient_considerations": structured_result.get("patient_considerations", []),
                 "trust": {
-                    "overall_score": max_trust_score,
+                    "overall_score": overall_trust_score,
                     "threshold": trust_threshold,
                     "risk_class": risk_tier,
                     "is_eligible": True,
-                    "factors": best_factors.__dict__ if best_factors else {},
-                    "missing_factors": []
+                    "factors": (
+                        aggregate_trust.factor_scores.as_dict()
+                        if aggregate_trust else {}
+                    ),
+                    "missing_factors": aggregate_missing_factors,
+                    "score_breakdown": aggregate_trust.score_breakdown if aggregate_trust else {},
+                    "weights": aggregate_trust.weights if aggregate_trust else {},
+                    "config_hash": aggregate_trust.config_hash if aggregate_trust else None,
                 },
                 "security": {
-                    "injection_status": "ALLOW",
+                    "injection_status": "BLOCK" if injection_blocked > 0 else "ALLOW",
+                    "injection_reason": f"Blocked {injection_blocked} chunks" if injection_blocked > 0 else None,
                     "poisoning_status": "BLOCK" if poisoning_blocked > 0 else "ALLOW",
                     "poisoning_reason": f"Blocked {poisoning_blocked} chunks" if poisoning_blocked > 0 else None
                 },
