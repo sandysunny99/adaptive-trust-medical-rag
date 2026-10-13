@@ -2,7 +2,7 @@ import { Layout } from './components/Layout';
 import { AnalyzePage } from './pages/AnalyzePage';
 import { EvaluationPage } from './pages/EvaluationPage';
 import { AuditPage } from './pages/AuditPage';
-import { OverviewPage } from './pages/OverviewPage';
+import { AboutPage } from './pages/AboutPage';
 import { HistoryPage } from './pages/HistoryPage';
 import { useHashRoute } from './routing/useHashRoute';
 
@@ -13,8 +13,7 @@ export default function App() {
   const renderOtherPage = () => {
     switch (page) {
       case 'history': return <HistoryPage />;
-      // Temporary: the methodology content still lives in OverviewPage until the About page lands.
-      case 'about': return <OverviewPage />;
+      case 'about': return <AboutPage />;
       case 'evaluation': return <EvaluationPage />;
       case 'audit': return <AuditPage />;
       default: return null;
