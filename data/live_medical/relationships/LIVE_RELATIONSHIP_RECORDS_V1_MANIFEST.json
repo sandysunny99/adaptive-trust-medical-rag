@@ -18,5 +18,13 @@
     "Confirm predicate CONTRAINDICATION, severity CONTRAINDICATED and direction A_TO_B (subject simvastatin)."
   ],
   "how_to_approve": "Set status to APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}. Any edit to the records file needs a new records_sha256.",
-  "frozen_data_note": "LIVE_MEDICAL_CORPUS_V2 and research datasets are not modified; this is a separate versioned dataset."
+  "frozen_data_note": "LIVE_MEDICAL_CORPUS_V2 and research datasets are not modified; this is a separate versioned dataset.",
+  "verification_2026_10_14": {
+    "report": "reports/live_validation/REL_LIVE_0001_SOURCE_VERIFICATION_2026-10-14.md",
+    "method": "DailyMed label pages and RxNav properties read through Claude's web reader (model-mediated, short quotes, not byte-exact). Direct access from the cloud and device environments was refused by network policy.",
+    "rxcuis": "RxNav properties: 36567 = simvastatin (TTY IN, not suppressed); 21212 = clarithromycin (TTY IN, not suppressed). Byte-exact capture pending.",
+    "relationship": "Supported in content by both labels: simvastatin (ZOCOR, setid 8f55d5de-5a4f-4a39-8c84-c53976dd6af9) contraindicates strong CYP3A4 inhibitors and lists clarithromycin among them; clarithromycin (setid 9aaffb41-408c-4372-8fd5-1d649450c0e9) section 4.5 contraindicates co-administration with simvastatin. Both directions, so BIDIRECTIONAL rather than A_TO_B.",
+    "provenance_finding": "The source chunk DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01 is not a verbatim excerpt of any label checked, and its document_url is a placeholder, so this record's evidence cannot be linked to an authoritative document.",
+    "recommendation": "Do not approve V1. Capture the labels byte for byte (scripts/capture_live_relationship_sources.py) and prepare a V2 candidate from the captured text."
+  }
 }

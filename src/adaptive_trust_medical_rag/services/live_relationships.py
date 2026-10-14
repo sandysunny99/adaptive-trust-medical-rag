@@ -8,6 +8,11 @@ raise a risk tier or give a claim a relationship identity.
 
 Records only ever raise the risk tier. They never create evidence: a pairwise claim still needs
 an eligible chunk carrying the record's identity and passing claim verification.
+
+A record with a symmetric predicate (a contraindicated combination, an interaction) may be
+BIDIRECTIONAL: the relationship then holds in both drug orders, and a claim naming the two
+drugs in the other order is checked against the record in that order. Directional predicates
+(inhibition, induction, increases, ...) keep their recorded direction.
 """
 
 from __future__ import annotations
@@ -37,6 +42,8 @@ RELATIONSHIP_DIR = os.path.join(
 SEVERITIES = frozenset({"CONTRAINDICATED", "MAJOR", "MODERATE", "MINOR", "NONE"})
 SEVERE = frozenset({"CONTRAINDICATED", "MAJOR"})
 _PREDICATES = frozenset(NORMALIZED_PREDICATES.values())
+# "A is contraindicated with B" states the same thing as "B is contraindicated with A".
+SYMMETRIC_PREDICATES = frozenset({"CONTRAINDICATION", "INTERACTION"})
 
 
 @dataclass(frozen=True)
@@ -56,7 +63,24 @@ class RelationshipRecord:
     def links(self, a: str, b: str) -> bool:
         return {self.subject_rxcui, self.object_rxcui} == {a, b}
 
-    def identity(self) -> CanonicalRelationshipIdentity:
+    @property
+    def symmetric(self) -> bool:
+        return self.direction == CanonicalDirection.BIDIRECTIONAL and self.predicate in SYMMETRIC_PREDICATES
+
+    def identity(self, claim_order: tuple[str, str] | None = None) -> CanonicalRelationshipIdentity:
+        """The record's identity. For a symmetric record and a claim naming the same two drugs,
+        the identity is given in the claim's order (first-named drug as subject, A_TO_B, the
+        convention the claim side uses): the relationship holds that way round too. The
+        predicate is never changed, and a directional record is always given as recorded."""
+        if claim_order and self.symmetric and set(claim_order) == {self.subject_rxcui, self.object_rxcui}:
+            subject, obj = claim_order
+            return CanonicalRelationshipIdentity(
+                subject_rxcui=subject,
+                object_rxcui=obj,
+                predicate=self.predicate,
+                direction=CanonicalDirection.A_TO_B,
+                provenance_chunk_id=self.source_chunk_id,
+            )
         return CanonicalRelationshipIdentity(
             subject_rxcui=self.subject_rxcui,
             object_rxcui=self.object_rxcui,
@@ -81,11 +105,14 @@ class RelationshipStore:
         return [r for r in self.records
                 if r.subject_rxcui in wanted and r.object_rxcui in wanted and r.subject_rxcui != r.object_rxcui]
 
-    def identity_for_chunk(self, chunk_id: str, text: str, rxcuis: list[str]) -> CanonicalRelationshipIdentity | None:
+    def identity_for_chunk(self, chunk_id: str, text: str, rxcuis: list[str],
+                           claim_order: tuple[str, str] | None = None) -> CanonicalRelationshipIdentity | None:
         """The relationship identity an eligible chunk carries for this request, if exactly one applies.
 
         The record must name this chunk and its current content hash. Several records on the
         chunk, or records that disagree about whether the pair interacts at all, give no identity.
+        ``claim_order`` is the (subject, object) RxCUI order of the claim being verified; only a
+        symmetric record uses it.
         """
         text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
         on_chunk = [r for r in self.between(rxcuis)
@@ -96,7 +123,7 @@ class RelationshipStore:
         pair = self.between([record.subject_rxcui, record.object_rxcui])
         if record.severity == "NONE" or any(r.severity == "NONE" for r in pair):
             return None
-        return record.identity()
+        return record.identity(claim_order)
 
 
 def _records_hash(raw: bytes) -> str:
@@ -136,6 +163,8 @@ def validate_record(raw: dict[str, Any], chunks_by_id: dict[str, dict[str, Any]]
         return None, f"predicate {record.predicate} is not in the bounded predicate set"
     if record.direction == CanonicalDirection.UNKNOWN:
         return None, "direction is unknown"
+    if record.direction == CanonicalDirection.BIDIRECTIONAL and record.predicate not in SYMMETRIC_PREDICATES:
+        return None, f"predicate {record.predicate} is directional, so it cannot be BIDIRECTIONAL"
     if record.severity not in SEVERITIES:
         return None, f"severity {record.severity} is not one of {sorted(SEVERITIES)}"
 

@@ -392,3 +392,152 @@ def test_the_corpus_is_not_modified():
     assert manifest["corpus_version"] == "LIVE_MEDICAL_CORPUS_V2"
     for item in CORPUS:
         assert sha(item["text"]) == item["content_hash"]
+
+
+# ── Claim wording: disclaimer, contraindication wording, drug order ─────────
+# Sandeep's follow-up of 2026-10-14: handle these narrowly, keep exact identity matching.
+
+from adaptive_trust_medical_rag.services.live_application import (  # noqa: E402
+    answer_statements,
+    remove_research_disclaimers,
+)
+
+DISCLAIMER = "This is a research output, not clinical advice."
+
+
+def symmetric_record(**overrides) -> dict:
+    return record(direction="BIDIRECTIONAL", **overrides)
+
+
+def interaction_item(**overrides) -> dict:
+    item = {"drug_a": "Simvastatin", "drug_b": "Clarithromycin", "interaction_detected": True,
+            "interaction_type": "contraindicated combination",
+            "potential_effect": "increased risk of myopathy and rhabdomyolysis",
+            "severity": "Contraindicated", "evidence_status": "VERIFIED INTERACTION", "sources": ["Source 1"]}
+    item.update(overrides)
+    return item
+
+
+@pytest.mark.parametrize("sentence", [
+    DISCLAIMER,
+    "This information is for research purposes only and is not a substitute for professional medical advice.",
+    "Disclaimer: research output only; not for clinical use.",
+])
+def test_a_research_disclaimer_is_taken_out_of_the_conclusion(sentence):
+    fields, statements = answer_statements({"conclusion": f"{CLAIM} {sentence}"})
+    assert fields["conclusion"] == CLAIM
+    assert fields["removed_disclaimers"] == [sentence]
+    assert [s.text for s in statements] == [CLAIM]
+
+
+@pytest.mark.parametrize("sentence", [
+    "This research output is not clinical advice, but simvastatin is safe with clarithromycin.",
+    "This is a research output: the combination is safe.",
+    "Research output only [Source 1].",
+    "Not medical advice: take 20 mg daily.",
+    "Please consult your healthcare provider.",
+])
+def test_a_sentence_with_any_clinical_content_stays_and_is_verified(sentence):
+    fields, statements = answer_statements({"conclusion": sentence})
+    assert fields["removed_disclaimers"] == []
+    assert [s.text for s in statements] == [sentence]
+
+
+def test_a_conclusion_that_is_only_a_disclaimer_leaves_nothing_to_release():
+    fields, statements = answer_statements({"conclusion": DISCLAIMER})
+    assert fields["conclusion"] == "" and statements == []
+    assert remove_research_disclaimers("") == ("", [])
+
+
+def test_the_disclaimer_no_longer_blocks_a_verified_answer(tmp_path):
+    store = write_dataset(tmp_path, [record()])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={"conclusion": f"{CLAIM} {DISCLAIMER}"})
+    assert kind == "answer", data
+    assert data["conclusion"] == CLAIM
+    assert data["removed_disclaimers"] == [DISCLAIMER]
+    assert [c["support_state"] for c in data["claims"]] == ["SUPPORTED"]
+
+
+def test_without_an_approved_record_the_answer_still_abstains():
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], answer={
+        "conclusion": f"{CLAIM} {DISCLAIMER}", "interactions": [interaction_item()]})
+    assert kind == "abstention"
+    assert data["removed_disclaimers"] == [DISCLAIMER]
+    assert {c["canonical_identity_status"] for c in data["claims"]} == {"UNAVAILABLE"}
+
+
+@pytest.mark.parametrize("labels, verb", [
+    ({"severity": "Contraindicated"}, "is contraindicated with"),
+    ({"severity": None, "interaction_type": "Contraindicated combination"}, "is contraindicated with"),
+    ({"severity": "Major", "interaction_type": "CYP3A4 inhibition"}, "interacts with"),
+    ({"severity": "Not contraindicated", "interaction_type": "CYP3A4 inhibition"}, "interacts with"),
+    ({"interaction_detected": False}, "does not interact with"),
+])
+def test_an_interaction_item_states_the_relation_it_asserts(labels, verb):
+    _, (statement,) = answer_statements({"interactions": [interaction_item(**labels)]})
+    assert statement.text.startswith(f"Simvastatin {verb} Clarithromycin")
+
+
+def test_a_contraindicated_item_matches_a_contraindication_record(tmp_path):
+    store = write_dataset(tmp_path, [record()])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={"interactions": [interaction_item()]})
+    assert kind == "answer", data
+    assert data["claims"][0]["canonical_identity_status"] == "MATCH"
+
+
+def test_interacts_with_is_not_treated_as_a_contraindication(tmp_path):
+    store = write_dataset(tmp_path, [symmetric_record()])
+    for answer in ({"interactions": [interaction_item(severity="Major", interaction_type="CYP3A4 inhibition")]},
+                   {"conclusion": "Simvastatin interacts with clarithromycin [Source 1]."}):
+        kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer=answer)
+        assert kind == "abstention"
+        assert data["claims"][0]["canonical_identity_status"] == "MISMATCH"
+        assert "Predicate mismatch" in data["claims"][0]["canonical_identity_reason"]
+
+
+REVERSED = "Clarithromycin with simvastatin is contraindicated [Source 1]."
+
+
+def test_reversed_drug_order_matches_a_symmetric_record(tmp_path):
+    store = write_dataset(tmp_path, [symmetric_record()])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={"conclusion": REVERSED})
+    assert kind == "answer", data
+    assert data["claims"][0]["canonical_identity_status"] == "MATCH"
+
+
+def test_reversed_drug_order_does_not_match_a_directional_record(tmp_path):
+    store = write_dataset(tmp_path, [record(direction="A_TO_B")])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={"conclusion": REVERSED})
+    assert kind == "abstention"
+    assert "Subject RxCUI mismatch" in data["claims"][0]["canonical_identity_reason"]
+
+
+def test_a_symmetric_record_keeps_the_predicate_exact(tmp_path):
+    """The fixture claim of the cloud run: reversed order and a different relation."""
+    store = write_dataset(tmp_path, [symmetric_record()])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={
+        "conclusion": "Clarithromycin with simvastatin increases the risk of myopathy and rhabdomyolysis [Source 1]."})
+    assert kind == "abstention"
+    assert data["claims"][0]["canonical_identity_reason"] == "Predicate mismatch: source=CONTRAINDICATION claim=INCREASES"
+
+
+def test_a_symmetric_record_does_not_cover_another_pair(tmp_path):
+    store = write_dataset(tmp_path, [symmetric_record()])
+    kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={
+        "conclusion": "Erythromycin with simvastatin is contraindicated [Source 1]."})
+    assert kind == "abstention"
+    assert data["claims"][0]["support_state"] == "UNSUPPORTED"
+
+
+def test_a_directional_predicate_cannot_be_recorded_as_bidirectional():
+    rec, why = validate_record(record(predicate="INHIBITION", direction="BIDIRECTIONAL"), BY_ID)
+    assert rec is None and "directional" in why
+    rec, why = validate_record(symmetric_record(), BY_ID)
+    assert rec is not None and rec.symmetric
+
+
+def test_a_directional_record_is_never_reoriented():
+    rec, _ = validate_record(record(predicate="INHIBITION", direction="A_TO_B"), BY_ID)
+    reversed_order = (RXCUI["clarithromycin"], RXCUI["simvastatin"])
+    identity = rec.identity(reversed_order)
+    assert (identity.subject_rxcui, identity.direction.value) == (RXCUI["simvastatin"], "A_TO_B")

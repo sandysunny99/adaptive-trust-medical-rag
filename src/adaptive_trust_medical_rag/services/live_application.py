@@ -41,6 +41,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
     FinalSupportState,
 )
+from adaptive_trust_medical_rag.verification.canonical_identity import extract_claim_identity
 
 log = logging.getLogger(__name__)
 
@@ -130,6 +131,56 @@ def _source_markers(refs: Any, path: str) -> tuple[str, tuple[str, ...]]:
     return " ".join(markers), tuple(invalid)
 
 
+# An interaction item whose own severity or type label says the combination is contraindicated
+# asserts a contraindication, so its statement says so and has to match a CONTRAINDICATION
+# record. Any other detected interaction is stated as "interacts with", which never matches a
+# contraindication record. The label only decides what is claimed; the claim is still verified.
+_CONTRAINDICATED_LABEL_RE = re.compile(r"^\W*contraindicat(?:ed|ion)\b", re.IGNORECASE)
+_NEGATION_RE = re.compile(r"\b(?:not|no|never|non|without)\b", re.IGNORECASE)
+
+
+def _asserts_contraindication(*labels: str) -> bool:
+    return any(_CONTRAINDICATED_LABEL_RE.match(label) and not _NEGATION_RE.search(label)
+               for label in labels if label)
+
+
+# The application shows its own fixed research disclaimer with every result
+# (AnalyzeResponse.disclaimer; RESEARCH_DISCLAIMER in the frontend). The prompt also asks the
+# model to put one in the conclusion. That sentence says nothing about the medications, so it
+# is taken out of the conclusion: it is neither verified nor released, and it is reported in
+# ``removed_disclaimers``. A sentence counts only if every word is in this fixed non-clinical
+# vocabulary and it uses a disclaimer term. A drug name, an effect, an instruction, a number
+# or a [Source N] reference keeps the sentence in the conclusion, where it is verified.
+_DISCLAIMER_VOCABULARY = frozenset("""
+    a advice all an and any are as be been being by can cannot care clinical clinician clinicians
+    constitute constitutes consult content decision decisions diagnosis disclaimer does
+    educational for generated guidance health healthcare important information informational
+    intended is it its making may meant medical must no nor not note of only opinion or output
+    please professional professionals provider providers purpose purposes qualified replace
+    replacement research result results review reviewed seek should substitute system testbed
+    the these this to tool use used you your
+""".split())
+_DISCLAIMER_TERMS = frozenset({"research", "disclaimer", "advice", "substitute"})
+_DISCLAIMER_CHARS_RE = re.compile(r"^[A-Za-z\s,;:.!'()\-]+$")
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-Z])")  # as decompose_into_claims
+
+
+def _is_research_disclaimer(sentence: str) -> bool:
+    if not _DISCLAIMER_CHARS_RE.match(sentence):
+        return False
+    words = re.findall(r"[a-z]+", sentence.lower())
+    return bool(words) and set(words) <= _DISCLAIMER_VOCABULARY and bool(set(words) & _DISCLAIMER_TERMS)
+
+
+def remove_research_disclaimers(text: str) -> tuple[str, list[str]]:
+    """The text without model-written research disclaimer sentences, and the sentences removed."""
+    kept, removed = [], []
+    for sentence in _SENTENCE_SPLIT_RE.split(text.strip()):
+        if sentence.strip():
+            (removed if _is_research_disclaimer(sentence.strip()) else kept).append(sentence.strip())
+    return " ".join(kept), removed
+
+
 def _statement_text(parts: list[str], markers: str) -> str:
     body = "; ".join(p for p in parts if p).rstrip(" .")
     return f"{body} {markers}." if markers else f"{body}."
@@ -146,7 +197,12 @@ def _item_statement(field: str, index: int, item: dict[str, Any]) -> AnswerState
         if not (text["drug_a"] and text["drug_b"]):
             raise UnverifiableAnswerError(f"{path}.drug_a/drug_b")
         # The flag is a statement too: "no verified interaction" must hold up against the evidence.
-        verb = "interacts with" if item.get("interaction_detected") is True else "does not interact with"
+        if item.get("interaction_detected") is not True:
+            verb = "does not interact with"
+        elif _asserts_contraindication(text["severity"], text["interaction_type"]):
+            verb = "is contraindicated with"
+        else:
+            verb = "interacts with"
         parts = [f"{text['drug_a']} {verb} {text['drug_b']}", text["interaction_type"],
                  text["potential_effect"], text["severity"] and f"severity {text['severity']}"]
     elif field == "adverse_reactions":
@@ -181,7 +237,8 @@ def answer_statements(structured: dict[str, Any]) -> tuple[dict[str, Any], list[
     fields: dict[str, Any] = {}
     statements: list[AnswerStatement] = []
 
-    conclusion = _field_text(structured.get("conclusion"), "conclusion")
+    conclusion, fields["removed_disclaimers"] = remove_research_disclaimers(
+        _field_text(structured.get("conclusion"), "conclusion"))
     fields["conclusion"] = conclusion
     if conclusion:
         statements.append(AnswerStatement("conclusion", None, conclusion))
@@ -957,10 +1014,15 @@ class LiveMedicalRAGService:
             verifier = getattr(self.app_state, "claim_verifier", None)
 
             if verifier and statements:
-                evidence_chunk_objs = []
                 rxcuis = [str(m["rxcui"]) for m in medications if m.get("rxcui")]
-                for i, (sc, ts, missing) in enumerate(eligible_candidates, start=1):
-                    evidence_chunk_objs.append(EvidenceChunk(
+
+                def evidence_for(claim_text: str) -> list[EvidenceChunk]:
+                    # The drug order the verifier will read from this claim; only a symmetric
+                    # (BIDIRECTIONAL) record uses it, so its identity matches either order.
+                    claim_identity = extract_claim_identity(claim_text, drug_rxcui_map)
+                    claim_order = ((claim_identity.subject_rxcui, claim_identity.object_rxcui)
+                                   if claim_identity else None)
+                    return [EvidenceChunk(
                         chunk_id=sc.candidate.chunk_id,
                         text=sc.candidate.text,
                         source_authority=sc.candidate.source_authority,
@@ -969,8 +1031,8 @@ class LiveMedicalRAGService:
                         missing_factors=missing,
                         # Only an approved record about this chunk gives it a relationship identity.
                         relationship_identity=relationships.identity_for_chunk(
-                            sc.candidate.chunk_id, sc.candidate.text, rxcuis),
-                    ))
+                            sc.candidate.chunk_id, sc.candidate.text, rxcuis, claim_order),
+                    ) for i, (sc, ts, missing) in enumerate(eligible_candidates, start=1)]
 
                 for cid, statement in enumerate(statements):
                     claim = {
@@ -981,7 +1043,8 @@ class LiveMedicalRAGService:
                     }
                     try:
                         # ClaimVerifierV2 verifies one answer string; each statement is verified as one.
-                        v_report = verifier.verify(statement.text, evidence_chunk_objs, risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
+                        v_report = verifier.verify(statement.text, evidence_for(statement.text),
+                                                   risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
                         judgments = getattr(v_report, "judgments", None) or []
                         identity = next((j for j in judgments if j.canonical_identity_status), None)
                         claim.update({
@@ -1063,6 +1126,7 @@ class LiveMedicalRAGService:
                 yield _sse("abstention", {
                     "reason": abstention_reason,
                     "claims": claims_out,
+                    "removed_disclaimers": answer_fields["removed_disclaimers"],
                     "evidence": evidence_items,
                     "evidence_retrieved": len(candidates),
                     "trust": {
@@ -1122,6 +1186,7 @@ class LiveMedicalRAGService:
                 "evidence": evidence_items,
                 "provenance": provenance,
                 "conclusion": answer_fields["conclusion"],
+                "removed_disclaimers": answer_fields["removed_disclaimers"],
                 "gate_decision": gate_decision,
                 "abstention_reason": abstention_reason,
                 "used_model": used_model_info,
