@@ -90,6 +90,23 @@ class MockC9LLMBackend(ProviderAdapter):
             raw_metadata={}
         )
 
+
+def _supported_report(answer):
+    """A report shaped like ClaimVerifierV2 output for a fully supported claim."""
+    from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
+        AtomicClaim, CitationValidation, FinalSupportState, GateDecision,
+        SemanticJudgment, VerificationReportV2,
+    )
+    claim = AtomicClaim(text=answer, parent_sentence=answer, claim_index=0)
+    judgment = SemanticJudgment(
+        claim=claim, entailment=0.98, contradiction=0.01, neutral=0.01,
+        best_entailment_chunk_id=None, best_contradiction_chunk_id=None, best_neutral_chunk_id=None,
+        support_state=FinalSupportState.SUPPORTED,
+        citation_validation=CitationValidation(True, True, True, False),
+        parent_sentence_state=FinalSupportState.SUPPORTED,
+    )
+    return VerificationReportV2([claim], [judgment], 1.0, GateDecision.release, "All claims supported.")
+
 def create_test_image(size=(100, 100)):
     img = Image.new("RGB", size, color="white")
     buf = io.BytesIO()
@@ -169,14 +186,7 @@ def setup_c9_mocks():
 
     class MockClaimVerifier:
         def verify(self, answer, evidence, risk_tier="R1", critical_claim_indices=None, drug_rxcui_map=None):
-            from adaptive_trust_medical_rag.verification.claim_verifier_v2 import VerificationReportV2, GateDecision
-            return VerificationReportV2(
-                claims=[],
-                judgments=[],
-                grounding_ratio=1.0,
-                decision=GateDecision.release,
-                explanation="All claims supported."
-            )
+            return _supported_report(answer)
     app.state.claim_verifier = MockClaimVerifier()
 
     yield

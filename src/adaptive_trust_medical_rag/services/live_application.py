@@ -13,6 +13,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import time
 import uuid
 from typing import Any, AsyncGenerator
@@ -33,6 +34,7 @@ from adaptive_trust_medical_rag.llm_backend.model_registry import get_model_defi
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
+    FinalSupportState,
 )
 
 log = logging.getLogger(__name__)
@@ -46,6 +48,191 @@ def _ts() -> str:
 def _sse(event: str, data: dict[str, Any]) -> dict[str, Any]:
     """Helper to return an event tuple."""
     return {"event": event, "data": data}
+
+
+# ── Verification representation of the generated answer ─────────────────────
+# Every field of LIVE_APP_PROMPT_V1.txt that reaches the answer event becomes one
+# or more statements for ClaimVerifierV2; claims_for_verification is checked too,
+# but is not the only thing checked. Items keep only the schema keys below, so
+# text the model puts anywhere else is never released.
+
+_ITEM_KEYS: dict[str, tuple[str, ...]] = {
+    "interactions": (
+        "drug_a", "drug_b", "interaction_detected", "interaction_type",
+        "potential_effect", "severity", "evidence_status", "sources",
+    ),
+    "adverse_reactions": ("drug", "reaction", "severity", "evidence_level", "frequency", "source"),
+    "food_guidance": (
+        "drug", "administration", "food_relationship", "timing", "food_interactions",
+        "evidence_status", "source",
+    ),
+    "patient_considerations": (
+        "factor", "provided", "evidence_found", "consideration", "evidence_status", "source",
+    ),
+}
+# The model's own labels for its evidence (prompt schema and frontend EvidenceStatus).
+# They are not statements, so free text in them is refused.
+_STATUS_LABELS = frozenset({
+    "VERIFIED INTERACTION", "NO VERIFIED INTERACTION EVIDENCE IDENTIFIED", "INSUFFICIENT EVIDENCE",
+    "SUPPORTED", "LIMITED", "INSUFFICIENT", "VERIFIED", "NOT VERIFIED", "UNKNOWN", "NOT ESTABLISHED",
+})
+_LABEL_KEYS = frozenset({"evidence_status", "evidence_level"})
+_FLAG_KEYS = frozenset({"interaction_detected", "provided", "evidence_found"})
+_SOURCE_KEYS = frozenset({"sources", "source"})
+_NON_TEXT_KEYS = _LABEL_KEYS | _FLAG_KEYS | _SOURCE_KEYS | {"food_interactions"}
+_SOURCE_REF_RE = re.compile(r"^\[?\s*Source\s+(\d+)\s*\]?$", re.IGNORECASE)
+
+
+class UnverifiableAnswerError(ValueError):
+    """A generated field that cannot be represented as statements to verify."""
+
+
+@dataclasses.dataclass(frozen=True)
+class AnswerStatement:
+    field: str
+    item_index: int | None
+    text: str
+    # Source references that are not "Source N"; the statement cannot be released.
+    invalid_sources: tuple[str, ...] = ()
+
+
+def _field_text(value: Any, path: str) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bool) or not isinstance(value, (str, int, float)):
+        raise UnverifiableAnswerError(path)
+    return str(value).strip()
+
+
+def _source_markers(refs: Any, path: str) -> tuple[str, tuple[str, ...]]:
+    """The item's source references as [Source N] markers, and the references that are not."""
+    if refs is None or refs == "":
+        return "", ()
+    if isinstance(refs, str):
+        refs = [refs]
+    if not isinstance(refs, list) or not all(isinstance(r, str) for r in refs):
+        raise UnverifiableAnswerError(path)
+    markers, invalid = [], []
+    for ref in refs:
+        match = _SOURCE_REF_RE.match(ref.strip())
+        if match:
+            markers.append(f"[Source {match.group(1)}]")
+        else:
+            invalid.append(ref)
+    return " ".join(markers), tuple(invalid)
+
+
+def _statement_text(parts: list[str], markers: str) -> str:
+    body = "; ".join(p for p in parts if p).rstrip(" .")
+    return f"{body} {markers}." if markers else f"{body}."
+
+
+def _item_statement(field: str, index: int, item: dict[str, Any]) -> AnswerStatement:
+    path = f"{field}[{index}]"
+    keys = _ITEM_KEYS[field]
+    text = {k: _field_text(item.get(k), f"{path}.{k}") for k in keys if k not in _NON_TEXT_KEYS}
+    (source_key,) = _SOURCE_KEYS & set(keys)
+    markers, invalid = _source_markers(item.get(source_key), f"{path}.{source_key}")
+
+    if field == "interactions":
+        if not (text["drug_a"] and text["drug_b"]):
+            raise UnverifiableAnswerError(f"{path}.drug_a/drug_b")
+        # The flag is a statement too: "no verified interaction" must hold up against the evidence.
+        verb = "interacts with" if item.get("interaction_detected") is True else "does not interact with"
+        parts = [f"{text['drug_a']} {verb} {text['drug_b']}", text["interaction_type"],
+                 text["potential_effect"], text["severity"] and f"severity {text['severity']}"]
+    elif field == "adverse_reactions":
+        if not (text["drug"] and text["reaction"]):
+            raise UnverifiableAnswerError(f"{path}.drug/reaction")
+        parts = [f"{text['drug']} can cause {text['reaction']}",
+                 text["frequency"] and f"frequency {text['frequency']}",
+                 text["severity"] and f"severity {text['severity']}"]
+    elif field == "food_guidance":
+        food = item.get("food_interactions") or []
+        if not isinstance(food, list):
+            raise UnverifiableAnswerError(f"{path}.food_interactions")
+        food_text = [_field_text(f, f"{path}.food_interactions") for f in food]
+        if not text["drug"]:
+            raise UnverifiableAnswerError(f"{path}.drug")
+        relationship = text["food_relationship"].replace("_", " ").lower()
+        parts = [f"{text['drug']}: {text['administration']}" if text["administration"] else text["drug"],
+                 relationship, text["timing"] and f"timing {text['timing']}", *food_text]
+    else:  # patient_considerations
+        if not (text["factor"] and text["consideration"]):
+            raise UnverifiableAnswerError(f"{path}.factor/consideration")
+        parts = [f"{text['factor']}: {text['consideration']}"]
+    return AnswerStatement(field, index, _statement_text(parts, markers), invalid)
+
+
+def answer_statements(structured: dict[str, Any]) -> tuple[dict[str, Any], list[AnswerStatement]]:
+    """The releasable answer fields and every statement in them that must be verified.
+
+    Raises UnverifiableAnswerError (naming the field) when a field does not have the
+    schema's shape: it cannot be represented as statements, so it is not released.
+    """
+    fields: dict[str, Any] = {}
+    statements: list[AnswerStatement] = []
+
+    conclusion = _field_text(structured.get("conclusion"), "conclusion")
+    fields["conclusion"] = conclusion
+    if conclusion:
+        statements.append(AnswerStatement("conclusion", None, conclusion))
+
+    for field in ("interactions", "adverse_reactions", "food_guidance", "patient_considerations"):
+        items = structured.get(field) or []
+        if not isinstance(items, list):
+            raise UnverifiableAnswerError(field)
+        kept = []
+        for index, item in enumerate(items):
+            if not isinstance(item, dict):
+                raise UnverifiableAnswerError(f"{field}[{index}]")
+            for key in _FLAG_KEYS & set(_ITEM_KEYS[field]):
+                if item.get(key) is not None and not isinstance(item.get(key), bool):
+                    raise UnverifiableAnswerError(f"{field}[{index}].{key}")
+            for key in _LABEL_KEYS & set(_ITEM_KEYS[field]):
+                label = item.get(key)
+                if label is not None and (
+                    not isinstance(label, str)
+                    or label.replace("_", " ").strip().upper() not in _STATUS_LABELS
+                ):
+                    raise UnverifiableAnswerError(f"{field}[{index}].{key}")
+            statements.append(_item_statement(field, index, item))
+            kept.append({k: item[k] for k in _ITEM_KEYS[field] if k in item})
+        fields[field] = kept
+
+    warnings = structured.get("warnings") or []
+    if not isinstance(warnings, list):
+        raise UnverifiableAnswerError("warnings")
+    fields["warnings"] = []
+    for index, warning in enumerate(warnings):
+        if not isinstance(warning, str):
+            raise UnverifiableAnswerError(f"warnings[{index}]")
+        fields["warnings"].append(warning)
+        if warning.strip():
+            statements.append(AnswerStatement("warnings", index, warning.strip()))
+
+    claims = structured.get("claims_for_verification") or []
+    if not isinstance(claims, list):
+        raise UnverifiableAnswerError("claims_for_verification")
+    for index, claim in enumerate(claims):
+        if not isinstance(claim, str):
+            raise UnverifiableAnswerError(f"claims_for_verification[{index}]")
+        if claim.strip():
+            statements.append(AnswerStatement("claims_for_verification", index, claim.strip()))
+    return fields, statements
+
+
+def _claim_support_state(report: Any) -> str:
+    """One support state for a verified statement. Only all-SUPPORTED judgments count as
+    SUPPORTED: a ``qualify`` gate decision means partial support and is never "supported"."""
+    states = {j.support_state for j in getattr(report, "judgments", None) or []}
+    if not states:
+        return FinalSupportState.INSUFFICIENT_EVIDENCE.value
+    if states == {FinalSupportState.SUPPORTED}:
+        return FinalSupportState.SUPPORTED.value
+    if FinalSupportState.CONTRADICTED in states:
+        return FinalSupportState.CONTRADICTED.value
+    return next(iter(sorted(s.value for s in states if s != FinalSupportState.SUPPORTED)))
 
 
 class LiveMedicalRAGService:
@@ -339,6 +526,19 @@ class LiveMedicalRAGService:
             candidates = []
             evidence_items = []
 
+            if retrieval_engine is None:
+                reason = (getattr(self.app_state, "model_init_errors", None) or {}).get(
+                    "retrieval", "the retrieval engine was not initialized"
+                )
+                log.error("Retrieval unavailable for %s: %s", request_id, reason)
+                yield _sse("stage_update", {"stage": "retrieving", "status": "failed", "timestamp": _ts()})
+                yield _sse("error", {
+                    "code": "RETRIEVAL_UNAVAILABLE",
+                    "message": f"Evidence retrieval is unavailable ({reason}), so no evidence could be "
+                               "checked. This is a system problem, not an evidence finding.",
+                })
+                return
+
             if retrieval_engine:
                 query_text = " ".join([m.get("canonical_name") or m["raw_text"] for m in medications]) + " drug interactions adverse safety"
 
@@ -371,10 +571,21 @@ class LiveMedicalRAGService:
                     )
                 except Exception as e:
                     log.error("Retrieval error: %s", e)
+                    yield _sse("stage_update", {"stage": "retrieving", "status": "failed", "timestamp": _ts()})
+                    yield _sse("error", {
+                        "code": "RETRIEVAL_ERROR",
+                        "message": f"Evidence retrieval failed ({type(e).__name__}). This is a system "
+                                   "error, not an evidence finding; retry later.",
+                    })
+                    return
 
+            retrieval_info = getattr(self.app_state, "retrieval_info", None) or {}
             yield _sse("retrieval", {
                 "evidence_count": len(candidates),
-                "sources": list({c.candidate.metadata.get("source_type", "UNKNOWN") for c in candidates})
+                "sources": list({c.candidate.metadata.get("source_type", "UNKNOWN") for c in candidates}),
+                "corpus": retrieval_info.get("corpus"),
+                "embedding_model": retrieval_info.get("embedding_model"),
+                "embedding_mode": retrieval_info.get("embedding_mode"),
             })
             yield _sse("stage_update", {
                 "stage": "retrieving",
@@ -491,8 +702,18 @@ class LiveMedicalRAGService:
 
             # ── Pre-LLM Controlled Abstention ──────────────────────────
             if not eligible_candidates:
+                if not candidates:
+                    reason = "The search ran but found no evidence for these medications in the live corpus."
+                elif not safe_candidates:
+                    reason = (f"{len(candidates)} evidence chunk(s) were retrieved, but all failed "
+                              "provenance or integrity checks.")
+                else:
+                    reason = (f"{len(safe_candidates)} evidence chunk(s) passed security checks, but none "
+                              f"was eligible: each needs a trust score of at least {trust_threshold:.2f} "
+                              f"for risk tier {risk_tier} and a source authority of at least 0.30 "
+                              f"(best trust score {max_trust_score:.2f}).")
                 yield _sse("abstention", {
-                    "reason": "Insufficient eligible evidence retrieved to meet trust threshold.",
+                    "reason": reason,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -609,6 +830,19 @@ class LiveMedicalRAGService:
                 yield _sse("error", {"code": "LLM_ERROR", "message": str(e)})
                 return
 
+            try:
+                if not isinstance(structured_result, dict):
+                    raise UnverifiableAnswerError("answer")
+                answer_fields, statements = answer_statements(structured_result)
+            except UnverifiableAnswerError as e:
+                log.error("LLM Output Validation Failure: field %s cannot be verified", e)
+                yield _sse("stage_update", {"stage": "generating", "status": "failed", "timestamp": _ts()})
+                yield _sse("error", {
+                    "code": "LLM_OUTPUT_VALIDATION_FAILURE",
+                    "message": f"Generated field {e} does not match the answer schema, so it cannot be verified.",
+                })
+                return
+
             yield _sse("stage_update", {
                 "stage": "generating",
                 "status": "complete",
@@ -622,14 +856,10 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
 
-            claims_made = structured_result.get("claims_for_verification", [])
             claims_out = []
-
-            # Very basic claim verification since the full VerificationReport requires EvidenceChunks
             verifier = getattr(self.app_state, "claim_verifier", None)
-            all_supported = True
 
-            if verifier and claims_made:
+            if verifier and statements:
                 evidence_chunk_objs = []
                 for i, (sc, ts, missing) in enumerate(eligible_candidates, start=1):
                     evidence_chunk_objs.append(EvidenceChunk(
@@ -641,34 +871,51 @@ class LiveMedicalRAGService:
                         missing_factors=missing,
                     ))
 
-                for cid, claim_text in enumerate(claims_made):
+                for cid, statement in enumerate(statements):
+                    claim = {
+                        "claim_id": cid,
+                        "field": statement.field,
+                        "item_index": statement.item_index,
+                        "text": statement.text,
+                    }
                     try:
-                        # ClaimVerifierV2 expects a single string answer, but we have structured JSON.
-                        # We can verify each claim individually as an "answer".
-                        v_report = verifier.verify(claim_text, evidence_chunk_objs, risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
-
-                        support_state = "UNSUPPORTED"
-                        if hasattr(v_report, "decision") and (v_report.decision.name == "qualify" or v_report.decision.name == "release"):
-                            support_state = "SUPPORTED"
-                        elif getattr(v_report, "all_supported", False):
-                            support_state = "SUPPORTED"
-                        else:
-                            all_supported = False
-
-                        claims_out.append({
-                            "claim_id": cid,
-                            "text": claim_text,
-                            "support_state": support_state,
+                        # ClaimVerifierV2 verifies one answer string; each statement is verified as one.
+                        v_report = verifier.verify(statement.text, evidence_chunk_objs, risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
+                        judgments = getattr(v_report, "judgments", None) or []
+                        identity = next((j for j in judgments if j.canonical_identity_status), None)
+                        claim.update({
+                            "support_state": _claim_support_state(v_report),
+                            "verifier_decision": v_report.decision.value,
                             "citation_present": True,
-                            "entailment": getattr(v_report, "grounding_ratio", 1.0),
-                            "canonical_identity_status": None,
+                            "entailment": max((j.entailment for j in judgments), default=None),
+                            "canonical_identity_status": identity.canonical_identity_status if identity else None,
+                            "canonical_identity_reason": identity.canonical_identity_reason if identity else None,
                         })
+                        if statement.invalid_sources:
+                            # A source that is not a retrieved [Source N] cannot resolve.
+                            claim.update({
+                                "support_state": FinalSupportState.UNSUPPORTED.value,
+                                "invalid_source_references": list(statement.invalid_sources),
+                            })
                     except Exception as e:
                         log.error("Claim verification error: %s", e)
+                        # Keep the failed statement visible instead of dropping it from the report.
+                        claim.update({
+                            "support_state": FinalSupportState.INSUFFICIENT_EVIDENCE.value,
+                            "verification_error": type(e).__name__,
+                        })
+                    claims_out.append(claim)
+
+            # Release needs a verifier, at least one statement, and every statement SUPPORTED.
+            all_supported = bool(verifier and statements) and all(
+                c["support_state"] == FinalSupportState.SUPPORTED.value for c in claims_out
+            )
+            verification_ran = verifier is not None and not any("verification_error" in c for c in claims_out)
 
             yield _sse("stage_update", {
                 "stage": "claim_verifying",
-                "status": "complete",
+                # A verifier that is missing or raised did not verify anything.
+                "status": "complete" if verification_ran else "failed",
                 "timestamp": _ts(),
             })
 
@@ -684,13 +931,28 @@ class LiveMedicalRAGService:
 
             if not all_supported:
                 gate_decision = "abstain"
-                abstention_reason = "One or more generated claims failed post-generation verification."
+                if verifier is None:
+                    abstention_reason = "The claim verifier is not loaded, so the generated answer could not be verified."
+                elif not statements:
+                    abstention_reason = "The generated answer contained no statements that could be verified."
+                elif not verification_ran:
+                    abstention_reason = "Claim verification failed with an error, so the answer was not verified."
+                else:
+                    failed = [c for c in claims_out if c["support_state"] != FinalSupportState.SUPPORTED.value]
+                    no_identity = sum(1 for c in failed if c.get("canonical_identity_status") == "UNAVAILABLE")
+                    abstention_reason = (f"{len(failed)} of {len(claims_out)} generated claims failed "
+                                         "post-generation verification.")
+                    if no_identity:
+                        abstention_reason += (f" {no_identity} of them could not be matched to a drug "
+                                              "relationship because the evidence records carry no "
+                                              "relationship identity.")
                 if analysis_state:
                     analysis_state["finished"] = True
 
                 # Overwrite structured_result for abstention
                 yield _sse("abstention", {
                     "reason": abstention_reason,
+                    "claims": claims_out,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -723,11 +985,11 @@ class LiveMedicalRAGService:
                 "processing_time_ms": elapsed,
                 "medications": medications,
                 "patient_context_used": patient_context,
-                "interactions": structured_result.get("interactions", []),
-                "adverse_reactions": structured_result.get("adverse_reactions", []),
-                "warnings": structured_result.get("warnings", []),
-                "food_guidance": structured_result.get("food_guidance", []),
-                "patient_considerations": structured_result.get("patient_considerations", []),
+                "interactions": answer_fields["interactions"],
+                "adverse_reactions": answer_fields["adverse_reactions"],
+                "warnings": answer_fields["warnings"],
+                "food_guidance": answer_fields["food_guidance"],
+                "patient_considerations": answer_fields["patient_considerations"],
                 "trust": {
                     "overall_score": max_trust_score,
                     "threshold": trust_threshold,
@@ -744,7 +1006,7 @@ class LiveMedicalRAGService:
                 "claims": claims_out,
                 "evidence": evidence_items,
                 "provenance": provenance,
-                "conclusion": structured_result.get("conclusion", ""),
+                "conclusion": answer_fields["conclusion"],
                 "gate_decision": gate_decision,
                 "abstention_reason": abstention_reason,
                 "used_model": used_model_info,
@@ -781,72 +1043,142 @@ class LiveMedicalRAGService:
 
 
 
+LIVE_CORPUS_FILE = "LIVE_MEDICAL_CORPUS_V2.json"
+LIVE_EMBEDDING_MODEL = "all-MiniLM-L6-v2"
+
+
+def _record_init_error(app_state: Any, component: str, message: str | None) -> None:
+    errors = getattr(app_state, "model_init_errors", None)
+    if not isinstance(errors, dict):
+        errors = {}
+        app_state.model_init_errors = errors
+    if message is None:
+        errors.pop(component, None)
+    else:
+        errors[component] = message
+
+
+def _short_error(e: Exception) -> str:
+    text = " ".join(str(e).split())
+    return f"{type(e).__name__}: {text[:160]}" if text else type(e).__name__
+
+
+class _LiveEmbeddingModel:
+    """Corpus vectors come from the corpus file; queries are encoded with the corpus's own model."""
+
+    def __init__(self, data_items: list[dict[str, Any]]) -> None:
+        self.text_to_emb = {i["text"]: i["embedding"] for i in data_items if "embedding" in i}
+        if os.environ.get("TESTING") == "1":
+            class MockTransformer:
+                def encode(self, texts):
+                    import numpy as np
+                    return np.zeros((len(texts), 384))
+            self.model = MockTransformer()
+            self.mode = "testing_stub"
+        else:
+            from sentence_transformers import SentenceTransformer
+            self.model = SentenceTransformer(LIVE_EMBEDDING_MODEL)
+            self.mode = "real"
+            corpus_dims = {len(v) for v in self.text_to_emb.values()}
+            query_dim = len(self.model.encode(["dimension probe"])[0])
+            if corpus_dims and corpus_dims != {query_dim}:
+                raise ValueError(
+                    f"query embedding dimension {query_dim} does not match corpus dimension "
+                    f"{sorted(corpus_dims)}"
+                )
+
+    def encode(self, texts):
+        results = []
+        texts_to_compute = []
+        indices_to_compute = []
+        for i, t in enumerate(texts):
+            if t in self.text_to_emb:
+                results.append(self.text_to_emb[t])
+            else:
+                results.append(None)
+                texts_to_compute.append(t)
+                indices_to_compute.append(i)
+        if texts_to_compute:
+            computed = self.model.encode(texts_to_compute).tolist()
+            for i, idx in enumerate(indices_to_compute):
+                results[idx] = computed[i]
+        return results
+
+
 def _lazy_init_models(app_state):
-    import os
-    import logging
-    log = logging.getLogger(__name__)
-    
+    """Load the claim verifier and the live retrieval engine independently.
+
+    A component that cannot load is left as None and its reason is recorded in
+    ``app_state.model_init_errors``, so the pipeline reports a system failure
+    instead of an empty evidence search. Loading is retried on the next request.
+    """
     if getattr(app_state, "claim_verifier", None) is None:
         log.info("Lazy loading ClaimVerifierV2 (heavy model download)")
-        print("DEBUG: ABOUT TO LOAD ClaimVerifierV2")
-        app_state.claim_verifier = ClaimVerifierV2()
-        
-    if getattr(app_state, "retrieval_engine", None) is None:
         try:
-            import json
-            corpus_path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "LIVE_MEDICAL_CORPUS_V2.json")
-            live_corpus = []
-            if os.path.exists(corpus_path):
-                with open(corpus_path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                for item in data:
-                    from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import Candidate
-                    live_corpus.append(Candidate(
-                        chunk_id=item["chunk_id"],
-                        document_id=item["document_id"],
-                        text=item["text"],
-                        source_url=item.get("document_url", ""),
-                        source_authority=item.get("authority", 0.5),
-                        metadata={
-                            "provenance": item.get("provenance", {}),
-                            "freshness_score": item.get("freshness", 0.8),
-                            "source_type": item.get("source_type")
-                        }
-                    ))
-                from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import HybridRetrievalEngine
-                class LiveEmbeddingModel:
-                    def __init__(self, data_items):
-                        self.text_to_emb = {i["text"]: i["embedding"] for i in data_items if "embedding" in i}
-                        if os.environ.get("TESTING") == "1":
-                            class MockTransformer:
-                                def encode(self, texts):
-                                    import numpy as np
-                                    return np.zeros((len(texts), 384))
-                            self.model = MockTransformer()
-                        else:
-                            from sentence_transformers import SentenceTransformer
-                            self.model = SentenceTransformer("all-MiniLM-L6-v2")
-                    def encode(self, texts):
-                        results = []
-                        texts_to_compute = []
-                        indices_to_compute = []
-                        for i, t in enumerate(texts):
-                            if t in self.text_to_emb:
-                                results.append(self.text_to_emb[t])
-                            else:
-                                results.append(None)
-                                texts_to_compute.append(t)
-                                indices_to_compute.append(i)
-                        if texts_to_compute:
-                            computed = self.model.encode(texts_to_compute).tolist()
-                            for i, idx in enumerate(indices_to_compute):
-                                results[idx] = computed[i]
-                        return results
-                
-                log.info("Lazy loading HybridRetrievalEngine (heavy model download)")
-                app_state.retrieval_engine = HybridRetrievalEngine(live_corpus, LiveEmbeddingModel(data))
-            else:
-                app_state.retrieval_engine = HybridRetrievalEngine([], None)
+            app_state.claim_verifier = ClaimVerifierV2()
+            _record_init_error(app_state, "claim_verifier", None)
         except Exception as e:
-            log.warning("Could not lazy init retrieval engine: %s", e)
-            app_state.retrieval_engine = None
+            log.warning("Could not load ClaimVerifierV2: %s", e)
+            _record_init_error(app_state, "claim_verifier", _short_error(e))
+
+    if getattr(app_state, "retrieval_engine", None) is not None:
+        return
+
+    from adaptive_trust_medical_rag.retrieval.hybrid_retrieval import (
+        Candidate,
+        HybridRetrievalEngine,
+    )
+
+    corpus_path = os.path.join(
+        os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", LIVE_CORPUS_FILE
+    )
+    if not os.path.exists(corpus_path):
+        log.warning("Live corpus not found at %s", os.path.abspath(corpus_path))
+        _record_init_error(app_state, "retrieval", f"live corpus file {LIVE_CORPUS_FILE} not found")
+        return
+    try:
+        with open(corpus_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        live_corpus = [
+            Candidate(
+                chunk_id=item["chunk_id"],
+                document_id=item["document_id"],
+                text=item["text"],
+                source_url=item.get("document_url", ""),
+                source_authority=item.get("authority", 0.5),
+                metadata={
+                    "provenance": item.get("provenance", {}),
+                    "freshness_score": item.get("freshness", 0.8),
+                    "source_type": item.get("source_type"),
+                },
+            )
+            for item in data
+        ]
+    except Exception as e:
+        log.warning("Could not read live corpus: %s", e)
+        _record_init_error(
+            app_state, "retrieval", f"live corpus file {LIVE_CORPUS_FILE} could not be read ({_short_error(e)})"
+        )
+        return
+
+    log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)
+    try:
+        embedding_model = _LiveEmbeddingModel(data)
+    except Exception as e:
+        log.warning("Could not load embedding model %s: %s", LIVE_EMBEDDING_MODEL, e)
+        _record_init_error(
+            app_state,
+            "retrieval",
+            f"embedding model {LIVE_EMBEDDING_MODEL} could not be loaded ({_short_error(e)})",
+        )
+        return
+
+    app_state.retrieval_engine = HybridRetrievalEngine(live_corpus, embedding_model)
+    app_state.retrieval_info = {
+        "corpus": LIVE_CORPUS_FILE.removesuffix(".json"),
+        "chunk_count": len(live_corpus),
+        "embedding_model": LIVE_EMBEDDING_MODEL,
+        "embedding_mode": embedding_model.mode,
+    }
+    _record_init_error(app_state, "retrieval", None)
+    log.info("Live retrieval ready: %s", app_state.retrieval_info)
