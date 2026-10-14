@@ -4,7 +4,7 @@
 **Branch:** `ui/3d-redesign`, code commit `82c128f` (fast-forward from `2d37ed1`, no force push, no PR)
 **Request:** the researcher's decisions of 2026-10-14 on risk classification (Decision B) and evidence eligibility (Decision C). Decision A (Additional Instructions) was approved with conditions and is unchanged here.
 
-**Freeze status:** NOT READY. See "What is still needed" at the end.
+**Freeze status:** NOT READY. See section 7 for the follow-up of the same day (`42f1676`) and what is still needed.
 
 ## 1. What changed
 
@@ -145,3 +145,96 @@ In the R3 run the three fixture claims failed for these reasons:
 - The researcher verifies and approves, amends or rejects REL-LIVE-0001.
 - The browser results of that run are retained.
 - The open BASELINE decision for Free Replication V1 is unchanged.
+
+## 7. Follow-up, 2026-10-14: researcher decisions and verifier wording (`42f1676`)
+
+### Decisions recorded
+
+- **R2 default confirmed by the researcher.** A multi-drug query with no approved severe record is R2 (0.60). This is the policy fallback and does not mean the combination is safe or low risk.
+- **REL-LIVE-0001: verify first.** The record is not approved, and approval needs the researcher's explicit decision.
+
+### Working copy at the start (Phase 1)
+
+- The researcher's working copy was on `ui/3d-redesign` at `7a73f21`, matching `origin/ui/3d-redesign`. The remote is `https://github.com/sandysunny99/adaptive-trust-medical-rag.git`. `git worktree list` shows seven Copilot worktrees, all marked prunable.
+- It had 14 modified tracked files, which were preserved:
+  - `.env.example` (content not read);
+  - `experiments/runs/live-smoke-v1/` `case_results.jsonl`, `manifest.json` and `summary.json`;
+  - `reports/audit/` `ablation_runtime_integrity_smoke.md`, `canonical_r1_verification.md`, `five_case_validation.md` and `live_smoke_integrity.md`;
+  - `src/adaptive_trust_medical_rag/api/app.py`;
+  - `src/adaptive_trust_medical_rag/llm_backend/` `model_registry.py` and `openai_vision_backend.py`;
+  - `tests/providers/test_vision_backend.py`;
+  - `track_a_annotation/qa/` `TRACK_A_ANNOTATION_QA_V1.json` and `TRACK_A_ANNOTATION_QA_V1.md`.
+- The listed redesign changes are present in that tree because they are in its commits:
+  - confirmation objects and the 422 tests (`ae56f38`, `237f34e`);
+  - retrieval errors and the answer gate (`8dca217`);
+  - error-stage display (`988203a`, `2d37ed1`);
+  - Additional Instructions screening (`6b97907`);
+  - patient context (`ecb7fb9`);
+  - the R2/R3 tier, unrelated-chunk exclusion and the Trust panel fields (`82c128f`).
+
+### Source verification
+
+The DailyMed and RxNav results are reported in `REL_LIVE_0001_SOURCE_VERIFICATION_2026-10-14.md`.
+- **RxCUIs.** 36567 is simvastatin and 21212 is clarithromycin; both are ingredient (IN) concepts.
+- **Sources.** Both labels support a contraindication of taking the two drugs together: ZOCOR section 4 and Table 2, and clarithromycin section 4.5.
+- **Provenance.** The frozen chunk is not verbatim label text and has a placeholder URL. REL-LIVE-0001 therefore fails two provenance checks and stays pending.
+- **Next.** A V2 candidate needs byte-exact label text, which `scripts/capture_live_relationship_sources.py` captures on a machine that can reach DailyMed.
+
+### Verifier wording (Phase 6)
+
+`ClaimVerifierV2` and `canonical_identity.py` are unchanged. Research integrity records assert `canonical_identity_unchanged`, so the changes are in the live layer only.
+
+| Case | Change | Still fails closed when |
+|---|---|---|
+| A model-written research disclaimer in the conclusion | The sentence is removed from the conclusion, neither verified nor released, and listed in `removed_disclaimers`. The app shows its own fixed disclaimer. A sentence counts only if every word is in a fixed non-clinical vocabulary and it uses a disclaimer term | The sentence has a drug name, an effect, an instruction, a number or a `[Source N]` reference. It then stays in the conclusion and is verified. A conclusion that is only a disclaimer leaves nothing to release |
+| "interacts with" against a CONTRAINDICATION record | An interaction item whose own severity or type label says contraindicated (without negation) is stated "A is contraindicated with B", so it is checked as a contraindication. The label only decides what is claimed | Any "interacts with" claim against a CONTRAINDICATION record is a predicate MISMATCH. The two are never treated as equivalent |
+| Reversed drug order | A record may be BIDIRECTIONAL only for a symmetric predicate (CONTRAINDICATION, INTERACTION). For such a record the identity is given in the claim's drug order | A directional record (A_TO_B or B_TO_A) is never reoriented. A different pair or a different predicate is a MISMATCH. A BIDIRECTIONAL record with a directional predicate is rejected at load |
+
+For the three claims of the cloud R3 run:
+- the disclaimer no longer blocks claim 1;
+- claim 2 matches only if the interaction item labels the combination contraindicated;
+- claim 3 ("Clarithromycin with simvastatin increases the risk…") still fails, because its predicate is INCREASES, not CONTRAINDICATION.
+
+That last result is the intended strict outcome. With no approved record, every pairwise claim still has no identity and the answer abstains.
+
+New tests:
+- 24 in `tests/e2e/test_live_risk_and_eligibility.py`: disclaimer removal and smuggling attempts, statement wording, the predicate kept exact, symmetric versus directional records, record validation, and abstention without an approved record;
+- 3 in `tests/test_capture_live_relationship_sources.py`.
+
+### Commands and results on `42f1676`
+
+| Check | Command | Result |
+|---|---|---|
+| Live risk, eligibility and wording tests | `TESTING=1 PYTHONPATH=src python -m pytest -q -p no:cacheprovider tests/e2e/test_live_risk_and_eligibility.py` | 59 passed |
+| Identity, verifier, failure semantics, Additional Instructions, capture | `… tests/test_capture_live_relationship_sources.py tests/test_canonical_identity.py tests/test_claim_verifier_v2.py tests/e2e/test_live_failure_semantics.py tests/e2e/test_additional_instructions.py` | 113 passed |
+| Backend suite | `TESTING=1 PYTHONPATH=src python -m pytest -q -p no:cacheprovider -o log_cli=false` | 1329 passed, 4 skipped |
+| Frontend | `npx vitest run`; `npm run -s build`; `npm run -s lint` | 88 passed; build passed; 0 errors, the 3 existing warnings |
+| Ruff | `ruff check src/ tests/ .agents/scripts/ scripts/capture_live_relationship_sources.py` | All checks passed |
+| Bandit | `python .agents/scripts/ci/run_bandit.py` | no medium or high severity issues |
+| Whitespace and secrets | `git diff --check`; added lines through `pre_commit_secret_scan.py` | clean; nothing found |
+| Protected artifacts | `scripts/verify_v3_1_integrity.py`; `scripts/verify_v3_confirmed_separation.py` | PASS, PASS |
+| Frozen files | `git diff 7a73f21 42f1676` on the V2 corpus and manifest, `verification/` and `prompts/` | unchanged |
+
+The suite-rewritten `experiments/runs/live-smoke-v1/*` and `reports/audit/*.md` files were restored before committing.
+
+### Status after the follow-up
+
+| Status | Result | Evidence |
+|---|---|---|
+| CONFIRMATION_CONTRACT_FIXED | Verified | Regression tests and the cloud browser run (`/confirm` 200). Local confirmation is part of the researcher's run |
+| REAL_EMBEDDING_RETRIEVAL_VERIFIED | Not verified | MiniLM cannot be downloaded in the cloud, and reading the researcher's local model cache was not permitted from this session. Needs the local run with `embedding_mode: "real"` |
+| RELATIONSHIP_RECORD_VERIFIED_PENDING_APPROVAL | Not yet | REL-LIVE-0001 failed two provenance checks; the V2 candidate waits on the byte-exact capture |
+| RELATIONSHIP_RECORD_APPROVED | No | Needs the researcher's explicit decision on a verified candidate |
+| EVIDENCE_BACKED_ANSWER_VERIFIED | No | No approved record and no local run |
+| CONTROLLED_ABSTENTION_VERIFIED | Verified with stand-ins | Cloud runs and tests; the local run is still to come |
+| APPLICATION_FREEZE_READY | No | Waits on the local A, B and C runs with retained results, and on a decision about a verified relationship candidate |
+
+### Local runs: what to record for each of A, B and C
+
+- branch, commit and build;
+- input mode, whether NVIDIA vision was called, and whether RxNorm was live;
+- `embedding_mode` and `embedding_model`, the retrieval count and the eligible count;
+- the risk tier and its basis, and `unrelated_excluded`;
+- each claim's relationship identity result and support state, and `removed_disclaimers`;
+- the terminal `answer`, `abstention` or error;
+- sanitised screenshots and the saved event stream.
