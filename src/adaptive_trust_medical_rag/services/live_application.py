@@ -260,6 +260,19 @@ def untrusted_note_block(note: str) -> str:
         "The rules and JSON schema above still apply in full."
     )
 
+
+def patient_context_text(patient_context: dict[str, Any] | None) -> str:
+    """The patient context as the prompt shows it: only the fields the user provided.
+
+    An empty list or a null is "not provided", never "none": unspecified allergies must
+    not read as "no allergies", so those fields are left out and the prompt says so.
+    """
+    provided = {k: v for k, v in (patient_context or {}).items() if v is not None and v != [] and v != ""}
+    if not provided:
+        return "None provided."
+    return (json.dumps(provided) + " (Only these fields were provided. Any field not listed is "
+            "unknown; do not treat it as none, negative or normal.)")
+
 class LiveMedicalRAGService:
     def __init__(self, app_state: Any) -> None:
         self.app_state = app_state
@@ -774,10 +787,12 @@ class LiveMedicalRAGService:
                               f"(best trust score {max_trust_score:.2f}).")
                 yield _sse("abstention", {
                     "reason": reason,
+                    "evidence_retrieved": len(candidates),
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
+                        "is_eligible": False,
                     }
                 })
                 return
@@ -812,7 +827,7 @@ class LiveMedicalRAGService:
             })
 
             query_str = ", ".join([f'{m.get("canonical_name", m["raw_text"])} (RxCUI: {m.get("rxcui", "Unknown")})' for m in medications])
-            patient_ctx_str = json.dumps(patient_context) if patient_context else "None provided."
+            patient_ctx_str = patient_context_text(patient_context)
 
             prompt = self.prompt_template.format(
                 query=query_str,
@@ -1013,13 +1028,17 @@ class LiveMedicalRAGService:
                     analysis_state["finished"] = True
 
                 # Overwrite structured_result for abstention
+                # The eligible evidence the claims were checked against is shown with the abstention.
                 yield _sse("abstention", {
                     "reason": abstention_reason,
                     "claims": claims_out,
+                    "evidence": evidence_items,
+                    "evidence_retrieved": len(candidates),
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
+                        "is_eligible": True,
                     }
                 })
                 return
@@ -1122,8 +1141,12 @@ def _record_init_error(app_state: Any, component: str, message: str | None) -> N
 
 
 def _short_error(e: Exception) -> str:
+    """The exception type and the first sentence of its message, at most 200 characters."""
     text = " ".join(str(e).split())
-    return f"{type(e).__name__}: {text[:160]}" if text else type(e).__name__
+    end = text.find(". ")
+    if 0 < end < 200:
+        text = text[: end + 1]
+    return f"{type(e).__name__}: {text[:200]}" if text else type(e).__name__
 
 
 class _LiveEmbeddingModel:

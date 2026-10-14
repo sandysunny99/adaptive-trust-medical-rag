@@ -94,11 +94,14 @@ export function useAnalysis() {
         // A valid safety outcome, not an error. The backend closes the stream
         // right after it without a 'complete' event, so end the run here or the
         // close is reported as a disconnect.
+        // The claims and the eligible evidence they were checked against come with it.
         partialResult = {
           ...partialResult,
           gate_decision: 'abstain',
           abstention_reason: data.reason,
-          trust: data.trust
+          trust: data.trust,
+          claims: data.claims ?? partialResult.claims,
+          evidence: data.evidence ?? partialResult.evidence,
         };
         setResult(partialResult as AnalysisResult);
         setCurrentStage('abstained');

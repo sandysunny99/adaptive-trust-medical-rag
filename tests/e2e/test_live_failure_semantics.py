@@ -22,6 +22,8 @@ from adaptive_trust_medical_rag.services.live_application import (
     LiveMedicalRAGService,
     _lazy_init_models,
     _LiveEmbeddingModel,
+    _short_error,
+    patient_context_text,
 )
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     AtomicClaim,
@@ -397,3 +399,42 @@ def test_evidence_without_relationship_identity_is_named_in_the_reason():
         "1 of 1 generated claims failed post-generation verification. 1 of them could not be "
         "matched to a drug relationship because the evidence records carry no relationship identity."
     )
+
+
+# ── What the user and the model are shown ───────────────────────────────────
+
+def test_abstention_after_generation_carries_the_checked_evidence():
+    events, _ = run(verifier=QualifyVerifier())
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert [e["chunk_id"] for e in data["evidence"]] == ["c1"]
+    assert data["evidence_retrieved"] == 1
+    assert data["trust"]["is_eligible"] is True
+
+
+def test_abstention_before_generation_marks_the_evidence_ineligible():
+    events, _ = run(retrieval=StubRetrieval(chunks=[chunk(authority=0.2)]))
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert data["trust"]["is_eligible"] is False
+    assert data["evidence_retrieved"] == 1
+
+
+def test_unspecified_patient_fields_are_left_out_not_sent_as_none():
+    dumped = {"age": 58, "sex": "male", "known_allergies": [], "known_conditions": ["hyperlipidemia"],
+              "current_medications": [], "pregnancy_status": None, "breastfeeding": False,
+              "kidney_impairment": None, "liver_impairment": None}
+    text = patient_context_text(dumped)
+    assert text.startswith('{"age": 58, "sex": "male", "known_conditions": ["hyperlipidemia"], "breastfeeding": false}')
+    assert "known_allergies" not in text and "current_medications" not in text
+    assert "do not treat it as none, negative or normal" in text
+
+
+def test_empty_patient_context_is_none_provided():
+    assert patient_context_text(None) == "None provided."
+    assert patient_context_text({"age": None, "known_allergies": []}) == "None provided."
+
+
+def test_load_error_keeps_the_first_sentence():
+    e = OSError("We couldn't connect to 'https://huggingface.co' to load the files. Check your internet connection.")
+    assert _short_error(e) == "OSError: We couldn't connect to 'https://huggingface.co' to load the files."

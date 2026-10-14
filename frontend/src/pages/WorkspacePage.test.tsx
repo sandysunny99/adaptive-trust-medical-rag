@@ -403,6 +403,36 @@ describe('WorkspacePage prescription confirmation', () => {
     }
   });
 
+  it('shows the evidence a post-generation abstention was checked against', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => {
+      emit('abstention', {
+        reason: '3 of 3 generated claims failed post-generation verification.',
+        trust: { overall_score: 0.94, threshold: 0.3, risk_class: 'R0', is_eligible: true },
+        evidence: [{
+          chunk_id: 'DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01', document_id: 'SPL-SIMVASTATIN-001',
+          source_type: 'DAILYMED', source_name: 'https://dailymed.example', title: 'Evidence [Source 1]',
+          text: 'Simvastatin label text', source_authority: 0.95, trust_score: 0.94, freshness: 0.9,
+          retrieval_method: 'hybrid-rrf', provenance_status: 'RETRIEVED',
+        }],
+      });
+    });
+    act(() => streamClosed());
+    expect(screen.getByText('Evidence & Sources (1)')).toBeInTheDocument();
+    expect(screen.queryByText(/No evidence/)).not.toBeInTheDocument();
+  });
+
+  it('says no evidence was eligible when an abstention carries none', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => {
+      emit('abstention', { reason: 'none was eligible', trust: { overall_score: 0.2, threshold: 0.3, risk_class: 'R0', is_eligible: false } });
+    });
+    act(() => streamClosed());
+    expect(screen.getByText('No evidence passed the eligibility checks for this analysis.')).toBeInTheDocument();
+  });
+
   it('still reports a stream that drops before any terminal event', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();

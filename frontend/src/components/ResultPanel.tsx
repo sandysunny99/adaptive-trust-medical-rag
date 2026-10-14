@@ -137,7 +137,11 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
           >
             {(result.evidence || []).length > 0
               ? <EvidenceList evidence={result.evidence} />
-              : <p className="text-sm text-muted-foreground">No evidence items were returned for this analysis.</p>}
+              : <p className="text-sm text-muted-foreground">
+                  {result.gate_decision === 'abstain'
+                    ? 'No evidence passed the eligibility checks for this analysis.'
+                    : 'No evidence items were returned for this analysis.'}
+                </p>}
           </Disclosure>
 
           <Disclosure
