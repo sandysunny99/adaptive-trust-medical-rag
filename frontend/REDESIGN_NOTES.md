@@ -186,16 +186,155 @@ their assertions unchanged.
 All inputs are synthetic (Metformin + Amoxicillin; the patient-context run used age 60 and the marker
 `SYNTHETIC-CONDITION-TEST`).
 
+## Round 2 (upload fix, privacy, icons, compact results)
+
+Commits on top of the docs commit `3c20c70`, in order:
+
+| Commit | Change |
+|---|---|
+| `7dbce26` | Upload fix from the `redesign-upload-fix.bundle` (fast-forward): `PrescriptionDropzone` with Browse button, drag and drop, preview, Replace/Remove, type and size checks matching `image_validator.py` |
+| `6a04802` | Test timeout for the full-app keep-mounted test (was flaky at the 5 s default; assertions unchanged) |
+| `e59dc8b` | Privacy: JSON export drops `patient_context_used` as well as `patient_context`; History note reworded |
+| `9b556eb` | Semantic icon system, `IconChip`, `StatusPill` |
+| `d53290d` | Compact pipeline summary, clamped evidence text, compact security rows, "New analysis" |
+| `2ad41b2`, `4d935b9` | Short header title "Medical RAG" under 640px, fitting untruncated down to 360px |
+| `86927d3` | Removed unused Vite assets (`hero.png`, `react.svg`, `vite.svg`) |
+| `d0c1776` | Replaced the decorative comment banner in `services/prescriptionImage.ts` |
+
+### Privacy: exports
+
+A synthetic run with markers in every patient field (age, sex, allergies, conditions, current medications,
+additional instructions) showed that only `patient_context_used` echoes patient input in the SSE answer.
+`exportAsJson` now removes it with `patient_context`. Markdown export never included either. Tests assert
+none of the markers appear in the JSON or Markdown output and that the stored entry is not modified.
+`patient_considerations` and `conclusion` are LLM-written and did not echo the markers in that run, but as
+free text they could paraphrase patient input in another run; they are not stripped. History note, exactly:
+"Saved analyses, including any patient context, are stored only in this browser. Patient context is left
+out of exports." IndexedDB schema unchanged.
+
+### Icon system
+
+`src/ui/icons.ts` is the only file that imports `lucide-react` (enforced by `src/ui/icons.test.ts`). Every key
+maps to a different lucide component; places that show the same concept share a key. Icons render with
+`strokeWidth` 1.75 and `aria-hidden` by default. Sizes: 16 inline/nav, 20 cards and result section headers,
+24 page sections, 40 empty states. lucide-react 1.52.0 had every requested name, so there were no
+substitutions.
+
+| Key | lucide icon | Notes |
+|---|---|---|
+| `brand` | `ShieldPlus` |  |
+| `analyze` | `Stethoscope` |  |
+| `history` | `History` |  |
+| `about` | `Info` |  |
+| `evaluation` | `ChartColumn` |  |
+| `audit` | `ScrollText` |  |
+| `themeLight` | `Sun` |  |
+| `themeDark` | `Moon` |  |
+| `stepInput` | `ClipboardList` |  |
+| `stepVerify` | `SearchCheck` |  |
+| `stepAnswer` | `ShieldCheck` |  |
+| `scrollToForm` | `ArrowDown` |  |
+| `upload` | `ImageUp` |  |
+| `enterDrugs` | `Keyboard` |  |
+| `medication` | `Pill` |  |
+| `add` | `Plus` |  |
+| `remove` | `X` |  |
+| `edit` | `Pencil` |  |
+| `patientContext` | `UserRound` |  |
+| `instructions` | `NotebookPen` |  |
+| `advancedSettings` | `SlidersHorizontal` |  |
+| `model` | `Cpu` |  |
+| `runAnalysis` | `ScanSearch` |  |
+| `loading` | `Loader2` |  |
+| `interactions` | `GitCompareArrows` |  |
+| `food` | `Utensils` |  |
+| `conclusion` | `FileCheck2` |  |
+| `trust` | `Gauge` |  |
+| `riskTier` | `Signal` |  |
+| `evidence` | `BookOpenCheck` |  |
+| `security` | `ShieldHalf` |  |
+| `promptInjection` | `Bug` |  |
+| `retrievalPoisoning` | `DatabaseZap` |  |
+| `evidenceIntegrity` | `Fingerprint` |  |
+| `pass` | `CircleCheck` | ALLOW, PASS, step complete, RxNorm match |
+| `caution` | `TriangleAlert` | FLAG, research-use warning, ambiguous match |
+| `block` | `OctagonX` | BLOCK, BLOCKED |
+| `pending` | `CircleDashed` | PENDING, not started, unavailable |
+| `abstained` | `CircleSlash` | abstention |
+| `unknown` | `CircleHelp` | not found |
+| `stepIdle` | `Circle` |  |
+| `stepRunningStatic` | `CircleDot` | running step under prefers-reduced-motion |
+| `stepFailed` | `CircleX` |  |
+| `sourceLiterature` | `BookOpen` |  |
+| `sourceLabel` | `FileText` |  |
+| `save` | `BookmarkPlus` |  |
+| `saved` | `BookmarkCheck` |  |
+| `download` | `Download` |  |
+| `exportMarkdown` | `FileDown` |  |
+| `exportJson` | `FileJson` |  |
+| `view` | `Eye` |  |
+| `delete` | `Trash2` |  |
+| `newAnalysis` | `FilePlus2` |  |
+| `retry` | `RotateCw` |  |
+| `error` | `CircleAlert` |  |
+| `externalLink` | `ExternalLink` |  |
+| `expand` | `ChevronDown` |  |
+| `expandAll` | `ChevronsUpDown` |  |
+| `retrieval` | `Layers` |  |
+| `securityDefense` | `ShieldAlert` |  |
+| `claimVerification` | `BadgeCheck` |  |
+
+Source-type tags use only values the backend emits: `PUBMED`/`BIOMEDICAL_LITERATURE` → `sourceLiterature`,
+`DAILYMED`/`OPENFDA`/`PRIMARY_REGULATORY` → `sourceLabel`, `ENTITY_TERMINOLOGY` → `medication`. There is no
+graph source type, so the requested `Network` icon is not used. Unknown types get no icon.
+
+Shared keys worth knowing: `caution` (TriangleAlert) marks both the RESEARCH USE ONLY badge and FLAG,
+both meaning "caution"; `pass` (CircleCheck) marks ALLOW, PASS, completed steps and an RxNorm match.
+
+`IconChip` (tinted square, five tones, sm/md/lg) is used for the logo, How it works and About cards.
+`StatusPill` (icon + visible text) is used for ALLOW/FLAG/BLOCK/PENDING, the risk tier (neutral tone, not
+recoloured), medication match status, interactions and History gate decisions. Icon-only buttons all have
+an `aria-label` and a `title` tooltip.
+
+### Compact results
+
+Nothing is hidden, filtered or reordered. Pipeline Progress shows the full step list while running and
+collapses to one row when finished, e.g. "11 of 11 steps completed · 27.3 s" (time from the payload's
+`processing_time_ms`, now an optional field on the `AnalysisResult` type; omitted if absent). A failed run
+stays expanded. Evidence & Sources keeps every item, tag and the count; only the body text is clamped to
+three lines, with Show more / Show less per item when it overflows and Expand all / Collapse all. At
+1280px the 14 sample texts all fit in three lines, so no per-item toggle appears; at 375px all 14 get one.
+Security Checks are compact rows. "New analysis" clears the result, keeps the inputs and returns focus to
+the form.
+
+### Bundle (production build, gzip)
+
+| | Round 1 | Round 2 |
+|---|---|---|
+| Initial JS | 98.27 KB | 104.17 KB |
+| Initial CSS | 6.23 KB | 6.56 KB |
+| Lazy `HowItWorks` (`motion`) | 42.75 KB | 42.50 KB |
+| Lazy `ParticleField` | 1.74 KB | 1.74 KB |
+
+### Tests
+
+71 tests in 13 files: tsc clean, build passes, lint shows only the 3 pre-existing warnings.
+
+### Screenshots
+
+`docs/redesign/round2/`: header at 1280 and 375, form, finished results (pipeline collapsed, evidence,
+security rows and actions), evidence at 375 with per-item toggles, History empty, About, each in light and
+dark, plus the upload states (`upload-*`, taken in Step 1 before the dropzone icon changed to `ImageUp`).
+
 ## Follow-ups not done
 
-- **JSON export includes patient context** (pre-existing, found during verification). `exportAsJson` nulls
-  `patient_context` but the SSE answer payload also carries `patient_context_used`, which is exported as is.
-  A one-line fix is ready on request; it was not part of the agreed plan.
 - Backend issues in `../BACKEND_FOLLOWUPS.md`: off-target evidence, R0 classification, missing disclaimer.
-- Header title truncates to "Adaptive Tr…" at 375px; a short "Medical RAG" title on small screens would read better.
-- Unused Vite scaffold assets remain in `src/assets/` (`hero.png`, `react.svg`, `vite.svg`).
+- `api.ts` registers a listener for an SSE event named `error`, which also receives the browser's own
+  EventSource connection errors (no `data`), so a dropped stream logs `Failed to parse SSE event 'error'`.
+  Seen when the image-confirmation panel was left open until the stream closed. Not changed: `api.ts` is
+  out of scope for this branch.
 - Three pre-existing `react(set-state-in-effect)` lint warnings in `WorkspacePage.tsx` and `HistoryPage.tsx`
   are unchanged; no new warnings were added.
 - Existing dependencies in `package.json` still use caret ranges; only the new ones are pinned.
-- The full backend test suite was not re-run; nothing outside `frontend/` changed apart from this document's
-  sibling `BACKEND_FOLLOWUPS.md`.
+- The full backend test suite was not re-run; nothing outside `frontend/` changed apart from
+  `BACKEND_FOLLOWUPS.md`.
