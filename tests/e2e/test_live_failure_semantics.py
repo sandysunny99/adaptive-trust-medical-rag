@@ -290,7 +290,8 @@ def test_evidence_below_eligibility_abstains_with_that_reason():
     events, _ = run(retrieval=StubRetrieval(chunks=[chunk(authority=0.2)]))
     kind, data = outcome(events)
     assert kind == "abstention"
-    assert data["reason"].startswith("1 evidence chunk(s) passed security checks, but none was eligible")
+    assert data["reason"].startswith(
+        "1 evidence chunk(s) about these medications passed security checks, but none was eligible")
     assert "source authority of at least 0.30" in data["reason"]
 
 

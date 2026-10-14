@@ -48,6 +48,14 @@ export function TrustSummary({ trust }: { trust: TrustInfo | null | undefined })
           </div>
         ))}
       </dl>
+      {(trust?.risk_basis || (trust?.unrelated_excluded ?? 0) > 0) && (
+        <div className="px-4 pb-4 space-y-1 text-xs text-muted-foreground">
+          {trust?.risk_basis && <p>Risk tier basis: {trust.risk_basis}</p>}
+          {(trust?.unrelated_excluded ?? 0) > 0 && (
+            <p>{trust!.unrelated_excluded} retrieved chunk(s) named none of these medications and were excluded.</p>
+          )}
+        </div>
+      )}
     </section>
   );
 }

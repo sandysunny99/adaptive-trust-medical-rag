@@ -1,0 +1,22 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V1",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V1.json",
+  "records_sha256": "b4d06362e2d21edbf43826ec7aa79a3282946a025521a50ee6d41d5b9314d277",
+  "hash_note": "SHA-256 of the records file with CRLF normalised to LF, so Windows and Linux checkouts agree.",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "status": "CANDIDATE_PENDING_RESEARCHER_APPROVAL",
+  "approval": null,
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-14",
+    "method": "Evidence span copied verbatim from the live corpus chunk named in each record; content hash recomputed from that chunk."
+  },
+  "use_in_application": "None until status is APPROVED with approved_by and approved_at set. Once approved, a CONTRAINDICATED or MAJOR record raises the live risk tier to R3 and gives the named chunk a relationship identity for claim verification. Records never lower a tier.",
+  "verification_required_before_approval": [
+    "The source chunk's document_url is a placeholder (setid=example-simvastatin). Confirm the evidence span against the current DailyMed prescribing information for simvastatin.",
+    "Confirm the RxCUIs with RxNav: 36567 (simvastatin) and 21212 (clarithromycin). They come from the project's test fixtures; rxnav.nlm.nih.gov was not reachable when this candidate was prepared.",
+    "Confirm predicate CONTRAINDICATION, severity CONTRAINDICATED and direction A_TO_B (subject simvastatin)."
+  ],
+  "how_to_approve": "Set status to APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}. Any edit to the records file needs a new records_sha256.",
+  "frozen_data_note": "LIVE_MEDICAL_CORPUS_V2 and research datasets are not modified; this is a separate versioned dataset."
+}

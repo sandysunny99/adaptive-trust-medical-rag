@@ -1,0 +1,25 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V1",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "records": [
+    {
+      "record_id": "REL-LIVE-0001",
+      "subject": {
+        "name": "simvastatin",
+        "rxcui": "36567"
+      },
+      "object": {
+        "name": "clarithromycin",
+        "rxcui": "21212"
+      },
+      "predicate": "CONTRAINDICATION",
+      "direction": "A_TO_B",
+      "severity": "CONTRAINDICATED",
+      "source_chunk_id": "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01",
+      "source_document_id": "SPL-SIMVASTATIN-001",
+      "source_document_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-simvastatin",
+      "source_content_hash": "8ed70a5c8466c80e49ff874c8e7c11bb0b99917a02dbc455a39e7119c072c1d5",
+      "evidence_span": "Simvastatin is a cholesterol-lowering medication. CONTRAINDICATIONS: Concomitant administration of strong CYP3A4 inhibitors (e.g., itraconazole, ketoconazole, posaconazole, voriconazole, HIV protease inhibitors, boceprevir, telaprevir, erythromycin, clarithromycin, telithromycin) is contraindicated due to increased risk of myopathy and rhabdomyolysis."
+    }
+  ]
+}

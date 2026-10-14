@@ -99,7 +99,8 @@ export function useAnalysis() {
           ...partialResult,
           gate_decision: 'abstain',
           abstention_reason: data.reason,
-          trust: data.trust,
+          // The abstention's trust fields win; the trust event's details (factors, exclusions) stay.
+          trust: { ...partialResult.trust, ...data.trust },
           claims: data.claims ?? partialResult.claims,
           evidence: data.evidence ?? partialResult.evidence,
         };

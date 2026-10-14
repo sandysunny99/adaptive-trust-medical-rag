@@ -28,9 +28,14 @@ from adaptive_trust_medical_rag.security_extensions.poisoning_detector import (
 from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     AdaptiveTrustScorer,
     TrustFactorScores,
-    classify_query_risk,
 )
 from adaptive_trust_medical_rag.llm_backend.model_registry import get_model_definition
+from adaptive_trust_medical_rag.services.live_relationships import (
+    RelationshipStore,
+    aligned_medications,
+    live_risk_tier,
+    load_relationship_store,
+)
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
@@ -38,6 +43,9 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
 )
 
 log = logging.getLogger(__name__)
+
+# Eligibility thresholds per risk tier; the same values as config/trust.yaml.
+TRUST_THRESHOLDS = {"R0": 0.30, "R1": 0.45, "R2": 0.60, "R3": 0.75}
 
 
 def _ts() -> str:
@@ -717,20 +725,24 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
 
-            risk_tier = classify_query_risk(" ".join([m["raw_text"] for m in medications]))
-            trust_threshold = 0.45
-            if risk_tier == "R0": trust_threshold = 0.30
-            elif risk_tier == "R2": trust_threshold = 0.60
-            elif risk_tier == "R3": trust_threshold = 0.75
+            relationships = getattr(self.app_state, "relationship_store", None) or RelationshipStore()
+            risk_tier, risk_basis = live_risk_tier(medications, relationships)
+            trust_threshold = TRUST_THRESHOLDS[risk_tier]
 
             eligible_candidates = []
             max_trust_score = 0.0
             best_factors = None
+            unrelated = 0
 
             for sc in safe_candidates:
                 cand = sc.candidate
-                drug_names_lower = [m["raw_text"].lower() for m in medications]
-                entity_match = 1.0 if any(d in cand.text.lower() for d in drug_names_lower) else 0.5
+                # A chunk that names none of the requested medications is unrelated: it is
+                # never eligible and never counts toward the trust score, whatever its
+                # authority or retrieval score.
+                if not aligned_medications(cand.text, medications):
+                    unrelated += 1
+                    continue
+                entity_match = 1.0
 
                 rel_score = float(getattr(sc, "score", 0.85))
                 factors = TrustFactorScores(
@@ -763,7 +775,9 @@ class LiveMedicalRAGService:
                 "overall_score": max_trust_score,
                 "threshold": trust_threshold,
                 "risk_class": risk_tier,
+                "risk_basis": risk_basis,
                 "is_eligible": len(eligible_candidates) > 0,
+                "unrelated_excluded": unrelated,
                 "factors": best_factors.__dict__ if best_factors else {},
                 "missing_factors": []
             })
@@ -780,9 +794,13 @@ class LiveMedicalRAGService:
                 elif not safe_candidates:
                     reason = (f"{len(candidates)} evidence chunk(s) were retrieved, but all failed "
                               "provenance or integrity checks.")
-                else:
+                elif unrelated == len(safe_candidates):
+                    names = ", ".join(m.get("canonical_name") or m["raw_text"] for m in medications)
                     reason = (f"{len(safe_candidates)} evidence chunk(s) passed security checks, but none "
-                              f"was eligible: each needs a trust score of at least {trust_threshold:.2f} "
+                              f"names a requested medication ({names}), so none can support this analysis.")
+                else:
+                    reason = (f"{len(safe_candidates) - unrelated} evidence chunk(s) about these medications "
+                              f"passed security checks, but none was eligible: each needs a trust score of at least {trust_threshold:.2f} "
                               f"for risk tier {risk_tier} and a source authority of at least 0.30 "
                               f"(best trust score {max_trust_score:.2f}).")
                 yield _sse("abstention", {
@@ -792,6 +810,7 @@ class LiveMedicalRAGService:
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
+                        "risk_basis": risk_basis,
                         "is_eligible": False,
                     }
                 })
@@ -939,6 +958,7 @@ class LiveMedicalRAGService:
 
             if verifier and statements:
                 evidence_chunk_objs = []
+                rxcuis = [str(m["rxcui"]) for m in medications if m.get("rxcui")]
                 for i, (sc, ts, missing) in enumerate(eligible_candidates, start=1):
                     evidence_chunk_objs.append(EvidenceChunk(
                         chunk_id=sc.candidate.chunk_id,
@@ -947,6 +967,9 @@ class LiveMedicalRAGService:
                         citation_index=i,
                         trust_score=ts,
                         missing_factors=missing,
+                        # Only an approved record about this chunk gives it a relationship identity.
+                        relationship_identity=relationships.identity_for_chunk(
+                            sc.candidate.chunk_id, sc.candidate.text, rxcuis),
                     ))
 
                 for cid, statement in enumerate(statements):
@@ -1017,13 +1040,21 @@ class LiveMedicalRAGService:
                     abstention_reason = "Claim verification failed with an error, so the answer was not verified."
                 else:
                     failed = [c for c in claims_out if c["support_state"] != FinalSupportState.SUPPORTED.value]
-                    no_identity = sum(1 for c in failed if c.get("canonical_identity_status") == "UNAVAILABLE")
+                    no_record = sum(1 for c in failed
+                                    if c.get("canonical_identity_reason") == "Source canonical identity not available")
+                    unmatched = sum(1 for c in failed
+                                    if c.get("canonical_identity_status") in ("UNAVAILABLE", "MISMATCH", "AMBIGUOUS")
+                                    and c.get("canonical_identity_reason") != "Source canonical identity not available")
                     abstention_reason = (f"{len(failed)} of {len(claims_out)} generated claims failed "
                                          "post-generation verification.")
-                    if no_identity:
-                        abstention_reason += (f" {no_identity} of them could not be matched to a drug "
+                    if no_record:
+                        abstention_reason += (f" {no_record} of them could not be matched to a drug "
                                               "relationship because the evidence records carry no "
                                               "relationship identity.")
+                    if unmatched:
+                        abstention_reason += (f" {unmatched} of them did not match an approved relationship "
+                                              "record (a different drug pair, relation or direction, or no "
+                                              "drug pair named).")
                 if analysis_state:
                     analysis_state["finished"] = True
 
@@ -1038,6 +1069,7 @@ class LiveMedicalRAGService:
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
+                        "risk_basis": risk_basis,
                         "is_eligible": True,
                     }
                 })
@@ -1076,6 +1108,7 @@ class LiveMedicalRAGService:
                     "overall_score": max_trust_score,
                     "threshold": trust_threshold,
                     "risk_class": risk_tier,
+                    "risk_basis": risk_basis,
                     "is_eligible": True,
                     "factors": best_factors.__dict__ if best_factors else {},
                     "missing_factors": []
@@ -1246,6 +1279,10 @@ def _lazy_init_models(app_state):
             app_state, "retrieval", f"live corpus file {LIVE_CORPUS_FILE} could not be read ({_short_error(e)})"
         )
         return
+
+    # Approved relationship records are checked against this corpus; none load unless approved.
+    app_state.relationship_store = load_relationship_store(data)
+    log.info("Relationship records: %s", app_state.relationship_store.reason)
 
     log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)
     try:

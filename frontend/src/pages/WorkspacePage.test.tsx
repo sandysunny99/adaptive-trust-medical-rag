@@ -423,6 +423,29 @@ describe('WorkspacePage prescription confirmation', () => {
     expect(screen.queryByText(/No evidence/)).not.toBeInTheDocument();
   });
 
+  it('shows why the risk tier was chosen and how many unrelated chunks were left out', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    await reachConfirmation();
+    act(() => {
+      emit('trust', {
+        overall_score: 0.94, threshold: 0.75, risk_class: 'R3', is_eligible: true,
+        risk_basis: 'approved relationship record REL-1: simvastatin and clarithromycin contraindicated',
+        unrelated_excluded: 3, factors: {}, missing_factors: [],
+      });
+      emit('abstention', {
+        reason: '1 of 1 generated claims failed post-generation verification.',
+        trust: {
+          overall_score: 0.94, threshold: 0.75, risk_class: 'R3', is_eligible: true,
+          risk_basis: 'approved relationship record REL-1: simvastatin and clarithromycin contraindicated',
+        },
+      });
+    });
+    act(() => streamClosed());
+    expect(screen.getByText(/Risk tier basis: approved relationship record REL-1/)).toBeInTheDocument();
+    expect(screen.getByText('3 retrieved chunk(s) named none of these medications and were excluded.')).toBeInTheDocument();
+    expect(screen.getByText('0.75')).toBeInTheDocument();
+  });
+
   it('says no evidence was eligible when an abstention carries none', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();

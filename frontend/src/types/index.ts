@@ -108,7 +108,11 @@ export interface TrustInfo {
   overall_score: number;
   threshold: number;
   risk_class: string;
+  /** Why the backend chose this risk tier. */
+  risk_basis?: string;
   is_eligible: boolean;
+  /** Retrieved chunks that named none of the requested medications and were left out. */
+  unrelated_excluded?: number;
   factors: TrustFactors;
   missing_factors: string[];
 }
