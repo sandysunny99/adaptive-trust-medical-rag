@@ -86,6 +86,7 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
     pending[request_id] = {
         "body": body,
         "llm_selection": body.llm_selection.model_dump() if body.llm_selection else None,
+        "additional_instructions": body.additional_instructions,
         "created_at": time.time(),
     }
 
@@ -110,6 +111,7 @@ async def post_analyze_prescription(
     image: UploadFile = File(...),
     patient_context: str = Form(None),
     llm_selection: str = Form(None),
+    additional_instructions: str = Form(None, max_length=2000),
 ):
     """
     Accept a prescription image upload.
@@ -168,6 +170,7 @@ async def post_analyze_prescription(
         "image_meta": validation_meta,
         "patient_context": context_data,
         "llm_selection": selection_data,
+        "additional_instructions": additional_instructions,
         "created_at": time.time(),
     }
 
@@ -245,6 +248,7 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
             patient_context_dict = None
             image_bytes = None
             image_meta = None
+            additional_instructions = analysis.get("additional_instructions")
 
             if analysis.get("type") == "prescription_image":
                 image_bytes = analysis.get("image_bytes")
@@ -257,6 +261,11 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 body: AnalyzeRequest = analysis["body"]
                 drug_names = body.drug_names
                 patient_context_dict = body.patient_context.model_dump() if body.patient_context else None
+                additional_instructions = (
+                    body.additional_instructions
+                    if hasattr(body, "additional_instructions")
+                    else None
+                )
 
             llm_selection_data = analysis.get("llm_selection")
             if not llm_selection_data and "body" in analysis:
@@ -273,6 +282,7 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 image_meta=image_meta,
                 analysis_state=analysis,
                 llm_selection=llm_selection_data,
+                additional_instructions=additional_instructions,
             ):
                 yield await _sse_event(event_dict["event"], event_dict["data"])
 
