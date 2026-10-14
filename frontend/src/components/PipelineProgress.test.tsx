@@ -36,6 +36,16 @@ describe('PipelineProgress', () => {
     expect(screen.getByRole('button', { name: /Pipeline Progress/ })).not.toHaveTextContent(' s)');
   });
 
+  it('counts only the stages that ran when the analysis abstained', async () => {
+    const updates = [{ stage: 'uploading' as PipelineStage, status: 'complete' as const, timestamp: '' }];
+    render(<PipelineProgress stages={STAGES} currentStage="abstained" updates={updates} />);
+    const summary = screen.getByRole('button', { name: /Pipeline Progress/ });
+    expect(summary).toHaveTextContent('1 of 3 steps completed');
+
+    await userEvent.click(summary);
+    expect(screen.getAllByText('Not run')).toHaveLength(2);
+  });
+
   it('stays expanded when a step failed', () => {
     render(<PipelineProgress stages={STAGES} currentStage="error" updates={[]} />);
     expect(screen.queryByRole('button')).not.toBeInTheDocument();
