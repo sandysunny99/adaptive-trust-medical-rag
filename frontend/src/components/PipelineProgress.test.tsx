@@ -46,6 +46,26 @@ describe('PipelineProgress', () => {
     expect(screen.getAllByText('Not run')).toHaveLength(2);
   });
 
+  it('marks the stage that failed and the stages that never ran after an error', () => {
+    const updates = [
+      { stage: 'uploading' as PipelineStage, status: 'complete' as const, timestamp: '' },
+      { stage: 'retrieving' as PipelineStage, status: 'failed' as const, timestamp: '' },
+    ];
+    render(<PipelineProgress stages={STAGES} currentStage="error" updates={updates} />);
+    expect(screen.getByText('Input Processing')).not.toHaveTextContent('(failed)');
+    expect(screen.getByText(/Evidence Retrieval/)).toHaveTextContent('(failed)');
+    expect(screen.getAllByText('Not run')).toHaveLength(1);
+  });
+
+  it('treats a stage still running when the error arrived as failed', () => {
+    const updates = [
+      { stage: 'uploading' as PipelineStage, status: 'complete' as const, timestamp: '' },
+      { stage: 'retrieving' as PipelineStage, status: 'running' as const, timestamp: '' },
+    ];
+    render(<PipelineProgress stages={STAGES} currentStage="error" updates={updates} />);
+    expect(screen.getByText(/Evidence Retrieval/)).toHaveTextContent('(failed)');
+  });
+
   it('stays expanded when a step failed', () => {
     render(<PipelineProgress stages={STAGES} currentStage="error" updates={[]} />);
     expect(screen.queryByRole('button')).not.toBeInTheDocument();

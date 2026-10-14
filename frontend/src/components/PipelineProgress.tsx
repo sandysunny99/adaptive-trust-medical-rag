@@ -22,16 +22,20 @@ function getStageStatus(
   const currentIdx = stages.findIndex(s => s.key === currentStage);
   const stageIdx = stages.findIndex(s => s.key === stageKey);
   if (currentStage === 'complete') return 'complete';
-  // An abstention can stop the pipeline early; only stages the backend reported actually ran.
-  if (currentStage === 'abstained') {
-    const ran = updates.some(u => u.stage === stageKey)
-      || (stageKey === 'confirming' && updates.some(u => u.stage === 'extracting'));
-    return ran ? 'complete' : 'skipped';
-  }
-  if (currentStage === 'error' || currentStage === 'blocked') {
-    if (stageIdx < currentIdx) return 'complete';
-    if (stageIdx === currentIdx) return 'failed';
-    return 'pending';
+  // An abstention or an error can stop the pipeline early, so each stage's own last
+  // update says what happened to it; a stage the backend never reported did not run.
+  const stopped = currentStage === 'error' || currentStage === 'blocked';
+  if (currentStage === 'abstained' || stopped) {
+    const update = updates.find(u => u.stage === stageKey);
+    if (!update) {
+      const confirmed = stageKey === 'confirming' && updates.some(u => u.stage === 'extracting');
+      return confirmed ? 'complete' : 'skipped';
+    }
+    if (update.status === 'failed') return 'failed';
+    if (update.status === 'skipped' || update.status === 'pending') return 'skipped';
+    // A stage still running when an error ended the stream was interrupted by it.
+    if (update.status === 'running' && stopped) return 'failed';
+    return 'complete';
   }
   if (stageIdx < currentIdx) return 'complete';
   if (stageIdx === currentIdx) return 'running';

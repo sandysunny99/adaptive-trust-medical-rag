@@ -417,4 +417,3 @@ describe('WorkspacePage prescription confirmation', () => {
     expect(screen.queryByText(/model_attributes_type|confirmed_medications/)).not.toBeInTheDocument();
   });
 });
-
