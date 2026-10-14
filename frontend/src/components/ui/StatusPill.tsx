@@ -33,10 +33,15 @@ const GATE_STATUS: Record<string, { icon: IconComponent; tone: Tone }> = {
 
 /**
  * ALLOW / FLAG / BLOCK from the backend, shown as returned. A missing value
- * reads PENDING; anything unrecognised is shown verbatim in a neutral pill.
+ * reads PENDING while the analysis runs and NOT RUN once it has ended;
+ * anything unrecognised is shown verbatim in a neutral pill.
  */
-export function SecurityStatusPill({ status }: { status: string | null | undefined }) {
-  if (!status) return <StatusPill icon={Icons.pending} label="PENDING" tone="muted" />;
+export function SecurityStatusPill({ status, ended = false }: { status: string | null | undefined; ended?: boolean }) {
+  if (!status) {
+    return ended
+      ? <StatusPill icon={Icons.stepSkipped} label="NOT RUN" tone="muted" />
+      : <StatusPill icon={Icons.pending} label="PENDING" tone="muted" />;
+  }
   const config = GATE_STATUS[status];
   if (!config) return <StatusPill icon={Icons.pending} label={status} tone="muted" />;
   return <StatusPill icon={config.icon} label={status} tone={config.tone} />;

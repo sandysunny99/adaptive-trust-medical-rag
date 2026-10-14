@@ -2,8 +2,11 @@ import { Icons } from '../../ui/icons';
 import { SecurityStatusPill } from '../ui/StatusPill';
 import type { AnalysisResult } from '../../types';
 
-/** The three security gates as compact rows: icon, name, status pill, detail. Gate logic unchanged. */
-export function SecurityChecks({ result }: { result: AnalysisResult | null | undefined }) {
+/**
+ * The three security gates as compact rows: icon, name, status pill, detail. Gate logic unchanged.
+ * `ended` means the analysis has finished, so a gate with no result did not run.
+ */
+export function SecurityChecks({ result, ended = false }: { result: AnalysisResult | null | undefined; ended?: boolean }) {
   const security = result?.security;
 
   const gates = [
@@ -26,7 +29,8 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
     {
       label: 'Evidence Integrity',
       icon: Icons.evidenceIntegrity,
-      status: result?.trust?.is_eligible ? 'ALLOW' : (result ? 'FLAG' : 'NO_DATA'),
+      // Without a trust result the evidence was never scored, which is not a flag.
+      status: result?.trust ? (result.trust.is_eligible ? 'ALLOW' : 'FLAG') : 'NO_DATA',
       detail: result?.trust
         ? `Trust: ${result.trust.overall_score.toFixed(2)} / threshold ${result.trust.threshold.toFixed(2)} (${result.trust.risk_class})`
         : null,
@@ -41,9 +45,12 @@ export function SecurityChecks({ result }: { result: AnalysisResult | null | und
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-center gap-2">
               <h4 className="text-sm font-medium text-foreground">{label}</h4>
-              <SecurityStatusPill status={status === 'NO_DATA' ? null : status} />
+              <SecurityStatusPill status={status === 'NO_DATA' ? null : status} ended={ended} />
             </div>
             {detail && <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>}
+            {!detail && ended && status === 'NO_DATA' && (
+              <p className="mt-0.5 text-xs text-muted-foreground">The analysis stopped before this check ran.</p>
+            )}
           </div>
         </li>
       ))}

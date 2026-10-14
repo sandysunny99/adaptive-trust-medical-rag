@@ -150,7 +150,7 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
             icon={<Icons.security size={20} />}
             title="Security Checks"
           >
-            <SecurityChecks result={result} />
+            <SecurityChecks result={result} ended />
           </Disclosure>
         </>
       )}

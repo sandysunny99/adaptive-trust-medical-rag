@@ -150,4 +150,23 @@ describe('ResultPanel evidence and security sections', () => {
     expect(rows).toHaveLength(3);
     for (const row of rows) expect(row).toHaveTextContent('ALLOW');
   });
+
+  it('marks checks that never ran as NOT RUN instead of pending or flagged', () => {
+    // A run that stopped at retrieval: no security result and no trust score.
+    render(<ResultPanel result={makeResult({ security: undefined, trust: undefined } as unknown as Partial<AnalysisResult>)} />);
+    const rows = screen.getAllByRole('listitem').filter(li => /Prompt Injection|Retrieval Poisoning|Evidence Integrity/.test(li.textContent ?? ''));
+    expect(rows).toHaveLength(3);
+    for (const row of rows) {
+      expect(row).toHaveTextContent('NOT RUN');
+      expect(row).toHaveTextContent('The analysis stopped before this check ran.');
+      expect(row).not.toHaveTextContent(/FLAG|PENDING/);
+    }
+  });
+
+  it('flags evidence integrity only when the scored evidence was ineligible', () => {
+    const scored = makeResult();
+    render(<ResultPanel result={{ ...scored, trust: { ...scored.trust!, overall_score: 0.2, is_eligible: false } }} />);
+    const row = screen.getAllByRole('listitem').find(li => /Evidence Integrity/.test(li.textContent ?? ''));
+    expect(row).toHaveTextContent('FLAG');
+  });
 });
