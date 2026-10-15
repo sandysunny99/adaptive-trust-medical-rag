@@ -84,6 +84,26 @@ class StubLLM:
         return SimpleNamespace(content=self.content, provider="mock", model="mock-llm")
 
 
+class FailingLLM:
+    async def generate_structured(self, prompt, response_format, provider_name=None):
+        raise RuntimeError("cloudflare timeout")
+
+
+class ServingLLM:
+    """A provider response as the OpenAI-compatible adapter builds it, with the provider's own model field."""
+
+    def __init__(self, answer: dict):
+        self.content = json.dumps(answer)
+        self.provider_names: list[str | None] = []
+
+    async def generate_structured(self, prompt, response_format, provider_name=None):
+        self.provider_names.append(provider_name)
+        return SimpleNamespace(content=self.content, provider="cloudflare",
+                               model="@cf/meta/llama-3.3-70b-instruct-fp8-fast", finish_reason="stop",
+                               raw_metadata={"model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                                             "choices": [{"message": {"content": self.content}}]})
+
+
 def report(text: str, *states: FinalSupportState) -> VerificationReportV2:
     claim = AtomicClaim(text=text, parent_sentence=text, claim_index=0)
     judgments = [
@@ -166,7 +186,8 @@ NO_VERIFIER = object()
 
 
 def run(answer: dict | None = None, *, retrieval=None, verifier=None, monkeypatch=None,
-        init_errors: dict | None = None, retrieval_info: dict | None = None, llm=None, **state_extra):
+        init_errors: dict | None = None, retrieval_info: dict | None = None, llm=None,
+        llm_selection: dict | None = None, **state_extra):
     state = SimpleNamespace(
         drug_normalizer=OfflineNormalizer(),
         retrieval_engine=StubRetrieval() if retrieval is None else retrieval,
@@ -185,7 +206,8 @@ def run(answer: dict | None = None, *, retrieval=None, verifier=None, monkeypatc
 
     async def collect():
         service = LiveMedicalRAGService(state)
-        return [e async for e in service.execute("req-semantics", ["Simvastatin", "Clarithromycin"], None, 0)]
+        return [e async for e in service.execute("req-semantics", ["Simvastatin", "Clarithromycin"], None, 0,
+                                                 llm_selection=llm_selection)]
 
     return asyncio.run(collect()), state
 
@@ -397,6 +419,8 @@ def test_answer_cut_off_at_the_token_limit_says_so_and_logs_no_content(caplog):
     assert data["message"].startswith("Failed to parse LLM structured output.")
     assert "output token limit" in data["message"]
     assert (data["finish_reason"], data["provider"], data["model_id"]) == ("length", "cloudflare", "cf-model")
+    assert data["served_by"] == {"provider": "cloudflare", "model_id": "cf-model", "reported_model": None,
+                                 "finish_reason": "length", "output_length": 200}
     assert last_status(events, "generating") == "failed"
     assert "finish_reason=length length=200" in caplog.text
     assert truncated[20:60] not in caplog.text
@@ -489,3 +513,69 @@ def test_empty_patient_context_is_none_provided():
 def test_load_error_keeps_the_first_sentence():
     e = OSError("We couldn't connect to 'https://huggingface.co' to load the files. Check your internet connection.")
     assert _short_error(e) == "OSError: We couldn't connect to 'https://huggingface.co' to load the files."
+
+
+# ── Every outcome names the provider and model that served it ───────────────
+
+def test_released_answer_names_the_provider_and_model_that_served_it():
+    events, _ = run()
+    kind, data = outcome(events)
+    assert kind == "answer"
+    served = {"provider": "mock", "model_id": "mock-llm", "reported_model": None, "finish_reason": None,
+              "output_length": len(json.dumps(ANSWER))}
+    assert data["served_by"] == served
+    (complete,) = [e["data"] for e in events if e["event"] == "complete"]
+    assert complete["served_by"] == served
+
+
+def test_abstention_after_generation_names_the_provider_and_model_that_served_it():
+    events, _ = run(verifier=QualifyVerifier())
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert (data["served_by"]["provider"], data["served_by"]["model_id"]) == ("mock", "mock-llm")
+
+
+def test_schema_failure_names_the_provider_and_model_that_served_it():
+    answer = json.loads(json.dumps(ANSWER))
+    answer["interactions"][0]["evidence_status"] = "TOTALLY SAFE"
+    events, _ = run(answer)
+    kind, data = outcome(events)
+    assert (kind, data["code"]) == ("error", "LLM_OUTPUT_VALIDATION_FAILURE")
+    assert (data["served_by"]["provider"], data["served_by"]["model_id"]) == ("mock", "mock-llm")
+
+
+def test_served_by_is_read_from_the_provider_response_and_holds_no_content(caplog):
+    caplog.set_level("INFO", logger=live_application.__name__)
+    llm = ServingLLM(ANSWER)
+    selection = {"mode": "manual", "model_id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast"}
+    events, _ = run(llm=llm, verifier=QualifyVerifier(), llm_selection=selection)
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert llm.provider_names == ["cloudflare"]
+    assert data["served_by"] == {"provider": "cloudflare", "model_id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                                 "reported_model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+                                 "finish_reason": "stop", "output_length": len(llm.content)}
+    assert "provider=cloudflare" in caplog.text
+    assert ANSWER["conclusion"] not in caplog.text
+    assert ANSWER["conclusion"] not in json.dumps(data["served_by"])
+
+
+def test_rxnorm_event_names_how_each_drug_was_resolved():
+    events, _ = run()
+    (rxnorm,) = [e["data"] for e in events if e["event"] == "rxnorm"]
+    assert [m["rxnorm_source"] for m in rxnorm["entities"]] == ["TEST", "TEST"]
+
+
+def test_abstention_before_generation_says_no_model_served_it():
+    events, _ = run(retrieval=StubRetrieval(chunks=[chunk(authority=0.2)]))
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert data["served_by"] is None
+
+
+def test_provider_failure_names_only_the_requested_model():
+    events, _ = run(llm=FailingLLM())
+    kind, data = outcome(events)
+    assert (kind, data["code"]) == ("error", "LLM_ERROR")
+    assert data["served_by"] is None
+    assert data["requested_model"] == {"mode": "auto", "provider": "auto", "model_id": "auto"}

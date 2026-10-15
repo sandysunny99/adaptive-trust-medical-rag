@@ -340,6 +340,22 @@ def patient_context_text(patient_context: dict[str, Any] | None) -> str:
     return (json.dumps(provided) + " (Only these fields were provided. Any field not listed is "
             "unknown; do not treat it as none, negative or normal.)")
 
+def _served_by(gen_result: Any, raw_text: str | None) -> dict[str, Any]:
+    """Which provider and model produced the generated output, read from the provider's response.
+
+    It is never the user's selection and never the output itself: only identifiers, the stop
+    reason and the output length, so every outcome after generation can be traced to its model.
+    """
+    meta = getattr(gen_result, "raw_metadata", None)
+    return {
+        "provider": getattr(gen_result, "provider", None) or None,
+        "model_id": getattr(gen_result, "model", None) or None,
+        "reported_model": meta.get("model") if isinstance(meta, dict) else None,
+        "finish_reason": getattr(gen_result, "finish_reason", None) or None,
+        "output_length": len(raw_text or ""),
+    }
+
+
 class LiveMedicalRAGService:
     def __init__(self, app_state: Any) -> None:
         self.app_state = app_state
@@ -459,13 +475,17 @@ class LiveMedicalRAGService:
 
                         yield _sse("medication_candidates_extracted", {
                             "candidates": candidates_payload,
-                            "warnings": ext_res.warnings
+                            "warnings": ext_res.warnings,
+                            "vision_provider": getattr(vision_backend, "provider_name", None),
+                            "vision_model": getattr(vision_backend, "model_name", None),
                         })
                     except Exception as e:
                         log.error("Vision extraction failed: %s", e)
                         yield _sse("error", {
                             "code": "VISION_EXTRACTION_ERROR",
-                            "message": f"Vision extraction failed: {str(e)}"
+                            "message": f"Vision extraction failed: {str(e)}",
+                            "vision_provider": getattr(vision_backend, "provider_name", None),
+                            "vision_model": getattr(vision_backend, "model_name", None),
                         })
                         yield _sse("stage_update", {
                             "stage": "extracting",
@@ -606,6 +626,9 @@ class LiveMedicalRAGService:
                             "formulation": entity.formulation,
                             "confidence": entity.confidence,
                             "source": prov_info.get("source", entity.source),
+                            # How the normalizer resolved it (an RxNav lookup or its cache); "source"
+                            # names where the drug name came from when it was confirmed from an image.
+                            "rxnorm_source": entity.source,
                             "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
                             "raw_detected_name": prov_info.get("raw_detected_name"),
                             "status": status,
@@ -865,6 +888,8 @@ class LiveMedicalRAGService:
                 yield _sse("abstention", {
                     "reason": reason,
                     "evidence_retrieved": len(candidates),
+                    # No model is called before an evidence abstention.
+                    "served_by": None,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -984,6 +1009,12 @@ class LiveMedicalRAGService:
                     used_model_info["provider"] = gen_result.provider
                 if hasattr(gen_result, "model") and gen_result.model:
                     used_model_info["model_id"] = gen_result.model
+                served_by = _served_by(gen_result, raw_text)
+                log.info(
+                    "LLM output received (provider=%s model=%s reported_model=%s finish_reason=%s length=%d)",
+                    served_by["provider"], served_by["model_id"], served_by["reported_model"],
+                    served_by["finish_reason"], served_by["output_length"],
+                )
 
                 try:
                     structured_result = json.loads(raw_text)
@@ -1006,12 +1037,15 @@ class LiveMedicalRAGService:
                         "finish_reason": finish_reason,
                         "provider": used_model_info["provider"],
                         "model_id": used_model_info["model_id"],
+                        "served_by": served_by,
                     })
                     return
 
             except Exception as e:
                 log.error("LLM Generation failed: %s", e)
-                yield _sse("error", {"code": "LLM_ERROR", "message": str(e)})
+                # No provider returned an output; the selection is what was asked for, not what served.
+                yield _sse("error", {"code": "LLM_ERROR", "message": str(e),
+                                     "served_by": None, "requested_model": used_model_info})
                 return
 
             try:
@@ -1024,6 +1058,7 @@ class LiveMedicalRAGService:
                 yield _sse("error", {
                     "code": "LLM_OUTPUT_VALIDATION_FAILURE",
                     "message": f"Generated field {e} does not match the answer schema, so it cannot be verified.",
+                    "served_by": served_by,
                 })
                 return
 
@@ -1159,6 +1194,7 @@ class LiveMedicalRAGService:
                     "removed_disclaimers": answer_fields["removed_disclaimers"],
                     "evidence": evidence_items,
                     "evidence_retrieved": len(candidates),
+                    "served_by": served_by,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -1220,6 +1256,7 @@ class LiveMedicalRAGService:
                 "gate_decision": gate_decision,
                 "abstention_reason": abstention_reason,
                 "used_model": used_model_info,
+                "served_by": served_by,
             }
 
             yield _sse("stage_update", {
@@ -1235,6 +1272,7 @@ class LiveMedicalRAGService:
                 "request_id": request_id,
                 "duration_ms": elapsed,
                 "used_model": used_model_info,
+                "served_by": served_by,
             })
             if analysis_state:
                 analysis_state["finished"] = True
