@@ -99,6 +99,17 @@ def report(text: str, *states: FinalSupportState) -> VerificationReportV2:
     return VerificationReportV2([claim], judgments, 1.0, decision, "scripted")
 
 
+class RawLLM:
+    """Returns text exactly as a provider sent it, with the provider's stop reason."""
+
+    def __init__(self, content: str, finish_reason: str):
+        self.content, self.finish_reason = content, finish_reason
+
+    async def generate_structured(self, prompt, response_format, provider_name=None):
+        return SimpleNamespace(content=self.content, provider="cloudflare", model="cf-model",
+                               finish_reason=self.finish_reason)
+
+
 class ScriptedVerifier:
     """SUPPORTED for every statement except those containing UNVERIFIED_MARK."""
 
@@ -155,13 +166,14 @@ NO_VERIFIER = object()
 
 
 def run(answer: dict | None = None, *, retrieval=None, verifier=None, monkeypatch=None,
-        init_errors: dict | None = None, retrieval_info: dict | None = None):
+        init_errors: dict | None = None, retrieval_info: dict | None = None, llm=None, **state_extra):
     state = SimpleNamespace(
         drug_normalizer=OfflineNormalizer(),
         retrieval_engine=StubRetrieval() if retrieval is None else retrieval,
-        llm_backend=StubLLM(ANSWER if answer is None else answer),
+        llm_backend=llm or StubLLM(ANSWER if answer is None else answer),
         claim_verifier=None if verifier is NO_VERIFIER else (verifier or ScriptedVerifier()),
         model_init_errors=init_errors or {},
+        **state_extra,
     )
     if retrieval_info is not None:
         state.retrieval_info = retrieval_info
@@ -377,6 +389,27 @@ def test_unknown_status_label_is_an_output_validation_failure():
     assert last_status(events, "generating") == "failed"
 
 
+def test_answer_cut_off_at_the_token_limit_says_so_and_logs_no_content(caplog):
+    truncated = json.dumps(ANSWER)[:200]
+    events, _ = run(llm=RawLLM(truncated, "length"))
+    kind, data = outcome(events)
+    assert (kind, data["code"]) == ("error", "LLM_OUTPUT_VALIDATION_FAILURE")
+    assert data["message"].startswith("Failed to parse LLM structured output.")
+    assert "output token limit" in data["message"]
+    assert (data["finish_reason"], data["provider"], data["model_id"]) == ("length", "cloudflare", "cf-model")
+    assert last_status(events, "generating") == "failed"
+    assert "finish_reason=length length=200" in caplog.text
+    assert truncated[20:60] not in caplog.text
+
+
+def test_answer_that_is_not_json_keeps_the_plain_parse_message():
+    events, _ = run(llm=RawLLM("Here is the analysis you asked for.", "stop"))
+    kind, data = outcome(events)
+    assert (kind, data["code"]) == ("error", "LLM_OUTPUT_VALIDATION_FAILURE")
+    assert data["message"] == "Failed to parse LLM structured output."
+    assert data["finish_reason"] == "stop"
+
+
 def test_source_that_is_not_a_retrieved_chunk_cannot_be_released():
     answer = json.loads(json.dumps(ANSWER))
     answer["interactions"][0]["sources"] = ["PMID 12345678"]
@@ -411,6 +444,23 @@ def test_abstention_after_generation_carries_the_checked_evidence():
     assert [e["chunk_id"] for e in data["evidence"]] == ["c1"]
     assert data["evidence_retrieved"] == 1
     assert data["trust"]["is_eligible"] is True
+
+
+def test_evidence_with_an_unverified_url_is_not_offered_as_a_link():
+    events, _ = run(verifier=QualifyVerifier())
+    kind, data = outcome(events)
+    (item,) = data["evidence"]
+    assert item["source_name"] == "https://example.org/c1"
+    assert item["source_link_status"] == "PLACEHOLDER"
+    assert "does not identify the original document" in item["source_link_note"]
+    assert "url" not in item
+
+
+def test_evidence_with_a_verified_url_is_offered_as_a_link():
+    events, _ = run(verifier=QualifyVerifier(), verified_source_links={"c1": "https://example.org/c1"})
+    kind, data = outcome(events)
+    (item,) = data["evidence"]
+    assert (item["source_link_status"], item["url"]) == ("VERIFIED", "https://example.org/c1")
 
 
 def test_abstention_before_generation_marks_the_evidence_ineligible():

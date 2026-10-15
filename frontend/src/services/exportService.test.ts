@@ -79,3 +79,19 @@ describe('exports leave patient context out', () => {
     expect(JSON.stringify(e.result)).toContain('SYNTHETIC-CONDITION-TEST');
   });
 });
+
+describe('exported evidence sources', () => {
+  it('says when a source is not a verified link', () => {
+    const e = entry();
+    e.result.evidence = [{
+      chunk_id: 'c1', document_id: 'SPL-SYNTHETIC-001', source_type: 'DAILYMED',
+      source_name: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-synthetic',
+      source_link_status: 'PLACEHOLDER',
+      source_link_note: 'Placeholder link in the frozen corpus; it does not identify the original document.',
+      title: 'Evidence [Source 1]', text: 'Synthetic evidence.', source_authority: 0.95, trust_score: 0.9,
+      freshness: 0.9, retrieval_method: 'hybrid-rrf', provenance_status: 'RETRIEVED',
+    }];
+    expect(exportAsMarkdown(e)).toContain(
+      'not a verified link: Placeholder link in the frozen corpus; it does not identify the original document.');
+  });
+});

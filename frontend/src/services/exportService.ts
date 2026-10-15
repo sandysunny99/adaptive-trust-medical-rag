@@ -61,7 +61,8 @@ export function exportAsMarkdown(entry: HistoryEntry, _includePatientContext = f
   if ((r.evidence || []).length > 0) {
     lines.push('', '## Evidence Sources', '');
     for (const [i, ev] of r.evidence.entries()) {
-      lines.push(`${i + 1}. **${ev.source_name}** — Trust: ${ev.trust_score?.toFixed(2) || 'N/A'}, Authority: ${ev.source_authority?.toFixed(2) || 'N/A'}${ev.pmid ? ` (PMID: ${ev.pmid})` : ''}`);
+      const link = ev.source_link_status && ev.source_link_status !== 'VERIFIED' ? ` — not a verified link: ${ev.source_link_note ?? ev.source_link_status}` : '';
+      lines.push(`${i + 1}. **${ev.source_name}** — Trust: ${ev.trust_score?.toFixed(2) || 'N/A'}, Authority: ${ev.source_authority?.toFixed(2) || 'N/A'}${ev.pmid ? ` (PMID: ${ev.pmid})` : ''}${link}`);
     }
   }
 

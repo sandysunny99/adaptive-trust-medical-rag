@@ -36,6 +36,8 @@ from adaptive_trust_medical_rag.services.live_relationships import (
     live_risk_tier,
     load_relationship_store,
 )
+from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
+from adaptive_trust_medical_rag.services.live_source_links import shared_urls, source_link
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
@@ -879,11 +881,19 @@ class LiveMedicalRAGService:
                 cand = sc.candidate
                 evidence_lines.append(f"[Source {i}]\n{cand.text.strip()}")
 
-                evidence_items.append({
+                # The page links a source only when its URL is verified for this chunk.
+                link = source_link(
+                    cand.chunk_id, cand.source_url,
+                    verified_links=getattr(self.app_state, "verified_source_links", None),
+                    shared=getattr(self.app_state, "shared_source_urls", frozenset()),
+                )
+                item = {
                     "chunk_id": cand.chunk_id,
                     "document_id": cand.document_id,
                     "source_type": cand.metadata.get("source_type", "BIOMEDICAL_LITERATURE"),
                     "source_name": cand.source_url or "Retrieved",
+                    "source_link_status": link["status"],
+                    "source_link_note": link["note"],
                     "title": f"Evidence [Source {i}]",
                     "text": cand.text,
                     "source_authority": cand.source_authority,
@@ -891,7 +901,10 @@ class LiveMedicalRAGService:
                     "freshness": float(cand.metadata.get("freshness_score", 0.8)),
                     "retrieval_method": "hybrid-rrf",
                     "provenance_status": "RETRIEVED"
-                })
+                }
+                if link["status"] == LINK_VERIFIED:
+                    item["url"] = cand.source_url
+                evidence_items.append(item)
 
             evidence_block = "\n\n".join(evidence_lines)
 
@@ -975,8 +988,25 @@ class LiveMedicalRAGService:
                 try:
                     structured_result = json.loads(raw_text)
                 except json.JSONDecodeError:
-                    log.error("LLM Output Validation Failure: output is not valid JSON")
-                    yield _sse("error", {"code": "LLM_OUTPUT_VALIDATION_FAILURE", "message": "Failed to parse LLM structured output."})
+                    # Record why, never the content: a "length" stop means the answer was cut off.
+                    finish_reason = getattr(gen_result, "finish_reason", None) or None
+                    log.error(
+                        "LLM Output Validation Failure: output is not valid JSON "
+                        "(provider=%s model=%s finish_reason=%s length=%d)",
+                        used_model_info["provider"], used_model_info["model_id"], finish_reason, len(raw_text),
+                    )
+                    message = "Failed to parse LLM structured output."
+                    if finish_reason == "length":
+                        message += (" The model stopped at its output token limit before the answer was "
+                                    "complete, so nothing could be verified.")
+                    yield _sse("stage_update", {"stage": "generating", "status": "failed", "timestamp": _ts()})
+                    yield _sse("error", {
+                        "code": "LLM_OUTPUT_VALIDATION_FAILURE",
+                        "message": message,
+                        "finish_reason": finish_reason,
+                        "provider": used_model_info["provider"],
+                        "model_id": used_model_info["model_id"],
+                    })
                     return
 
             except Exception as e:
@@ -1347,6 +1377,8 @@ def _lazy_init_models(app_state):
 
     # Approved relationship records are checked against this corpus; none load unless approved.
     app_state.relationship_store = load_relationship_store(data)
+    # A URL the corpus gives to several documents cannot identify any one of them.
+    app_state.shared_source_urls = shared_urls(data)
     log.info("Relationship records: %s", app_state.relationship_store.reason)
 
     log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)

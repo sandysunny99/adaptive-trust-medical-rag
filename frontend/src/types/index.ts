@@ -117,6 +117,8 @@ export interface TrustInfo {
   missing_factors: string[];
 }
 
+export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
+
 export interface EvidenceItem {
   chunk_id: string;
   document_id: string;
@@ -126,7 +128,10 @@ export interface EvidenceItem {
   text: string;
   pmid?: string;
   doi?: string;
+  /** Set only when the source URL is verified for this chunk; only then is it a link. */
   url?: string;
+  source_link_status?: SourceLinkStatus;
+  source_link_note?: string;
   source_authority: number;
   trust_score: number;
   freshness: number;

@@ -36,6 +36,8 @@ from adaptive_trust_medical_rag.api.schemas import ErrorResponse
 log = logging.getLogger(__name__)
 
 _APP_VERSION = "1.0.0"
+# Workers AI stops at 256 output tokens by default, which cuts the JSON answer off.
+CLOUDFLARE_MAX_TOKENS = 4096
 _APP_TITLE = "Adaptive Trust Medical RAG API"
 _APP_DESCRIPTION = (
     "Research API for evidence-grounded pharmacological question answering. "
@@ -172,7 +174,8 @@ def create_app(
             provider_name="cloudflare",
             base_url=f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/v1",
             api_key=os.environ["CLOUDFLARE_API_TOKEN"],
-            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+            max_tokens=CLOUDFLARE_MAX_TOKENS,
         )
         router.register_provider("cloudflare", cf_backend)
 

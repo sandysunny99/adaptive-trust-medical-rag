@@ -430,6 +430,16 @@ def test_provider_availability_requires_live_router_registration(monkeypatch):
     assert "not configured on registered provider 'groq'" in err
 
 
+def test_cloudflare_answer_model_gets_an_explicit_output_token_limit(monkeypatch):
+    """Workers AI stops at 256 output tokens by default, which cuts the JSON answer off."""
+    from adaptive_trust_medical_rag.api.app import CLOUDFLARE_MAX_TOKENS, create_app
+
+    monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "mock_dummy_token")
+    monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "mock_dummy_account")
+    adapter = create_app().state.llm_backend.providers["cloudflare"]
+    assert adapter.max_tokens == CLOUDFLARE_MAX_TOKENS > 256
+
+
 def test_vision_backend_initialization_decoupling(monkeypatch):
     """Verify NVIDIA Vision backend initializes independently of Cloudflare credentials."""
     from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
