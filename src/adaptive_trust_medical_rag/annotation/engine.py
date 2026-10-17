@@ -107,17 +107,22 @@ class AIAnnotationEngine:
             return json.load(f)
 
     def _compute_hashes(self) -> dict[str, str]:
-        """Compute SHA256 hashes for system, adjudication, challenge prompts, and schema."""
+        """Compute SHA256 hashes for system, adjudication, challenge prompts, and schema.
+
+        Prompts are hashed as the raw file bytes, as the frozen hashes were recorded
+        (track_a_annotation/decision_batches/gen_final_v14.py reads them with "rb"). Text mode
+        would turn CRLF into LF and hash different bytes. The schema hash is its canonical JSON.
+        """
         canon_schema = json.dumps(self.schema_dict, sort_keys=True, separators=(",", ":")).encode(
             "utf-8"
         )
         return {
-            "system_prompt_sha256": hashlib.sha256(self.system_prompt.encode("utf-8")).hexdigest(),
+            "system_prompt_sha256": hashlib.sha256(self.system_prompt_path.read_bytes()).hexdigest(),
             "adjudication_prompt_sha256": hashlib.sha256(
-                self.adjudication_prompt_template.encode("utf-8")
+                self.adjudication_prompt_path.read_bytes()
             ).hexdigest(),
             "challenge_prompt_sha256": hashlib.sha256(
-                self.challenge_prompt.encode("utf-8")
+                self.challenge_prompt_path.read_bytes()
             ).hexdigest(),
             "track_a_adjudication_schema_sha256": hashlib.sha256(canon_schema).hexdigest(),
         }
