@@ -141,15 +141,24 @@ def scan_with_gitleaks(content: str) -> list[str]:
                     "--source",
                     str(tmp_dir),
                     "--no-git",
-                    "--quiet",
+                    # gitleaks 8.30 has no --quiet; these keep the output short and redacted.
+                    "--no-banner",
+                    "--log-level",
+                    "error",
+                    "--redact",
+                    "--exit-code",
+                    "1",
                     *config_args,
                 ],
                 capture_output=True,
                 text=True,
                 timeout=20,
             )
-        if result.returncode != 0:
+        if result.returncode == 1:
             return ["GITLEAKS DETECTED SECRETS — run `gitleaks detect` for details"]
+        if result.returncode != 0:
+            # A scan that could not run must not pass as clean.
+            return [f"GITLEAKS COULD NOT RUN (exit {result.returncode}) — the content was not scanned"]
         return []
     except Exception:
         return []  # Any unexpected error should not block the write
@@ -198,7 +207,11 @@ def main() -> None:
                 {
                     "decision": "deny",
                     "reason": (
-                        "SECRET DETECTED — file write blocked. "
+                        # A scan that could not run is not a found secret, but it still blocks.
+                        ("SECRET DETECTED — file write blocked. "
+                         if any("COULD NOT RUN" not in f for f in unique)
+                         else "SECRET SCAN COULD NOT RUN — file write blocked. ")
+                        +
                         f"Findings: {'; '.join(unique)}. "
                         "Use environment variables instead of hard‑coded credentials. "
                         "See AGENTS.md security rules. The file has NOT been written."
