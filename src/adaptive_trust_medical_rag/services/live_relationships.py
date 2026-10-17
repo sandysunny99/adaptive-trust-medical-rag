@@ -13,6 +13,14 @@ A record with a symmetric predicate (a contraindicated combination, an interacti
 BIDIRECTIONAL: the relationship then holds in both drug orders, and a claim naming the two
 drugs in the other order is checked against the record in that order. Directional predicates
 (inhibition, induction, increases, ...) keep their recorded direction.
+
+V1 records must cite a chunk of the frozen live corpus. V2 records may also cite a chunk of
+their own versioned evidence file (for example exact label text captured from DailyMed), so a
+source can be added without changing the frozen corpus. V2 has its own manifest, which must be
+APPROVED by a named person and must match the SHA-256 of both the records file and the evidence
+file. An evidence chunk becomes retrievable only when an accepted V2 record cites it, and it then
+goes through the same provenance-hash, trust, eligibility and claim-verification gates as a
+corpus chunk.
 """
 
 from __future__ import annotations
@@ -35,6 +43,7 @@ from adaptive_trust_medical_rag.verification.canonical_identity import (
 log = logging.getLogger(__name__)
 
 RELATIONSHIP_DATASET = "LIVE_RELATIONSHIP_RECORDS_V1"
+RELATIONSHIP_DATASET_V2 = "LIVE_RELATIONSHIP_RECORDS_V2"
 RELATIONSHIP_DIR = os.path.join(
     os.path.dirname(__file__), "..", "..", "..", "data", "live_medical", "relationships"
 )
@@ -98,6 +107,8 @@ class RelationshipStore:
     status: str = "NOT_LOADED"
     reason: str = "no relationship dataset was loaded"
     rejected: tuple[tuple[str, str], ...] = field(default_factory=tuple)
+    # Approved V2 evidence chunks (corpus item schema) that an accepted V2 record cites.
+    evidence: tuple[dict[str, Any], ...] = ()
 
     def between(self, rxcuis: list[str]) -> list[RelationshipRecord]:
         """Records linking any two different requested medications."""
@@ -181,8 +192,27 @@ def validate_record(raw: dict[str, Any], chunks_by_id: dict[str, dict[str, Any]]
     return record, "valid"
 
 
-def load_relationship_store(corpus_items: list[dict[str, Any]], directory: str = RELATIONSHIP_DIR) -> RelationshipStore:
-    """Load the approved records; anything short of an approved, hash-matching dataset loads nothing."""
+def load_relationship_store(corpus_items: list[dict[str, Any]], directory: str | None = None) -> RelationshipStore:
+    """Load the approved V1 and V2 records; a dataset short of approved and hash-matching loads nothing.
+
+    Without a V2 manifest the result is exactly the V1 store.
+    """
+    directory = RELATIONSHIP_DIR if directory is None else directory
+    v1 = _load_v1(corpus_items, directory)
+    v2 = _load_v2(corpus_items, directory)
+    if v2 is None:
+        return v1
+    return RelationshipStore(
+        records=v1.records + v2.records,
+        status="APPROVED" if "APPROVED" in (v1.status, v2.status) else v1.status,
+        reason=f"{v1.reason}; {v2.reason}",
+        rejected=v1.rejected + v2.rejected,
+        evidence=v2.evidence,
+    )
+
+
+def _load_v1(corpus_items: list[dict[str, Any]], directory: str) -> RelationshipStore:
+    """Load the approved V1 records; anything short of an approved, hash-matching dataset loads nothing."""
     manifest_path = os.path.join(directory, f"{RELATIONSHIP_DATASET}_MANIFEST.json")
     if not os.path.exists(manifest_path):
         return RelationshipStore(status="MISSING", reason=f"{RELATIONSHIP_DATASET} manifest not found")
@@ -214,6 +244,92 @@ def load_relationship_store(corpus_items: list[dict[str, Any]], directory: str =
             accepted.append(record)
     return RelationshipStore(records=tuple(accepted), status="APPROVED",
                              reason=f"{len(accepted)} approved record(s) loaded", rejected=tuple(rejected))
+
+
+def validate_evidence_chunk(item: Any, frozen_ids: set[Any], embedding_dims: set[int]) -> str:
+    """'valid', or why a V2 evidence chunk cannot be used. It must be complete, keep its own
+    content hash, never replace a frozen corpus chunk, carry an https source URL and an embedding
+    of the corpus's dimension."""
+    if not isinstance(item, dict):
+        return "evidence chunk is not an object"
+    missing = [k for k in ("chunk_id", "document_id", "document_url", "source_type", "text", "content_hash",
+                           "authority", "freshness", "embedding", "provenance") if item.get(k) in (None, "")]
+    if missing:
+        return f"evidence chunk is missing {', '.join(missing)}"
+    if item["chunk_id"] in frozen_ids:
+        return "evidence chunk id is already a frozen corpus chunk"
+    text = item["text"]
+    if not isinstance(text, str) or hashlib.sha256(text.encode("utf-8")).hexdigest() != item["content_hash"]:
+        return "evidence chunk content hash does not match its text"
+    prov = item["provenance"]
+    if not isinstance(prov, dict) or not prov.get("source") or prov.get("content_hash") != item["content_hash"]:
+        return "evidence chunk provenance must name its source and carry its content hash"
+    if not str(item["document_url"]).lower().startswith("https://"):
+        return "evidence chunk source URL is not https"
+    if not all(isinstance(item[k], (int, float)) and 0.0 <= item[k] <= 1.0 for k in ("authority", "freshness")):
+        return "evidence chunk authority and freshness must be numbers in [0, 1]"
+    emb = item["embedding"]
+    if not isinstance(emb, list) or not all(isinstance(x, (int, float)) for x in emb) or (
+            embedding_dims and {len(emb)} != embedding_dims):
+        return "evidence chunk embedding does not match the corpus embedding dimension"
+    return "valid"
+
+
+def _load_v2(corpus_items: list[dict[str, Any]], directory: str) -> RelationshipStore | None:
+    """Load approved V2 records and the evidence chunks they cite; None when no V2 manifest exists."""
+    name = RELATIONSHIP_DATASET_V2
+    manifest_path = os.path.join(directory, f"{name}_MANIFEST.json")
+    if not os.path.exists(manifest_path):
+        return None
+    try:
+        with open(manifest_path, encoding="utf-8") as f:
+            manifest = json.load(f)
+        approval = manifest.get("approval") or {}
+        status = str(manifest.get("status", "UNKNOWN"))
+        if status != "APPROVED" or not approval.get("approved_by") or not approval.get("approved_at"):
+            return RelationshipStore(status=status, reason=f"{name} is {status}, not approved")
+        with open(os.path.join(directory, manifest["records_file"]), "rb") as f:
+            records_raw = f.read()
+        with open(os.path.join(directory, manifest["evidence_file"]), "rb") as f:
+            evidence_raw = f.read()
+        if _records_hash(records_raw) != manifest.get("records_sha256"):
+            return RelationshipStore(status="HASH_MISMATCH", reason=f"{name} records file does not match the manifest SHA-256")
+        if _records_hash(evidence_raw) != manifest.get("evidence_sha256"):
+            return RelationshipStore(status="HASH_MISMATCH", reason=f"{name} evidence file does not match the manifest SHA-256")
+        dataset = json.loads(records_raw.decode("utf-8"))
+        evidence_items = json.loads(evidence_raw.decode("utf-8"))
+        if not isinstance(evidence_items, list):
+            raise ValueError("evidence file is not a list")
+    except (OSError, ValueError, KeyError, TypeError) as e:
+        return RelationshipStore(status="UNREADABLE", reason=f"{name} could not be read ({type(e).__name__})")
+
+    frozen_ids = {item.get("chunk_id") for item in corpus_items}
+    dims = {len(item["embedding"]) for item in corpus_items if isinstance(item.get("embedding"), list)}
+    evidence, rejected = {}, []
+    for item in evidence_items:
+        why = validate_evidence_chunk(item, frozen_ids, dims)
+        chunk_id = item.get("chunk_id", "?") if isinstance(item, dict) else "?"
+        if why != "valid" or chunk_id in evidence:
+            why = why if why != "valid" else "duplicate evidence chunk id"
+            rejected.append((f"evidence {chunk_id}", why))
+            log.warning("%s evidence chunk %s rejected: %s", name, chunk_id, why)
+        else:
+            evidence[chunk_id] = item
+
+    chunks_by_id = {item.get("chunk_id"): item for item in corpus_items} | evidence
+    accepted = []
+    for raw_record in dataset.get("records", []):
+        record, why = validate_record(raw_record, chunks_by_id)
+        if record is None:
+            rejected.append((str(raw_record.get("record_id", "?")), why))
+            log.warning("Relationship record %s rejected: %s", raw_record.get("record_id", "?"), why)
+        else:
+            accepted.append(record)
+    cited = {r.source_chunk_id for r in accepted}
+    usable = tuple(item for chunk_id, item in evidence.items() if chunk_id in cited)
+    return RelationshipStore(records=tuple(accepted), status="APPROVED",
+                             reason=f"{name}: {len(accepted)} approved record(s), {len(usable)} evidence chunk(s) loaded",
+                             rejected=tuple(rejected), evidence=usable)
 
 
 def aligned_medications(text: str, medications: list[dict[str, Any]]) -> list[str]:

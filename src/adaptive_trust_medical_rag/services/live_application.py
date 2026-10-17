@@ -30,6 +30,7 @@ from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     TrustFactorScores,
 )
 from adaptive_trust_medical_rag.llm_backend.model_registry import get_model_definition
+from adaptive_trust_medical_rag.services import live_relationships
 from adaptive_trust_medical_rag.services.live_relationships import (
     RelationshipStore,
     aligned_medications,
@@ -747,6 +748,7 @@ class LiveMedicalRAGService:
                 "evidence_count": len(candidates),
                 "sources": list({c.candidate.metadata.get("source_type", "UNKNOWN") for c in candidates}),
                 "corpus": retrieval_info.get("corpus"),
+                "relationship_evidence_chunks": retrieval_info.get("relationship_evidence_chunks", []),
                 "embedding_model": retrieval_info.get("embedding_model"),
                 "embedding_mode": retrieval_info.get("embedding_mode"),
             })
@@ -1388,24 +1390,24 @@ def _lazy_init_models(app_state):
         log.warning("Live corpus not found at %s", os.path.abspath(corpus_path))
         _record_init_error(app_state, "retrieval", f"live corpus file {LIVE_CORPUS_FILE} not found")
         return
+    def as_candidate(item: dict[str, Any]) -> Candidate:
+        return Candidate(
+            chunk_id=item["chunk_id"],
+            document_id=item["document_id"],
+            text=item["text"],
+            source_url=item.get("document_url", ""),
+            source_authority=item.get("authority", 0.5),
+            metadata={
+                "provenance": item.get("provenance", {}),
+                "freshness_score": item.get("freshness", 0.8),
+                "source_type": item.get("source_type"),
+            },
+        )
+
     try:
         with open(corpus_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        live_corpus = [
-            Candidate(
-                chunk_id=item["chunk_id"],
-                document_id=item["document_id"],
-                text=item["text"],
-                source_url=item.get("document_url", ""),
-                source_authority=item.get("authority", 0.5),
-                metadata={
-                    "provenance": item.get("provenance", {}),
-                    "freshness_score": item.get("freshness", 0.8),
-                    "source_type": item.get("source_type"),
-                },
-            )
-            for item in data
-        ]
+        live_corpus = [as_candidate(item) for item in data]
     except Exception as e:
         log.warning("Could not read live corpus: %s", e)
         _record_init_error(
@@ -1414,14 +1416,17 @@ def _lazy_init_models(app_state):
         return
 
     # Approved relationship records are checked against this corpus; none load unless approved.
-    app_state.relationship_store = load_relationship_store(data)
+    app_state.relationship_store = load_relationship_store(data, directory=live_relationships.RELATIONSHIP_DIR)
+    # Evidence chunks of approved V2 records join retrieval next to the frozen corpus, unchanged.
+    supplement = list(app_state.relationship_store.evidence)
+    live_corpus += [as_candidate(item) for item in supplement]
     # A URL the corpus gives to several documents cannot identify any one of them.
-    app_state.shared_source_urls = shared_urls(data)
+    app_state.shared_source_urls = shared_urls(data + supplement)
     log.info("Relationship records: %s", app_state.relationship_store.reason)
 
     log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)
     try:
-        embedding_model = _LiveEmbeddingModel(data)
+        embedding_model = _LiveEmbeddingModel(data + supplement)
     except Exception as e:
         log.warning("Could not load embedding model %s: %s", LIVE_EMBEDDING_MODEL, e)
         _record_init_error(
@@ -1438,5 +1443,7 @@ def _lazy_init_models(app_state):
         "embedding_model": LIVE_EMBEDDING_MODEL,
         "embedding_mode": embedding_model.mode,
     }
+    if supplement:
+        app_state.retrieval_info["relationship_evidence_chunks"] = [item["chunk_id"] for item in supplement]
     _record_init_error(app_state, "retrieval", None)
     log.info("Live retrieval ready: %s", app_state.retrieval_info)
