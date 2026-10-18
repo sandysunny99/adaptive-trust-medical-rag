@@ -124,7 +124,26 @@ def create_app(
         pass
 
     groq_api_key = os.environ.get("GROQ_API_KEY")
-    nvidia_api_key = os.environ.get("NVIDIA_API_KEY")
+    # Separate NVIDIA credentials: LLM text-generation vs. OCR / Vision extraction
+    nvidia_llm_api_key = os.environ.get("NVIDIA_LLM_API_KEY") or os.environ.get("NVIDIA_API_KEY")
+    nvidia_llm_model = os.environ.get("NVIDIA_LLM_MODEL", "nvidia/nemotron-3-super-120b-a12b")
+    nvidia_llm_base_url = os.environ.get("NVIDIA_LLM_BASE_URL", "https://integrate.api.nvidia.com/v1")
+
+    nvidia_ocr_api_key = (
+        os.environ.get("NVIDIA_OCR_API_KEY")
+        or os.environ.get("NVIDIA_VISION_API_KEY")
+        or os.environ.get("NVIDIA_API_KEY")
+    )
+    nvidia_ocr_model = (
+        os.environ.get("NVIDIA_OCR_MODEL")
+        or os.environ.get("NVIDIA_VISION_MODEL")
+        or "meta/llama-3.2-11b-vision-instruct"
+    )
+    nvidia_ocr_base_url = (
+        os.environ.get("NVIDIA_OCR_BASE_URL")
+        or os.environ.get("NVIDIA_VISION_BASE_URL")
+        or "https://integrate.api.nvidia.com/v1"
+    )
 
     from adaptive_trust_medical_rag.llm_backend.live_provider_router import LiveProviderRouter
     from adaptive_trust_medical_rag.llm_backend.openai_compatible_backend import (
@@ -134,7 +153,7 @@ def create_app(
     primary_provider = os.environ.get("LLM_PROVIDER", "nvidia").lower()
     
     provider_priority = []
-    if os.environ.get("NVIDIA_API_KEY"): provider_priority.append("nvidia")
+    if nvidia_llm_api_key: provider_priority.append("nvidia")
     if os.environ.get("GROQ_API_KEY"): provider_priority.append("groq")
     if os.environ.get("HF_TOKEN"): provider_priority.append("huggingface")
     if os.environ.get("CLOUDFLARE_API_TOKEN"): provider_priority.append("cloudflare")
@@ -155,12 +174,12 @@ def create_app(
         )
         router.register_provider("groq", groq_backend)
 
-    if nvidia_api_key:
+    if nvidia_llm_api_key:
         nvidia_backend = OpenAICompatibleBackend(
             provider_name="nvidia",
-            base_url="https://integrate.api.nvidia.com/v1",
-            api_key=nvidia_api_key,
-            model_name="nvidia/nemotron-3-super-120b-a12b"
+            base_url=nvidia_llm_base_url,
+            api_key=nvidia_llm_api_key,
+            model_name=nvidia_llm_model
         )
         router.register_provider("nvidia", nvidia_backend)
         
@@ -179,13 +198,13 @@ def create_app(
         )
         router.register_provider("cloudflare", cf_backend)
 
-    if nvidia_api_key:
+    if nvidia_ocr_api_key:
         from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend
         app.state.vision_backend = OpenAIVisionBackend(
             provider_name="nvidia_vision",
-            base_url="https://integrate.api.nvidia.com/v1",
-            api_key=nvidia_api_key,
-            model_name="meta/llama-3.2-11b-vision-instruct"
+            base_url=nvidia_ocr_base_url,
+            api_key=nvidia_ocr_api_key,
+            model_name=nvidia_ocr_model
         )
     else:
         app.state.vision_backend = None
