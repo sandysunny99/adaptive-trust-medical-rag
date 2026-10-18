@@ -1,6 +1,8 @@
 # Frozen prompt files are hashed byte-for-byte. Pin their line endings so a
 # checkout on any platform reproduces the bytes recorded in the hash manifests.
 experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt text eol=lf
+# Recorded as LF bytes (tests/test_frozen_hash_reproducibility.py); a Windows autocrlf checkout would add CR.
+experiments/runs/retrieval-diagnostic-phase2f5-real-reproduced/runner_real_hardened.py text eol=lf
 track_a_annotation/decision_batches/TRACK_A_LLM_SYSTEM_PROMPT_V2.txt text eol=lf
 track_a_annotation/decision_batches/TRACK_A_LLM_CHALLENGE_PROMPT_V2.txt text eol=lf
 # Frozen hash 374351cf... was recorded over the CRLF form of this file.
