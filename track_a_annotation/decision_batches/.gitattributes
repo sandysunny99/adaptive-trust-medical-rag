@@ -1,6 +1,0 @@
-# Frozen Track A prompts are hashed byte-for-byte (TRACK_A_LLM_FINAL_SCHEMA_HASHES_V1.json).
-# Pin their line endings so a checkout on any platform reproduces the recorded bytes.
-# Same rules as the repository-wide pins on claude/continue-blockers (BLK-010).
-TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt text eol=crlf
-TRACK_A_LLM_SYSTEM_PROMPT_V2.txt text eol=lf
-TRACK_A_LLM_CHALLENGE_PROMPT_V2.txt text eol=lf
