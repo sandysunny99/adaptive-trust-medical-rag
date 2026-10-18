@@ -454,3 +454,29 @@ async def test_29_bare_empty_json_rejected(vision_backend, valid_image_bytes):
         with pytest.raises(ModelExecutionError) as exc:
             await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
         assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
+
+
+@pytest.mark.asyncio
+async def test_30_invalid_content_inside_code_fence_rejected(vision_backend, valid_image_bytes):
+    """A code fence only unwraps one valid JSON object; anything else inside or around it fails closed."""
+    invalid_samples = [
+        # Malformed JSON inside a fence
+        '```json\n{"candidate_medications": [{"raw_text": "Warfarin",}\n```',
+        # Prose inside a fence
+        "```json\nThe image shows Warfarin 5mg.\n```",
+        # Nested fences
+        '```json\n```json\n{"candidate_medications": []}\n```\n```',
+        # Schema-invalid JSON inside a fence
+        '```json\n{"raw_text": "Warfarin 5mg", "warnings": []}\n```',
+        '```json\n{"candidate_medications": "Warfarin"}\n```',
+        '```json\n{"candidate_medications": [{"raw_text": "", "confidence": "HIGH"}]}\n```',
+        # Unclosed fence
+        '```json\n{"candidate_medications": []}',
+    ]
+    for sample in invalid_samples:
+        mock_resp_json = {"choices": [{"message": {"content": sample}}]}
+        with patch("httpx.AsyncClient.post") as mock_post:
+            mock_post.return_value = create_mock_response(200, json_data=mock_resp_json)
+            with pytest.raises(ModelExecutionError) as exc:
+                await vision_backend.extract_medications(valid_image_bytes, "image/jpeg")
+            assert exc.value.failure_class == FailureClass.SCHEMA_ERROR, sample
