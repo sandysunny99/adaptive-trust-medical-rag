@@ -4,7 +4,7 @@
 
 > **Non-Clinical Disclaimer.** This software is a research prototype. It is not an FDA-approved or otherwise certified medical device and must not be used for diagnosis, prescribing or any patient care. Every output is a research artifact that may be wrong or incomplete, and the system is designed to abstain rather than guess.
 
-Status as of commit `9bae325` (2026-10-18): the live application runs end to end with real providers and real embeddings and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
+Status: the safe-abstention build is **frozen at `baf6c93`** (2026-10-19). The live application runs end to end with real providers and real embeddings and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
 
 ---
 
@@ -186,7 +186,7 @@ Protocol: [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
 
 ## Project status
 
-The authoritative status of every open item is [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md). Validation runs and reports are under [reports/live_validation/](reports/live_validation/). The application freeze, the evidence-backed-answer milestone and any release are separate researcher decisions; none is declared here.
+The authoritative status of every open item is [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md). Validation runs and reports are under [reports/live_validation/](reports/live_validation/). Application freeze: the **safe-abstention** build is frozen at commit `baf6c93` (researcher decision, 2026-10-19; record: [reports/live_validation/APPLICATION_FREEZE_2026-10-19.md](reports/live_validation/APPLICATION_FREEZE_2026-10-19.md)). This does not certify clinical accuracy. Evidence-backed answers are **not** verified, and no release or tag exists.
 
 ## Documentation map
 
