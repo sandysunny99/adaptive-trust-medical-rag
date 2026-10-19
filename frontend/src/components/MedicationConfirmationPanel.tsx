@@ -1,10 +1,22 @@
 import { useState } from 'react';
-import { Pill, Check, Edit2, X, Plus, AlertTriangle } from 'lucide-react';
-import type { MedicationCandidate } from '../types';
+import { Icons } from '../ui/icons';
+import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
   candidates: MedicationCandidate[];
-  onConfirm: (confirmedNames: string[]) => void;
+  onConfirm: (confirmed: ConfirmedMedication[]) => void;
+}
+
+/** The confirmation item for a reviewed candidate, keeping who supplied the name. */
+function toConfirmedMedication(c: MedicationCandidate): ConfirmedMedication {
+  const name = (c.normalized_text || c.raw_text).trim();
+  if (c.source === 'USER') {
+    return { name, status: 'USER_ADDED', source: 'USER', raw_detected_name: null };
+  }
+  if (c.status === 'EDITED') {
+    return { name, status: 'EDITED', source: 'USER_EDITED', raw_detected_name: c.raw_text };
+  }
+  return { name, status: 'CONFIRMED', source: c.source === 'OCR' ? 'OCR' : 'VISION', raw_detected_name: c.raw_text };
 }
 
 export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm }: Props) {
@@ -72,10 +84,10 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   const hasConfirmed = activeCandidates.length > 0 && !hasUncertain;
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
-      <div className="p-5 border-b border-slate-100 bg-slate-50">
-        <h2 className="text-base font-semibold text-slate-900">Review Detected Medications</h2>
-        <p className="text-sm text-slate-500 mt-1">
+    <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+      <div className="p-5 border-b border-border bg-muted">
+        <h2 className="text-base font-semibold text-foreground">Review Detected Medications</h2>
+        <p className="text-sm text-muted-foreground mt-1">
           Review and confirm the medications extracted from the prescription image. 
           Uncertain extractions must be resolved.
         </p>
@@ -83,16 +95,16 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
 
       <div className="p-5 space-y-4">
         {activeCandidates.length === 0 && (
-          <div className="text-sm text-slate-500 text-center py-4">
+          <div className="text-sm text-muted-foreground text-center py-4">
             No medications detected.
           </div>
         )}
 
         {activeCandidates.map(c => (
           <div key={c.id} className={`flex items-start justify-between p-4 rounded-lg border ${
-            c.status === 'UNCERTAIN' ? 'border-amber-200 bg-amber-50' : 
-            c.status === 'DETECTED' ? 'border-blue-200 bg-blue-50' :
-            'border-green-200 bg-green-50'
+            c.status === 'UNCERTAIN' ? 'border-warning/30 bg-warning-soft' : 
+            c.status === 'DETECTED' ? 'border-primary/30 bg-primary-soft' :
+            'border-success/30 bg-success-soft'
           }`}>
             <div className="flex-1">
               {editingId === c.id ? (
@@ -101,24 +113,24 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                     type="text"
                     value={editValue}
                     onChange={(e) => setEditValue(e.target.value)}
-                    className="px-3 py-1.5 border border-slate-300 rounded text-sm w-full max-w-xs"
+                    className="px-3 py-1.5 border border-input rounded text-sm w-full max-w-xs"
                     autoFocus
                   />
-                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-blue-600 text-white rounded hover:bg-blue-700">
-                    <Check size={14} />
+                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+                    <Icons.pass size={14} />
                   </button>
-                  <button onClick={() => setEditingId(null)} className="p-1.5 text-slate-500 hover:text-slate-700">
-                    <X size={14} />
+                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground">
+                    <Icons.remove size={14} />
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Pill size={16} className={c.status === 'UNCERTAIN' ? 'text-amber-500' : 'text-slate-500'} />
-                  <span className="font-semibold text-slate-900">
+                  <Icons.medication size={16} className={c.status === 'UNCERTAIN' ? 'text-warning' : 'text-muted-foreground'} />
+                  <span className="font-semibold text-foreground">
                     {c.normalized_text || c.raw_text}
                   </span>
                   {c.normalized_text && c.normalized_text !== c.raw_text && (
-                    <span className="text-xs text-slate-400 block sm:inline sm:ml-2">
+                    <span className="text-xs text-muted-foreground block sm:inline sm:ml-2">
                       (Extracted: "{c.raw_text}")
                     </span>
                   )}
@@ -127,18 +139,18 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
               
               <div className="mt-2 flex flex-wrap gap-2 text-xs">
                 {c.source === 'USER' ? (
-                  <span className="px-2 py-0.5 bg-slate-200 text-slate-700 rounded-full">User Added</span>
+                  <span className="px-2 py-0.5 bg-border text-foreground rounded-full">User Added</span>
                 ) : (
-                  <span className="px-2 py-0.5 bg-slate-200 text-slate-700 rounded-full">
+                  <span className="px-2 py-0.5 bg-border text-foreground rounded-full">
                     Source: Image
                   </span>
                 )}
                 
                 {c.source !== 'USER' && (
                   <span className={`px-2 py-0.5 rounded-full ${
-                    c.confidence === 'HIGH' ? 'bg-green-100 text-green-700' :
-                    c.confidence === 'MEDIUM' ? 'bg-amber-100 text-amber-700' :
-                    'bg-red-100 text-red-700'
+                    c.confidence === 'HIGH' ? 'bg-success-soft text-success' :
+                    c.confidence === 'MEDIUM' ? 'bg-warning-soft text-warning' :
+                    'bg-destructive-soft text-destructive'
                   }`}>
                     Extraction confidence: {c.confidence}
                   </span>
@@ -146,10 +158,10 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                 
                 <span className={`px-2 py-0.5 rounded-full ${
                   c.status === 'CONFIRMED' || c.status === 'USER_ADDED' || c.status === 'EDITED' 
-                    ? 'bg-green-100 text-green-800' 
+                    ? 'bg-success-soft text-success' 
                     : c.status === 'UNCERTAIN'
-                    ? 'bg-amber-100 text-amber-800'
-                    : 'bg-blue-100 text-blue-800'
+                    ? 'bg-warning-soft text-warning'
+                    : 'bg-primary-soft text-primary'
                 }`}>
                   Status: {c.status}
                 </span>
@@ -160,7 +172,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
               {c.status !== 'CONFIRMED' && c.status !== 'USER_ADDED' && c.status !== 'EDITED' && (
                 <button 
                   onClick={() => handleToggleStatus(c.id)}
-                  className="px-3 py-1.5 bg-white border border-slate-300 text-slate-700 rounded text-sm hover:bg-slate-50"
+                  className="px-3 py-1.5 bg-card border border-input text-foreground rounded text-sm hover:bg-muted"
                 >
                   Confirm
                 </button>
@@ -170,61 +182,63 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                   setEditingId(c.id);
                   setEditValue(c.normalized_text || c.raw_text);
                 }}
-                className="p-1.5 text-slate-400 hover:text-blue-600"
+                className="p-1.5 text-muted-foreground hover:text-primary"
                 title="Edit"
+                aria-label={`Edit ${c.normalized_text || c.raw_text}`}
               >
-                <Edit2 size={16} />
+                <Icons.edit size={16} />
               </button>
               <button 
                 onClick={() => handleRemove(c.id)}
-                className="p-1.5 text-slate-400 hover:text-red-600"
+                className="p-1.5 text-muted-foreground hover:text-destructive"
                 title="Remove"
+                aria-label={`Remove ${c.normalized_text || c.raw_text}`}
               >
-                <X size={16} />
+                <Icons.remove size={16} />
               </button>
             </div>
           </div>
         ))}
 
         {isAdding ? (
-          <div className="flex items-center gap-2 p-4 border border-slate-200 rounded-lg bg-slate-50">
+          <div className="flex items-center gap-2 p-4 border border-border rounded-lg bg-muted">
             <input
               type="text"
               value={newMedName}
               onChange={(e) => setNewMedName(e.target.value)}
               placeholder="Enter medication name"
-              className="px-3 py-2 border border-slate-300 rounded text-sm w-full max-w-xs"
+              className="px-3 py-2 border border-input rounded text-sm w-full max-w-xs"
               autoFocus
               onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
             />
-            <button onClick={handleAdd} className="px-3 py-2 bg-blue-600 text-white rounded text-sm font-medium hover:bg-blue-700">
+            <button onClick={handleAdd} className="px-3 py-2 bg-primary text-primary-foreground rounded text-sm font-medium hover:bg-primary/90">
               Add
             </button>
-            <button onClick={() => setIsAdding(false)} className="p-2 text-slate-500 hover:text-slate-700">
-              <X size={16} />
+            <button onClick={() => setIsAdding(false)} className="p-2 text-muted-foreground hover:text-foreground" aria-label="Cancel adding a medication" title="Cancel">
+              <Icons.remove size={16} />
             </button>
           </div>
         ) : (
           <button 
             onClick={() => setIsAdding(true)}
-            className="flex items-center gap-2 text-sm text-blue-600 font-medium hover:text-blue-800"
+            className="flex items-center gap-2 text-sm text-primary font-medium hover:text-primary"
           >
-            <Plus size={16} /> Add medication manually
+            <Icons.add size={16} /> Add medication manually
           </button>
         )}
       </div>
 
-      <div className="p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
-        <div className="text-sm text-amber-700 flex items-center gap-2">
+      <div className="p-5 border-t border-border bg-muted flex items-center justify-between">
+        <div className="text-sm text-warning flex items-center gap-2">
           {hasUncertain && (
             <>
-              <AlertTriangle size={16} />
+              <Icons.caution size={16} />
               Please review and confirm all uncertain medications.
             </>
           )}
           {!hasUncertain && activeCandidates.length === 0 && (
             <>
-              <AlertTriangle size={16} />
+              <Icons.caution size={16} />
               No medications to analyze.
             </>
           )}
@@ -233,13 +247,11 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
         <button
           onClick={() => {
             if (hasConfirmed) {
-              // Submit array of strings for confirmed med names
-              const resolved = activeCandidates.map(c => c.normalized_text || c.raw_text);
-              onConfirm(resolved);
+              onConfirm(activeCandidates.map(toConfirmedMedication));
             }
           }}
           disabled={!hasConfirmed}
-          className="px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Confirm Medications & Analyze
         </button>

@@ -467,7 +467,7 @@ def handle_research_run(args: argparse.Namespace) -> int:
         verifier = ForensicVerifier()
         verification_res = verifier.verify_record(canonical_record)
 
-        audit_dir = Path("reports/audit")
+        audit_dir = Path(getattr(args, "audit_dir", None) or "reports/audit")
         audit_dir.mkdir(parents=True, exist_ok=True)
 
         canon_report_md = f"""# Canonical R1 Forensic Verification Report
@@ -573,7 +573,7 @@ and verification stages have been independently verified against raw runtime evi
             LiveResultIntegrityAuditor,
         )
 
-        run_dir = Path("experiments/runs/live-smoke-v1")
+        run_dir = Path(getattr(args, "run_dir", None) or "experiments/runs/live-smoke-v1")
         run_dir.mkdir(parents=True, exist_ok=True)
 
         manifest_data = {
@@ -773,6 +773,14 @@ def build_parser() -> argparse.ArgumentParser:
     p_res.add_argument("--seed", type=int, default=42, help="Random seed")
     p_res.add_argument("--limit", type=int, default=None, help="Limit number of cases")
     p_res.add_argument("--output-dir", help="Output directory path")
+    p_res.add_argument(
+        "--audit-dir",
+        help="Directory for audit reports (default: reports/audit)",
+    )
+    p_res.add_argument(
+        "--run-dir",
+        help="Directory for the run manifest and case results (default: experiments/runs/live-smoke-v1)",
+    )
     p_res.set_defaults(func=handle_research_run)
 
     return parser

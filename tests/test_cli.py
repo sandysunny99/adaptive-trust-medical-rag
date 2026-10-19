@@ -154,6 +154,10 @@ class TestCLIResearchRun:
                 "A,F",
                 "--output-dir",
                 str(out_dir),
+                "--audit-dir",
+                str(tmp_path / "audit"),
+                "--run-dir",
+                str(tmp_path / "run"),
             ]
         )
         assert ret == 0
@@ -179,6 +183,10 @@ class TestCLIResearchRun:
                 "A,B",
                 "--output-dir",
                 str(out_dir),
+                "--audit-dir",
+                str(tmp_path / "audit"),
+                "--run-dir",
+                str(tmp_path / "run"),
             ]
         )
         assert ret == 0
@@ -186,6 +194,34 @@ class TestCLIResearchRun:
         data = json.loads(captured.out)
         assert data["execution_type"] == "simulation"
         assert data["status"] == "COMPLETED"
+
+    def test_research_run_leaves_committed_artifacts_untouched(self, tmp_path: Path) -> None:
+        """A test or simulation run must not overwrite committed run evidence."""
+        repo = Path(__file__).resolve().parents[1]
+        protected = [
+            repo / "experiments/runs/live-smoke-v1/manifest.json",
+            repo / "experiments/runs/live-smoke-v1/case_results.jsonl",
+            repo / "experiments/runs/live-smoke-v1/summary.json",
+            repo / "reports/audit/live_smoke_integrity.md",
+            repo / "reports/audit/canonical_r1_verification.md",
+            repo / "reports/audit/five_case_validation.md",
+            repo / "reports/audit/ablation_runtime_integrity_smoke.md",
+        ]
+        before = {p: p.read_bytes() for p in protected if p.exists()}
+        ret = main(
+            [
+                "--format", "json", "research-run", "--mode", "simulation",
+                "--dataset", "smoke", "--variants", "A,B",
+                "--output-dir", str(tmp_path / "out"),
+                "--audit-dir", str(tmp_path / "audit"),
+                "--run-dir", str(tmp_path / "run"),
+            ]
+        )
+        assert ret == 0
+        assert (tmp_path / "run" / "manifest.json").exists()
+        assert (tmp_path / "audit" / "live_smoke_integrity.md").exists()
+        for p, data in before.items():
+            assert p.read_bytes() == data, f"{p} was modified by a test run"
 
     def test_research_run_invalid_split(self) -> None:
         with pytest.raises(SystemExit):

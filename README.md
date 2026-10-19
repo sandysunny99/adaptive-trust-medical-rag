@@ -1,177 +1,206 @@
-# Adaptive Trust-Aware Medical RAG: Mitigating Prompt Injection and Retrieval Hallucinations
+# Adaptive Trust-Aware Medical RAG
 
-**Research Testbed | Status: FUNCTIONALLY COMPLETE / RESEARCH RESULTS UNDER FORENSIC VERIFICATION**
+**Research testbed for evidence-grounded pharmacology question answering — not a clinical decision system.**
 
----
+> **Non-Clinical Disclaimer.** This software is a research prototype. It is not an FDA-approved or otherwise certified medical device and must not be used for diagnosis, prescribing or any patient care. Every output is a research artifact that may be wrong or incomplete, and the system is designed to abstain rather than guess.
 
-## 1. Research Question & Purpose
-
-> **Core Research Question:** Does adaptive trust-aware retrieval with entity attribution, source validation, contradiction detection, prompt-injection defense, retrieval-poisoning defense, claim-level verification, and controlled abstention reduce hallucinated or misattributed pharmacological evidence compared with conventional semantic-similarity medical RAG?
-
-This repository hosts a research testbed designed to evaluate safety, hallucination mitigation, prompt injection defense, and retrieval poisoning resistance in evidence-based medicine and pharmacology.
-
-**Non-Clinical Disclaimer:** This software is a research testbed and is **NOT** an FDA-approved/certified medical diagnostic or decision-making system. All generated outputs represent evidence-grounded research evaluations, not clinical advice.
+Status as of commit `9bae325` (2026-10-18): the live application runs end to end with real providers and real embeddings and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
 
 ---
 
-## 2. Architecture & Dual Safety Gates
+## Research Question
 
-The system operates via a dual-gate architecture that bounds model inputs and outputs:
+Does adaptive trust-aware retrieval — with entity attribution, source validation, contradiction detection, prompt-injection defense, retrieval-poisoning defense, claim-level verification and controlled abstention — reduce hallucinated or misattributed pharmacological evidence compared with conventional semantic-similarity medical RAG?
 
-```
-                  ┌─────────────────────────────────────┐
-                  │          Incoming User Query         │
-                  └──────────────────┬──────────────────┘
-                                     │
-                        [Input Sanitizer & Classifier]
-                                     │
-                  ┌──────────────────▼──────────────────┐
-                  │    Evidence Eligibility Gate        │
-                  │   (Source Auth + Trust Thresholds)  │
-                  └──────────────────┬──────────────────┘
-                            │                 │
-                      (Pass)│                 │(Fail / Contradiction)
-                            ▼                 ▼
-                  ┌──────────────────┐ ┌────────────────────────┐
-                  │ Hybrid Retrieval │ │ Controlled Abstention  │
-                  │ (BM25 + Dense +  │ │   Template Response    │
-                  │ Graph RRF)       │ └────────────────────────┘
-                  └─────────┬────────┘
-                            │
-                  ┌─────────▼────────┐
-                  │ Context-Grounded │
-                  │ LLM Generation   │
-                  └─────────┬────────┘
-                            │
-                  ┌─────────▼───────────────────────────┐
-                  │     Answer Safety Gate              │
-                  │ (Claim Verification & Citation Check)│
-                  └──────────────────┬──────────────────┘
-                                     │
-                        [Final Verified Output]
-```
-
-### Safety Gates Specification
-
-1. **Evidence Eligibility Gate (Pre-Generation):**
-   - Evaluates retrieved document chunks prior to prompt assembly.
-   - Computes multi-factor trust scores: $T_{\text{chunk}} = w_{\text{auth}} S_{\text{auth}} + w_{\text{fresh}} S_{\text{fresh}} + w_{\text{ent}} S_{\text{ent}} + w_{\text{rep}} S_{\text{rep}}$.
-   - Enforces risk-dependent abstention thresholds:
-     - **R0 (Informational / OTC):** Threshold $\ge 0.30$
-     - **R1 (Dosing / Indications):** Threshold $\ge 0.45$
-     - **R2 (Severe Drug Interactions):** Threshold $\ge 0.60$
-     - **R3 (Lethal Contraindications):** Threshold $\ge 0.75$
-
-2. **Answer Safety Gate (Post-Generation):**
-   - Deterministically parses claims in the generated response.
-   - Cross-references claims against session evidence chunks.
-   - Strips unverified or hallucinated claims, or triggers controlled abstention if core assertions lack attribution.
+The domain is evidence-based pharmacology, in particular adverse drug interactions. Abstention is a correct and expected outcome when evidence is missing, below the trust threshold for the question's risk tier, or contradictory.
 
 ---
 
-## 3. Ablation Study Variants (A – F)
+## Architecture & Dual Safety Gates
 
-The evaluation suite benchmarks 6 architectural configurations:
+The system bounds the model on both sides: an **Evidence Eligibility Gate** before generation (only provenance-checked, drug-relevant chunks above the risk-tier trust threshold reach the model) and an **Answer Safety Gate** after it (every statement must be verified against its cited evidence, or the system abstains). Trust thresholds: R0 0.30, R1 0.45, R2 0.60, R3 0.75.
 
-| Variant | Name | Retrieval | Trust Weights | Gates Active | Description |
-|---------|------|-----------|---------------|--------------|-------------|
-| **A** | Vanilla LLM | None | None | None | Direct LLM prompting without retrieval context |
-| **B** | Standard Semantic RAG | Dense Vector | None | None | Dense vector search ($k=5$), no trust scoring, no gates |
-| **C** | Hybrid RAG | Dense + BM25 RRF | None | None | Reciprocal Rank Fusion of keyword and vector search |
-| **D** | Entity-Attributed RAG | Dense + Graph | Entity Match | Pre-Gen Gate | Graph entity normalization (RxCUI) & attribution |
-| **E** | Trust-Scored RAG | Dense + BM25 | Multi-Factor Trust | Pre-Gen Gate | Source authority, freshness decay, and trust weighting |
-| **F** | **Full Architecture** | Hybrid + Graph | Multi-Factor Trust | **Dual Gates** | Complete pipeline with dual safety gates & abstention |
+The live application (`POST /api/v1/analyze*`, streamed over Server-Sent Events) runs this pipeline for each request. Details, modules and event schemas are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+1. **Input** — drug names typed by the user, or a prescription image (JPEG/PNG/WebP, at most 5 MB). Optional patient context and optional *Additional Instructions*, both screened as untrusted data; an instruction aimed at the system is rejected (`INPUT_REJECTED`).
+2. **Image extraction and confirmation** — a vision model reads candidate medication names; the reply must be a single JSON object in the expected schema or the request fails closed. The user confirms the medications before anything is analysed.
+3. **Drug identity** — names are resolved to RxNorm concepts (RxCUI) from a local cache or the RxNav API.
+4. **Retrieval** — hybrid BM25 + dense (all-MiniLM-L6-v2) retrieval over the frozen live corpus; each chunk's SHA-256 is checked against its provenance record and poisoned or altered chunks are blocked.
+5. **Risk tier and eligibility** — a multi-drug question is R2 (threshold 0.60); R3 (0.75) only from an approved relationship record. Chunks that name none of the requested drugs are excluded before scoring.
+6. **Generation** — an LLM writes a structured answer from the eligible evidence only. The provider that actually answered is recorded (`served_by`).
+7. **Claim and citation verification** — every factual statement is checked against the cited evidence (PubMedBERT NLI plus canonical relationship identity). A pairwise drug claim needs an approved relationship record on the cited chunk.
+8. **Safety gate** — an answer is released only if every statement is verified; otherwise the system abstains and shows why, with the evidence it checked. Evidence URLs are shown as links only when verified for that chunk.
+
+### Implementation status
+
+| Component | Status |
+|---|---|
+| Live pipeline: names → RxNorm → retrieval → trust → generation → verification → abstention | **Implemented and tested** (unit, e2e and real-provider browser runs) |
+| Prescription-image extraction (NVIDIA vision) with strict JSON schema validation | **Implemented and tested** (browser run on the committed build, synthetic image) |
+| Medication confirmation contract (objects only) | **Implemented and tested** |
+| Risk tier R2 default, R3 only from an approved record; unrelated-evidence exclusion | **Implemented and tested** |
+| Provider/model trace (`served_by`) for answers, abstentions and errors | **Implemented and tested** (released-answer path in tests only) |
+| Verified-only evidence links | **Implemented and tested**; no source is verified yet, so all corpus links show as text |
+| Versioned relationship records (V1, V2 with own evidence file) | **Implemented and tested**; **no record approved** (REL-LIVE-0001 and REL-LIVE-0002 pending) |
+| Evidence-backed (released) answers on live data | **Pending researcher approval** of a relationship record |
+| Research harness, ablation variants A–F, CLI evaluation | Implemented; published A–F numbers are **simulation** results (see below) |
+| Human relevance annotation, claim-evidence benchmark, Free Replication V1, Cognee comparison | **Blocked** on human labels or researcher decisions ([register](reports/audit/blocked_issue_register.md)) |
 
 ---
 
-## 4. Security & Threat Model
+## Evidence sources
 
-- **Prompt Injection Defense:** Input sanitizer strips prompt override markers (`Ignore previous instructions`, `[INST]`, `<|im_start|>`) before prompt construction.
-- **Retrieval Poisoning Defense:** Implements SHA-256 content hashing at ingestion, authority tiering, and quarantine checks for anomalous content.
-- **Zero PHI Policy:** Mandatory telemetry sanitization storing SHA-256 query hashes (`query_hash`) rather than raw patient queries.
-- **SAST & Secret Scanning:** Enforced automated Bandit scans (`.bandit` INI config), 8 custom Semgrep security rules, and pre-commit Gitleaks scanning.
+| Source | Status |
+|---|---|
+| `data/live_medical/LIVE_MEDICAL_CORPUS_V2.json` — 14 frozen chunks (11 DailyMed, 2 PubMed, 1 openFDA) with SHA-256 provenance and MiniLM embeddings | In use. Frozen: never edited. None of its URLs is verified (11 placeholder DailyMed set IDs, 1 PubMed ID shared by two documents, 1 generic openFDA URL) |
+| RxNav (RxNorm) API + local entity cache | In use for drug identity |
+| Relationship records `data/live_medical/relationships/` (V1) | Loaded only when the manifest is APPROVED by a named person with matching hashes; REL-LIVE-0001 is a pending candidate |
+| V2 relationship evidence (e.g. byte-exact DailyMed label text) | Loader implemented (`bf29fe8`); candidate REL-LIVE-0002 prepared and reviewed but **not approved** and not placed in `data/` |
 
 ---
 
-## 5. Installation & Setup
+## Providers
 
-All dependencies are managed using `uv`. Do NOT run global `pip install`.
+Configured from environment variables (names only; see [docs/CONFIGURATION.md](docs/CONFIGURATION.md)):
+
+| Role | Provider / model (default) |
+|---|---|
+| Answer generation | NVIDIA `nvidia/nemotron-3-super-120b-a12b`, Groq `openai/gpt-oss-120b`, Cloudflare Workers AI `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (4096-token limit); `mock-llm` for tests |
+| Prescription vision | NVIDIA `meta/llama-3.2-11b-vision-instruct` |
+| Embeddings | `all-MiniLM-L6-v2` (local, sentence-transformers) |
+| Claim verification (NLI) | `pritamdeka/PubMedBERT-MNLI-MedNLI` (pinned revision) |
+
+In automatic mode the configured providers are tried in order NVIDIA, Groq, Cloudflare (`LLM_PROVIDER` moves one to the front) with failover; a model chosen manually in *Advanced settings* is used without failover. The live app registers only these three; Hugging Face, Gemini and FreeLLMAPI adapters exist for the research harness but are not wired into the live router.
+
+---
+
+## Installation & Setup
+
+Requirements: Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js with npm. Full details and troubleshooting: [docs/CONFIGURATION.md](docs/CONFIGURATION.md).
 
 ```bash
-# Clone the repository
-git clone https://github.com/sandysunny99/adaptive-trust-medical-rag.git
-cd adaptive_trust_medical_rag
+# Backend dependencies (never pip install globally)
+uv sync
 
-# Install dependencies into virtual environment
-uv sync --frozen
-
-# Environment configuration
+# Configure: copy the template and fill in your own keys locally; never commit .env
 cp .env.example .env
+
+# Backend (FastAPI) on http://127.0.0.1:8000
+uv run python -m uvicorn --app-dir src adaptive_trust_medical_rag.api.app:app --host 127.0.0.1 --port 8000
+
+# Frontend (Vite + React) on http://localhost:5173, proxying /api to port 8000
+cd frontend && npm install && npm run dev
+```
+
+Do not set `TESTING=1` for a real run: it replaces the embedding model with a stub.
+
+---
+
+## Tests and validation
+
+The commands, what each suite covers and the latest verified results are in [docs/TESTING.md](docs/TESTING.md). Latest exact-build result (commit `9bae325`, fresh worktree): **1470 passed, 4 skipped, 0 failed** backend; ruff, Bandit, gitleaks, integrity scripts and the frozen-hash line-ending audit clean.
+
+```bash
+TESTING=1 uv run pytest -q          # backend (TESTING=1 is correct for tests only)
+cd frontend && npm test && npm run build && npm run lint
 ```
 
 ---
 
-## 6. Command Line Interface (CLI) Usage
+## Security & Threat Model
 
-The `medical-rag` CLI provides single-command execution for all operational tasks:
+- **Prompt injection:** input sanitizer and injection detector; *Additional Instructions* with an instruction aimed at the system are rejected (`INPUT_REJECTED`); evidence and notes are passed to the model as delimited data. Text inside a prescription image is transcribed literally, never obeyed.
+- **Retrieval poisoning and tampering:** SHA-256 provenance check per chunk and a poisoning detector; chunks naming none of the requested drugs are excluded.
+- **Hallucinated or misattributed claims:** claim-level NLI verification, citation checks and relationship identity from approved records only; unverified statements are never released.
+- **Secrets:** environment variables only; `.githooks/pre-commit` runs a regex scan and `gitleaks git --staged`; a CI hook scans file writes.
+- **Privacy:** synthetic data only; logs record identifiers, lengths and hashes, not raw content.
+
+Details: [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#6-threat-model--security-mitigations).
+
+---
+
+## FastAPI REST API
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/v1/llm/models` | Answer-model catalog and availability |
+| `POST /api/v1/analyze` | Analyse drug names (live pipeline) |
+| `POST /api/v1/analyze/prescription` | Analyse a prescription image |
+| `POST /api/v1/analyze/{request_id}/confirm` | Confirm extracted medications (medication objects) |
+| `GET /api/v1/stream/{request_id}` | Server-Sent Events stream of the analysis |
+| `POST /query`, `POST /ingest` | Research-harness query and document ingestion |
+| `GET /health`, `GET /research-state`, `GET /audit/{session_id}` | Health, research state, audit (query hashes only) |
+
+---
+
+## Command Line Interface (CLI) Usage
+
+The `medical-rag` command (installed with the package; otherwise use `PYTHONPATH=src python -m adaptive_trust_medical_rag.cli`) drives the research harness. A global `--format {text,json}` goes before the subcommand.
 
 ```bash
-# Execute a medical RAG query
 medical-rag query "What is the mechanism of action of Metformin?" --risk-tier R1
-
-# Ingest a medical document with SHA-256 validation
 medical-rag ingest data/sample_paper.pdf --tier tier_1_peer_reviewed
-
-# Run evaluation pipeline across ablation variants
 medical-rag eval --split smoke --quick
-
-# Generate statistical research report (t-tests, Cohen d, 95% CIs)
 medical-rag report --bootstrap-n 1000 --output reports/statistical_report.md
-
-# Database migration chain integrity check
 medical-rag db check
-
-# Run system health diagnostic
-medical-rag health --format json
+medical-rag health
+medical-rag --format json health
+medical-rag research-run --mode simulation --dataset smoke --audit-dir /tmp/audit --run-dir /tmp/run
 ```
 
----
-
-## 7. FastAPI REST API
-
-Start the API server:
-
-```bash
-uvicorn adaptive_trust_medical_rag.api.app:app --host 0.0.0.0 --port 8000
-```
-
-### Core Endpoints
-
-- `POST /query`: Execute a RAG query through dual safety gates.
-- `POST /ingest`: Upload and ingest a medical literature document.
-- `GET /health`: Health check and diagnostic status.
-- `GET /audit`: Query audit logs (returns query hashes only, zero PHI).
+`research-run` writes to `reports/audit/` and `experiments/runs/live-smoke-v1/` unless `--audit-dir` and `--run-dir` are given; tests always pass temporary directories so committed evidence is never overwritten.
 
 ---
 
-## 8. Experimental Evaluation Scorecard
+## Ablation Study Variants
 
-> **Forensic Audit Note:** All quantitative evaluation metrics are traceable to machine-readable JSON outputs (`reports/results/*.json`) and the Research Claim Ledger (`reports/research/claim_ledger.csv`). Metrics for variants A-F reflect simulation profile benchmarks (`MockVariantPipeline`). Live LLM API execution is available via `medical-rag eval`.
+| Variant | Name | Description |
+|---|---|---|
+| A | Vanilla LLM | Direct LLM prompting without retrieval |
+| B | Standard Semantic RAG | Dense vector retrieval, no trust scoring or gates |
+| C | Hybrid RAG | BM25 + dense retrieval with reciprocal rank fusion |
+| D | Entity-Attributed RAG | Entity normalization (RxCUI) and attribution, pre-generation gate |
+| E | Trust-Scored RAG | Multi-factor trust scoring, pre-generation gate |
+| F | Full Architecture | Hybrid + graph retrieval, multi-factor trust, dual safety gates and abstention |
 
-Evaluated across 20-case smoke, 100-case dev, and 200-case val datasets ($N=1000$ bootstrap resamples, $p < 0.05$ Welch $t$-test):
-
-| Variant | Faithfulness ↑ | Hallucination Rate ↓ | Citation Precision ↑ | Citation Recall ↑ | Entity Attribution ↑ | Robustness ↑ | F1-Abstain ↑ |
-|---------|---------------|----------------------|----------------------|-------------------|----------------------|--------------|--------------|
-| **A (Vanilla)** | 0.2975 | 0.7025 | 0.0000 | 0.0000 | 0.3120 | 0.3015 | 0.0000 |
-| **B (Dense RAG)** | 0.5475 | 0.4525 | 0.5210 | 0.5100 | 0.5840 | 0.5320 | 0.0000 |
-| **C (Hybrid RAG)** | 0.6820 | 0.3180 | 0.6940 | 0.6750 | 0.7100 | 0.6650 | 0.0000 |
-| **D (Entity RAG)** | 0.7410 | 0.2590 | 0.7650 | 0.7320 | 0.8950 | 0.7280 | 0.4210 |
-| **E (Trust RAG)** | 0.8120 | 0.1880 | 0.8410 | 0.8050 | 0.8320 | 0.8010 | 0.5830 |
-| **F (Full Arch)** | **0.9117** | **0.0883** | **0.9320** | **0.8940** | **0.9480** | **0.9150** | **0.6667** |
+Protocol: [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
 
 ---
 
-## 9. License & Attestation
+## Experimental Evaluation Scorecard
 
-- **License:** MIT License
-- **Research Integrity Attestation:** The 500+ case test set is strictly frozen and held out. All evaluation results report bootstrap 95% confidence intervals and pairwise statistical significance ($p < 0.05$).
+**No empirical scorecard is published yet.** The A–F metric tables in `reports/results/` and in earlier versions of this README come from a **simulation profile** (`MockVariantPipeline`), not from live model runs or human-labelled data, so they are not evidence for the research question. A real evaluation needs the human relevance labels and the claim-evidence benchmark, which are still blocked (see the [register](reports/audit/blocked_issue_register.md)). Software tests and safe abstention on synthetic cases measure correctness of the implementation, not clinical or research effectiveness.
+
+---
+
+## Known limitations
+
+- No relationship record is approved, so every live analysis of an interaction pair abstains after generation; evidence-backed answers are unverified.
+- NVIDIA's answer model often times out in automatic mode (30 s adapter timeout); Groq then answers after failover. Selected directly, NVIDIA has answered.
+- Model-written disclaimer sentences are sometimes kept as claims and then withheld.
+- The live corpus is 14 synthetic-scope chunks with unverified source URLs; it is a test corpus, not clinical coverage.
+- Image extraction has been validated on one synthetic prescription image only.
+- Software tests and safe abstention do not demonstrate clinical effectiveness.
+
+---
+
+## Project status
+
+The authoritative status of every open item is [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md). Validation runs and reports are under [reports/live_validation/](reports/live_validation/). The application freeze, the evidence-backed-answer milestone and any release are separate researcher decisions; none is declared here.
+
+## Documentation map
+
+| Document | Purpose |
+|---|---|
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Live pipeline data flow, modules, endpoints, SSE events; research-harness architecture |
+| [docs/CONFIGURATION.md](docs/CONFIGURATION.md) | Setup, environment variables, providers, ports, troubleshooting |
+| [docs/TESTING.md](docs/TESTING.md) | Test suites, security and integrity checks, browser scenarios, latest results |
+| [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md) | Research evaluation protocol |
+| [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md) | Threat model |
+| [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md) | Current blockers and decisions |
+| [AGENTS.md](AGENTS.md) | Operating rules for contributors and agents |
+
+## License & Attestation
+
+- License: MIT, as declared in `pyproject.toml` (no separate LICENSE file is included).
+- Research integrity: evaluation splits are segregated and the 500+ case test set is frozen and held out; no human labels, metrics or approvals are fabricated; simulation results are labelled as such.

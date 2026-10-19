@@ -213,6 +213,26 @@ async def test_3_ambiguous_image_blocks_pipeline(setup_c6_mocks):
         candidates_event = next((e for e in parsed_events if e.get("event") == "medication_candidates_extracted"), None)
         assert candidates_event is not None
         assert candidates_event["data"]["candidates"][0]["status"] == "UNCERTAIN"
+        # The event names the vision provider and model that read the image.
+        assert (candidates_event["data"]["vision_provider"], candidates_event["data"]["vision_model"]) == (
+            "mock_vision_c6", "mock_model_c6")
+
+@pytest.mark.asyncio
+async def test_vision_timeout_names_the_vision_provider_and_model(setup_c6_mocks):
+    app.state.vision_backend = MockC6VisionBackend(fail=True)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
+        req_id = (await client.post("/api/v1/analyze/prescription", files=files)).json()["request_id"]
+        events = []
+        async with client.stream("GET", f"/api/v1/stream/{req_id}") as stream_res:
+            async for line in stream_res.aiter_lines():
+                events.append(line)
+                if line == "" and any(e.get("event") == "error" for e in extract_sse_events(events)):
+                    break
+
+        error = next(e for e in extract_sse_events(events) if e.get("event") == "error")
+        assert error["data"]["code"] == "VISION_EXTRACTION_ERROR"
+        assert (error["data"]["vision_provider"], error["data"]["vision_model"]) == ("mock_vision_c6", "mock_model_c6")
 
 @pytest.mark.asyncio
 async def test_4_malicious_image_text(setup_c6_mocks):

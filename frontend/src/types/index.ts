@@ -39,6 +39,17 @@ export interface MedicationCandidate {
   warnings?: string[];
 }
 
+/**
+ * One item of POST /api/v1/analyze/{request_id}/confirm. The backend model
+ * (ConfirmedMedicationItem in api/routes/analyze.py) takes objects, never bare names.
+ */
+export interface ConfirmedMedication {
+  name: string;
+  status: 'CONFIRMED' | 'EDITED' | 'USER_ADDED';
+  source: 'VISION' | 'OCR' | 'USER' | 'USER_EDITED';
+  raw_detected_name: string | null;
+}
+
 export type SupportState =
   | 'SUPPORTED'
   | 'PARTIALLY_SUPPORTED'
@@ -97,10 +108,16 @@ export interface TrustInfo {
   overall_score: number;
   threshold: number;
   risk_class: string;
+  /** Why the backend chose this risk tier. */
+  risk_basis?: string;
   is_eligible: boolean;
+  /** Retrieved chunks that named none of the requested medications and were left out. */
+  unrelated_excluded?: number;
   factors: TrustFactors;
   missing_factors: string[];
 }
+
+export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
 
 export interface EvidenceItem {
   chunk_id: string;
@@ -111,7 +128,10 @@ export interface EvidenceItem {
   text: string;
   pmid?: string;
   doi?: string;
+  /** Set only when the source URL is verified for this chunk; only then is it a link. */
   url?: string;
+  source_link_status?: SourceLinkStatus;
+  source_link_note?: string;
   source_authority: number;
   trust_score: number;
   freshness: number;
@@ -206,6 +226,8 @@ export interface AnalysisResult {
   gate_decision: GateDecision;
   abstention_reason: string | null;
   disclaimer: string;
+  /** Total pipeline time reported by the backend in the answer payload. */
+  processing_time_ms?: number;
   used_model?: {
     mode: string;
     provider: string;

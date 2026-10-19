@@ -1,18 +1,29 @@
 import type { AnalysisResult } from '../types';
 import { MedicationCard } from './MedicationCard';
-import { AlertTriangle, Utensils, FileText } from 'lucide-react';
+import { Icons } from '../ui/icons';
+import { disclaimerFor } from '../constants/disclaimer';
+import { Disclosure } from './ui/Disclosure';
+import { StatusPill } from './ui/StatusPill';
+import { TrustSummary } from './results/TrustSummary';
+import { EvidenceList } from './results/EvidenceList';
+import { SecurityChecks } from './results/SecurityChecks';
 
 interface ResultPanelProps {
   result: AnalysisResult;
+  /** Show Evidence & Sources and Security Checks (only once an analysis has finished). */
+  showDetails?: boolean;
 }
 
-export function ResultPanel({ result }: ResultPanelProps) {
+export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
   return (
     <div className="space-y-4">
       {/* Medications Identified */}
-      <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-4 border-b border-slate-100">
-          <h3 className="text-sm font-semibold text-slate-900">Medications Identified</h3>
+      <section className="bg-card rounded-lg border border-border shadow-sm">
+        <div className="p-4 border-b border-border">
+          <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Icons.medication size={20} className="text-primary" />
+            Medications Identified
+          </h3>
         </div>
         <div className="p-4 grid gap-3">
           {(result.medications || []).map((med, i) => (
@@ -23,10 +34,10 @@ export function ResultPanel({ result }: ResultPanelProps) {
 
       {/* Drug-Drug Interactions */}
       {(result.interactions || []).length > 0 && (
-        <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-          <div className="p-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <AlertTriangle size={16} className="text-amber-600" />
+        <section className="bg-card rounded-lg border border-border shadow-sm">
+          <div className="p-4 border-b border-border">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <Icons.interactions size={20} className="text-primary" />
               Drug-Drug Interactions
             </h3>
           </div>
@@ -34,23 +45,19 @@ export function ResultPanel({ result }: ResultPanelProps) {
             {(result.interactions || []).map((interaction, i) => (
               <div key={i} className={`rounded-lg border p-3 ${
                 interaction.interaction_detected
-                  ? 'border-amber-200 bg-amber-50'
-                  : 'border-slate-200 bg-slate-50'
+                  ? 'border-warning/30 bg-warning-soft'
+                  : 'border-border bg-muted'
               }`}>
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">
                     {interaction.drug_a} ↔ {interaction.drug_b}
                   </span>
-                  <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                    interaction.interaction_detected
-                      ? 'bg-amber-100 text-amber-800'
-                      : 'bg-slate-100 text-slate-600'
-                  }`}>
-                    {interaction.interaction_detected ? '⚠ VERIFIED' : 'No verified evidence'}
-                  </span>
+                  {interaction.interaction_detected
+                    ? <StatusPill icon={Icons.caution} label="VERIFIED" tone="warning" />
+                    : <StatusPill icon={Icons.pending} label="No verified evidence" tone="muted" />}
                 </div>
                 {interaction.potential_effect && (
-                  <p className="text-xs text-slate-600 mt-1">{interaction.potential_effect}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{interaction.potential_effect}</p>
                 )}
               </div>
             ))}
@@ -60,24 +67,24 @@ export function ResultPanel({ result }: ResultPanelProps) {
 
       {/* Food & Administration */}
       {(result.food_guidance || []).length > 0 && (
-        <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-          <div className="p-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <Utensils size={16} className="text-green-600" />
+        <section className="bg-card rounded-lg border border-border shadow-sm">
+          <div className="p-4 border-b border-border">
+            <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+              <Icons.food size={20} className="text-primary" />
               Food &amp; Administration
             </h3>
           </div>
           <div className="p-4 space-y-2">
             {(result.food_guidance || []).map((fg, i) => (
-              <div key={i} className="flex items-center justify-between p-3 rounded border border-slate-200">
+              <div key={i} className="flex items-center justify-between p-3 rounded border border-border">
                 <div>
-                  <span className="text-sm font-medium text-slate-900">{fg.drug}</span>
-                  <p className="text-xs text-slate-600">{fg.administration}</p>
+                  <span className="text-sm font-medium text-foreground">{fg.drug}</span>
+                  <p className="text-xs text-muted-foreground">{fg.administration}</p>
                 </div>
                 <span className={`text-xs font-medium px-2 py-0.5 rounded ${
-                  fg.evidence_status === 'VERIFIED' ? 'bg-emerald-100 text-emerald-800' :
-                  fg.evidence_status === 'LIMITED' ? 'bg-amber-100 text-amber-800' :
-                  'bg-slate-100 text-slate-600'
+                  fg.evidence_status === 'VERIFIED' ? 'bg-success-soft text-success' :
+                  fg.evidence_status === 'LIMITED' ? 'bg-warning-soft text-warning' :
+                  'bg-muted text-muted-foreground'
                 }`}>
                   {fg.food_relationship.replace(/_/g, ' ')}
                 </span>
@@ -88,49 +95,64 @@ export function ResultPanel({ result }: ResultPanelProps) {
       )}
 
       {/* Conclusion */}
-      <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-4 border-b border-slate-100 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-slate-900">Overall Conclusion</h3>
+      <section aria-labelledby="conclusion-heading" className="bg-card rounded-lg border border-border shadow-sm">
+        <div className="p-4 border-b border-border flex flex-wrap items-center justify-between gap-2">
+          <h3 id="conclusion-heading" className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <Icons.conclusion size={20} className="text-primary" />
+            Overall Conclusion
+          </h3>
           {result.used_model && (
-            <span className="text-xs bg-slate-100 text-slate-700 px-2.5 py-1 rounded border border-slate-200 font-medium">
-              Model: <span className="font-semibold text-blue-700">{result.used_model.model_id}</span> ({result.used_model.provider})
+            <span className="text-xs bg-muted text-foreground px-2.5 py-1 rounded border border-border font-medium break-all">
+              Model: <span className="font-semibold text-primary">{result.used_model.model_id}</span> ({result.used_model.provider})
             </span>
           )}
         </div>
         <div className="p-4">
-          <p className="text-sm text-slate-700">{result.conclusion}</p>
-          <div className="mt-3 p-3 bg-blue-50 rounded-lg border border-blue-100">
-            <p className="text-xs text-blue-800">{result.disclaimer}</p>
+          {result.gate_decision === 'abstain' ? (
+            <div role="status" className="rounded-lg border border-border bg-muted p-3">
+              <p className="text-sm font-semibold text-foreground">The system abstained from answering.</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {result.abstention_reason || 'The evidence was not strong enough to answer safely.'}
+              </p>
+            </div>
+          ) : (
+            <p className="text-sm text-foreground">{result.conclusion}</p>
+          )}
+          <div role="note" aria-label="Research disclaimer" className="mt-3 flex items-start gap-2 p-3 bg-warning-soft rounded-lg border border-warning/30">
+            <Icons.caution size={14} className="mt-0.5 shrink-0 text-warning" aria-hidden="true" />
+            <p className="text-xs font-medium text-foreground">{disclaimerFor(result.disclaimer)}</p>
           </div>
         </div>
       </section>
 
-      {/* Verified Evidence */}
-      {(result.evidence || []).length > 0 && (
-        <section className="bg-white rounded-lg border border-slate-200 shadow-sm">
-          <div className="p-4 border-b border-slate-100">
-            <h3 className="text-sm font-semibold text-slate-900 flex items-center gap-2">
-              <FileText size={16} className="text-blue-600" />
-              Verified Evidence ({(result.evidence || []).length})
-            </h3>
-          </div>
-          <div className="p-4 space-y-2">
-            {(result.evidence || []).map((ev, i) => (
-              <div key={i} className="p-3 rounded border border-slate-200 text-xs">
-                <div className="flex items-center justify-between">
-                  <span className="font-medium text-slate-900">[{i + 1}] {ev.source_name}</span>
-                  <span className="text-slate-400">{ev.retrieval_method}</span>
-                </div>
-                <p className="text-slate-600 mt-1 line-clamp-2">{ev.text}</p>
-                <div className="flex gap-3 mt-1 text-slate-400">
-                  {ev.pmid && <span>PMID: {ev.pmid}</span>}
-                  <span>Authority: {ev.source_authority.toFixed(2)}</span>
-                  <span>Trust: {ev.trust_score.toFixed(2)}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+      <TrustSummary trust={result.trust} />
+
+      {showDetails && (
+        <>
+          <Disclosure
+            defaultOpen
+            className="bg-card shadow-sm"
+            icon={<Icons.evidence size={20} />}
+            title={`Evidence & Sources (${(result.evidence || []).length})`}
+          >
+            {(result.evidence || []).length > 0
+              ? <EvidenceList evidence={result.evidence} />
+              : <p className="text-sm text-muted-foreground">
+                  {result.gate_decision === 'abstain'
+                    ? 'No evidence passed the eligibility checks for this analysis.'
+                    : 'No evidence items were returned for this analysis.'}
+                </p>}
+          </Disclosure>
+
+          <Disclosure
+            defaultOpen
+            className="bg-card shadow-sm"
+            icon={<Icons.security size={20} />}
+            title="Security Checks"
+          >
+            <SecurityChecks result={result} ended />
+          </Disclosure>
+        </>
       )}
     </div>
   );

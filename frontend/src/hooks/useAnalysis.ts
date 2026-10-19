@@ -7,6 +7,7 @@ import type {
   PipelineStage,
   MedicationCandidate,
   LLMSelection,
+  ConfirmedMedication,
 } from '../types';
 import { submitAnalysis, submitPrescriptionImage, confirmMedications, connectStream } from '../services/api';
 
@@ -90,14 +91,23 @@ export function useAnalysis() {
         break;
         
       case 'abstention':
+        // A valid safety outcome, not an error. The backend closes the stream
+        // right after it without a 'complete' event, so end the run here or the
+        // close is reported as a disconnect.
+        // The claims and the eligible evidence they were checked against come with it.
         partialResult = {
           ...partialResult,
           gate_decision: 'abstain',
           abstention_reason: data.reason,
-          trust: data.trust
+          // The abstention's trust fields win; the trust event's details (factors, exclusions) stay.
+          trust: { ...partialResult.trust, ...data.trust },
+          claims: data.claims ?? partialResult.claims,
+          evidence: data.evidence ?? partialResult.evidence,
         };
         setResult(partialResult as AnalysisResult);
         setCurrentStage('abstained');
+        setIsProcessing(false);
+        cleanup();
         break;
 
       case 'error':
@@ -120,6 +130,7 @@ export function useAnalysis() {
       drugNames?: string[];
       imageFile?: File;
       patientContext?: PatientContext | null;
+      additionalInstructions?: string;
       inputMode: InputMode;
       llmSelection?: LLMSelection | null;
     }
@@ -151,11 +162,11 @@ export function useAnalysis() {
       let req_id = '';
       
       if (payload.inputMode === 'prescription_image' && payload.imageFile) {
-        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext, payload.llmSelection);
+        const res = await submitPrescriptionImage(payload.imageFile, payload.patientContext, payload.llmSelection, payload.additionalInstructions);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else if (payload.drugNames) {
-        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode, payload.llmSelection);
+        const res = await submitAnalysis(payload.drugNames, payload.patientContext, payload.inputMode, payload.llmSelection, payload.additionalInstructions);
         stream_url = res.stream_url;
         req_id = res.request_id;
       } else {
@@ -164,14 +175,18 @@ export function useAnalysis() {
       
       setCurrentRequestId(req_id);
 
+      // Once a terminal event arrives, the stream closing is expected, not a failure.
+      let ended = false;
       disconnectRef.current = connectStream(
         stream_url,
         (event, data: any) => {
           partialResult = handleStreamEvent(event, data, partialResult);
+          if (event === 'abstention' || event === 'complete' || event === 'error') ended = true;
         },
         (err) => {
+          if (ended) return;
           console.error("Stream error", err);
-          setError(prev => prev || "Analysis Failed: LLM provider authentication failed or connection lost. Please verify the configured provider credentials and restart the backend if required.");
+          setError(prev => prev || "Analysis stream disconnected unexpectedly. Check the backend server status.");
           setCurrentStage('error');
           setIsProcessing(false);
         }
@@ -184,12 +199,12 @@ export function useAnalysis() {
     }
   }, [cleanup, handleStreamEvent]);
 
-  const confirm = useCallback(async (confirmedNames: string[]) => {
+  const confirm = useCallback(async (confirmed: ConfirmedMedication[]) => {
     if (!currentRequestId) return;
     try {
       // Transition from confirming -> running immediately in UI
       setCurrentStage('normalizing'); 
-      await confirmMedications(currentRequestId, confirmedNames);
+      await confirmMedications(currentRequestId, confirmed);
     } catch (err: any) {
       setError(err.message || String(err));
       setCurrentStage('error');
@@ -198,9 +213,21 @@ export function useAnalysis() {
     }
   }, [currentRequestId, cleanup]);
 
+  const reset = useCallback(() => {
+    cleanup();
+    setIsProcessing(false);
+    setCurrentStage('idle');
+    setStageUpdates([]);
+    setResult(null);
+    setError(null);
+    setExtractedCandidates([]);
+    setCurrentRequestId(null);
+  }, [cleanup]);
+
   return {
     analyze,
     confirm,
+    reset,
     isProcessing,
     currentStage,
     stageUpdates,

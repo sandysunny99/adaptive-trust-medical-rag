@@ -1,41 +1,35 @@
-import { useState, useEffect } from 'react';
-import { Activity, Check, X, Clock, AlertTriangle } from 'lucide-react';
-import { fetchResearchState } from '../services/api';
+import { Icons } from '../ui/icons';
+import { useResearchState } from '../hooks/useResearchState';
+import { ErrorState } from '../components/ui/ErrorState';
 
 const STATUS_CONFIG = {
-  PASS: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  BLOCKED: { icon: X, color: 'text-red-600', bg: 'bg-red-50' },
-  PENDING: { icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
-  READY: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  VALIDATED: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  NOT_VALIDATED: { icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50' },
-  NOT_CONFIGURED: { icon: AlertTriangle, color: 'text-amber-600', bg: 'bg-amber-50' },
-  CONFIGURED: { icon: Check, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  NOT_STARTED: { icon: AlertTriangle, color: 'text-slate-500', bg: 'bg-slate-50' },
+  PASS: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  BLOCKED: { icon: Icons.block, color: 'text-destructive', bg: 'bg-destructive-soft' },
+  PENDING: { icon: Icons.pending, color: 'text-warning', bg: 'bg-warning-soft' },
+  READY: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  VALIDATED: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  NOT_VALIDATED: { icon: Icons.caution, color: 'text-warning', bg: 'bg-warning-soft' },
+  NOT_CONFIGURED: { icon: Icons.caution, color: 'text-warning', bg: 'bg-warning-soft' },
+  CONFIGURED: { icon: Icons.pass, color: 'text-success', bg: 'bg-success-soft' },
+  NOT_STARTED: { icon: Icons.pending, color: 'text-muted-foreground', bg: 'bg-muted' },
 } as const;
 
 export function AuditPage() {
-  const [state, setState] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const { state, error, loading, reload } = useResearchState();
 
-  useEffect(() => {
-    fetchResearchState()
-      .then(res => {
-        setState(res);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch research state:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <div className="p-6">Loading research state...</div>;
+  if (loading && !state && !error) {
+    return <div className="p-6 text-sm text-muted-foreground" role="status">Loading research state…</div>;
   }
 
   if (!state) {
-    return <div className="p-6 text-red-500">Failed to load research state.</div>;
+    return (
+      <ErrorState
+        title="Couldn't load research state"
+        message={error}
+        onRetry={reload}
+        retrying={loading}
+      />
+    );
   }
 
   const AUDIT_ITEMS = [
@@ -52,10 +46,10 @@ export function AuditPage() {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+    <div className="bg-card rounded-lg border border-border shadow-sm p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Activity size={20} className="text-blue-600" />
-        <h2 className="text-base font-semibold text-slate-900">Research Audit Status</h2>
+        <Icons.audit size={20} className="text-primary" />
+        <h2 className="text-base font-semibold text-foreground">Research Audit Status</h2>
       </div>
       <div className="space-y-2">
         {AUDIT_ITEMS.map(({ label, status }) => {
@@ -63,7 +57,7 @@ export function AuditPage() {
           const Icon = config.icon;
           return (
             <div key={label} className={`flex items-center justify-between p-3 rounded-lg ${config.bg}`}>
-              <span className="text-sm text-slate-700">{label}</span>
+              <span className="text-sm text-foreground">{label}</span>
               <span className={`flex items-center gap-1.5 text-xs font-medium ${config.color}`}>
                 <Icon size={14} />
                 {status.replace(/_/g, ' ')}

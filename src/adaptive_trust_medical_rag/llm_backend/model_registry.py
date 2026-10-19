@@ -88,8 +88,11 @@ def get_available_models(app_state: Any = None) -> list[dict[str, Any]]:
     models = []
     for m in SUPPORTED_LLM_MODELS:
         # Check credentials requirement
-        req_vars = m.required_env_vars if m.required_env_vars else ((m.env_key,) if m.env_key else ())
-        has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
+        if m.id == "nvidia/nemotron-3-super-120b-a12b":
+            has_credentials = bool(os.getenv("NVIDIA_LLM_API_KEY") or os.getenv("NVIDIA_API_KEY"))
+        else:
+            req_vars = m.required_env_vars if m.required_env_vars else ((m.env_key,) if m.env_key else ())
+            has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
         if has_active_router:
             if m.provider in registered_providers:
@@ -177,8 +180,11 @@ def validate_llm_selection(
     if has_active_router:
         registered_providers = set(router.providers.keys())
 
-    req_vars = model_def.required_env_vars if model_def.required_env_vars else ((model_def.env_key,) if model_def.env_key else ())
-    has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
+    if model_def.id == "nvidia/nemotron-3-super-120b-a12b":
+        has_credentials = bool(os.getenv("NVIDIA_LLM_API_KEY") or os.getenv("NVIDIA_API_KEY"))
+    else:
+        req_vars = model_def.required_env_vars if model_def.required_env_vars else ((model_def.env_key,) if model_def.env_key else ())
+        has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
     if has_active_router:
         if model_def.provider in registered_providers:

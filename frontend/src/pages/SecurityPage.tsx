@@ -1,26 +1,34 @@
-import { Shield, ShieldCheck } from 'lucide-react';
+import { Icons } from '../ui/icons';
+import type { AnalysisResult } from '../types';
+import { SecurityChecks } from '../components/results/SecurityChecks';
 
-export function SecurityPage() {
+interface SecurityPageProps {
+  latestResult?: AnalysisResult | null;
+}
+
+/**
+ * Standalone security view. No longer a top-level tab: the same checks now
+ * render inside the Analyze results ("Security Checks"). Kept for reuse.
+ */
+export function SecurityPage({ latestResult }: SecurityPageProps) {
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm p-6">
+      <div className="bg-card rounded-lg border border-border shadow-sm p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Shield size={20} className="text-blue-600" />
-          <h2 className="text-base font-semibold text-slate-900">Security Dashboard</h2>
+          <Icons.security size={20} className="text-primary" aria-hidden="true" />
+          <h2 className="text-base font-semibold text-foreground">Security Dashboard</h2>
+          {!latestResult && (
+            <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded">Awaiting analysis</span>
+          )}
         </div>
-        <div className="grid grid-cols-3 gap-4">
-          {[
-            { icon: ShieldCheck, label: 'Prompt Injection', status: 'MONITORING', color: 'text-emerald-600' },
-            { icon: ShieldCheck, label: 'Retrieval Poisoning', status: 'MONITORING', color: 'text-emerald-600' },
-            { icon: ShieldCheck, label: 'Evidence Integrity', status: 'MONITORING', color: 'text-emerald-600' },
-          ].map(({ icon: Icon, label, status, color }) => (
-            <div key={label} className="p-4 rounded-lg border border-slate-200">
-              <Icon size={18} className={color} />
-              <h3 className="text-sm font-medium text-slate-900 mt-2">{label}</h3>
-              <span className={`text-xs font-medium ${color}`}>{status}</span>
-            </div>
-          ))}
-        </div>
+
+        {!latestResult && (
+          <p className="text-sm text-muted-foreground mb-4">
+            Run a medication analysis to see real-time security gate results here.
+          </p>
+        )}
+
+        <SecurityChecks result={latestResult} />
       </div>
     </div>
   );

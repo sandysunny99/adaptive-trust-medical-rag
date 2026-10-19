@@ -65,6 +65,7 @@ class AnalyzeRequest(BaseModel):
     )
     patient_context: PatientContextInput | None = None
     llm_selection: LLMSelectionInput | None = None
+    additional_instructions: str | None = Field(default=None, max_length=2000)
 
     @field_validator("drug_names")
     @classmethod

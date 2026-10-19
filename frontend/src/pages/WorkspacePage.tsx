@@ -1,11 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Upload, Pill, UserCog, Search, AlertTriangle, X, Cpu } from 'lucide-react';
-import type { InputMode, PatientContext, PipelineStage, LLMModelInfo } from '../types';
+import { useState, useEffect, useId } from 'react';
+import { Icons } from '../ui/icons';
+import type { InputMode, PatientContext, PipelineStage, LLMModelInfo, AnalysisResult } from '../types';
 import { PipelineProgress } from '../components/PipelineProgress';
 import { ResultPanel } from '../components/ResultPanel';
 import { MedicationConfirmationPanel } from '../components/MedicationConfirmationPanel';
+import { PrescriptionDropzone } from '../components/PrescriptionDropzone';
 import { useAnalysis } from '../hooks/useAnalysis';
 import { fetchModelCatalog } from '../services/api';
+import { exportAsMarkdown, downloadFile } from '../services/exportService';
+import { saveAnalysis } from '../services/historyDb';
+import { Disclosure } from '../components/ui/Disclosure';
+import { SegmentedControl } from '../components/ui/SegmentedControl';
+import { cn } from '../utils/cn';
+
+const FIELD_CLASS = 'px-3 py-2 bg-card text-foreground placeholder:text-muted-foreground border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring';
 
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
@@ -21,7 +29,11 @@ const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'safety_gating', label: 'Safety Gate' },
 ];
 
-export function WorkspacePage() {
+interface WorkspacePageProps {
+  onResultComplete?: (result: AnalysisResult | null) => void;
+}
+
+export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
   const [inputMode, setInputMode] = useState<InputMode>('direct_drugs');
   const [drugInputs, setDrugInputs] = useState<string[]>(['']);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -31,6 +43,9 @@ export function WorkspacePage() {
   const [selectedModelId, setSelectedModelId] = useState<string>('auto');
   const [isLoadingModels, setIsLoadingModels] = useState<boolean>(true);
   const [modelCatalogError, setModelCatalogError] = useState<string | null>(null);
+
+  // Additional Instructions state
+  const [additionalInstructions, setAdditionalInstructions] = useState<string>('');
 
   // Patient Context state
   const [age, setAge] = useState<string>('');
@@ -58,6 +73,7 @@ export function WorkspacePage() {
   const { 
     analyze, 
     confirm,
+    reset,
     isProcessing, 
     currentStage, 
     stageUpdates, 
@@ -66,6 +82,38 @@ export function WorkspacePage() {
     extractedCandidates
   } = useAnalysis();
 
+  const [savedToHistory, setSavedToHistory] = useState(false);
+  const submitHintId = useId();
+  const modelSelectId = useId();
+
+  useEffect(() => {
+    if (result && onResultComplete) {
+      onResultComplete(result);
+    }
+    setSavedToHistory(false);
+  }, [result, onResultComplete]);
+
+  const handleSaveToHistory = async () => {
+    if (!result) return;
+    await saveAnalysis({
+      id: crypto.randomUUID(),
+      timestamp: new Date().toISOString(),
+      drugNames: (result.medications || []).map(m => m.canonical_name || m.raw_text),
+      inputMode: result.input_mode || inputMode,
+      gateDecision: result.gate_decision || 'unknown',
+      result,
+    });
+    setSavedToHistory(true);
+  };
+
+  // Clears the result (inputs are kept so they can be adjusted) and returns to the form.
+  const startNewAnalysis = () => {
+    reset();
+    const form = document.querySelector<HTMLElement>('[aria-labelledby="analysis-heading"]');
+    form?.scrollIntoView({ block: 'start' });
+    form?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')?.focus();
+  };
+
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
   const updateDrugInput = (index: number, value: string) => {
     setDrugInputs(prev => prev.map((v, i) => i === index ? value : v));
@@ -73,12 +121,6 @@ export function WorkspacePage() {
   const removeDrugInput = (index: number) => {
     if (drugInputs.length > 1) {
       setDrugInputs(prev => prev.filter((_, i) => i !== index));
-    }
-  };
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
     }
   };
 
@@ -105,61 +147,44 @@ export function WorkspacePage() {
       drugNames: inputMode === 'direct_drugs' ? validDrugs : undefined,
       imageFile: inputMode === 'prescription_image' ? (imageFile || undefined) : undefined,
       patientContext,
+      additionalInstructions: additionalInstructions.trim() || undefined,
       inputMode,
       llmSelection: selectedModelId === 'auto' ? { mode: 'auto' } : { mode: 'manual', model_id: selectedModelId },
     });
   };
 
+  const hasDrug = drugInputs.some(d => d.trim());
+  const canSubmit = !isProcessing && (inputMode === 'direct_drugs' ? hasDrug : Boolean(imageFile));
+  const submitHint = isProcessing
+    ? null
+    : inputMode === 'direct_drugs'
+      ? (hasDrug ? null : 'Add at least one drug to analyze.')
+      : (imageFile ? null : 'Choose a prescription image to analyze.');
+
   return (
     <div className="space-y-6">
       {/* Input Section */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm">
-        <div className="p-5 border-b border-slate-100">
-          <h2 className="text-base font-semibold text-slate-900">Medication Safety Analysis</h2>
-          <p className="text-sm text-slate-500 mt-1">
+      <section aria-labelledby="analysis-heading" className="bg-card rounded-xl border border-border shadow-sm">
+        <div className="p-5 border-b border-border">
+          <h2 id="analysis-heading" className="text-base font-semibold text-foreground">Medication Safety Analysis</h2>
+          <p className="text-sm text-muted-foreground mt-1">
             Upload a prescription image or enter drug names for evidence-grounded safety analysis.
           </p>
         </div>
 
-        {/* Input Mode Tabs */}
-        <div className="flex border-b border-slate-100">
-          <button
-            onClick={() => setInputMode('prescription_image')}
-            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
-              inputMode === 'prescription_image'
-                ? 'border-blue-600 text-blue-700 bg-blue-50/50'
-                : 'border-transparent text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            <Upload size={16} /> Upload Prescription
-          </button>
-          <button
-            onClick={() => setInputMode('direct_drugs')}
-            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-colors ${
-              inputMode === 'direct_drugs'
-                ? 'border-blue-600 text-blue-700 bg-blue-50/50'
-                : 'border-transparent text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            <Pill size={16} /> Enter Drug Names
-          </button>
-        </div>
+        <div className="p-5 space-y-5">
+          <SegmentedControl<InputMode>
+            ariaLabel="Input method"
+            value={inputMode}
+            onChange={setInputMode}
+            options={[
+              { value: 'prescription_image', label: 'Upload Prescription', icon: <Icons.upload size={16} /> },
+              { value: 'direct_drugs', label: 'Enter Drug Names', icon: <Icons.enterDrugs size={16} /> },
+            ]}
+          />
 
-        <div className="p-5">
           {inputMode === 'prescription_image' && (
-            <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer relative">
-              <Upload className="mx-auto text-slate-400 mb-3" size={32} />
-              <p className="text-sm text-slate-600">
-                {imageFile ? imageFile.name : "Drag & drop a prescription image, or click to browse"}
-              </p>
-              <p className="text-xs text-slate-400 mt-1">PNG, JPG, or WEBP • Max 5MB</p>
-              <input 
-                type="file" 
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-                accept="image/jpeg,image/png,image/webp" 
-                onChange={handleImageChange}
-              />
-            </div>
+            <PrescriptionDropzone file={imageFile} onFileChange={setImageFile} disabled={isProcessing} />
           )}
 
           {inputMode === 'direct_drugs' && (
@@ -167,152 +192,175 @@ export function WorkspacePage() {
               {drugInputs.map((drug, i) => (
                 <div key={i} className="flex gap-2">
                   <div className="flex-1 relative">
-                    <Pill className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <Icons.medication className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} aria-hidden="true" />
                     <input
                       type="text"
                       value={drug}
                       onChange={e => updateDrugInput(i, e.target.value)}
                       placeholder={`Drug name ${i + 1} (e.g., Amoxicillin, Metformin)`}
-                      className="w-full pl-10 pr-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      aria-label={`Drug name ${i + 1}`}
+                      className="w-full pl-10 pr-4 py-2.5 bg-card text-foreground placeholder:text-muted-foreground border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring"
                     />
                   </div>
                   {drugInputs.length > 1 && (
                     <button
+                      type="button"
                       onClick={() => removeDrugInput(i)}
-                      className="px-3 py-2 text-slate-400 hover:text-red-500 transition-colors"
-                      aria-label="Remove drug"
+                      className="px-3 py-2 rounded-lg text-muted-foreground hover:text-destructive transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      aria-label={`Remove drug ${i + 1}`}
+                      title={`Remove drug ${i + 1}`}
                     >
-                      <X size={16} />
+                      <Icons.remove size={16} aria-hidden="true" />
                     </button>
                   )}
                 </div>
               ))}
               <button
+                type="button"
                 onClick={addDrugInput}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                className="rounded text-sm text-primary hover:underline font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 + Add another drug
               </button>
             </div>
           )}
 
-          {/* Patient Context Toggle */}
-          <details className="mt-5">
-            <summary className="flex items-center gap-2 text-sm font-medium text-slate-700 cursor-pointer">
-              <UserCog size={16} />
-              Patient Context (Optional)
-            </summary>
-            <div className="mt-3 grid grid-cols-2 gap-3">
-              <input
-                type="number"
-                placeholder="Age"
-                value={age}
-                onChange={e => setAge(e.target.value)}
-                className="px-3 py-2 border border-slate-300 rounded-lg text-sm"
-              />
-              <select 
-                value={sex}
-                onChange={e => setSex(e.target.value)}
-                className="px-3 py-2 border border-slate-300 rounded-lg text-sm text-slate-600"
-              >
-                <option value="">Sex</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-              <input
-                type="text"
-                placeholder="Known allergies (comma-separated)"
-                value={allergies}
-                onChange={e => setAllergies(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
-              />
-              <input
-                type="text"
-                placeholder="Known medical conditions"
-                value={conditions}
-                onChange={e => setConditions(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
-              />
-              <input
-                type="text"
-                placeholder="Current other medications"
-                value={currentMeds}
-                onChange={e => setCurrentMeds(e.target.value)}
-                className="col-span-2 px-3 py-2 border border-slate-300 rounded-lg text-sm"
-              />
-            </div>
-            <p className="text-xs text-slate-400 mt-2">
-              Only provide information relevant to medication safety. Patient context is optional
-              and never inferred from prescriptions.
-            </p>
-          </details>
-
-          {/* Answer-generation Model Selector */}
-          <div className="mt-5 p-4 bg-slate-50 rounded-lg border border-slate-200">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <Cpu size={16} className="text-blue-600" />
-                <span className="text-xs font-semibold text-slate-700 uppercase tracking-wider">
-                  Answer-generation model
-                </span>
+          <div className="space-y-3">
+            <Disclosure title="Patient Context" hint="Optional" icon={<Icons.patientContext size={16} />}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  type="number"
+                  placeholder="Age"
+                  aria-label="Age"
+                  value={age}
+                  onChange={e => setAge(e.target.value)}
+                  className={FIELD_CLASS}
+                />
+                <select
+                  aria-label="Sex"
+                  value={sex}
+                  onChange={e => setSex(e.target.value)}
+                  className={FIELD_CLASS}
+                >
+                  <option value="">Sex</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+                <input
+                  type="text"
+                  placeholder="Known allergies (comma-separated)"
+                  aria-label="Known allergies"
+                  value={allergies}
+                  onChange={e => setAllergies(e.target.value)}
+                  className={`sm:col-span-2 ${FIELD_CLASS}`}
+                />
+                <input
+                  type="text"
+                  placeholder="Known medical conditions"
+                  aria-label="Known medical conditions"
+                  value={conditions}
+                  onChange={e => setConditions(e.target.value)}
+                  className={`sm:col-span-2 ${FIELD_CLASS}`}
+                />
+                <input
+                  type="text"
+                  placeholder="Current other medications"
+                  aria-label="Current other medications"
+                  value={currentMeds}
+                  onChange={e => setCurrentMeds(e.target.value)}
+                  className={`sm:col-span-2 ${FIELD_CLASS}`}
+                />
               </div>
-              <span className="text-[11px] font-medium text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
-                {selectedModelId === 'auto' ? 'Automatic Failover' : 'Direct Selection'}
-              </span>
-            </div>
-            <p className="text-xs text-slate-500 mb-2">
-              Choose the model used to generate your analysis.
-            </p>
-            <select
-              aria-label="Answer-generation model"
-              value={selectedModelId}
-              onChange={e => setSelectedModelId(e.target.value)}
-              disabled={isProcessing || isLoadingModels}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              <option value="auto">
-                {isLoadingModels ? 'Loading model catalog...' : 'Automatic selection (recommended)'}
-              </option>
-              {models.map(m => (
-                <option key={m.id} value={m.id} disabled={!m.is_available}>
-                  {m.name} ({m.provider}){m.is_available ? '' : ' — Not configured'}
-                </option>
-              ))}
-            </select>
-            {modelCatalogError && (
-              <p className="text-[11px] text-amber-600 mt-1">
-                {modelCatalogError}
+              <p className="text-xs text-muted-foreground mt-2">
+                Only provide information relevant to medication safety. Patient context is optional
+                and never inferred from prescriptions.
               </p>
-            )}
-            <p className="text-[11px] text-slate-400 mt-2">
-              {selectedModelId === 'auto'
-                ? 'Automatic mode uses the existing provider router and its eligible failover policy.'
-                : 'Direct mode routes your query directly to the selected model without silent failover.'}
-            </p>
+            </Disclosure>
+
+            <Disclosure title="Additional Instructions" hint="Optional" icon={<Icons.instructions size={16} />}>
+              <textarea
+                placeholder="Add any specific analysis instructions or questions (e.g., 'Focus on renal dosing adjustments' or 'Check for QT prolongation risk')."
+                aria-label="Additional instructions"
+                value={additionalInstructions}
+                onChange={e => setAdditionalInstructions(e.target.value)}
+                maxLength={2000}
+                rows={3}
+                className={`w-full resize-y ${FIELD_CLASS}`}
+              />
+              <p className="text-xs text-muted-foreground mt-1">
+                Instructions guide analysis focus but cannot override safety gates or evidence requirements.
+              </p>
+            </Disclosure>
+
+            <Disclosure title="Advanced settings" icon={<Icons.advancedSettings size={16} />}>
+              <label htmlFor={modelSelectId} className="flex items-center gap-1.5 text-sm font-medium text-foreground">
+                <Icons.model size={16} className="text-muted-foreground" />
+                Answer-generation model
+              </label>
+              <p className="text-xs text-muted-foreground mt-0.5 mb-2">
+                Choose the model used to generate your analysis.
+              </p>
+              <select
+                id={modelSelectId}
+                aria-label="Answer-generation model"
+                value={selectedModelId}
+                onChange={e => setSelectedModelId(e.target.value)}
+                disabled={isProcessing || isLoadingModels}
+                className={`w-full disabled:opacity-60 disabled:cursor-not-allowed ${FIELD_CLASS}`}
+              >
+                <option value="auto">
+                  {isLoadingModels ? 'Loading model catalog...' : 'Automatic selection (recommended)'}
+                </option>
+                {models.map(m => (
+                  <option key={m.id} value={m.id} disabled={!m.is_available}>
+                    {m.name} ({m.provider}){m.is_available ? '' : ' — Not configured'}
+                  </option>
+                ))}
+              </select>
+              {modelCatalogError && (
+                <p className="text-xs text-warning mt-1">
+                  {modelCatalogError}
+                </p>
+              )}
+              {selectedModelId !== 'auto' && (
+                <p className="text-xs text-muted-foreground mt-2">
+                  Direct mode routes your query directly to the selected model without silent failover.
+                </p>
+              )}
+            </Disclosure>
           </div>
 
           {/* Submit */}
-          <div className="mt-5 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs text-amber-600">
-              <AlertTriangle size={14} />
-              <span>Research prototype - does not replace clinical advice</span>
+          <div className="flex sm:justify-end">
+            <div className="flex w-full flex-col items-stretch gap-1 sm:w-auto sm:items-end">
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={!canSubmit}
+                aria-describedby={submitHint ? submitHintId : undefined}
+                className={cn(
+                  'flex items-center justify-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors',
+                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-card',
+                  canSubmit
+                    ? 'bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 cursor-pointer'
+                    : 'bg-muted text-muted-foreground border border-border cursor-not-allowed'
+                )}
+              >
+                {isProcessing
+                  ? <Icons.loading size={16} className="animate-spin" aria-hidden="true" />
+                  : <Icons.runAnalysis size={16} aria-hidden="true" />}
+                {isProcessing ? 'Analyzing…' : 'Analyze Medications'}
+              </button>
+              {submitHint && (
+                <p id={submitHintId} className="text-xs text-muted-foreground sm:text-right">
+                  {submitHint}
+                </p>
+              )}
             </div>
-            <button
-              onClick={handleSubmit}
-              disabled={
-                isProcessing || 
-                (inputMode === 'direct_drugs' && drugInputs.every(d => !d.trim())) ||
-                (inputMode === 'prescription_image' && !imageFile)
-              }
-              className="flex items-center gap-2 px-6 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              <Search size={16} />
-              Analyze Medications
-            </button>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Pipeline Progress */}
       {currentStage !== 'idle' && (
@@ -320,6 +368,7 @@ export function WorkspacePage() {
           stages={PIPELINE_STAGES}
           currentStage={currentStage}
           updates={stageUpdates}
+          processingTimeMs={result?.processing_time_ms}
         />
       )}
 
@@ -333,17 +382,65 @@ export function WorkspacePage() {
 
       {/* Error Message */}
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
-          <AlertTriangle className="text-red-500 shrink-0 mt-0.5" size={18} />
-          <div>
-            <h3 className="text-sm font-medium text-red-800">Analysis Failed</h3>
-            <p className="text-sm text-red-600 mt-1">{error}</p>
+        <div className="bg-destructive-soft border border-destructive/30 rounded-lg p-4 flex items-start gap-3">
+          <Icons.error className="text-destructive shrink-0 mt-0.5" size={18} />
+          <div className="flex-1">
+            <h3 className="text-sm font-medium text-destructive">Analysis Failed</h3>
+            <p className="text-sm text-destructive mt-1">{error}</p>
+            <button
+              onClick={reset}
+              className="mt-2 text-sm text-destructive hover:text-destructive font-medium underline"
+            >
+              ← Back to input
+            </button>
           </div>
         </div>
       )}
 
       {/* Results */}
-      {result && currentStage !== 'confirming' && <ResultPanel result={result} />}
+      {result && currentStage !== 'confirming' && (
+        <div className="space-y-4">
+          <ResultPanel result={result} showDetails={!isProcessing} />
+          <div className="flex flex-wrap items-center gap-3 mt-2">
+            <button
+              onClick={handleSaveToHistory}
+              disabled={savedToHistory}
+              className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border transition-colors cursor-pointer ${
+                savedToHistory
+                  ? 'bg-success-soft border-success/30 text-success cursor-default'
+                  : 'border-input text-foreground hover:bg-muted'
+              }`}
+            >
+              {savedToHistory ? <><Icons.saved size={14} /> Saved</> : <><Icons.save size={14} /> Save to History</>}
+            </button>
+            <button
+              onClick={() => {
+                const md = exportAsMarkdown({
+                  id: 'export',
+                  timestamp: new Date().toISOString(),
+                  drugNames: (result.medications || []).map(m => m.canonical_name || m.raw_text),
+                  inputMode: result.input_mode || inputMode,
+                  gateDecision: result.gate_decision || 'unknown',
+                  result,
+                });
+                downloadFile(md, `analysis-${Date.now()}.md`, 'text/markdown');
+              }}
+              className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted cursor-pointer"
+            >
+              <Icons.download size={14} /> Download Report
+            </button>
+            {!isProcessing && (
+              <button
+                type="button"
+                onClick={startNewAnalysis}
+                className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Icons.newAnalysis size={14} /> New analysis
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

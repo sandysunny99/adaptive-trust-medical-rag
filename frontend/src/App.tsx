@@ -1,32 +1,36 @@
-import { useState } from 'react';
 import { Layout } from './components/Layout';
-import { WorkspacePage } from './pages/WorkspacePage';
-import { EvidencePage } from './pages/EvidencePage';
-import { SecurityPage } from './pages/SecurityPage';
+import { AnalyzePage } from './pages/AnalyzePage';
 import { EvaluationPage } from './pages/EvaluationPage';
 import { AuditPage } from './pages/AuditPage';
-import { OverviewPage } from './pages/OverviewPage';
-
-export type Page = 'overview' | 'workspace' | 'evidence' | 'security' | 'evaluation' | 'audit';
+import { AboutPage } from './pages/AboutPage';
+import { HistoryPage } from './pages/HistoryPage';
+import { useHashRoute } from './routing/useHashRoute';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('workspace');
+  const { page, navigate, showResearchTabs } = useHashRoute();
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'overview': return <OverviewPage />;
-      case 'workspace': return <WorkspacePage />;
-      case 'evidence': return <EvidencePage />;
-      case 'security': return <SecurityPage />;
+  // Every page except Analyze mounts on demand.
+  const renderOtherPage = () => {
+    switch (page) {
+      case 'history': return <HistoryPage />;
+      case 'about': return <AboutPage />;
       case 'evaluation': return <EvaluationPage />;
       case 'audit': return <AuditPage />;
-      default: return <WorkspacePage />;
+      default: return null;
     }
   };
 
   return (
-    <Layout currentPage={currentPage} onNavigate={setCurrentPage}>
-      {renderPage()}
+    <Layout currentPage={page} onNavigate={navigate} showResearchTabs={showResearchTabs}>
+      {/*
+        Analyze stays mounted so an in-progress or finished analysis survives
+        visits to other pages. `hidden` removes it from layout, the
+        accessibility tree and the tab order while another page is shown.
+      */}
+      <div hidden={page !== 'analyze'}>
+        <AnalyzePage />
+      </div>
+      {page !== 'analyze' && renderOtherPage()}
     </Layout>
   );
 }

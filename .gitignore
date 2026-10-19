@@ -164,3 +164,8 @@ ehthumbs.db
 **/.env
 **/.env.local
 **/.env.*.local
+
+# Claude Code: large local model transfer and per-user settings
+.claude_transfer/
+.claude/settings.local.json
+.playwright-mcp/
