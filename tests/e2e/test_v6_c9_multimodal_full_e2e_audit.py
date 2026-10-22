@@ -137,6 +137,9 @@ def setup_c9_mocks():
     old_retrieval = getattr(app.state, "retrieval_engine", None)
     old_verifier = getattr(app.state, "claim_verifier", None)
     old_vision = getattr(app.state, "vision_backend", None)
+    old_links = getattr(app.state, "verified_source_links", None)
+    # Fixture assumption: the mock chunk stands in for an identity-verified source.
+    app.state.verified_source_links = {"chunk_1": "https://test"}
 
     app.state.vision_backend = MockC9VisionBackend()
 
@@ -157,7 +160,7 @@ def setup_c9_mocks():
                     self.document_id = "doc_1"
                     self.text = "Warfarin and Aspirin."
                     self.source_authority = 0.9
-                    self.source_url = "http://test"
+                    self.source_url = "https://test"
                     self.poisoning_score = 0.0
                     self.metadata = {
                         "source_type": "BIOMEDICAL_LITERATURE",
@@ -195,6 +198,7 @@ def setup_c9_mocks():
     app.state.retrieval_engine = old_retrieval
     app.state.claim_verifier = old_verifier
     app.state.vision_backend = old_vision
+    app.state.verified_source_links = old_links
 
 def test_1_e2e_primary_image_scenario(setup_c9_mocks):
     """Primary Real Image E2E Scenario + SSE Validation."""

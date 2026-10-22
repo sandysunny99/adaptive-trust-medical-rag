@@ -1,25 +1,23 @@
 import { Icons } from '../../ui/icons';
 import { RiskTierPill } from '../ui/StatusPill';
 import type { TrustInfo } from '../../types';
+import { NOT_AVAILABLE, formatScore, trustScoreText } from '../../services/evidenceDisplay';
 
-export const NOT_AVAILABLE = 'Not available';
+export { NOT_AVAILABLE };
+
 
 /**
  * Shows the backend's trust fields as returned. No frontend calculation:
  *   result.trust.overall_score, result.trust.threshold, result.trust.risk_class
  * Any missing field reads "Not available".
  */
-function formatScore(value: unknown): string {
-  return typeof value === 'number' && Number.isFinite(value) ? value.toFixed(2) : NOT_AVAILABLE;
-}
-
 function formatText(value: unknown): string {
   return typeof value === 'string' && value.trim() ? value : NOT_AVAILABLE;
 }
 
 export function TrustSummary({ trust }: { trust: TrustInfo | null | undefined }) {
   const rows = [
-    { label: 'Trust score', value: formatScore(trust?.overall_score) },
+    { label: 'Trust score', value: trustScoreText(trust) },
     { label: 'Threshold', value: formatScore(trust?.threshold) },
     { label: 'Risk tier', value: formatText(trust?.risk_class) },
   ];
@@ -48,11 +46,14 @@ export function TrustSummary({ trust }: { trust: TrustInfo | null | undefined })
           </div>
         ))}
       </dl>
-      {(trust?.risk_basis || (trust?.unrelated_excluded ?? 0) > 0) && (
+      {(trust?.risk_basis || (trust?.unrelated_excluded ?? 0) > 0 || (trust?.unverified_source_excluded ?? 0) > 0) && (
         <div className="px-4 pb-4 space-y-1 text-xs text-muted-foreground">
           {trust?.risk_basis && <p>Risk tier basis: {trust.risk_basis}</p>}
           {(trust?.unrelated_excluded ?? 0) > 0 && (
             <p>{trust!.unrelated_excluded} retrieved chunk(s) named none of these medications and were excluded.</p>
+          )}
+          {(trust?.unverified_source_excluded ?? 0) > 0 && (
+            <p>{trust!.unverified_source_excluded} retrieved chunk(s) had no verified source identity and were not used as evidence.</p>
           )}
         </div>
       )}

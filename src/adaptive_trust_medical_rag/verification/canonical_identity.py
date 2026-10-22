@@ -148,6 +148,30 @@ _PREDICATE_PATTERN = re.compile(
 )
 
 
+class RequestDrugMap(dict):
+    """A drug name -> RxCUI map whose names are also recognised as drug mentions in claims.
+
+    The fixed drug pattern does not know every medication (spironolactone, for example), so a
+    claim naming one could never be given an identity. The live application passes the request's
+    normalised names in this map; a plain dict (every research caller) keeps the fixed pattern only,
+    so research results do not change.
+    """
+
+
+def _drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
+    """Drug mentions in text order: the fixed pattern, plus a RequestDrugMap's own names."""
+    pattern = _DRUG_PATTERN
+    if isinstance(drug_rxcui_map, RequestDrugMap):
+        names = sorted((n for n in drug_rxcui_map if n and n.strip()), key=len, reverse=True)
+        if names:
+            # Longer names first, so a name is never matched by a shorter one it contains.
+            pattern = re.compile(
+                r"\b(?:" + "|".join(re.escape(n) for n in names) + r"|" + _KNOWN_DRUGS + r"|" + _SUFFIX_PATTERN + r")\b",
+                re.IGNORECASE,
+            )
+    return list(dict.fromkeys(m.lower() for m in pattern.findall(claim_text)))
+
+
 def extract_claim_identity(
     claim_text: str,
     drug_rxcui_map: dict[str, str],
@@ -162,7 +186,7 @@ def extract_claim_identity(
         drug_rxcui_map: Mapping of lowercased drug name -> RxCUI (from DrugNormalizer).
     """
     # Deduplicate while preserving text-order (first occurrence wins)
-    drugs_found = list(dict.fromkeys(m.lower() for m in _DRUG_PATTERN.findall(claim_text)))
+    drugs_found = _drug_mentions(claim_text, drug_rxcui_map)
     predicates_found = _PREDICATE_PATTERN.findall(claim_text)
 
     if len(drugs_found) < 2 or not predicates_found:

@@ -1,12 +1,102 @@
 # TRACK_A_ANNOTATION_QA_V1
 
-**Status**: PASS
+**Status**: FAIL
 **Total Records Checked**: 530
-**Errors**: 0
-**Warnings**: 1
+**Errors**: 90
+**Warnings**: 2
 
-## QA Output
-No errors found.
+## Errors
+- Row 11: Missing annotator_id for completed annotation
+- Row 12: Missing annotator_id for completed annotation
+- Row 13: Missing annotator_id for completed annotation
+- Row 14: Missing annotator_id for completed annotation
+- Row 15: Missing annotator_id for completed annotation
+- Row 16: Missing annotator_id for completed annotation
+- Row 17: Missing annotator_id for completed annotation
+- Row 18: Missing annotator_id for completed annotation
+- Row 19: Missing annotator_id for completed annotation
+- Row 20: Missing annotator_id for completed annotation
+- Row 21: Missing annotator_id for completed annotation
+- Row 22: Missing annotator_id for completed annotation
+- Row 23: Missing annotator_id for completed annotation
+- Row 24: Missing annotator_id for completed annotation
+- Row 25: Missing annotator_id for completed annotation
+- Row 26: Missing annotator_id for completed annotation
+- Row 27: Missing annotator_id for completed annotation
+- Row 28: Missing annotator_id for completed annotation
+- Row 29: Missing annotator_id for completed annotation
+- Row 30: Missing annotator_id for completed annotation
+- Row 31: Missing timestamp for completed annotation
+- Row 32: Missing timestamp for completed annotation
+- Row 33: Missing timestamp for completed annotation
+- Row 34: Missing timestamp for completed annotation
+- Row 35: Missing timestamp for completed annotation
+- Row 36: Missing timestamp for completed annotation
+- Row 37: Missing timestamp for completed annotation
+- Row 38: Missing timestamp for completed annotation
+- Row 39: Missing timestamp for completed annotation
+- Row 40: Missing timestamp for completed annotation
+- Row 41: Missing timestamp for completed annotation
+- Row 42: Missing timestamp for completed annotation
+- Row 43: Missing timestamp for completed annotation
+- Row 44: Missing timestamp for completed annotation
+- Row 45: Missing timestamp for completed annotation
+- Row 46: Missing timestamp for completed annotation
+- Row 47: Missing timestamp for completed annotation
+- Row 48: Missing timestamp for completed annotation
+- Row 49: Missing timestamp for completed annotation
+- Row 50: Missing timestamp for completed annotation
+- Row 51: Missing timestamp for completed annotation
+- Row 52: Missing timestamp for completed annotation
+- Row 53: Missing timestamp for completed annotation
+- Row 54: Missing timestamp for completed annotation
+- Row 55: Missing timestamp for completed annotation
+- Row 56: Missing timestamp for completed annotation
+- Row 57: Missing timestamp for completed annotation
+- Row 58: Missing timestamp for completed annotation
+- Row 59: Missing timestamp for completed annotation
+- Row 60: Missing timestamp for completed annotation
+- Row 61: Missing timestamp for completed annotation
+- Row 62: Missing timestamp for completed annotation
+- Row 63: Missing timestamp for completed annotation
+- Row 64: Missing timestamp for completed annotation
+- Row 65: Missing timestamp for completed annotation
+- Row 66: Missing timestamp for completed annotation
+- Row 67: Missing timestamp for completed annotation
+- Row 68: Missing timestamp for completed annotation
+- Row 69: Missing timestamp for completed annotation
+- Row 70: Missing timestamp for completed annotation
+- Row 71: Missing timestamp for completed annotation
+- Row 72: Missing timestamp for completed annotation
+- Row 73: Missing timestamp for completed annotation
+- Row 74: Missing timestamp for completed annotation
+- Row 75: Missing timestamp for completed annotation
+- Row 76: Missing timestamp for completed annotation
+- Row 77: Missing timestamp for completed annotation
+- Row 78: Missing timestamp for completed annotation
+- Row 79: Missing timestamp for completed annotation
+- Row 80: Missing timestamp for completed annotation
+- Row 81: Missing timestamp for completed annotation
+- Row 82: Missing timestamp for completed annotation
+- Row 83: Missing timestamp for completed annotation
+- Row 84: Missing timestamp for completed annotation
+- Row 85: Missing timestamp for completed annotation
+- Row 86: Missing timestamp for completed annotation
+- Row 87: Missing timestamp for completed annotation
+- Row 88: Missing timestamp for completed annotation
+- Row 89: Missing timestamp for completed annotation
+- Row 90: Missing timestamp for completed annotation
+- Row 91: Missing timestamp for completed annotation
+- Row 92: Missing timestamp for completed annotation
+- Row 93: Missing timestamp for completed annotation
+- Row 94: Missing timestamp for completed annotation
+- Row 95: Missing timestamp for completed annotation
+- Row 96: Missing timestamp for completed annotation
+- Row 97: Missing timestamp for completed annotation
+- Row 98: Missing timestamp for completed annotation
+- Row 99: Missing timestamp for completed annotation
+- Row 100: Missing timestamp for completed annotation
 
 ## Warnings
 - Row 5: Abstract missing but label is IRRELEVANT
+- Row 99: Abstract missing but label is IRRELEVANT

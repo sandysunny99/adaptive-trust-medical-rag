@@ -79,7 +79,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     stageUpdates, 
     result, 
     error,
-    extractedCandidates
+    extractedCandidates,
+    runInputMode,
   } = useAnalysis();
 
   const [savedToHistory, setSavedToHistory] = useState(false);
@@ -369,6 +370,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           currentStage={currentStage}
           updates={stageUpdates}
           processingTimeMs={result?.processing_time_ms}
+          inputMode={runInputMode ?? undefined}
         />
       )}
 

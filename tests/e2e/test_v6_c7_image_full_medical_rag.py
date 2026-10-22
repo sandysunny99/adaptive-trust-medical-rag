@@ -1,5 +1,6 @@
 import io
 import json
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -133,6 +134,12 @@ def setup_c7_mocks():
     orig_retrieval = getattr(app.state, "retrieval_engine", None)
     orig_normalizer = getattr(app.state, "drug_normalizer", None)
     orig_verifier = getattr(app.state, "claim_verifier", None)
+    orig_links = getattr(app.state, "verified_source_links", None)
+    # Fixture assumption: the frozen corpus chunks stand in for identity-verified sources so the
+    # stages after the source-identity gate run. In the application none of them is verified.
+    corpus = json.loads((Path(__file__).resolve().parents[2] / "data" / "live_medical"
+                         / "LIVE_MEDICAL_CORPUS_V2.json").read_text(encoding="utf-8"))
+    app.state.verified_source_links = {item["chunk_id"]: item["document_url"] for item in corpus}
 
     from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
     app.state.drug_normalizer = DrugNormalizer(use_api=True)
@@ -157,6 +164,7 @@ def setup_c7_mocks():
     app.state.retrieval_engine = orig_retrieval
     app.state.drug_normalizer = orig_normalizer
     app.state.claim_verifier = orig_verifier
+    app.state.verified_source_links = orig_links
 
 def test_1_full_rag_happy_path():
     """TEST 1: Image -> Vision -> Confirm -> Real RxNorm -> Real Retrieval -> LLM -> Safety Gate"""

@@ -1,6 +1,7 @@
 import { Icons } from '../ui/icons';
 import type { AnalysisResult } from '../types';
 import { EvidenceList } from '../components/results/EvidenceList';
+import { trustScoreText } from '../services/evidenceDisplay';
 
 interface EvidencePageProps {
   latestResult?: AnalysisResult | null;
@@ -44,7 +45,7 @@ export function EvidencePage({ latestResult }: EvidencePageProps) {
         <div className="grid grid-cols-3 gap-4 text-center">
           {trust && (
             <div className="p-3 rounded-lg bg-primary-soft border border-primary/20">
-              <div className="text-lg font-bold text-primary">{trust.overall_score.toFixed(2)}</div>
+              <div className="text-lg font-bold text-primary">{trustScoreText(trust)}</div>
               <div className="text-xs text-primary">Trust Score ({trust.risk_class})</div>
             </div>
           )}

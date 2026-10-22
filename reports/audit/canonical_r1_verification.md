@@ -1,7 +1,7 @@
 # Canonical R1 Forensic Verification Report
 
 **Status:** `FAILED`
-**Timestamp:** 2026-10-03T21:13:31.979487+00:00
+**Timestamp:** 2026-10-13T15:25:55.066671+00:00
 
 ---
 

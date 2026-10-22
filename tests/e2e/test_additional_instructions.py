@@ -124,6 +124,8 @@ def run(note, *, supported=True, authority=0.9):
         retrieval_engine=RecordingRetrieval([chunk(authority)]),
         llm_backend=RecordingLLM(),
         claim_verifier=FixedVerifier(FinalSupportState.SUPPORTED if supported else FinalSupportState.UNSUPPORTED),
+        # Fixture assumption: the synthetic chunk c1 stands in for an identity-verified source.
+        verified_source_links={"c1": "https://example.org/c1"},
     )
 
     async def collect():
@@ -270,8 +272,11 @@ class CountingVision:
 
 @pytest.fixture
 def live_state():
-    names = ("drug_normalizer", "retrieval_engine", "llm_backend", "claim_verifier", "vision_backend")
+    names = ("drug_normalizer", "retrieval_engine", "llm_backend", "claim_verifier", "vision_backend",
+             "verified_source_links")
     saved = {n: getattr(app.state, n, None) for n in names}
+    # Fixture assumption: the synthetic chunk c1 stands in for an identity-verified source.
+    app.state.verified_source_links = {"c1": "https://example.org/c1"}
     app.state.drug_normalizer = OfflineNormalizer()
     app.state.retrieval_engine = RecordingRetrieval([chunk()])
     app.state.llm_backend = RecordingLLM()

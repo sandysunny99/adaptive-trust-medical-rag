@@ -52,6 +52,16 @@ def evidence(**overrides) -> dict:
         "freshness": 0.9,
         "embedding": [0.0] * 383 + [1.0],
         "provenance": {"source": "DAILYMED", "chunk_id": CHUNK_ID, "content_hash": sha(text)},
+        "source_identity": {
+            "provider": "DAILYMED",
+            "external_id": "00000000-0000-0000-0000-000000000000",
+            "canonical_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00000000-0000-0000-0000-000000000000",
+            "title": "TEST LABEL (synthetic fixture)",
+            "source_version": "1",
+            "captured_at": "2026-10-15T00:00:00Z",
+            "capture_sha256": "0" * 64,
+            "verification_method": "synthetic test fixture",
+        },
     }
     item.update(overrides)
     return item
@@ -143,6 +153,24 @@ def test_approved_v2_evidence_joins_retrieval_without_changing_the_frozen_corpus
                                             query_drugs=["simvastatin", "clarithromycin"], top_k=20)
     assert CHUNK_ID in {sc.candidate.chunk_id for sc in found}
     assert CHUNK_ID not in {item["chunk_id"] for item in CORPUS}
+
+
+def test_approved_v2_evidence_with_a_source_identity_record_is_identity_verified(tmp_path, monkeypatch):
+    write_v2(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {CHUNK_ID: evidence()["document_url"]}
+
+
+def test_approved_v2_evidence_without_a_source_identity_record_is_not_verified(tmp_path, monkeypatch):
+    item = evidence()
+    del item["source_identity"]
+    write_v2(tmp_path, chunks=[item])
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {}
 
 
 # ── Everything short of an approved, intact dataset fails closed ─────────────

@@ -5,7 +5,7 @@ import { disclaimerFor } from '../constants/disclaimer';
 import { Disclosure } from './ui/Disclosure';
 import { StatusPill } from './ui/StatusPill';
 import { TrustSummary } from './results/TrustSummary';
-import { EvidenceList } from './results/EvidenceList';
+import { EvidenceList, ExcludedSourceList } from './results/EvidenceList';
 import { SecurityChecks } from './results/SecurityChecks';
 
 interface ResultPanelProps {
@@ -143,6 +143,16 @@ export function ResultPanel({ result, showDetails = true }: ResultPanelProps) {
                     : 'No evidence items were returned for this analysis.'}
                 </p>}
           </Disclosure>
+
+          {(result.excluded_sources || []).length > 0 && (
+            <Disclosure
+              className="bg-card shadow-sm"
+              icon={<Icons.caution size={20} />}
+              title={`Excluded sources (${result.excluded_sources!.length})`}
+            >
+              <ExcludedSourceList sources={result.excluded_sources!} />
+            </Disclosure>
+          )}
 
           <Disclosure
             defaultOpen

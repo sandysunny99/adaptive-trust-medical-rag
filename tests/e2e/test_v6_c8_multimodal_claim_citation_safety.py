@@ -155,6 +155,9 @@ def base_mocks():
     old_retrieval = getattr(app.state, "retrieval_engine", None)
     old_verifier = getattr(app.state, "claim_verifier", None)
     old_vision = getattr(app.state, "vision_backend", None)
+    old_links = getattr(app.state, "verified_source_links", None)
+    # Fixture assumption: the mock chunk stands in for an identity-verified source.
+    app.state.verified_source_links = {"chunk_1": "https://pubmed.com/123"}
 
     class MockRouter:
         def __init__(self):
@@ -173,7 +176,7 @@ def base_mocks():
                     self.document_id = "doc_1"
                     self.text = "Warfarin and Aspirin combined increase bleeding risk significantly."
                     self.source_authority = 0.9
-                    self.source_url = "http://pubmed.com/123"
+                    self.source_url = "https://pubmed.com/123"
                     self.poisoning_score = 0.0
                     self.metadata = {"source_type": "BIOMEDICAL_LITERATURE", "freshness_score": 0.9}
             class MockScoredCandidate:
@@ -202,6 +205,7 @@ def base_mocks():
     app.state.retrieval_engine = old_retrieval
     app.state.claim_verifier = old_verifier
     app.state.vision_backend = old_vision
+    app.state.verified_source_links = old_links
 
 def _run_full_flow(scenario):
     app.state.vision_backend = MockC8VisionBackend(scenario)
@@ -271,17 +275,17 @@ def test_5_malicious_image_prompt_injection(base_mocks):
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_id = client.post("/api/v1/analyze/prescription", files=files).json()["request_id"]
 
+    # Can't confirm empty list successfully (will yield NO_VALID_DRUGS error). The confirmation is
+    # posted before the stream is read: the synchronous test client cannot confirm mid-stream, and an
+    # unconfirmed stream now ends with CONFIRMATION_TIMEOUT instead of staying open for a re-run.
+    conf_payload = {"confirmed_medications": []}
+    client.post(f"/api/v1/analyze/{req_id}/confirm", json=conf_payload)
     events = extract_sse_events(client.get(f"/api/v1/stream/{req_id}").text.splitlines())
     cand_event = next((e for e in events if e.get("event") == "medication_candidates_extracted"), None)
 
     assert cand_event is not None
     assert len(cand_event["data"]["candidates"]) == 0
 
-    # Can't confirm empty list successfully (will yield NO_VALID_DRUGS error)
-    conf_payload = {"confirmed_medications": []}
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json=conf_payload)
-    events_after = extract_sse_events(client.get(f"/api/v1/stream/{req_id}").text.splitlines())
-
-    err_event = next((e for e in events_after if e.get("event") == "error"), None)
+    err_event = next((e for e in events if e.get("event") == "error"), None)
     assert err_event is not None
     assert err_event["data"]["code"] == "NO_VALID_DRUGS"
