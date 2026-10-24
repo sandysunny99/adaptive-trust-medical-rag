@@ -47,8 +47,33 @@ def sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+# SPL narrative elements that end a run of text. Inline markup (<content>, <sub>, <sup>, links)
+# joins its text as written; words run together inside one text node are left as published.
+BLOCK_TAGS = {"section", "title", "text", "paragraph", "list", "item", "table", "caption",
+              "thead", "tbody", "tfoot", "tr", "td", "th", "br"}
+
+
 def text_of(node) -> str:
-    return " ".join("".join(node.itertext()).split())
+    """The text of an SPL node with whitespace collapsed to single spaces ("" for None)."""
+    if node is None:
+        return ""
+    parts: list[str] = []
+
+    def walk(el) -> None:
+        block = isinstance(el.tag, str) and etree.QName(el).localname in BLOCK_TAGS
+        if block:
+            parts.append(" ")
+        if isinstance(el.tag, str) and el.text:  # comments and processing instructions add nothing
+            parts.append(el.text)
+        for child in el:
+            walk(child)
+            if child.tail:
+                parts.append(child.tail)
+        if block:
+            parts.append(" ")
+
+    walk(node)
+    return " ".join("".join(parts).split())
 
 
 def fetch(client: httpx.Client, url: str, name: str) -> bytes:
