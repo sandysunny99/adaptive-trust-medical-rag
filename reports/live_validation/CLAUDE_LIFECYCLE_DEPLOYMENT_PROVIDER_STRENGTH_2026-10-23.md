@@ -515,11 +515,14 @@ No installed package changed (the dry run above), and no Python or frontend sour
 |---|---|---|---|
 | Full backend, `TESTING=1` | development tree (with local candidate tests) | 0 | 1773 passed, 4 skipped, 0 failed |
 | **Full backend, `TESTING=1`** | **publishable tree**: a fresh worktree of `395c214` plus exactly the committed files | 0 | **1717 passed, 4 skipped, 0 failed** (1773 − 56 candidate cases) |
+| **Full backend, `TESTING=1`** | **exact commit `a6066ed`**: a fresh detached checkout of the commit, nothing else | 0 | **1717 passed, 4 skipped, 0 failed**, 5 min 43 s; historical and live-data hashes unchanged; checkout clean afterwards |
 | Real PubMedBERT NLI, `TESTING` unset, `-p nli_call_probe` | development tree, 7 files including 2 companions | 0 | 141 passed, **36 real `TextClassificationPipeline` calls**, `TESTING=None`, 4 min 25 s |
 | Sentinel privacy tests | publishable tree | 0 | 7 passed |
 | Base-test check | publishable vs `395c214` | — | 84 base test files and 1,356 base test functions. Apart from 4 intentionally replaced `/ingest` tests, none removed, none with fewer asserts or parameters, no new skip or xfail. The 4 asserted a stub that returned 200 with `poisoning_score: 0.0` when no ingester was configured. That route now returns 503 and reports nothing as ingested, and 3 tests cover the new behaviour and the content hash. |
 | Frontend Vitest | development tree | 0 | 19 files, 155 passed; 3 Node `--localstorage-file` notices |
-| `tsc -b`, production build, lint | development tree | 0 / 0 / 0 | clean; built, no warnings; 0 errors, 3 warnings present before |
+| TypeScript check `tsc -b` | development tree | 0 | no errors |
+| Production build | development tree | 0 | built, no build warnings |
+| Lint (oxlint) | development tree | 0 | 0 errors, 3 `react(set-state-in-effect)` warnings in `HistoryPage.tsx` and `WorkspacePage.tsx`; the same 3 are reported for `395c214` with the same config |
 | Ruff, `git diff --check` | development tree | 0 / 0 | clean |
 | Gitleaks | diff and every new file | 0 | no leaks |
 | `run_bandit.py` / raw Bandit | `src` (identical in both trees) | 0 / 1 | as in E3 |
@@ -532,6 +535,6 @@ No installed package changed (the dry run above), and no Python or frontend sour
 
 ### E5. Still open
 
-- The pending candidates: E2.
+- The pending candidates: E2. The committed suite does not cover the 56 candidate-dependent cases; they run only in a local checkout that holds the fixtures.
 - One worker; the 5 s cleanup bound; provider-side work after a cancel; Windows-only image OCR; ASGI spec 2.4: as in D6.
 - Evidence approval remains a separate human step.

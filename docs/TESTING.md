@@ -1,16 +1,25 @@
 # Testing and validation
 
-Commands below are run from the repository root unless stated. `TESTING=1` is correct for the test suite only (stub embeddings, relaxed rate limit); never set it for a real run.
+Commands below are run from the repository root unless stated. `TESTING=1` is correct for the test suite only (stub embeddings, mock NLI, relaxed rate limit); never set it for a real run.
 
 ## Latest verified results
 
-Run on 2026-10-24 for branch `feature/multi-dataset-v2-evidence` (base `395c214`). "Publishable tree" is a fresh worktree of `395c214` holding exactly the files committed on the branch, without the local candidate tests.
+All runs on 2026-10-24, branch `feature/multi-dataset-v2-evidence` (base `395c214`). Trees:
+
+- **Exact commit:** a fresh checkout of the commit, nothing else.
+- **Publishable tree:** a fresh worktree of `395c214` holding exactly the files later committed.
+- **Development tree:** the working copy, which also holds the local-only candidate fixtures and their tests.
 
 | Check | Tree | Result |
 |---|---|---|
-| Backend suite, `TESTING=1` | publishable tree | 1717 passed, 4 skipped (live-credential preflight), 0 failed; historical and live-data hashes unchanged |
-| Claim verification with the real PubMedBERT NLI, `TESTING` unset | development tree | 141 passed (includes local candidate tests); 36 real inference calls counted |
-| Frontend: Vitest / `tsc -b` / build / lint | development tree (frontend identical) | 19 files, 155 passed / clean / built, no warnings / 0 errors, 3 warnings (present before) |
+| Backend suite, `TESTING=1` | exact commit `a6066ed` | exit 0: 1717 passed, 4 skipped (live-credential preflight), 0 failed |
+| Backend suite, `TESTING=1` | publishable tree | exit 0: 1717 passed, 4 skipped, 0 failed; historical and live-data hashes unchanged |
+| Backend suite, `TESTING=1` | development tree | exit 0: 1773 passed, 4 skipped, 0 failed (the 1717 plus 56 local candidate cases) |
+| Claim verification with the real PubMedBERT NLI, `TESTING` unset | development tree | exit 0: 141 passed (includes local candidate tests); 36 real inference calls counted |
+| Frontend unit tests (Vitest) | development tree (frontend files identical to the commit) | exit 0: 19 files, 155 passed |
+| TypeScript check (`tsc -b`) | same | exit 0, no errors |
+| Production build (`npm run build`) | same | exit 0, no build warnings |
+| Lint (`npm run lint`, oxlint) | same | exit 0: 0 errors, 3 warnings (`react(set-state-in-effect)` in `HistoryPage.tsx` and `WorkspacePage.tsx`), all present before this branch |
 | ruff, `git diff --check`, gitleaks (diff and new files), doc tests, `uv lock --check`, `uv sync --locked --dry-run` | both | all clean |
 | `run_bandit.py` / raw `bandit -r src` | development tree (`src` identical) | exit 0 / exit 1 with 13 Low findings, identical to `395c214` |
 | Integrity scripts, frozen-hash line-ending audit, secret-scan hook checks | publishable tree | all pass; 311 CRLF-hashed files, 0 unpinned |
@@ -53,7 +62,7 @@ Focused suites:
 
 The OCR tests that run the real engine need Windows; elsewhere they are skipped, and the rest of the image tests use an injected recognizer.
 
-Tests built on candidate relationship evidence that is still pending researcher approval (real label text, kept with its own fixtures) are not in version control until that evidence is reviewed; the committed suite passes without them.
+Tests built on candidate relationship evidence that is still pending researcher approval (real label text, kept with its own fixtures) are not in version control until that evidence is reviewed. The committed suite therefore does **not** cover those 56 cases (real-label entailment, source identity records of real set IDs, loading of the candidate datasets); they run only in a local checkout that holds the fixtures.
 
 ### Real NLI model
 
