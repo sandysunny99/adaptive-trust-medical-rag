@@ -1,5 +1,5 @@
 import { Icons } from '../ui/icons';
-import type { PipelineStage, StageUpdate } from '../types';
+import type { InputMode, PipelineStage, StageUpdate } from '../types';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import { Disclosure } from './ui/Disclosure';
 
@@ -9,36 +9,60 @@ interface PipelineProgressProps {
   updates: StageUpdate[];
   /** `processing_time_ms` from the answer payload, when present. */
   processingTimeMs?: number | null;
+  /** Manual entry skips the image-only stages; they are shown as not applicable, not as not run. */
+  inputMode?: InputMode;
 }
 
-type StepStatus = 'complete' | 'running' | 'pending' | 'failed' | 'skipped';
+type StepStatus = 'complete' | 'running' | 'pending' | 'failed' | 'skipped' | 'not_applicable';
+
+/** Stages that exist only for an uploaded prescription image. */
+const IMAGE_ONLY: ReadonlySet<PipelineStage> = new Set<PipelineStage>(['extracting', 'confirming']);
+/** Stages the backend checks inside another stage, which reports for them. */
+const REPORTED_BY: Partial<Record<PipelineStage, PipelineStage>> = { relationship_verifying: 'claim_verifying' };
+/** Stages the backend reports only after the user confirmed the extracted medications. */
+const AFTER_CONFIRMATION: ReadonlySet<PipelineStage> = new Set<PipelineStage>(['uploading', 'normalizing']);
+
+/**
+ * User confirmation has no backend update of its own. It is complete only when extraction
+ * completed and the backend then went on to the stages that need confirmed medications; a failed
+ * or missing extraction can never make it complete.
+ */
+function confirmationStatus(currentStage: PipelineStage, updates: StageUpdate[]): StepStatus {
+  const extraction = updates.find(u => u.stage === 'extracting');
+  const ended = currentStage === 'complete' || currentStage === 'abstained' || currentStage === 'error' || currentStage === 'blocked';
+  if (!extraction || extraction.status !== 'complete') return ended ? 'skipped' : 'pending';
+  if (updates.some(u => AFTER_CONFIRMATION.has(u.stage))) return 'complete';
+  if (currentStage === 'confirming') return 'running';
+  return ended ? 'skipped' : 'pending';
+}
 
 function getStageStatus(
   stageKey: PipelineStage,
   currentStage: PipelineStage,
-  stages: { key: PipelineStage }[],
   updates: StageUpdate[],
+  inputMode?: InputMode,
 ): StepStatus {
-  const currentIdx = stages.findIndex(s => s.key === currentStage);
-  const stageIdx = stages.findIndex(s => s.key === stageKey);
-  if (currentStage === 'complete') return 'complete';
+  if (inputMode && inputMode !== 'prescription_image' && IMAGE_ONLY.has(stageKey)) return 'not_applicable';
+  if (stageKey === 'confirming') return confirmationStatus(currentStage, updates);
+  const update = updates.find(u => u.stage === (REPORTED_BY[stageKey] ?? stageKey));
+  if (currentStage === 'complete') {
+    // An answer is released only after every stage ran; a reported failure still shows.
+    return update?.status === 'failed' ? 'failed' : 'complete';
+  }
   // An abstention or an error can stop the pipeline early, so each stage's own last
   // update says what happened to it; a stage the backend never reported did not run.
   const stopped = currentStage === 'error' || currentStage === 'blocked';
   if (currentStage === 'abstained' || stopped) {
-    const update = updates.find(u => u.stage === stageKey);
-    if (!update) {
-      const confirmed = stageKey === 'confirming' && updates.some(u => u.stage === 'extracting');
-      return confirmed ? 'complete' : 'skipped';
-    }
+    if (!update) return 'skipped';
     if (update.status === 'failed') return 'failed';
     if (update.status === 'skipped' || update.status === 'pending') return 'skipped';
     // A stage still running when an error ended the stream was interrupted by it.
     if (update.status === 'running' && stopped) return 'failed';
     return 'complete';
   }
-  if (stageIdx < currentIdx) return 'complete';
-  if (stageIdx === currentIdx) return 'running';
+  if (update?.status === 'failed') return 'failed';
+  if (update?.status === 'complete') return 'complete';
+  if (update?.status === 'running' || stageKey === currentStage) return 'running';
   return 'pending';
 }
 
@@ -46,12 +70,12 @@ function formatSeconds(ms: number): string {
   return `${(ms / 1000).toFixed(1)} s`;
 }
 
-function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
+function StepList({ stages, currentStage, updates, inputMode }: PipelineProgressProps) {
   const reduceMotion = usePrefersReducedMotion();
   return (
     <ol className="space-y-2">
       {stages.map(({ key, label }) => {
-        const status = getStageStatus(key, currentStage, stages, updates);
+        const status = getStageStatus(key, currentStage, updates, inputMode);
         const update = updates.find(u => u.stage === key);
         return (
           <li key={key} className="flex items-center gap-3">
@@ -62,7 +86,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
                 : <Icons.loading size={16} className="text-primary animate-spin" />)}
               {status === 'pending' && <Icons.stepIdle size={16} className="text-muted-foreground" />}
               {status === 'failed' && <Icons.stepFailed size={16} className="text-destructive" />}
-              {status === 'skipped' && <Icons.stepSkipped size={16} className="text-muted-foreground" />}
+              {(status === 'skipped' || status === 'not_applicable') && <Icons.stepSkipped size={16} className="text-muted-foreground" />}
             </span>
             <span className={`text-sm ${
               status === 'complete' ? 'text-foreground' :
@@ -75,6 +99,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
               {status === 'failed' && <span className="sr-only"> (failed)</span>}
             </span>
             {status === 'skipped' && <span className="text-xs text-muted-foreground">Not run</span>}
+            {status === 'not_applicable' && <span className="text-xs text-muted-foreground">Not applicable</span>}
             {update?.duration_ms && (
               <span className="text-xs text-muted-foreground ml-auto">{update.duration_ms}ms</span>
             )}
@@ -91,7 +116,7 @@ function StepList({ stages, currentStage, updates }: PipelineProgressProps) {
  * to the list. The time is the backend's processing_time_ms, omitted if absent.
  */
 export function PipelineProgress(props: PipelineProgressProps) {
-  const { stages, currentStage, updates, processingTimeMs } = props;
+  const { stages, currentStage, updates, processingTimeMs, inputMode } = props;
   const finished = currentStage === 'complete' || currentStage === 'abstained';
 
   if (!finished) {
@@ -103,16 +128,18 @@ export function PipelineProgress(props: PipelineProgressProps) {
     );
   }
 
-  const done = stages.filter(s => getStageStatus(s.key, currentStage, stages, updates) === 'complete').length;
+  const statuses = stages.map(s => getStageStatus(s.key, currentStage, updates, inputMode));
+  const done = statuses.filter(st => st === 'complete').length;
+  const applicable = statuses.filter(st => st !== 'not_applicable').length;
   const summary = [
-    `${done} of ${stages.length} steps completed`,
+    `${done} of ${applicable} steps completed`,
     typeof processingTimeMs === 'number' && Number.isFinite(processingTimeMs) ? formatSeconds(processingTimeMs) : null,
   ].filter(Boolean).join(' · ');
 
   return (
     <Disclosure
       className="bg-card shadow-sm"
-      icon={done === stages.length
+      icon={done === applicable
         ? <Icons.pass size={16} className="text-success" />
         : <Icons.abstained size={16} className="text-muted-foreground" />}
       title="Pipeline Progress"

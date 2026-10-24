@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { MedicationConfirmationPanel } from './MedicationConfirmationPanel';
@@ -26,6 +26,14 @@ describe('MedicationConfirmationPanel', () => {
     }
   ];
 
+  it('scrolls itself into view when it appears, since the analysis waits on it', () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    render(<MedicationConfirmationPanel candidates={[]} onConfirm={vi.fn()} />);
+    expect(scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollIntoView.mock.calls[0][0]).toMatchObject({ block: 'start' });
+  });
+
   it('TEST 1: Candidate list renders', () => {
     render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
     expect(screen.getByText('warfarin')).toBeInTheDocument();
@@ -34,8 +42,66 @@ describe('MedicationConfirmationPanel', () => {
 
   it('TEST 2: Confidence is displayed', () => {
     render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
-    expect(screen.getByText('Extraction confidence: HIGH')).toBeInTheDocument();
-    expect(screen.getByText('Extraction confidence: LOW')).toBeInTheDocument();
+    expect(screen.getByText('Model confidence: HIGH')).toBeInTheDocument();
+    expect(screen.getByText('Model confidence: LOW')).toBeInTheDocument();
+  });
+
+  it('shows the image text that names a candidate, and nothing for one without it or a user-added name', async () => {
+    const candidates: MedicationCandidate[] = [
+      { ...mockCandidates[0], image_text_evidence: 'Warfarin 5mg' },
+      { ...mockCandidates[1], image_text_evidence: null },
+    ];
+    render(<MedicationConfirmationPanel candidates={candidates} onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByText(/Add medication manually/i));
+    await userEvent.type(screen.getByPlaceholderText(/Enter medication name/i), 'Aspirin');
+    fireEvent.click(screen.getByRole('button', { name: 'Add' }));
+    expect(screen.getAllByText(/Found in image text/)).toHaveLength(1);
+    expect(screen.getByText('Found in image text: "Warfarin 5mg"')).toBeInTheDocument();
+  });
+
+  it('names the edit controls for assistive technology and saves an edit by keyboard alone', async () => {
+    const user = userEvent.setup();
+    render(<MedicationConfirmationPanel
+      candidates={[{ ...mockCandidates[0], image_text_evidence: 'Warfarin' }]} onConfirm={vi.fn()} />);
+    await user.click(screen.getByRole('button', { name: 'Edit warfarin' }));
+    const field = screen.getByRole('textbox', { name: 'Medication name' });
+    expect(field).toHaveFocus();
+    expect(screen.getByRole('button', { name: 'Cancel editing' })).toBeInTheDocument();
+    await user.clear(field);
+    await user.keyboard('warfarin sodium');
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Save medication name' })).toHaveFocus();
+    await user.keyboard('{Enter}');
+    expect(screen.getByText('warfarin sodium')).toBeInTheDocument();
+    expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
+    expect(screen.queryByText(/Found in image text/)).not.toBeInTheDocument();  // it no longer supports the name
+  });
+
+  it('offers to abandon the review, once, and disables the confirmation meanwhile', async () => {
+    let finish: () => void = () => undefined;
+    const onStartOver = vi.fn(() => new Promise<void>(resolve => { finish = resolve; }));
+    render(<MedicationConfirmationPanel candidates={[mockCandidates[0]]} onConfirm={vi.fn()} onStartOver={onStartOver} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    const pending = screen.getByRole('button', { name: 'Cancelling…' });
+    expect(pending).toBeDisabled();
+    expect(screen.getByRole('button', { name: /Confirm Medications & Analyze/i })).toBeDisabled();
+    fireEvent.click(pending);
+    expect(onStartOver).toHaveBeenCalledTimes(1);
+    await act(async () => finish());
+  });
+
+  it('drops the image-text evidence once the user edits the name, since it no longer supports it', async () => {
+    render(<MedicationConfirmationPanel
+      candidates={[{ ...mockCandidates[0], image_text_evidence: 'Warfarin' }]} onConfirm={vi.fn()} />);
+    expect(screen.getByText('Found in image text: "Warfarin"')).toBeInTheDocument();
+    fireEvent.click(screen.getByTitle('Edit'));
+    const input = screen.getByDisplayValue('warfarin');
+    await userEvent.clear(input);
+    await userEvent.type(input, 'warfarin sodium');
+    fireEvent.click(input.nextSibling as HTMLButtonElement);
+    expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
+    expect(screen.queryByText(/Found in image text/)).not.toBeInTheDocument();
+    expect(screen.getByText('(Extracted: "Warfarin 5mg")')).toBeInTheDocument();  // what was read stays visible
   });
 
   it('TEST 3: High-confidence candidate can be confirmed', async () => {

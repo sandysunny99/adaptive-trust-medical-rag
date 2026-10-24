@@ -74,12 +74,17 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     analyze, 
     confirm,
     reset,
-    isProcessing, 
+    abandon,
+    abandonable,
+    unresolvedCancels,
+    retryCancels,
+    isProcessing,
     currentStage, 
     stageUpdates, 
     result, 
     error,
-    extractedCandidates
+    extractedCandidates,
+    runInputMode,
   } = useAnalysis();
 
   const [savedToHistory, setSavedToHistory] = useState(false);
@@ -114,6 +119,32 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     form?.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]')?.focus();
   };
 
+  const focusUpload = () => {
+    const form = document.querySelector<HTMLElement>('[aria-labelledby="analysis-heading"]');
+    form?.scrollIntoView?.({ block: 'start' });
+    // After the re-render that re-enables the form's controls.
+    requestAnimationFrame(() => form?.querySelector<HTMLElement>('[data-upload-control]')?.focus());
+  };
+
+  // Abandons the image analysis at any point before its medications are confirmed (nothing of it is
+  // analysed) and returns to the image upload, focused for choosing another image. A cancellation the
+  // server did not acknowledge is reported below the form, with a retry.
+  const [cancelState, setCancelState] =
+    useState<'idle' | 'cancelling' | 'cancelled' | 'retrying' | 'failed' | 'ended'>('idle');
+  const cancelImageAnalysis = async () => {
+    setCancelState('cancelling');
+    const acknowledged = await abandon();
+    setCancelState(acknowledged ? 'cancelled' : 'idle');
+    focusUpload();
+  };
+  const retryCancellation = async () => {
+    if (cancelState === 'retrying') return;  // one retry at a time
+    setCancelState('retrying');
+    const ended = await retryCancels();
+    setCancelState(ended ? 'ended' : 'failed');
+    if (ended) focusUpload();  // its button is gone
+  };
+
   const addDrugInput = () => setDrugInputs(prev => [...prev, '']);
   const updateDrugInput = (index: number, value: string) => {
     setDrugInputs(prev => prev.map((v, i) => i === index ? value : v));
@@ -129,6 +160,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     
     if (inputMode === 'direct_drugs' && validDrugs.length === 0) return;
     if (inputMode === 'prescription_image' && !imageFile) return;
+    if (cancelState === 'ended' || cancelState === 'cancelled') setCancelState('idle');
 
     let patientContext: PatientContext | null = {};
     if (age || sex || allergies || conditions || currentMeds) {
@@ -352,6 +384,17 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                   : <Icons.runAnalysis size={16} aria-hidden="true" />}
                 {isProcessing ? 'Analyzing…' : 'Analyze Medications'}
               </button>
+              {/* From the moment the image request exists until its medications are confirmed. */}
+              {abandonable && (
+                <button
+                  type="button"
+                  onClick={cancelImageAnalysis}
+                  disabled={cancelState === 'cancelling'}
+                  className="px-6 py-2.5 text-sm font-medium rounded-lg border border-input bg-card text-foreground hover:bg-muted disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  {cancelState === 'cancelling' ? 'Cancelling…' : 'Cancel analysis'}
+                </button>
+              )}
               {submitHint && (
                 <p id={submitHintId} className="text-xs text-muted-foreground sm:text-right">
                   {submitHint}
@@ -362,6 +405,35 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
         </div>
       </section>
 
+      {/* An abandoned image analysis whose cancellation the server has not acknowledged. */}
+      {unresolvedCancels.length > 0 ? (
+        <div role="alert" className="bg-warning-soft border border-warning/30 rounded-lg p-4 text-sm text-foreground">
+          <p>
+            {cancelState === 'failed'
+              ? 'The server still has not confirmed that the earlier image analysis was cancelled.'
+              : 'The server did not confirm that the earlier image analysis was cancelled.'}{' '}
+            Nothing from it is analysed without your confirmation, which will not be sent, and the
+            server ends it by itself at the latest about 7 minutes after it started. You can upload
+            another image or enter medications by hand meanwhile.
+          </p>
+          <button
+            type="button"
+            onClick={retryCancellation}
+            disabled={cancelState === 'retrying'}
+            className="mt-2 px-3 py-1.5 text-sm font-medium rounded border border-input bg-card text-foreground hover:bg-muted disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {cancelState === 'retrying' ? 'Retrying…' : 'Retry cancellation'}
+          </button>
+        </div>
+      ) : cancelState === 'ended' ? (
+        <p role="status" className="text-sm text-muted-foreground">The earlier image analysis has ended on the server.</p>
+      ) : cancelState === 'cancelled' && (
+        <p role="status" className="text-sm text-muted-foreground">
+          The image analysis was cancelled; nothing from it was analysed. Upload another image or enter
+          medications by hand.
+        </p>
+      )}
+
       {/* Pipeline Progress */}
       {currentStage !== 'idle' && (
         <PipelineProgress
@@ -369,14 +441,17 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           currentStage={currentStage}
           updates={stageUpdates}
           processingTimeMs={result?.processing_time_ms}
+          inputMode={runInputMode ?? undefined}
         />
       )}
 
       {/* Confirmation Panel */}
-      {currentStage === 'confirming' && extractedCandidates && extractedCandidates.length > 0 && (
-        <MedicationConfirmationPanel 
+      {/* Shown even with no candidates: the backend waits for a confirmation, and medications can be added by hand. */}
+      {currentStage === 'confirming' && (
+        <MedicationConfirmationPanel
           candidates={extractedCandidates}
           onConfirm={confirm}
+          onStartOver={cancelImageAnalysis}
         />
       )}
 

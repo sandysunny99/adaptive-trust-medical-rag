@@ -123,12 +123,34 @@ export async function confirmMedications(
   return response.json();
 }
 
+/** A cancel with no answer after this long has an unknown outcome; the page never waits on it longer. */
+export const CANCEL_TIMEOUT_MS = 10_000;
+
+/**
+ * Abandon an image analysis before its medications are confirmed. 404 and 409 mean the request has
+ * already ended (or was confirmed), so there is nothing left to cancel: both count as done.
+ * Throws when there is no answer (network failure, timeout) or a server error: the outcome is then
+ * unknown, and sending the cancel again is safe.
+ */
+export async function cancelAnalysis(requestId: string): Promise<'cancelled' | 'already_ended'> {
+  const response = await fetch(`${API_BASE}/api/v1/analyze/${encodeURIComponent(requestId)}/cancel`, {
+    method: 'POST',
+    signal: AbortSignal.timeout(CANCEL_TIMEOUT_MS),
+  });
+  if (response.ok) return 'cancelled';
+  if (response.status === 404 || response.status === 409) return 'already_ended';
+  throw new Error(`The analysis could not be cancelled (HTTP ${response.status}).`);
+}
+
 export function confirmationErrorMessage(status: number): string {
   if (status === 422) {
     return 'The server rejected the medication confirmation as invalid (HTTP 422). Nothing was analyzed. Confirm the medications again.';
   }
   if (status === 404) {
     return 'This analysis request has expired or no longer exists (HTTP 404). Upload the prescription again.';
+  }
+  if (status === 409) {
+    return 'This analysis is not waiting for a confirmation, or has already ended (HTTP 409). Nothing new was analyzed. Upload the prescription again.';
   }
   return `The medication confirmation could not be sent (HTTP ${status}). Nothing was analyzed. Try again.`;
 }

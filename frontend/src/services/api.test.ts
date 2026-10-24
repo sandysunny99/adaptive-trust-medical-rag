@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { confirmMedications } from './api';
+import { cancelAnalysis, confirmMedications } from './api';
 import type { ConfirmedMedication } from '../types';
 
 const CONFIRMED: ConfirmedMedication[] = [
@@ -16,6 +16,28 @@ function mockFetch(status: number, body: string) {
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
+});
+
+describe('cancelAnalysis', () => {
+  it('counts a cancelled, ended or confirmed request as done, and never waits unbounded', async () => {
+    for (const [status, outcome] of [[200, 'cancelled'], [404, 'already_ended'], [409, 'already_ended']] as const) {
+      const fetchMock = mockFetch(status, '{}');
+      await expect(cancelAnalysis('req-1')).resolves.toBe(outcome);
+      const [url, init] = fetchMock.mock.calls[0];
+      expect(url).toContain('/api/v1/analyze/req-1/cancel');
+      expect(init.method).toBe('POST');
+      expect(init.signal).toBeInstanceOf(AbortSignal);  // a timeout: no answer means an unknown outcome
+    }
+  });
+
+  it('leaves the outcome unknown on a server error, a lost connection or a timeout', async () => {
+    mockFetch(502, 'Bad Gateway');
+    await expect(cancelAnalysis('req-1')).rejects.toThrow(/HTTP 502/);
+    for (const failure of [new TypeError('Failed to fetch'), new DOMException('The operation timed out.', 'TimeoutError')]) {
+      vi.stubGlobal('fetch', vi.fn().mockRejectedValue(failure));
+      await expect(cancelAnalysis('req-1')).rejects.toBe(failure);
+    }
+  });
 });
 
 describe('confirmMedications', () => {

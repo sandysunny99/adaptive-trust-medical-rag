@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icons } from '../ui/icons';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
   candidates: MedicationCandidate[];
   onConfirm: (confirmed: ConfirmedMedication[]) => void;
+  /** Abandons this analysis for a new upload; offered for the whole review. */
+  onStartOver?: () => void | Promise<void>;
 }
 
 /** The confirmation item for a reviewed candidate, keeping who supplied the name. */
@@ -19,7 +22,7 @@ function toConfirmedMedication(c: MedicationCandidate): ConfirmedMedication {
   return { name, status: 'CONFIRMED', source: c.source === 'OCR' ? 'OCR' : 'VISION', raw_detected_name: c.raw_text };
 }
 
-export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm }: Props) {
+export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm, onStartOver }: Props) {
   const [candidates, setCandidates] = useState<MedicationCandidate[]>(
     initialCandidates.map(c => ({ ...c }))
   );
@@ -29,6 +32,14 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   
   const [newMedName, setNewMedName] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+
+  // The analysis waits on this panel (and times out after 300 s), so bring it into view when it appears.
+  const panelRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
+  useEffect(() => {
+    panelRef.current?.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+  }, [reducedMotion]);
 
   const handleToggleStatus = (id: string) => {
     setCandidates(prev => prev.map(c => {
@@ -84,7 +95,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   const hasConfirmed = activeCandidates.length > 0 && !hasUncertain;
 
   return (
-    <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+    <div ref={panelRef} className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
       <div className="p-5 border-b border-border bg-muted">
         <h2 className="text-base font-semibold text-foreground">Review Detected Medications</h2>
         <p className="text-sm text-muted-foreground mt-1">
@@ -97,6 +108,16 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
         {activeCandidates.length === 0 && (
           <div className="text-sm text-muted-foreground text-center py-4">
             No medications detected.
+          </div>
+        )}
+
+        {/* Nothing was read from the image: say so, and offer both ways on (nothing is analysed meanwhile). */}
+        {initialCandidates.length === 0 && (
+          <div role="status" className="text-sm text-foreground bg-warning-soft border border-warning/30 rounded-lg p-4">
+            <p>
+              No medications could be read from this image, so nothing will be analyzed yet. Add the
+              medications by hand below, or upload a clearer image.
+            </p>
           </div>
         )}
 
@@ -113,14 +134,27 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                     type="text"
                     value={editValue}
                     onChange={(e) => setEditValue(e.target.value)}
+                    aria-label="Medication name"
                     className="px-3 py-1.5 border border-input rounded text-sm w-full max-w-xs"
                     autoFocus
                   />
-                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90">
-                    <Icons.pass size={14} />
+                  <button
+                    type="button"
+                    onClick={() => handleSaveEdit(c.id)}
+                    aria-label="Save medication name"
+                    title="Save medication name"
+                    className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+                  >
+                    <Icons.pass size={14} aria-hidden="true" />
                   </button>
-                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground">
-                    <Icons.remove size={14} />
+                  <button
+                    type="button"
+                    onClick={() => setEditingId(null)}
+                    aria-label="Cancel editing"
+                    title="Cancel editing"
+                    className="p-1.5 text-muted-foreground hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <Icons.remove size={14} aria-hidden="true" />
                   </button>
                 </div>
               ) : (
@@ -152,7 +186,14 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                     c.confidence === 'MEDIUM' ? 'bg-warning-soft text-warning' :
                     'bg-destructive-soft text-destructive'
                   }`}>
-                    Extraction confidence: {c.confidence}
+                    Model confidence: {c.confidence}
+                  </span>
+                )}
+
+                {/* Evidence for the detected name only: after an edit it no longer supports the shown name. */}
+                {c.source !== 'USER' && c.status !== 'EDITED' && c.image_text_evidence && (
+                  <span className="px-2 py-0.5 bg-border text-foreground rounded-full">
+                    Found in image text: "{c.image_text_evidence}"
                   </span>
                 )}
                 
@@ -244,17 +285,33 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
           )}
         </div>
         
-        <button
-          onClick={() => {
-            if (hasConfirmed) {
-              onConfirm(activeCandidates.map(toConfirmedMedication));
-            }
-          }}
-          disabled={!hasConfirmed}
-          className="px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          Confirm Medications & Analyze
-        </button>
+        <div className="flex flex-wrap items-center gap-2">
+          {onStartOver && (
+            <button
+              type="button"
+              onClick={async () => {
+                if (leaving) return;  // one cancellation, however often it is clicked
+                setLeaving(true);
+                try { await onStartOver(); } finally { setLeaving(false); }
+              }}
+              disabled={leaving}
+              className="px-4 py-2.5 text-sm font-medium rounded-lg border border-input text-foreground hover:bg-muted disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {leaving ? 'Cancelling…' : 'Cancel and upload a different image'}
+            </button>
+          )}
+          <button
+            onClick={() => {
+              if (hasConfirmed) {
+                onConfirm(activeCandidates.map(toConfirmedMedication));
+              }
+            }}
+            disabled={!hasConfirmed || leaving}
+            className="px-6 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          >
+            Confirm Medications & Analyze
+          </button>
+        </div>
       </div>
     </div>
   );

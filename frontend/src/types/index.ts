@@ -37,6 +37,8 @@ export interface MedicationCandidate {
   source: 'VISION' | 'OCR' | 'USER';
   source_region?: any;
   warnings?: string[];
+  /** The text an independent OCR read in the image that names this candidate (the model's confidence is not evidence). */
+  image_text_evidence?: string | null;
 }
 
 /**
@@ -77,6 +79,8 @@ export interface MedicationInfo {
   route: string | null;
   confidence: number;
   source: 'cache' | 'rxnorm_exact' | 'rxnorm_approx' | 'unresolved';
+  /** How the drug identity was resolved (for a cache hit, how the entry was first resolved). */
+  identity_method?: 'rxnorm_exact' | 'rxnorm_approx' | 'seed_cache' | string;
   status: RxNormStatus;
 }
 
@@ -105,7 +109,9 @@ export interface TrustFactors {
 }
 
 export interface TrustInfo {
-  overall_score: number;
+  /** Null when no evidence reached scoring: there is no score, which is not a computed 0. */
+  overall_score: number | null;
+  score_status?: 'COMPUTED' | 'NO_ELIGIBLE_EVIDENCE';
   threshold: number;
   risk_class: string;
   /** Why the backend chose this risk tier. */
@@ -113,11 +119,26 @@ export interface TrustInfo {
   is_eligible: boolean;
   /** Retrieved chunks that named none of the requested medications and were left out. */
   unrelated_excluded?: number;
+  /** Retrieved chunks left out because their source identity is not verified. */
+  unverified_source_excluded?: number;
   factors: TrustFactors;
   missing_factors: string[];
 }
 
 export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
+/** Whether the text is known to come from the document it names; only VERIFIED text is evidence. */
+export type SourceIdentityStatus = 'VERIFIED' | 'UNVERIFIED' | 'REJECTED_SOURCE_IDENTITY';
+
+/** A retrieved chunk left out before generation because its source identity is not verified. */
+export interface ExcludedSource {
+  chunk_id: string;
+  document_id: string;
+  source_type?: string | null;
+  source_name?: string | null;
+  source_link_status: SourceLinkStatus;
+  source_identity_status: SourceIdentityStatus;
+  reason: string;
+}
 
 export interface EvidenceItem {
   chunk_id: string;
@@ -137,6 +158,12 @@ export interface EvidenceItem {
   freshness: number;
   retrieval_method: string;
   provenance_status: string;
+  source_identity_status?: SourceIdentityStatus;
+  /** Title, external ID and version of the verified source document, when known. */
+  source_title?: string | null;
+  external_id?: string | null;
+  source_version?: string | null;
+  claim_support_status?: 'SUPPORTS_VERIFIED_CLAIM' | 'NO_VERIFIED_CLAIM' | 'NOT_YET_VERIFIED';
 }
 
 export interface DrugInteraction {
@@ -191,6 +218,11 @@ export interface ClaimInfo {
   citation_resolves: boolean;
   best_evidence_chunk: string | null;
   canonical_identity_status: CanonicalMatchStatus | null;
+  /** Why the claim was withheld at its wording (ACTION_TOO_STRONG, UNSUPPORTED_DETAIL,
+   *  NO_REVIEWED_RELATIONSHIP_WORDING, NO_REVIEWED_FOOD_WORDING); absent otherwise. */
+  strength_code?: string;
+  /** The claimed action, or the unstated extras (QUANTITY, TIMING, CERTAINTY). */
+  strength_details?: string[];
 }
 
 export interface SecurityInfo {
@@ -221,6 +253,8 @@ export interface AnalysisResult {
   security: SecurityInfo | null;
   claims: ClaimInfo[];
   evidence: EvidenceItem[];
+  /** Chunks excluded before generation for an unverified source identity (abstentions only). */
+  excluded_sources?: ExcludedSource[];
   provenance: ProvenanceStep[];
   conclusion: string;
   gate_decision: GateDecision;

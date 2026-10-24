@@ -170,3 +170,82 @@ describe('ResultPanel evidence and security sections', () => {
     expect(row).toHaveTextContent('FLAG');
   });
 });
+
+describe('ResultPanel food and diet guidance', () => {
+  const LABEL = 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00000000-0000-4000-8000-000000000002';
+  const food = {
+    drug: 'Lisinopril', administration: '', food_relationship: 'SPECIFIC FOOD/DRINK INTERACTION', timing: null,
+    food_interactions: ['Potassium-containing salt substitutes are a risk factor for hyperkalemia [Source 1].'],
+    evidence_status: 'VERIFIED', source: '[Source 1]',
+  } as unknown as AnalysisResult['food_guidance'][number];
+
+  it('shows each food statement with a link to the exact verified source', () => {
+    const verified = { ...evidence('DAILYMED-SPL-x', 'label text'), url: LABEL, source_link_status: 'VERIFIED',
+      source_identity_status: 'VERIFIED', source_title: 'LISINOPRIL TABLETS' } as EvidenceItem;
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [verified] })} />);
+    expect(screen.getByText(/salt substitutes are a risk factor/)).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /Source 1: LISINOPRIL TABLETS/ });
+    expect(link).toHaveAttribute('href', LABEL);
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('never links a cited source that is not verified', () => {
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [evidence('SPL-PLACEHOLDER', 'x')] })} />);
+    expect(screen.queryByRole('link', { name: /Source 1/ })).not.toBeInTheDocument();
+    expect(screen.getByText('Source 1: not a verified link')).toBeInTheDocument();
+  });
+
+  it('says no food guidance was verified, and that this is not a finding of safety', () => {
+    render(<ResultPanel result={makeResult({ gate_decision: 'abstain' })} />);
+    expect(screen.getByText(/No food or dietary guidance could be verified/)).toHaveTextContent(
+      'This does not mean there are no food or dietary issues');
+  });
+});
+
+
+describe('ResultPanel withheld-claim reasons', () => {
+  type Claim = AnalysisResult['claims'][number];
+  const claim = (strength_code?: string, strength_details?: string[], extra: Record<string, unknown> = {}): Claim => ({
+    claim_id: 0, text: 'Synthetic withheld statement [Source 1].', support_state: 'UNSUPPORTED', entailment: 0.9,
+    contradiction: 0, citation_present: true, citation_resolves: true, best_evidence_chunk: null,
+    canonical_identity_status: null, ...(strength_code ? { strength_code } : {}),
+    ...(strength_details ? { strength_details } : {}), ...extra,
+  } as Claim);
+  const abstain = (claims: Claim[], reason = '1 of 1 generated claims failed post-generation verification.') =>
+    makeResult({ gate_decision: 'abstain', abstention_reason: reason, claims });
+  const status = () => screen.getByText('The system abstained from answering.').closest('[role="status"]') as HTMLElement;
+
+  it.each([
+    ['ACTION_TOO_STRONG', ['AVOID'], /worded more strongly than the reviewed wording of its source supports/],
+    ['UNSUPPORTED_DETAIL', ['QUANTITY', 'TIMING'], /added an amount or frequency and a timing that its source's reviewed wording does not state/],
+    ['NO_REVIEWED_RELATIONSHIP_WORDING', [], /No reviewed statement is available for this medication relationship/],
+    ['NO_REVIEWED_FOOD_WORDING', [], /No reviewed statement is available for this food or drink guidance/],
+    ['A_CODE_FROM_A_LATER_BACKEND', ['RAW_INTERNAL'], /could not be verified against its source's reviewed wording/],
+  ])('explains %s in plain words, inside the one abstention status', (code, details, message) => {
+    render(<ResultPanel result={abstain([claim(code, details)])} />);
+    expect(within(status()).getByText(message)).toBeInTheDocument();
+    expect(within(status()).getByText(/does not mean the medicines are safe together/)).toBeInTheDocument();
+    expect(screen.queryByText(/A_CODE_FROM|RAW_INTERNAL|AVOID|level \d/)).not.toBeInTheDocument();  // no internals
+    expect(screen.queryByText(/Synthetic withheld statement/)).not.toBeInTheDocument();  // never the withheld claim
+  });
+
+  it.each([
+    ['no eligible evidence', '2 evidence chunk(s) about these medications passed security checks, but none was eligible: each needs a trust score of at least 0.75 for risk tier R3 and a source authority of at least 0.30 (best trust score 0.41).', []],
+    ['an unverified source identity', '1 evidence chunk(s) about these medications were retrieved, but none has a verified source identity (placeholder, shared or unverified source links), so none can be used as evidence. This is a limit of the evidence corpus, not a finding that the medications are safe together. No trust score was computed, because no evidence reached scoring.', []],
+    ['no approved relationship record', '1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named).', [claim(undefined, undefined, { canonical_identity_status: 'MISMATCH' })]],
+    ['a verification failure', 'Claim verification failed with an error, so the answer was not verified.', [claim(undefined, undefined, { verification_error: 'RuntimeError' })]],
+  ])('keeps %s apart from a wording reason', (_, reason, claims) => {
+    render(<ResultPanel result={abstain(claims as Claim[], reason)} />);
+    expect(within(status()).getByText(reason)).toBeInTheDocument();
+    expect(screen.queryByText(/Why claims were withheld at their wording/)).not.toBeInTheDocument();
+  });
+
+  it('names each reason once, and none for a released answer', () => {
+    const { unmount } = render(<ResultPanel result={abstain([claim('ACTION_TOO_STRONG'), claim('ACTION_TOO_STRONG'),
+      claim('NO_REVIEWED_FOOD_WORDING')])} />);
+    expect(within(status()).getAllByRole('listitem')).toHaveLength(2);
+    unmount();
+    render(<ResultPanel result={makeResult({ claims: [claim('ACTION_TOO_STRONG')] })} />);
+    expect(screen.queryByText(/Why claims were withheld/)).not.toBeInTheDocument();
+  });
+});

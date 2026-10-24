@@ -15,6 +15,7 @@ vi.mock('../services/api', async (importOriginal) => {
     submitPrescriptionImage: vi.fn(),
     confirmMedications: vi.fn(),
     connectStream: vi.fn(),
+    cancelAnalysis: vi.fn(),
   };
 });
 
@@ -322,6 +323,7 @@ describe('WorkspacePage prescription confirmation', () => {
     vi.clearAllMocks();
     vi.mocked(api.fetchModelCatalog).mockResolvedValue([]);
     vi.mocked(api.submitPrescriptionImage).mockResolvedValue({ request_id: 'req-7', stream_url: '/api/v1/stream/req-7', validation: {} });
+    vi.mocked(api.cancelAnalysis).mockResolvedValue('cancelled');
     disconnect = vi.fn();
     vi.mocked(api.connectStream).mockImplementation((_url, onEvent, onError) => {
       emit = onEvent as Handler;
@@ -363,6 +365,30 @@ describe('WorkspacePage prescription confirmation', () => {
     ]);
     // A 200 from /confirm is not a finished analysis: the page waits for the stream.
     expect(screen.getByText('Analyzing…')).toBeInTheDocument();
+  });
+
+  it('shows the review panel when the image yields no medications, so one can be added by hand', async () => {
+    // Without the panel the backend waits for a confirmation that can never be sent (CONFIRMATION_TIMEOUT).
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [] });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByText('No medications detected.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Confirm Medications & Analyze/i })).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: /Add medication manually/i }));
+    await user.type(screen.getByPlaceholderText('Enter medication name'), 'Lisinopril');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/i }));
+    expect(api.confirmMedications).toHaveBeenCalledWith('req-7', [
+      expect.objectContaining({ name: 'Lisinopril', source: 'USER' }),
+    ]);
   });
 
   it('shows an abstention after confirmation as a result, not a disconnected stream', async () => {
@@ -468,5 +494,249 @@ describe('WorkspacePage prescription confirmation', () => {
     await reachConfirmation();
     expect(await screen.findByText(/rejected the medication confirmation as invalid \(HTTP 422\)/)).toBeInTheDocument();
     expect(screen.queryByText(/model_attributes_type|confirmed_medications/)).not.toBeInTheDocument();
+  });
+
+  it('shows a refused confirmation (409) as an error, never as an analysis in progress', async () => {
+    vi.mocked(api.confirmMedications).mockRejectedValue(new Error(api.confirmationErrorMessage(409)));
+    await reachConfirmation();
+    expect(await screen.findByText(/not waiting for a confirmation, or has already ended \(HTTP 409\)/)).toBeInTheDocument();
+    expect(screen.queryByText('Analyzing…')).not.toBeInTheDocument();
+    expect(api.confirmMedications).toHaveBeenCalledTimes(1);
+  });
+
+  it('offers a new upload when the image yields no medications, leaving the old analysis', async () => {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [] });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByRole('status')).toHaveTextContent(/No medications could be read from this image/);
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    await waitFor(() => expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument());
+    expect(api.cancelAnalysis).toHaveBeenCalledWith('req-7');  // the server ends the old request
+    expect(disconnect).toHaveBeenCalled();  // the old stream is closed
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+  });
+
+  async function reachReview() {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [
+        { id: 'ocr-0', raw_text: 'Warfarin 5 mg', normalized_text: 'warfarin', confidence: 'HIGH', status: 'DETECTED',
+          source: 'VISION', image_text_evidence: 'Warfarin' },
+      ] });
+      emit('confirmation_required', {});
+    });
+    return user;
+  }
+
+  it('abandons a request under review without a reload: the server cancels it and its late events change nothing', async () => {
+    const user = await reachReview();
+    const oldEmit = emit;
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    await waitFor(() => expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument());
+    expect(api.cancelAnalysis).toHaveBeenCalledTimes(1);
+    expect(api.cancelAnalysis).toHaveBeenCalledWith('req-7');
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+    // Back on the form, focused on choosing another image.
+    await waitFor(() => expect(document.activeElement).toHaveTextContent('Replace image'));
+    expect(screen.getByRole('button', { name: 'Analyze Medications' })).toBeEnabled();
+
+    // A late event of the abandoned request is ignored.
+    act(() => {
+      oldEmit('medication_candidates_extracted', { candidates: [
+        { id: 'ocr-0', raw_text: 'Stale', normalized_text: 'stale', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' },
+      ] });
+      oldEmit('confirmation_required', {});
+    });
+    expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument();
+
+    // A new upload is a new request with its own candidates.
+    vi.mocked(api.submitPrescriptionImage).mockResolvedValue({ request_id: 'req-8', stream_url: '/api/v1/stream/req-8', validation: {} });
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalledTimes(2));
+    expect(vi.mocked(api.connectStream).mock.calls[1][0]).toBe('/api/v1/stream/req-8');
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [
+        { id: 'ocr-0', raw_text: 'Ibuprofen 400 mg', normalized_text: 'ibuprofen', confidence: 'HIGH', status: 'DETECTED',
+          source: 'VISION', image_text_evidence: 'Ibuprofen' },
+      ] });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByText('ibuprofen')).toBeInTheDocument();
+    expect(screen.queryByText('warfarin')).not.toBeInTheDocument();
+    expect(screen.queryByText('stale')).not.toBeInTheDocument();
+  });
+
+  it('sends one cancel however often it is clicked', async () => {
+    let finish: (v: 'cancelled') => void = () => undefined;
+    vi.mocked(api.cancelAnalysis).mockReturnValue(new Promise(resolve => { finish = resolve; }));
+    const user = await reachReview();
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    const pending = screen.getAllByRole('button', { name: 'Cancelling…' });  // the panel's and the form's
+    expect(pending).toHaveLength(2);
+    for (const button of pending) {
+      expect(button).toBeDisabled();
+      await user.click(button);
+    }
+    expect(api.cancelAnalysis).toHaveBeenCalledTimes(1);
+    await act(async () => finish('cancelled'));
+    await waitFor(() => expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument());
+  });
+
+  it('reports a cancellation the server did not acknowledge, keeps the old stream out, and retries it', async () => {
+    vi.mocked(api.cancelAnalysis).mockRejectedValueOnce(new TypeError('Failed to fetch'));
+    const user = await reachReview();
+    const oldEmit = emit;
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    const alert = await screen.findByRole('alert');
+    expect(alert).toHaveTextContent(/did not confirm that the earlier image analysis was cancelled/);
+    expect(screen.queryByText(/has ended on the server/)).not.toBeInTheDocument();  // no false success
+    expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument();
+    await waitFor(() => expect(document.activeElement).toHaveTextContent('Replace image'));  // no reload needed
+
+    // While it is unresolved, the old stream changes nothing.
+    const stale = { id: 'ocr-0', raw_text: 'Stale', normalized_text: 'stale', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' };
+    act(() => {
+      oldEmit('medication_candidates_extracted', { candidates: [stale] });
+      oldEmit('confirmation_required', {});
+      oldEmit('error', { code: 'CONFIRMATION_TIMEOUT', message: 'late' });
+    });
+    expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument();
+    expect(screen.queryByText('Analysis Failed')).not.toBeInTheDocument();
+
+    // A new upload meanwhile is its own request; the old one cannot attach to it.
+    vi.mocked(api.submitPrescriptionImage).mockResolvedValue({ request_id: 'req-8', stream_url: '/api/v1/stream/req-8', validation: {} });
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalledTimes(2));
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [
+        { id: 'ocr-0', raw_text: 'Ibuprofen 400 mg', normalized_text: 'ibuprofen', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' },
+      ] });
+      emit('confirmation_required', {});
+      oldEmit('medication_candidates_extracted', { candidates: [stale] });
+    });
+    expect(screen.getByText('ibuprofen')).toBeInTheDocument();
+    expect(screen.queryByText('stale')).not.toBeInTheDocument();
+
+    // The retry reaches the server; its first cancel may have landed, so "already ended" also resolves it.
+    vi.mocked(api.cancelAnalysis).mockResolvedValueOnce('already_ended');
+    await user.click(screen.getByRole('button', { name: 'Retry cancellation' }));
+    expect(await screen.findByText('The earlier image analysis has ended on the server.')).toBeInTheDocument();
+    expect(screen.queryByText(/did not confirm/)).not.toBeInTheDocument();
+    expect(vi.mocked(api.cancelAnalysis).mock.calls).toEqual([['req-7'], ['req-7']]);  // never the new request
+    expect(screen.getByText('ibuprofen')).toBeInTheDocument();
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+  });
+
+  it('says so again when a retry gets no answer either, sending one retry at a time', async () => {
+    vi.mocked(api.cancelAnalysis).mockRejectedValueOnce(new Error('The analysis could not be cancelled (HTTP 502).'));
+    const user = await reachReview();
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    await screen.findByRole('alert');
+    let fail: () => void = () => undefined;
+    vi.mocked(api.cancelAnalysis).mockReturnValueOnce(new Promise((_, reject) => { fail = () => reject(new Error('timeout')); }));
+    await user.click(screen.getByRole('button', { name: 'Retry cancellation' }));
+    const retrying = screen.getByRole('button', { name: 'Retrying…' });
+    expect(retrying).toBeDisabled();
+    await user.click(retrying);
+    expect(api.cancelAnalysis).toHaveBeenCalledTimes(2);
+    await act(async () => fail());
+    expect(screen.getByRole('alert')).toHaveTextContent(/still has not confirmed/);
+    expect(screen.getByRole('button', { name: 'Retry cancellation' })).toBeEnabled();
+    expect(screen.queryByText(/has ended on the server/)).not.toBeInTheDocument();
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+  });
+  async function startImageAnalysis() {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    // A slow image read or provider: the extraction stage starts, and nothing else arrives yet.
+    act(() => emit('stage_update', { stage: 'extracting', status: 'running', message: 'Reading the image' }));
+    return user;
+  }
+  const stale = { id: 'ocr-0', raw_text: 'Stale', normalized_text: 'stale', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' };
+
+  it('offers Cancel analysis while the image is still being read, before any medication is shown', async () => {
+    let finish: (v: 'cancelled') => void = () => undefined;
+    vi.mocked(api.cancelAnalysis).mockReturnValueOnce(new Promise(resolve => { finish = resolve; }));
+    const user = await startImageAnalysis();
+    const oldEmit = emit;
+    expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    const cancelling = screen.getByRole('button', { name: 'Cancelling…' });
+    expect(cancelling).toBeDisabled();  // cancelling is not yet cancelled
+    expect(screen.queryByText(/was cancelled; nothing from it was analysed/)).not.toBeInTheDocument();
+    await user.click(cancelling);
+    expect(vi.mocked(api.cancelAnalysis).mock.calls).toEqual([['req-7']]);
+    await act(async () => finish('cancelled'));
+    expect(await screen.findByText(/The image analysis was cancelled; nothing from it was analysed/)).toBeInTheDocument();
+    expect(disconnect).toHaveBeenCalled();
+    await waitFor(() => expect(document.activeElement).toHaveTextContent('Replace image'));
+    expect(screen.queryByRole('button', { name: /Cancel analysis|Cancelling/ })).not.toBeInTheDocument();
+
+    act(() => {  // late events of the abandoned request change nothing
+      oldEmit('medication_candidates_extracted', { candidates: [stale] });
+      oldEmit('confirmation_required', {});
+    });
+    expect(screen.queryByText('Review Detected Medications')).not.toBeInTheDocument();
+    expect(screen.getByRole('tab', { name: 'Enter Drug Names' })).toBeEnabled();  // manual entry stays open
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+  });
+
+  it('keeps Cancel analysis through the review; both cancel controls share one cancellation, and nothing is confirmed', async () => {
+    let finish: (v: 'cancelled') => void = () => undefined;
+    vi.mocked(api.cancelAnalysis).mockReturnValueOnce(new Promise(resolve => { finish = resolve; }));
+    const user = await reachReview();
+    await user.click(screen.getByRole('button', { name: 'Confirm' }));
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/ }));  // too late: cancelling
+    await user.click(screen.getByRole('button', { name: 'Cancel and upload a different image' }));
+    expect(api.cancelAnalysis).toHaveBeenCalledTimes(1);
+    expect(api.confirmMedications).not.toHaveBeenCalled();
+    await act(async () => finish('cancelled'));
+    expect(await screen.findByText(/The image analysis was cancelled/)).toBeInTheDocument();
+  });
+
+  it('reports a cancel from Cancel analysis that the server did not acknowledge, never as cancelled', async () => {
+    vi.mocked(api.cancelAnalysis).mockRejectedValueOnce(new TypeError('Failed to fetch'));
+    const user = await startImageAnalysis();
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent(/did not confirm that the earlier image analysis was cancelled/);
+    expect(screen.queryByText(/was cancelled; nothing from it was analysed/)).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Retry cancellation' })).toBeEnabled();
+  });
+
+  it('offers Cancel analysis again for the next image request, and clears the old status', async () => {
+    const user = await startImageAnalysis();
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    await screen.findByText(/The image analysis was cancelled/);
+    vi.mocked(api.submitPrescriptionImage).mockResolvedValue({ request_id: 'req-8', stream_url: '/api/v1/stream/req-8', validation: {} });
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalledTimes(2));
+    expect(screen.getByRole('button', { name: 'Cancel analysis' })).toBeEnabled();
+    expect(screen.queryByText(/The image analysis was cancelled/)).not.toBeInTheDocument();
+  });
+
+  it('no longer offers a cancel once the medications are confirmed', async () => {
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' } as never);
+    const user = await reachReview();
+    await user.click(screen.getByRole('button', { name: 'Confirm' }));
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/ }));
+    await waitFor(() => expect(api.confirmMedications).toHaveBeenCalledTimes(1));
+    expect(screen.queryByRole('button', { name: 'Cancel analysis' })).not.toBeInTheDocument();
   });
 });

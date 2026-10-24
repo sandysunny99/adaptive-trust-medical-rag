@@ -151,7 +151,8 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
               <span className="text-muted-foreground">({formatBytes(file.size)})</span>
             </p>
             <div className="flex gap-2">
-              <button type="button" onClick={openFilePicker} disabled={disabled} className={SECONDARY_BUTTON}>
+              <button type="button" onClick={openFilePicker} disabled={disabled} className={SECONDARY_BUTTON}
+                data-upload-control>
                 Replace image
               </button>
               <button
@@ -176,6 +177,7 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
               disabled={disabled}
               aria-describedby={hintId}
               className={cn(SECONDARY_BUTTON, 'mt-3 px-4 py-2 text-primary')}
+              data-upload-control
             >
               Browse files
             </button>
@@ -183,6 +185,11 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
         )}
         <p id={hintId} className="mt-2 text-xs text-muted-foreground">
           One JPEG, PNG or WEBP image • Max 5 MB
+        </p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          The image is first read on this server. Only if text is found there is it sent to the configured
+          vision provider, and to its configured backup provider if the first is unavailable. Use synthetic
+          or de-identified images only.
         </p>
       </div>
       <input
