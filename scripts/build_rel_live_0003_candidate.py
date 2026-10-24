@@ -206,8 +206,10 @@ def main() -> int:
              "INTERACTION and direction BIDIRECTIONAL."),
             "Confirm RxCUIs 29046 (lisinopril) and 9997 (spironolactone) with RxNav.",
         ],
-        "how_to_approve": ("Set status to APPROVED and approval to {\"approved_by\": \"<name>\", "
-                           "\"approved_at\": \"<YYYY-MM-DD>\"}. Any edit to either data file needs new hashes."),
+        "how_to_approve": ("Grade the severity and recompute records_sha256 for the edited records file, then copy "
+                           "the three files into data/live_medical/relationships/v2/rel_live_0003/ (each approved V2 "
+                           "dataset has its own folder; never copy over another dataset's files), and set status to "
+                           "APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}."),
         "use_in_application": ("None until APPROVED. Once approved the chunk joins retrieval, is identity-verified "
                                "through its source_identity record, raises the pair to R3, and gives claims "
                                "about this pair a relationship identity for verification."),

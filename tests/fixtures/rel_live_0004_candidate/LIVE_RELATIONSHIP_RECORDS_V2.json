@@ -1,0 +1,23 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "records": [
+    {
+      "record_id": "REL-LIVE-0004",
+      "subject": {
+        "name": "warfarin",
+        "rxcui": "11289"
+      },
+      "object": {
+        "name": "ibuprofen",
+        "rxcui": "5640"
+      },
+      "predicate": "INTERACTION",
+      "direction": "BIDIRECTIONAL",
+      "severity": "UNGRADED",
+      "source_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+      "source_content_hash": "230812512b6ffbb32c0960ddc98fbda6b14a942cd801c75aa35438906e03396d",
+      "evidence_span": "7.3 Drugs that Increase Bleeding Risk Examples of drugs known to increase the risk of bleeding are presented in Table 3. Because bleeding risk is increased when these drugs are used concomitantly with warfarin, closely monitor patients receiving any such drug with warfarin. Table 3: Drugs that Can Increase the Risk of Bleeding Drug Class Specific Drugs Anticoagulants argatroban, dabigatran, bivalirudin, desirudin, heparin, lepirudin Antiplatelet Agents aspirin, cilostazol, clopidogrel, dipyridamole, prasugrel, ticlopidine Nonsteroidal Anti-Inflammatory Agents celecoxib, diclofenac, diflunisal, fenoprofen, ibuprofen, indomethacin, ketoprofen, ketorolac, mefenamic acid, naproxen, oxaprozin, piroxicam, sulindac Serotonin Reuptake Inhibitors citalopram, desvenlafaxine, duloxetine, escitalopram, fluoxetine, fluvoxamine, milnacipran, paroxetine, sertraline, venlafaxine, vilazodone"
+    }
+  ]
+}
