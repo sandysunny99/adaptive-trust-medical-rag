@@ -55,6 +55,10 @@ def chunk(text: str = EVIDENCE, *, authority: float = 0.9, content_hash: str | N
                 "content_hash": content_hash or hashlib.sha256(text.encode("utf-8")).hexdigest(),
             },
             "source_type": "DAILYMED", "freshness_score": 0.9,
+            # Fixture assumption: reviewed wording as an approved record would carry (a contraindication
+            # that also states timing and frequency), so the release mechanics are what is tested here.
+            "supported_claims": [{"text": "Simvastatin with clarithromycin is contraindicated (synthetic fixture).",
+                                  "action": "AVOID", "allows": ["TIMING", "QUANTITY"]}],
         },
     ))
 
@@ -188,6 +192,9 @@ NO_VERIFIER = object()
 def run(answer: dict | None = None, *, retrieval=None, verifier=None, monkeypatch=None,
         init_errors: dict | None = None, retrieval_info: dict | None = None, llm=None,
         llm_selection: dict | None = None, **state_extra):
+    # Fixture assumption: the synthetic chunk c1 stands in for an identity-verified source unless a
+    # test passes its own verified_source_links.
+    state_extra.setdefault("verified_source_links", {"c1": "https://example.org/c1"})
     state = SimpleNamespace(
         drug_normalizer=OfflineNormalizer(),
         retrieval_engine=StubRetrieval() if retrieval is None else retrieval,
@@ -471,13 +478,21 @@ def test_abstention_after_generation_carries_the_checked_evidence():
 
 
 def test_evidence_with_an_unverified_url_is_not_offered_as_a_link():
-    events, _ = run(verifier=QualifyVerifier())
+    # Without a verified source identity the chunk is excluded before generation: it is never
+    # shown as evidence, never linked, and the model is never called.
+    llm = StubLLM(ANSWER)
+    events, _ = run(verifier=QualifyVerifier(), verified_source_links={}, llm=llm)
     kind, data = outcome(events)
-    (item,) = data["evidence"]
+    assert kind == "abstention"
+    assert "evidence" not in data
+    (item,) = data["excluded_sources"]
     assert item["source_name"] == "https://example.org/c1"
     assert item["source_link_status"] == "PLACEHOLDER"
-    assert "does not identify the original document" in item["source_link_note"]
+    assert item["source_identity_status"] == "REJECTED_SOURCE_IDENTITY"
+    assert "does not identify the original document" in item["reason"]
     assert "url" not in item
+    assert "none has a verified source identity" in data["reason"]
+    assert not any(e["event"] == "stage_update" and e["data"].get("stage") == "generating" for e in events)
 
 
 def test_evidence_with_a_verified_url_is_offered_as_a_link():

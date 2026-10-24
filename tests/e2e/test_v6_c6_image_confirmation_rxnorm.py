@@ -85,7 +85,9 @@ def extract_sse_events(response_lines):
     return events
 
 @pytest.fixture
-def setup_c6_mocks():
+def setup_c6_mocks(monkeypatch, ocr_reads):
+    # The synthetic prescription image reads the lines the mock vision reports.
+    monkeypatch.setattr(app.state, "image_text_recognizer", ocr_reads("Warfarin 5mg", "Aspirin 81mg"), raising=False)
     orig_vision = getattr(app.state, "vision_backend", None)
     orig_rxnorm = getattr(getattr(app.state, "drug_normalizer", None), "_rxnorm_client", None)
     orig_retrieval = getattr(app.state, "retrieval_engine", None)
@@ -163,7 +165,11 @@ async def test_2_e2e_confirmation_to_rxnorm(setup_c6_mocks):
         req_id = post_res.json()["request_id"]
 
         stream_task = asyncio.create_task(client.get(f"/api/v1/stream/{req_id}"))
-        await asyncio.sleep(0.5)
+        # /confirm accepts a confirmation only once extraction has finished and the request waits for it.
+        for _ in range(500):
+            if (app.state.pending_analyses.get(req_id) or {}).get("awaiting_confirmation"):
+                break
+            await asyncio.sleep(0.01)
 
         confirm_payload = {
             "confirmed_medications": [
@@ -192,8 +198,9 @@ async def test_2_e2e_confirmation_to_rxnorm(setup_c6_mocks):
         assert warfarin["rxcui"] == "11289"
 
 @pytest.mark.asyncio
-async def test_3_ambiguous_image_blocks_pipeline(setup_c6_mocks):
+async def test_3_ambiguous_image_blocks_pipeline(setup_c6_mocks, ocr_reads):
     app.state.vision_backend = MockC6VisionBackend(ambiguous=True)
+    app.state.image_text_recognizer = ocr_reads("War... 5mg")  # the image itself is only partly legible
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         file_bytes = create_test_image()
         files = {"image": ("prescription.jpg", file_bytes, "image/jpeg")}
@@ -252,9 +259,12 @@ async def test_4_malicious_image_text(setup_c6_mocks):
                         break
 
         parsed_events = extract_sse_events(events)
-        candidates_event = next((e for e in parsed_events if e.get("event") == "medication_candidates_extracted"), None)
-        assert candidates_event is not None
-        assert len(candidates_event["data"]["candidates"]) == 0
+        # No candidate at all: the request ends at once instead of waiting for a confirmation.
+        assert not any(e.get("event") in ("medication_candidates_extracted", "confirmation_required")
+                       for e in parsed_events)
+        error = next(e for e in parsed_events if e.get("event") == "error")
+        assert error["data"]["code"] == "NO_VERIFIED_MEDICATIONS"
+        assert "CYANIDE" not in json.dumps(parsed_events)  # the injected image text never reaches the stream
 
 @pytest.mark.asyncio
 async def test_5_direct_drug_regression(setup_c6_mocks):

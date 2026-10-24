@@ -8,6 +8,7 @@ It yields SSE events at each stage of execution.
 from __future__ import annotations
 
 import asyncio
+import threading
 import dataclasses
 import hashlib
 import json
@@ -17,6 +18,8 @@ import re
 import time
 import uuid
 from typing import Any, AsyncGenerator
+
+import anyio
 
 from adaptive_trust_medical_rag.security.sanitizer import sanitize_query
 from adaptive_trust_medical_rag.security_extensions.injection_detector import (
@@ -30,7 +33,7 @@ from adaptive_trust_medical_rag.trust_scoring.trust_scorer import (
     TrustFactorScores,
 )
 from adaptive_trust_medical_rag.llm_backend.model_registry import get_model_definition
-from adaptive_trust_medical_rag.services import live_relationships
+from adaptive_trust_medical_rag.services import image_grounding, live_relationships
 from adaptive_trust_medical_rag.services.live_relationships import (
     RelationshipStore,
     aligned_medications,
@@ -38,13 +41,33 @@ from adaptive_trust_medical_rag.services.live_relationships import (
     load_relationship_store,
 )
 from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
-from adaptive_trust_medical_rag.services.live_source_links import shared_urls, source_link
+from adaptive_trust_medical_rag.services.claim_strength import (
+    NO_REVIEWED_FOOD_WORDING,
+    NO_REVIEWED_RELATIONSHIP_WORDING,
+    StrengthIssue,
+    reviewed_claims,
+    reviewed_food_lines,
+    strength_issue,
+)
+from adaptive_trust_medical_rag.services.live_source_links import (
+    IDENTITY_NOTES,
+    IDENTITY_VERIFIED,
+    shared_urls,
+    source_identity_status,
+    source_link,
+    verified_links_from,
+)
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
 from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
     FinalSupportState,
 )
-from adaptive_trust_medical_rag.verification.canonical_identity import extract_claim_identity
+from adaptive_trust_medical_rag.verification.canonical_identity import (
+    RequestDrugMap,
+    drug_mentions,
+    extract_claim_identity,
+    names_drug_class,
+)
 
 log = logging.getLogger(__name__)
 
@@ -60,6 +83,49 @@ def _ts() -> str:
 def _sse(event: str, data: dict[str, Any]) -> dict[str, Any]:
     """Helper to return an event tuple."""
     return {"event": event, "data": data}
+
+
+# What _unless_cancelled returns for work abandoned because its analysis was cancelled.
+_CANCELLED = object()
+# How long a cancelled step may take to stop; closing an HTTP request takes far less.
+CANCEL_CLEANUP_S = 5.0
+
+
+async def _unless_cancelled(work: Any, analysis_state: dict[str, Any], stop: Any = None) -> Any:
+    """Await ``work`` unless its analysis is cancelled first; then stop it and return ``_CANCELLED``.
+
+    POST /cancel sets the request's confirmation event, which nothing else sets before extraction
+    ends (/confirm refuses until then), so ``work`` is raced against it, and stopping it is awaited.
+    By default the task is cancelled: for the vision call that cancels httpx's ``await client.post``,
+    so the request and its client are closed, and the backend's fallback loop, which handles only
+    ModelExecutionError, tries no other provider. Work in a thread cannot be cancelled that way, so it
+    passes its own ``stop`` (the OCR kills its process); without one its result is simply dropped.
+    An answer that arrives anyway is dropped.
+    """
+    if analysis_state.get("cancelled"):
+        if asyncio.iscoroutine(work):
+            work.close()  # never started
+        return _CANCELLED
+    task = asyncio.ensure_future(work)
+    # Retrieves the error of a task abandoned without being awaited (one still running after the bound below).
+    task.add_done_callback(lambda t: t.cancelled() or t.exception())
+    cancel_seen = asyncio.ensure_future((analysis_state.get("confirmation_event") or asyncio.Event()).wait())
+    try:
+        await asyncio.wait({task, cancel_seen}, return_when=asyncio.FIRST_COMPLETED)
+        if not analysis_state.get("cancelled"):
+            return await task
+        return _CANCELLED
+    finally:
+        cancel_seen.cancel()
+        if not task.done():  # a cancel, or this stream itself cancelled by a client disconnect
+            (stop or task.cancel)()
+            # Starlette cancels a disconnected stream through an anyio cancel scope, which would cancel
+            # this wait as well; shielded, the work has stopped (bounded) before the request is dropped.
+            with anyio.CancelScope(shield=True):
+                _, unfinished = await asyncio.wait({task}, timeout=CANCEL_CLEANUP_S)
+            if unfinished:
+                log.warning("A cancelled step did not stop within %.0f s; its result is dropped", CANCEL_CLEANUP_S)
+                task.cancel()
 
 
 # ── Verification representation of the generated answer ─────────────────────
@@ -432,7 +498,7 @@ class LiveMedicalRAGService:
                 yield _sse("stage_update", {
                     "stage": "extracting",
                     "status": "running",
-                    "message": "Extracting medications from prescription image via NVIDIA Vision...",
+                    "message": "Reading the prescription image on this server, then extracting medications...",
                     "timestamp": _ts(),
                 })
 
@@ -444,24 +510,103 @@ class LiveMedicalRAGService:
                     original_image_sha256 = hashlib.sha256(image_bytes).hexdigest()
                     mime = image_meta.get("content_type", "image/jpeg") if image_meta else "image/jpeg"
 
+                    # Privacy: the image is read on this server first, and leaves it for an external
+                    # vision provider only if that read found text. Without the text no suggestion could
+                    # be verified, so there is no reason to send it. The same text checks the answer.
+                    # A cancel or a client disconnect kills the local OCR process; an injected recognizer
+                    # (tests) cannot be stopped, and its result is dropped instead.
+                    injected = getattr(self.app_state, "image_text_recognizer", None)
+                    stop_ocr = threading.Event()
+                    try:
+                        image_text = await _unless_cancelled(
+                            asyncio.to_thread(injected, image_bytes, mime) if injected else
+                            asyncio.to_thread(image_grounding.recognize_image_text, image_bytes, mime, stop=stop_ocr),
+                            analysis_state, stop=None if injected else stop_ocr.set)
+                    except Exception as e:  # an OCR failure, not a vision one; its message is never shown
+                        log.warning("Image text recognition failed for %s: %s", request_id, type(e).__name__)
+                        image_text = image_grounding.ImageText(image_grounding.OCR_ERROR, reason=type(e).__name__)
+                    if image_text is _CANCELLED:  # cancelled before or while the image was read
+                        yield _sse("error", ANALYSIS_CANCELLED)
+                        return
+                    # A status and a size only, never the text.
+                    log.info("Image text for %s: OCR %s, %d character(s)", request_id, image_text.status,
+                             len(image_text.text))
+                    if image_text.status != image_grounding.OCR_OK or not image_text.text.strip():
+                        analysis_state["finished"] = True
+                        yield _sse("stage_update", {"stage": "extracting", "status": "failed", "timestamp": _ts()})
+                        if image_text.status == image_grounding.OCR_OK:
+                            yield _sse("error", {
+                                "code": "NO_VERIFIED_MEDICATIONS",
+                                "message": "No readable text was found in this image, so no medication could be "
+                                           "verified and the image was not sent anywhere. Upload a different "
+                                           "image, or enter the medication names manually.",
+                                "suggested": 0,
+                            })
+                        else:
+                            unsupported = image_text.status == image_grounding.OCR_UNAVAILABLE
+                            yield _sse("error", {
+                                "code": "IMAGE_TEXT_UNVERIFIABLE",
+                                # On a server without the OCR engine a retry can never succeed: say so.
+                                "message": ("Checking an image's text is not available on this server (it "
+                                            "needs the Windows OCR engine), so medications cannot be taken "
+                                            "from images here and the image was not sent anywhere. Please "
+                                            "enter the medication names manually."
+                                            if unsupported else
+                                            "The image text could not be read on this server, so the image was "
+                                            "not sent anywhere. Try the upload again, or enter the medication "
+                                            "names manually."),
+                                "ocr_status": image_text.status,
+                            })
+                        return
+                    if analysis_state.get("cancelled"):  # cancelled just after the image was read: never sent
+                        yield _sse("error", ANALYSIS_CANCELLED)
+                        return
+
                     try:
                         # Ensure we increment only on actual attempt
                         if not hasattr(self.app_state, "live_nvidia_vision_requests"):
                             self.app_state.live_nvidia_vision_requests = 0
                         self.app_state.live_nvidia_vision_requests += 1
 
-                        ext_res = await vision_backend.extract_medications(image_bytes, mime)
+                        ext_res = await _unless_cancelled(vision_backend.extract_medications(image_bytes, mime),
+                                                          analysis_state)
+                        if ext_res is _CANCELLED:
+                            # Not that the provider stopped: it may already have received and processed the image.
+                            log.info("Analysis %s cancelled during extraction: any vision request in flight was "
+                                     "closed, no answer is used and no other provider is tried", request_id)
+                            yield _sse("error", ANALYSIS_CANCELLED)
+                            return
+                        # The model that served this request; the backend's own attribute is shared.
+                        vision_model_used = (getattr(ext_res, "model_used", None)
+                                             or getattr(vision_backend, "model_name", None))
+                        vision_provider_used = (getattr(ext_res, "provider_used", None)
+                                                or getattr(vision_backend, "provider_name", None))
+
+                        # The model's confidence and its own transcription are not evidence: each name must
+                        # be in the text read above. Applies to any provider, the fallback too.
+                        suggested = list(ext_res.candidate_medications)
+                        kept, withheld = image_grounding.ground_candidates(suggested, image_text)
 
                         candidates_payload = []
-                        for idx, cand in enumerate(ext_res.candidate_medications):
+                        for idx, (cand, span) in enumerate(kept):
                             candidates_payload.append({
                                 "id": f"ocr-{idx}",
                                 "raw_text": cand.raw_text,
                                 "normalized_text": cand.normalized_text,
                                 "confidence": cand.confidence.value,
                                 "status": "DETECTED" if cand.confidence.value in ["HIGH", "MEDIUM"] else "UNCERTAIN",
-                                "source": "VISION"
+                                "source": "VISION",
+                                "image_text_evidence": span,
                             })
+                        warnings = list(ext_res.warnings)
+                        if withheld:
+                            warnings.append(f"{len(withheld)} suggested name(s) did not appear in the image text "
+                                            "and were left out.")
+
+                        # Counts only, never names or image text.
+                        log.info("Vision extraction for %s: %d suggested, %d found in the image text via %s/%s",
+                                 request_id, len(suggested), len(candidates_payload), vision_provider_used,
+                                 vision_model_used)
 
                         # Keep record for provenance
                         analysis_state["image_provenance"] = {
@@ -469,41 +614,68 @@ class LiveMedicalRAGService:
                             "original_image_sha256": original_image_sha256,
                             "mime": mime,
                             "timestamp": _ts(),
-                            "vision_provider": vision_backend.provider_name,
-                            "vision_model": vision_backend.model_name,
-                            "extraction_result": candidates_payload
+                            "vision_provider": vision_provider_used,
+                            "vision_model": vision_model_used,
+                            "extraction_result": candidates_payload,
+                            "image_text": {"engine": image_text.engine, "status": image_text.status,
+                                           "suggested": len(suggested), "withheld": len(withheld)},
                         }
+
+                        if not candidates_payload:
+                            # Nothing the image text supports: end now, never wait for a confirmation.
+                            analysis_state["finished"] = True
+                            yield _sse("stage_update", {"stage": "extracting", "status": "failed",
+                                                        "timestamp": _ts()})
+                            yield _sse("error", {
+                                "code": "NO_VERIFIED_MEDICATIONS",
+                                "message": "No medication names could be verified from the readable text in "
+                                           "this image. Upload a different image, or enter the medication "
+                                           "names manually.",
+                                "suggested": len(suggested),
+                            })
+                            return
 
                         yield _sse("medication_candidates_extracted", {
                             "candidates": candidates_payload,
-                            "warnings": ext_res.warnings,
-                            "vision_provider": getattr(vision_backend, "provider_name", None),
-                            "vision_model": getattr(vision_backend, "model_name", None),
+                            "warnings": warnings,
+                            "vision_provider": vision_provider_used,
+                            "vision_model": vision_model_used,
+                            "vision_attempts": list(getattr(ext_res, "attempts", None) or []),
                         })
                     except Exception as e:
                         log.error("Vision extraction failed: %s", e)
-                        yield _sse("error", {
-                            "code": "VISION_EXTRACTION_ERROR",
-                            "message": f"Vision extraction failed: {str(e)}",
-                            "vision_provider": getattr(vision_backend, "provider_name", None),
-                            "vision_model": getattr(vision_backend, "model_name", None),
-                        })
+                        failure_class = getattr(getattr(e, "failure_class", None), "value", None)
+                        analysis_state["finished"] = True
+                        # The stage failure comes before the terminal error: the client closes the
+                        # stream on the error. No medication list is produced from a failed extraction.
                         yield _sse("stage_update", {
                             "stage": "extracting",
                             "status": "failed",
                             "timestamp": _ts(),
                         })
+                        next_step = ("Retry the upload, or enter the medication names manually."
+                                     if failure_class in ("TIMEOUT", "NETWORK", "TRANSIENT_PROVIDER", "RATE_LIMIT")
+                                     else "Enter the medication names manually; the image could not be read.")
+                        yield _sse("error", {
+                            "code": "VISION_EXTRACTION_ERROR",
+                            "message": f"Vision extraction failed: {str(e)} {next_step}",
+                            "failure_class": failure_class,
+                            "vision_provider": getattr(vision_backend, "provider_name", None),
+                            "vision_model": getattr(vision_backend, "model_name", None),
+                            "vision_attempts": list(getattr(e, "attempts", None) or []),
+                        })
                         return
                 else:
-                    # Fallback if no backend configured
-                    yield _sse("error", {
-                        "code": "PROVIDER_CONFIGURATION_REQUIRED",
-                        "message": "NVIDIA Vision Backend is not configured."
-                    })
+                    # Fallback if no backend configured. The stage failure comes first: the client
+                    # closes the stream on the error.
                     yield _sse("stage_update", {
                         "stage": "extracting",
                         "status": "failed",
                         "timestamp": _ts(),
+                    })
+                    yield _sse("error", {
+                        "code": "PROVIDER_CONFIGURATION_REQUIRED",
+                        "message": "NVIDIA Vision Backend is not configured."
                     })
                     return
 
@@ -514,16 +686,28 @@ class LiveMedicalRAGService:
                     "timestamp": _ts(),
                 })
 
+                # From here on (and only from here) /confirm accepts a confirmation for this request.
+                analysis_state["awaiting_confirmation"] = True
                 yield _sse("confirmation_required", {})
 
                 # Wait for the frontend to confirm
                 confirmation_event = analysis_state.get("confirmation_event")
                 if confirmation_event and "confirmed_medications" not in analysis_state:
-                    timeout_val = 2.0 if os.getenv("TESTING") == "1" else 30.0
+                    timeout_val = 2.0 if os.getenv("TESTING") == "1" else CONFIRMATION_TIMEOUT_S
                     try:
                         await asyncio.wait_for(confirmation_event.wait(), timeout=timeout_val)
                     except asyncio.TimeoutError:
+                        analysis_state["finished"] = True
+                        yield _sse("error", {
+                            "code": "CONFIRMATION_TIMEOUT",
+                            "message": f"The extracted medications were not confirmed within {timeout_val:.0f} s, "
+                                       "so no analysis was run. Upload the image again to retry.",
+                        })
                         return
+
+                if analysis_state.get("cancelled"):  # the wait was released by a cancel: analyse nothing
+                    yield _sse("error", ANALYSIS_CANCELLED)
+                    return
 
                 # User confirmed, use the confirmed medications for the rest of the pipeline
                 confirmed = analysis_state.get("confirmed_medications", [])
@@ -538,10 +722,17 @@ class LiveMedicalRAGService:
                 # Build provenance map and extract drug names
                 provenance_map = {}
                 drug_names = []
+                shown = {n.lower() for c in analysis_state.get("image_provenance", {}).get("extraction_result", [])
+                         for n in (c["raw_text"], c.get("normalized_text")) if n}
                 for item in confirmed:
                     # Item could be a Pydantic model or a dict depending on how it's stored
                     item_dict = item.model_dump() if hasattr(item, "model_dump") else item
                     name = item_dict["name"]
+                    detected = item_dict.get("name") if item_dict.get("status") == "CONFIRMED" \
+                        else item_dict.get("raw_detected_name")
+                    if item_dict.get("status") in ("CONFIRMED", "EDITED") and (detected or "").lower() not in shown:
+                        # Only a name the image text supported may be recorded as taken from the image.
+                        item_dict = {**item_dict, "status": "USER_ADDED", "source": "USER", "raw_detected_name": None}
                     drug_names.append(name)
                     provenance_map[name.lower()] = item_dict
 
@@ -591,7 +782,8 @@ class LiveMedicalRAGService:
 
             medications = []
             normalizer = getattr(self.app_state, "drug_normalizer", None)
-            drug_rxcui_map = {}
+            # Its names are also matched in claim text, so any requested medication can get an identity.
+            drug_rxcui_map = RequestDrugMap()
             all_resolved = True
 
             provenance_map = {}
@@ -630,6 +822,11 @@ class LiveMedicalRAGService:
                             # How the normalizer resolved it (an RxNav lookup or its cache); "source"
                             # names where the drug name came from when it was confirmed from an image.
                             "rxnorm_source": entity.source,
+                            # The resolution method behind the identity: rxnorm_exact, rxnorm_approx,
+                            # seed_cache, or the method a cached entry was first resolved by. This is drug
+                            # identity only; it says nothing about any interaction or evidence.
+                            "identity_method": ((entity.metadata or {}).get("resolved_by", "seed_cache")
+                                                if entity.source == "cache" else entity.source),
                             "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
                             "raw_detected_name": prov_info.get("raw_detected_name"),
                             "status": status,
@@ -661,14 +858,15 @@ class LiveMedicalRAGService:
             yield _sse("rxnorm", {"entities": medications, "overall_status": "RESOLVED" if all_resolved else "FAILED"})
 
             if not all_resolved:
-                yield _sse("error", {
-                    "code": "NORMALIZATION_ERROR",
-                    "message": "One or more medications could not be resolved to a canonical identity.",
-                })
+                # The stage failure comes first: the client closes the stream on the error.
                 yield _sse("stage_update", {
                     "stage": "normalizing",
                     "status": "failed",
                     "timestamp": _ts(),
+                })
+                yield _sse("error", {
+                    "code": "NORMALIZATION_ERROR",
+                    "message": "One or more medications could not be resolved to a canonical identity.",
                 })
                 return
 
@@ -731,7 +929,7 @@ class LiveMedicalRAGService:
                     candidates = retrieval_engine.retrieve(
                         query=query_text,
                         query_drugs=drug_names_lower,
-                        top_k=20
+                        top_k=RETRIEVAL_TOP_K
                     )
                 except Exception as e:
                     log.error("Retrieval error: %s", e)
@@ -748,6 +946,10 @@ class LiveMedicalRAGService:
                 "evidence_count": len(candidates),
                 "sources": list({c.candidate.metadata.get("source_type", "UNKNOWN") for c in candidates}),
                 "corpus": retrieval_info.get("corpus"),
+                # With top_k at or above the corpus size every chunk is returned; the gates that
+                # follow (medication alignment, source identity) decide what can be evidence.
+                "corpus_chunk_count": retrieval_info.get("chunk_count"),
+                "top_k": RETRIEVAL_TOP_K,
                 "relationship_evidence_chunks": retrieval_info.get("relationship_evidence_chunks", []),
                 "embedding_model": retrieval_info.get("embedding_model"),
                 "embedding_mode": retrieval_info.get("embedding_mode"),
@@ -817,6 +1019,11 @@ class LiveMedicalRAGService:
             max_trust_score = 0.0
             best_factors = None
             unrelated = 0
+            excluded_sources = []
+            seen_content = set()
+            scored_chunks = 0
+            verified_links = getattr(self.app_state, "verified_source_links", None)
+            shared = getattr(self.app_state, "shared_source_urls", frozenset())
 
             for sc in safe_candidates:
                 cand = sc.candidate
@@ -826,6 +1033,27 @@ class LiveMedicalRAGService:
                 if not aligned_medications(cand.text, medications):
                     unrelated += 1
                     continue
+                # Hard gate: a chunk whose source identity is not verified is not evidence. Its
+                # authority, freshness and retrieval scores are never used, so a placeholder or a
+                # misattributed record cannot reach the model or support a claim.
+                link = source_link(cand.chunk_id, cand.source_url, verified_links=verified_links, shared=shared)
+                identity = source_identity_status(link["status"])
+                if identity != IDENTITY_VERIFIED:
+                    excluded_sources.append({
+                        "chunk_id": cand.chunk_id,
+                        "document_id": cand.document_id,
+                        "source_type": cand.metadata.get("source_type"),
+                        "source_name": cand.source_url or None,
+                        "source_link_status": link["status"],
+                        "source_identity_status": identity,
+                        "reason": IDENTITY_NOTES[identity] + " " + link["note"],
+                    })
+                    continue
+                # The same text retrieved twice (duplicate records) is one piece of evidence.
+                content_key = hashlib.sha256(cand.text.encode("utf-8")).hexdigest()
+                if content_key in seen_content:
+                    continue
+                seen_content.add(content_key)
                 entity_match = 1.0
 
                 rel_score = float(getattr(sc, "score", 0.85))
@@ -851,17 +1079,24 @@ class LiveMedicalRAGService:
                 if result.trust_score >= trust_threshold and cand.source_authority >= 0.3:
                     eligible_candidates.append((sc, result.trust_score, result.missing_factors))
 
+                scored_chunks += 1
                 if result.trust_score > max_trust_score:
                     max_trust_score = result.trust_score
                     best_factors = factors
 
+            # No chunk reached scoring: there is no trust score, which is not a computed 0.
+            trust_score_out = max_trust_score if scored_chunks else None
+            score_status = "COMPUTED" if scored_chunks else "NO_ELIGIBLE_EVIDENCE"
             yield _sse("trust", {
-                "overall_score": max_trust_score,
+                "overall_score": trust_score_out,
+                "score_status": score_status,
+                "scored_chunks": scored_chunks,
                 "threshold": trust_threshold,
                 "risk_class": risk_tier,
                 "risk_basis": risk_basis,
                 "is_eligible": len(eligible_candidates) > 0,
                 "unrelated_excluded": unrelated,
+                "unverified_source_excluded": len(excluded_sources),
                 "factors": best_factors.__dict__ if best_factors else {},
                 "missing_factors": []
             })
@@ -882,6 +1117,12 @@ class LiveMedicalRAGService:
                     names = ", ".join(m.get("canonical_name") or m["raw_text"] for m in medications)
                     reason = (f"{len(safe_candidates)} evidence chunk(s) passed security checks, but none "
                               f"names a requested medication ({names}), so none can support this analysis.")
+                elif excluded_sources and len(excluded_sources) == len(safe_candidates) - unrelated:
+                    reason = (f"{len(excluded_sources)} evidence chunk(s) about these medications were retrieved, "
+                              "but none has a verified source identity (placeholder, shared or unverified source "
+                              "links), so none can be used as evidence. This is a limit of the evidence corpus, "
+                              "not a finding that the medications are safe together. No trust score was "
+                              "computed, because no evidence reached scoring.")
                 else:
                     reason = (f"{len(safe_candidates) - unrelated} evidence chunk(s) about these medications "
                               f"passed security checks, but none was eligible: each needs a trust score of at least {trust_threshold:.2f} "
@@ -890,10 +1131,12 @@ class LiveMedicalRAGService:
                 yield _sse("abstention", {
                     "reason": reason,
                     "evidence_retrieved": len(candidates),
+                    "excluded_sources": excluded_sources,
                     # No model is called before an evidence abstention.
                     "served_by": None,
                     "trust": {
-                        "overall_score": max_trust_score,
+                        "overall_score": trust_score_out,
+                        "score_status": score_status,
                         "threshold": trust_threshold,
                         "risk_class": risk_tier,
                         "risk_basis": risk_basis,
@@ -909,11 +1152,8 @@ class LiveMedicalRAGService:
                 evidence_lines.append(f"[Source {i}]\n{cand.text.strip()}")
 
                 # The page links a source only when its URL is verified for this chunk.
-                link = source_link(
-                    cand.chunk_id, cand.source_url,
-                    verified_links=getattr(self.app_state, "verified_source_links", None),
-                    shared=getattr(self.app_state, "shared_source_urls", frozenset()),
-                )
+                link = source_link(cand.chunk_id, cand.source_url, verified_links=verified_links, shared=shared)
+                identity_record = cand.metadata.get("source_identity") or {}
                 item = {
                     "chunk_id": cand.chunk_id,
                     "document_id": cand.document_id,
@@ -927,7 +1167,13 @@ class LiveMedicalRAGService:
                     "trust_score": ts,
                     "freshness": float(cand.metadata.get("freshness_score", 0.8)),
                     "retrieval_method": "hybrid-rrf",
-                    "provenance_status": "RETRIEVED"
+                    # Reported from the registered SHA-256 itself, never assumed.
+                    "provenance_status": _provenance_status(cand),
+                    "source_identity_status": source_identity_status(link["status"]),
+                    "source_title": identity_record.get("title"),
+                    "external_id": identity_record.get("external_id"),
+                    "source_version": identity_record.get("source_version"),
+                    "claim_support_status": "NOT_YET_VERIFIED",
                 }
                 if link["status"] == LINK_VERIFIED:
                     item["url"] = cand.source_url
@@ -1012,6 +1258,8 @@ class LiveMedicalRAGService:
                 if hasattr(gen_result, "model") and gen_result.model:
                     used_model_info["model_id"] = gen_result.model
                 served_by = _served_by(gen_result, raw_text)
+                # Router attempts (provider, model, failure class, decision) that led to this output.
+                provider_attempts = list(getattr(gen_result, "attempts", None) or [])
                 log.info(
                     "LLM output received (provider=%s model=%s reported_model=%s finish_reason=%s length=%d)",
                     served_by["provider"], served_by["model_id"], served_by["reported_model"],
@@ -1046,7 +1294,10 @@ class LiveMedicalRAGService:
             except Exception as e:
                 log.error("LLM Generation failed: %s", e)
                 # No provider returned an output; the selection is what was asked for, not what served.
+                yield _sse("stage_update", {"stage": "generating", "status": "failed", "timestamp": _ts()})
                 yield _sse("error", {"code": "LLM_ERROR", "message": str(e),
+                                     "failure_class": getattr(getattr(e, "failure_class", None), "value", None),
+                                     "provider_attempts": list(getattr(e, "attempts", None) or []),
                                      "served_by": None, "requested_model": used_model_info})
                 return
 
@@ -1083,6 +1334,12 @@ class LiveMedicalRAGService:
             if verifier and statements:
                 rxcuis = [str(m["rxcui"]) for m in medications if m.get("rxcui")]
 
+                def cited_metadata(text: str) -> dict[int, dict[str, Any]]:
+                    """[Source N] number -> metadata of that eligible chunk, for the numbers the text cites."""
+                    numbers = {int(n) for n in re.findall(r"\bSource (\d+)\b", text)}  # "[Source 1]" or "Source 1"
+                    return {n: eligible_candidates[n - 1][0].candidate.metadata
+                            for n in numbers if 1 <= n <= len(eligible_candidates)}
+
                 def evidence_for(claim_text: str) -> list[EvidenceChunk]:
                     # The drug order the verifier will read from this claim; only a symmetric
                     # (BIDIRECTIONAL) record uses it, so its identity matches either order.
@@ -1110,8 +1367,17 @@ class LiveMedicalRAGService:
                     }
                     try:
                         # ClaimVerifierV2 verifies one answer string; each statement is verified as one.
+                        # A statement naming two or more drugs asserts a relationship and needs an approved
+                        # relationship record (canonical identity). A single-drug statement (a food,
+                        # warning or adverse reaction) has no drug pair, so it is judged on its cited,
+                        # identity-verified evidence alone; requiring a pair would block it always.
+                        # Naming a drug class ("with NSAIDs") is a pair claim too: it fails closed here,
+                        # since a class has no RxCUI for the identity check to match.
+                        pairwise = (len(drug_mentions(statement.text, drug_rxcui_map)) >= 2
+                                    or names_drug_class(statement.text))
                         v_report = verifier.verify(statement.text, evidence_for(statement.text),
-                                                   risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
+                                                   risk_tier=risk_tier,
+                                                   drug_rxcui_map=drug_rxcui_map if pairwise else None)
                         judgments = getattr(v_report, "judgments", None) or []
                         identity = next((j for j in judgments if j.canonical_identity_status), None)
                         claim.update({
@@ -1128,6 +1394,27 @@ class LiveMedicalRAGService:
                                 "support_state": FinalSupportState.UNSUPPORTED.value,
                                 "invalid_source_references": list(statement.invalid_sources),
                             })
+                        elif claim["support_state"] == FinalSupportState.SUPPORTED.value:
+                            # Entailment does not check strength: a statement may not claim more than
+                            # its sources' reviewed wording (a risk factor is not an instruction to
+                            # avoid), and a food statement needs reviewed wording to be released at all.
+                            cited = cited_metadata(statement.text)
+                            if statement.field == "food_guidance" and (
+                                    not cited or not all(reviewed_claims(m) for m in cited.values())):
+                                problem = StrengthIssue(NO_REVIEWED_FOOD_WORDING,
+                                                        "the cited source has no reviewed food wording", [])
+                            elif pairwise and (not cited or not all(reviewed_claims(m) for m in cited.values())):
+                                # Without reviewed wording nothing bounds a relationship claim's strength
+                                # ("monitor" versus "never combine"); entailment alone does not.
+                                problem = StrengthIssue(NO_REVIEWED_RELATIONSHIP_WORDING,
+                                                        "the cited source has no reviewed relationship wording", [])
+                            else:
+                                problem = strength_issue(statement.text, list(cited.values()))
+                            if problem:
+                                claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
+                                              "strength_check": problem.message,
+                                              "strength_code": problem.code,
+                                              "strength_details": problem.details})
                     except Exception as e:
                         log.error("Claim verification error: %s", e)
                         # Keep the failed statement visible instead of dropping it from the report.
@@ -1136,6 +1423,15 @@ class LiveMedicalRAGService:
                             "verification_error": type(e).__name__,
                         })
                     claims_out.append(claim)
+
+            # An evidence item supports a claim only when a SUPPORTED claim cites it.
+            cited_by_supported = set()
+            for c in claims_out:
+                if c.get("support_state") == FinalSupportState.SUPPORTED.value:
+                    cited_by_supported.update(re.findall(r"\[Source (\d+)\]", c["text"]))
+            for i, ev in enumerate(evidence_items, start=1):
+                ev["claim_support_status"] = ("SUPPORTS_VERIFIED_CLAIM" if str(i) in cited_by_supported
+                                              else "NO_VERIFIED_CLAIM")
 
             # Release needs a verifier, at least one statement, and every statement SUPPORTED.
             all_supported = bool(verifier and statements) and all(
@@ -1197,6 +1493,7 @@ class LiveMedicalRAGService:
                     "evidence": evidence_items,
                     "evidence_retrieved": len(candidates),
                     "served_by": served_by,
+                    "provider_attempts": provider_attempts,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -1234,7 +1531,11 @@ class LiveMedicalRAGService:
                 "interactions": answer_fields["interactions"],
                 "adverse_reactions": answer_fields["adverse_reactions"],
                 "warnings": answer_fields["warnings"],
-                "food_guidance": answer_fields["food_guidance"],
+                # Released food lines are the sources' reviewed wording, never the generated wording.
+                "food_guidance": [
+                    {**item, "food_interactions": reviewed_food_lines(cited_metadata(
+                        " ".join([str(item.get("source") or ""), *map(str, item.get("food_interactions") or [])])))}
+                    for item in answer_fields["food_guidance"]],
                 "patient_considerations": answer_fields["patient_considerations"],
                 "trust": {
                     "overall_score": max_trust_score,
@@ -1259,6 +1560,7 @@ class LiveMedicalRAGService:
                 "abstention_reason": abstention_reason,
                 "used_model": used_model_info,
                 "served_by": served_by,
+                "provider_attempts": provider_attempts,
             }
 
             yield _sse("stage_update", {
@@ -1294,6 +1596,12 @@ class LiveMedicalRAGService:
 
 
 LIVE_CORPUS_FILE = "LIVE_MEDICAL_CORPUS_V2.json"
+RETRIEVAL_TOP_K = 20
+# How long an image analysis waits for the user to confirm the extracted medications.
+CONFIRMATION_TIMEOUT_S = 300.0
+# The terminal event of a request the user abandoned (POST /analyze/{id}/cancel); read-only.
+ANALYSIS_CANCELLED = {"code": "ANALYSIS_CANCELLED",
+                      "message": "This analysis was cancelled before anything was analysed."}
 LIVE_EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 
@@ -1315,6 +1623,15 @@ def _short_error(e: Exception) -> str:
     if 0 < end < 200:
         text = text[: end + 1]
     return f"{type(e).__name__}: {text[:200]}" if text else type(e).__name__
+
+
+def _provenance_status(cand: Any) -> str:
+    """CONTENT_HASH_MATCHED only when the chunk has a registered SHA-256 that its text matches."""
+    expected = ((cand.metadata or {}).get("provenance") or {}).get("content_hash")
+    if not expected:
+        return "NO_REGISTERED_HASH"
+    actual = hashlib.sha256(cand.text.encode("utf-8")).hexdigest()
+    return "CONTENT_HASH_MATCHED" if actual == expected else "CONTENT_HASH_MISMATCH"
 
 
 class _LiveEmbeddingModel:
@@ -1359,7 +1676,16 @@ class _LiveEmbeddingModel:
         return results
 
 
+_INIT_LOCK = threading.Lock()
+
+
 def _lazy_init_models(app_state):
+    """Load the models once: concurrent callers (startup warm-up, first requests) share one load."""
+    with _INIT_LOCK:
+        _load_models(app_state)
+
+
+def _load_models(app_state):
     """Load the claim verifier and the live retrieval engine independently.
 
     A component that cannot load is left as None and its reason is recorded in
@@ -1401,6 +1727,8 @@ def _lazy_init_models(app_state):
                 "provenance": item.get("provenance", {}),
                 "freshness_score": item.get("freshness", 0.8),
                 "source_type": item.get("source_type"),
+                "source_identity": item.get("source_identity"),
+                "supported_claims": item.get("supported_claims"),
             },
         )
 
@@ -1422,6 +1750,9 @@ def _lazy_init_models(app_state):
     live_corpus += [as_candidate(item) for item in supplement]
     # A URL the corpus gives to several documents cannot identify any one of them.
     app_state.shared_source_urls = shared_urls(data + supplement)
+    # Only approved V2 evidence with a complete, consistent source identity record is verified.
+    if getattr(app_state, "verified_source_links", None) is None:
+        app_state.verified_source_links = verified_links_from(supplement, app_state.shared_source_urls)
     log.info("Relationship records: %s", app_state.relationship_store.reason)
 
     log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)

@@ -77,8 +77,9 @@ class ErrorPipeline:
 def _make_client(
     pipeline: Any = None,
     rate_limit: int = 1000,
+    ingester: Any = None,
 ) -> TestClient:
-    app = create_app(pipeline=pipeline, rate_limit=rate_limit, rate_window=60)
+    app = create_app(pipeline=pipeline, rate_limit=rate_limit, rate_window=60, ingester=ingester)
     return TestClient(app, raise_server_exceptions=False)
 
 
@@ -210,31 +211,34 @@ class TestIngestEndpoint:
             "publication_year": 2023,
         }
 
-    def test_valid_ingest_returns_200(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        assert resp.status_code == 200
+    @staticmethod
+    def _recording_ingester(seen: list):
+        def ingest(body, content_hash):
+            seen.append(content_hash)
+            return {"document_id": "doc-1", "content_hash": content_hash, "chunk_count": 3,
+                    "status": "validated", "anomaly_score": 0.1, "poisoning_score": 0.0,
+                    "quarantined": False, "message": "ingested"}
+        return ingest
 
-    def test_response_has_document_id(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        data = resp.json()
-        assert "document_id" in data
-        assert len(data["document_id"]) > 0
+    def test_without_an_ingester_nothing_is_reported_as_ingested(self) -> None:
+        resp = _make_client().post("/ingest", json=self._ingest_body())
+        assert resp.status_code == 503
+        assert "document_id" not in resp.json() and "poisoning_score" not in resp.json()
 
-    def test_response_has_content_hash(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        data = resp.json()
-        assert "content_hash" in data
-        assert len(data["content_hash"]) == 64  # SHA-256 hex
-
-    def test_same_content_same_hash(self) -> None:
-        client = _make_client()
+    def test_the_ingester_result_is_returned_with_the_content_hash(self) -> None:
+        seen: list = []
+        client = _make_client(ingester=self._recording_ingester(seen))
         body = self._ingest_body()
-        r1 = client.post("/ingest", json=body).json()
-        r2 = client.post("/ingest", json=body).json()
-        assert r1["content_hash"] == r2["content_hash"]
+        r1 = client.post("/ingest", json=body)
+        r2 = client.post("/ingest", json=body)
+        assert r1.status_code == 200 and r1.json()["document_id"] == "doc-1"
+        assert len(seen[0]) == 64 and seen[0] == seen[1] == r1.json()["content_hash"]
+
+    def test_an_ingester_failure_is_a_500_not_a_success(self) -> None:
+        def broken(body, content_hash):
+            raise RuntimeError("store down")
+        resp = _make_client(ingester=broken).post("/ingest", json=self._ingest_body())
+        assert resp.status_code == 500
 
     def test_missing_title_returns_422(self) -> None:
         client = _make_client()

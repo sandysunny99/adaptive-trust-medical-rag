@@ -195,15 +195,17 @@ class DrugNormalizer:
         # Step 1: Local cache
         cached = self._cache.lookup(text)
         if cached:
+            # Entries in data/drug_entity_cache.json are curated seed mappings; entries added at
+            # runtime keep the resolver and confidence they came from (an approximate match stays one).
             return DrugEntity(
                 raw_text=raw_text,
                 generic_name=cached.get("generic_name"),
                 rxcui=cached.get("rxcui"),
                 brand_name=cached.get("brand_name"),
                 formulation=formulation or cached.get("formulation"),
-                confidence=1.0,
+                confidence=float(cached.get("confidence", 1.0)),
                 source="cache",
-                metadata={"cache_key": text},
+                metadata={"cache_key": text, "resolved_by": cached.get("resolved_by", "seed_cache")},
             )
 
         if not self._use_api:

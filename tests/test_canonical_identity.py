@@ -21,8 +21,32 @@ from adaptive_trust_medical_rag.verification.canonical_identity import (
     CanonicalRelationshipIdentity,
     compare_identity,
     extract_claim_identity,
+    names_drug_class,
     normalize_predicate,
 )
+
+
+@pytest.mark.parametrize("text", [
+    "Warfarin with NSAIDs increases bleeding.",
+    "Warfarin with nonsteroidal anti-inflammatory drugs can increase the risk of bleeding.",
+    "Lisinopril with potassium-sparing diuretics can increase the risk of hyperkalemia.",
+    "Avoid potassium supplements with lisinopril.",
+    "Simvastatin is contraindicated with strong CYP3A4 inhibitors.",
+    "Combining it with other anticoagulants or ACE inhibitors needs monitoring.",
+    "Warfarin and drugs that increase bleeding risk should be monitored.",
+])
+def test_a_drug_class_mention_is_recognised(text):
+    assert names_drug_class(text)
+
+
+@pytest.mark.parametrize("text", [
+    "Potassium-containing salt substitutes are a risk factor for hyperkalemia in patients receiving lisinopril.",
+    "Lisinopril can cause hyperkalemia; serum potassium should be monitored periodically.",
+    "Take warfarin at the same time each day.",
+    "Lisinopril attenuates potassium loss.",
+])
+def test_single_drug_and_food_statements_name_no_drug_class(text):
+    assert not names_drug_class(text)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Fixtures

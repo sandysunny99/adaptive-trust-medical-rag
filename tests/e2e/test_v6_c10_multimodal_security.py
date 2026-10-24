@@ -69,11 +69,12 @@ def test_confirmation_authorization_and_isolation():
     assert res.status_code == 422
 
 
-def test_medication_payload_tampering():
+def test_medication_payload_tampering(extraction_finished):
     """Verify extra payload fields are ignored by Pydantic validation."""
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_res = client.post("/api/v1/analyze/prescription", files=files)
     req_id = req_res.json()["request_id"]
+    analysis = extraction_finished(app, req_id)  # /confirm accepts only a request awaiting confirmation
 
     # Payload with tampered fields (e.g. attempting to force a trust score or inject rxcui)
     payload = {
@@ -90,7 +91,9 @@ def test_medication_payload_tampering():
     # We expect Pydantic to accept it but silently strip the extra fields
     # (unless forbid_extra is set, then it returns 422)
     res = client.post(f"/api/v1/analyze/{req_id}/confirm", json=payload)
-    assert res.status_code in [200, 422]
+    assert res.status_code == 200
+    (stored,) = analysis["confirmed_medications"]
+    assert not {"trust_score", "rxcui", "canonical_name"} & set(stored.model_dump())  # extra fields dropped
 
     # 2. Missing required fields
     bad_payload = {

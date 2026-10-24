@@ -58,18 +58,8 @@ async def post_ingest(body: IngestRequest, request: Request) -> IngestResponse:
                 detail="Ingestion failed. Check quarantine logs.",
             ) from exc
 
-    # Fallback: stub response when no live ingester is configured
-    doc_id = str(uuid.uuid4())
-    return IngestResponse(
-        document_id=doc_id,
-        content_hash=content_hash,
-        chunk_count=0,
-        status="pending",
-        anomaly_score=0.0,
-        poisoning_score=0.0,
-        quarantined=False,
-        message=(
-            "Document accepted for ingestion. "
-            "No live ingester configured — queued for async processing."
-        ),
+    # No ingester: nothing was stored, scored or queued, so success must not be reported.
+    raise HTTPException(
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        detail="No ingester is configured; the document was not ingested.",
     )

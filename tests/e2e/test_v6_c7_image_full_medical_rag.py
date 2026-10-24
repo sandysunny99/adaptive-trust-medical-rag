@@ -1,5 +1,6 @@
 import io
 import json
+from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
@@ -127,12 +128,20 @@ def extract_sse_events(response_lines):
     return events
 
 @pytest.fixture(autouse=True)
-def setup_c7_mocks():
+def setup_c7_mocks(monkeypatch, ocr_reads):
+    # The synthetic prescription image reads the lines the mock vision reports.
+    monkeypatch.setattr(app.state, "image_text_recognizer", ocr_reads("Warfarin 5mg", "Aspirin 81mg"), raising=False)
     orig_vision = getattr(app.state, "vision_backend", None)
     orig_llm = getattr(app.state, "llm_backend", None)
     orig_retrieval = getattr(app.state, "retrieval_engine", None)
     orig_normalizer = getattr(app.state, "drug_normalizer", None)
     orig_verifier = getattr(app.state, "claim_verifier", None)
+    orig_links = getattr(app.state, "verified_source_links", None)
+    # Fixture assumption: the frozen corpus chunks stand in for identity-verified sources so the
+    # stages after the source-identity gate run. In the application none of them is verified.
+    corpus = json.loads((Path(__file__).resolve().parents[2] / "data" / "live_medical"
+                         / "LIVE_MEDICAL_CORPUS_V2.json").read_text(encoding="utf-8"))
+    app.state.verified_source_links = {item["chunk_id"]: item["document_url"] for item in corpus}
 
     from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
     app.state.drug_normalizer = DrugNormalizer(use_api=True)
@@ -157,8 +166,9 @@ def setup_c7_mocks():
     app.state.retrieval_engine = orig_retrieval
     app.state.drug_normalizer = orig_normalizer
     app.state.claim_verifier = orig_verifier
+    app.state.verified_source_links = orig_links
 
-def test_1_full_rag_happy_path():
+def test_1_full_rag_happy_path(stream_and_confirm):
     """TEST 1: Image -> Vision -> Confirm -> Real RxNorm -> Real Retrieval -> LLM -> Safety Gate"""
     # 1. Upload
     file_bytes = create_test_image()
@@ -167,18 +177,15 @@ def test_1_full_rag_happy_path():
     assert post_res.status_code == 200
     req_id = post_res.json()["request_id"]
 
-    # 2. Confirm immediately (simulating frontend)
+    # 2. Confirm once the request waits for it (as the frontend does)
     confirm_payload = {
         "confirmed_medications": [
             {"name": "Warfarin", "status": "CONFIRMED", "source": "VISION", "raw_detected_name": "Warfarin 5mg"},
             {"name": "Aspirin", "status": "CONFIRMED", "source": "VISION", "raw_detected_name": "Aspirin 81mg"}
         ]
     }
-    confirm_res = client.post(f"/api/v1/analyze/{req_id}/confirm", json=confirm_payload)
+    confirm_res, stream_res = stream_and_confirm(app, req_id, confirm_payload)
     assert confirm_res.status_code == 200
-
-    # 3. Stream remainder
-    stream_res = client.get(f"/api/v1/stream/{req_id}")
     events = extract_sse_events(stream_res.text.splitlines())
 
     event_names = [e.get("event") for e in events]
@@ -212,7 +219,7 @@ def test_1_full_rag_happy_path():
         abstention_event = next((e for e in events if e.get("event") == "abstention"), None)
         assert abstention_event is not None, "Pipeline did not complete nor abstain."
 
-def test_2_controlled_abstention_unknown_drug():
+def test_2_controlled_abstention_unknown_drug(stream_and_confirm):
     """TEST 2: Unknown drug confirmed -> RxNorm fails -> Abstain (No Retrieval/LLM)"""
     file_bytes = create_test_image()
     files = {"image": ("prescription.jpg", file_bytes, "image/jpeg")}
@@ -224,9 +231,7 @@ def test_2_controlled_abstention_unknown_drug():
             {"name": "UnknownFakeDrug12345", "status": "CONFIRMED", "source": "USER_ADDED"}
         ]
     }
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json=confirm_payload)
-
-    stream_res = client.get(f"/api/v1/stream/{req_id}")
+    _, stream_res = stream_and_confirm(app, req_id, confirm_payload)
     events = extract_sse_events(stream_res.text.splitlines())
 
     stages = [e.get("data", {}).get("stage") for e in events if e.get("event") == "stage_update"]
@@ -234,7 +239,7 @@ def test_2_controlled_abstention_unknown_drug():
     assert "retrieving" not in stages
     assert "generating" not in stages
 
-def test_3_tampered_evidence():
+def test_3_tampered_evidence(stream_and_confirm):
     """TEST 3: Tampered evidence handling - if chunks fail hash, they are blocked."""
     # We will patch the hashlib check to simulate poisoning
     file_bytes = create_test_image()
@@ -247,8 +252,6 @@ def test_3_tampered_evidence():
             {"name": "Warfarin", "status": "CONFIRMED", "source": "VISION", "raw_detected_name": "Warfarin 5mg"}
         ]
     }
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json=confirm_payload)
-
     import hashlib
     original_sha = hashlib.sha256
     def mock_sha256(*args, **kwargs):
@@ -260,7 +263,7 @@ def test_3_tampered_evidence():
     import adaptive_trust_medical_rag.services.live_application as la
     la.hashlib.sha256 = mock_sha256
     try:
-        stream_res = client.get(f"/api/v1/stream/{req_id}")
+        _, stream_res = stream_and_confirm(app, req_id, confirm_payload)
     finally:
         la.hashlib.sha256 = original_sha
 
@@ -272,7 +275,7 @@ def test_3_tampered_evidence():
         # If all blocked, eligible=0, leads to abstention.
         pass
 
-def test_4_provider_failure():
+def test_4_provider_failure(stream_and_confirm):
     app.state.llm_backend.providers["mock"].fail = True
 
     file_bytes = create_test_image()
@@ -285,16 +288,14 @@ def test_4_provider_failure():
             {"name": "Warfarin", "status": "CONFIRMED"}
         ]
     }
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json=confirm_payload)
-
-    stream_res = client.get(f"/api/v1/stream/{req_id}")
+    _, stream_res = stream_and_confirm(app, req_id, confirm_payload)
     events = extract_sse_events(stream_res.text.splitlines())
 
     error_events = [e for e in events if e.get("event") == "error"]
     assert any("LLM_ERROR" in e.get("data", {}).get("code", "") for e in error_events)
     assert not any(e.get("event") == "analysis_complete" for e in events)
 
-def test_5_direct_vs_image_convergence():
+def test_5_direct_vs_image_convergence(stream_and_confirm):
     """Verify that both workflows produce same RAG config downstream."""
     # Workflow A: Image
     file_bytes = create_test_image()
@@ -305,8 +306,7 @@ def test_5_direct_vs_image_convergence():
     confirm_payload = {
         "confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED"}]
     }
-    client.post(f"/api/v1/analyze/{req_img_id}/confirm", json=confirm_payload)
-    stream_img = client.get(f"/api/v1/stream/{req_img_id}")
+    _, stream_img = stream_and_confirm(app, req_img_id, confirm_payload)
     events_img = extract_sse_events(stream_img.text.splitlines())
 
     # Workflow B: Direct
@@ -322,7 +322,7 @@ def test_5_direct_vs_image_convergence():
     assert img_entities[0]["rxcui"] == dir_entities[0]["rxcui"]
     assert img_entities[0]["canonical_name"] == dir_entities[0]["canonical_name"]
 
-def test_6_concurrent_isolation():
+def test_6_concurrent_isolation(stream_and_confirm):
     """Ensure two simultaneous requests don't mix state."""
     file_bytes = create_test_image()
     files1 = {"image": ("prescription.jpg", file_bytes, "image/jpeg")}
@@ -331,11 +331,11 @@ def test_6_concurrent_isolation():
     req1 = client.post("/api/v1/analyze/prescription", files=files1).json()["request_id"]
     req2 = client.post("/api/v1/analyze/prescription", files=files2).json()["request_id"]
 
-    client.post(f"/api/v1/analyze/{req1}/confirm", json={"confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED"}]})
-    client.post(f"/api/v1/analyze/{req2}/confirm", json={"confirmed_medications": [{"name": "Aspirin", "status": "CONFIRMED"}]})
+    _, res1 = stream_and_confirm(app, req1, {"confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED"}]})
+    _, res2 = stream_and_confirm(app, req2, {"confirmed_medications": [{"name": "Aspirin", "status": "CONFIRMED"}]})
 
-    stream1 = extract_sse_events(client.get(f"/api/v1/stream/{req1}").text.splitlines())
-    stream2 = extract_sse_events(client.get(f"/api/v1/stream/{req2}").text.splitlines())
+    stream1 = extract_sse_events(res1.text.splitlines())
+    stream2 = extract_sse_events(res2.text.splitlines())
 
     ent1 = next(e["data"]["entities"] for e in stream1 if e["event"] == "rxnorm")
     ent2 = next(e["data"]["entities"] for e in stream2 if e["event"] == "rxnorm")
@@ -343,15 +343,17 @@ def test_6_concurrent_isolation():
     assert ent1[0]["raw_text"] == "Warfarin"
     assert ent2[0]["raw_text"] == "Aspirin"
 
-def test_7_duplicate_submission():
+def test_7_duplicate_submission(stream_and_confirm):
     """Ensure duplicate confirm submission handles gracefully or ignores."""
     file_bytes = create_test_image()
     files = {"image": ("prescription.jpg", file_bytes, "image/jpeg")}
     req = client.post("/api/v1/analyze/prescription", files=files).json()["request_id"]
 
     conf_payload = {"confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED"}]}
-    res1 = client.post(f"/api/v1/analyze/{req}/confirm", json=conf_payload)
+    res1, stream = stream_and_confirm(app, req, conf_payload)
     res2 = client.post(f"/api/v1/analyze/{req}/confirm", json=conf_payload)
 
     assert res1.status_code == 200
-    assert res2.status_code in [200, 400] # Usually an already confirmed error or just returns 200
+    assert res2.status_code == 404  # the analysis has finished: a late repeat changes nothing
+    events = extract_sse_events(stream.text.splitlines())
+    assert [e["event"] for e in events].count("rxnorm") == 1  # the pipeline ran once

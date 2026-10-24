@@ -1,6 +1,6 @@
 """Vision and OCR provider abstractions for the Medical RAG system."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Optional, Protocol
 
@@ -22,6 +22,11 @@ class ExtractionResult:
     raw_text: str
     candidate_medications: List[MedicationCandidate]
     warnings: List[str]
+    # The model that produced this extraction (the fallback model when it was used).
+    model_used: Optional[str] = None
+    provider_used: Optional[str] = None
+    # Every attempt behind this result: model, outcome, failure class, duration. No content.
+    attempts: List[dict] = field(default_factory=list)
 
 class VisionProviderAdapter(Protocol):
     """Protocol for providers that extract text/entities from images."""

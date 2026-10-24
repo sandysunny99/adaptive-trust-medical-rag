@@ -467,7 +467,7 @@ def test_vision_backend_initialization_decoupling(monkeypatch):
 
 
 @pytest.mark.asyncio
-async def test_behavioral_vision_language_model_isolation():
+async def test_behavioral_vision_language_model_isolation(ocr_reads):
     """Behavioral proof using a controlled VisionProviderAdapter double.
 
     Verifies:
@@ -515,6 +515,8 @@ async def test_behavioral_vision_language_model_isolation():
             self.pending_analyses = {}
             self.claim_verifier = object()
             self.retrieval_engine = object()
+            # The synthetic prescription image reads the line the vision double reports.
+            self.image_text_recognizer = ocr_reads("Rx: Metformin 500mg, Lisinopril 10mg")
 
     # Setup doubles
     vision_double = ControlledVisionModelDouble()

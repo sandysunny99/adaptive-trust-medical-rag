@@ -21,14 +21,15 @@ def create_test_image(text="Prescription"):
     img.save(buf, format="JPEG")
     return buf.getvalue()
 
-def test_case_1_image_only_no_context():
+def test_case_1_image_only_no_context(extraction_finished):
     """Verify Image Only has no inferred patient facts."""
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     res = client.post("/api/v1/analyze/prescription", files=files)
     assert res.status_code == 200
     req_id = res.json()["request_id"]
+    extraction_finished(app, req_id)  # /confirm accepts only a request awaiting confirmation
 
-    # Send empty confirm (no patient context was supplied)
+    # Confirm the medication (no patient context was supplied)
     res_confirm = client.post(f"/api/v1/analyze/{req_id}/confirm", json={
         "confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED", "source": "VISION"}]
     })

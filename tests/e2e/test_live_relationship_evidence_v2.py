@@ -50,8 +50,20 @@ def evidence(**overrides) -> dict:
         "content_hash": sha(text),
         "authority": 0.95,
         "freshness": 0.9,
+        # Test-only reviewed wording: a pair claim is released only up to its source's reviewed action.
+        "supported_claims": [{"text": text, "action": "AVOID"}],
         "embedding": [0.0] * 383 + [1.0],
         "provenance": {"source": "DAILYMED", "chunk_id": CHUNK_ID, "content_hash": sha(text)},
+        "source_identity": {
+            "provider": "DAILYMED",
+            "external_id": "00000000-0000-0000-0000-000000000000",
+            "canonical_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00000000-0000-0000-0000-000000000000",
+            "title": "TEST LABEL (synthetic fixture)",
+            "source_version": "1",
+            "captured_at": "2026-10-15T00:00:00Z",
+            "capture_sha256": "0" * 64,
+            "verification_method": "synthetic test fixture",
+        },
     }
     item.update(overrides)
     return item
@@ -98,7 +110,7 @@ def evidence_candidate(item: dict) -> ScoredCandidate:
         chunk_id=item["chunk_id"], document_id=item["document_id"], text=item["text"],
         source_url=item["document_url"], source_authority=item["authority"],
         metadata={"provenance": item["provenance"], "source_type": item["source_type"],
-                  "freshness_score": item["freshness"]},
+                  "freshness_score": item["freshness"], "supported_claims": item.get("supported_claims")},
     ))
 
 
@@ -143,6 +155,24 @@ def test_approved_v2_evidence_joins_retrieval_without_changing_the_frozen_corpus
                                             query_drugs=["simvastatin", "clarithromycin"], top_k=20)
     assert CHUNK_ID in {sc.candidate.chunk_id for sc in found}
     assert CHUNK_ID not in {item["chunk_id"] for item in CORPUS}
+
+
+def test_approved_v2_evidence_with_a_source_identity_record_is_identity_verified(tmp_path, monkeypatch):
+    write_v2(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {CHUNK_ID: evidence()["document_url"]}
+
+
+def test_approved_v2_evidence_without_a_source_identity_record_is_not_verified(tmp_path, monkeypatch):
+    item = evidence()
+    del item["source_identity"]
+    write_v2(tmp_path, chunks=[item])
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {}
 
 
 # ── Everything short of an approved, intact dataset fails closed ─────────────

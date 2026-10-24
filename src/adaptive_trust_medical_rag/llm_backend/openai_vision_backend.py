@@ -2,6 +2,7 @@ import base64
 import json
 import logging
 import re
+import time
 
 import httpx
 
@@ -15,6 +16,32 @@ from adaptive_trust_medical_rag.llm_backend.vision_interfaces import (
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
 
 log = logging.getLogger(__name__)
+
+# Measured 2026-10-22 against meta/llama-3.2-11b-vision-instruct on integrate.api.nvidia.com with a
+# synthetic image: 13 of 14 requests answered in 1.6-11.5 s; one never answered (no response within
+# 120 s). Later the same day stalls were frequent: both attempts of a run timed out (60 s) before the
+# Groq fallback answered in under 1 s. A stall is therefore not retried on the same model: the user
+# waits on the review panel, so a stalled attempt moves straight to the fallback, all inside one
+# total deadline.
+DEFAULT_VISION_TIMEOUT_S = 30.0
+DEFAULT_VISION_DEADLINE_S = 75.0
+MAX_SAME_MODEL_RETRIES = 1
+# Failures a fresh request to the same model can fix, and that fail fast (a timeout costs a whole attempt).
+_VISION_RETRY_CLASSES = frozenset({
+    FailureClass.NETWORK,
+    FailureClass.TRANSIENT_PROVIDER,
+})
+# Failures that another vision model could avoid; anything else is reported as it is. A reply
+# that is not valid extraction JSON (SCHEMA_ERROR) is not retried on the same model, but another
+# model may answer validly: NVIDIA llama-3.2-11b returned a JSON object followed by extra data for
+# a real upload on 2026-10-22, while the same image's alternative was never tried.
+_VISION_FALLBACK_CLASSES = frozenset({
+    FailureClass.TIMEOUT,
+    FailureClass.NETWORK,
+    FailureClass.TRANSIENT_PROVIDER,
+    FailureClass.MODEL_NOT_FOUND,
+    FailureClass.SCHEMA_ERROR,
+})
 
 _CODE_FENCE_PATTERN = re.compile(
     r"^```(?:json)?\s*\n?(?P<body>[\s\S]*?)\n?\s*```$",
@@ -145,12 +172,29 @@ def _parse_and_validate_vision_response(content: str) -> dict:
     if json_candidate.startswith("{") and json_candidate.endswith("}"):
         try:
             parsed = json.loads(json_candidate)
-            if isinstance(parsed, dict):
-                return _validate_vision_json_schema(parsed, content)
         except json.JSONDecodeError:
-            _raise_schema_error(
-                "Vision provider returned malformed JSON object", content
-            )
+            # A transcription that spans lines often reaches us with literal line breaks or tabs
+            # inside a JSON string. strict=False accepts only those control characters inside
+            # strings; the structure must still be valid JSON and the schema is still enforced.
+            try:
+                parsed = json.loads(json_candidate, strict=False)
+            except json.JSONDecodeError as e:
+                # The decoder's reason and position say what was wrong without exposing the
+                # content, which can hold prescription text.
+                # Only the shape of what follows the error is logged: another object, a code fence
+                # or prose need different handling, and none of them may be guessed at.
+                tail = json_candidate[e.pos:].lstrip()
+                tail_kind = ("json" if tail[:1] in ("{", "[") else "fence" if tail.startswith("```")
+                             else "text" if tail else "none")
+                log.warning("Vision reply is not valid JSON: %s (line %d, column %d; %d characters; "
+                            "after error: %s, %d characters)",
+                            e.msg, e.lineno, e.colno, len(content), tail_kind, len(tail))
+                _raise_schema_error(
+                    f"Vision provider returned malformed JSON object ({e.msg} at line {e.lineno}, "
+                    f"column {e.colno})", content
+                )
+        if isinstance(parsed, dict):
+            return _validate_vision_json_schema(parsed, content)
 
     # 3. Reject any remaining code-fenced content that did not contain a valid JSON object
     if fence_match or cleaned.startswith("```") or cleaned.endswith("```"):
@@ -213,16 +257,88 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         api_key: str,
         model_name: str,
         provider_name: str = "nvidia_vision",
+        timeout_s: float = DEFAULT_VISION_TIMEOUT_S,
+        fallback_model: str | None = None,
+        deadline_s: float = DEFAULT_VISION_DEADLINE_S,
+        fallback_backend: "OpenAIVisionBackend | None" = None,
     ):
         self.base_url = base_url
         self.api_key = api_key
         self.model_name = model_name
         self.provider_name = provider_name
+        self.timeout_s = timeout_s
+        self.deadline_s = max(deadline_s, timeout_s)
+        self.fallback_model = fallback_model if fallback_model and fallback_model != model_name else None
+        # Another provider's vision backend, tried last within this backend's deadline.
+        self.fallback_backend = fallback_backend
 
     async def extract_medications(
         self, image_bytes: bytes, mime_type: str
     ) -> ExtractionResult:
-        """Send image to the Vision model to extract medications.
+        """Extract candidate medications with bounded attempts inside one total deadline.
+
+        A network error or 5xx is retried once on the same model; a timeout is not (it already cost
+        a whole attempt). Then the fallback model, if configured, is tried for an availability
+        failure, and then the fallback backend (another provider), if configured. Authentication,
+        rate limits and bad requests fail as they are; unparseable output moves to the fallback. No failure ever yields a medication list. The attempts (provider, model, outcome,
+        failure class, duration) are attached to the result or to the error.
+        """
+        start = time.monotonic()
+        attempts: list[dict] = []
+        targets = [(self, self.model_name)] + ([(self, self.fallback_model)] if self.fallback_model else [])
+        if self.fallback_backend is not None:
+            targets.append((self.fallback_backend, self.fallback_backend.model_name))
+        last_error: ModelExecutionError | None = None
+        for index, (backend, model) in enumerate(targets):
+            if index > 0:
+                fc = getattr(last_error, "failure_class", FailureClass.UNKNOWN)
+                if fc not in _VISION_FALLBACK_CLASSES:
+                    break
+                log.warning("Vision model %s failed (%s); trying fallback %s model %s",
+                            self.model_name, getattr(fc, "value", fc), backend.provider_name, model)
+            for retry in range(MAX_SAME_MODEL_RETRIES + 1):
+                remaining = self.deadline_s - (time.monotonic() - start)
+                if remaining <= 1.0:
+                    break
+                t0 = time.monotonic()
+                try:
+                    result = await backend._extract_with(model, image_bytes, mime_type,
+                                                         timeout_s=min(backend.timeout_s, remaining))
+                except ModelExecutionError as e:
+                    last_error = e
+                    fc = getattr(e, "failure_class", FailureClass.UNKNOWN)
+                    attempts.append({"provider": backend.provider_name, "model": model, "outcome": "failed",
+                                     "failure_class": getattr(fc, "value", fc),
+                                     "status_code": e.status_code,
+                                     "elapsed_ms": round((time.monotonic() - t0) * 1000, 1)})
+                    if fc in _VISION_RETRY_CLASSES and retry < MAX_SAME_MODEL_RETRIES:
+                        log.warning("Vision model %s attempt %d failed (%s); retrying once",
+                                    model, retry + 1, getattr(fc, "value", fc))
+                        continue
+                    break
+                attempts.append({"provider": backend.provider_name, "model": model, "outcome": "success",
+                                 "elapsed_ms": round((time.monotonic() - t0) * 1000, 1)})
+                # The result names what served it: the backend is shared by concurrent requests.
+                result.model_used = model
+                result.provider_used = backend.provider_name
+                result.attempts = attempts
+                return result
+        if last_error is None:
+            last_error = ModelExecutionError(
+                f"Vision extraction deadline of {self.deadline_s:.0f} s exceeded", status_code="TIMEOUT")
+            last_error.failure_class = FailureClass.TIMEOUT
+        elif len(attempts) > 1:
+            last_error = ModelExecutionError(
+                f"{last_error} (after {len(attempts)} attempts in "
+                f"{time.monotonic() - start:.0f} s)", status_code=last_error.status_code)
+            last_error.failure_class = FailureClass(attempts[-1]["failure_class"])
+        last_error.attempts = attempts
+        raise last_error
+
+    async def _extract_with(
+        self, model_name: str, image_bytes: bytes, mime_type: str, timeout_s: float | None = None
+    ) -> ExtractionResult:
+        """Send image to one Vision model to extract medications.
 
         Uses structured output request to ensure JSON response.
         """
@@ -250,7 +366,7 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         )
 
         payload = {
-            "model": self.model_name,
+            "model": model_name,
             "messages": [
                 {
                     "role": "system",
@@ -284,12 +400,19 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         }
 
         try:
-            async with httpx.AsyncClient(timeout=60.0) as client:
+            attempt_timeout = timeout_s or self.timeout_s
+            timeout = httpx.Timeout(attempt_timeout, connect=min(10.0, attempt_timeout))
+            t0 = time.monotonic()
+            async with httpx.AsyncClient(timeout=timeout) as client:
                 resp = await client.post(
                     f"{self.base_url}/chat/completions",
                     json=payload,
                     headers=headers,
                 )
+            # Safe diagnostics only: no key, image or prescription text.
+            log.info("Vision request model=%s status=%s elapsed=%.1fs image_bytes=%d provider_request_id=%s",
+                     model_name, resp.status_code, time.monotonic() - t0, len(image_bytes),
+                     getattr(resp, "headers", {}).get("nvcf-reqid") if hasattr(resp, "headers") else None)
 
             if resp.status_code == 401:
                 err = ModelExecutionError(
@@ -305,15 +428,36 @@ class OpenAIVisionBackend(VisionProviderAdapter):
                 err.failure_class = FailureClass.RATE_LIMIT
                 raise err
             elif resp.status_code != 200:
+                if resp.status_code in (404, 410):
+                    fc, what = FailureClass.MODEL_NOT_FOUND, f"model '{model_name}' is not available to this account"
+                elif resp.status_code == 403:
+                    fc, what = FailureClass.AUTHORIZATION, "access denied"
+                elif resp.status_code >= 500 or resp.status_code == 408:
+                    fc, what = FailureClass.TRANSIENT_PROVIDER, "provider error"
+                else:
+                    fc, what = FailureClass.INVALID_REQUEST, "request rejected"
+                # The body can echo the request or name the account; truncating it does not make it
+                # safe, so only its size is logged.
+                log.warning("Vision provider %s HTTP %s: %s (upstream body not logged, %d characters)",
+                            model_name, resp.status_code, what, len(resp.text or ""))
                 err = ModelExecutionError(
-                    message=f"Vision Provider HTTP {resp.status_code}: {resp.text}",
+                    message=f"Vision Provider HTTP {resp.status_code} ({what})",
                     status_code=str(resp.status_code),
                 )
-                err.failure_class = FailureClass.TRANSIENT_PROVIDER
+                err.failure_class = fc
                 raise err
 
-            data = resp.json()
-            content = data["choices"][0]["message"]["content"]
+            # A 200 that is not a chat completion is malformed output (SCHEMA_ERROR), not a crash.
+            try:
+                data = resp.json()
+                content = data["choices"][0]["message"]["content"]
+            except (ValueError, KeyError, IndexError, TypeError):
+                err = ModelExecutionError(
+                    message=f"Vision Provider returned a malformed response for model '{model_name}'",
+                    status_code="MALFORMED_RESPONSE",
+                )
+                err.failure_class = FailureClass.SCHEMA_ERROR
+                raise err
 
             parsed = _parse_and_validate_vision_response(content)
 
@@ -358,7 +502,8 @@ class OpenAIVisionBackend(VisionProviderAdapter):
 
         except httpx.TimeoutException:
             err = ModelExecutionError(
-                message="Vision Provider Timeout", status_code="TIMEOUT"
+                message=f"Vision Provider Timeout: model '{model_name}' did not answer within {timeout_s or self.timeout_s:.0f} s",
+                status_code="TIMEOUT",
             )
             err.failure_class = FailureClass.TIMEOUT
             raise err

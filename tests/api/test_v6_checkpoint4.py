@@ -76,7 +76,9 @@ def setup_mock_normalizer(app):
     app.state.llm_backend = MockLLMBackend()
 
 @pytest.fixture(autouse=True)
-def setup_state():
+def setup_state(monkeypatch, ocr_reads):
+    # The synthetic prescription image reads the line the mock vision reports.
+    monkeypatch.setattr(app.state, "image_text_recognizer", ocr_reads("Warfarin 5mg tablet"), raising=False)
     old_normalizer = getattr(app.state, "drug_normalizer", None)
     old_vision = getattr(app.state, "vision_backend", None)
     old_retrieval = getattr(app.state, "retrieval_engine", None)
@@ -304,13 +306,14 @@ def create_test_image_bytes(format="JPEG", size=(100, 100)):
     img.save(buf, format=format)
     return buf.getvalue()
 
-def test_api_integration():
+def test_api_integration(extraction_finished):
     """INTEGRATION TEST: POST /api/v1/analyze/prescription -> /confirm"""
     file_bytes = create_test_image_bytes("JPEG")
     files = {"image": ("test.jpg", file_bytes, "image/jpeg")}
     response1 = client.post("/api/v1/analyze/prescription", files=files)
     assert response1.status_code == 200
     request_id = response1.json()["request_id"]
+    extraction_finished(app, request_id)  # /confirm accepts only a request awaiting confirmation
 
     confirm_payload = {
         "confirmed_medications": [

@@ -69,6 +69,11 @@ class EntityCache:
         """Case-insensitive lookup. Returns the cache entry dict or None."""
         return self._data.get(name.lower().strip())
 
+    def names_for_generic(self, generic: str) -> list[str]:
+        """Every cached name (generic, brand or synonym) that resolves to exactly this generic name."""
+        wanted = generic.lower().strip()
+        return [name for name, entry in self._data.items() if str(entry.get("generic_name", "")).lower() == wanted]
+
     def store(self, name: str, entity: "DrugEntity") -> None:
         """Add a resolved entity to the in-memory cache (write-through not implemented yet)."""
         self._data[name.lower().strip()] = {
@@ -76,6 +81,9 @@ class EntityCache:
             "rxcui": entity.rxcui,
             "brand_name": entity.brand_name,
             "formulation": entity.formulation,
+            # How the entry was first resolved, so a cache hit never reads as more certain than that.
+            "resolved_by": entity.source,
+            "confidence": entity.confidence,
         }
 
     def __len__(self) -> int:

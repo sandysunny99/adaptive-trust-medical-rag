@@ -95,12 +95,14 @@ def corpus_chunk(chunk_id: str, *, text: str | None = None, authority: float | N
         chunk_id=chunk_id,
         document_id=item.get("document_id", f"doc-{chunk_id}"),
         text=body,
-        source_url=item.get("document_url", "https://example.org"),
+        source_url=item.get("document_url", f"https://example.org/{chunk_id}"),
         source_authority=float(item.get("authority", 0.95)) if authority is None else authority,
         metadata={
             "provenance": {"source": "DAILYMED", "chunk_id": chunk_id, "content_hash": sha(body)},
             "source_type": item.get("source_type", "DAILYMED"),
             "freshness_score": float(item.get("freshness", 0.9)),
+            # Test-only reviewed wording: a pair claim is released only up to its source's reviewed action.
+            "supported_claims": [{"text": body, "action": "AVOID"}],
         },
     ))
     if retrieval_score is not None:
@@ -133,7 +135,7 @@ class CountingLLM:
 
 
 def run(chunks, *, store: RelationshipStore | None = None, answer: dict | None = None,
-        drugs=("Simvastatin", "Clarithromycin")):
+        drugs=("Simvastatin", "Clarithromycin"), identity_verified: bool = True):
     llm = CountingLLM(answer or {"conclusion": CLAIM})
     state = SimpleNamespace(
         drug_normalizer=OfflineNormalizer(),
@@ -142,6 +144,10 @@ def run(chunks, *, store: RelationshipStore | None = None, answer: dict | None =
         claim_verifier=ClaimVerifierV2(),
         model_init_errors={},
         relationship_store=store,
+        # Fixture assumption: these synthetic chunks stand in for identity-verified sources, so the
+        # stages after the source-identity gate are what these tests exercise.
+        verified_source_links=({sc.candidate.chunk_id: sc.candidate.source_url for sc in chunks}
+                               if identity_verified else {}),
     )
 
     async def collect():
@@ -286,7 +292,8 @@ def test_unrelated_high_authority_chunks_alone_cannot_pass_eligibility():
     assert kind == "abstention" and llm.calls == 0
     assert trust["is_eligible"] is False
     assert trust["unrelated_excluded"] == 3
-    assert trust["overall_score"] == 0.0
+    # Nothing reached scoring, so there is no trust score (not a computed 0).
+    assert trust["overall_score"] is None and trust["score_status"] == "NO_ELIGIBLE_EVIDENCE"
     assert data["reason"] == ("3 evidence chunk(s) passed security checks, but none names a requested "
                               "medication (simvastatin, clarithromycin), so none can support this analysis.")
 

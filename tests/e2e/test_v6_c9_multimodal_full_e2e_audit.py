@@ -74,7 +74,8 @@ class MockC9LLMBackend(ProviderAdapter):
             "warnings": [],
             "food_guidance": [],
             "patient_considerations": [],
-            "claims_for_verification": ["Warfarin and Aspirin interact."]
+            # A pair claim cites its source: only a cited source's reviewed wording can release it.
+            "claims_for_verification": ["Warfarin and Aspirin interact [Source 1]."]
         }
 
         return ProviderResponse(
@@ -132,11 +133,16 @@ def extract_sse_events(response_lines):
     return events
 
 @pytest.fixture
-def setup_c9_mocks():
+def setup_c9_mocks(monkeypatch, ocr_reads):
+    # The synthetic prescription image reads the lines the mock vision reports.
+    monkeypatch.setattr(app.state, "image_text_recognizer", ocr_reads("Warfarin 5mg", "Aspirin 81mg"), raising=False)
     old_llm = getattr(app.state, "llm_backend", None)
     old_retrieval = getattr(app.state, "retrieval_engine", None)
     old_verifier = getattr(app.state, "claim_verifier", None)
     old_vision = getattr(app.state, "vision_backend", None)
+    old_links = getattr(app.state, "verified_source_links", None)
+    # Fixture assumption: the mock chunk stands in for an identity-verified source.
+    app.state.verified_source_links = {"chunk_1": "https://test"}
 
     app.state.vision_backend = MockC9VisionBackend()
 
@@ -157,11 +163,13 @@ def setup_c9_mocks():
                     self.document_id = "doc_1"
                     self.text = "Warfarin and Aspirin."
                     self.source_authority = 0.9
-                    self.source_url = "http://test"
+                    self.source_url = "https://test"
                     self.poisoning_score = 0.0
                     self.metadata = {
                         "source_type": "BIOMEDICAL_LITERATURE",
                         "freshness_score": 0.9,
+                        # Test-only reviewed wording: a pair claim needs its source's reviewed action.
+                        "supported_claims": [{"text": "Warfarin and Aspirin interact.", "action": "RISK_ASSOCIATION"}],
                         "provenance": {
                             "source": "pubmed",
                             "document_id": "doc_1",
@@ -195,20 +203,22 @@ def setup_c9_mocks():
     app.state.retrieval_engine = old_retrieval
     app.state.claim_verifier = old_verifier
     app.state.vision_backend = old_vision
+    app.state.verified_source_links = old_links
 
-def test_1_e2e_primary_image_scenario(setup_c9_mocks):
+def test_1_e2e_primary_image_scenario(setup_c9_mocks, stream_and_confirm):
     """Primary Real Image E2E Scenario + SSE Validation."""
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_id = client.post("/api/v1/analyze/prescription", files=files).json()["request_id"]
 
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json={
+    confirm, stream = stream_and_confirm(app, req_id, {
         "confirmed_medications": [
             {"name": "Warfarin", "status": "CONFIRMED", "source": "VISION"},
             {"name": "Aspirin", "status": "CONFIRMED", "source": "VISION"}
         ]
     })
+    assert confirm.status_code == 200
 
-    events = extract_sse_events(client.get(f"/api/v1/stream/{req_id}").text.splitlines())
+    events = extract_sse_events(stream.text.splitlines())
 
     event_names = [e.get("event") for e in events]
     assert "stage_update" in event_names
@@ -219,7 +229,7 @@ def test_1_e2e_primary_image_scenario(setup_c9_mocks):
     assert "retrieving" in stages
     assert "complete" in stages
 
-def test_2_concurrency_audit(setup_c9_mocks):
+def test_2_concurrency_audit(setup_c9_mocks, stream_and_confirm):
     """Run multiple independent multimodal requests concurrently."""
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
 
@@ -228,16 +238,15 @@ def test_2_concurrency_audit(setup_c9_mocks):
 
     assert req_1 != req_2
 
-    client.post(f"/api/v1/analyze/{req_1}/confirm", json={
+    _, stream_1 = stream_and_confirm(app, req_1, {
         "confirmed_medications": [{"name": "Warfarin", "status": "CONFIRMED", "source": "VISION"}]
     })
-
-    client.post(f"/api/v1/analyze/{req_2}/confirm", json={
+    _, stream_2 = stream_and_confirm(app, req_2, {
         "confirmed_medications": [{"name": "Aspirin", "status": "CONFIRMED", "source": "VISION"}]
     })
 
-    events_1 = extract_sse_events(client.get(f"/api/v1/stream/{req_1}").text.splitlines())
-    events_2 = extract_sse_events(client.get(f"/api/v1/stream/{req_2}").text.splitlines())
+    events_1 = extract_sse_events(stream_1.text.splitlines())
+    events_2 = extract_sse_events(stream_2.text.splitlines())
 
     # Request 1 provenance should have Warfarin
     prov_1 = next((e for e in events_1 if e.get("event") in ["rxnorm", "medications"]), None)
@@ -255,19 +264,19 @@ def test_2_concurrency_audit(setup_c9_mocks):
     assert "aspirin" in names_2
     assert "warfarin" not in names_2
 
-def test_3_malicious_image_prompt_injection(setup_c9_mocks):
+def test_3_malicious_image_prompt_injection(setup_c9_mocks, stream_and_confirm):
     """Malicious image content is blocked and pipeline stops."""
     app.state.vision_backend = MockC9VisionBackend("malicious")
     files = {"image": ("prescription.jpg", create_test_image(), "image/jpeg")}
     req_id = client.post("/api/v1/analyze/prescription", files=files).json()["request_id"]
 
-    # Attempt to confirm empty (or confirm the malicious prompt as a drug)
-    client.post(f"/api/v1/analyze/{req_id}/confirm", json={
-        "confirmed_medications": []
-    })
+    # No candidate: the request ends at once (no confirmation step), so nothing is analysed.
+    confirm, stream = stream_and_confirm(app, req_id, {"confirmed_medications": []})
+    assert confirm is None  # the request never waited for a confirmation
 
-    events = extract_sse_events(client.get(f"/api/v1/stream/{req_id}").text.splitlines())
+    events = extract_sse_events(stream.text.splitlines())
     err_event = next((e for e in events if e.get("event") == "error"), None)
 
     assert err_event is not None
-    assert err_event["data"]["code"] == "NO_VALID_DRUGS"
+    assert err_event["data"]["code"] == "NO_VERIFIED_MEDICATIONS"
+    assert not any(e.get("event") in ("rxnorm", "confirmation_required") for e in events)
