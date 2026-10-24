@@ -1,7 +1,7 @@
 import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { Icons, SOURCE_TYPE_ICONS } from '../../ui/icons';
 import type { EvidenceItem, ExcludedSource, SourceIdentityStatus } from '../../types';
-import { safeEvidenceUrl } from '../../services/evidenceDisplay';
+import { verifiedHref } from '../../services/evidenceDisplay';
 
 const IDENTITY_LABELS: Record<SourceIdentityStatus, { label: string; className: string }> = {
   VERIFIED: { label: 'Source verified', className: 'bg-success-soft text-success' },
@@ -45,17 +45,6 @@ function SourceTypeIcon({ sourceType }: { sourceType: string }) {
   if (!name) return null;
   const Icon = Icons[name];
   return <Icon size={12} />;
-}
-
-/**
- * A link only for a source the backend verified for this chunk (link and identity), at a safe
- * evidence URL; never inferred from the text. Opening it never changes its verification state.
- */
-function verifiedHref(ev: EvidenceItem): string | undefined {
-  if (ev.source_link_status !== 'VERIFIED' || ev.source_identity_status === 'REJECTED_SOURCE_IDENTITY') {
-    return undefined;
-  }
-  return safeEvidenceUrl(ev.url);
 }
 
 /** Text long enough that it may exceed three lines when layout can't be measured (e.g. tests). */

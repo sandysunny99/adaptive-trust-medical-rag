@@ -170,3 +170,34 @@ describe('ResultPanel evidence and security sections', () => {
     expect(row).toHaveTextContent('FLAG');
   });
 });
+
+describe('ResultPanel food and diet guidance', () => {
+  const LABEL = 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34ebeea1-6812-4697-84c4-b2ae4f39e55f';
+  const food = {
+    drug: 'Lisinopril', administration: '', food_relationship: 'SPECIFIC FOOD/DRINK INTERACTION', timing: null,
+    food_interactions: ['Potassium-containing salt substitutes are a risk factor for hyperkalemia [Source 1].'],
+    evidence_status: 'VERIFIED', source: '[Source 1]',
+  } as unknown as AnalysisResult['food_guidance'][number];
+
+  it('shows each food statement with a link to the exact verified source', () => {
+    const verified = { ...evidence('DAILYMED-SPL-x', 'label text'), url: LABEL, source_link_status: 'VERIFIED',
+      source_identity_status: 'VERIFIED', source_title: 'LISINOPRIL TABLETS' } as EvidenceItem;
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [verified] })} />);
+    expect(screen.getByText(/salt substitutes are a risk factor/)).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /Source 1: LISINOPRIL TABLETS/ });
+    expect(link).toHaveAttribute('href', LABEL);
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('never links a cited source that is not verified', () => {
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [evidence('SPL-PLACEHOLDER', 'x')] })} />);
+    expect(screen.queryByRole('link', { name: /Source 1/ })).not.toBeInTheDocument();
+    expect(screen.getByText('Source 1: not a verified link')).toBeInTheDocument();
+  });
+
+  it('says no food guidance was verified, and that this is not a finding of safety', () => {
+    render(<ResultPanel result={makeResult({ gate_decision: 'abstain' })} />);
+    expect(screen.getByText(/No food or dietary guidance could be verified/)).toHaveTextContent(
+      'This does not mean there are no food or dietary issues');
+  });
+});

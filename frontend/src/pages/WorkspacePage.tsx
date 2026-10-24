@@ -375,7 +375,8 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       )}
 
       {/* Confirmation Panel */}
-      {currentStage === 'confirming' && extractedCandidates && extractedCandidates.length > 0 && (
+      {/* Shown even with no candidates: the backend waits for a confirmation, and medications can be added by hand. */}
+      {currentStage === 'confirming' && (
         <MedicationConfirmationPanel 
           candidates={extractedCandidates}
           onConfirm={confirm}

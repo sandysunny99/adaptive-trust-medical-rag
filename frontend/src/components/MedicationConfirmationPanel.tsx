@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icons } from '../ui/icons';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
@@ -29,6 +30,13 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   
   const [newMedName, setNewMedName] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+
+  // The analysis waits on this panel (and times out after 300 s), so bring it into view when it appears.
+  const panelRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
+  useEffect(() => {
+    panelRef.current?.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+  }, [reducedMotion]);
 
   const handleToggleStatus = (id: string) => {
     setCandidates(prev => prev.map(c => {
@@ -84,7 +92,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   const hasConfirmed = activeCandidates.length > 0 && !hasUncertain;
 
   return (
-    <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+    <div ref={panelRef} className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
       <div className="p-5 border-b border-border bg-muted">
         <h2 className="text-base font-semibold text-foreground">Review Detected Medications</h2>
         <p className="text-sm text-muted-foreground mt-1">

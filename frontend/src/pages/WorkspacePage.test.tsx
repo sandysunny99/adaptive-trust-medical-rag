@@ -365,6 +365,30 @@ describe('WorkspacePage prescription confirmation', () => {
     expect(screen.getByText('Analyzing…')).toBeInTheDocument();
   });
 
+  it('shows the review panel when the image yields no medications, so one can be added by hand', async () => {
+    // Without the panel the backend waits for a confirmation that can never be sent (CONFIRMATION_TIMEOUT).
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [] });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByText('No medications detected.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Confirm Medications & Analyze/i })).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: /Add medication manually/i }));
+    await user.type(screen.getByPlaceholderText('Enter medication name'), 'Lisinopril');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/i }));
+    expect(api.confirmMedications).toHaveBeenCalledWith('req-7', [
+      expect.objectContaining({ name: 'Lisinopril', source: 'USER' }),
+    ]);
+  });
+
   it('shows an abstention after confirmation as a result, not a disconnected stream', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();

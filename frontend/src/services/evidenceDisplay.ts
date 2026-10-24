@@ -1,5 +1,5 @@
 /** Display rules for evidence links and trust scores, shared by the result components. */
-import type { TrustInfo } from '../types';
+import type { EvidenceItem, TrustInfo } from '../types';
 
 export const NOT_AVAILABLE = 'Not available';
 
@@ -36,3 +36,21 @@ export function safeEvidenceUrl(url?: string | null): string | undefined {
   return parsed.href;
 }
 
+
+/**
+ * A link only for a source the backend verified for this chunk (link and identity), at a safe
+ * evidence URL; never inferred from the text. Opening it never changes its verification state.
+ */
+export function verifiedHref(ev: EvidenceItem): string | undefined {
+  if (ev.source_link_status !== 'VERIFIED' || ev.source_identity_status === 'REJECTED_SOURCE_IDENTITY') {
+    return undefined;
+  }
+  return safeEvidenceUrl(ev.url);
+}
+
+/** The [Source N] numbers cited in the given texts, in order, without repeats. */
+export function citedSourceNumbers(...texts: (string | null | undefined)[]): number[] {
+  const seen = new Set<number>();
+  for (const t of texts) for (const m of (t || '').matchAll(/\[Source (\d+)\]/g)) seen.add(Number(m[1]));
+  return [...seen];
+}

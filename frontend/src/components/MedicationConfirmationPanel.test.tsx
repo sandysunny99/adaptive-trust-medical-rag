@@ -26,6 +26,14 @@ describe('MedicationConfirmationPanel', () => {
     }
   ];
 
+  it('scrolls itself into view when it appears, since the analysis waits on it', () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    render(<MedicationConfirmationPanel candidates={[]} onConfirm={vi.fn()} />);
+    expect(scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollIntoView.mock.calls[0][0]).toMatchObject({ block: 'start' });
+  });
+
   it('TEST 1: Candidate list renders', () => {
     render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
     expect(screen.getByText('warfarin')).toBeInTheDocument();
