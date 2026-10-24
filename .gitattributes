@@ -332,3 +332,7 @@ track_a_annotation/handoff/TRACK_A_REVIEWER_B_IAA_QUEUE_V1.csv text eol=crlf
 # reproduces on Windows checkouts.
 experiments/cognee_candidate_corpus_v1/COGNEE_CANDIDATE_CORPUS_V1.jsonl text eol=lf
 experiments/cognee_candidate_corpus_v1/COGNEE_CANDIDATE_CORPUS_V1_MANIFEST.json text eol=lf
+
+# Relationship-candidate test fixtures: their manifests record the SHA-256 of the LF bytes, so a
+# Windows autocrlf checkout must not add CR. They stay CANDIDATE_PENDING test data.
+tests/fixtures/*_candidate/*.json text eol=lf

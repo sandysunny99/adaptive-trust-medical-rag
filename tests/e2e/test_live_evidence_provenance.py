@@ -37,7 +37,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerif
 ROOT = Path(__file__).resolve().parents[2]
 REL_DIR = ROOT / "data" / "live_medical" / "relationships"
 # The pending candidate is kept with its audit run, outside the live data folder (as REL-LIVE-0002 is).
-CANDIDATE_DIR = ROOT / "reports" / "live_validation" / "runs" / "2026-10-22-audit" / "rel_live_0003_candidate"
+CANDIDATE_DIR = ROOT / "tests" / "fixtures" / "rel_live_0003_candidate"
 CORPUS = json.loads((ROOT / "data" / "live_medical" / "LIVE_MEDICAL_CORPUS_V2.json").read_text(encoding="utf-8"))
 BY_ID = {item["chunk_id"]: item for item in CORPUS}
 RXCUI = {"lisinopril": "29046", "spironolactone": "9997"}

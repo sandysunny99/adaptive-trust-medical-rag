@@ -1,0 +1,54 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V2.json",
+  "records_sha256": "47a26a0dfe1e73a67ca88d5bfe927de32a3114307e4b86e611c32db02d508bab",
+  "evidence_file": "LIVE_RELATIONSHIP_EVIDENCE_V2.json",
+  "evidence_sha256": "5cae35c0e0035bd4c6ea15ba4097a492bc7ef300cfd189af160a58a3ab067854",
+  "hash_note": "SHA-256 of each file with CRLF normalised to LF, so Windows and Linux checkouts agree.",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "status": "CANDIDATE_PENDING_RESEARCHER_APPROVAL",
+  "approval": null,
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-22",
+    "script": "scripts/build_rel_live_0003_candidate.py"
+  },
+  "source_capture": {
+    "spl_setid": "34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+    "spl_version": "12",
+    "spl_title": "These highlights do not include all the information needed to use LISINOPRIL TABLETS safely and effectively. See full prescribing information for LISINOPRIL TABLETS. LISINOPRIL tablets, for oral use Initial U.S. Approval: 1988",
+    "spl_sha256": "351409a199318082c2e19c722febefc82ef29ccbc5410d8084b3387afd03a7e6",
+    "rxnav": {
+      "lisinopril": {
+        "rxcui": "29046",
+        "name": "lisinopril",
+        "tty": "IN",
+        "suppress": "N"
+      },
+      "spironolactone": {
+        "rxcui": "9997",
+        "name": "spironolactone",
+        "tty": "IN",
+        "suppress": "N"
+      }
+    },
+    "captured_at": "2026-10-22T06:48:45.505822+00:00"
+  },
+  "verification_required_before_approval": [
+    "Open https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34ebeea1-6812-4697-84c4-b2ae4f39e55f and confirm section 7.1 Diuretics reads as the evidence_span (it names spironolactone among potassium-sparing diuretics that can increase the risk of hyperkalemia).",
+    "Grade the severity with the project's documented severity method and set it to one of CONTRAINDICATED, MAJOR, MODERATE, MINOR or NONE. It is UNGRADED: the label gives no grade, and an UNGRADED record is rejected by the loader even if the manifest is approved. Confirm predicate INTERACTION and direction BIDIRECTIONAL.",
+    "Confirm RxCUIs 29046 (lisinopril) and 9997 (spironolactone) with RxNav."
+  ],
+  "how_to_approve": "Grade the severity and recompute records_sha256 for the edited records file, then copy the three files into data/live_medical/relationships/v2/rel_live_0003/ (each approved V2 dataset has its own folder; never copy over another dataset's files), and set status to APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}.",
+  "use_in_application": "None until APPROVED. Once approved the chunk joins retrieval, is identity-verified through its source_identity record, raises the pair to R3, and gives claims about this pair a relationship identity for verification.",
+  "revision_history": [
+    {
+      "on": "2026-10-22",
+      "change": "severity MAJOR -> UNGRADED (no documented severity method applied)",
+      "records_sha256_before": "ff5f9f307690ca98cedb822f2d155ad8774b68cd31e76df3eb69998f077c1c2a",
+      "records_sha256_after": "47a26a0dfe1e73a67ca88d5bfe927de32a3114307e4b86e611c32db02d508bab",
+      "evidence_sha256_unchanged": "5cae35c0e0035bd4c6ea15ba4097a492bc7ef300cfd189af160a58a3ab067854"
+    }
+  ],
+  "location_note": "Kept with its audit run, outside data/live_medical/relationships, so the application cannot load it."
+}

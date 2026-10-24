@@ -51,7 +51,7 @@ FAKE_KEY = "FAKE_TEST_KEY_NOT_A_SECRET_0000"
 ROOT = Path(__file__).resolve().parents[1]
 REL_DIR = ROOT / "data" / "live_medical" / "relationships"
 # The pending candidate is kept with its audit run, outside the live data folder.
-CANDIDATE_DIR = ROOT / "reports" / "live_validation" / "runs" / "2026-10-22-audit" / "rel_live_0003_candidate"
+CANDIDATE_DIR = ROOT / "tests" / "fixtures" / "rel_live_0003_candidate"
 CLAIM = "Lisinopril interacts with spironolactone and can increase the risk of hyperkalemia."
 
 
