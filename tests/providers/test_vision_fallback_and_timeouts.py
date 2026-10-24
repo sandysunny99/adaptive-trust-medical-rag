@@ -122,10 +122,45 @@ def test_retry_and_fallback_follow_the_failure_class(first, expected):
     assert calls == expected
 
 
-def test_unparseable_vision_output_is_a_schema_error_not_a_medication_list():
-    bad = {"choices": [{"message": {"content": "I think it says lisinopril."}}]}
-    err, _ = extract(backend("vision-fallback"), Resp(200, bad))
+def reply(content: str) -> Resp:
+    return Resp(200, {"choices": [{"message": {"content": content}}]})
+
+
+# The shape NVIDIA returned for a real upload on 2026-10-22: a JSON object, then extra data.
+OBJECT_THEN_EXTRA = (json.dumps({"raw_text": "x", "candidate_medications": [], "warnings": []})
+                     + "\n{\"note\": \"second object\"}")
+
+
+@pytest.mark.parametrize("content", ["I think it says lisinopril.", OBJECT_THEN_EXTRA,
+                                     '{"raw_text": "x", "candidate_medications": [', ""])
+def test_unparseable_output_is_a_schema_error_and_never_a_medication_list(content):
+    err, calls = extract(backend(), reply(content))
     assert isinstance(err, ModelExecutionError) and err.failure_class == FailureClass.SCHEMA_ERROR
+    assert calls == ["vision-primary"]  # malformed output is not retried on the same model
+
+
+def test_malformed_output_moves_to_the_other_provider_once():
+    result, calls = extract(with_groq(), reply(OBJECT_THEN_EXTRA), Resp(200, GOOD))
+    assert calls == ["vision-primary", "groq-vision"]
+    assert (result.provider_used, result.model_used) == ("groq_vision", "groq-vision")
+    assert [c.normalized_text for c in result.candidate_medications] == ["lisinopril", "spironolactone"]
+
+
+def test_when_both_providers_reply_malformed_nothing_is_extracted():
+    err, calls = extract(with_groq(), reply(OBJECT_THEN_EXTRA), reply(OBJECT_THEN_EXTRA))
+    assert isinstance(err, ModelExecutionError) and err.failure_class == FailureClass.SCHEMA_ERROR
+    assert calls == ["vision-primary", "groq-vision"]
+    assert [a["provider"] for a in err.attempts] == ["nvidia_vision", "groq_vision"]
+
+
+def test_the_extra_data_log_names_its_shape_never_its_content(caplog):
+    secret = "Patient Jane Synthetic DOB 01/01/1970"
+    # The "Extra data" path needs a reply that starts with { and ends with }, as NVIDIA's did.
+    content = (json.dumps({"raw_text": secret, "candidate_medications": [], "warnings": []})
+               + json.dumps({"note": secret}))
+    with caplog.at_level("WARNING"):
+        extract(backend(), reply(content))
+    assert "Extra data" in caplog.text and "after error: json" in caplog.text and secret not in caplog.text
 
 
 def test_an_unconfirmed_extraction_ends_with_an_explicit_timeout(monkeypatch):
@@ -173,3 +208,81 @@ def test_a_vision_failure_reports_its_class_and_produces_no_candidates(monkeypat
     (err,) = [e["data"] for e in events if e["event"] == "error"]
     assert (err["code"], err["failure_class"]) == ("VISION_EXTRACTION_ERROR", "TIMEOUT")
     assert not any(e["event"] == "medication_candidates_extracted" for e in events)
+
+
+# ── Cross-provider fallback (Groq vision after NVIDIA) ───────────────────────
+
+def with_groq():
+    groq = OpenAIVisionBackend(base_url="https://groq.invalid/v1", api_key="FAKE_TEST_KEY_0001",
+                               model_name="groq-vision", provider_name="groq_vision", timeout_s=5.0)
+    return OpenAIVisionBackend(base_url="https://example.invalid/v1", api_key="FAKE_TEST_KEY_0000",
+                               model_name="vision-primary", timeout_s=5.0, fallback_backend=groq)
+
+
+def test_groq_serves_after_nvidia_stalls_and_the_result_names_it():
+    result, calls = extract(with_groq(), httpx.ReadTimeout("a"), httpx.ReadTimeout("b"), Resp(200, GOOD))
+    assert calls == ["vision-primary", "vision-primary", "groq-vision"]
+    assert (result.provider_used, result.model_used) == ("groq_vision", "groq-vision")
+    assert [a["provider"] for a in result.attempts] == ["nvidia_vision", "nvidia_vision", "groq_vision"]
+    assert [c.normalized_text for c in result.candidate_medications] == ["lisinopril", "spironolactone"]
+
+
+@pytest.mark.parametrize("first", [Resp(401), Resp(429), Resp(400)])
+def test_groq_is_not_used_when_nvidia_fails_for_a_non_availability_reason(first):
+    err, calls = extract(with_groq(), first, Resp(200, GOOD))
+    assert isinstance(err, ModelExecutionError) and calls == ["vision-primary"]
+
+
+def test_groq_is_skipped_when_the_deadline_is_used_up():
+    b = with_groq()
+    b.deadline_s = 10.0
+    clock = [0.0]
+
+    async def post(self, url, json=None, headers=None):
+        clock[0] += self.timeout.read
+        raise httpx.ReadTimeout("stalled")
+
+    with patch("httpx.AsyncClient.post", new=post), patch(
+            "adaptive_trust_medical_rag.llm_backend.openai_vision_backend.time.monotonic", new=lambda: clock[0]):
+        with pytest.raises(ModelExecutionError) as exc:
+            asyncio.run(b.extract_medications(b"img", "image/png"))
+    # 5 s + 5 s used the whole 10 s budget: Groq never started.
+    assert [a["provider"] for a in exc.value.attempts] == ["nvidia_vision", "nvidia_vision"]
+
+
+def test_the_app_wires_groq_vision_as_the_fallback_and_it_can_be_disabled(monkeypatch):
+    from adaptive_trust_medical_rag.api.app import DEFAULT_GROQ_VISION_MODEL, create_app
+    monkeypatch.setenv("NVIDIA_OCR_API_KEY", "FAKE_TEST_KEY_0000")
+    monkeypatch.setenv("GROQ_API_KEY", "FAKE_TEST_KEY_0001")
+    monkeypatch.delenv("GROQ_VISION_MODEL", raising=False)
+    vision = create_app().state.vision_backend
+    assert vision.provider_name == "nvidia_vision"
+    assert (vision.fallback_backend.provider_name, vision.fallback_backend.model_name) == (
+        "groq_vision", DEFAULT_GROQ_VISION_MODEL)
+    monkeypatch.setenv("GROQ_VISION_MODEL", "")
+    assert create_app().state.vision_backend.fallback_backend is None
+
+
+def test_concurrent_model_loads_share_one_load(monkeypatch):
+    import threading
+    import time as _time
+    from adaptive_trust_medical_rag.services import live_application
+    loads = []
+
+    def slow_load(state):
+        loads.append(1)
+        _time.sleep(0.2)
+        state.retrieval_engine = state.retrieval_engine or object()
+
+    def guarded(state):  # the real loader skips work already done; this stand-in does the same
+        if getattr(state, "retrieval_engine", None) is None:
+            slow_load(state)
+
+    monkeypatch.setattr(live_application, "_load_models", guarded)
+    state = SimpleNamespace(retrieval_engine=None)
+    threads = [threading.Thread(target=live_application._lazy_init_models, args=(state,)) for _ in range(3)]
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+    assert len(loads) == 1

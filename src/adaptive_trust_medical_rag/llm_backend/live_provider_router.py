@@ -103,6 +103,9 @@ class LiveProviderRouter:
             if secondary_provider and secondary_provider != primary_provider:
                 self.provider_priority.append(secondary_provider)
         self.providers: Dict[str, ProviderAdapter] = {}
+        # Providers whose model this account cannot use (MODEL_NOT_FOUND, AUTH*), with the class.
+        # shortcut: kept in memory until restart, so a model the account gains later needs a restart.
+        self.unavailable: Dict[str, str] = {}
         self.deadline_s = deadline_s if deadline_s is not None else _deadline_from_env()
         self._sleep = sleep or asyncio.sleep
 
@@ -140,6 +143,9 @@ class LiveProviderRouter:
         else:
             allow_retry = True
             order = [p for p in (self.provider_priority or list(self.providers)) if p in self.providers]
+            usable = [p for p in order if p not in self.unavailable]
+            # A provider known to be unusable is skipped while another remains.
+            order = usable or order
             missing = [p for p in self.provider_priority if p not in self.providers]
             if missing:
                 log.warning("Providers in the priority list but not registered: %s", missing)
@@ -204,8 +210,11 @@ class LiveProviderRouter:
                             "stop")
                 attempts.append(self._attempt(name, model, t0, outcome="failed", failure_class=fc.value,
                                               status_code=getattr(err, "status_code", None), decision=decision))
-                level = logging.ERROR if fc in (FailureClass.AUTHENTICATION, FailureClass.AUTHORIZATION,
-                                                FailureClass.MODEL_NOT_FOUND) else logging.WARNING
+                permanent = fc in (FailureClass.AUTHENTICATION, FailureClass.AUTHORIZATION,
+                                   FailureClass.MODEL_NOT_FOUND)
+                if permanent:
+                    self.unavailable[name] = fc.value
+                level = logging.ERROR if permanent else logging.WARNING
                 log.log(level, "Provider %s (model=%s) failed: class=%s status=%s decision=%s",
                         name, model, fc.value, getattr(err, "status_code", None), decision)
                 last_error = err

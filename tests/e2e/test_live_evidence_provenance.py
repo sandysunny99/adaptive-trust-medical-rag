@@ -36,7 +36,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerif
 
 ROOT = Path(__file__).resolve().parents[2]
 REL_DIR = ROOT / "data" / "live_medical" / "relationships"
-# The pending candidate is kept with its audit run, outside the live data folder (as REL-LIVE-0002 is).
+# A tracked copy of the pending candidate (its audit run folder is not in git); never loaded live.
 CANDIDATE_DIR = ROOT / "tests" / "fixtures" / "rel_live_0003_candidate"
 CORPUS = json.loads((ROOT / "data" / "live_medical" / "LIVE_MEDICAL_CORPUS_V2.json").read_text(encoding="utf-8"))
 BY_ID = {item["chunk_id"]: item for item in CORPUS}
@@ -53,7 +53,8 @@ def as_candidate(item: dict) -> ScoredCandidate:
         chunk_id=item["chunk_id"], document_id=item["document_id"], text=item["text"],
         source_url=item.get("document_url", ""), source_authority=item.get("authority", 0.5),
         metadata={"provenance": item.get("provenance", {}), "source_type": item.get("source_type"),
-                  "freshness_score": item.get("freshness", 0.8), "source_identity": item.get("source_identity")},
+                  "freshness_score": item.get("freshness", 0.8), "source_identity": item.get("source_identity"),
+                  "supported_claims": item.get("supported_claims")},
     ))
 
 
@@ -238,7 +239,7 @@ def test_the_ungraded_candidate_is_rejected_even_if_its_manifest_were_approved(t
     state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
     _lazy_init_models(state)
     assert state.relationship_store.between([RXCUI["lisinopril"], RXCUI["spironolactone"]]) == []
-    assert ("REL-LIVE-0003", "severity UNGRADED is not one of ['CONTRAINDICATED', 'MAJOR', 'MINOR', 'MODERATE', "
+    assert ("REL-LIVE-0003", "v2: severity UNGRADED is not one of ['CONTRAINDICATED', 'MAJOR', 'MINOR', 'MODERATE', "
             "'NONE']") in state.relationship_store.rejected
     assert state.verified_source_links == {}  # uncited evidence never joins retrieval
 
@@ -340,3 +341,146 @@ def test_when_every_provider_fails_the_stream_ends_with_one_llm_error(approved_c
     assert not any(e["event"] in ("answer", "complete") for e in events)
     assert {"stage": "generating", "status": "failed"}.items() <= next(
         e["data"] for e in events if e["event"] == "stage_update" and e["data"].get("status") == "failed").items()
+
+
+# ── Food guidance (FOOD-0001: lisinopril label section 5.5) ──────────────────
+
+FOOD_DIR = ROOT / "tests" / "fixtures" / "food_0001_candidate"
+FOOD_CHUNK = "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"
+FOOD_LINE = ("Potassium-containing salt substitutes are a risk factor for hyperkalemia in patients receiving "
+             "lisinopril, and serum potassium should be monitored periodically [Source 1].")
+FOOD_ANSWER = {
+    "conclusion": "Lisinopril can cause hyperkalemia; serum potassium should be monitored periodically [Source 1].",
+    "food_guidance": [{"drug": "Lisinopril", "administration": "", "food_relationship": "SPECIFIC FOOD/DRINK INTERACTION",
+                       "timing": "", "food_interactions": [FOOD_LINE], "evidence_status": "VERIFIED",
+                       "source": "[Source 1]"}],
+}
+
+
+def stage_food(tmp_path, approve: bool = True):
+    for name in ("LIVE_RELATIONSHIP_RECORDS_V2.json", "LIVE_RELATIONSHIP_EVIDENCE_V2.json"):
+        shutil.copyfile(FOOD_DIR / name, tmp_path / name)
+    manifest = json.loads((FOOD_DIR / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").read_text(encoding="utf-8"))
+    assert manifest["status"] == "CANDIDATE_PENDING_RESEARCHER_APPROVAL" and manifest["approval"] is None
+    if approve:
+        manifest.update(status="APPROVED", approval={"approved_by": "Test fixture", "approved_at": "2026-10-22"})
+    (tmp_path / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").write_text(json.dumps(manifest), encoding="utf-8")
+    for name in ("LIVE_RELATIONSHIP_RECORDS_V1_MANIFEST.json", "LIVE_RELATIONSHIP_RECORDS_V1.json"):
+        shutil.copyfile(REL_DIR / name, tmp_path / name)
+
+
+def test_the_food_candidate_is_real_label_text_and_pending():
+    (item,) = json.loads((FOOD_DIR / "LIVE_RELATIONSHIP_EVIDENCE_V2.json").read_text(encoding="utf-8"))
+    manifest = json.loads((FOOD_DIR / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").read_text(encoding="utf-8"))
+    assert item["content_hash"] == sha(item["text"]) and check_source_identity(item) == "verified"
+    assert "potassium-containing salt substitutes" in item["text"] and item["text"].startswith("5.5 Hyperkalemia")
+    assert manifest["standalone_evidence_chunks"] == [FOOD_CHUNK]
+    assert json.loads((FOOD_DIR / "LIVE_RELATIONSHIP_RECORDS_V2.json").read_text(encoding="utf-8"))["records"] == []
+
+
+def test_a_pending_food_dataset_loads_nothing(tmp_path, monkeypatch):
+    stage_food(tmp_path, approve=False)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.relationship_store.evidence == () and state.verified_source_links == {}
+
+
+def test_verified_food_guidance_is_released_with_a_link_to_the_exact_label(tmp_path, monkeypatch, verifier):
+    stage_food(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    loaded = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(loaded)
+    (item,) = loaded.relationship_store.evidence  # a standalone chunk: no relationship record cites it
+    assert loaded.relationship_store.records == () and loaded.verified_source_links == {FOOD_CHUNK: item["document_url"]}
+    state = SimpleNamespace(
+        drug_normalizer=OfflineNormalizer(), retrieval_engine=StubRetrieval([as_candidate(item)]),
+        llm_backend=CountingLLM(FOOD_ANSWER), claim_verifier=verifier, model_init_errors={},
+        relationship_store=loaded.relationship_store, shared_source_urls=loaded.shared_source_urls,
+        verified_source_links=loaded.verified_source_links,
+    )
+    kind, data, _, _ = run(state, drugs=("Lisinopril",))
+    assert kind == "answer", (data.get("reason"), [(c["field"], c["support_state"]) for c in data.get("claims", [])])
+    assert all(c["support_state"] == "SUPPORTED" for c in data["claims"])
+    assert any(c["field"] == "food_guidance" for c in data["claims"])
+    # The released food line is the source's reviewed wording, not the generated line.
+    reviewed = item["supported_claims"][0]["text"]
+    assert data["food_guidance"][0]["food_interactions"] == [f"{reviewed} [Source 1]"]
+    (ev,) = data["evidence"]
+    assert ev["url"] == "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34ebeea1-6812-4697-84c4-b2ae4f39e55f"
+    assert ev["source_identity_status"] == "VERIFIED" and ev["claim_support_status"] == "SUPPORTS_VERIFIED_CLAIM"
+
+
+def test_a_two_drug_statement_still_needs_an_approved_relationship_record(tmp_path, monkeypatch, verifier):
+    stage_food(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    loaded = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(loaded)
+    (item,) = loaded.relationship_store.evidence
+    state = SimpleNamespace(
+        drug_normalizer=OfflineNormalizer(), retrieval_engine=StubRetrieval([as_candidate(item)]),
+        llm_backend=CountingLLM({"conclusion": "Lisinopril with spironolactone increases the risk of hyperkalemia [Source 1]."}),
+        claim_verifier=verifier, model_init_errors={}, relationship_store=loaded.relationship_store,
+        shared_source_urls=loaded.shared_source_urls, verified_source_links=loaded.verified_source_links,
+    )
+    kind, data, _, _ = run(state)
+    assert kind == "abstention" and data["claims"][0]["support_state"] != "SUPPORTED"
+    assert data["claims"][0]["canonical_identity_status"] in ("UNAVAILABLE", "MISMATCH", "AMBIGUOUS")
+
+
+
+def _food_state(tmp_path, monkeypatch, verifier, answer, drugs_evidence=None):
+    stage_food(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    loaded = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(loaded)
+    (item,) = loaded.relationship_store.evidence
+    return SimpleNamespace(
+        drug_normalizer=OfflineNormalizer(), retrieval_engine=StubRetrieval([as_candidate(item)]),
+        llm_backend=CountingLLM(answer), claim_verifier=verifier, model_init_errors={},
+        relationship_store=loaded.relationship_store, shared_source_urls=loaded.shared_source_urls,
+        verified_source_links=loaded.verified_source_links,
+    )
+
+
+@pytest.mark.parametrize("line", [
+    "Avoid potassium-containing salt substitutes while taking lisinopril [Source 1].",
+    "Do not use potassium-containing salt substitutes with lisinopril [Source 1].",
+    "Limit potassium-containing salt substitutes to 1 g per day with lisinopril [Source 1].",
+])
+def test_an_overstated_food_line_is_withheld_whatever_its_entailment(tmp_path, monkeypatch, verifier, line):
+    answer = {**FOOD_ANSWER, "food_guidance": [{**FOOD_ANSWER["food_guidance"][0], "food_interactions": [line]}]}
+    kind, data, _, _ = run(_food_state(tmp_path, monkeypatch, verifier, answer), drugs=("Lisinopril",))
+    assert kind == "abstention"
+    (food,) = [c for c in data["claims"] if c["field"] == "food_guidance"]
+    # Withheld either by the NLI itself or, where the NLI accepted it, by the strength check.
+    assert food["support_state"] in ("UNSUPPORTED", "CONTRADICTED")
+    assert "strength_check" not in food or "reviewed wording" in food["strength_check"]
+
+
+def test_an_overstated_single_drug_conclusion_is_withheld(tmp_path, monkeypatch, verifier):
+    answer = {**FOOD_ANSWER, "conclusion": "Patients on lisinopril must avoid salt substitutes [Source 1]."}
+    kind, data, _, _ = run(_food_state(tmp_path, monkeypatch, verifier, answer), drugs=("Lisinopril",))
+    assert kind == "abstention"
+    (conclusion,) = [c for c in data["claims"] if c["field"] == "conclusion"]
+    assert conclusion["support_state"] in ("UNSUPPORTED", "CONTRADICTED")
+    assert "strength_check" not in conclusion or "AVOID" in conclusion["strength_check"]
+
+
+def test_food_citing_a_source_without_reviewed_wording_fails_closed(approved_candidate, verifier):
+    (item,) = approved_candidate.relationship_store.evidence  # REL-LIVE-0003 chunk: no reviewed food wording
+    answer = {"conclusion": CLAIM, "food_guidance": [{
+        "drug": "Lisinopril", "administration": "", "food_relationship": "SPECIFIC FOOD/DRINK INTERACTION",
+        "timing": "", "food_interactions": ["Potassium-sparing diuretics can increase the risk of hyperkalemia [Source 1]."],
+        "evidence_status": "VERIFIED", "source": "[Source 1]"}]}
+    state = SimpleNamespace(
+        drug_normalizer=OfflineNormalizer(), retrieval_engine=StubRetrieval([as_candidate(item)]),
+        llm_backend=CountingLLM(answer), claim_verifier=verifier, model_init_errors={},
+        relationship_store=approved_candidate.relationship_store,
+        shared_source_urls=approved_candidate.shared_source_urls,
+        verified_source_links=approved_candidate.verified_source_links,
+    )
+    kind, data, _, _ = run(state)
+    assert kind == "abstention"
+    (food,) = [c for c in data["claims"] if c["field"] == "food_guidance"]
+    assert food["strength_check"] == "the cited source has no reviewed food wording"

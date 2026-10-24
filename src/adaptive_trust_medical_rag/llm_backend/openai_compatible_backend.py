@@ -1,4 +1,5 @@
 import json
+import logging
 import time
 from typing import Any, Dict, Optional
 
@@ -9,6 +10,8 @@ from adaptive_trust_medical_rag.llm_backend.interfaces import ProviderAdapter, P
 from adaptive_trust_medical_rag.llm_backend.provider_errors import classify_provider_error
 from adaptive_trust_medical_rag.llm_backend.provider_redaction import redact_secrets
 from adaptive_trust_medical_rag.llm_routing.types import FailureClass
+
+log = logging.getLogger(__name__)
 
 DEFAULT_TIMEOUT_S = 30.0
 # Upstream error bodies are kept short in messages and logs; they can name accounts or echo input.
@@ -183,9 +186,12 @@ class OpenAICompatibleBackend(ProviderAdapter):
         }.get(fc, "error")
         if fc == FailureClass.MODEL_NOT_FOUND:
             message = (f"{self.provider_name} model not found: model '{self.model_name}' is not available "
-                       f"to this account or endpoint (HTTP {status_code}); check the configured model ID. {body}")
+                       f"to this account or endpoint (HTTP {status_code}); check the configured model ID.")
         else:
-            message = f"{self.provider_name} {label}: {body}"
+            message = f"{self.provider_name} {label} (HTTP {status_code})"
+        # The upstream body can name the account or echo input, so it reaches the server log only.
+        if body:
+            log.warning("%s %s body: %s", self.provider_name, status_code, body)
         err = ModelExecutionError(message, status_code=status_code)
         err.failure_class = fc
         err.provider = self.provider_name

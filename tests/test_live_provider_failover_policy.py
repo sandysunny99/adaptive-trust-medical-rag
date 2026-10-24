@@ -325,3 +325,48 @@ def test_env_files_load_from_the_repo_root_with_process_env_first(clean_env, tmp
     assert os.environ["NVIDIA_LLM_MODEL"] == "from-env"  # .env fills what nothing else set
     clean_env.delenv("NVIDIA_LLM_MODEL")
 
+
+
+# ── A model the account cannot use is remembered ────────────────────────────
+
+def test_a_model_not_found_provider_is_skipped_on_the_next_request():
+    nvidia = Adapter("nvidia", failure(FailureClass.MODEL_NOT_FOUND, "404"))
+    groq = Adapter("groq")
+    r, _ = router(nvidia, groq)
+    generate(r)
+    assert r.unavailable == {"nvidia": "MODEL_NOT_FOUND"}
+    res = generate(r)
+    assert res.provider == "groq" and nvidia.calls == 1 and [a["provider"] for a in res.attempts] == ["groq"]
+
+
+def test_a_transient_failure_does_not_mark_a_provider_unusable():
+    nvidia = Adapter("nvidia", failure(FailureClass.TIMEOUT, "TIMEOUT"))
+    r, _ = router(nvidia, Adapter("groq"))
+    generate(r)
+    assert r.unavailable == {}
+
+
+def test_the_model_list_and_manual_selection_report_an_unusable_model(clean_env):
+    from adaptive_trust_medical_rag.llm_backend.model_registry import get_available_models, validate_llm_selection
+    clean_env.setenv("GROQ_API_KEY", FAKE_KEY)
+    clean_env.setenv("NVIDIA_API_KEY", FAKE_KEY)
+    r, _ = app_module.build_llm_router()
+    state = SimpleNamespace(llm_backend=r)
+    nemotron = "nvidia/nemotron-3-super-120b-a12b"
+    assert {m["id"]: m["is_available"] for m in get_available_models(state)}[nemotron] is True
+    r.unavailable["nvidia"] = "MODEL_NOT_FOUND"
+    models = {m["id"]: m["is_available"] for m in get_available_models(state)}
+    assert models[nemotron] is False and models["openai/gpt-oss-120b"] is True
+    ok, msg, _ = validate_llm_selection({"mode": "manual", "model_id": nemotron}, state)
+    assert ok is False and "not available to this account (MODEL_NOT_FOUND)" in msg
+
+
+def test_cloudflare_model_comes_from_the_environment_with_the_registry_default(clean_env):
+    clean_env.setenv("CLOUDFLARE_API_TOKEN", FAKE_KEY)
+    clean_env.setenv("CLOUDFLARE_ACCOUNT_ID", "acct")
+    clean_env.delenv("CLOUDFLARE_MODEL", raising=False)
+    r, _ = app_module.build_llm_router()
+    assert r.providers["cloudflare"].model_name == "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+    clean_env.setenv("CLOUDFLARE_MODEL", "@cf/test/other-model")
+    r, _ = app_module.build_llm_router()
+    assert r.providers["cloudflare"].model_name == "@cf/test/other-model"

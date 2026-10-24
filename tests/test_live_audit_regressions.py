@@ -50,7 +50,7 @@ from adaptive_trust_medical_rag.verification.canonical_identity import (
 FAKE_KEY = "FAKE_TEST_KEY_NOT_A_SECRET_0000"
 ROOT = Path(__file__).resolve().parents[1]
 REL_DIR = ROOT / "data" / "live_medical" / "relationships"
-# The pending candidate is kept with its audit run, outside the live data folder.
+# A tracked copy of the pending candidate (its audit run folder is not in git); never loaded live.
 CANDIDATE_DIR = ROOT / "tests" / "fixtures" / "rel_live_0003_candidate"
 CLAIM = "Lisinopril interacts with spironolactone and can increase the risk of hyperkalemia."
 

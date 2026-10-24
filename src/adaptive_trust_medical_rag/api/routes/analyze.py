@@ -295,9 +295,9 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 "message": str(e),
             })
         finally:
-            # Clean up completed or terminated pending analysis
-            if analysis.get("finished", False):
-                pending.pop(request_id, None)
+            # Every exit ends the analysis (confirmation waits inside this stream), so the entry and
+            # any uploaded image are dropped, and a second stream request cannot re-run the pipeline.
+            pending.pop(request_id, None)
 
     return StreamingResponse(
         pipeline_stream(),

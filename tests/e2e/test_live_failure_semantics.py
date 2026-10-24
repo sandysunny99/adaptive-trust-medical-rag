@@ -55,6 +55,10 @@ def chunk(text: str = EVIDENCE, *, authority: float = 0.9, content_hash: str | N
                 "content_hash": content_hash or hashlib.sha256(text.encode("utf-8")).hexdigest(),
             },
             "source_type": "DAILYMED", "freshness_score": 0.9,
+            # Fixture assumption: reviewed wording as an approved record would carry (a contraindication
+            # that also states timing and frequency), so the release mechanics are what is tested here.
+            "supported_claims": [{"text": "Simvastatin with clarithromycin is contraindicated (synthetic fixture).",
+                                  "action": "AVOID", "allows": ["TIMING", "QUANTITY"]}],
         },
     ))
 

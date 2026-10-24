@@ -345,3 +345,12 @@ def test_image_route_screens_the_note_before_vision_runs(live_state, note):
     assert (kind, data["code"], data["field"]) == ("error", "INPUT_REJECTED", "additional_instructions")
     assert live_state.vision_backend.calls == 0
     assert live_state.llm_backend.prompts == []
+
+
+def test_a_finished_stream_leaves_nothing_in_memory_and_cannot_be_re_run(live_state):
+    request_id = client.post("/api/v1/analyze", json={"drug_names": ["Simvastatin", "Clarithromycin"]}).json()["request_id"]
+    assert outcome(stream_events(request_id))[0] == "answer"
+    assert request_id not in live_state.pending_analyses
+    (again,) = [e for e in stream_events(request_id) if e["event"] == "error"]
+    assert again["data"]["code"] == "NOT_FOUND"
+    assert len(live_state.llm_backend.prompts) == 1  # the pipeline did not run a second time

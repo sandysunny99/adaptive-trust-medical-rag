@@ -95,7 +95,10 @@ def get_available_models(app_state: Any = None) -> list[dict[str, Any]]:
             has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
         if has_active_router:
-            if m.provider in registered_providers:
+            if m.provider in getattr(router, "unavailable", {}):
+                # The provider answered that this account cannot use its model.
+                is_available = False
+            elif m.provider in registered_providers:
                 adapter = router.providers.get(m.provider)
                 configured_model = getattr(adapter, "model_name", None)
                 if configured_model:
@@ -187,6 +190,10 @@ def validate_llm_selection(
         has_credentials = all(bool(os.getenv(k)) for k in req_vars) if req_vars else True
 
     if has_active_router:
+        reason = getattr(router, "unavailable", {}).get(model_def.provider)
+        if reason:
+            return False, (f"Model '{model_id}' ({model_def.name}) is not available to this account "
+                           f"({reason}); choose another model."), None
         if model_def.provider in registered_providers:
             adapter = router.providers.get(model_def.provider)
             configured_model = getattr(adapter, "model_name", None)

@@ -13,6 +13,7 @@ Or programmatically:
 
 from __future__ import annotations
 
+import asyncio
 import logging
 
 import os
@@ -36,6 +37,15 @@ from adaptive_trust_medical_rag.api.schemas import ErrorResponse
 
 log = logging.getLogger(__name__)
 
+# uvicorn configures only its own loggers, so without a handler the package's INFO diagnostics
+# (provider order, vision timings) never reach the server console. Records still propagate.
+_pkg_log = logging.getLogger("adaptive_trust_medical_rag")
+if not _pkg_log.handlers:
+    _handler = logging.StreamHandler()
+    _handler.setFormatter(logging.Formatter("%(levelname)s:     %(name)s: %(message)s"))
+    _pkg_log.addHandler(_handler)
+    _pkg_log.setLevel(logging.INFO)
+
 _APP_VERSION = "1.0.0"
 # Workers AI stops at 256 output tokens by default, which cuts the JSON answer off.
 CLOUDFLARE_MAX_TOKENS = 4096
@@ -50,6 +60,8 @@ _APP_DESCRIPTION = (
 REPO_ROOT = Path(__file__).resolve().parents[3]
 # Verified available to the project's Groq account on 2026-10-22 (llama-3.3-70b-versatile was not).
 DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
+# Groq model that accepts images; verified on 2026-10-22 to extract the synthetic prescription.
+DEFAULT_GROQ_VISION_MODEL = "qwen/qwen3.8-27b"
 
 
 def load_env_files(root: Path = REPO_ROOT) -> list[str]:
@@ -152,7 +164,7 @@ def build_llm_router() -> tuple[Any, dict[str, Any]]:
             provider_name="cloudflare",
             base_url=f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/v1",
             api_key=os.environ["CLOUDFLARE_API_TOKEN"],
-            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+            model_name=os.environ.get("CLOUDFLARE_MODEL") or "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
             max_tokens=CLOUDFLARE_MAX_TOKENS,
             timeout_s=_env_float("CLOUDFLARE_TIMEOUT_S", DEFAULT_TIMEOUT_S),
         )
@@ -213,6 +225,11 @@ def create_app(
     @asynccontextmanager
     async def lifespan(app_: FastAPI):  # noqa: ANN001
         log.info("Adaptive Trust Medical RAG API v%s starting up", _APP_VERSION)
+        if os.getenv("TESTING") != "1":
+            # Load the embedding and NLI models in the background, so the first analysis does not
+            # wait ~20 s for them; a request arriving earlier waits on the same load (one copy).
+            from adaptive_trust_medical_rag.services.live_application import _lazy_init_models
+            asyncio.get_running_loop().run_in_executor(None, _lazy_init_models, app_.state)
         yield
         log.info("Adaptive Trust Medical RAG API shutting down")
 
@@ -285,6 +302,18 @@ def create_app(
             DEFAULT_VISION_TIMEOUT_S,
             OpenAIVisionBackend,
         )
+        # Groq's image-capable model is tried only after NVIDIA's attempts fail on availability.
+        # Verified on 2026-10-22 to read the synthetic prescription; GROQ_VISION_MODEL="" disables it.
+        groq_vision_model = os.environ.get("GROQ_VISION_MODEL", DEFAULT_GROQ_VISION_MODEL)
+        groq_vision = None
+        if os.environ.get("GROQ_API_KEY") and groq_vision_model:
+            groq_vision = OpenAIVisionBackend(
+                provider_name="groq_vision",
+                base_url=os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1"),
+                api_key=os.environ["GROQ_API_KEY"],
+                model_name=groq_vision_model,
+                timeout_s=_env_float("VISION_TIMEOUT_S", DEFAULT_VISION_TIMEOUT_S),
+            )
         app.state.vision_backend = OpenAIVisionBackend(
             provider_name="nvidia_vision",
             base_url=nvidia_ocr_base_url,
@@ -294,9 +323,11 @@ def create_app(
             timeout_s=_env_float("VISION_TIMEOUT_S", DEFAULT_VISION_TIMEOUT_S),
             deadline_s=_env_float("VISION_DEADLINE_S", DEFAULT_VISION_DEADLINE_S),
             fallback_model=os.environ.get("VISION_FALLBACK_MODEL") or None,
+            fallback_backend=groq_vision,
         )
-        log.info("Vision extraction: provider=nvidia_vision model=%s fallback=%s",
-                 nvidia_ocr_model, os.environ.get("VISION_FALLBACK_MODEL") or None)
+        log.info("Vision extraction: provider=nvidia_vision model=%s fallback_model=%s fallback_provider=%s",
+                 nvidia_ocr_model, os.environ.get("VISION_FALLBACK_MODEL") or None,
+                 f"groq_vision/{groq_vision_model}" if groq_vision else None)
     else:
         app.state.vision_backend = None
         log.warning("No vision API key set; prescription image extraction is disabled.")

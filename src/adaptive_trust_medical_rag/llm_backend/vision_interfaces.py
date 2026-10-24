@@ -24,6 +24,7 @@ class ExtractionResult:
     warnings: List[str]
     # The model that produced this extraction (the fallback model when it was used).
     model_used: Optional[str] = None
+    provider_used: Optional[str] = None
     # Every attempt behind this result: model, outcome, failure class, duration. No content.
     attempts: List[dict] = field(default_factory=list)
 

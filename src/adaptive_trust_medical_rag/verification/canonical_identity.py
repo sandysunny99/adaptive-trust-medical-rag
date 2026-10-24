@@ -158,7 +158,7 @@ class RequestDrugMap(dict):
     """
 
 
-def _drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
+def drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
     """Drug mentions in text order: the fixed pattern, plus a RequestDrugMap's own names."""
     pattern = _DRUG_PATTERN
     if isinstance(drug_rxcui_map, RequestDrugMap):
@@ -186,7 +186,7 @@ def extract_claim_identity(
         drug_rxcui_map: Mapping of lowercased drug name -> RxCUI (from DrugNormalizer).
     """
     # Deduplicate while preserving text-order (first occurrence wins)
-    drugs_found = _drug_mentions(claim_text, drug_rxcui_map)
+    drugs_found = drug_mentions(claim_text, drug_rxcui_map)
     predicates_found = _PREDICATE_PATTERN.findall(claim_text)
 
     if len(drugs_found) < 2 or not predicates_found:

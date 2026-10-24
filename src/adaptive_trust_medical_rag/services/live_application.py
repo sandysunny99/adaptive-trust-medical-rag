@@ -8,6 +8,7 @@ It yields SSE events at each stage of execution.
 from __future__ import annotations
 
 import asyncio
+import threading
 import dataclasses
 import hashlib
 import json
@@ -38,6 +39,11 @@ from adaptive_trust_medical_rag.services.live_relationships import (
     load_relationship_store,
 )
 from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
+from adaptive_trust_medical_rag.services.claim_strength import (
+    reviewed_claims,
+    reviewed_food_lines,
+    strength_violation,
+)
 from adaptive_trust_medical_rag.services.live_source_links import (
     IDENTITY_NOTES,
     IDENTITY_VERIFIED,
@@ -51,7 +57,11 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
     EvidenceChunk,
     FinalSupportState,
 )
-from adaptive_trust_medical_rag.verification.canonical_identity import RequestDrugMap, extract_claim_identity
+from adaptive_trust_medical_rag.verification.canonical_identity import (
+    RequestDrugMap,
+    drug_mentions,
+    extract_claim_identity,
+)
 
 log = logging.getLogger(__name__)
 
@@ -461,6 +471,8 @@ class LiveMedicalRAGService:
                         # The model that served this request; the backend's own attribute is shared.
                         vision_model_used = (getattr(ext_res, "model_used", None)
                                              or getattr(vision_backend, "model_name", None))
+                        vision_provider_used = (getattr(ext_res, "provider_used", None)
+                                                or getattr(vision_backend, "provider_name", None))
 
                         candidates_payload = []
                         for idx, cand in enumerate(ext_res.candidate_medications):
@@ -473,13 +485,17 @@ class LiveMedicalRAGService:
                                 "source": "VISION"
                             })
 
+                        # A count only, never names: it tells an empty extraction from a missing confirmation.
+                        log.info("Vision extraction for %s: %d medication candidate(s) via %s/%s",
+                                 request_id, len(candidates_payload), vision_provider_used, vision_model_used)
+
                         # Keep record for provenance
                         analysis_state["image_provenance"] = {
                             "image_id": str(uuid.uuid4()),
                             "original_image_sha256": original_image_sha256,
                             "mime": mime,
                             "timestamp": _ts(),
-                            "vision_provider": vision_backend.provider_name,
+                            "vision_provider": vision_provider_used,
                             "vision_model": vision_model_used,
                             "extraction_result": candidates_payload
                         }
@@ -487,7 +503,7 @@ class LiveMedicalRAGService:
                         yield _sse("medication_candidates_extracted", {
                             "candidates": candidates_payload,
                             "warnings": ext_res.warnings,
-                            "vision_provider": getattr(vision_backend, "provider_name", None),
+                            "vision_provider": vision_provider_used,
                             "vision_model": vision_model_used,
                             "vision_attempts": list(getattr(ext_res, "attempts", None) or []),
                         })
@@ -1168,6 +1184,12 @@ class LiveMedicalRAGService:
             if verifier and statements:
                 rxcuis = [str(m["rxcui"]) for m in medications if m.get("rxcui")]
 
+                def cited_metadata(text: str) -> dict[int, dict[str, Any]]:
+                    """[Source N] number -> metadata of that eligible chunk, for the numbers the text cites."""
+                    numbers = {int(n) for n in re.findall(r"\bSource (\d+)\b", text)}  # "[Source 1]" or "Source 1"
+                    return {n: eligible_candidates[n - 1][0].candidate.metadata
+                            for n in numbers if 1 <= n <= len(eligible_candidates)}
+
                 def evidence_for(claim_text: str) -> list[EvidenceChunk]:
                     # The drug order the verifier will read from this claim; only a symmetric
                     # (BIDIRECTIONAL) record uses it, so its identity matches either order.
@@ -1195,8 +1217,14 @@ class LiveMedicalRAGService:
                     }
                     try:
                         # ClaimVerifierV2 verifies one answer string; each statement is verified as one.
+                        # A statement naming two or more drugs asserts a relationship and needs an approved
+                        # relationship record (canonical identity). A single-drug statement (a food,
+                        # warning or adverse reaction) has no drug pair, so it is judged on its cited,
+                        # identity-verified evidence alone; requiring a pair would block it always.
+                        pairwise = len(drug_mentions(statement.text, drug_rxcui_map)) >= 2
                         v_report = verifier.verify(statement.text, evidence_for(statement.text),
-                                                   risk_tier=risk_tier, drug_rxcui_map=drug_rxcui_map)
+                                                   risk_tier=risk_tier,
+                                                   drug_rxcui_map=drug_rxcui_map if pairwise else None)
                         judgments = getattr(v_report, "judgments", None) or []
                         identity = next((j for j in judgments if j.canonical_identity_status), None)
                         claim.update({
@@ -1213,6 +1241,19 @@ class LiveMedicalRAGService:
                                 "support_state": FinalSupportState.UNSUPPORTED.value,
                                 "invalid_source_references": list(statement.invalid_sources),
                             })
+                        elif claim["support_state"] == FinalSupportState.SUPPORTED.value:
+                            # Entailment does not check strength: a statement may not claim more than
+                            # its sources' reviewed wording (a risk factor is not an instruction to
+                            # avoid), and a food statement needs reviewed wording to be released at all.
+                            cited = cited_metadata(statement.text)
+                            if statement.field == "food_guidance" and (
+                                    not cited or not all(reviewed_claims(m) for m in cited.values())):
+                                problem = "the cited source has no reviewed food wording"
+                            else:
+                                problem = strength_violation(statement.text, list(cited.values()))
+                            if problem:
+                                claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
+                                              "strength_check": problem})
                     except Exception as e:
                         log.error("Claim verification error: %s", e)
                         # Keep the failed statement visible instead of dropping it from the report.
@@ -1329,7 +1370,11 @@ class LiveMedicalRAGService:
                 "interactions": answer_fields["interactions"],
                 "adverse_reactions": answer_fields["adverse_reactions"],
                 "warnings": answer_fields["warnings"],
-                "food_guidance": answer_fields["food_guidance"],
+                # Released food lines are the sources' reviewed wording, never the generated wording.
+                "food_guidance": [
+                    {**item, "food_interactions": reviewed_food_lines(cited_metadata(
+                        " ".join([str(item.get("source") or ""), *map(str, item.get("food_interactions") or [])])))}
+                    for item in answer_fields["food_guidance"]],
                 "patient_considerations": answer_fields["patient_considerations"],
                 "trust": {
                     "overall_score": max_trust_score,
@@ -1467,7 +1512,16 @@ class _LiveEmbeddingModel:
         return results
 
 
+_INIT_LOCK = threading.Lock()
+
+
 def _lazy_init_models(app_state):
+    """Load the models once: concurrent callers (startup warm-up, first requests) share one load."""
+    with _INIT_LOCK:
+        _load_models(app_state)
+
+
+def _load_models(app_state):
     """Load the claim verifier and the live retrieval engine independently.
 
     A component that cannot load is left as None and its reason is recorded in
@@ -1510,6 +1564,7 @@ def _lazy_init_models(app_state):
                 "freshness_score": item.get("freshness", 0.8),
                 "source_type": item.get("source_type"),
                 "source_identity": item.get("source_identity"),
+                "supported_claims": item.get("supported_claims"),
             },
         )
 

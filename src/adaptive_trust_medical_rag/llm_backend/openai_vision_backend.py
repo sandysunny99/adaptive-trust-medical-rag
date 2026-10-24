@@ -30,12 +30,16 @@ _VISION_RETRY_CLASSES = frozenset({
     FailureClass.NETWORK,
     FailureClass.TRANSIENT_PROVIDER,
 })
-# Failures that another vision model could avoid; anything else is reported as it is.
+# Failures that another vision model could avoid; anything else is reported as it is. A reply
+# that is not valid extraction JSON (SCHEMA_ERROR) is not retried on the same model, but another
+# model may answer validly: NVIDIA llama-3.2-11b returned a JSON object followed by extra data for
+# a real upload on 2026-10-22, while the same image's alternative was never tried.
 _VISION_FALLBACK_CLASSES = frozenset({
     FailureClass.TIMEOUT,
     FailureClass.NETWORK,
     FailureClass.TRANSIENT_PROVIDER,
     FailureClass.MODEL_NOT_FOUND,
+    FailureClass.SCHEMA_ERROR,
 })
 
 _CODE_FENCE_PATTERN = re.compile(
@@ -176,8 +180,14 @@ def _parse_and_validate_vision_response(content: str) -> dict:
             except json.JSONDecodeError as e:
                 # The decoder's reason and position say what was wrong without exposing the
                 # content, which can hold prescription text.
-                log.warning("Vision reply is not valid JSON: %s (line %d, column %d; %d characters)",
-                            e.msg, e.lineno, e.colno, len(content))
+                # Only the shape of what follows the error is logged: another object, a code fence
+                # or prose need different handling, and none of them may be guessed at.
+                tail = json_candidate[e.pos:].lstrip()
+                tail_kind = ("json" if tail[:1] in ("{", "[") else "fence" if tail.startswith("```")
+                             else "text" if tail else "none")
+                log.warning("Vision reply is not valid JSON: %s (line %d, column %d; %d characters; "
+                            "after error: %s, %d characters)",
+                            e.msg, e.lineno, e.colno, len(content), tail_kind, len(tail))
                 _raise_schema_error(
                     f"Vision provider returned malformed JSON object ({e.msg} at line {e.lineno}, "
                     f"column {e.colno})", content
@@ -249,6 +259,7 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         timeout_s: float = DEFAULT_VISION_TIMEOUT_S,
         fallback_model: str | None = None,
         deadline_s: float = DEFAULT_VISION_DEADLINE_S,
+        fallback_backend: "OpenAIVisionBackend | None" = None,
     ):
         self.base_url = base_url
         self.api_key = api_key
@@ -257,8 +268,8 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         self.timeout_s = timeout_s
         self.deadline_s = max(deadline_s, timeout_s)
         self.fallback_model = fallback_model if fallback_model and fallback_model != model_name else None
-        # The model that produced the last extraction, which may be the fallback model.
-        self.last_model_used: str | None = None
+        # Another provider's vision backend, tried last within this backend's deadline.
+        self.fallback_backend = fallback_backend
 
     async def extract_medications(
         self, image_bytes: bytes, mime_type: str
@@ -267,33 +278,37 @@ class OpenAIVisionBackend(VisionProviderAdapter):
 
         A timeout, network error or 5xx is retried once on the same model (a stalled request does
         not answer later, a fresh one usually does); then the fallback model, if configured, is
-        tried for an availability failure. Authentication, rate limits, bad requests and
-        unparseable output fail as they are. No failure ever yields a medication list. The attempts
-        (model, outcome, failure class, duration) are attached to the result or to the error.
+        tried for an availability failure, and then the fallback backend (another provider), if
+        configured. Authentication, rate limits, bad requests and unparseable output fail as they
+        are. No failure ever yields a medication list. The attempts (provider, model, outcome,
+        failure class, duration) are attached to the result or to the error.
         """
         start = time.monotonic()
         attempts: list[dict] = []
-        models = [self.model_name] + ([self.fallback_model] if self.fallback_model else [])
+        targets = [(self, self.model_name)] + ([(self, self.fallback_model)] if self.fallback_model else [])
+        if self.fallback_backend is not None:
+            targets.append((self.fallback_backend, self.fallback_backend.model_name))
         last_error: ModelExecutionError | None = None
-        for index, model in enumerate(models):
+        for index, (backend, model) in enumerate(targets):
             if index > 0:
                 fc = getattr(last_error, "failure_class", FailureClass.UNKNOWN)
                 if fc not in _VISION_FALLBACK_CLASSES:
                     break
-                log.warning("Vision model %s failed (%s); trying fallback model %s",
-                            self.model_name, getattr(fc, "value", fc), model)
+                log.warning("Vision model %s failed (%s); trying fallback %s model %s",
+                            self.model_name, getattr(fc, "value", fc), backend.provider_name, model)
             for retry in range(MAX_SAME_MODEL_RETRIES + 1):
                 remaining = self.deadline_s - (time.monotonic() - start)
                 if remaining <= 1.0:
                     break
                 t0 = time.monotonic()
                 try:
-                    result = await self._extract_with(model, image_bytes, mime_type,
-                                                      timeout_s=min(self.timeout_s, remaining))
+                    result = await backend._extract_with(model, image_bytes, mime_type,
+                                                         timeout_s=min(backend.timeout_s, remaining))
                 except ModelExecutionError as e:
                     last_error = e
                     fc = getattr(e, "failure_class", FailureClass.UNKNOWN)
-                    attempts.append({"model": model, "outcome": "failed", "failure_class": getattr(fc, "value", fc),
+                    attempts.append({"provider": backend.provider_name, "model": model, "outcome": "failed",
+                                     "failure_class": getattr(fc, "value", fc),
                                      "status_code": e.status_code,
                                      "elapsed_ms": round((time.monotonic() - t0) * 1000, 1)})
                     if fc in _VISION_RETRY_CLASSES and retry < MAX_SAME_MODEL_RETRIES:
@@ -301,13 +316,12 @@ class OpenAIVisionBackend(VisionProviderAdapter):
                                     model, retry + 1, getattr(fc, "value", fc))
                         continue
                     break
-                attempts.append({"model": model, "outcome": "success",
+                attempts.append({"provider": backend.provider_name, "model": model, "outcome": "success",
                                  "elapsed_ms": round((time.monotonic() - t0) * 1000, 1)})
-                # The result carries its own model: the backend is shared by concurrent requests, so
-                # last_model_used (kept for compatibility) can belong to another request.
+                # The result names what served it: the backend is shared by concurrent requests.
                 result.model_used = model
+                result.provider_used = backend.provider_name
                 result.attempts = attempts
-                self.last_model_used = model
                 return result
         if last_error is None:
             last_error = ModelExecutionError(
@@ -424,8 +438,10 @@ class OpenAIVisionBackend(VisionProviderAdapter):
                     fc, what = FailureClass.TRANSIENT_PROVIDER, "provider error"
                 else:
                     fc, what = FailureClass.INVALID_REQUEST, "request rejected"
+                # The body can name the provider account, so it stays in the server log.
+                log.warning("Vision provider %s HTTP %s body: %s", model_name, resp.status_code, body)
                 err = ModelExecutionError(
-                    message=f"Vision Provider HTTP {resp.status_code} ({what}): {body}",
+                    message=f"Vision Provider HTTP {resp.status_code} ({what})",
                     status_code=str(resp.status_code),
                 )
                 err.failure_class = fc
