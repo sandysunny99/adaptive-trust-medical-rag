@@ -4,7 +4,7 @@
 
 > **Non-Clinical Disclaimer.** This software is a research prototype. It is not an FDA-approved or otherwise certified medical device and must not be used for diagnosis, prescribing or any patient care. Every output is a research artifact that may be wrong or incomplete, and the system is designed to abstain rather than guess.
 
-Status as of commit `9bae325` (2026-10-18): the live application runs end to end with real providers and real embeddings and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
+Status: the live application runs end to end with real providers, real embeddings and the real NLI verifier, and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
 
 ---
 
@@ -23,25 +23,26 @@ The system bounds the model on both sides: an **Evidence Eligibility Gate** befo
 The live application (`POST /api/v1/analyze*`, streamed over Server-Sent Events) runs this pipeline for each request. Details, modules and event schemas are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 1. **Input** — drug names typed by the user, or a prescription image (JPEG/PNG/WebP, at most 5 MB). Optional patient context and optional *Additional Instructions*, both screened as untrusted data; an instruction aimed at the system is rejected (`INPUT_REJECTED`).
-2. **Image extraction and confirmation** — a vision model reads candidate medication names; the reply must be a single JSON object in the expected schema or the request fails closed. The user confirms the medications before anything is analysed.
+2. **Image extraction and confirmation** — the image is first read on this server by the built-in Windows OCR engine. If that read fails, is unavailable (any non-Windows server) or finds no text, the request ends and the image is never sent to a provider. Only then does a vision model suggest medication names; its reply must be a single JSON object in the expected schema or the request fails closed, and each suggested name is kept only if it appears in the OCR text. The user confirms the medications before anything is analysed, or cancels.
 3. **Drug identity** — names are resolved to RxNorm concepts (RxCUI) from a local cache or the RxNav API.
 4. **Retrieval** — hybrid BM25 + dense (all-MiniLM-L6-v2) retrieval over the frozen live corpus; each chunk's SHA-256 is checked against its provenance record and poisoned or altered chunks are blocked.
 5. **Risk tier and eligibility** — a multi-drug question is R2 (threshold 0.60); R3 (0.75) only from an approved relationship record. Chunks that name none of the requested drugs are excluded before scoring.
 6. **Generation** — an LLM writes a structured answer from the eligible evidence only. The provider that actually answered is recorded (`served_by`).
 7. **Claim and citation verification** — every factual statement is checked against the cited evidence (PubMedBERT NLI plus canonical relationship identity). A pairwise drug claim needs an approved relationship record on the cited chunk.
-8. **Safety gate** — an answer is released only if every statement is verified; otherwise the system abstains and shows why, with the evidence it checked. Evidence URLs are shown as links only when verified for that chunk.
+8. **Safety gate** — an answer is released only if every statement is verified and claims no more than its source's reviewed wording (claim strength); otherwise the system abstains and shows why, with the evidence it checked. Evidence URLs are shown as links only when the source identity of that chunk is verified.
 
 ### Implementation status
 
 | Component | Status |
 |---|---|
 | Live pipeline: names → RxNorm → retrieval → trust → generation → verification → abstention | **Implemented and tested** (unit, e2e and real-provider browser runs) |
-| Prescription-image extraction (NVIDIA vision) with strict JSON schema validation | **Implemented and tested** (browser run on the committed build, synthetic image) |
-| Medication confirmation contract (objects only) | **Implemented and tested** |
+| Prescription-image extraction: local Windows OCR first, then NVIDIA vision (Groq fallback), strict JSON schema, names grounded in the OCR text | **Implemented and tested** (unit and e2e; browser runs on synthetic images only). Windows servers only |
+| Medication confirmation contract (objects only), cancel before confirmation, request expiry, disconnect handling | **Implemented and tested** |
 | Risk tier R2 default, R3 only from an approved record; unrelated-evidence exclusion | **Implemented and tested** |
 | Provider/model trace (`served_by`) for answers, abstentions and errors | **Implemented and tested** (released-answer path in tests only) |
-| Verified-only evidence links | **Implemented and tested**; no source is verified yet, so all corpus links show as text |
-| Versioned relationship records (V1, V2 with own evidence file) | **Implemented and tested**; **no record approved** (REL-LIVE-0001 and REL-LIVE-0002 pending) |
+| Source identity gate and verified-only evidence links | **Implemented and tested**; no corpus source is verified, so all corpus links show as text |
+| Claim strength check against reviewed wording | **Implemented and tested** |
+| Versioned relationship records (V1, V2 datasets in their own folders) | **Implemented and tested**; **no record approved** (REL-LIVE-0001 pending; V2 candidates are pending review outside the repository) |
 | Evidence-backed (released) answers on live data | **Pending researcher approval** of a relationship record |
 | Research harness, ablation variants A–F, CLI evaluation | Implemented; published A–F numbers are **simulation** results (see below) |
 | Human relevance annotation, claim-evidence benchmark, Free Replication V1, Cognee comparison | **Blocked** on human labels or researcher decisions ([register](reports/audit/blocked_issue_register.md)) |
@@ -55,7 +56,7 @@ The live application (`POST /api/v1/analyze*`, streamed over Server-Sent Events)
 | `data/live_medical/LIVE_MEDICAL_CORPUS_V2.json` — 14 frozen chunks (11 DailyMed, 2 PubMed, 1 openFDA) with SHA-256 provenance and MiniLM embeddings | In use. Frozen: never edited. None of its URLs is verified (11 placeholder DailyMed set IDs, 1 PubMed ID shared by two documents, 1 generic openFDA URL) |
 | RxNav (RxNorm) API + local entity cache | In use for drug identity |
 | Relationship records `data/live_medical/relationships/` (V1) | Loaded only when the manifest is APPROVED by a named person with matching hashes; REL-LIVE-0001 is a pending candidate |
-| V2 relationship evidence (e.g. byte-exact DailyMed label text) | Loader implemented (`bf29fe8`); candidate REL-LIVE-0002 prepared and reviewed but **not approved** and not placed in `data/` |
+| V2 relationship datasets `relationships/v2/<dataset>/` (own byte-exact evidence text, source identity records, reviewed wording) | Loader implemented; no V2 dataset is in `data/`. Candidates are prepared and kept **pending**, outside the repository, until a researcher reviews them |
 
 ---
 
@@ -66,7 +67,8 @@ Configured from environment variables (names only; see [docs/CONFIGURATION.md](d
 | Role | Provider / model (default) |
 |---|---|
 | Answer generation | NVIDIA `nvidia/nemotron-3-super-120b-a12b`, Groq `openai/gpt-oss-120b`, Cloudflare Workers AI `@cf/meta/llama-3.3-70b-instruct-fp8-fast` (4096-token limit); `mock-llm` for tests |
-| Prescription vision | NVIDIA `meta/llama-3.2-11b-vision-instruct` |
+| Prescription image text (OCR) | Built-in Windows OCR (`Windows.Media.Ocr`), local, no upload; unavailable on other platforms |
+| Prescription vision | NVIDIA `meta/llama-3.2-11b-vision-instruct`; fallback Groq `qwen/qwen3.8-27b` (`GROQ_VISION_MODEL`, empty disables) |
 | Embeddings | `all-MiniLM-L6-v2` (local, sentence-transformers) |
 | Claim verification (NLI) | `pritamdeka/PubMedBERT-MNLI-MedNLI` (pinned revision) |
 
@@ -86,7 +88,8 @@ uv sync
 cp .env.example .env
 
 # Backend (FastAPI) on http://127.0.0.1:8000
-uv run python -m uvicorn --app-dir src adaptive_trust_medical_rag.api.app:app --host 127.0.0.1 --port 8000
+# One worker only: requests live in process memory; the API refuses to start with more.
+uv run python -m uvicorn --app-dir src adaptive_trust_medical_rag.api.app:app --host 127.0.0.1 --port 8000 --workers 1
 
 # Frontend (Vite + React) on http://localhost:5173, proxying /api to port 8000
 cd frontend && npm install && npm run dev
@@ -98,10 +101,11 @@ Do not set `TESTING=1` for a real run: it replaces the embedding model with a st
 
 ## Tests and validation
 
-The commands, what each suite covers and the latest verified results are in [docs/TESTING.md](docs/TESTING.md). Latest exact-build result (commit `9bae325`, fresh worktree): **1470 passed, 4 skipped, 0 failed** backend; ruff, Bandit, gitleaks, integrity scripts and the frozen-hash line-ending audit clean.
+The commands, what each suite covers and the latest verified results are in [docs/TESTING.md](docs/TESTING.md).
 
 ```bash
-TESTING=1 uv run pytest -q          # backend (TESTING=1 is correct for tests only)
+TESTING=1 uv run pytest -q          # backend (TESTING=1 is correct for tests only: mock NLI, stub embeddings)
+uv run pytest -q tests/e2e/test_live_warfarin_ibuprofen.py tests/test_claim_strength.py   # real NLI: TESTING unset
 cd frontend && npm test && npm run build && npm run lint
 ```
 
@@ -113,7 +117,7 @@ cd frontend && npm test && npm run build && npm run lint
 - **Retrieval poisoning and tampering:** SHA-256 provenance check per chunk and a poisoning detector; chunks naming none of the requested drugs are excluded.
 - **Hallucinated or misattributed claims:** claim-level NLI verification, citation checks and relationship identity from approved records only; unverified statements are never released.
 - **Secrets:** environment variables only; `.githooks/pre-commit` runs a regex scan and `gitleaks git --staged`; a CI hook scans file writes.
-- **Privacy:** synthetic data only; logs record identifiers, lengths and hashes, not raw content.
+- **Privacy:** synthetic data only; a prescription image is read locally first and is not sent to a provider unless that read found text; logs record identifiers, statuses, lengths and hashes, never image text, prompts or provider error bodies.
 
 Details: [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#6-threat-model--security-mitigations).
 
@@ -127,7 +131,8 @@ Details: [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md), [docs/ARCHITECTURE.md](do
 | `POST /api/v1/analyze` | Analyse drug names (live pipeline) |
 | `POST /api/v1/analyze/prescription` | Analyse a prescription image |
 | `POST /api/v1/analyze/{request_id}/confirm` | Confirm extracted medications (medication objects) |
-| `GET /api/v1/stream/{request_id}` | Server-Sent Events stream of the analysis |
+| `POST /api/v1/analyze/{request_id}/cancel` | Abandon an image analysis before confirmation; nothing is analysed |
+| `GET /api/v1/stream/{request_id}` | Server-Sent Events stream of the analysis (must open within 120 s of submission) |
 | `POST /query`, `POST /ingest` | Research-harness query and document ingestion |
 | `GET /health`, `GET /research-state`, `GET /audit/{session_id}` | Health, research state, audit (query hashes only) |
 
@@ -179,7 +184,9 @@ Protocol: [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
 - NVIDIA's answer model often times out in automatic mode (30 s adapter timeout); Groq then answers after failover. Selected directly, NVIDIA has answered.
 - Model-written disclaimer sentences are sometimes kept as claims and then withheld.
 - The live corpus is 14 synthetic-scope chunks with unverified source URLs; it is a test corpus, not clinical coverage.
-- Image extraction has been validated on one synthetic prescription image only.
+- Image analysis needs the Windows OCR engine: on any other server every image request ends with `IMAGE_TEXT_UNVERIFIABLE` (enter names instead). It has been validated on a few synthetic prescription images only.
+- Cancelling (or closing the page) closes a vision request in flight and tries no other provider, but a provider that already received the image may still process it; cancellation cannot stop remote work.
+- Requests live in process memory: run one worker. The API refuses to start with `--workers` or `WEB_CONCURRENCY` above 1, but a programmatic `uvicorn.run(..., workers=N)` is not detected.
 - Software tests and safe abstention do not demonstrate clinical effectiveness.
 
 ---
