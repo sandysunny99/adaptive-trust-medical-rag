@@ -612,3 +612,23 @@ def test_live_gate_uses_the_scorers_unrounded_decision(monkeypatch):
     assert kind == "abstention"
     assert data["served_by"] is None
     assert "none was eligible" in data["reason"]
+
+
+@pytest.mark.parametrize("field, edit", [
+    ("warnings", lambda a: a["warnings"].__setitem__(0, "Do not take simvastatin with clarithromycin.")),
+    ("adverse_reactions", lambda a: a["adverse_reactions"][0].pop("source")),
+    ("conclusion", lambda a: a.__setitem__("conclusion", "Simvastatin and clarithromycin should not be combined.")),
+])
+def test_statement_without_a_citation_is_not_released(field, edit):
+    """AUD-09 (2026-10-26 audit): every released statement must cite a retrieved [Source N]. The
+    verifier judges an uncited statement against all evidence, and the live report used to say
+    citation_present=True for it; such a statement is now unsupported, so the answer is withheld."""
+    answer = json.loads(json.dumps(ANSWER))
+    edit(answer)
+    events, _ = run(answer)
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    (failed,) = [c for c in data["claims"] if c["support_state"] != "SUPPORTED"]
+    assert failed["field"] == field
+    assert failed["citation_present"] is False
+    assert all(c["citation_present"] is True for c in data["claims"] if c is not failed)

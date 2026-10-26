@@ -67,14 +67,15 @@ class MockC9LLMBackend(ProviderAdapter):
     def get_model_metadata(self): return {}
 
     async def generate_structured(self, prompt: str, response_format: dict | None = None) -> ProviderResponse:
+        # Every released statement cites a retrieved source (AUD-09, 2026-10-26 audit).
         mock_response = {
-            "conclusion": "C9 Audited response.",
+            "conclusion": "C9 Audited response [Source 1].",
             "interactions": [],
             "adverse_reactions": [],
             "warnings": [],
             "food_guidance": [],
             "patient_considerations": [],
-            "claims_for_verification": ["Warfarin and Aspirin interact."]
+            "claims_for_verification": ["Warfarin and Aspirin interact [Source 1]."]
         }
 
         return ProviderResponse(

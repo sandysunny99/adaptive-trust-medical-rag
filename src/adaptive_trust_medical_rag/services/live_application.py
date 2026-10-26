@@ -1269,10 +1269,13 @@ class LiveMedicalRAGService:
                                                    drug_rxcui_map=drug_rxcui_map if pairwise else None)
                         judgments = getattr(v_report, "judgments", None) or []
                         identity = next((j for j in judgments if j.canonical_identity_status), None)
+                        # The verifier judges an uncited statement against all evidence; a released
+                        # statement must name the retrieved source it rests on.
+                        citation_present = bool(re.search(r"\[Source \d+\]", statement.text))
                         claim.update({
                             "support_state": _claim_support_state(v_report),
                             "verifier_decision": v_report.decision.value,
-                            "citation_present": True,
+                            "citation_present": citation_present,
                             "entailment": max((j.entailment for j in judgments), default=None),
                             "canonical_identity_status": identity.canonical_identity_status if identity else None,
                             "canonical_identity_reason": identity.canonical_identity_reason if identity else None,
@@ -1283,6 +1286,8 @@ class LiveMedicalRAGService:
                                 "support_state": FinalSupportState.UNSUPPORTED.value,
                                 "invalid_source_references": list(statement.invalid_sources),
                             })
+                        elif not citation_present:
+                            claim["support_state"] = FinalSupportState.UNSUPPORTED.value
                         elif claim["support_state"] == FinalSupportState.SUPPORTED.value:
                             # Entailment does not check strength: a statement may not claim more than
                             # its sources' reviewed wording (a risk factor is not an instruction to
