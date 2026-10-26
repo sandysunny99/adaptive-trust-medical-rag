@@ -221,7 +221,9 @@ export interface ClaimInfo {
 export interface SecurityInfo {
   injection_status: SecurityState;
   poisoning_status: SecurityState;
-  injection_markers: string[];
+  injection_markers?: string[];
+  // Why retrieved evidence was excluded by the injection screen, when it was.
+  injection_reason?: string | null;
   poisoning_reason: string | null;
 }
 

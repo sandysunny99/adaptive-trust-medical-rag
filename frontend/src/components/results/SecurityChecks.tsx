@@ -17,8 +17,8 @@ export function SecurityChecks({ result, ended = false }: { result: AnalysisResu
       status: security?.injection_status || 'NO_DATA',
       detail: security ? (
         (security.injection_markers || []).length > 0
-          ? `Detected: ${security.injection_markers.join(', ')}`
-          : 'No injection markers detected'
+          ? `Detected: ${(security.injection_markers || []).join(', ')}`
+          : security.injection_reason || 'No injection markers detected'
       ) : null,
     },
     {

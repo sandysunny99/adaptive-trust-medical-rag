@@ -406,6 +406,13 @@ class LiveMedicalRAGService:
             return None, f"injection_detector_{decision.lower()}"
         return result.sanitized, "accepted"
 
+    def _carries_instructions(self, text: str, request_id: str) -> bool:
+        """Whether retrieved text contains injection markers or anything the detector does not ALLOW."""
+        result = sanitize_query(text)
+        if result.injection_markers_found:
+            return True
+        return self.prompt_detector.inspect(text, request_id).decision.name != "ALLOW"
+
     async def execute(
         self,
         request_id: str,
@@ -860,6 +867,7 @@ class LiveMedicalRAGService:
 
 
             poisoning_blocked = 0
+            injection_blocked = 0
             safe_candidates = []
             for sc in candidates:
                 cand = sc.candidate
@@ -881,14 +889,22 @@ class LiveMedicalRAGService:
                 elif expected_hash and actual_hash != expected_hash:
                     log.warning("Hash mismatch for %s: expected %s, got %s", cand.chunk_id, expected_hash, actual_hash)
                     poisoning_blocked += 1
+                elif self._carries_instructions(cand.text, request_id):
+                    # Indirect injection: retrieved text is data, and text addressed to the model is
+                    # excluded whole (stripping it would break the content hash and change the evidence).
+                    log.warning("Retrieved chunk %s excluded: it carries instructions aimed at the model", cand.chunk_id)
+                    injection_blocked += 1
                 else:
                     safe_candidates.append(sc)
 
-            yield _sse("security", {
-                "injection_status": "ALLOW",
+            security_data = {
+                "injection_status": "BLOCK" if injection_blocked else "ALLOW",
+                "injection_reason": (f"Excluded {injection_blocked} retrieved chunk(s) carrying instructions"
+                                     if injection_blocked else None),
                 "poisoning_status": "BLOCK" if poisoning_blocked > 0 else "ALLOW",
                 "poisoning_reason": f"Blocked {poisoning_blocked} chunks" if poisoning_blocked > 0 else None
-            })
+            }
+            yield _sse("security", security_data)
             yield _sse("stage_update", {
                 "stage": "security_checking",
                 "status": "complete",
@@ -1432,11 +1448,7 @@ class LiveMedicalRAGService:
                     "factors": best_factors.__dict__ if best_factors else {},
                     "missing_factors": []
                 },
-                "security": {
-                    "injection_status": "ALLOW",
-                    "poisoning_status": "BLOCK" if poisoning_blocked > 0 else "ALLOW",
-                    "poisoning_reason": f"Blocked {poisoning_blocked} chunks" if poisoning_blocked > 0 else None
-                },
+                "security": security_data,
                 "claims": claims_out,
                 "evidence": evidence_items,
                 "provenance": provenance,
