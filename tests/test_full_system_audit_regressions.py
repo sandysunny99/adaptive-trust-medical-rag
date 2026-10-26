@@ -503,3 +503,19 @@ async def test_the_client_reads_ingredients_from_rxnorm_related(monkeypatch):
     monkeypatch.setattr(httpx.AsyncClient, "get", get)
     assert await RxNormClient().get_ingredients("114194") == [{"rxcui": "11289", "name": "warfarin"}]
     assert seen[0][0].endswith("/rxcui/114194/related.json") and seen[0][1] == {"tty": "IN"}
+
+
+async def test_an_ingredient_lookup_failure_never_fails_the_identity():
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
+    from adaptive_trust_medical_rag.normalization.entity_cache import EntityCache
+
+    class Client:  # resolves names but has no ingredient lookup (as older stubs and clients)
+        async def get_rxcui_exact(self, name):
+            return "11289"
+
+        async def get_generic_name(self, rxcui):
+            return "warfarin"
+
+    normalizer = DrugNormalizer(cache=EntityCache({}), rxnorm_client=Client())
+    assert (await normalizer.normalize("warfarin")).rxcui == "11289"
+    assert await normalizer.ingredients_of("11289") is None

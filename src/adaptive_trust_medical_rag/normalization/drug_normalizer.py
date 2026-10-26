@@ -205,12 +205,14 @@ class DrugNormalizer:
         Informational: a salt (PIN) or brand (BN) concept keeps its own RxCUI for evidence matching
         (medical-safety.md: no attribution across salt forms unless the evidence says so).
         """
-        if not self._use_api:
+        lookup = getattr(self._rxnorm, "get_ingredients", None)
+        if not self._use_api or lookup is None:
             return None
         if rxcui not in self._ingredients:
             try:
-                self._ingredients[rxcui] = await self._rxnorm.get_ingredients(rxcui)
-            except RxNavUnavailableError:
+                self._ingredients[rxcui] = await lookup(rxcui)
+            except Exception as exc:  # informational only: never let it fail the identity
+                logger.warning("RxNorm ingredient lookup skipped for rxcui '%s': %s", rxcui, type(exc).__name__)
                 return None
         return self._ingredients[rxcui]
 
