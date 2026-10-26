@@ -13,6 +13,9 @@ const STATUS_CONFIG: Record<MedicationInfo['status'], { icon: IconComponent; ton
   AMBIGUOUS: { icon: Icons.caution, tone: 'warning', bg: 'bg-warning-soft', label: 'Ambiguous' },
   NOT_FOUND: { icon: Icons.unknown, tone: 'destructive', bg: 'bg-destructive-soft', label: 'Not Found' },
   UNAVAILABLE: { icon: Icons.pending, tone: 'muted', bg: 'bg-muted', label: 'Unavailable' },
+  // RxNav could not be reached: no conclusion about the name (not "Not Found").
+  SERVICE_UNAVAILABLE: { icon: Icons.pending, tone: 'warning', bg: 'bg-warning-soft', label: 'RxNorm unreachable' },
+  ERROR: { icon: Icons.pending, tone: 'warning', bg: 'bg-warning-soft', label: 'Lookup error' },
 };
 
 const METHOD_LABELS: Record<string, string> = {
@@ -29,7 +32,8 @@ function methodLabel(medication: MedicationInfo): string {
 }
 
 export function MedicationCard({ medication }: MedicationCardProps) {
-  const config = STATUS_CONFIG[medication.status];
+  // An unknown status from a newer backend still renders, as unverified.
+  const config = STATUS_CONFIG[medication.status] ?? STATUS_CONFIG.UNAVAILABLE;
 
   return (
     <div className={`rounded-lg border border-border p-4 ${config.bg}`}>

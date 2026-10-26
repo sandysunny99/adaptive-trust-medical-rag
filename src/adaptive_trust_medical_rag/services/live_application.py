@@ -729,6 +729,7 @@ class LiveMedicalRAGService:
             # Its names are also matched in claim text, so any requested medication can get an identity.
             drug_rxcui_map = RequestDrugMap()
             all_resolved = True
+            rxnav_unavailable = False
 
             provenance_map = {}
             if analysis_state and "provenance_map" in analysis_state:
@@ -738,7 +739,10 @@ class LiveMedicalRAGService:
                 try:
                     entities = await normalizer.normalize_batch(sanitized_drugs)
                     for entity in entities:
-                        if entity.confidence == 0.0:
+                        if getattr(entity, "source", None) == "rxnav_unavailable":
+                            status = "SERVICE_UNAVAILABLE"
+                            rxnav_unavailable = True
+                        elif entity.confidence == 0.0:
                             status = "NOT_FOUND"
                         elif entity.confidence < 0.8:
                             status = "AMBIGUOUS"
@@ -802,10 +806,15 @@ class LiveMedicalRAGService:
             yield _sse("rxnorm", {"entities": medications, "overall_status": "RESOLVED" if all_resolved else "FAILED"})
 
             if not all_resolved:
-                yield _sse("error", {
-                    "code": "NORMALIZATION_ERROR",
-                    "message": "One or more medications could not be resolved to a canonical identity.",
-                })
+                if rxnav_unavailable:
+                    error = {"code": "NORMALIZATION_SERVICE_UNAVAILABLE",
+                             "message": "RxNorm (RxNav) could not be reached, so the medication identities could "
+                                        "not be checked. This is not a finding that a medication does not exist; "
+                                        "retry later."}
+                else:
+                    error = {"code": "NORMALIZATION_ERROR",
+                             "message": "One or more medications could not be resolved to a canonical identity."}
+                yield _sse("error", error)
                 yield _sse("stage_update", {
                     "stage": "normalizing",
                     "status": "failed",

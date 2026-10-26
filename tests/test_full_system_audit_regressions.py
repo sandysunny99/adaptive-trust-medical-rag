@@ -404,3 +404,52 @@ def test_image_uploads_are_refused_when_too_many_are_waiting(live_state):
     finally:
         for key in keys:
             pending.pop(key, None)
+
+
+# ── AUD-R2: an RxNav outage is reported as an outage, not as an unknown medication ─────────────
+
+class OutageClient:
+    async def get_rxcui_exact(self, name):
+        from adaptive_trust_medical_rag.normalization.drug_normalizer import RxNavUnavailableError
+        raise RxNavUnavailableError("ConnectError")
+
+    async def get_rxcui_approximate(self, name):
+        raise AssertionError("not reached")
+
+
+async def test_an_rxnav_outage_is_not_an_unresolved_drug():
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
+    from adaptive_trust_medical_rag.normalization.entity_cache import EntityCache
+
+    entity = await DrugNormalizer(cache=EntityCache({}), rxnorm_client=OutageClient()).normalize("spironolactone")
+    assert (entity.rxcui, entity.confidence, entity.source) == (None, 0.0, "rxnav_unavailable")
+
+
+async def test_the_client_raises_on_a_network_failure_instead_of_returning_no_match(monkeypatch):
+    import httpx
+
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import RxNavUnavailableError, RxNormClient
+
+    async def refuse(self, url, params=None):
+        raise httpx.ConnectError("refused")
+
+    monkeypatch.setattr(httpx.AsyncClient, "get", refuse)
+    with pytest.raises(RxNavUnavailableError):
+        await RxNormClient().get_rxcui_exact("spironolactone")
+
+
+async def test_the_live_stream_names_the_outage():
+    class Normalizer:
+        async def normalize_batch(self, names):
+            return [SimpleNamespace(raw_text=n, generic_name=None, rxcui=None, brand_name=None, formulation=None,
+                                    confidence=0.0, source="rxnav_unavailable", metadata={}) for n in names]
+
+    state = SimpleNamespace(drug_normalizer=Normalizer(), claim_verifier=object(),
+                            retrieval_engine=SimpleNamespace(retrieve=lambda **kw: []))
+    events = [e async for e in live_application.LiveMedicalRAGService(state).execute(
+        request_id="rxnav-out", drug_names=["warfarin", "ibuprofen"], patient_context=None, start_time=0.0)]
+    rxnorm = next(e["data"] for e in events if e["event"] == "rxnorm")
+    assert {m["status"] for m in rxnorm["entities"]} == {"SERVICE_UNAVAILABLE"}
+    error = next(e["data"] for e in events if e["event"] == "error")
+    assert error["code"] == "NORMALIZATION_SERVICE_UNAVAILABLE"
+    assert "not a finding" in error["message"]

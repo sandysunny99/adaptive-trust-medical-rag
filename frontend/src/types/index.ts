@@ -22,7 +22,7 @@ export type PipelineStage =
   | 'blocked'
   | 'error';
 
-export type RxNormStatus = 'MATCHED' | 'AMBIGUOUS' | 'NOT_FOUND' | 'UNAVAILABLE';
+export type RxNormStatus = 'MATCHED' | 'AMBIGUOUS' | 'NOT_FOUND' | 'UNAVAILABLE' | 'SERVICE_UNAVAILABLE' | 'ERROR';
 
 export type ExtractionConfidence = 'HIGH' | 'MEDIUM' | 'LOW' | 'UNCERTAIN';
 
