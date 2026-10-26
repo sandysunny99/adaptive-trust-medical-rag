@@ -1,0 +1,17 @@
+{
+  "dataset": "NLI_EVAL_SET_V1",
+  "file": "NLI_EVAL_SET_V1.jsonl",
+  "sha256": "bd23fe488df4be20bfdb9273ba8c8942c3043955dcd4254d06b0cee3d335f4ff",
+  "examples": 42,
+  "splits": {
+    "dev": 8,
+    "frozen_eval": 34
+  },
+  "labels": {
+    "ENTAILMENT": 14,
+    "NEUTRAL": 24,
+    "CONTRADICTION": 4
+  },
+  "label_review": "UNREVIEWED: written by the audit author (an AI assistant). Not clinician-validated; independent adjudication is required before these labels decide a model selection.",
+  "frozen": "2026-10-26, before any candidate model was run; not edited after candidate results."
+}
