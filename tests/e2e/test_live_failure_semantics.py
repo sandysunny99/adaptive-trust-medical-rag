@@ -735,3 +735,39 @@ def test_measured_relevance_is_the_vector_similarity():
     assert trust["missing_factors"] == ["evidence_quality", "population_match"]
     # 0.565 + 0.15*0.57 = 0.6505 >= 0.60.
     assert trust["overall_score"] == 0.6505 and trust["is_eligible"] is True
+
+
+# ── Food-guidance outcome is explicit (2026-10-26 audit round 2) ───────────────────────────────
+# The UI showed the same "could not be verified" text whether the food stage never ran, the evidence
+# held no food guidance, or generated food guidance failed verification. Each outcome is now named.
+
+def _food_status(events):
+    kind, data = outcome(events)
+    return kind, data.get("food_guidance_status")
+
+
+def test_food_status_verified_when_a_food_item_is_released():
+    assert _food_status(run()[0]) == ("answer", "VERIFIED")
+
+
+def test_food_status_none_found_when_the_released_answer_has_no_food_item():
+    answer = json.loads(json.dumps(ANSWER))
+    answer["food_guidance"] = []
+    assert _food_status(run(answer)[0]) == ("answer", "NONE_FOUND")
+
+
+def test_food_status_not_verified_when_a_food_statement_fails():
+    answer = json.loads(json.dumps(ANSWER))
+    answer["food_guidance"][0]["administration"] = UNVERIFIED_MARK
+    assert _food_status(run(answer)[0]) == ("abstention", "NOT_VERIFIED")
+
+
+def test_food_status_withheld_when_food_passed_but_another_statement_failed():
+    answer = json.loads(json.dumps(ANSWER))
+    answer["warnings"] = [f"{UNVERIFIED_MARK} [Source 1]."]
+    assert _food_status(run(answer)[0]) == ("abstention", "WITHHELD")
+
+
+def test_food_status_not_run_when_no_answer_was_generated():
+    events, _ = run(retrieval=StubRetrieval(chunks=[]))
+    assert _food_status(events) == ("abstention", "NOT_RUN")

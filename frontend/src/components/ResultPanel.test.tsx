@@ -201,3 +201,34 @@ describe('ResultPanel food and diet guidance', () => {
       'This does not mean there are no food or dietary issues');
   });
 });
+
+// 2026-10-26 audit round 2: food outcomes are named, and a withheld answer lists which statements failed.
+describe('ResultPanel food status and claim list', () => {
+  it.each([
+    ['NOT_RUN', 'was not assessed'],
+    ['NONE_FOUND', 'contains no food or dietary guidance'],
+    ['NOT_VERIFIED', 'could not be verified against the sources'],
+    ['WITHHELD', 'The answer was withheld'],
+  ] as const)('explains %s instead of one generic message', (status, text) => {
+    render(<ResultPanel result={makeResult({ food_guidance_status: status, gate_decision: 'abstain' })} />);
+    expect(screen.getByText(new RegExp(text))).toBeInTheDocument();
+    expect(screen.getByText(/does not mean there are no food or dietary issues/)).toBeInTheDocument();
+  });
+
+  it('lists each statement with its verification result and why it failed', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [
+        { claim_id: 0, field: 'conclusion', text: 'Lisinopril can cause hyperkalemia [Source 1].', support_state: 'SUPPORTED',
+          entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+          best_evidence_chunk: null, canonical_identity_status: null },
+        { claim_id: 1, field: 'warnings', text: 'Avoid all diuretics.', support_state: 'UNSUPPORTED',
+          entailment: 0.9, contradiction: 0, citation_present: false, citation_resolves: false,
+          best_evidence_chunk: null, canonical_identity_status: null },
+      ],
+    })} />);
+    expect(screen.getByText('Claim verification (1 of 2 verified)')).toBeInTheDocument();
+    expect(screen.getByText('Avoid all diuretics.')).toBeInTheDocument();
+    expect(screen.getByText('Cites no source')).toBeInTheDocument();
+  });
+});

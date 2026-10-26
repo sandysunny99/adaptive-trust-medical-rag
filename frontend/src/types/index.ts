@@ -213,6 +213,9 @@ export interface PatientConsideration {
 
 export interface ClaimInfo {
   claim_id: number;
+  /** The answer field the statement came from (conclusion, warnings, food_guidance, ...). */
+  field?: string;
+  item_index?: number | null;
   text: string;
   support_state: SupportState;
   entailment: number;
@@ -221,7 +224,13 @@ export interface ClaimInfo {
   citation_resolves: boolean;
   best_evidence_chunk: string | null;
   canonical_identity_status: CanonicalMatchStatus | null;
+  canonical_identity_reason?: string | null;
+  strength_check?: string;
+  invalid_source_references?: string[];
 }
+
+/** What happened to food and diet guidance in this analysis (backend food_guidance_status). */
+export type FoodGuidanceStatus = 'VERIFIED' | 'NONE_FOUND' | 'NOT_VERIFIED' | 'WITHHELD' | 'NOT_RUN';
 
 export interface SecurityInfo {
   injection_status: SecurityState;
@@ -248,6 +257,7 @@ export interface AnalysisResult {
   adverse_reactions: AdverseDrugReaction[];
   warnings: string[];
   food_guidance: FoodGuidance[];
+  food_guidance_status?: FoodGuidanceStatus;
   patient_considerations: PatientConsideration[];
   trust: TrustInfo | null;
   security: SecurityInfo | null;

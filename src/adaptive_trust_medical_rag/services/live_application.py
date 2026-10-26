@@ -1107,6 +1107,8 @@ class LiveMedicalRAGService:
                               f"(best trust score {max_trust_score:.2f}).")
                 yield _sse("abstention", {
                     "reason": reason,
+                    # No answer was generated, so food guidance was never assessed.
+                    "food_guidance_status": "NOT_RUN",
                     "evidence_retrieved": len(candidates),
                     "excluded_sources": excluded_sources,
                     # No model is called before an evidence abstention.
@@ -1468,8 +1470,13 @@ class LiveMedicalRAGService:
 
                 # Overwrite structured_result for abstention
                 # The eligible evidence the claims were checked against is shown with the abstention.
+                food_claims = [c for c in claims_out if c["field"] == "food_guidance"]
                 yield _sse("abstention", {
                     "reason": abstention_reason,
+                    # NOT_VERIFIED: a food statement failed; WITHHELD: food passed but the answer did not.
+                    "food_guidance_status": ("NOT_VERIFIED" if any(
+                        c["support_state"] != FinalSupportState.SUPPORTED.value for c in food_claims)
+                        else "WITHHELD" if food_claims else "NONE_FOUND"),
                     "claims": claims_out,
                     "removed_disclaimers": answer_fields["removed_disclaimers"],
                     "evidence": evidence_items,
@@ -1520,6 +1527,8 @@ class LiveMedicalRAGService:
                         " ".join([str(item.get("source") or ""), *map(str, item.get("food_interactions") or [])])))}
                     for item in answer_fields["food_guidance"]],
                 "patient_considerations": answer_fields["patient_considerations"],
+                # VERIFIED: released food items; NONE_FOUND: the verified answer holds no food guidance.
+                "food_guidance_status": "VERIFIED" if answer_fields["food_guidance"] else "NONE_FOUND",
                 "trust": {
                     "overall_score": max_trust_score,
                     "threshold": trust_threshold,
