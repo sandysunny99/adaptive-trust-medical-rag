@@ -425,3 +425,53 @@ class TestSerialization:
         )
         assert chunk.relationship_identity is not None
         assert chunk.relationship_identity.subject_rxcui == "11289"
+
+
+# ── Live claims stating a co-administration risk (2026-10-26 audit, round 2) ────────────────────
+# With real lisinopril label evidence, Groq wrote pair statements such as "spironolactone can
+# increase the risk of hyperkalemia when used with lisinopril". The parser read "increase" as the
+# drug-to-drug predicate INCREASES (spironolactone raises lisinopril), which the statement does not
+# say, so it never matched the approved INTERACTION record. For the live RequestDrugMap only, a
+# raised or lowered *risk of an effect* names an interaction between the two drugs; research callers
+# (a plain dict) keep the original parse, so research results do not change.
+
+import pytest as _pytest
+
+from adaptive_trust_medical_rag.verification.canonical_identity import RequestDrugMap as _RDM
+
+
+def _live_map():
+    m = _RDM()
+    m["lisinopril"], m["spironolactone"], m["clarithromycin"], m["simvastatin"] = "29046", "9997", "21212", "36567"
+    return m
+
+
+@_pytest.mark.parametrize("text, order", [
+    ("Concomitant use of lisinopril and spironolactone may increase the risk of hyperkalemia [Source 1].",
+     ("29046", "9997")),
+    ("Potassium-sparing diuretics such as spironolactone can increase the risk of hyperkalemia when used with "
+     "lisinopril [Source 1].", ("9997", "29046")),
+    ("Initiating lisinopril in patients on spironolactone can increase the risk of hyperkalemia [Source 1].",
+     ("29046", "9997")),
+    ("Spironolactone with lisinopril raises the risk of hyperkalemia [Source 1].", ("9997", "29046")),
+    ("Concomitant use of lisinopril with spironolactone can increase hyperkalemia risk [Source 1].",
+     ("29046", "9997")),
+])
+def test_a_raised_risk_of_an_effect_is_an_interaction_for_live_claims(text, order):
+    identity = extract_claim_identity(text, _live_map())
+    assert identity is not None
+    assert identity.predicate == "INTERACTION"
+    # The first drug named is the subject, as for every other predicate.
+    assert (identity.subject_rxcui, identity.object_rxcui) == order
+
+
+def test_a_drug_raising_another_drugs_exposure_keeps_its_direction_for_live_claims():
+    identity = extract_claim_identity("Clarithromycin increases simvastatin exposure [Source 1].", _live_map())
+    assert identity.predicate == "INCREASES"
+
+
+def test_research_callers_keep_the_original_parse():
+    plain = {"lisinopril": "29046", "simvastatin": "36567"}
+    identity = extract_claim_identity(
+        "Concomitant use of lisinopril and simvastatin may increase the risk of hyperkalemia.", plain)
+    assert identity.predicate == "INCREASES"

@@ -148,6 +148,13 @@ _PREDICATE_PATTERN = re.compile(
 )
 
 
+# "increases the risk of", "raise the risk of", "increase hyperkalemia risk": a change in an effect's risk.
+_RISK_OF_EFFECT = re.compile(
+    r"\b(?:increase[sd]?|decrease[sd]?|reduce[sd]?|raise[sd]?|lower(?:s|ed)?)\s+(?:the\s+)?(?:[\w-]+\s+){0,2}?risks?\b",
+    re.IGNORECASE,
+)
+
+
 class RequestDrugMap(dict):
     """A drug name -> RxCUI map whose names are also recognised as drug mentions in claims.
 
@@ -188,6 +195,15 @@ def extract_claim_identity(
     # Deduplicate while preserving text-order (first occurrence wins)
     drugs_found = drug_mentions(claim_text, drug_rxcui_map)
     predicates_found = _PREDICATE_PATTERN.findall(claim_text)
+    if isinstance(drug_rxcui_map, RequestDrugMap):
+        # Live claims only (see RequestDrugMap): "increase the risk of <effect>" says the two drugs
+        # together raise an effect's risk, not that one drug raises the other, so it names an
+        # interaction. Predicates inside such a phrase are dropped; research callers are unchanged.
+        risk_spans = [m.span() for m in _RISK_OF_EFFECT.finditer(claim_text)]
+        predicates_found = [m.group(1) for m in _PREDICATE_PATTERN.finditer(claim_text)
+                            if not any(s <= m.start() < e for s, e in risk_spans)]
+        if not predicates_found and risk_spans:
+            predicates_found = ["interaction"]
 
     if len(drugs_found) < 2 or not predicates_found:
         return None

@@ -523,7 +523,9 @@ def test_a_symmetric_record_keeps_the_predicate_exact(tmp_path):
     kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={
         "conclusion": "Clarithromycin with simvastatin increases the risk of myopathy and rhabdomyolysis [Source 1]."})
     assert kind == "abstention"
-    assert data["claims"][0]["canonical_identity_reason"] == "Predicate mismatch: source=CONTRAINDICATION claim=INCREASES"
+    # A raised risk of an effect is read as an interaction for live claims (2026-10-26 audit), and an
+    # interaction is still not the recorded contraindication.
+    assert data["claims"][0]["canonical_identity_reason"] == "Predicate mismatch: source=CONTRAINDICATION claim=INTERACTION"
 
 
 def test_a_symmetric_record_does_not_cover_another_pair(tmp_path):
