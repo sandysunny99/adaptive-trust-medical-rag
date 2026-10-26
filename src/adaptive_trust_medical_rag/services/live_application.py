@@ -948,8 +948,9 @@ class LiveMedicalRAGService:
                     factors=factors,
                 )
 
-                # Pre-LLM evidence eligibility
-                if result.trust_score >= trust_threshold and cand.source_authority >= 0.3:
+                # Pre-LLM evidence eligibility. is_eligible compares the unrounded score with the
+                # threshold (the same value as trust_threshold), so 0.59996 never passes 0.60.
+                if result.is_eligible and cand.source_authority >= 0.3:
                     eligible_candidates.append((sc, result.trust_score, result.missing_factors))
 
                 scored_chunks += 1

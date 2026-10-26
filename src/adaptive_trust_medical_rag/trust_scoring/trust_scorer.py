@@ -226,6 +226,7 @@ class AdaptiveTrustScorer:
         breakdown: dict[str, float] = {}
         total = 0.0
         missing_factors = []
+        unrounded = 0.0
 
         # Policy: FULL DENOMINATOR (No Renormalization)
         # Missing factors contribute 0.0 to the numerator but do not reduce the denominator.
@@ -239,13 +240,18 @@ class AdaptiveTrustScorer:
             contribution = round(weights[fname] * val, 6)
             breakdown[fname] = contribution
             total += contribution
+            unrounded += weights[fname] * val
 
         if weight_sum > 0:
             trust_score = round(total / weight_sum, 4)
+            raw_score = unrounded / weight_sum
         else:
-            trust_score = 0.0
+            trust_score = raw_score = 0.0
 
-        is_eligible = trust_score >= threshold
+        # The gate compares the unrounded score: rounding for display must not lift a score just
+        # below the threshold (0.59996 shows as 0.6) into eligibility. The tolerance only absorbs
+        # floating-point error, so a score of exactly the threshold stays eligible.
+        is_eligible = raw_score >= threshold - 1e-9
         notes: list[str] = []
 
         if missing_factors:

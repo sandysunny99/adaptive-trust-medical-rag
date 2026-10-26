@@ -594,3 +594,21 @@ def test_provider_failure_names_only_the_requested_model():
     assert (kind, data["code"]) == ("error", "LLM_ERROR")
     assert data["served_by"] is None
     assert data["requested_model"] == {"mode": "auto", "provider": "auto", "model_id": "auto"}
+
+
+def test_live_gate_uses_the_scorers_unrounded_decision(monkeypatch):
+    """AUD-07 (2026-10-26 audit): a score that displays as the threshold but is below it unrounded
+    (0.59996 shows as 0.6) is not eligible, so the analysis abstains before any model is called."""
+
+    class JustBelowScorer:
+        def score(self, chunk_id, risk_class, factors):
+            threshold = live_application.TRUST_THRESHOLDS[risk_class]
+            return SimpleNamespace(trust_score=threshold, threshold=threshold, is_eligible=False,
+                                   missing_factors=[])
+
+    monkeypatch.setattr(live_application, "AdaptiveTrustScorer", JustBelowScorer)
+    events, _ = run()
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    assert data["served_by"] is None
+    assert "none was eligible" in data["reason"]
