@@ -82,3 +82,8 @@ def test_several_cited_sources_are_judged_together():
 ])
 def test_the_violation_names_the_misplaced_words_as_written(statement, cited, others, expected):
     assert citation_alignment_violation(statement, cited, others) == expected
+
+
+def test_unicode_hyphens_from_the_model_match_the_source_spelling():
+    # "potassium‑sparing" (U+2011) is the source's "potassium-sparing", not "potassium" and "sparing".
+    assert uncited_terms("Potassium‑sparing diuretics increase hyperkalemia.", [SEC_71]) == []

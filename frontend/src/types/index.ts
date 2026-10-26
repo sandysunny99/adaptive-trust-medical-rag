@@ -232,6 +232,8 @@ export interface ClaimInfo {
   citation_alignment?: string;
   /** Why a named medication is not a confirmed one named by the cited sources (withholds the statement). */
   medication_identity?: string;
+  /** The verifier's cited-chunk gate on its own: false when the cited source does not entail the statement. */
+  citation_supports_claim?: boolean;
   invalid_source_references?: string[];
 }
 

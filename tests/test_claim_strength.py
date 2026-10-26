@@ -131,3 +131,10 @@ def test_the_answer_schema_severity_grades_are_not_outcome_severity_claims(grade
     # adverse_reactions[].severity is "common | important | serious" (LIVE_APP_PROMPT_V2); the statement built
     # from it reads "... severity serious". Graded words are not in the SEVERITY class; outcomes (fatal ...) are.
     assert strength_violation(f"Lisinopril can cause hyperkalemia; severity {grade} [Source 1].", [RISK_MONITOR]) is None
+
+
+def test_unicode_hyphens_from_the_model_do_not_hide_a_qualifier():
+    # The live model writes U+2011 (non-breaking hyphen): "life‑threatening" must match like "life-threatening".
+    assert "SEVERITY" in strength_violation("Hyperkalemia with lisinopril can be life‑threatening [Source 1].", [RISK_MONITOR])
+    assert "LACTATION" in source_text_violation("Lisinopril in breast‑feeding women [Source 1].", [LABEL_71])
+    assert "DURATION" in source_text_violation("Hyperkalemia appears 2–3 days after starting [Source 1].", [LABEL_71])

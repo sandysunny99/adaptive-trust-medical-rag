@@ -81,13 +81,20 @@ def _stem(word: str) -> str:
     return word
 
 
+_HYPHENS = re.compile("[‐-–−]")  # the model writes U+2011 ("potassium‑sparing"); labels use "-"
+
+
+def _words(text: str) -> list[str]:
+    return _WORD_RE.findall(_HYPHENS.sub("-", text).lower())
+
+
 def _stems(texts: list[str]) -> set[str]:
-    return {_stem(w) for t in texts for w in _WORD_RE.findall(t.lower())}
+    return {_stem(w) for t in texts for w in _words(t)}
 
 
 def content_terms(text: str) -> dict[str, str]:
     """The statement's content words (as written) mapped to their stems; ignored classes removed."""
-    return {w: _stem(w) for w in _WORD_RE.findall(_MARKER_RE.sub(" ", text).lower()) if w not in IGNORED}
+    return {w: _stem(w) for w in _words(_MARKER_RE.sub(" ", text)) if w not in IGNORED}
 
 
 def uncited_terms(statement: str, cited_texts: list[str]) -> list[str]:

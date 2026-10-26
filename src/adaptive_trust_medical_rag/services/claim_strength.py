@@ -55,8 +55,12 @@ _EXTRAS: tuple[tuple[str, re.Pattern[str]], ...] = tuple((name, re.compile(patte
 ))
 
 
+_HYPHENS = re.compile("[‐-–−]")  # the model writes U+2011 ("life‑threatening"); labels use "-"
+
+
 def claimed_strength(text: str) -> tuple[int, list[str], list[str]]:
     """The strongest action level the text claims, the actions found, and any extra claims."""
+    text = _HYPHENS.sub("-", text)
     actions = [action for action, pattern in _CUES if pattern.search(text)]
     extras = [name for name, pattern in _EXTRAS if pattern.search(text)]
     level = max((ACTION_LEVELS[a] for a in actions), default=ACTION_LEVELS["RISK_ASSOCIATION"])

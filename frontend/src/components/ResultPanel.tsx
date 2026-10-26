@@ -260,6 +260,7 @@ export function ClaimList({ claims }: { claims: ClaimInfo[] }) {
           : c.medication_identity ? `Medication check: statement ${c.medication_identity}`
           : c.citation_alignment ? `Citation ${c.citation_alignment}`
           : c.canonical_identity_reason && c.canonical_identity_status !== 'MATCH' ? c.canonical_identity_reason
+          : c.citation_supports_claim === false ? 'The cited source does not support this statement'
           : null;
         return (
           <li key={c.claim_id} className="rounded border border-border p-2">

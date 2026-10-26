@@ -255,4 +255,16 @@ describe('ResultPanel food status and claim list', () => {
       .toBeInTheDocument();
     expect(screen.getByText('Claim verification (0 of 1 verified)')).toBeInTheDocument();
   });
+
+  it('says when the cited source itself does not support a statement, and stays silent when the field is absent', () => {
+    const base = { field: 'conclusion', support_state: 'UNSUPPORTED' as const, entailment: 0.99, contradiction: 0,
+      citation_present: true, citation_resolves: true, best_evidence_chunk: null, canonical_identity_status: null };
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ ...base, claim_id: 0, text: 'Serum potassium should be monitored periodically [Source 1].',
+        citation_supports_claim: false },
+        { ...base, claim_id: 1, text: 'An older result without the field [Source 1].' }],
+    })} />);
+    expect(screen.getAllByText('The cited source does not support this statement')).toHaveLength(1);
+  });
 });
