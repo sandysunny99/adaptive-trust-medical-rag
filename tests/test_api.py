@@ -414,6 +414,7 @@ class TestLiveAndReady:
         app = create_app()
         app.state.retrieval_engine = None
         app.state.claim_verifier = None
+        app.state.llm_backend = object()  # set explicitly: a checkout without provider keys has none
         app.state.model_init_errors = {"retrieval": "live corpus file X not found"}
         resp = TestClient(app).get("/health/ready")
         assert resp.status_code == 503
