@@ -20,6 +20,8 @@ export function useAnalysis() {
   const [runInputMode, setRunInputMode] = useState<InputMode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [extractedCandidates, setExtractedCandidates] = useState<MedicationCandidate[]>([]);
+  // Warnings about the extraction itself (e.g. instruction-like text in the image).
+  const [extractionWarnings, setExtractionWarnings] = useState<string[]>([]);
   const [currentRequestId, setCurrentRequestId] = useState<string | null>(null);
   
   // Keep track of the active connection
@@ -59,6 +61,7 @@ export function useAnalysis() {
 
       case 'medication_candidates_extracted':
         setExtractedCandidates(data.candidates || []);
+        setExtractionWarnings(data.warnings || []);
         break;
 
       case 'confirmation_required':
@@ -152,6 +155,7 @@ export function useAnalysis() {
     setError(null);
     setRunInputMode(payload.inputMode);
     setExtractedCandidates([]);
+    setExtractionWarnings([]);
     setCurrentRequestId(null);
 
     let partialResult: Partial<AnalysisResult> = {
@@ -249,6 +253,7 @@ export function useAnalysis() {
     result,
     error,
     extractedCandidates,
+    extractionWarnings,
     runInputMode,
     cancel: cleanup
   };

@@ -37,6 +37,8 @@ export interface MedicationCandidate {
   source: 'VISION' | 'OCR' | 'USER';
   source_region?: any;
   warnings?: string[];
+  /** Set by the backend's transcription screen (e.g. FROM_INSTRUCTION_LIKE_LINE); [] when not flagged. */
+  screening_flags?: string[];
 }
 
 /**

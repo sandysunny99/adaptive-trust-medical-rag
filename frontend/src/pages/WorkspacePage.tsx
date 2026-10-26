@@ -80,6 +80,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     result, 
     error,
     extractedCandidates,
+    extractionWarnings,
     runInputMode,
   } = useAnalysis();
 
@@ -379,6 +380,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       {currentStage === 'confirming' && (
         <MedicationConfirmationPanel 
           candidates={extractedCandidates}
+          warnings={extractionWarnings}
           onConfirm={confirm}
         />
       )}

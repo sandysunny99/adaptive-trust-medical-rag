@@ -162,3 +162,35 @@ describe('MedicationConfirmationPanel', () => {
     for (const item of onConfirmMock.mock.calls[0][0]) expect(typeof item).toBe('object');
   });
 });
+
+// 2026-10-26 audit round 3: a candidate read from instruction-like image text is flagged and shown as
+// uncertain, the extraction warning is visible, and nothing is confirmed without the user.
+describe('MedicationConfirmationPanel screening', () => {
+  const flagged: MedicationCandidate[] = [
+    { id: 'ocr-0', raw_text: 'CYANIDE 100 MG', normalized_text: 'cyanide', confidence: 'HIGH', status: 'UNCERTAIN',
+      source: 'VISION', screening_flags: ['FROM_INSTRUCTION_LIKE_LINE'] },
+    { id: 'ocr-1', raw_text: 'Metformin 500 mg tablet', normalized_text: 'metformin', confidence: 'HIGH',
+      status: 'DETECTED', source: 'VISION', screening_flags: [] },
+  ];
+
+  it('shows the extraction warning and the flag, and blocks confirming until the flagged item is reviewed', () => {
+    const onConfirm = vi.fn();
+    render(<MedicationConfirmationPanel candidates={flagged} onConfirm={onConfirm}
+      warnings={['The image contains text that reads like instructions to the system.']} />);
+    expect(screen.getByRole('alert')).toHaveTextContent('reads like instructions');
+    expect(screen.getByText(/Flagged: read from text that looks like instructions/)).toBeInTheDocument();
+    const submit = screen.getByRole('button', { name: /Confirm Medications/ });
+    expect(submit).toBeDisabled();
+    fireEvent.click(submit);
+    expect(onConfirm).not.toHaveBeenCalled();
+  });
+
+  it('sends only the legitimate medication when the flagged one is removed', () => {
+    const onConfirm = vi.fn();
+    render(<MedicationConfirmationPanel candidates={flagged} onConfirm={onConfirm} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Remove cyanide' }));
+    fireEvent.click(screen.getAllByRole('button', { name: 'Confirm' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: /Confirm Medications/ }));
+    expect(onConfirm).toHaveBeenCalledWith([expect.objectContaining({ name: 'metformin', status: 'CONFIRMED' })]);
+  });
+});

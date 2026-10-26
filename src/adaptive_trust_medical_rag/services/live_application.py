@@ -39,6 +39,7 @@ from adaptive_trust_medical_rag.services.live_relationships import (
     load_relationship_store,
 )
 from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
+from adaptive_trust_medical_rag.services.vision_screening import screen_extraction
 from adaptive_trust_medical_rag.services.claim_strength import (
     reviewed_claims,
     reviewed_food_lines,
@@ -546,16 +547,33 @@ class LiveMedicalRAGService:
                         vision_provider_used = (getattr(ext_res, "provider_used", None)
                                                 or getattr(vision_backend, "provider_name", None))
 
+                        # The transcription is untrusted: a candidate from (or not placeable outside)
+                        # instruction-like text is flagged and shown as UNCERTAIN, whatever the model's
+                        # confidence, so it is never presented as an accepted extraction.
+                        screening = screen_extraction(getattr(ext_res, "raw_text", ""), ext_res.candidate_medications)
                         candidates_payload = []
                         for idx, cand in enumerate(ext_res.candidate_medications):
+                            flags = screening.candidate_flags[idx]
                             candidates_payload.append({
                                 "id": f"ocr-{idx}",
                                 "raw_text": cand.raw_text,
                                 "normalized_text": cand.normalized_text,
                                 "confidence": cand.confidence.value,
-                                "status": "DETECTED" if cand.confidence.value in ["HIGH", "MEDIUM"] else "UNCERTAIN",
-                                "source": "VISION"
+                                "status": ("DETECTED" if cand.confidence.value in ["HIGH", "MEDIUM"] and not flags
+                                           else "UNCERTAIN"),
+                                "source": "VISION",
+                                "screening_flags": flags,
                             })
+                        flagged = sum(1 for f in screening.candidate_flags if f)
+                        extraction_warnings = list(ext_res.warnings or [])
+                        if screening.instruction_like_text or flagged:
+                            log.warning("Vision transcription for %s holds instruction-like text; %d candidate(s) flagged",
+                                        request_id, flagged)
+                            extraction_warnings.append(
+                                "The image contains text that reads like instructions to the system. It was treated "
+                                "as data, not followed. Medications flagged below were not accepted automatically; "
+                                "check each one against the prescription before confirming. This check cannot prove "
+                                "the image is free of such text.")
 
                         # A count only, never names: it tells an empty extraction from a missing confirmation.
                         log.info("Vision extraction for %s: %d medication candidate(s) via %s/%s",
@@ -574,7 +592,9 @@ class LiveMedicalRAGService:
 
                         yield _sse("medication_candidates_extracted", {
                             "candidates": candidates_payload,
-                            "warnings": ext_res.warnings,
+                            "warnings": extraction_warnings,
+                            "screening": {"instruction_like_text": screening.instruction_like_text,
+                                          "flagged_candidates": flagged},
                             "vision_provider": vision_provider_used,
                             "vision_model": vision_model_used,
                             "vision_attempts": list(getattr(ext_res, "attempts", None) or []),

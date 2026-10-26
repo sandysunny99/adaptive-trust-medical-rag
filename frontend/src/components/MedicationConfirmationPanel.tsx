@@ -5,6 +5,8 @@ import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
   candidates: MedicationCandidate[];
+  /** Warnings about the extraction, shown above the list (e.g. instruction-like text in the image). */
+  warnings?: string[];
   onConfirm: (confirmed: ConfirmedMedication[]) => void;
 }
 
@@ -20,7 +22,7 @@ function toConfirmedMedication(c: MedicationCandidate): ConfirmedMedication {
   return { name, status: 'CONFIRMED', source: c.source === 'OCR' ? 'OCR' : 'VISION', raw_detected_name: c.raw_text };
 }
 
-export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm }: Props) {
+export function MedicationConfirmationPanel({ candidates: initialCandidates, warnings = [], onConfirm }: Props) {
   const [candidates, setCandidates] = useState<MedicationCandidate[]>(
     initialCandidates.map(c => ({ ...c }))
   );
@@ -102,6 +104,11 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
       </div>
 
       <div className="p-5 space-y-4">
+        {warnings.length > 0 && (
+          <div role="alert" className="rounded-lg border border-warning/30 bg-warning-soft p-3 text-sm text-foreground space-y-1">
+            {warnings.map((w, i) => <p key={i}>{w}</p>)}
+          </div>
+        )}
         {activeCandidates.length === 0 && (
           <div className="text-sm text-muted-foreground text-center py-4">
             No medications detected.
@@ -164,6 +171,14 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                   </span>
                 )}
                 
+                {(c.screening_flags || []).length > 0 && (
+                  <span className="px-2 py-0.5 rounded-full bg-destructive-soft text-destructive">
+                    Flagged: {(c.screening_flags || []).includes('FROM_INSTRUCTION_LIKE_LINE')
+                      ? 'read from text that looks like instructions to the system'
+                      : 'not found in the clean text of the prescription'}
+                  </span>
+                )}
+
                 <span className={`px-2 py-0.5 rounded-full ${
                   c.status === 'CONFIRMED' || c.status === 'USER_ADDED' || c.status === 'EDITED' 
                     ? 'bg-success-soft text-success' 
