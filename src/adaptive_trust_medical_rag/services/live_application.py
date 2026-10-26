@@ -40,6 +40,7 @@ from adaptive_trust_medical_rag.services.live_relationships import (
 )
 from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
 from adaptive_trust_medical_rag.services.vision_screening import screen_extraction
+from adaptive_trust_medical_rag.services.citation_alignment import citation_alignment_violation
 from adaptive_trust_medical_rag.services.claim_strength import (
     reviewed_claims,
     reviewed_food_lines,
@@ -62,6 +63,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
 from adaptive_trust_medical_rag.verification.canonical_identity import (
     RequestDrugMap,
     drug_mentions,
+    medication_identity_violation,
     extract_claim_identity,
 )
 
@@ -1395,7 +1397,14 @@ class LiveMedicalRAGService:
                             "support_state": _claim_support_state(v_report),
                             "verifier_decision": v_report.decision.value,
                             "citation_present": citation_present,
+                            # The verifier's entailment is its maximum over ALL eligible chunks, cited or
+                            # not; name that chunk so an uncited one is never silently shown as the
+                            # claim's evidence. Release needs the cited chunks' own support (below).
                             "entailment": max((j.entailment for j in judgments), default=None),
+                            "entailment_chunk_id": max(judgments, key=lambda j: j.entailment).best_entailment_chunk_id
+                            if judgments else None,
+                            "citation_supports_claim": bool(judgments) and all(
+                                j.citation_validation.citation_supports_claim for j in judgments),
                             "canonical_identity_status": identity.canonical_identity_status if identity else None,
                             "canonical_identity_reason": identity.canonical_identity_reason if identity else None,
                         })
@@ -1425,6 +1434,26 @@ class LiveMedicalRAGService:
                             if problem:
                                 claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
                                               "strength_check": problem})
+                            # Entailment also does not check attribution (a true fact cited to the wrong
+                            # label section was released, eval E25). A word screen withholds a statement
+                            # naming what its cited section lacks when one other retrieved section has all
+                            # of it; uncited sections only ever count against the citation, never for it.
+                            misaligned = citation_alignment_violation(
+                                statement.text,
+                                [eligible_candidates[n - 1][0].candidate.text for n in cited],
+                                [sc.candidate.text for i, (sc, _, _) in enumerate(eligible_candidates, start=1)
+                                 if i not in cited])
+                            if misaligned:
+                                claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
+                                              "citation_alignment": misaligned})
+                            # Nor medication identity for a one-drug statement (no pair check runs):
+                            # "Enalapril ..." cited to the lisinopril label was released (probe P01).
+                            drug_problem = medication_identity_violation(statement.text, drug_rxcui_map, [
+                                t for n in cited for cand in [eligible_candidates[n - 1][0].candidate]
+                                for t in (cand.text, (cand.metadata.get("source_identity") or {}).get("title") or "")])
+                            if drug_problem:
+                                claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
+                                              "medication_identity": drug_problem})
                     except Exception as e:
                         log.error("Claim verification error: %s", e)
                         # Keep the failed statement visible instead of dropping it from the report.

@@ -97,3 +97,37 @@ def test_a_statement_stronger_or_more_certain_than_its_unreviewed_source_is_refu
 ])
 def test_statements_the_label_states_pass(statement):
     assert source_text_violation(statement, [LABEL_71]) is None
+
+
+# ── Population, outcome severity and timing qualifiers (round 5, 2026-10-26) ──
+# With an over-entailing NLI, "in pediatric patients", "fatal" and "within 24 hours" added to a correct, correctly
+# cited lisinopril statement were released: the cue lists had no class for them. A source must state each one.
+
+@pytest.mark.parametrize(("statement", "extra"), [
+    ("Hyperkalemia occurs in pediatric patients receiving lisinopril [Source 1].", "PEDIATRIC"),
+    ("Hyperkalemia occurs in children receiving lisinopril [Source 1].", "PEDIATRIC"),
+    ("Hyperkalemia occurs in elderly patients receiving lisinopril [Source 1].", "GERIATRIC"),
+    ("Lisinopril causes hyperkalemia during pregnancy [Source 1].", "PREGNANCY"),
+    ("Lisinopril causes hyperkalemia in breastfeeding women [Source 1].", "LACTATION"),
+    ("Lisinopril can cause fatal hyperkalemia [Source 1].", "SEVERITY"),
+    ("Hyperkalemia with lisinopril can be life-threatening [Source 1].", "SEVERITY"),
+    ("Hyperkalemia occurs within 24 hours of starting lisinopril [Source 1].", "DURATION"),
+    ("Hyperkalemia may appear 2 to 3 days after lisinopril is started [Source 1].", "DURATION"),
+    ("Serum potassium should be checked immediately in patients receiving lisinopril [Source 1].", "TIMING"),
+])
+def test_population_severity_and_timing_need_the_source_to_state_them(statement, extra):
+    assert extra in strength_violation(statement, [RISK_MONITOR])
+    assert extra in source_text_violation(statement, [LABEL_71])
+
+
+def test_a_qualifier_the_source_states_passes():
+    source = "Fatal hyperkalemia has been reported in pediatric patients within 3 days of starting treatment."
+    assert source_text_violation("Lisinopril can cause fatal hyperkalemia in pediatric patients [Source 1].", [source]) is None
+    assert source_text_violation("Hyperkalemia was reported within 3 days in children [Source 1].", [source]) is None
+
+
+@pytest.mark.parametrize("grade", ["common", "important", "serious"])
+def test_the_answer_schema_severity_grades_are_not_outcome_severity_claims(grade):
+    # adverse_reactions[].severity is "common | important | serious" (LIVE_APP_PROMPT_V2); the statement built
+    # from it reads "... severity serious". Graded words are not in the SEVERITY class; outcomes (fatal ...) are.
+    assert strength_violation(f"Lisinopril can cause hyperkalemia; severity {grade} [Source 1].", [RISK_MONITOR]) is None

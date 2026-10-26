@@ -3,8 +3,8 @@
 NLI answers "does the passage support this?" and can accept "avoid salt substitutes" against a passage
 that only lists them as a risk factor (entailment 0.985 on 2026-10-22). This check is separate: each
 approved evidence chunk may carry reviewed ``supported_claims`` ({"text", "action"}), and a statement
-citing it may not exceed the strongest reviewed action, nor add certainty, a quantity or timing that
-no reviewed claim states.
+citing it may not exceed the strongest reviewed action, nor add certainty, a quantity, timing, a
+duration, a patient population or an outcome severity that no reviewed claim states.
 
 The cue lists catch overstatement; they are not the only guard. Food statements are released with the
 reviewed wording, not the generated wording (see ``reviewed_food_lines``), so a paraphrase the lists
@@ -42,7 +42,16 @@ _EXTRAS: tuple[tuple[str, re.Pattern[str]], ...] = tuple((name, re.compile(patte
     ("QUANTITY", r"\b\d+(?:\.\d+)?\s*(?:mg|g|grams?|mmol|meq|mEq|servings?|cups?|teaspoons?|tsp|percent|%)\b|"
                  r"\b(per day|a day|daily|each day|per week)\b"),
     ("TIMING", r"\b(empty stomach|with food|without food|before (?:meals|food|eating)|after (?:meals|food|eating)|"
-               r"at bedtime|hours? (?:before|after|apart))\b"),
+               r"at bedtime|hours? (?:before|after|apart)|immediately|at once|right away|hourly|weekly|monthly)\b"),
+    # Round 5: with an over-entailing NLI these were released when no source stated them. A population is its
+    # own class, so a source about pregnancy never vouches for children. Outcome severity only: the answer
+    # schema's grades ("common | important | serious") are field labels, not outcome claims.
+    ("DURATION", r"\b\d+(?:\.\d+)?\s*(?:(?:to|-)\s*\d+(?:\.\d+)?\s*)?(?:minutes?|hours?|hrs?|days?|weeks?|months?|years?)\b"),
+    ("PEDIATRIC", r"\b(pediatric|paediatric|child|children|infants?|neonat\w*|newborns?|adolescents?)\b"),
+    ("GERIATRIC", r"\b(geriatric|elderly|older (?:adults?|patients|people))\b"),
+    ("PREGNANCY", r"\b(pregnan\w*|fetal|fetus|foetal|foetus)\b"),
+    ("LACTATION", r"\b(lactat\w*|breast[- ]?feed\w*|breastfed|nursing (?:mothers?|women|infants?))\b"),
+    ("SEVERITY", r"\b(fatal\w*|lethal|deadly|life[- ]threatening|death|deaths|die|dies|died)\b"),
 ))
 
 

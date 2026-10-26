@@ -179,6 +179,27 @@ def drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
     return list(dict.fromkeys(m.lower() for m in pattern.findall(claim_text)))
 
 
+def medication_identity_violation(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str]) -> str | None:
+    """Why a statement's medications are not this analysis's confirmed ones named by its cited sources, or None.
+
+    The pair identity check runs only for statements naming two or more drugs, so "Enalapril can cause
+    hyperkalemia" cited to the lisinopril label had no identity check at all (round-5 probe P01). Each medication
+    the statement names must be a confirmed medication (a key of the request map, set from the normaliser) and
+    be named by a cited source's text or title. Exact names only: a brand is not its generic's label.
+
+    shortcut: a medication outside drug_mentions' recognition (the request's names, a fixed list, seven suffixes)
+    is not seen; recognising any name needs an RxNorm lookup per claim word or a reviewed drug lexicon.
+    """
+    mentions = drug_mentions(statement, drug_rxcui_map)
+    unconfirmed = [m for m in mentions if m not in drug_rxcui_map]
+    if unconfirmed:
+        return "names a medication this analysis did not confirm: " + ", ".join(unconfirmed)
+    uncited = [m for m in mentions if not any(re.search(rf"\b{re.escape(m)}\b", t, re.IGNORECASE) for t in cited_texts)]
+    if uncited:
+        return "names a medication its cited sources do not mention: " + ", ".join(uncited)
+    return None
+
+
 def extract_claim_identity(
     claim_text: str,
     drug_rxcui_map: dict[str, str],

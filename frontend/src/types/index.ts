@@ -228,6 +228,10 @@ export interface ClaimInfo {
   canonical_identity_status: CanonicalMatchStatus | null;
   canonical_identity_reason?: string | null;
   strength_check?: string;
+  /** Why the cited source's attribution was not verified (a word screen; withholds, never re-attributes). */
+  citation_alignment?: string;
+  /** Why a named medication is not a confirmed one named by the cited sources (withholds the statement). */
+  medication_identity?: string;
   invalid_source_references?: string[];
 }
 

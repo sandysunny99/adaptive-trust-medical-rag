@@ -257,6 +257,8 @@ export function ClaimList({ claims }: { claims: ClaimInfo[] }) {
         const why = c.invalid_source_references?.length ? `Cites a source that was not retrieved: ${c.invalid_source_references.join(', ')}`
           : !c.citation_present ? 'Cites no source'
           : c.strength_check ? `Stronger than its source: ${c.strength_check}`
+          : c.medication_identity ? `Medication check: statement ${c.medication_identity}`
+          : c.citation_alignment ? `Citation ${c.citation_alignment}`
           : c.canonical_identity_reason && c.canonical_identity_status !== 'MATCH' ? c.canonical_identity_reason
           : null;
         return (

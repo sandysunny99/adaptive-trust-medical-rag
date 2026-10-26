@@ -231,4 +231,28 @@ describe('ResultPanel food status and claim list', () => {
     expect(screen.getByText('Avoid all diuretics.')).toBeInTheDocument();
     expect(screen.getByText('Cites no source')).toBeInTheDocument();
   });
+
+  it('says when a statement was withheld because its citation attribution was not verified', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ claim_id: 0, field: 'conclusion', text: 'Lisinopril can cause hyperkalemia in renal insufficiency [Source 2].',
+        support_state: 'UNSUPPORTED', entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+        best_evidence_chunk: null, canonical_identity_status: null,
+        citation_alignment: 'attribution not verified: the cited source does not mention, though another retrieved source does: renal' }],
+    })} />);
+    expect(screen.getByText(/^Citation attribution not verified: .*renal$/)).toBeInTheDocument();
+  });
+
+  it('says when a statement names a medication the analysis did not confirm, and does not mark it verified', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ claim_id: 0, field: 'conclusion', text: 'Enalapril can cause hyperkalemia [Source 1].',
+        support_state: 'UNSUPPORTED', entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+        best_evidence_chunk: null, canonical_identity_status: null,
+        medication_identity: 'names a medication this analysis did not confirm: enalapril' }],
+    })} />);
+    expect(screen.getByText('Medication check: statement names a medication this analysis did not confirm: enalapril'))
+      .toBeInTheDocument();
+    expect(screen.getByText('Claim verification (0 of 1 verified)')).toBeInTheDocument();
+  });
 });
