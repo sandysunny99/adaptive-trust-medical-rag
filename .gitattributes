@@ -336,3 +336,5 @@ experiments/cognee_candidate_corpus_v1/COGNEE_CANDIDATE_CORPUS_V1_MANIFEST.json 
 # Relationship-candidate test fixtures: their manifests record the SHA-256 of the LF bytes, so a
 # Windows autocrlf checkout must not add CR. They stay CANDIDATE_PENDING test data.
 tests/fixtures/*_candidate/*.json text eol=lf
+# Live application prompts are hash-pinned (LIVE_APPLICATION_PROMPT*_HASH.json) and checked at load.
+src/adaptive_trust_medical_rag/prompts/LIVE_APP_PROMPT_V*.txt text eol=lf

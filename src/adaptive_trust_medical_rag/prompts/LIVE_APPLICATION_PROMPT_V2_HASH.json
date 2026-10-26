@@ -1,0 +1,9 @@
+{
+  "prompt_version": "LIVE_APP_PROMPT_V2",
+  "prompt_file": "src/adaptive_trust_medical_rag/prompts/LIVE_APP_PROMPT_V2.txt",
+  "prompt_sha256": "d1b3d60dfa3ca7f3fa496c2320a15b41d2db93311f7973abd50c44209c277f67",
+  "encoding": "utf-8",
+  "byte_length": 3716,
+  "supersedes": "LIVE_APP_PROMPT_V1 (kept unchanged and selectable with LIVE_APP_PROMPT_VERSION=V1)",
+  "change": "Adds a citation contract: every factual statement, including the conclusion and each claims_for_verification entry, ends with the [Source N] of the evidence block that states it; no disclaimer or statements about missing evidence (the application reports both)."
+}

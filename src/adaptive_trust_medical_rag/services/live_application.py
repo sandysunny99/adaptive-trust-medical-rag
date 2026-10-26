@@ -374,6 +374,43 @@ def _served_by(gen_result: Any, raw_text: str | None) -> dict[str, Any]:
     }
 
 
+PROMPT_DIR = os.path.join(os.path.dirname(__file__), "..", "prompts")
+# Version -> (prompt file, hash manifest). V1 is kept unchanged for reproducing earlier runs.
+LIVE_PROMPTS = {
+    "V1": ("LIVE_APP_PROMPT_V1.txt", "LIVE_APPLICATION_PROMPT_HASH.json"),
+    "V2": ("LIVE_APP_PROMPT_V2.txt", "LIVE_APPLICATION_PROMPT_V2_HASH.json"),
+}
+# V2 asks for a [Source N] on every statement, which claim verification requires (AUD-09).
+DEFAULT_PROMPT_VERSION = "V2"
+
+
+class PromptUnavailableError(RuntimeError):
+    """The selected live prompt is unknown, missing, or does not match its pinned SHA-256."""
+
+
+def load_live_prompt(version: str | None = None) -> tuple[str, str, str]:
+    """(version, template, sha256) of the live prompt, checked against its hash manifest.
+
+    The version is LIVE_APP_PROMPT_VERSION when set, else DEFAULT_PROMPT_VERSION. The bytes are
+    hashed as stored, so an edited prompt is refused rather than used under the old version name.
+    """
+    version = (version or os.environ.get("LIVE_APP_PROMPT_VERSION") or DEFAULT_PROMPT_VERSION).strip().upper()
+    if version not in LIVE_PROMPTS:
+        raise PromptUnavailableError(f"unknown live prompt version {version}")
+    prompt_file, manifest_file = LIVE_PROMPTS[version]
+    try:
+        with open(os.path.join(PROMPT_DIR, prompt_file), "rb") as f:
+            raw = f.read()
+        with open(os.path.join(PROMPT_DIR, manifest_file), encoding="utf-8") as f:
+            expected = json.load(f)["prompt_sha256"]
+    except (OSError, ValueError, KeyError) as e:
+        raise PromptUnavailableError(f"{prompt_file} could not be read ({type(e).__name__})") from e
+    actual = hashlib.sha256(raw).hexdigest()
+    if actual != expected:
+        raise PromptUnavailableError(f"{prompt_file} does not match its pinned SHA-256")
+    return version, raw.decode("utf-8"), actual
+
+
 class LiveMedicalRAGService:
     def __init__(self, app_state: Any) -> None:
         self.app_state = app_state
@@ -381,15 +418,12 @@ class LiveMedicalRAGService:
         self.prompt_detector = PromptInjectionDetector()
         self.poisoning_detector = RetrievalPoisoningDetector()
 
-        # Load prompt template
-        import os
-        prompt_path = os.path.join(os.path.dirname(__file__), "..", "prompts", "LIVE_APP_PROMPT_V1.txt")
+        # The hash-pinned prompt; "" when it cannot be loaded, and then no model is called.
         try:
-            with open(prompt_path, "r", encoding="utf-8") as f:
-                self.prompt_template = f.read()
-        except Exception as e:
-            log.warning("Could not load LIVE_APP_PROMPT_V1.txt: %s", e)
-            self.prompt_template = ""
+            self.prompt_version, self.prompt_template, self.prompt_sha256 = load_live_prompt()
+        except PromptUnavailableError as e:
+            log.error("Live prompt unavailable: %s", e)
+            self.prompt_version, self.prompt_template, self.prompt_sha256 = None, "", None
 
     def _screen_note(self, note: str, request_id: str) -> tuple[str | None, str]:
         """Screen the optional note with the sanitizer and injection detector used for drug
@@ -1096,6 +1130,17 @@ class LiveMedicalRAGService:
                 "timestamp": _ts(),
             })
 
+            if not self.prompt_template:
+                # Without the pinned prompt there is nothing safe to send: no model is called.
+                yield _sse("stage_update", {"stage": "generating", "status": "failed", "timestamp": _ts()})
+                yield _sse("error", {
+                    "code": "PROMPT_UNAVAILABLE",
+                    "message": "The answer prompt could not be loaded or failed its integrity check, so no "
+                               "model was called. This is a system problem, not an evidence finding.",
+                })
+                return
+            prompt_info = {"prompt_version": self.prompt_version, "prompt_sha256": self.prompt_sha256}
+
             query_str = ", ".join([f'{m.get("canonical_name", m["raw_text"])} (RxCUI: {m.get("rxcui", "Unknown")})' for m in medications])
             patient_ctx_str = patient_context_text(patient_context)
 
@@ -1396,6 +1441,7 @@ class LiveMedicalRAGService:
                     "evidence_retrieved": len(candidates),
                     "served_by": served_by,
                     "provider_attempts": provider_attempts,
+                    "prompt": prompt_info,
                     "trust": {
                         "overall_score": max_trust_score,
                         "threshold": trust_threshold,
@@ -1459,6 +1505,8 @@ class LiveMedicalRAGService:
                 "used_model": used_model_info,
                 "served_by": served_by,
                 "provider_attempts": provider_attempts,
+                # Which pinned prompt produced the answer, so a result can be reproduced.
+                "prompt": prompt_info,
             }
 
             yield _sse("stage_update", {
