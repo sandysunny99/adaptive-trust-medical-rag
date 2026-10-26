@@ -444,6 +444,24 @@ class LiveMedicalRAGService:
                     return
                 log.info("additional_instructions accepted for %s (%d chars)", request_id, length)
 
+            # Free-text patient context goes into the retrieval query and the prompt, so each entry
+            # passes the same screening as the note: a PHI pattern or an instruction aimed at the
+            # system rejects the request before any search or provider call. Text is never echoed.
+            for field in ("known_allergies", "known_conditions", "current_medications"):
+                for index, entry in enumerate((patient_context or {}).get(field) or []):
+                    screened, outcome = (self._screen_note(entry, request_id) if isinstance(entry, str)
+                                         else (None, "not text"))
+                    if screened is None:
+                        log.warning("patient_context.%s[%d] rejected for %s: %s", field, index, request_id, outcome)
+                        yield _sse("stage_update", {"stage": "uploading", "status": "failed", "timestamp": _ts()})
+                        yield _sse("error", {
+                            "code": "INPUT_REJECTED",
+                            "field": f"patient_context.{field}[{index}]",
+                            "message": "A patient-context entry did not pass security checks. Remove personal "
+                                       "identifiers, markup or instructions aimed at the system and retry.",
+                        })
+                        return
+
             # Checkpoint 3 & 5: Handle image upload and real vision extraction
             if image_bytes is not None and analysis_state is not None:
                 yield _sse("stage_update", {
