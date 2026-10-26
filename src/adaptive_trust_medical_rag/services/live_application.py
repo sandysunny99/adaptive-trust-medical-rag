@@ -260,8 +260,10 @@ def answer_statements(structured: dict[str, Any]) -> tuple[dict[str, Any], list[
     conclusion, fields["removed_disclaimers"] = remove_research_disclaimers(
         _field_text(structured.get("conclusion"), "conclusion"))
     fields["conclusion"] = conclusion
-    if conclusion:
-        statements.append(AnswerStatement("conclusion", None, conclusion))
+    # One statement per sentence: whether a statement is judged as a drug pair depends on the drugs
+    # it names, so a single-drug sentence must not inherit the pair named by the sentence before it.
+    for index, sentence in enumerate(s.strip() for s in _SENTENCE_SPLIT_RE.split(conclusion) if s.strip()):
+        statements.append(AnswerStatement("conclusion", index, sentence))
 
     for field in ("interactions", "adverse_reactions", "food_guidance", "patient_considerations"):
         items = structured.get(field) or []

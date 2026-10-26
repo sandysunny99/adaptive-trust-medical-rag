@@ -663,3 +663,31 @@ def test_ordinary_label_text_passes_the_injection_screen():
     (security,) = [e["data"] for e in events if e["event"] == "security"]
     assert security["injection_status"] == "ALLOW"
     assert outcome(events)[0] == "answer"
+
+
+def test_each_conclusion_sentence_is_verified_on_its_own():
+    """A conclusion naming both drugs in one sentence and one drug in the next was verified as one
+    statement, so the single-drug sentence was forced through the drug-pair identity check, found
+    no pair, and withheld a correct answer (real Groq run, 2026-10-26 audit round 2). Each sentence
+    is now its own statement, judged pairwise only when it names two drugs itself."""
+    calls: list[tuple[str, bool]] = []
+
+    class RecordingVerifier(ScriptedVerifier):
+        def verify(self, answer, evidence, **kwargs):
+            calls.append((answer, kwargs.get("drug_rxcui_map") is not None))
+            return super().verify(answer, evidence, **kwargs)
+
+    answer = json.loads(json.dumps(ANSWER))
+    answer["conclusion"] = ("Simvastatin and clarithromycin should not be combined [Source 1]. "
+                            "Simvastatin can cause myopathy [Source 1].")
+    events, _ = run(answer, verifier=RecordingVerifier())
+    kind, data = outcome(events)
+    assert kind == "answer"
+    sentences = ("Simvastatin and clarithromycin should not be combined [Source 1].",
+                 "Simvastatin can cause myopathy [Source 1].")
+    conclusion_calls = [c for c in calls if c[0] in sentences or c[0] == answer["conclusion"]]
+    assert conclusion_calls == [
+        ("Simvastatin and clarithromycin should not be combined [Source 1].", True),
+        ("Simvastatin can cause myopathy [Source 1].", False),
+    ]
+    assert data["conclusion"] == answer["conclusion"]
