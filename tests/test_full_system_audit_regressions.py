@@ -453,3 +453,53 @@ async def test_the_live_stream_names_the_outage():
     error = next(e["data"] for e in events if e["event"] == "error")
     assert error["code"] == "NORMALIZATION_SERVICE_UNAVAILABLE"
     assert "not a finding" in error["message"]
+
+
+# ── Salt and brand concepts keep their identity; their RxNorm ingredient is shown, not substituted ─
+
+async def test_a_salt_keeps_its_own_rxcui_and_reports_its_rxnorm_ingredient():
+    """medical-safety.md: evidence about one salt or ester form is never attributed to another
+    unless the evidence says so. "warfarin sodium" stays 114194 (RxNorm PIN) for evidence matching;
+    RxNorm's documented ingredient link (warfarin, 11289) is reported alongside, not used."""
+    class Normalizer:
+        async def normalize_batch(self, names):
+            return [SimpleNamespace(raw_text=n, generic_name=n, rxcui={"warfarin sodium": "114194",
+                                    "ibuprofen": "5640"}[n], brand_name=None, formulation=None,
+                                    confidence=1.0, source="rxnorm_exact", metadata={}) for n in names]
+
+        async def ingredients_of(self, rxcui):
+            return {"114194": [{"rxcui": "11289", "name": "warfarin"}],
+                    "5640": [{"rxcui": "5640", "name": "ibuprofen"}]}[rxcui]
+
+    state = SimpleNamespace(drug_normalizer=Normalizer(), claim_verifier=object(),
+                            retrieval_engine=SimpleNamespace(retrieve=lambda **kw: []))
+    events = [e async for e in live_application.LiveMedicalRAGService(state).execute(
+        request_id="salt", drug_names=["warfarin sodium", "ibuprofen"], patient_context=None, start_time=0.0)]
+    entities = {m["raw_text"]: m for m in next(e["data"] for e in events if e["event"] == "rxnorm")["entities"]}
+    assert entities["warfarin sodium"]["rxcui"] == "114194"
+    assert entities["warfarin sodium"]["rxnorm_ingredients"] == [{"rxcui": "11289", "name": "warfarin"}]
+    assert entities["ibuprofen"]["rxnorm_ingredients"] is None  # the concept is its own ingredient
+
+
+async def test_the_client_reads_ingredients_from_rxnorm_related(monkeypatch):
+    import httpx
+
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import RxNormClient
+
+    class Resp:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"relatedGroup": {"conceptGroup": [{"tty": "IN", "conceptProperties": [
+                {"rxcui": "11289", "name": "warfarin", "tty": "IN"}]}]}}
+
+    seen = []
+
+    async def get(self, url, params=None):
+        seen.append((url, params))
+        return Resp()
+
+    monkeypatch.setattr(httpx.AsyncClient, "get", get)
+    assert await RxNormClient().get_ingredients("114194") == [{"rxcui": "11289", "name": "warfarin"}]
+    assert seen[0][0].endswith("/rxcui/114194/related.json") and seen[0][1] == {"tty": "IN"}

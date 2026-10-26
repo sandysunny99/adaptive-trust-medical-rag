@@ -22,3 +22,12 @@ describe('MedicationCard statuses', () => {
     expect(screen.getByText('warfarin')).toBeInTheDocument();
   });
 });
+
+describe('MedicationCard ingredient link', () => {
+  it('shows the RxNorm ingredient of a salt without replacing its identity', () => {
+    render(<MedicationCard medication={{ ...med('MATCHED'), rxcui: '114194', canonical_name: 'warfarin sodium',
+      rxnorm_ingredients: [{ rxcui: '11289', name: 'warfarin' }] } as MedicationInfo} />);
+    expect(screen.getByText('114194')).toBeInTheDocument();
+    expect(screen.getByText(/RxNorm ingredient: warfarin \(RxCUI 11289\)/)).toBeInTheDocument();
+  });
+});

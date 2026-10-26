@@ -161,6 +161,21 @@ class RxNormClient:
             logger.warning("RxNorm name resolution failed for rxcui '%s': %s", rxcui, exc)
             raise RxNavUnavailableError(type(exc).__name__) from exc
 
+    async def get_ingredients(self, rxcui: str) -> list[dict[str, str]]:
+        """The concept's RxNorm ingredients (TTY IN) via /rxcui/{rxcui}/related.json?tty=IN."""
+        url = f"{RXNORM_BASE_URL}/rxcui/{rxcui}/related.json"
+        try:
+            async with httpx.AsyncClient(timeout=self._timeout) as client:
+                resp = await client.get(url, params={"tty": "IN"})
+                resp.raise_for_status()
+                data = resp.json()
+        except httpx.HTTPError as exc:
+            logger.warning("RxNorm ingredient lookup failed for rxcui '%s': %s", rxcui, exc)
+            raise RxNavUnavailableError(type(exc).__name__) from exc
+        groups = (data.get("relatedGroup") or {}).get("conceptGroup") or []
+        return [{"rxcui": p["rxcui"], "name": p["name"]} for g in groups for p in g.get("conceptProperties") or []
+                if p.get("tty") == "IN"]
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Main normalizer
@@ -182,6 +197,22 @@ class DrugNormalizer:
         self._cache = cache or EntityCache.load_default()
         self._rxnorm = rxnorm_client or RxNormClient()
         self._use_api = use_api
+        self._ingredients: dict[str, list[dict[str, str]]] = {}
+
+    async def ingredients_of(self, rxcui: str) -> list[dict[str, str]] | None:
+        """RxNorm's ingredient concepts for an RxCUI, or None when RxNav could not be asked.
+
+        Informational: a salt (PIN) or brand (BN) concept keeps its own RxCUI for evidence matching
+        (medical-safety.md: no attribution across salt forms unless the evidence says so).
+        """
+        if not self._use_api:
+            return None
+        if rxcui not in self._ingredients:
+            try:
+                self._ingredients[rxcui] = await self._rxnorm.get_ingredients(rxcui)
+            except RxNavUnavailableError:
+                return None
+        return self._ingredients[rxcui]
 
     def _extract_formulation(self, text: str) -> str | None:
         """Detect salt / formulation qualifiers in the drug text string."""

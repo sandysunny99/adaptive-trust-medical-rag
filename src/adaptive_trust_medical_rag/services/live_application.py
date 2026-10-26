@@ -758,6 +758,13 @@ class LiveMedicalRAGService:
                                 drug_rxcui_map[entity.generic_name.lower()] = entity.rxcui
 
                         prov_info = provenance_map.get(entity.raw_text.lower(), {})
+                        # RxNorm's ingredient link, shown only when the concept is not its own
+                        # ingredient (a salt or brand). Evidence matching keeps the exact RxCUI.
+                        ingredients = None
+                        if entity.rxcui and hasattr(normalizer, "ingredients_of"):
+                            found = await normalizer.ingredients_of(entity.rxcui)
+                            if found and [i["rxcui"] for i in found] != [entity.rxcui]:
+                                ingredients = found
 
                         medications.append({
                             "raw_text": entity.raw_text,
@@ -778,6 +785,7 @@ class LiveMedicalRAGService:
                             "confirmation_status": prov_info.get("status", "CONFIRMED" if provenance_map else None),
                             "raw_detected_name": prov_info.get("raw_detected_name"),
                             "status": status,
+                            "rxnorm_ingredients": ingredients,
                         })
                 except Exception as e:
                     log.error("RxNorm error: %s", e)

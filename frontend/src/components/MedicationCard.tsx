@@ -54,6 +54,12 @@ export function MedicationCard({ medication }: MedicationCardProps) {
         {medication.route && <div>Route: {medication.route}</div>}
         <div>Identity method: {methodLabel(medication)}</div>
       </div>
+      {medication.rxnorm_ingredients && medication.rxnorm_ingredients.length > 0 && (
+        <p className="mt-2 text-[11px] text-muted-foreground">
+          RxNorm ingredient: {medication.rxnorm_ingredients.map(i => `${i.name} (RxCUI ${i.rxcui})`).join(', ')}.
+          Evidence is matched to the exact concept above, not to its ingredient.
+        </p>
+      )}
       {medication.status === 'MATCHED' && (
         <p className="mt-2 text-[11px] text-muted-foreground">
           Drug identity only. Interactions and evidence are verified separately below.

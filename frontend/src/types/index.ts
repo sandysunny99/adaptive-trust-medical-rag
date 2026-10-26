@@ -79,6 +79,8 @@ export interface MedicationInfo {
   source: 'cache' | 'rxnorm_exact' | 'rxnorm_approx' | 'unresolved';
   /** How the drug identity was resolved (for a cache hit, how the entry was first resolved). */
   identity_method?: 'rxnorm_exact' | 'rxnorm_approx' | 'seed_cache' | string;
+  /** RxNorm ingredient(s) of a salt or brand concept; informational, never used for evidence matching. */
+  rxnorm_ingredients?: { rxcui: string; name: string }[] | null;
   status: RxNormStatus;
 }
 
