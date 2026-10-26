@@ -233,7 +233,7 @@ const FOOD_STATUS_TEXT: Record<FoodGuidanceStatus, string> = {
 };
 
 /** What happened to food guidance; without a status, the older generic wording. */
-export function foodStatusText(status: FoodGuidanceStatus | undefined): string {
+function foodStatusText(status: FoodGuidanceStatus | undefined): string {
   return (status && FOOD_STATUS_TEXT[status])
     || 'No food or dietary guidance could be verified from the available sources for this analysis.';
 }
