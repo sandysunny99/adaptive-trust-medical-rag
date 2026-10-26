@@ -519,7 +519,7 @@ class LiveMedicalRAGService:
                 yield _sse("stage_update", {
                     "stage": "extracting",
                     "status": "running",
-                    "message": "Extracting medications from prescription image via NVIDIA Vision...",
+                    "message": "Extracting medications from the prescription image...",
                     "timestamp": _ts(),
                 })
 
@@ -606,7 +606,7 @@ class LiveMedicalRAGService:
                     # Fallback if no backend configured
                     yield _sse("error", {
                         "code": "PROVIDER_CONFIGURATION_REQUIRED",
-                        "message": "NVIDIA Vision Backend is not configured."
+                        "message": "No vision provider is configured, so the image cannot be read. Enter the medication names instead."
                     })
                     yield _sse("stage_update", {
                         "stage": "extracting",

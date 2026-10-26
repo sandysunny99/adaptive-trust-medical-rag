@@ -256,6 +256,7 @@ def test_the_app_wires_groq_vision_as_the_fallback_and_it_can_be_disabled(monkey
     monkeypatch.setenv("NVIDIA_OCR_API_KEY", "FAKE_TEST_KEY_0000")
     monkeypatch.setenv("GROQ_API_KEY", "FAKE_TEST_KEY_0001")
     monkeypatch.delenv("GROQ_VISION_MODEL", raising=False)
+    monkeypatch.setenv("VISION_PRIMARY", "nvidia")  # this test is about Groq as NVIDIA's fallback
     vision = create_app().state.vision_backend
     assert vision.provider_name == "nvidia_vision"
     assert (vision.fallback_backend.provider_name, vision.fallback_backend.model_name) == (
@@ -352,3 +353,10 @@ def test_a_rate_limit_moves_to_the_other_provider_but_not_to_another_model_of_th
     assert calls == ["vision-primary", "groq-vision"]
     assert result.provider_used == "groq_vision"
     assert [a.get("failure_class") for a in result.attempts] == ["RATE_LIMIT", None]
+
+
+def test_groq_is_the_default_vision_primary(monkeypatch):
+    """Adopted after the 2026-10-26 comparison (see DEFAULT_VISION_PRIMARY)."""
+    from adaptive_trust_medical_rag.api.app import build_vision_backend
+    _vision_env(monkeypatch)
+    assert _chain(build_vision_backend()) == ["groq_vision", "nvidia_vision"]

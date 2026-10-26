@@ -63,7 +63,10 @@ DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
 # Groq model that accepts images; verified on 2026-10-22 to extract the synthetic prescription.
 DEFAULT_GROQ_VISION_MODEL = "qwen/qwen3.8-27b"
 # Vision provider tried first (VISION_PRIMARY); the other configured one is its fallback.
-DEFAULT_VISION_PRIMARY = "nvidia"
+# Groq since the 2026-10-26 comparison on 10 synthetic prescriptions: NVIDIA-first timed out on all 10
+# (about 62 s each, then Groq served); Groq-first read 20 of 20 correctly, median about 2.8 s, with
+# NVIDIA serving the 8 that Groq rate-limited.
+DEFAULT_VISION_PRIMARY = "groq"
 
 
 def load_env_files(root: Path = REPO_ROOT) -> list[str]:
