@@ -8,6 +8,8 @@ Covers: query, ingest, health, audit endpoints + middleware.
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from typing import Any
 
 from fastapi.testclient import TestClient
@@ -397,3 +399,55 @@ class TestRateLimiting:
         for _ in range(10):
             resp = client.get("/health")
             assert resp.status_code == 200
+
+
+# ── Liveness, readiness and one app per process (2026-10-26 audit, round 3, phase 7) ────────────
+# /health keeps its contract (it reports the research database, which the live app does not use, so
+# it reads "unhealthy" without one). /health/live and /health/ready describe the live application.
+
+class TestLiveAndReady:
+    def test_liveness_is_ok_while_the_process_serves(self) -> None:
+        data = _make_client().get("/health/live")
+        assert data.status_code == 200 and data.json() == {"status": "alive"}
+
+    def test_readiness_is_503_until_retrieval_and_the_verifier_are_loaded(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = None
+        app.state.claim_verifier = None
+        app.state.model_init_errors = {"retrieval": "live corpus file X not found"}
+        resp = TestClient(app).get("/health/ready")
+        assert resp.status_code == 503
+        body = resp.json()
+        assert body["status"] == "not_ready"
+        assert set(body["missing"]) == {"retrieval", "claim_verifier"}
+        assert body["errors"] == {"retrieval": "live corpus file X not found"}
+        assert body["database"] == "not used by the live application"
+
+    def test_readiness_is_200_when_the_live_components_are_loaded(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = object()
+        app.state.claim_verifier = object()
+        app.state.llm_backend = object()
+        resp = TestClient(app).get("/health/ready")
+        assert resp.status_code == 200 and resp.json()["status"] == "ready"
+
+    def test_readiness_names_a_missing_llm_provider(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = object()
+        app.state.claim_verifier = object()
+        app.state.llm_backend = None
+        body = TestClient(app).get("/health/ready").json()
+        assert body["missing"] == ["llm_provider"]
+
+
+def test_importing_the_app_module_does_not_build_an_app() -> None:
+    """uvicorn --factory imported the module, which built an app at import, then built another."""
+    script = ("import adaptive_trust_medical_rag.api.app as m\n"
+              "assert 'app' not in vars(m), 'built at import'\n"
+              "a = m.app\n"
+              "assert m.app is a\n"
+              "print('PASS')\n")
+    import os
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True,
+                            env={**os.environ, "TESTING": "1", "PYTHONPATH": "src"})
+    assert "PASS" in result.stdout, result.stderr[-800:]

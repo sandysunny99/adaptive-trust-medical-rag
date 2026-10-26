@@ -393,5 +393,11 @@ def create_app(
     return app
 
 
-# ── Module-level default instance (for uvicorn) ───────────────────────────────
-app = create_app()
+# ── Module-level default instance (for uvicorn ...:app) ────────────────────────
+# Built on first access, not at import: "uvicorn ...:create_app --factory" imports this module and
+# would otherwise build a second app (and its provider clients) that never serves a request.
+def __getattr__(name: str) -> Any:
+    if name == "app":
+        globals()["app"] = instance = create_app()
+        return instance
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
