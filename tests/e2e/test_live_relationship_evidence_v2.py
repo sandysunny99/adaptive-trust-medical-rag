@@ -103,13 +103,22 @@ def write_v2(tmp_path: Path, records=None, chunks=None, *, status="APPROVED", ap
     return load_relationship_store(CORPUS, directory=str(tmp_path))
 
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+# Fixture assumption: the evidence record carries an evidence-quality grade of 0.95. No live record
+# carries one yet, and without it no chunk reaches the R3 threshold of 0.75 (see the audit report).
+FIXTURE_EVIDENCE_QUALITY = 0.95
+
+
 def evidence_candidate(item: dict) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id=item["chunk_id"], document_id=item["document_id"], text=item["text"],
         source_url=item["document_url"], source_authority=item["authority"],
-        metadata={"provenance": item["provenance"], "source_type": item["source_type"],
+        metadata={"evidence_quality": FIXTURE_EVIDENCE_QUALITY, "provenance": item["provenance"], "source_type": item["source_type"],
                   "freshness_score": item["freshness"]},
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 def loads_nothing(store) -> bool:

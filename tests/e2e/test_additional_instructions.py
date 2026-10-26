@@ -61,6 +61,12 @@ REJECTED = [
 ]
 
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+
+
 def chunk(authority: float = 0.9) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id="c1", document_id="doc-c1", text=EVIDENCE, source_url="https://example.org/c1",
@@ -70,7 +76,7 @@ def chunk(authority: float = 0.9) -> ScoredCandidate:
                            "content_hash": hashlib.sha256(EVIDENCE.encode("utf-8")).hexdigest()},
             "source_type": "DAILYMED", "freshness_score": 0.9,
         },
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 class RecordingRetrieval:

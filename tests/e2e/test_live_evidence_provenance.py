@@ -48,6 +48,12 @@ def sha(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+
+
 def as_candidate(item: dict) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id=item["chunk_id"], document_id=item["document_id"], text=item["text"],
@@ -55,7 +61,7 @@ def as_candidate(item: dict) -> ScoredCandidate:
         metadata={"provenance": item.get("provenance", {}), "source_type": item.get("source_type"),
                   "freshness_score": item.get("freshness", 0.8), "source_identity": item.get("source_identity"),
                   "supported_claims": item.get("supported_claims")},
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 class StubRetrieval:

@@ -69,6 +69,8 @@ class ScoredCandidate:
     graph_rank: int | None = None  # rank in graph results (1-indexed); None if not retrieved
     rrf_score: float = 0.0
     cross_encoder_score: float | None = None
+    # Cosine similarity from the vector channel; None when that channel did not return the chunk.
+    vector_similarity: float | None = None
     final_rank: int | None = None
 
     @property
@@ -337,6 +339,7 @@ def reciprocal_rank_fusion(
                 sc.bm25_rank = rank
             elif channel_name == "vector":
                 sc.vector_rank = rank
+                sc.vector_similarity = float(_score)
             elif channel_name == "graph":
                 sc.graph_rank = rank
 

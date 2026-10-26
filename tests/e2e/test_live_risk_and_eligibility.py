@@ -87,6 +87,15 @@ def meds(*names: str) -> list[dict]:
 
 # ── Harness ──────────────────────────────────────────────────────────────────
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+# Fixture assumption: the evidence record carries an evidence-quality grade of 0.95. No live record
+# carries one yet, and without it no chunk reaches the R3 threshold of 0.75 (see the audit report).
+FIXTURE_EVIDENCE_QUALITY = 0.95
+
+
 def corpus_chunk(chunk_id: str, *, text: str | None = None, authority: float | None = None,
                  retrieval_score: float | None = None) -> ScoredCandidate:
     item = BY_ID.get(chunk_id, {})
@@ -98,13 +107,14 @@ def corpus_chunk(chunk_id: str, *, text: str | None = None, authority: float | N
         source_url=item.get("document_url", f"https://example.org/{chunk_id}"),
         source_authority=float(item.get("authority", 0.95)) if authority is None else authority,
         metadata={
+            "evidence_quality": FIXTURE_EVIDENCE_QUALITY,
             "provenance": {"source": "DAILYMED", "chunk_id": chunk_id, "content_hash": sha(body)},
             "source_type": item.get("source_type", "DAILYMED"),
             "freshness_score": float(item.get("freshness", 0.9)),
         },
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
     if retrieval_score is not None:
-        sc.score = retrieval_score
+        sc.vector_similarity = retrieval_score
     return sc
 
 

@@ -121,6 +121,8 @@ export interface TrustInfo {
   unverified_source_excluded?: number;
   factors: TrustFactors;
   missing_factors: string[];
+  /** How the backend filled the trust factors (e.g. LIVE_TRUST_FACTORS_V2: measured or missing). */
+  factor_policy?: string;
 }
 
 export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
@@ -153,7 +155,8 @@ export interface EvidenceItem {
   source_link_note?: string;
   source_authority: number;
   trust_score: number;
-  freshness: number;
+  /** Null when the evidence record carries no freshness (it is then a missing trust factor). */
+  freshness: number | null;
   retrieval_method: string;
   provenance_status: string;
   source_identity_status?: SourceIdentityStatus;

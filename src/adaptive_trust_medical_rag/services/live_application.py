@@ -67,6 +67,15 @@ log = logging.getLogger(__name__)
 
 # Eligibility thresholds per risk tier; the same values as config/trust.yaml.
 TRUST_THRESHOLDS = {"R0": 0.30, "R1": 0.45, "R2": 0.60, "R3": 0.75}
+# How the live pipeline fills the nine trust factors; reported with every trust result.
+TRUST_FACTOR_POLICY = "LIVE_TRUST_FACTORS_V2"
+
+
+def _unit(value: Any) -> float | None:
+    """A measured factor value clamped to [0, 1], or None when it was not measured."""
+    if value is None or isinstance(value, bool):
+        return None
+    return min(1.0, max(0.0, float(value)))
 
 
 def _ts() -> str:
@@ -961,6 +970,7 @@ class LiveMedicalRAGService:
             eligible_candidates = []
             max_trust_score = 0.0
             best_factors = None
+            best_missing: list[str] = []
             unrelated = 0
             excluded_sources = []
             seen_content = set()
@@ -999,17 +1009,21 @@ class LiveMedicalRAGService:
                 seen_content.add(content_key)
                 entity_match = 1.0
 
-                rel_score = float(getattr(sc, "score", 0.85))
+                # LIVE_TRUST_FACTORS_V2: a factor is measured or missing (None), never a default.
+                # A missing factor adds 0 under the scorer's full-denominator policy, as in the
+                # research orchestrator. Query relevance is the vector channel's cosine similarity
+                # (config/trust.yaml: "semantic similarity"); evidence quality and population match
+                # are used only when the evidence record carries them.
                 factors = TrustFactorScores(
                     source_authority=cand.source_authority,
-                    query_relevance=min(1.0, max(0.0, rel_score)),
-                    evidence_quality=float(cand.metadata.get("evidence_quality", cand.source_authority)),
-                    freshness=float(cand.metadata.get("freshness_score", 0.8)),
+                    query_relevance=_unit(getattr(sc, "vector_similarity", None)),
+                    evidence_quality=_unit(cand.metadata.get("evidence_quality")),
+                    freshness=_unit(cand.metadata.get("freshness_score")),
                     consistency=1.0 - cand.poisoning_score,
                     entity_match=entity_match,
-                    population_match=float(cand.metadata.get("population_match", 0.8)),
+                    population_match=_unit(cand.metadata.get("population_match")),
                     anti_poisoning=1.0 - cand.poisoning_score,
-                    anti_injection=1.0,
+                    anti_injection=1.0,  # chunks carrying instructions were excluded above
                 )
 
                 result = self.trust_scorer.score(
@@ -1024,9 +1038,10 @@ class LiveMedicalRAGService:
                     eligible_candidates.append((sc, result.trust_score, result.missing_factors))
 
                 scored_chunks += 1
-                if result.trust_score > max_trust_score:
+                if best_factors is None or result.trust_score > max_trust_score:
                     max_trust_score = result.trust_score
                     best_factors = factors
+                    best_missing = list(result.missing_factors)
 
             # No chunk reached scoring: there is no trust score, which is not a computed 0.
             trust_score_out = max_trust_score if scored_chunks else None
@@ -1042,7 +1057,8 @@ class LiveMedicalRAGService:
                 "unrelated_excluded": unrelated,
                 "unverified_source_excluded": len(excluded_sources),
                 "factors": best_factors.__dict__ if best_factors else {},
-                "missing_factors": []
+                "missing_factors": best_missing,
+                "factor_policy": TRUST_FACTOR_POLICY,
             })
             yield _sse("stage_update", {
                 "stage": "trust_evaluating",
@@ -1109,7 +1125,7 @@ class LiveMedicalRAGService:
                     "text": cand.text,
                     "source_authority": cand.source_authority,
                     "trust_score": ts,
-                    "freshness": float(cand.metadata.get("freshness_score", 0.8)),
+                    "freshness": _unit(cand.metadata.get("freshness_score")),
                     "retrieval_method": "hybrid-rrf",
                     # Reported from the registered SHA-256 itself, never assumed.
                     "provenance_status": _provenance_status(cand),
@@ -1494,7 +1510,8 @@ class LiveMedicalRAGService:
                     "risk_basis": risk_basis,
                     "is_eligible": True,
                     "factors": best_factors.__dict__ if best_factors else {},
-                    "missing_factors": []
+                    "missing_factors": best_missing,
+                    "factor_policy": TRUST_FACTOR_POLICY,
                 },
                 "security": security_data,
                 "claims": claims_out,
@@ -1670,7 +1687,10 @@ def _load_models(app_state):
             source_authority=item.get("authority", 0.5),
             metadata={
                 "provenance": item.get("provenance", {}),
-                "freshness_score": item.get("freshness", 0.8),
+                "freshness_score": item.get("freshness"),  # None when the record has none
+                # Measured trust factors a record may carry; absent means not measured.
+                "evidence_quality": item.get("evidence_quality"),
+                "population_match": item.get("population_match"),
                 "source_type": item.get("source_type"),
                 "source_identity": item.get("source_identity"),
                 "supported_claims": item.get("supported_claims"),

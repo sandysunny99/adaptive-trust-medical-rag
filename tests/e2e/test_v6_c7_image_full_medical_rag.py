@@ -212,13 +212,16 @@ def test_1_full_rag_happy_path():
     assert "retrieving" in stages
     assert "trust_evaluating" in stages
     assert "security_checking" in stages
-    assert "generating" in stages
-    assert "claim_verifying" in stages
 
-    answer_event = next((e for e in events if e.get("event") in ("answer", "complete", "analysis_complete")), None)
-    if not answer_event:
-        abstention_event = next((e for e in events if e.get("event") == "abstention"), None)
-        assert abstention_event is not None, "Pipeline did not complete nor abstain."
+    # Test-mode embeddings are a zero stub, so the vector channel measures no query relevance. Under
+    # LIVE_TRUST_FACTORS_V2 an unmeasured factor adds nothing (2026-10-26 audit), so the warfarin
+    # chunk scores 0.5775 < 0.60 at R2 and the analysis abstains before generation. Generation and
+    # claim verification with a measured relevance are covered in test_live_failure_semantics.py.
+    trust = next(e["data"] for e in events if e.get("event") == "trust")
+    assert "query_relevance" in trust["missing_factors"]
+    abstention = next(e for e in events if e.get("event") == "abstention")
+    assert "none was eligible" in abstention["data"]["reason"]
+    assert "generating" not in stages
 
 def test_2_controlled_abstention_unknown_drug():
     """TEST 2: Unknown drug confirmed -> RxNorm fails -> Abstain (No Retrieval/LLM)"""

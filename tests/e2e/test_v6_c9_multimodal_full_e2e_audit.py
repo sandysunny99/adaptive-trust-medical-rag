@@ -175,7 +175,7 @@ def setup_c9_mocks():
             class MockScoredCandidate:
                 def __init__(self):
                     self.candidate = MockCandidate()
-                    self.score = 0.85
+                    self.vector_similarity = 0.85  # fixture: the vector channel returned it
             return [MockScoredCandidate()]
 
     app.state.retrieval_engine = FastRetrievalEngine()

@@ -42,6 +42,12 @@ UNVERIFIED_MARK = "rhabdomyolysis-unverified"
 
 # ── Harness ──────────────────────────────────────────────────────────────────
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+
+
 def chunk(text: str = EVIDENCE, *, authority: float = 0.9, content_hash: str | None = None) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id="c1",
@@ -60,7 +66,7 @@ def chunk(text: str = EVIDENCE, *, authority: float = 0.9, content_hash: str | N
             "supported_claims": [{"text": "Simvastatin with clarithromycin is contraindicated (synthetic fixture).",
                                   "action": "AVOID", "allows": ["TIMING", "QUANTITY"]}],
         },
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 class StubRetrieval:
@@ -691,3 +697,41 @@ def test_each_conclusion_sentence_is_verified_on_its_own():
         ("Simvastatin can cause myopathy [Source 1].", False),
     ]
     assert data["conclusion"] == answer["conclusion"]
+
+
+# ── Trust factors are measured or reported missing (2026-10-26 audit round 2, OPEN-1) ─────────
+# The live pipeline read a nonexistent ScoredCandidate.score and so gave every chunk a query
+# relevance of 0.85; it copied source authority into evidence quality, defaulted population match to
+# 0.8, and always reported missing_factors=[]. A factor is now either measured (relevance is the
+# vector channel's cosine similarity, which config/trust.yaml defines it as) or missing, and missing
+# factors add nothing (the scorer's full-denominator policy, as in the research orchestrator).
+
+def _trust(events):
+    (trust,) = [e["data"] for e in events if e["event"] == "trust"]
+    return trust
+
+
+def test_unmeasured_factors_are_missing_not_defaulted():
+    sc = chunk()
+    sc.vector_similarity = None  # the vector channel did not return this chunk
+    events, _ = run(retrieval=StubRetrieval(chunks=[sc]))
+    trust = _trust(events)
+    assert trust["factor_policy"] == "LIVE_TRUST_FACTORS_V2"
+    assert trust["missing_factors"] == ["query_relevance", "evidence_quality", "population_match"]
+    assert trust["factors"]["query_relevance"] is None
+    assert trust["factors"]["evidence_quality"] is None
+    assert trust["factors"]["population_match"] is None
+    # R2 by hand: 0.25*0.9 + 0.10*0.9 + 0.10*1 + 0.10*1 + 0.03*1 + 0.02*1 = 0.565 < 0.60.
+    assert trust["overall_score"] == 0.565 and trust["is_eligible"] is False
+    assert outcome(events)[0] == "abstention"
+
+
+def test_measured_relevance_is_the_vector_similarity():
+    sc = chunk()
+    sc.vector_similarity = 0.57
+    events, _ = run(retrieval=StubRetrieval(chunks=[sc]))
+    trust = _trust(events)
+    assert trust["factors"]["query_relevance"] == 0.57
+    assert trust["missing_factors"] == ["evidence_quality", "population_match"]
+    # 0.565 + 0.15*0.57 = 0.6505 >= 0.60.
+    assert trust["overall_score"] == 0.6505 and trust["is_eligible"] is True

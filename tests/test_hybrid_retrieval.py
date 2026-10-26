@@ -328,6 +328,16 @@ class TestReciprocalRankFusion:
         fused = reciprocal_rank_fusion([bm25_list, vec_list])
         assert len(fused) == 2
 
+    def test_the_vector_channel_cosine_is_kept_and_only_from_that_channel(self) -> None:
+        # The live trust score uses it as query relevance (LIVE_TRUST_FACTORS_V2); a chunk the
+        # vector channel did not return has none, and a BM25 score is never taken for it.
+        bm25_list = [(WARFARIN_CHUNK, 5.0), (ASPIRIN_CHUNK, 2.0)]
+        vec_list = [(METFORMIN_CHUNK, 0.9), (WARFARIN_CHUNK, 0.7)]
+        by_id = {sc.candidate.chunk_id: sc for sc in reciprocal_rank_fusion([bm25_list, vec_list])}
+        assert by_id["c-warf-001"].vector_similarity == 0.7
+        assert by_id[METFORMIN_CHUNK.chunk_id].vector_similarity == 0.9
+        assert by_id[ASPIRIN_CHUNK.chunk_id].vector_similarity is None
+
     def test_candidate_appearing_in_both_channels_scores_higher(self) -> None:
         # WARFARIN_CHUNK appears rank-1 in both lists -> highest RRF score
         bm25_list = [(WARFARIN_CHUNK, 5.0), (ASPIRIN_CHUNK, 2.0)]
