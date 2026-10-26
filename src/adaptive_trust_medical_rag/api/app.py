@@ -62,6 +62,8 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_GROQ_MODEL = "openai/gpt-oss-120b"
 # Groq model that accepts images; verified on 2026-10-22 to extract the synthetic prescription.
 DEFAULT_GROQ_VISION_MODEL = "qwen/qwen3.8-27b"
+# Vision provider tried first (VISION_PRIMARY); the other configured one is its fallback.
+DEFAULT_VISION_PRIMARY = "nvidia"
 
 
 def load_env_files(root: Path = REPO_ROOT) -> list[str]:
@@ -198,6 +200,69 @@ def build_llm_router() -> tuple[Any, dict[str, Any]]:
     return router, config
 
 
+def build_vision_backend() -> Any:
+    """The prescription-image extraction backend, or None when no vision provider is configured.
+
+    Two providers are known: NVIDIA (``NVIDIA_OCR_API_KEY`` / ``NVIDIA_VISION_API_KEY`` /
+    ``NVIDIA_API_KEY``, model ``NVIDIA_OCR_MODEL`` or ``NVIDIA_VISION_MODEL``) and Groq
+    (``GROQ_API_KEY``, model ``GROQ_VISION_MODEL``; "" disables it). ``VISION_PRIMARY`` (nvidia or
+    groq) names the one tried first; the other, when configured, is its fallback within the same
+    total deadline (``VISION_DEADLINE_S``), and each attempt is bounded by ``VISION_TIMEOUT_S``.
+    Text-answer routing is separate and unaffected.
+    """
+    from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import (
+        DEFAULT_VISION_DEADLINE_S,
+        DEFAULT_VISION_TIMEOUT_S,
+        OpenAIVisionBackend,
+    )
+
+    timeout_s = _env_float("VISION_TIMEOUT_S", DEFAULT_VISION_TIMEOUT_S)
+    deadline_s = _env_float("VISION_DEADLINE_S", DEFAULT_VISION_DEADLINE_S)
+    nvidia_key = (os.environ.get("NVIDIA_OCR_API_KEY") or os.environ.get("NVIDIA_VISION_API_KEY")
+                  or os.environ.get("NVIDIA_API_KEY"))
+    # Verified on 2026-10-22 to read the synthetic prescription; GROQ_VISION_MODEL="" disables it.
+    groq_model = os.environ.get("GROQ_VISION_MODEL", DEFAULT_GROQ_VISION_MODEL)
+    backends: dict[str, Any] = {}
+    if nvidia_key:
+        backends["nvidia"] = OpenAIVisionBackend(
+            provider_name="nvidia_vision",
+            base_url=(os.environ.get("NVIDIA_OCR_BASE_URL") or os.environ.get("NVIDIA_VISION_BASE_URL")
+                      or "https://integrate.api.nvidia.com/v1"),
+            api_key=nvidia_key,
+            model_name=(os.environ.get("NVIDIA_OCR_MODEL") or os.environ.get("NVIDIA_VISION_MODEL")
+                        or "meta/llama-3.2-11b-vision-instruct"),
+            timeout_s=timeout_s,
+            deadline_s=deadline_s,
+            fallback_model=os.environ.get("VISION_FALLBACK_MODEL") or None,
+        )
+    if os.environ.get("GROQ_API_KEY") and groq_model:
+        backends["groq"] = OpenAIVisionBackend(
+            provider_name="groq_vision",
+            base_url=os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1"),
+            api_key=os.environ["GROQ_API_KEY"],
+            model_name=groq_model,
+            timeout_s=timeout_s,
+            deadline_s=deadline_s,
+        )
+    primary_name = (os.environ.get("VISION_PRIMARY") or DEFAULT_VISION_PRIMARY).strip().lower()
+    if primary_name not in ("nvidia", "groq"):
+        log.warning("VISION_PRIMARY=%s is not a vision provider (nvidia, groq); using %s",
+                    primary_name, DEFAULT_VISION_PRIMARY)
+        primary_name = DEFAULT_VISION_PRIMARY
+    order = [primary_name] + [n for n in ("nvidia", "groq") if n != primary_name]
+    order = [n for n in order if n in backends]
+    if not order:
+        log.warning("No vision API key set; prescription image extraction is disabled.")
+        return None
+    primary = backends[order[0]]
+    primary.fallback_backend = backends[order[1]] if len(order) > 1 else None
+    log.info("Vision extraction: provider=%s model=%s fallback_model=%s fallback_provider=%s",
+             primary.provider_name, primary.model_name, primary.fallback_model,
+             f"{primary.fallback_backend.provider_name}/{primary.fallback_backend.model_name}"
+             if primary.fallback_backend else None)
+    return primary
+
+
 def create_app(
     pipeline: Callable | None = None,
     ingester: Callable | None = None,
@@ -276,61 +341,10 @@ def create_app(
 
     load_env_files()
 
-    # Separate NVIDIA credentials: LLM text-generation vs. OCR / Vision extraction
-    nvidia_ocr_api_key = (
-        os.environ.get("NVIDIA_OCR_API_KEY")
-        or os.environ.get("NVIDIA_VISION_API_KEY")
-        or os.environ.get("NVIDIA_API_KEY")
-    )
-    nvidia_ocr_model = (
-        os.environ.get("NVIDIA_OCR_MODEL")
-        or os.environ.get("NVIDIA_VISION_MODEL")
-        or "meta/llama-3.2-11b-vision-instruct"
-    )
-    nvidia_ocr_base_url = (
-        os.environ.get("NVIDIA_OCR_BASE_URL")
-        or os.environ.get("NVIDIA_VISION_BASE_URL")
-        or "https://integrate.api.nvidia.com/v1"
-    )
-
     router, llm_config = build_llm_router()
     app.state.llm_config = llm_config
 
-    if nvidia_ocr_api_key:
-        from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import (
-            DEFAULT_VISION_DEADLINE_S,
-            DEFAULT_VISION_TIMEOUT_S,
-            OpenAIVisionBackend,
-        )
-        # Groq's image-capable model is tried only after NVIDIA's attempts fail on availability.
-        # Verified on 2026-10-22 to read the synthetic prescription; GROQ_VISION_MODEL="" disables it.
-        groq_vision_model = os.environ.get("GROQ_VISION_MODEL", DEFAULT_GROQ_VISION_MODEL)
-        groq_vision = None
-        if os.environ.get("GROQ_API_KEY") and groq_vision_model:
-            groq_vision = OpenAIVisionBackend(
-                provider_name="groq_vision",
-                base_url=os.environ.get("GROQ_BASE_URL", "https://api.groq.com/openai/v1"),
-                api_key=os.environ["GROQ_API_KEY"],
-                model_name=groq_vision_model,
-                timeout_s=_env_float("VISION_TIMEOUT_S", DEFAULT_VISION_TIMEOUT_S),
-            )
-        app.state.vision_backend = OpenAIVisionBackend(
-            provider_name="nvidia_vision",
-            base_url=nvidia_ocr_base_url,
-            api_key=nvidia_ocr_api_key,
-            model_name=nvidia_ocr_model,
-            # Per-attempt timeout and total deadline; defaults and their basis are in the backend.
-            timeout_s=_env_float("VISION_TIMEOUT_S", DEFAULT_VISION_TIMEOUT_S),
-            deadline_s=_env_float("VISION_DEADLINE_S", DEFAULT_VISION_DEADLINE_S),
-            fallback_model=os.environ.get("VISION_FALLBACK_MODEL") or None,
-            fallback_backend=groq_vision,
-        )
-        log.info("Vision extraction: provider=nvidia_vision model=%s fallback_model=%s fallback_provider=%s",
-                 nvidia_ocr_model, os.environ.get("VISION_FALLBACK_MODEL") or None,
-                 f"groq_vision/{groq_vision_model}" if groq_vision else None)
-    else:
-        app.state.vision_backend = None
-        log.warning("No vision API key set; prescription image extraction is disabled.")
+    app.state.vision_backend = build_vision_backend()
 
     if not router.providers:
         log.warning("No LLM API keys set; LLM functionality will be disabled.")

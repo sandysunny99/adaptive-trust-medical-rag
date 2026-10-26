@@ -227,7 +227,8 @@ def test_groq_serves_after_nvidia_stalls_and_the_result_names_it():
     assert [c.normalized_text for c in result.candidate_medications] == ["lisinopril", "spironolactone"]
 
 
-@pytest.mark.parametrize("first", [Resp(401), Resp(429), Resp(400)])
+# A 429 is per provider account, so it now moves to Groq (see the rate-limit test below).
+@pytest.mark.parametrize("first", [Resp(401), Resp(400)])
 def test_groq_is_not_used_when_nvidia_fails_for_a_non_availability_reason(first):
     err, calls = extract(with_groq(), first, Resp(200, GOOD))
     assert isinstance(err, ModelExecutionError) and calls == ["vision-primary"]
@@ -286,3 +287,68 @@ def test_concurrent_model_loads_share_one_load(monkeypatch):
     for t in threads:
         t.join()
     assert len(loads) == 1
+
+
+# ── Vision provider order (2026-10-26 audit round 2, decision D3) ──────────────────────────────
+
+def _vision_env(monkeypatch, *, nvidia=True, groq=True, primary=None):
+    for k in ("NVIDIA_OCR_API_KEY", "NVIDIA_VISION_API_KEY", "NVIDIA_API_KEY", "GROQ_API_KEY",
+              "GROQ_VISION_MODEL", "VISION_PRIMARY"):
+        monkeypatch.delenv(k, raising=False)
+    # load_env_files never overrides a set variable; an empty value keeps the developer's .env out.
+    monkeypatch.setenv("NVIDIA_OCR_API_KEY", "FAKE_TEST_KEY_0000" if nvidia else "")
+    monkeypatch.setenv("NVIDIA_VISION_API_KEY", "")
+    monkeypatch.setenv("NVIDIA_API_KEY", "")
+    monkeypatch.setenv("GROQ_API_KEY", "FAKE_TEST_KEY_0001" if groq else "")
+    if primary is not None:
+        monkeypatch.setenv("VISION_PRIMARY", primary)
+
+
+def _chain(backend):
+    out = []
+    while backend is not None:
+        out.append(backend.provider_name)
+        backend = backend.fallback_backend
+    return out
+
+
+def test_vision_primary_groq_puts_groq_first_with_nvidia_as_fallback(monkeypatch):
+    from adaptive_trust_medical_rag.api.app import build_vision_backend
+    _vision_env(monkeypatch, primary="groq")
+    assert _chain(build_vision_backend()) == ["groq_vision", "nvidia_vision"]
+
+
+def test_vision_primary_nvidia_keeps_the_previous_order(monkeypatch):
+    from adaptive_trust_medical_rag.api.app import build_vision_backend
+    _vision_env(monkeypatch, primary="nvidia")
+    assert _chain(build_vision_backend()) == ["nvidia_vision", "groq_vision"]
+
+
+def test_a_groq_key_alone_enables_vision(monkeypatch):
+    """Before, vision needed an NVIDIA key even when Groq's image model was configured."""
+    from adaptive_trust_medical_rag.api.app import build_vision_backend
+    _vision_env(monkeypatch, nvidia=False, primary="nvidia")
+    assert _chain(build_vision_backend()) == ["groq_vision"]
+
+
+def test_an_unknown_vision_primary_falls_back_to_the_default_order(monkeypatch):
+    from adaptive_trust_medical_rag.api.app import DEFAULT_VISION_PRIMARY, build_vision_backend
+    _vision_env(monkeypatch, primary="openai")
+    assert _chain(build_vision_backend())[0] == f"{DEFAULT_VISION_PRIMARY}_vision"
+
+
+def test_no_vision_key_disables_extraction(monkeypatch):
+    from adaptive_trust_medical_rag.api.app import build_vision_backend
+    _vision_env(monkeypatch, nvidia=False, groq=False)
+    assert build_vision_backend() is None
+
+
+def test_a_rate_limit_moves_to_the_other_provider_but_not_to_another_model_of_the_same_one():
+    """Groq-first evaluation (2026-10-26 audit round 2): Groq's image model answered 429 after two
+    requests and the extraction failed outright, though NVIDIA (its own quota) was configured as the
+    fallback. A rate limit now moves to another provider; another model on the same account would
+    share the limit, so that move stays off (test_retry_and_fallback_follow_the_failure_class)."""
+    result, calls = extract(with_groq(), Resp(429), Resp(200, GOOD))
+    assert calls == ["vision-primary", "groq-vision"]
+    assert result.provider_used == "groq_vision"
+    assert [a.get("failure_class") for a in result.attempts] == ["RATE_LIMIT", None]

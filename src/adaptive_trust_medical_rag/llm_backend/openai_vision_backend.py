@@ -292,7 +292,12 @@ class OpenAIVisionBackend(VisionProviderAdapter):
         for index, (backend, model) in enumerate(targets):
             if index > 0:
                 fc = getattr(last_error, "failure_class", FailureClass.UNKNOWN)
-                if fc not in _VISION_FALLBACK_CLASSES:
+                # A rate limit is per account: another model of this provider shares it, another
+                # provider does not (Groq vision answered 429 in the 2026-10-26 Groq-first run).
+                other_provider = backend is not self
+                if fc not in _VISION_FALLBACK_CLASSES and not (fc == FailureClass.RATE_LIMIT and other_provider):
+                    if fc == FailureClass.RATE_LIMIT and not other_provider:
+                        continue  # skip a same-provider fallback model; another provider may follow
                     break
                 log.warning("Vision model %s failed (%s); trying fallback %s model %s",
                             self.model_name, getattr(fc, "value", fc), backend.provider_name, model)
