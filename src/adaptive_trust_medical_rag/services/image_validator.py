@@ -11,6 +11,9 @@ log = logging.getLogger(__name__)
 MAX_IMAGE_SIZE_BYTES = 5 * 1024 * 1024  # 5 MB
 ALLOWED_MIME_TYPES = {"image/jpeg", "image/png", "image/webp"}
 ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+# The format Pillow decodes, with the MIME type the vision provider is told. The declared type and
+# extension come from the client; only the decoded format says what the bytes are.
+ALLOWED_FORMATS = {"JPEG": "image/jpeg", "PNG": "image/png", "WEBP": "image/webp"}
 
 class ImageValidationError(Exception):
     pass
@@ -59,6 +62,8 @@ class ImageValidator:
 
                 # We could do resize/orientation here if needed, but for now we just validate.
                 # Returning metadata
+                if img_format not in ALLOWED_FORMATS:
+                    raise ImageValidationError(f"Unsupported image format: {img_format}")
                 return {
                     "valid": True,
                     "original_image_sha256": original_hash,
@@ -66,8 +71,11 @@ class ImageValidator:
                     "width": width,
                     "height": height,
                     "size_bytes": len(file_bytes),
-                    "mime_type": content_type
+                    "mime_type": content_type,
+                    "detected_mime_type": ALLOWED_FORMATS[img_format],
                 }
+        except ImageValidationError:
+            raise
         except Exception as e:
             log.warning("Image property extraction failed: %s", e)
             raise ImageValidationError("Failed to read image properties.")

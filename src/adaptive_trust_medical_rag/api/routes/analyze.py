@@ -182,16 +182,26 @@ async def post_analyze_prescription(
         "validation": validation_meta
     }
 
-from typing import Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 
 
 class ConfirmedMedicationItem(BaseModel):
-    name: str
-    status: str
+    name: str = Field(..., max_length=200)
+    # Only the statuses the confirmation panel sends for a reviewed medication. A rejected,
+    # uncertain or merely detected candidate is not confirmed, so it is refused (422), never analyzed.
+    status: Literal["CONFIRMED", "EDITED", "USER_ADDED"]
     source: str = "VISION"
     raw_detected_name: Optional[str] = None
+
+    @field_validator("name")
+    @classmethod
+    def _non_blank_name(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("medication name is empty")
+        return v
 
 class ConfirmMedicationsRequest(BaseModel):
     confirmed_medications: list[ConfirmedMedicationItem]
@@ -206,6 +216,11 @@ async def confirm_medications(request_id: str, body: ConfirmMedicationsRequest, 
 
     if not analysis:
         raise HTTPException(status_code=404, detail="Analysis request not found or expired")
+    if analysis.get("confirmation_taken"):
+        # The running analysis already took a list; a later one would be accepted but never used.
+        raise HTTPException(status_code=409, detail="The medications for this analysis were already "
+                                                    "confirmed and are being analyzed. Upload the image "
+                                                    "again to analyze a different list.")
 
     analysis["confirmed_medications"] = body.confirmed_medications
     if "confirmation_event" in analysis:
@@ -234,6 +249,18 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
             })
 
         return StreamingResponse(error_stream(), media_type="text/event-stream")
+
+    if analysis.get("stream_started"):
+        # One stream per analysis: a second request (a reconnect, a duplicate tab) would run the
+        # pipeline, and its provider calls, again. Set before any await, so two requests cannot both pass.
+        async def busy_stream():
+            yield await _sse_event("error", {
+                "code": "STREAM_ALREADY_ACTIVE",
+                "message": "This analysis is already being streamed to another connection.",
+            })
+
+        return StreamingResponse(busy_stream(), media_type="text/event-stream")
+    analysis["stream_started"] = True
 
     async def pipeline_stream():
         """Execute the analysis pipeline and emit SSE events."""

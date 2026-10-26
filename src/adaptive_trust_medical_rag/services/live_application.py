@@ -459,7 +459,9 @@ class LiveMedicalRAGService:
                 if vision_backend:
 
                     original_image_sha256 = hashlib.sha256(image_bytes).hexdigest()
-                    mime = image_meta.get("content_type", "image/jpeg") if image_meta else "image/jpeg"
+                    # The type the bytes decode as; the client's declared type may be wrong.
+                    meta = image_meta or {}
+                    mime = meta.get("detected_mime_type") or meta.get("mime_type") or "image/jpeg"
 
                     try:
                         # Ensure we increment only on actual attempt
@@ -567,7 +569,9 @@ class LiveMedicalRAGService:
                         })
                         return
 
-                # User confirmed, use the confirmed medications for the rest of the pipeline
+                # User confirmed, use the confirmed medications for the rest of the pipeline. From here
+                # on a new confirmation is refused (409): the analysis runs on this list only.
+                analysis_state["confirmation_taken"] = True
                 confirmed = analysis_state.get("confirmed_medications", [])
                 if not confirmed:
                     analysis_state["finished"] = True
@@ -598,16 +602,35 @@ class LiveMedicalRAGService:
             })
 
             sanitized_drugs: list[str] = []
-            for drug_name in drug_names:
+            rejected_indices: list[int] = []
+            for index, drug_name in enumerate(drug_names):
                 result = sanitize_query(drug_name)
                 if result.rejected:
-                    log.warning("Drug name rejected by sanitizer: %s", drug_name[:20])
+                    rejected_indices.append(index)
                     continue
                 # Also check prompt injection
                 inj_dec = self.prompt_detector.inspect(result.sanitized, request_id)
                 if inj_dec.decision.name == "BLOCK":
+                    rejected_indices.append(index)
                     continue
                 sanitized_drugs.append(result.sanitized)
+
+            if rejected_indices:
+                # Analysing the rest would answer a different question than the one asked (a pair
+                # becomes a single drug), so a rejected name stops the analysis. Its text is not
+                # logged or echoed: it failed the checks for PHI and injected instructions.
+                log.warning("%d of %d drug name(s) rejected for %s at positions %s",
+                            len(rejected_indices), len(drug_names), request_id, rejected_indices)
+                yield _sse("stage_update", {"stage": "uploading", "status": "failed", "timestamp": _ts()})
+                yield _sse("error", {
+                    "code": "INPUT_REJECTED",
+                    "field": "drug_names",
+                    "rejected_indices": rejected_indices,
+                    "message": f"{len(rejected_indices)} of {len(drug_names)} medication name(s) did not pass "
+                               "security checks, so nothing was analyzed. Remove markup, instructions "
+                               "or personal identifiers from the medication names and retry.",
+                })
+                return
 
             if not sanitized_drugs:
                 yield _sse("error", {
