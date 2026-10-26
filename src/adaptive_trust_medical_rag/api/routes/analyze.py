@@ -49,6 +49,26 @@ async def get_llm_models(request: Request) -> LLMModelsResponse:
     )
 
 
+# A submitted analysis whose stream is never opened is dropped after this long (the frontend opens
+# it immediately). An analysis with an open stream is never dropped here: its stream removes it.
+PENDING_TTL_S = 600.0
+# Image uploads wait in memory (up to 5 MB each) until streamed; beyond this many waiting, new
+# uploads are refused (503) rather than growing memory without bound.
+MAX_PENDING_ANALYSES = 100
+
+
+def _pending_analyses(request: Request) -> dict[str, dict[str, Any]]:
+    """The pending-analysis store, with unstreamed entries older than PENDING_TTL_S removed."""
+    pending = getattr(request.app.state, "pending_analyses", None)
+    if pending is None:
+        request.app.state.pending_analyses = pending = {}
+    cutoff = time.time() - PENDING_TTL_S
+    for key in [k for k, a in pending.items()
+                if not a.get("stream_started") and a.get("created_at", cutoff) < cutoff]:
+        pending.pop(key, None)
+    return pending
+
+
 async def _sse_event(event: str, data: dict[str, Any]) -> str:
     """Format a Server-Sent Event."""
     payload = json.dumps(data, default=str)
@@ -78,10 +98,7 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
     request_id = str(uuid.uuid4())
 
     # Store the pending analysis request in app state
-    pending = getattr(request.app.state, "pending_analyses", None)
-    if pending is None:
-        request.app.state.pending_analyses = {}
-        pending = request.app.state.pending_analyses
+    pending = _pending_analyses(request)
 
     pending[request_id] = {
         "body": body,
@@ -132,10 +149,9 @@ async def post_analyze_prescription(
 
     request_id = str(uuid.uuid4())
 
-    pending = getattr(request.app.state, "pending_analyses", None)
-    if pending is None:
-        request.app.state.pending_analyses = {}
-        pending = request.app.state.pending_analyses
+    pending = _pending_analyses(request)
+    if sum(1 for a in pending.values() if not a.get("stream_started")) >= MAX_PENDING_ANALYSES:
+        raise HTTPException(status_code=503, detail="Too many analyses are waiting to start; retry shortly.")
 
     # Parse patient context if provided
     context_data = None

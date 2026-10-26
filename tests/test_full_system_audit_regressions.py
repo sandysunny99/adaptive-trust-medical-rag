@@ -364,3 +364,43 @@ async def test_approximate_match_for_a_misspelling_still_resolves():
     entity = await normalizer.normalize("warfrin")
     assert (entity.rxcui, entity.generic_name, entity.confidence, entity.source) == (
         "11289", "warfarin", 0.8, "rxnorm_approx")
+
+
+# ── AUD-11: submitted analyses that are never streamed expire instead of piling up ─────────────
+
+def test_unstreamed_analyses_expire_and_streaming_ones_are_kept():
+    import time
+
+    now = time.time()
+    old = now - analyze_route.PENDING_TTL_S - 1
+    pending = app.state.pending_analyses
+    pending["aud11-old-image"] = {"type": "prescription_image", "image_bytes": b"x" * 1000, "created_at": old}
+    pending["aud11-old-streaming"] = {"type": "prescription_image", "created_at": old, "stream_started": True}
+    pending["aud11-recent"] = {"type": "prescription_image", "created_at": now}
+    try:
+        res = client.post("/api/v1/analyze", json={"drug_names": ["warfarin"]})
+        assert res.status_code == 200
+        assert "aud11-old-image" not in pending
+        assert "aud11-old-streaming" in pending and "aud11-recent" in pending
+        events = sse_events(client.get("/api/v1/stream/aud11-old-image").text)
+        assert [e["data"]["code"] for e in events] == ["NOT_FOUND"]
+    finally:
+        for key in ("aud11-old-image", "aud11-old-streaming", "aud11-recent", res.json().get("request_id")):
+            pending.pop(key, None)
+
+
+def test_image_uploads_are_refused_when_too_many_are_waiting(live_state):
+    import time
+
+    pending = app.state.pending_analyses
+    keys = [f"aud11-wait-{i}" for i in range(analyze_route.MAX_PENDING_ANALYSES)]
+    for key in keys:
+        pending[key] = {"type": "prescription_image", "created_at": time.time()}
+    try:
+        files = {"image": ("rx.png", image_bytes("PNG"), "image/png")}
+        res = client.post("/api/v1/analyze/prescription", files=files)
+        assert res.status_code == 503
+        assert len([k for k in pending if k.startswith("aud11-wait-")]) == analyze_route.MAX_PENDING_ANALYSES
+    finally:
+        for key in keys:
+            pending.pop(key, None)
