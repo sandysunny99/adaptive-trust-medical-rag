@@ -61,3 +61,39 @@ def test_sources_without_reviewed_wording_do_not_constrain_here():
 def test_the_released_food_lines_are_the_reviewed_wording_with_markers():
     lines = reviewed_food_lines({1: RISK_MONITOR})
     assert lines == [RISK_MONITOR["supported_claims"][0]["text"] + " [Source 1]"]
+
+
+# ── Sources without reviewed wording bound a statement by their own text (round 3, 2026-10-26) ──
+# With one eligible chunk (lisinopril label 7.1, no reviewed wording), the real NLI model accepted
+# "Thiazide diuretics should be stopped in all patients taking lisinopril" at 0.999. The label only
+# says the diuretic may be decreased or discontinued to minimise hypotension.
+
+from adaptive_trust_medical_rag.services.claim_strength import source_text_violation  # noqa: E402
+
+LABEL_71 = ("7.1 Diuretics Initiation of lisinopril in patients on diuretics may result in excessive reduction of "
+            "blood pressure. The possibility of hypotensive effects with lisinopril can be minimized by either "
+            "decreasing or discontinuing the diuretic or increasing the salt intake prior to initiation of treatment "
+            "with lisinopril. If this is not possible, reduce the starting dose of lisinopril tablets. Lisinopril "
+            "attenuates potassium loss caused by thiazide-type diuretics. Potassium-sparing diuretics "
+            "(spironolactone, amiloride, triamterene, and others) can increase the risk of hyperkalemia. Therefore, "
+            "if concomitant use of such agents is indicated, monitor the patient's serum potassium frequently.")
+
+
+@pytest.mark.parametrize("statement", [
+    "Thiazide diuretics should be stopped in all patients taking lisinopril [Source 1].",
+    "Lisinopril must always be avoided with spironolactone [Source 1].",
+    "Spironolactone will cause hyperkalemia with lisinopril [Source 1].",
+])
+def test_a_statement_stronger_or_more_certain_than_its_unreviewed_source_is_refused(statement):
+    assert source_text_violation(statement, [LABEL_71]) is not None
+
+
+@pytest.mark.parametrize("statement", [
+    "Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure [Source 1].",
+    "Potassium-sparing diuretics such as spironolactone can increase the risk of hyperkalemia when used with "
+    "lisinopril; monitor serum potassium frequently [Source 1].",
+    "Lisinopril interacts with spironolactone, which can increase the risk of hyperkalemia [Source 1].",
+    "Concomitant use of lisinopril and spironolactone can increase the risk of hyperkalemia [Source 1].",
+])
+def test_statements_the_label_states_pass(statement):
+    assert source_text_violation(statement, [LABEL_71]) is None

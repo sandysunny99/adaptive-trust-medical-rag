@@ -83,3 +83,31 @@ def strength_violation(text: str, cited_metadata: list[dict[str, Any]]) -> str |
 def reviewed_food_lines(cited: dict[int, dict[str, Any]]) -> list[str]:
     """The reviewed wording of each cited source, with its [Source N] marker; what is released."""
     return [f"{c['text']} [Source {n}]" for n, meta in sorted(cited.items()) for c in reviewed_claims(meta)]
+
+
+_MARKER_RE = re.compile(r"\[Source\s+\d+\]", re.IGNORECASE)
+
+
+def source_text_violation(text: str, source_texts: list[str]) -> str | None:
+    """Why the statement claims more than its cited sources' own text, for sources with no reviewed
+    wording; None when it does not.
+
+    The same cue lists bound the statement by the cited text itself: it may not claim a stronger
+    action than the text contains, nor certainty, a quantity or timing the text does not state. NLI
+    alone accepted "Thiazide diuretics should be stopped in all patients taking lisinopril" against
+    a label that only says the diuretic may be decreased or discontinued (2026-10-26). This only
+    ever withholds.
+    """
+    if not source_texts:
+        return None
+    level, actions, extras = claimed_strength(_MARKER_RE.sub("", text))
+    found = [claimed_strength(t) for t in source_texts]
+    allowed = max(f[0] for f in found)
+    allowed_extras = {e for f in found for e in f[2]}
+    if level > allowed:
+        strongest = max(actions, key=lambda a: ACTION_LEVELS[a])
+        return f"claims {strongest}, stronger than the cited text states"
+    unsupported = [e for e in extras if e not in allowed_extras]
+    if unsupported:
+        return f"adds {', '.join(unsupported)} that the cited text does not state"
+    return None

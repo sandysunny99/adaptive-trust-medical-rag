@@ -771,3 +771,19 @@ def test_food_status_withheld_when_food_passed_but_another_statement_failed():
 def test_food_status_not_run_when_no_answer_was_generated():
     events, _ = run(retrieval=StubRetrieval(chunks=[]))
     assert _food_status(events) == ("abstention", "NOT_RUN")
+
+
+def test_a_statement_more_certain_than_an_unreviewed_source_is_withheld():
+    """Round 3 (2026-10-26): with no reviewed wording on the cited chunk, the statement is bounded by
+    the chunk's own text. The scripted verifier says SUPPORTED, as the real NLI model did for
+    "... should be stopped in all patients ..."; the strength bound withholds it."""
+    plain = chunk()
+    plain.candidate.metadata["supported_claims"] = None  # no reviewed wording
+    answer = json.loads(json.dumps(ANSWER))
+    answer["warnings"] = ["Simvastatin must be stopped in all patients taking clarithromycin [Source 1]."]
+    events, _ = run(answer, retrieval=StubRetrieval(chunks=[plain]))
+    kind, data = outcome(events)
+    assert kind == "abstention"
+    (failed,) = [c for c in data["claims"] if c["field"] == "warnings"]
+    assert failed["support_state"] == "UNSUPPORTED"
+    assert "cited text does not state" in failed["strength_check"]

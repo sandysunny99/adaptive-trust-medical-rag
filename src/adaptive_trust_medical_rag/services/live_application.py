@@ -43,6 +43,7 @@ from adaptive_trust_medical_rag.services.vision_screening import screen_extracti
 from adaptive_trust_medical_rag.services.claim_strength import (
     reviewed_claims,
     reviewed_food_lines,
+    source_text_violation,
     strength_violation,
 )
 from adaptive_trust_medical_rag.services.live_source_links import (
@@ -1416,6 +1417,11 @@ class LiveMedicalRAGService:
                                 problem = "the cited source has no reviewed food wording"
                             else:
                                 problem = strength_violation(statement.text, list(cited.values()))
+                                # A cited chunk without reviewed wording bounds the statement by its
+                                # own text (NLI accepted "... stopped in all patients ..." alone).
+                                unreviewed = [eligible_candidates[n - 1][0].candidate.text
+                                              for n, m in cited.items() if not reviewed_claims(m)]
+                                problem = problem or source_text_violation(statement.text, unreviewed)
                             if problem:
                                 claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
                                               "strength_check": problem})
