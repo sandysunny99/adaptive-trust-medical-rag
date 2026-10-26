@@ -317,3 +317,50 @@ async def test_ordinary_patient_context_still_reaches_retrieval():
         request_id="aud08-ok", drug_names=["warfarin", "ibuprofen"], patient_context=context, start_time=0.0)]
     assert len(queries) == 1 and "penicillin" in queries[0] and "atrial fibrillation" in queries[0]
     assert any(e["event"] == "abstention" for e in events)
+
+
+# ── AUD-10: an approximate RxNorm match must name a concept close to what was asked ────────────
+
+class ApproxOnlyClient:
+    """RxNav as observed on 2026-10-26: no exact match, and approximateTerm returns a candidate
+    even for a nonsense string ("zzqxv-not-a-drug" -> 835748, a concept with no RxNorm name)."""
+
+    def __init__(self, approx: tuple[str | None, str | None], names: dict[str, str | None]):
+        self.approx, self.names = approx, names
+
+    async def get_rxcui_exact(self, name):
+        return None
+
+    async def get_rxcui_approximate(self, name):
+        return self.approx
+
+    async def get_generic_name(self, rxcui):
+        return self.names.get(rxcui)
+
+
+@pytest.mark.parametrize("raw, approx, names", [
+    ("zzqxv-not-a-drug", ("835748", None), {"835748": None}),
+    ("zzqxv-not-a-drug", ("1595027", None), {"1595027": "tulathromycin A 485 MG/G"}),
+])
+async def test_approximate_match_to_an_unrelated_or_unnamed_concept_is_unresolved(raw, approx, names):
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
+    from adaptive_trust_medical_rag.normalization.entity_cache import EntityCache
+
+    normalizer = DrugNormalizer(cache=EntityCache({}), rxnorm_client=ApproxOnlyClient(approx, names))
+    entity = await normalizer.normalize(raw)
+    assert entity.rxcui is None
+    assert entity.confidence == 0.0
+    assert entity.metadata["rejected_approximate_rxcui"] == approx[0]
+    # Not cached: a later request asks RxNav again instead of reusing a rejected identity.
+    assert (await normalizer.normalize(raw)).rxcui is None
+
+
+async def test_approximate_match_for_a_misspelling_still_resolves():
+    from adaptive_trust_medical_rag.normalization.drug_normalizer import DrugNormalizer
+    from adaptive_trust_medical_rag.normalization.entity_cache import EntityCache
+
+    normalizer = DrugNormalizer(cache=EntityCache({}),
+                                rxnorm_client=ApproxOnlyClient(("11289", None), {"11289": "warfarin"}))
+    entity = await normalizer.normalize("warfrin")
+    assert (entity.rxcui, entity.generic_name, entity.confidence, entity.source) == (
+        "11289", "warfarin", 0.8, "rxnorm_approx")

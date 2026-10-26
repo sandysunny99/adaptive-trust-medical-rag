@@ -31,6 +31,19 @@ logger = logging.getLogger(__name__)
 
 RXNORM_BASE_URL = "https://rxnav.nlm.nih.gov/REST"
 _REQUEST_TIMEOUT = 5.0  # seconds
+# Minimum similarity between the text asked for and an approximate match's RxNorm name.
+# "warfrin" -> "warfarin" scores 0.93; "approxdrug" -> "approximatedrug" 0.80.
+APPROX_MIN_SIMILARITY = 0.75
+
+
+def _name_similarity(a: str, b: str) -> float:
+    """Similarity of two drug names, ignoring case, spaces and punctuation."""
+    from difflib import SequenceMatcher
+
+    def norm(s: str) -> str:
+        return "".join(ch for ch in s.lower() if ch.isalnum())
+
+    return SequenceMatcher(None, norm(a), norm(b)).ratio()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -230,6 +243,17 @@ class DrugNormalizer:
         approx_rxcui, approx_name = await self._rxnorm.get_rxcui_approximate(text)
         if approx_rxcui:
             generic_name = await self._rxnorm.get_generic_name(approx_rxcui)
+            # approximateTerm always returns a best candidate, even for a nonsense string (observed
+            # 2026-10-26: "zzqxv-not-a-drug" -> 835748, a concept with no RxNorm name), and its score
+            # does not tell a misspelling from noise. A candidate is an identity only when it has an
+            # RxNorm name close to the text asked for; anything else stays unresolved and uncached.
+            similarity = _name_similarity(text, generic_name) if generic_name else 0.0
+            if similarity < APPROX_MIN_SIMILARITY:
+                logger.warning("Approximate RxNorm match %s rejected for '%s' (RxNorm name %s, similarity %.2f)",
+                               approx_rxcui, text, "found" if generic_name else "missing", similarity)
+                return DrugEntity(raw_text=raw_text, formulation=formulation, confidence=0.0,
+                                  metadata={"rejected_approximate_rxcui": approx_rxcui,
+                                            "approximate_similarity": round(similarity, 2)})
             entity = DrugEntity(
                 raw_text=raw_text,
                 rxcui=approx_rxcui,
