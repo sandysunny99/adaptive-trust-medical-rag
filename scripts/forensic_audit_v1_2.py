@@ -7,7 +7,7 @@ from datetime import datetime
 
 results_file = "experiments/runs/real-llm-v1_2/REAL_LLM_V1_2_RUN_001/results.jsonl"
 metrics_file = "experiments/runs/real-llm-v1_2/REAL_LLM_V1_2_RUN_001/metrics.json"
-protocol_file = "REAL_LLM_EVALUATION_PROTOCOL_V1_2.json"
+protocol_file = "docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_2.json"
 
 with open(results_file, "r", encoding="utf-8") as f:
     records = [json.loads(line) for line in f if line.strip()]
@@ -119,14 +119,14 @@ for arm, m_key in [("arm_a", "arm_a_metrics"), ("arm_b", "arm_b_metrics")]:
     if abs(m_json.get("provider_failures", 0) - recomputed[arm]["failure_rate"]) > 0.001: metric_match = "NO"
 
 # Output CSV
-with open("V1_2_CASE_ARM_COMPLETION_MATRIX.csv", "w", newline="") as f:
+with open("docs/archive/real_llm_v1_2_v1_3/V1_2_CASE_ARM_COMPLETION_MATRIX.csv", "w", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=["case_id", "arm_a_executions", "arm_b_executions", "status"])
     writer.writeheader()
     for row in csv_data:
         writer.writerow(row)
 
 # Output Metric Recomputation MD
-with open("V1_2_METRIC_RECOMPUTATION.md", "w") as f:
+with open("docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION.md", "w") as f:
     f.write("# V1.2 METRIC RECOMPUTATION\n\n")
     f.write("## RAW RESULT AGGREGATION\n")
     f.write(f"- Arm A Cases: {recomputed['arm_a']['cases']}\n")
@@ -165,11 +165,11 @@ audit_json = {
     "retrieval_consistent": len(retrievals) == 1 and "FROZEN_HISTORICAL_OUTPUT" in retrievals,
     "metric_recomputation_match": metric_match == "YES"
 }
-with open("V1_2_RUN_FORENSIC_AUDIT.json", "w") as f:
+with open("docs/archive/real_llm_v1_2_v1_3/V1_2_RUN_FORENSIC_AUDIT.json", "w") as f:
     json.dump(audit_json, f, indent=2)
 
 # Output MD
-with open("V1_2_RUN_FORENSIC_AUDIT.md", "w") as f:
+with open("docs/archive/real_llm_v1_2_v1_3/V1_2_RUN_FORENSIC_AUDIT.md", "w") as f:
     f.write("# V1.2 RUN FORENSIC AUDIT\n\n")
     for k, v in audit_json.items():
         f.write(f"- **{k}**: {v}\n")

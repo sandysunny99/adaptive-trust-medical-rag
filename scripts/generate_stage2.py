@@ -15,7 +15,7 @@ for r in records:
     a = r['arm']
     cases[c][a] = r
 
-# 6. V1_2_PAIRED_CASE_ANALYSIS.csv
+# 6. docs/archive/real_llm_v1_2_v1_3/V1_2_PAIRED_CASE_ANALYSIS.csv
 csv_data = []
 for c, data in cases.items():
     arm_a = data.get('arm_a', {})
@@ -61,14 +61,14 @@ for c, data in cases.items():
         'pair_state': pair_state
     })
 
-with open('V1_2_PAIRED_CASE_ANALYSIS.csv', 'w', newline='', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PAIRED_CASE_ANALYSIS.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.DictWriter(f, fieldnames=csv_data[0].keys())
     writer.writeheader()
     for row in csv_data:
         writer.writerow(row)
 
-# 7. V1_2_UNSUPPORTED_CASE_ANALYSIS.md
-with open('V1_2_UNSUPPORTED_CASE_ANALYSIS.md', 'w', encoding='utf-8') as f:
+# 7. docs/archive/real_llm_v1_2_v1_3/V1_2_UNSUPPORTED_CASE_ANALYSIS.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_UNSUPPORTED_CASE_ANALYSIS.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 UNSUPPORTED CASE ANALYSIS\n\n')
     found_any = False
     for r in records:
@@ -85,10 +85,10 @@ with open('V1_2_UNSUPPORTED_CASE_ANALYSIS.md', 'w', encoding='utf-8') as f:
     if not found_any:
         f.write("No unsupported answers found in this run.\n")
 
-# 8. V1_2_PROVIDER_FAILURE_FORENSIC_ANALYSIS.md
+# 8. docs/archive/real_llm_v1_2_v1_3/V1_2_PROVIDER_FAILURE_FORENSIC_ANALYSIS.md
 arm_a_failures = sum(1 for r in records if r['arm'] == 'arm_a' and r['status'] == 'provider_failure')
 arm_b_failures = sum(1 for r in records if r['arm'] == 'arm_b' and r['status'] == 'provider_failure')
-with open('V1_2_PROVIDER_FAILURE_FORENSIC_ANALYSIS.md', 'w', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PROVIDER_FAILURE_FORENSIC_ANALYSIS.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 PROVIDER FAILURE FORENSIC ANALYSIS\n\n')
     f.write(f"Total Provider Failures: {arm_a_failures + arm_b_failures}\n")
     f.write(f"- Arm A Failures: {arm_a_failures}\n")
@@ -98,12 +98,12 @@ with open('V1_2_PROVIDER_FAILURE_FORENSIC_ANALYSIS.md', 'w', encoding='utf-8') a
     f.write("## Error Status\n")
     f.write("The predominant error was HTTP 429 Rate Limit from Groq for the `openai/gpt-oss-120b` model. This is an API availability limitation, completely independent of the medical logic.\n")
 
-# 9. V1_2_METRIC_RECOMPUTATION_FINAL.md
+# 9. docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION_FINAL.md
 import shutil
-shutil.copy('V1_2_METRIC_RECOMPUTATION.md', 'V1_2_METRIC_RECOMPUTATION_FINAL.md')
+shutil.copy('docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION.md', 'docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION_FINAL.md')
 
-# 10. V1_2_RESEARCH_LIMITATIONS.md
-with open('V1_2_RESEARCH_LIMITATIONS.md', 'w', encoding='utf-8') as f:
+# 10. docs/archive/real_llm_v1_2_v1_3/V1_2_RESEARCH_LIMITATIONS.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_RESEARCH_LIMITATIONS.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 RESEARCH LIMITATIONS\n\n')
     f.write("- **Real-LLM Nondeterminism**: API-driven models may yield varying responses, though Temperature=0 mitigates this.\n")
     f.write("- **Provider Dependency & 50% Failure Rate**: Half of all requests resulted in a Provider Failure (specifically HTTP 429 Rate Limit from Groq). This severely reduces the effective sample size for generation quality.\n")
@@ -113,8 +113,8 @@ with open('V1_2_RESEARCH_LIMITATIONS.md', 'w', encoding='utf-8') as f:
     f.write("- **Limited Sample Size**: Only 80 paired cases were processed, and due to rate limits, even fewer resulted in generated answers.\n")
     f.write("- **Arm B Abstention Overwhelming**: The evidence eligibility gate in Arm B abstained 90% of the time, meaning few to no LLM generation attempts were made in Arm B.\n")
 
-# 11. V1_2_FORMAL_RESULTS_ANALYSIS.md
-with open('V1_2_FORMAL_RESULTS_ANALYSIS.md', 'w', encoding='utf-8') as f:
+# 11. docs/archive/real_llm_v1_2_v1_3/V1_2_FORMAL_RESULTS_ANALYSIS.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_FORMAL_RESULTS_ANALYSIS.md', 'w', encoding='utf-8') as f:
     f.write("""# V1.2 Formal Results Analysis
 
 ## 1. Experiment Identity
