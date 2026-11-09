@@ -2,7 +2,7 @@
 
 `main.tex` is the IEEE conference paper on this project, a single self-contained file (IEEEtran, TikZ/pgfplots figures,
 embedded bibliography) that compiles on Overleaf or with `pdflatex` run twice. `main.pdf` is the compiled version
-(10 pages).
+(8 pages).
 
 Every number in the paper comes from a stored run record in the author's evaluation workspace; run IDs are given in
 the table and figure captions. The paper reports an engineering evaluation on constructed data with AI-written labels.

@@ -18,8 +18,6 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{url}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,fit,backgrounds,shapes.geometric,calc,patterns}
 \usepackage{pgfplots}
@@ -143,19 +141,13 @@ with a vision-language model.
 \section{Related Work}
 \label{sec:related}
 
-\emph{DDI analysis.} DDI research has used rules, knowledge graphs and machine learning, and LLMs have recently been
-evaluated for identifying interactions. ChatGPT's answers depended on prompt wording and agreed only minimally with
-pharmacists \cite{krishnan2024ddi}; across three LLMs, detection was high but specificity low, with interactions
-reported for negative controls \cite{sicard2025ddi}.
-
-\emph{ADEs and pharmacovigilance.} Hakim et al. proposed guardrails for LLMs in drug safety: detecting anomalous
-documents before ingestion, identifying incorrect drug names or adverse-event terms, and conveying uncertainty
-\cite{hakim2025guardrails}. Their work supports pipelines in which validated domain information constrains generation.
-
-\emph{LLMs for medication safety.} Ong et al. evaluated LLM-based decision support built on RAG for prescribing errors
-across 16 specialties; a pharmacist working with the LLM performed best (accuracy 61\%) \cite{ong2025medsafety}. Sun et
-al. grounded LLMs in drug package inserts for medication-safety education; clinical experts scored highest (0.89),
-ahead of GPT-4o (0.86) \cite{sun2026medrag}.
+\emph{LLMs and medication safety.} LLM answers on drug interactions depended on prompt wording and agreed only
+minimally with pharmacists \cite{krishnan2024ddi}, and across three LLMs specificity was low, with interactions reported
+for negative controls \cite{sicard2025ddi}. Hakim et al. called for guardrails in pharmacovigilance, such as detecting
+anomalous documents and incorrect drug names before generation \cite{hakim2025guardrails}. RAG-based decision support
+for prescribing errors across 16 specialties worked best with a pharmacist in the loop \cite{ong2025medsafety}, and in
+medication-safety education grounded in drug package inserts GPT-4o scored 0.86 against 0.89 for clinical experts
+\cite{sun2026medrag}.
 
 \emph{Medical RAG, hallucination and verification.} Medical RAG applies RAG \cite{lewis2020rag} to biomedical text
 \cite{xiong2024medrag}, where terminology must be normalised \cite{nelson2011rxnorm} and sources differ in authority.
@@ -168,129 +160,104 @@ compute trust and security outside the model. Retrieval uses BM25 \cite{robertso
 
 \emph{Prompt injection and poisoning.} Indirect prompt injection compromises real LLM-integrated applications
 \cite{greshake2023indirect}, OWASP lists prompt injection among the main LLM application risks \cite{owasp2025llm}, and
-PoisonedRAG showed that a few crafted texts can steer RAG output \cite{zou2025poisonedrag}. Table~\ref{tab:gap}
-summarises what remains open.
+PoisonedRAG showed that a few crafted texts can steer RAG output \cite{zou2025poisonedrag}.
 
-\begin{table}[!t]
-\caption{Research areas and remaining requirements}
-\label{tab:gap}
-\centering
-\footnotesize
-\begin{tabular}{@{}L{0.21\columnwidth}L{0.32\columnwidth}L{0.35\columnwidth}@{}}
-\toprule
-Area & Established capability & Remaining requirement \\
-\midrule
-Medical RAG & Retrieval and grounded generation & Evidence trust and adversarial filtering \\
-DDI analysis & Interaction identification & Reliable evidence interpretation \\
-Pharmaco-vigilance & Extraction and guardrails & Integrated retrieval security and provenance \\
-RAG hallucination & Detection and benchmarks & Domain-specific evidence control \\
-Prompt injection & Attacks and defences & Medical-retrieval-aware protection \\
-Retrieval poisoning & Knowledge-corruption attacks & Evidence eligibility and validation \\
-Citation verification & Claim-evidence alignment & Integration with trust and security \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 %% =====================================================================================================================
 \section{Threat Model}
 \label{sec:threat}
 
-The adversary can influence the user input, external documents or the retrieval corpus. Table~\ref{tab:threats}
-lists the threats, including non-adversarial failures with similar effects, and the implemented control that addresses
-each. Contradictions occur naturally in the literature and are not treated as attacks by default.
-
-\begin{table}[!t]
-\caption{Threats and the implemented controls}
-\label{tab:threats}
-\centering
-\footnotesize
-\begin{tabular}{@{}L{0.30\columnwidth}L{0.62\columnwidth}@{}}
-\toprule
-Threat & Control in the evaluated candidate \\
-\midrule
-Direct prompt injection & Query screening and sanitisation before retrieval \\
-Indirect prompt injection & Chunks carrying instructions for the model are excluded whole \\
-Retrieval poisoning & Provenance poisoning check; poisoning score filter; verified source identity \\
-Evidence tampering & SHA-256 of the text must equal the registered content hash \\
-Entity mismatch & Medication alignment filter; identity gate; drug-pair identity check \\
-Contradictory evidence & NLI stance per clause; aggregate check over retrieved chunks \\
-Citation mismatch & Marker resolution to eligible chunks; alignment and NLI on the cited chunk \\
-\bottomrule
-\end{tabular}
-\end{table}
+The adversary can influence the user input, external documents or the retrieval corpus. Each threat has an implemented
+control: direct prompt injection meets query screening and sanitisation; indirect injection in a chunk excludes the
+whole chunk; retrieval poisoning meets a provenance check, a poisoning-score filter and verified source identity;
+evidence tampering is caught by comparing the SHA-256 of the text with its registered hash; entity mismatch meets the
+medication alignment filter, the identity gate and the drug-pair identity check; contradictory evidence is handled by
+clause-level NLI stance and an aggregate check; and citation mismatch by resolving each marker to an eligible chunk and
+checking it. Natural contradictions in the literature are not treated as attacks by default.
 
 %% =====================================================================================================================
 \section{Implemented Architecture}
 \label{sec:arch}
 
-Fig.~\ref{fig:arch} shows the components of the frozen candidate (C2h), a Python backend that streams its stages to a
-browser client. The design treats retrieved information as untrusted until it has passed relevance, trust, security and
+Fig.~\ref{fig:arch} shows the components of the final candidate (C2j), a Python backend that streams its stages to a
+browser client; the development results were measured on C2h and C2i, whose release path C2j keeps unchanged. The design treats retrieved information as untrusted until it has passed relevance, trust, security and
 verification controls. Two simplifications relative to a full production design matter for reading the results: the
-evaluated corpus is local (no live source routing to PubMed, Europe PMC or openFDA was exercised), and adversarial
-screening is rule based (no learned detector).
+evaluated corpus is local (adapters for PubMed, Europe PMC and openFDA exist and are unit-tested but are not wired to
+the live path), and adversarial screening is rule based.
 
 \begin{figure*}[!t]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
   font=\sffamily\footnotesize, >={Stealth[length=2.2mm]},
-  box/.style={draw, rounded corners=2pt, fill=white, align=center, text width=3.2cm, minimum height=0.85cm, inner sep=2pt},
+  box/.style={draw, rounded corners=2pt, fill=white, align=center, text width=3.0cm, minimum height=0.8cm, inner sep=2pt},
   ctl/.style={box, fill=black!8, line width=0.8pt},
-  store/.style={draw, cylinder, shape border rotate=90, aspect=0.18, fill=white, align=center, text width=2.6cm, minimum height=1.0cm},
+  store/.style={draw, cylinder, shape border rotate=90, aspect=0.18, fill=white, align=center, text width=2.6cm, minimum height=0.95cm},
   dec/.style={draw, diamond, aspect=2.2, fill=black!8, align=center, inner sep=0.5pt, font=\sffamily\scriptsize},
   outbox/.style={box, text width=1.6cm, line width=0.9pt},
   stage/.style={draw=black!55, dashed, rounded corners=4pt, inner sep=6pt},
   slabel/.style={font=\sffamily\bfseries\footnotesize, anchor=south},
   flow/.style={->, line width=0.6pt}, logl/.style={->, dashed, black!60, line width=0.5pt}]
-% stage 1
-\node[box] (q) {Question and medications};
-\node[ctl, below=0.45cm of q] (sec) {Query screening\\(injection, sanitiser)};
-\node[box, below=0.45cm of sec] (ext) {Medication extraction\\and user confirmation};
-\node[box, below=0.45cm of ext] (norm) {Normalisation\\(RxNorm lexicon, RxCUI)};
-\node[store, below=0.45cm of norm] (lex) {Pinned lexicon\\(12{,}929 entries)};
-% stage 2
-\node[store, right=1.1cm of q] (corp) {Evidence corpus\\(text, hash, identity)};
+% stage 1: input, image path and identity
+\node[box, text width=2.5cm] (q) {Question and typed\\medication names};
+\node[box, right=0.3cm of q, text width=2.7cm] (img) {Prescription image\\(JPEG, PNG; $\le$ 5\,MB)};
+\node[ctl, below=0.4cm of img, text width=2.7cm] (ocr) {Local OCR first\\(no upload without text)};
+\node[box, below=0.4cm of ocr, text width=2.7cm] (vlm) {Vision-language model\\(Nemotron 3.5 Super VL)};
+\node[ctl, below=0.4cm of vlm, text width=2.7cm] (gnd) {Name grounding:\\kept only if printed};
+\path (q.center) -- (img.center) coordinate[pos=0.5] (mid);
+\node[box, text width=5.6cm, anchor=north] (conf) at ([yshift=-0.45cm]gnd.south -| mid) {User confirms every medication};
+\node[ctl, below=0.4cm of conf, text width=5.6cm] (sec) {Query screening (injection, sanitiser)};
+\node[box, below=0.4cm of sec, text width=5.6cm] (norm) {Normalisation to RxNorm concepts (RxCUI)};
+\node[store, below=0.4cm of norm] (lex) {Pinned lexicon\\(12{,}929 entries)};
+% stage 2: retrieval
+\node[store, right=1.1cm of img] (corp) {Evidence corpus\\(text, hash, identity)};
 \node[box, below=0.45cm of corp] (bm) {BM25 channel};
 \node[box, below=0.25cm of bm] (dn) {Dense channel\\(MiniLM embeddings)};
 \node[box, below=0.25cm of dn] (gr) {Graph channel\\(drug relations)};
 \node[box, below=0.45cm of gr] (rrf) {RRF fusion ($k=60$),\\top 20 to the live path};
-% stage 3
+% stage 3: evidence eligibility
 \node[ctl, right=1.1cm of corp] (pois) {Provenance and\\poisoning checks};
 \node[ctl, below=0.45cm of pois] (hash) {Content-hash check};
 \node[ctl, below=0.45cm of hash] (inj) {Injection screen\\(exclude whole chunk)};
 \node[ctl, below=0.45cm of inj] (align) {Medication alignment\\and source identity};
 \node[ctl, below=0.45cm of align] (tr) {9-factor trust score\\$T_i\ge\tau_{\text{tier}}$, authority $\ge 0.3$};
-% stage 4
-\node[box, right=1.1cm of pois] (gen) {Generator\\(evidence as data, [Source N])};
-\node[ctl, below=0.45cm of gen] (nli) {Clause-level NLI\\(pinned model)};
+% stage 4: generation and verification
+\node[box, right=1.1cm of pois] (gen) {LLM generator\\(evidence as data, [Source N])};
+\node[ctl, below=0.45cm of gen] (nli) {Clause-level NLI\\(pinned PubMedBERT)};
 \node[ctl, below=0.45cm of nli] (cid) {Pair identity, citation,\\strength checks};
 \node[ctl, below=0.45cm of cid] (gate) {Identity gate\\and medication guard};
 \node[dec, below=0.45cm of gate] (d) {release\\rule};
-\node[outbox, below=0.55cm of d, xshift=-0.95cm] (ans) {Released\\claim};
+\node[outbox, below=0.55cm of d, xshift=-0.95cm] (ans) {Released\\answer};
 \node[outbox, below=0.55cm of d, xshift=0.95cm] (abs) {Structured\\abstention};
 \begin{scope}[on background layer]
-\node[stage, fit=(q)(lex)] (S1) {}; \node[stage, fit=(corp)(rrf)] (S2) {};
+\node[stage, fit=(q)(img)(lex)(conf)] (S1) {}; \node[stage, fit=(corp)(rrf)] (S2) {};
 \node[stage, fit=(pois)(tr)] (S3) {}; \node[stage, fit=(gen)(ans)(abs)] (S4) {};
 \end{scope}
-\node[slabel] at (S1.north) {1. Input and identity}; \node[slabel] at (S2.north) {2. Retrieval};
+\node[slabel] at (S1.north) {1. Input, image and identity}; \node[slabel] at (S2.north) {2. Retrieval};
 \node[slabel] at (S3.north) {3. Evidence eligibility}; \node[slabel] at (S4.north) {4. Generation and verification};
-\draw[flow] (q)--(sec); \draw[flow] (sec)--(ext); \draw[flow] (ext)--(norm); \draw[flow] (lex)--(norm);
+\draw[flow] (img)--(ocr); \draw[flow] (ocr)--(vlm); \draw[flow] (vlm)--(gnd);
+\draw[flow] (gnd.south) -- (gnd.south |- conf.north);
+\draw[flow] (q.south) -- (q.south |- conf.north);
+\draw[flow] (conf)--(sec); \draw[flow] (sec)--(norm); \draw[flow] (lex)--(norm);
 \draw[flow] (corp)--(bm); \draw[flow] (bm)--(dn); \draw[flow] (dn)--(gr); \draw[flow] (gr)--(rrf);
-\draw[flow] (norm.east) -- ++(0.5,0) |- (bm.west);
-\draw[flow] (rrf.east) -- ++(0.5,0) |- (pois.west);
+\draw[flow] (norm.east) -- ($(norm.east -| corp.west)+(-0.55,0)$) |- (bm.west);
+\draw[flow] (rrf.east) -- ++(0.55,0) |- (pois.west);
 \draw[flow] (pois)--(hash); \draw[flow] (hash)--(inj); \draw[flow] (inj)--(align); \draw[flow] (align)--(tr);
-\draw[flow] (tr.east) -- ++(0.5,0) |- (gen.west);
+\draw[flow] (tr.east) -- ++(0.55,0) |- (gen.west);
 \draw[flow] (gen)--(nli); \draw[flow] (nli)--(cid); \draw[flow] (cid)--(gate); \draw[flow] (gate)--(d);
 \draw[flow] (d.south west) -- node[left,font=\sffamily\scriptsize]{all pass} (ans.north);
 \draw[flow] (d.south east) -- node[right,font=\sffamily\scriptsize]{any fails} (abs.north);
-\node[draw, dashed, fill=black!4, align=center, font=\sffamily\footnotesize] (log)
-  at ($(S1.south west)!0.5!(S4.south east) + (0,-0.8)$)
+\coordinate (midx) at ($(S1.south west)!0.5!(S4.south east)$);
+\node[draw, dashed, fill=black!4, align=center, font=\sffamily\footnotesize, anchor=north] (log)
+  at ([yshift=-0.45cm]midx |- S1.south)
   {Audit record per request: input hashes $\cdot$ stage decisions and reasons $\cdot$ trust factors $\cdot$ gate records $\cdot$ release or abstention};
-\draw[logl] (S2.south) -- (S2.south |- log.north); \draw[logl] (S3.south) -- (S3.south |- log.north);
-\draw[logl] (S4.south) -- (S4.south |- log.north);
+\draw[logl] (S1.south) -- (S1.south |- log.north); \draw[logl] (S2.south) -- (S2.south |- log.north);
+\draw[logl] (S3.south) -- (S3.south |- log.north); \draw[logl] (S4.south) -- (S4.south |- log.north);
 \end{tikzpicture}}
-\caption{Implemented architecture of the evaluated candidate (C2h). Shaded nodes are the evidence controls added to a
-conventional RAG pipeline. Any failed exclusion check removes a chunk; any failed claim check withholds the claim.}
+\caption{Architecture of the final candidate (C2j). Shaded nodes are the controls added to a conventional RAG pipeline.
+An uploaded image is read by local OCR before anything leaves the machine; the vision model's names are kept only if
+they are printed on the image, and the user confirms every medication. A failed exclusion check removes a chunk; a
+failed claim check withholds the whole answer.}
 \label{fig:arch}
 \end{figure*}
 
@@ -298,7 +265,9 @@ conventional RAG pipeline. Any failed exclusion check removes a chunk; any faile
 
 Medication names are extracted from the request, confirmed by the user and resolved against a pinned RxNorm
 prescribable lexicon \cite{nelson2011rxnorm} (12{,}929 entries) and a curated RxCUI cache; brands, ingredients and salts
-remain distinct concepts. Retrieval runs three channels over the same corpus: BM25 over lower-cased tokens
+remain distinct concepts. A prescription image is first read by local OCR; it is sent to the vision-language model
+only if that OCR finds text, and a returned name is offered for confirmation only if it is printed on the image.
+Retrieval runs three channels over the same corpus: BM25 over lower-cased tokens
 \cite{robertson2009bm25}, cosine similarity over \texttt{all-MiniLM-L6-v2} embeddings \cite{reimers2019sbert}, and an
 adjacency-list graph of drug relations seeded with the confirmed medications. Reciprocal rank fusion
 \begin{equation}
@@ -373,95 +342,12 @@ not confirm. The release predicate is
 \end{equation}
 where $s$ is the final support state, $g$ the gate decision and $m$ the guard message. The predicate reads the gate and
 guard records directly, so no later stage can restore a rejected claim, and a claim without a gate record fails.
-Withheld claims produce a structured abstention with the stage and reason.
+Withheld claims produce a structured abstention with the stage and reason. Every check records its result even when
+an earlier one has already failed, so the release decision under any subset of the checks can be recomputed from
+stored runs (Section~\ref{sec:contrib}).
 
-%% =====================================================================================================================
-\section{Algorithms}
-\label{sec:algo}
 
-Algorithms~\ref{alg:admit} and~\ref{alg:verify} give the two stages as implemented. Admission applies every
-exclusion before the trust score, so a chunk that fails one is never scored, and an empty evidence pack ends the
-request with an abstention before any model is called. Verification runs the verifier and the identity gate on every
-claim, and the strength, citation-alignment and guard checks on every claim the verifier passes, and records each
-result even when an earlier check has already failed; release requires all of them~\eqref{eq:release}. Because the
-results are recorded separately, the release decision under any subset of the checks can be recomputed from stored
-runs (Section~\ref{sec:contrib}).
 
-\begin{algorithm}[!t]
-\caption{Evidence admission (pre-generation)}
-\label{alg:admit}
-\begin{algorithmic}[1]
-\Require query $Q$, confirmed medications $D$; tier thresholds $\tau$
-\Ensure numbered evidence pack $\mathcal{P}$ or abstention
-\State screen and sanitise $Q$; resolve $D$ in the pinned lexicon
-\State $\mathcal{E} \gets$ RRF of BM25, dense and graph rankings \eqref{eq:rrf}; drop poisoning score $> 0.4$
-\State $r \gets$ risk tier of $Q$; $\mathcal{P} \gets \emptyset$
-\For{each $e_i \in \mathcal{E}$ in fused order}
-  \If{provenance blocked \textbf{or} hash mismatch \textbf{or} carries instructions} \textbf{continue} \EndIf
-  \If{$e_i$ names no medication in $D$ \textbf{or} identity unverified} \textbf{continue} \EndIf
-  \If{text already in $\mathcal{P}$} \textbf{continue} \EndIf
-  \State $T_i \gets$ \eqref{eq:trust} with missing factors set to 0
-  \If{$T_i \ge \tau_r$ \textbf{and} $A_i \ge 0.3$} $\mathcal{P} \gets \mathcal{P} \cup \{e_i\}$ \EndIf
-\EndFor
-\If{$\mathcal{P} = \emptyset$} \Return abstention (no eligible evidence) \EndIf
-\State \Return $\mathcal{P}$ numbered as [Source 1..N]
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}[!t]
-\caption{Claim verification and release (post-generation)}
-\label{alg:verify}
-\begin{algorithmic}[1]
-\Require answer $y$ generated from $\mathcal{P}$; confirmed medications $D$
-\Ensure released claims and abstentions with reasons
-\For{each claim $c$ in $y$}
-  \State $s(c) \gets$ clause-level NLI on cited chunks, aggregate check, pair identity, citation and strength checks
-  \State $g(c) \gets$ identity gate on drug-role names vs.\ cited text and titles
-  \State $m(c) \gets$ guard: medications named but not in $D$
-  \If{\eqref{eq:release} holds} release $c$ \Else\ withhold $c$ and record the first failing stage \EndIf
-\EndFor
-\end{algorithmic}
-\end{algorithm}
-
-%% =====================================================================================================================
-\section{Workflow Analysis}
-\label{sec:workflow}
-
-The service streams these stages to the client: extracting, normalising, retrieving, security checking, trust
-evaluating, generating, claim verifying, safety gating and complete. Fig.~\ref{fig:flow} follows one question. Three
-properties shape the evaluation. A statement can stop in four places (before the identity gate, at the gate, after it,
-or released), and counting an upstream abstention as a gate rejection would credit the gate for work it did not do.
-The checks are conjunctive, so adding one can only reduce what is released: unsupported releases are easy to bound
-and coverage is easy to lose. Every stage writes a record, so each withheld statement can be traced to the first stage
-that stopped it.
-
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}[node distance=3mm, >={Stealth[length=1.6mm]},
-  st/.style={draw, rounded corners=2pt, font=\scriptsize, text width=33mm, align=center, minimum height=5.5mm},
-  dec/.style={draw, diamond, aspect=2.6, font=\scriptsize, align=center, inner sep=1pt},
-  stopnote/.style={font=\scriptsize\itshape, text width=16mm, align=left}]
-\node[st] (a) {Extract, confirm, normalise};
-\node[st, below=of a] (c) {Retrieve (BM25, dense, graph; RRF)};
-\node[st, below=of c] (d) {Exclusion checks and trust};
-\node[dec, below=of d] (e) {eligible\\evidence?};
-\node[st, below=4mm of e] (f) {Generate claims with [Source N]};
-\node[st, below=of f] (g) {NLI, pair identity, citations};
-\node[dec, below=of g] (h) {gate and\\guard pass?};
-\node[dec, below=4mm of h] (i) {support\\SUPPORTED?};
-\node[st, below=4mm of i] (j) {Release claim};
-\node[stopnote, right=5mm of e] (o1) {stop 1: before the gate};
-\node[stopnote, right=5mm of h] (o2) {stop 2: at the gate};
-\node[stopnote, right=5mm of i] (o3) {stop 3: downstream};
-\draw[->] (a)--(c); \draw[->] (c)--(d); \draw[->] (d)--(e);
-\draw[->] (e)--node[right,font=\scriptsize]{yes}(f); \draw[->] (f)--(g); \draw[->] (g)--(h);
-\draw[->] (h)--node[right,font=\scriptsize]{yes}(i); \draw[->] (i)--node[right,font=\scriptsize]{yes}(j);
-\draw[->] (e)--node[above,font=\scriptsize]{no}(o1); \draw[->] (h)--node[above,font=\scriptsize]{no}(o2);
-\draw[->] (i)--node[above,font=\scriptsize]{no}(o3);
-\end{tikzpicture}
-\caption{Workflow of one question and the stop points reported in the evaluation.}
-\label{fig:flow}
-\end{figure}
 
 %% =====================================================================================================================
 \section{Data and Evidence Management}
@@ -482,31 +368,15 @@ FDA-approved labeling, so set identifier, version, section and retrieval date ar
 Apart from the pilot in Section~\ref{sec:live}, all runs used an isolated copy of the frozen candidate, offline, with
 the pinned NLI model and no provider call.
 Generation was scripted: each test statement is fed through the real release path as if a model had written it, so the
-checks are measured, not a language model. Seven constructed statement sets (V2 to V8; Table~\ref{tab:data}) were written
+checks are measured, not a language model. A statement can stop in four places: before the identity gate (no
+eligible evidence), at the gate, after it, or released; counting an upstream abstention as a gate rejection would
+credit the gate for work it did not do, so we report each separately. Seven constructed statement sets (V2 to V8,
+731 scored rows; row counts in Table~\ref{tab:gate}) were written
 during development, each after the previous candidate had been tested, so they are development-informed regression
 sets; V8 was written by the author of C2h and is author-known. Each row is labelled PASS (every medication or class in a
 drug role is named by the cited source) or REJECT, with the expected failing entity. All labels are AI-written and
 unreviewed; blind review packets with opaque identifiers are prepared.
 
-\begin{table}[!t]
-\caption{Development sets (frozen; SHA-256 in the dataset registry)}
-\label{tab:data}
-\centering
-\footnotesize
-\begin{tabular}{@{}lrrrl@{}}
-\toprule
-Set & Scored & PASS & REJECT & Role \\
-\midrule
-V2 & 119 & 79 & 40 & regression \\
-V3 & 101 & 65 & 36 & regression \\
-V4 & 72 & 44 & 28 & regression \\
-V5 & 84 & 48 & 36 & regression (88 rows) \\
-V6 & 126 & 65 & 61 & regression \\
-V7 & 116 & 55 & 61 & regression \\
-V8 & 113 & 59 & 54 & author-known \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 For each set we report the gate miss rate (REJECT rows the gate passed, over REJECT rows that reached it), unsupported
 releases (REJECT rows released), the identity false-withhold rate (PASS rows the gate rejected, over PASS rows) and
@@ -527,7 +397,7 @@ network-blocked modes (run \texttt{C2H\_REPRO\_01}).
 
 \subsection{Identity gate}
 
-Table~\ref{tab:gate} and Fig.~\ref{fig:gate} give the per-set results. No REJECT row was released in any set. Among REJECT
+Table~\ref{tab:gate} gives the per-set results. No REJECT row was released in any set. Among REJECT
 rows that reached the gate, the gate passed one (V6-IND-03, a row whose label is a recorded error). One REJECT row
 (V7-SRC-02) never reached the gate: its cited section names neither requested medication, so the pipeline abstained
 before generation. On V8 the two false withholds came from the ordinary words ``nudge'' and ``oozing'', which the gate's
@@ -556,26 +426,13 @@ V8 & 0/54 (0, 6.6) & 0 & 2/59 (0.9, 11.5) & 17/59 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[ybar, width=\columnwidth, height=3.9cm, bar width=5pt, ymin=0, ymax=12.5,
-  ylabel={\% of rows}, ylabel style={font=\scriptsize}, symbolic x coords={V2,V3,V4,V5,V6,V7,V8}, xtick=data,
-  tick label style={font=\scriptsize}, legend style={font=\scriptsize, at={(0.5,1.02)}, anchor=south, legend columns=2},
-  enlarge x limits=0.08]
-\addplot+[fill=black!70, draw=black] coordinates {(V2,0) (V3,0) (V4,0) (V5,0) (V6,1.64) (V7,0) (V8,0)};
-\addplot+[fill=black!25, draw=black] coordinates {(V2,0) (V3,3.08) (V4,0) (V5,0) (V6,1.54) (V7,0) (V8,3.39)};
-\legend{gate miss, identity false withhold}
-\end{axis}
-\end{tikzpicture}
-\caption{Gate misses and identity false withholds per development set (C2h). Interval widths are in Table~\ref{tab:gate}.}
-\label{fig:gate}
-\end{figure}
 
 \subsection{Where valid statements stop}
 
-Coverage is low (Fig.~\ref{fig:stops}). Across V2 to V8, 206 valid statements were released, 5 were rejected by the
-identity gate and 204 passed the gate and were withheld later (Table~\ref{tab:stops}). The pair-identity stops follow from
+Coverage is low. Across V2 to V8, 206 valid statements were released, 5 were rejected by the
+identity gate and 204 passed the gate and were withheld later (run \texttt{STOP\_DIAGNOSTICS\_C2H\_01}). The first
+stage to withhold them was NLI in 129 (entailment below 0.10 in 101), pair identity in 52, the verifier's aggregate
+check in 18 and the medication guard in 5. The pair-identity stops follow from
 missing or unapproved relationship records (34 claims whose canonical identity was not resolved, 18 whose source identity
 was unavailable), so they are correct under the current evidence. Whether the NLI and aggregate stops are right cannot
 be decided without claim-support labels. The five guard stops are a defect: the guard reported the ordinary words
@@ -583,44 +440,12 @@ be decided without claim-support labels. The five guard stops are a defect: the 
 ``Perform'' and ``Align'' are RxNorm brand names opening an instruction (``Perform potassium monitoring
 periodically''), and ``sodium'' occurs in ``a low-sodium diet''.
 
-\begin{table}[!t]
-\caption{First withholding stage for valid statements that passed the gate (V2 to V8; run \texttt{STOP\_DIAGNOSTICS\_C2H\_01})}
-\label{tab:stops}
-\centering
-\footnotesize
-\begin{tabular}{@{}lrl@{}}
-\toprule
-Stage & Rows & Recorded detail \\
-\midrule
-NLI: cited chunk does not entail & 129 & entailment $<0.10$ in 101 \\
-Pair identity unavailable & 52 & 34 claim, 18 source unresolved \\
-Verifier aggregate & 18 & insufficient over all chunks \\
-Medication guard & 5 & ordinary words flagged \\
-\bottomrule
-\end{tabular}
-\end{table}
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[ybar stacked, width=\columnwidth, height=3.6cm, bar width=11pt, ymin=0, ymax=85,
-  ylabel={valid (PASS) rows}, ylabel style={font=\scriptsize}, symbolic x coords={V2,V3,V4,V5,V6,V7,V8}, xtick=data,
-  tick label style={font=\scriptsize}, legend style={font=\scriptsize, at={(0.5,1.02)}, anchor=south, legend columns=3},
-  enlarge x limits=0.08]
-\addplot+[fill=black!75, draw=black] coordinates {(V2,45) (V3,40) (V4,31) (V5,26) (V6,34) (V7,13) (V8,17)};
-\addplot+[fill=black!35, draw=black] coordinates {(V2,0) (V3,2) (V4,0) (V5,0) (V6,1) (V7,0) (V8,2)};
-\addplot+[fill=white, draw=black] coordinates {(V2,34) (V3,23) (V4,13) (V5,22) (V6,30) (V7,42) (V8,40)};
-\legend{released, gate rejected, withheld after gate}
-\end{axis}
-\end{tikzpicture}
-\caption{Stop points of valid statements per development set (C2h; run \texttt{OFFLINE\_METRICS\_01}).}
-\label{fig:stops}
-\end{figure}
 
 \subsection{What each check contributes}
 \label{sec:contrib}
 
-Because every check result is recorded (Section~\ref{sec:algo}), we recomputed the release decision of every
+Because every check result is recorded, we recomputed the release decision of every
 development row under subsets of the checks (Table~\ref{tab:contrib}; run \texttt{CHECK\_COUNTERFACTUAL\_01}).
 Recomputing the full rule reproduced the recorded outcome on all 731 rows. A conventional pipeline~\eqref{eq:baseline}
 fed the same scripted statements shows all of them, including every REJECT row. With every check except the
@@ -662,8 +487,10 @@ labels AI-written; sets development-informed.}
 
 \subsection{Candidate comparison and remediation}
 
-Fig.~\ref{fig:cmp} compares three code versions on the same 113 V8 statements. The C2h code fixed 10 decisions of the
-previous candidate (C2g) and broke none (exact McNemar $p=0.002$); since V8 is author-known, this is exploratory.
+On the same 113 V8 statements, the previous candidate's code (C2g) had 4 gate misses, 1 unsupported release, 8 false
+withholds and 15 valid releases; C2h had 0, 0, 2 and 17. C2h fixed 10 decisions and broke none (exact McNemar
+$p=0.002$; runs \texttt{V8\_PAIRED\_C2G\_C2H\_01}, \texttt{V8\_RISK\_COVERAGE\_01}); since V8 is author-known,
+this is exploratory.
 
 We then built a remediation candidate (C2i) from C2h to fix the two defects found above without loosening any check.
 First, an ordinary verb is now known when its listed past or present participle is (the word list held ``nudged'' but
@@ -672,75 +499,24 @@ guard skips an unconfirmed finding only in two forms: an RxNorm brand name that 
 sentence and is not followed by a modal or auxiliary (``Perform potassium monitoring'', but not ``Perform may raise
 \dots''), and an ingredient inside a ``low-'', ``high-'' or ``reduced-'' diet compound. A brand used anywhere else, a
 brand that is not an ordinary word (``Advil''), an everyday-word ingredient such as lithium, and every confirmed or
-unresolved name are still reported; 52 new unit tests pin these cases. Table~\ref{tab:c2i} lists every decision that
-changed. Across all 731 development rows six decisions changed, none for the worse: the five guard rows are now
-released, and the ``nudge'' statement passes the gate but is still withheld by pair identity. No unsupported statement
+unresolved name are still reported; 52 new unit tests pin these cases. Across all 731 development rows six decisions
+changed, none for the worse (run \texttt{C2H\_VS\_C2I\_02}): the five guard rows (H-CWD-04, H-CWD-08, V3-CWD-03,
+V5-CW-04, V6-NPH-04) are now released, and the ``nudge'' statement (V8-SRC-08) passes the gate but is still withheld
+by pair identity. No unsupported statement
 was released, the 42-example NLI replay was unchanged, the 509 security tests passed and the backend suite gave
 2{,}304 passed, 0 failed and 4 skipped with the network blocked (run \texttt{C2I\_REGRESSION\_02}). ``Oozing'' remains unfixed because no vocabulary we could audit offline contains any form of ``ooze''.
 V2 to V8 informed these changes, so these are development-set results.
 
-\begin{table}[!t]
-\caption{Decisions changed by the C2i fixes (all 731 development rows; run \texttt{C2H\_VS\_C2I\_02})}
-\label{tab:c2i}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}lllll@{}}
-\toprule
-Row & Label & C2h & C2i & Fix \\
-\midrule
-H-CWD-04 & PASS & withheld (guard) & released & guard \\
-H-CWD-08 & PASS & withheld (guard) & released & guard \\
-V3-CWD-03 & PASS & withheld (guard) & released & guard \\
-V5-CW-04 & PASS & withheld (guard) & released & guard \\
-V6-NPH-04 & PASS & withheld (guard) & released & guard \\
-V8-SRC-08 & PASS & gate reject & withheld (pair id.) & vocabulary \\
-\midrule
-\multicolumn{5}{@{}l}{Other 725 rows unchanged; unsupported releases 0 in both.} \\
-\bottomrule
-\end{tabular}
-\end{table}
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[ybar, width=\columnwidth, height=3.6cm, bar width=7pt, ymin=0, ymax=19,
-  ylabel={V8 rows}, ylabel style={font=\scriptsize},
-  symbolic x coords={miss,rel,fw,cov}, xtick=data,
-  xticklabels={{gate misses\\(of 54)},{unsupported\\released (of 54)},{false withholds\\(of 59)},{valid released\\(of 59)}},
-  x tick label style={font=\tiny, align=center}, tick label style={font=\scriptsize},
-  nodes near coords, nodes near coords style={font=\tiny}, legend style={font=\scriptsize, at={(0.5,1.02)},
-  anchor=south, legend columns=3}, enlarge x limits=0.15]
-\addplot+[fill=black!15, draw=black] coordinates {(miss,4) (rel,1) (fw,8) (cov,15)};
-\addplot+[fill=black!50, draw=black] coordinates {(miss,0) (rel,0) (fw,2) (cov,17)};
-\addplot+[fill=black!85, draw=black] coordinates {(miss,0) (rel,0) (fw,1) (cov,17)};
-\legend{C2g code, C2h, C2i}
-\end{axis}
-\end{tikzpicture}
-\caption{Three code versions on the same V8 statements (runs \texttt{V8\_PAIRED\_C2G\_C2H\_01}, \texttt{V8\_RISK\_COVERAGE\_01},
-\texttt{C2H\_VS\_C2I\_02}). V8 is author-known; these are development comparisons, not a baseline comparison.}
-\label{fig:cmp}
-\end{figure}
 
 \subsection{Security regression}
 
-We grouped 509 existing tests by threat and ran them with the network blocked (Fig.~\ref{fig:sec}). All passed on C2h, on C2i
-and on C2j. The tests check specified behaviours with inputs written by the developers; they are not an attack-success rate,
+We grouped 509 existing tests by threat and ran them with the network blocked: prompt injection 67, poisoning and
+provenance 120, citation manipulation 50, entity substitution 65, gate bypass and fallback 110, trust and
+eligibility 97. All passed on C2h, on C2i and on C2j (runs \texttt{SECURITY\_REGRESSION\_01},
+\texttt{C2J\_PORT\_CANCELLATION\_01}). The tests check specified behaviours with inputs written by the developers; they are not an attack-success rate,
 and a 110-case security set stays unrun until people review its labels.
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xbar, width=0.78\columnwidth, height=3.9cm, bar width=6pt, xmin=0, xmax=135,
-  xlabel={tests passed (all passed; 0 failed)}, xlabel style={font=\scriptsize},
-  symbolic y coords={Trust and eligibility,Gate bypass and fallback,Entity substitution,Citation manipulation,Poisoning and provenance,Prompt injection},
-  ytick=data, tick label style={font=\scriptsize}, nodes near coords, nodes near coords style={font=\tiny}]
-\addplot+[fill=black!40, draw=black] coordinates {(97,Trust and eligibility) (110,Gate bypass and fallback) (65,Entity substitution) (50,Citation manipulation) (120,Poisoning and provenance) (67,Prompt injection)};
-\end{axis}
-\end{tikzpicture}
-\caption{Scoped security regression by threat group (runs \texttt{SECURITY\_REGRESSION\_01}, \texttt{C2J\_PORT\_CANCELLATION\_01}).}
-\label{fig:sec}
-\end{figure}
 
 \subsection{Performance}
 
@@ -751,57 +527,32 @@ figures exclude any language-model call. On C2j (\texttt{PF01\_C2J\_SUPPLEMENT\_
 (median; p95 478.9~ms), local OCR 1.05~s per image, grounding under 2~ms and name normalisation 0.03~ms.
 
 To see how retrieval scales, we built the unmodified hybrid retriever over synthetic, fictional corpora of 17, 200,
-1{,}000 and 5{,}000 chunks and timed the same 30 queries after 5 warm-up queries (Fig.~\ref{fig:scale}; run
-\texttt{PF01\_SCALING\_01}). Median latency grew from 21.0~ms to 42.6, 99.3 and 496.2~ms, roughly linearly with corpus
+1{,}000 and 5{,}000 chunks and timed the same 30 queries after 5 warm-up queries (run \texttt{PF01\_SCALING\_01}). Median latency grew from 21.0~ms to 42.6, 99.3 and 496.2~ms, roughly linearly with corpus
 size, because the dense channel scores every chunk by brute-force cosine similarity; building the index (tokenising and
 embedding) took 1.2~s, 7.7~s, 39.1~s and 183.7~s, and peak working set reached 980~MB at 5{,}000 chunks. This harness
 encodes each query with the sentence-transformer directly, so its 17-chunk figure is not comparable with the 7.9~ms
 above. A production corpus would need an approximate nearest-neighbour index; the synthetic text says nothing about
 retrieval quality.
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[width=\columnwidth, height=3.9cm, xmode=log, log basis x=10, xmin=10, xmax=8000,
-  ymin=0, ymax=650, xlabel={corpus size (chunks, log scale)}, ylabel={retrieval latency (ms)},
-  xlabel style={font=\scriptsize}, ylabel style={font=\scriptsize}, tick label style={font=\scriptsize},
-  legend style={font=\scriptsize, at={(0.03,0.97)}, anchor=north west}, grid=major, grid style={black!10}]
-\addplot+[mark=*, black, thick] coordinates {(17,21.046) (200,42.606) (1000,99.303) (5000,496.249)};
-\addplot+[mark=square*, black!50, thick, dashed] coordinates {(17,59.449) (200,72.521) (1000,156.842) (5000,608.75)};
-\legend{p50, p95}
-\end{axis}
-\end{tikzpicture}
-\caption{Hybrid retrieval latency on synthetic corpora of growing size (C2h retriever, one CPU machine, warm process;
-run \texttt{PF01\_SCALING\_01}).}
-\label{fig:scale}
-\end{figure}
 
 \subsection{Pilot with real language models}
 \label{sec:live}
 
 Everything above used scripted generation. To see how the release path handles text a model actually writes, we ran a
-small authorised pilot on the remediation candidate (C2i) with two hosted models: Llama~3.3 70B Instruct (FP8) on
-Cloudflare Workers AI and Nemotron~3 Ultra (550B total, 55B active parameters) on NVIDIA's API. Each received the same
-30 synthetic medication sets once: 15 with warfarin, 5 with lisinopril and 10 control sets whose medication pair has
-no evidence in the corpus. The evidence was the three verified DailyMed label sections; only synthetic inputs and those public sections
-were sent, on free tiers, and the NLI model ran locally. Our first NVIDIA choice, the application's default Nemotron~3
-Super 120B, and a second model, Llama~3.1 Nemotron 70B, were both reported as not available to the project's account
-(21 errors each; runs \texttt{LIVE\_TEXT\_01}, \texttt{LIVE\_TEXT\_02}), so Nemotron~3 Ultra replaced them.
+small authorised pilot on C2i with two hosted models, Llama~3.3 70B Instruct on Cloudflare Workers AI and Nemotron~3
+Ultra on NVIDIA's API. Each received the same 30 synthetic medication sets once: 15 with warfarin, 5 with lisinopril
+and 10 control sets with no evidence in the corpus. Only synthetic inputs and the three public DailyMed sections were
+sent, and the NLI model ran locally. NVIDIA's Nemotron~3 Super 120B and Llama~3.1 Nemotron 70B were not available to
+the project's account (\texttt{LIVE\_TEXT\_01}, \texttt{\_02}).
 
-Table~\ref{tab:live} and Fig.~\ref{fig:live} give the outcomes. In each run nine control sets stopped before generation
-because no eligible evidence named their medications, so 21 cases per model reached the language model. The tenth
-control (sertraline with omeprazole) reached both models because the warfarin section names sertraline; both answers
-were withheld, and each contained the unsupported claim that the two drugs do not interact. No control set had an
-answer released. The release rule is all or nothing: a single claim that fails withholds the whole
-answer. Cloudflare's model had one answer released (10 claims, for lisinopril with metformin) and Nemotron~3 Ultra two
-(one claim each, for warfarin with ibuprofen requested by the brand names Coumadin and Advil, and for warfarin with
-atorvastatin). Most failed claims could not be matched to an approved drug-relationship record, the same stop that
-dominated the scripted runs; Llama~3.3 also produced 39 claims that the identity gate rejected, against 14 for
-Nemotron. In two Llama~3.3 cases and three Nemotron cases a single failing claim withheld an answer whose other claims
-all passed. We read the 12 released claims ourselves: each restates its cited DailyMed section (hyperkalaemia, and an
-excessive fall in blood pressure when lisinopril is started in patients on diuretics; bleeding risk when warfarin is
-combined with interacting drugs such as NSAIDs), and the lisinopril answer says nothing about metformin, for which the
-corpus has no evidence. This check was not independent.
+Table~\ref{tab:live} gives the outcomes. Nine control sets per model stopped before generation; the tenth (sertraline
+with omeprazole) reached both models because the warfarin section names sertraline, and both answers were withheld for
+claiming that the two drugs do not interact. The release rule is all or nothing, so one failing claim withholds the
+whole answer. Llama~3.3 had one answer released (10 claims, lisinopril with metformin) and Nemotron two (one claim
+each: warfarin with ibuprofen, requested as Coumadin and Advil, and warfarin with atorvastatin). Most failed claims had
+no approved relationship record, as in the scripted runs; the identity gate rejected 39 Llama claims and 14 Nemotron
+claims. Each of the 12 released claims restates its cited DailyMed section, and the lisinopril answer says nothing about
+metformin, for which the corpus has no evidence; we checked this ourselves, not independently.
 
 \begin{table}[!t]
 \caption{Real-model pilot on 30 synthetic medication sets, one run per model (C2i; runs \texttt{LIVE\_TEXT\_01},
@@ -833,39 +584,15 @@ Time per generated case, median / p95 (s) & 9.9 / 30.6 & 20.2 / 87.8 \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[!t]
-\centering
-\begin{tikzpicture}
-\begin{axis}[xbar stacked, width=0.92\columnwidth, height=3.2cm, bar width=9pt, xmin=0, xmax=30,
-  xlabel={medication sets (of 30)}, xlabel style={font=\scriptsize},
-  symbolic y coords={Nemotron 3 Ultra,Llama 3.3 70B}, ytick=data, tick label style={font=\scriptsize},
-  legend style={font=\scriptsize, at={(0.5,1.03)}, anchor=south, legend columns=2}, enlarge y limits=0.45]
-\addplot+[fill=white, draw=black] coordinates {(9,Llama 3.3 70B) (9,Nemotron 3 Ultra)};
-\addplot+[fill=black!30, draw=black] coordinates {(20,Llama 3.3 70B) (18,Nemotron 3 Ultra)};
-\addplot+[fill=black!85, draw=black] coordinates {(1,Llama 3.3 70B) (2,Nemotron 3 Ultra)};
-\addplot+[pattern=north east lines, draw=black] coordinates {(0,Llama 3.3 70B) (1,Nemotron 3 Ultra)};
-\legend{stopped before generation, withheld after generation, released, provider error}
-\end{axis}
-\end{tikzpicture}
-\caption{Terminal outcome per medication set in the real-model pilot (runs \texttt{LIVE\_TEXT\_01}, \texttt{LIVE\_TEXT\_03}).}
-\label{fig:live}
-\end{figure}
 
-The application reads prescription images with a vision-language model and asks the user to confirm each extracted
-name before retrieval. We drew 20 synthetic prescriptions, five each printed plainly, with brand and generic names,
-rotated, and with added noise, and sent each once (Table~\ref{tab:vision}). The application's default vision model,
-Llama~3.2 11B Vision, had been retired by the provider and answered all 60 attempts with HTTP 410
-(\texttt{LIVE\_VISION\_01}); Llama~3.2 90B Vision timed out on its first three images and we stopped that run
-(\texttt{LIVE\_VISION\_02}). Nemotron~3.5 Super VL (120B total, 12B active) answered 14 of 20 images
-(\texttt{LIVE\_VISION\_04}). On those 14 it read 35 of the 36 medication names and returned no unrelated name; 13 images
-were read exactly. The one error matters for this system: on a rotated image it returned ``metoprolol'' for metoprolol
-tartrate, dropping the salt, which the confirmation step would have to catch. The other six replies were empty or not
-valid JSON and failed closed, with no medication passed on; three of them were rotated images. Median time per image was
-7.1~s and the 95th percentile 32.7~s with a 60~s timeout. On this evidence we made Nemotron~3.5 Super VL the default
-vision model in C2i; an explicit setting still overrides it. After this change the full C2i regression gave the
-same V2 to V8 decisions, an unchanged 42-example replay, 509 of 509 security tests and 2{,}307 backend tests passed,
-0 failed and 4 skipped with the network blocked (three new tests; run \texttt{C2I\_REGRESSION\_03}); the same count
-holds in normal mode (run \texttt{C2J\_BASELINE\_REPRO\_02}).
+For image reading we drew 20 synthetic prescriptions, five each plain, with brand and generic names, rotated and noisy,
+and sent each once (Table~\ref{tab:vision}). The application's earlier default, Llama~3.2 11B Vision, had been retired
+(HTTP 410 on all attempts), and Llama~3.2 90B Vision timed out. Nemotron~3.5 Super VL answered 14 images and read 35
+of their 36 names with no unrelated name; 13 images were exact. Its one error matters here: on a rotated image it
+returned ``metoprolol'' for metoprolol tartrate, dropping the salt. The other six replies were empty or not JSON and
+failed closed. Median time was 7.1~s per image (95th percentile 32.7~s). We made this model the default in C2i; the
+full regression then gave the same V2 to V8 decisions, 509 of 509 security tests and 2{,}307 backend tests passed,
+0 failed, 4 skipped, network blocked and in normal mode (\texttt{C2I\_REGRESSION\_03}, \texttt{C2J\_BASELINE\_REPRO\_02}).
 
 \begin{table}[!t]
 \caption{Prescription-image extraction, 20 synthetic images, one attempt each (NVIDIA API; run \texttt{LIVE\_VISION\_04}
@@ -892,25 +619,20 @@ Nemotron 3.5 Super VL & & & & \\
 \end{tabular}
 \end{table}
 
-These pilots are small (one run per model, 30 text cases, 20 images), the cases and images were written by us, and the
-released claims were checked only by us. On real model output the release path behaved much as it did on scripted
-statements: it withheld most answers and released none for the controls. The pilots do not measure answer quality, and
-the provider availability problems we hit are themselves a deployment finding.
+These pilots are small and written by us, so they show behaviour, not answer quality: on real model output the release
+path withheld most answers and released none for the controls.
 
 \subsection{Hardening of the remediation candidate (C2j)}
 \label{sec:c2j}
 
-The final candidate, C2j, adds four changes to C2i, ported from a parallel line of the same application
-(Table~\ref{tab:c2j}); none touches retrieval, trust scoring or verification. The server now refuses to start with more
-than one worker, and provider error bodies, which could carry prescription text or the account identifier, are no
-longer logged. Each uploaded image is read by local OCR first and
-goes to the hosted model only if that OCR finds text, and a returned name is offered for confirmation only if the OCR
-text contains it. A cancel endpoint, a disconnect handler and a 120~s deadline for unopened streams end an abandoned
-analysis and stop its OCR process. After each change the full regression kept all 731 V2 to V8 decisions and the
-42-example replay byte-identical to C2i, so the development results above hold for C2j; a comparison of function
-bodies found the release rule and every verification call unchanged. The frontend passed 148 of 148 tests with a clean
-build (\texttt{C2J\_FRONTEND\_02}), and 154 tests run with the real NLI model loaded passed
-(\texttt{C2J\_REAL\_NLI\_SUITE\_02}).
+The final candidate, C2j, adds four changes to C2i from a parallel line of the same application (Table~\ref{tab:c2j});
+none touches retrieval, trust scoring or verification. The server refuses to start with more than one worker; provider
+error bodies, which could carry prescription text or the account identifier, are no longer logged; images are read by
+local OCR first and vision-model names are grounded in that text; and a cancel endpoint, a disconnect handler and a
+120~s deadline end abandoned analyses and their OCR process. After each change the full regression kept all 731 V2 to
+V8 decisions and the 42-example replay byte-identical, so the development results above hold for C2j, and a comparison
+of function bodies found the release rule unchanged. The frontend passed 148 of 148 tests (\texttt{C2J\_FRONTEND\_02})
+and 154 tests with the real NLI model loaded passed (\texttt{C2J\_REAL\_NLI\_SUITE\_02}).
 
 \begin{table}[!t]
 \caption{C2j changes, each followed by a full regression: 0 failed, 4 skipped in both modes; 509/509 security
@@ -939,34 +661,29 @@ images (median 143 characters), so all would still be sent; grounding kept all 3
 \section{Implementation Status}
 \label{sec:status}
 
-Table~\ref{tab:status} records the state of each component of the evaluated candidate. ``Tested'' means covered by the
-passing backend suite; ``evaluated'' means measured on the development sets; ``validated'' would require independent
-data and reviewers, and no component has reached it.
+Table~\ref{tab:status} records each component of the final candidate and the evidence behind it: ``tests'' means
+the passing backend suite, ``dev sets'' means measured on V2 to V8, and ``pilot'' or ``replay'' the small real-model
+runs. No component has yet been validated on independent data with independent reviewers.
 
 \begin{table}[!t]
-\caption{Component status of the evaluated candidate (C2h; C2i and C2j where marked)}
+\caption{Components of the final candidate (C2j) and the evidence for each}
 \label{tab:status}
 \centering
 \footnotesize
-\begin{tabular}{@{}L{0.47\columnwidth}C{0.08\columnwidth}C{0.09\columnwidth}C{0.09\columnwidth}C{0.08\columnwidth}@{}}
+\begin{tabular}{@{}L{0.58\columnwidth}L{0.36\columnwidth}@{}}
 \toprule
-Component & Impl. & Tested & Eval. & Valid. \\
+Component & Evidence \\
 \midrule
-Query screening & yes & yes & no & no \\
-Medication normalisation & yes & yes & partly & no \\
-Hybrid retrieval and RRF & yes & yes & no & no \\
-Exclusion checks (hash, injection, id.) & yes & yes & no & no \\
-Trust scoring and tier thresholds & yes & yes & no & no \\
-Clause-level NLI verification & yes & yes & partly & no \\
-Pair identity and citation checks & yes & yes & partly & no \\
-Medication identity gate & yes & yes & yes & no \\
-Release rule and abstention & yes & yes & yes & no \\
-C2i vocabulary and guard fixes & yes & yes & yes & no \\
-Prescription image extraction & yes & yes & pilot & no \\
-C2j: OCR-first reading, name grounding & yes & yes & replay & no \\
-C2j: cancel, worker guard, log redaction & yes & yes & no & no \\
-Evidence-source adapters (not live) & yes & yes & no & no \\
-Learned adversarial detector & no & no & no & no \\
+Query screening; exclusion checks (hash, injection, identity) & tests; 509 security tests \\
+Medication normalisation (RxNorm lexicon) & tests; latency \\
+Hybrid retrieval and RRF; trust scoring and tiers & tests; latency \\
+Clause-level NLI; pair identity and citation checks & tests; dev sets (stop points) \\
+Medication identity gate; release rule and abstention & tests; dev sets; LLM pilot \\
+C2i vocabulary and guard fixes & tests; dev sets (6 of 731 changed) \\
+Prescription image reading (vision model) & tests; vision pilot (20 images) \\
+OCR-first reading and name grounding (C2j) & tests; offline replay \\
+Cancellation, single-worker guard, log redaction (C2j) & tests \\
+Evidence-source adapters (not in the live path) & tests (snapshot mode) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -981,19 +698,20 @@ independently written, blind-reviewed confirmation set is needed. Generation was
 used one run per model on 30 cases and 20 images that we wrote ourselves, so real model output is barely sampled. The local corpus is not a gold corpus (14 of 17 chunks without verified identity), so retrieval quality,
 claim-level support and citation support remain unmeasured, and so does the comparison with semantic-similarity RAG that
 research question 1 asks for. The security tests do not measure robustness to unseen attacks, and latency was measured on
-one machine. The C2j changes were checked by tests and an offline replay only, not with users or real prescriptions. Table~\ref{tab:claims} summarises what the evidence supports.
+one machine. The C2j changes were checked by tests and an offline replay only, not with users or real prescriptions.
+Table~\ref{tab:claims} summarises what the evidence supports. Each open question needs something software alone
+cannot supply: retrieval quality and claim support need a verified corpus and independent relevance annotators,
+generalisation needs a confirmation set written and reviewed by others, the comparison with semantic RAG needs both,
+and clinical correctness needs qualified clinical reviewers. A learned adversarial detector would need labelled
+training data.
 
-The next evaluation is designed but not run. A frozen corpus of at least 200 verified chunks from at least 30 documents,
-with source identity, version, retrieval date and hash, will be built once source access and reuse terms are approved.
-Four retrieval configurations will be compared on the same corpus and queries: dense only, BM25 only, dense plus BM25,
-and hybrid plus the trust controls (with and without the graph channel). Two independent annotators will grade relevance
-(0, 1, 2) blind to system and rank, with adjudication and weighted $\kappa$; we will report P@5, P@10, R@5, R@10, MRR and
-nDCG@5/10 with query-level bootstrap intervals and paired differences. The metric code already passes 15 hand-calculated
-synthetic tests. Real-model evaluation and clinical review will follow only with the corresponding authorisation and
-qualified reviewers.
+The next evaluation is designed but not run: a frozen corpus of at least 200 verified chunks from 30 or more documents;
+dense, BM25, hybrid and hybrid-with-trust retrieval compared on the same queries; two blind annotators grading relevance
+with adjudication and weighted $\kappa$; and P@K, R@K, MRR and nDCG with bootstrap intervals. The metric code already
+passes 15 hand-calculated tests.
 
 \begin{table}[!t]
-\caption{Status of the paper's claims}
+\caption{What the evidence supports}
 \label{tab:claims}
 \centering
 \footnotesize
@@ -1001,23 +719,18 @@ qualified reviewers.
 \toprule
 Claim & Status \\
 \midrule
-Offline reproducibility of the frozen candidate & supported \\
+Offline reproducibility of the evaluated candidates & supported \\
 Scoped security regression (509 tests) & supported \\
-Provenance completeness of the corpus (descriptive) & supported \\
-Stop-point diagnosis of withheld statements & supported \\
-Contribution of each check (recomputed) & preliminary \\
-Identity gate results on development sets & preliminary \\
-C2i fixes on development sets & preliminary \\
-Coverage and abstention behaviour & partial \\
-Offline latency (one machine) & supported \\
-Retrieval quality; claim and citation support & blocked \\
-Independent generalisation & blocked \\
-Fewer hallucinations than semantic RAG & not supported \\
-Clinical correctness or safety & not supported \\
-Release path on real model output & pilot only \\
-Prescription image extraction & pilot only \\
 Engineering hardening of C2j (tests, run records) & supported \\
+Offline latency (one machine) & supported \\
+Corpus provenance (descriptive) & supported \\
+Stop-point diagnosis of withheld statements & supported \\
+Identity gate, C2i fixes, contribution of each check & preliminary \\
+Coverage and abstention behaviour & partial \\
+Release path on real LLM output; image reading & pilot \\
 \bottomrule
+\multicolumn{2}{@{}L{0.98\columnwidth}@{}}{\scriptsize Open questions, not yet measurable: retrieval quality, claim and
+citation support, independent generalisation, comparison with semantic RAG, clinical correctness (Section~\ref{sec:limits}).}
 \end{tabular}
 \end{table}
 
