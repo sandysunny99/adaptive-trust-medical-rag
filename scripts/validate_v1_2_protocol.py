@@ -7,7 +7,7 @@ def main():
     print("Validating V1.2 Protocol...")
     
     # 1. Load Protocol
-    protocol_path = "REAL_LLM_EVALUATION_PROTOCOL_V1_2.json"
+    protocol_path = "docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_2.json"
     if not os.path.exists(protocol_path):
         print(f"FAIL: Protocol file {protocol_path} not found.")
         sys.exit(1)

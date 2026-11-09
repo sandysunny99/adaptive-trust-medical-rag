@@ -34,7 +34,7 @@ def main():
     with open(run_dir / "summary.md", "w") as f:
         f.write(summary_md)
         
-    with open("REAL_LLM_EVALUATION_V1_2_RESULTS.md", "w") as f:
+    with open("docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_V1_2_RESULTS.md", "w") as f:
         f.write("# REAL_LLM_EVALUATION_V1_2_RESULTS\n\n" + summary_md)
         
     print("Reports generated.")

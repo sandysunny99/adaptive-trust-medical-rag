@@ -3,8 +3,8 @@ import json
 import os
 from pathlib import Path
 
-# 1. REAL_LLM_EVALUATION_PROTOCOL_V1_3.md
-with open('REAL_LLM_EVALUATION_PROTOCOL_V1_3.md', 'w', encoding='utf-8') as f:
+# 1. docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.md
+with open('docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.md', 'w', encoding='utf-8') as f:
     f.write('''# REAL LLM EVALUATION PROTOCOL V1.3
 
 ## 1. Purpose
@@ -125,7 +125,7 @@ Directory experiments/runs/real-llm-v1_3/REAL_LLM_V1_3_RUN_001.
 Subject to provider stability.
 ''')
 
-# 2. REAL_LLM_EVALUATION_PROTOCOL_V1_3.json
+# 2. docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.json
 protocol_json = {
     "version": "1.3",
     "dataset_hash": "db4013a97bed7d05803abe73cfeb477a3a82e6c75c30f860d76eed655add59dc",
@@ -137,11 +137,11 @@ protocol_json = {
     "retry_policy": {"allowed": True, "max_retries": 3, "errors": ["HTTP 429"]},
     "failover_policy": "None"
 }
-with open('REAL_LLM_EVALUATION_PROTOCOL_V1_3.json', 'w', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.json', 'w', encoding='utf-8') as f:
     json.dump(protocol_json, f, indent=2)
 
-# 3. V1_3_STATISTICAL_ANALYSIS_PLAN.md
-with open('V1_3_STATISTICAL_ANALYSIS_PLAN.md', 'w', encoding='utf-8') as f:
+# 3. docs/archive/real_llm_v1_2_v1_3/V1_3_STATISTICAL_ANALYSIS_PLAN.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_3_STATISTICAL_ANALYSIS_PLAN.md', 'w', encoding='utf-8') as f:
     f.write('''# V1.3 STATISTICAL ANALYSIS PLAN
 
 ## Primary Outcomes
@@ -165,8 +165,8 @@ N = 80 case IDs.
 Treated as missing data for generation quality outcomes. Do not conflate with abstention.
 ''')
 
-# 4. V1_3_ACCEPTANCE_CRITERIA.md
-with open('V1_3_ACCEPTANCE_CRITERIA.md', 'w', encoding='utf-8') as f:
+# 4. docs/archive/real_llm_v1_2_v1_3/V1_3_ACCEPTANCE_CRITERIA.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_3_ACCEPTANCE_CRITERIA.md', 'w', encoding='utf-8') as f:
     f.write('''# V1.3 ACCEPTANCE CRITERIA
 
 A. **DATA INTEGRITY**: 160 records, 160 unique IDs, 0 duplicate/missing pairs.
@@ -177,8 +177,8 @@ E. **RESEARCH PROTOCOL COMPLIANCE**: Zero unexpected provider/model changes, fro
 F. **FORENSIC TRACEABILITY**: Complete per-case telemetry.
 ''')
 
-# 5. V1_3_PREAUTHORIZATION_CHECKLIST.md
-with open('V1_3_PREAUTHORIZATION_CHECKLIST.md', 'w', encoding='utf-8') as f:
+# 5. docs/archive/real_llm_v1_2_v1_3/V1_3_PREAUTHORIZATION_CHECKLIST.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_3_PREAUTHORIZATION_CHECKLIST.md', 'w', encoding='utf-8') as f:
     f.write('''# V1.3 PREAUTHORIZATION CHECKLIST
 [x] Git state known
 [x] Branch known
@@ -214,8 +214,8 @@ with open('V1_3_PREAUTHORIZATION_CHECKLIST.md', 'w', encoding='utf-8') as f:
 [x] no retrieval mutation
 ''')
 
-# 6. V1_2_VS_V1_3_PROTOCOL_DIFF.md
-with open('V1_2_VS_V1_3_PROTOCOL_DIFF.md', 'w', encoding='utf-8') as f:
+# 6. docs/archive/real_llm_v1_2_v1_3/V1_2_VS_V1_3_PROTOCOL_DIFF.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_VS_V1_3_PROTOCOL_DIFF.md', 'w', encoding='utf-8') as f:
     f.write('''# V1.2 vs V1.3 PROTOCOL DIFF
 
 | Element | V1.2 | V1.3 | Changed? | Scientific Reason |
@@ -229,7 +229,7 @@ with open('V1_2_VS_V1_3_PROTOCOL_DIFF.md', 'w', encoding='utf-8') as f:
 | Acceptance | 160 finished | >60 generations | YES | Ensure statistical viability |
 ''')
 
-# 7. V1_3_PREAUTH_ARTIFACT_HASHES.txt
+# 7. docs/archive/real_llm_v1_2_v1_3/V1_3_PREAUTH_ARTIFACT_HASHES.txt
 def get_hash(path):
     if Path(path).exists():
         with open(path, 'rb') as f:
@@ -237,12 +237,12 @@ def get_hash(path):
     return "FILE_NOT_FOUND"
 
 files = [
-    'REAL_LLM_EVALUATION_PROTOCOL_V1_3.md',
-    'REAL_LLM_EVALUATION_PROTOCOL_V1_3.json',
+    'docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.md',
+    'docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3.json',
     'experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt',
     'experiments/manifests/v3_1_human_cases.json'
 ]
-with open('V1_3_PREAUTH_ARTIFACT_HASHES.txt', 'w', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_3_PREAUTH_ARTIFACT_HASHES.txt', 'w', encoding='utf-8') as f:
     for file in files:
         f.write(f'{file}: {get_hash(file)}\n')
 

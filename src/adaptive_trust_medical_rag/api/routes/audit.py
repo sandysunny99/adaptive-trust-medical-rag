@@ -153,7 +153,7 @@ async def get_research_state() -> ResearchState:
         state['prompt_freeze'] = ControlState(status="BLOCKED", reason=str(e), reference=prompt_path)
 
     # Frozen Retrieval
-    protocol_path = 'REAL_LLM_EVALUATION_PROTOCOL_V1_2.json'
+    protocol_path = 'docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_2.json'
     try:
         with open(protocol_path, 'r') as f:
             proto = json.load(f)

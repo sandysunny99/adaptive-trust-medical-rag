@@ -31,6 +31,19 @@ The live application (`POST /api/v1/analyze*`, streamed over Server-Sent Events)
 7. **Claim and citation verification** — every factual statement is checked against the cited evidence (PubMedBERT NLI plus canonical relationship identity). A pairwise drug claim needs an approved relationship record on the cited chunk.
 8. **Safety gate** — an answer is released only if every statement is verified; otherwise the system abstains and shows why, with the evidence it checked. Evidence URLs are shown as links only when verified for that chunk.
 
+```mermaid
+flowchart LR
+    U[Medication names<br/>or prescription image] --> X[Image extraction<br/>and user confirmation]
+    X --> N[RxNorm<br/>normalisation]
+    N --> R[Hybrid retrieval<br/>BM25 + dense]
+    R --> E{Evidence Eligibility Gate<br/>provenance, hash, injection,<br/>drug match, trust threshold}
+    E -- no eligible evidence --> A[Abstention<br/>with reasons]
+    E --> G[LLM generation<br/>from eligible evidence only]
+    G --> V{Answer Safety Gate<br/>NLI, relationship identity,<br/>citation checks}
+    V -- any claim fails --> A
+    V -- every claim verified --> O[Released answer<br/>with verified citations]
+```
+
 ### Implementation status
 
 | Component | Status |
@@ -188,6 +201,24 @@ Protocol: [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
 
 The authoritative status of every open item is [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md). Validation runs and reports are under [reports/live_validation/](reports/live_validation/). The application freeze, the evidence-backed-answer milestone and any release are separate researcher decisions; none is declared here.
 
+## Repository layout
+
+```text
+src/adaptive_trust_medical_rag/   Python package: API, live pipeline, retrieval, trust scoring, verification, providers
+frontend/                         Vite + React interface
+tests/                            pytest suite (the path CI runs), including e2e/ and security/
+data/live_medical/                frozen live corpus, manifests and relationship records
+config/trust.yaml                 trust weights and risk-tier thresholds
+scripts/, experiments/            research tooling and frozen research datasets (run by hand)
+track_a_annotation/               relevance-annotation workspace
+reports/                          blocked-issue register and validation reports
+docs/                             current documentation; docs/archive/ holds historical reports
+paper/                            IEEE paper on this project (main.tex, main.pdf)
+```
+
+The full map, with each module's role and which parts are live code, tooling, data or history, is in
+[docs/REPOSITORY_MAP.md](docs/REPOSITORY_MAP.md).
+
 ## Documentation map
 
 | Document | Purpose |
@@ -198,6 +229,8 @@ The authoritative status of every open item is [reports/audit/blocked_issue_regi
 | [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md) | Research evaluation protocol |
 | [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md) | Threat model |
 | [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md) | Current blockers and decisions |
+| [docs/REPOSITORY_MAP.md](docs/REPOSITORY_MAP.md) | Work tree and module map |
+| [docs/archive/](docs/archive/README.md) | Historical reports and audits, grouped by topic |
 | [AGENTS.md](AGENTS.md) | Operating rules for contributors and agents |
 
 ## License & Attestation

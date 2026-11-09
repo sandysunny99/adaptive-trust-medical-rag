@@ -8,8 +8,8 @@ from pathlib import Path
 with open('experiments/runs/real-llm-v1_2/REAL_LLM_V1_2_RUN_001/results.jsonl', 'r', encoding='utf-8') as f:
     records = [json.loads(line) for line in f if line.strip()]
 
-# PART 2: V1_2_ANALYSIS_CLAIM_AUDIT.md
-with open('V1_2_ANALYSIS_CLAIM_AUDIT.md', 'w', encoding='utf-8') as f:
+# PART 2: docs/archive/real_llm_v1_2_v1_3/V1_2_ANALYSIS_CLAIM_AUDIT.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_ANALYSIS_CLAIM_AUDIT.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 ANALYSIS CLAIM AUDIT\n\n')
     f.write('| Claim | Source Evidence | Classification | Correction Required | Final Wording |\n')
     f.write('|---|---|---|---|---|\n')
@@ -17,8 +17,8 @@ with open('V1_2_ANALYSIS_CLAIM_AUDIT.md', 'w', encoding='utf-8') as f:
     f.write('| "Arm A generated 8 answers, all of which contained unsupported claims." | 8 Arm A success records all show unsupported_answer_rate > 0 | SUPPORTED | None | "Arm A generated 8 answers, all of which contained unsupported claims." |\n')
     f.write('| "Arm B heavily preferred abstention, shielding the system from generating hallucinations" | Arm B had 0 generated answers and 72 abstentions | UNSUPPORTED | Remove "shielding from hallucinations" | "Arm B exhibited a high pre-generation abstention rate. Because Arm B generated no successful answers, the experiment cannot determine whether its abstention policy would produce fewer unsupported outputs." |\n')
 
-# PART 4: V1_2_PROVENANCE_REVALIDATION_V2.md
-with open('V1_2_PROVENANCE_REVALIDATION_V2.md', 'w', encoding='utf-8') as f:
+# PART 4: docs/archive/real_llm_v1_2_v1_3/V1_2_PROVENANCE_REVALIDATION_V2.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PROVENANCE_REVALIDATION_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 PROVENANCE REVALIDATION V2\n\n')
     f.write('A. Attempts 1-6 crashed before request execution. Attempt 7 executed provider calls.\n')
     f.write('B. Attempts 1-6 failed during setup/imports or early loop logic (e.g. ScoredCandidate init).\n')
@@ -30,7 +30,7 @@ with open('V1_2_PROVENANCE_REVALIDATION_V2.md', 'w', encoding='utf-8') as f:
     f.write('H. No code changes could have affected records after request execution began.\n\n')
     f.write('**Conclusion:**\nCLOSED - SAME RUNNER VERSION FOR ALL 160 REQUESTS\n')
 
-# PART 5: V1_2_EXECUTION_TIMELINE_V2.md
+# PART 5: docs/archive/real_llm_v1_2_v1_3/V1_2_EXECUTION_TIMELINE_V2.md
 records_sorted = sorted(records, key=lambda r: r['timestamp_start'])
 overlaps = 0
 min_gap = float('inf')
@@ -47,7 +47,7 @@ earliest = records_sorted[0]['timestamp_start']
 latest = max([r['timestamp_end'] for r in records_sorted])
 duration = (datetime.fromisoformat(latest) - datetime.fromisoformat(earliest)).total_seconds()
 
-with open('V1_2_EXECUTION_TIMELINE_V2.md', 'w', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_EXECUTION_TIMELINE_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 EXECUTION TIMELINE V2\n\n')
     f.write(f'- Earliest request: {earliest}\n')
     f.write(f'- Latest request: {latest}\n')
@@ -67,25 +67,25 @@ for c, arms in cases.items():
     state = (arms.get('arm_a'), arms.get('arm_b'))
     outcome_counts[state] += 1
 
-with open('V1_2_PAIRED_OUTCOME_MATRIX_V2.csv', 'w', newline='', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PAIRED_OUTCOME_MATRIX_V2.csv', 'w', newline='', encoding='utf-8') as f:
     writer = csv.writer(f)
     writer.writerow(['Arm A', 'Arm B', 'Count'])
     for (a, b), count in outcome_counts.items():
         writer.writerow([a, b, count])
 
-with open('V1_2_PAIRED_OUTCOME_MATRIX_V2.md', 'w', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PAIRED_OUTCOME_MATRIX_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 PAIRED OUTCOME MATRIX V2\n\n')
     f.write('| Arm A | Arm B | Count |\n')
     f.write('|---|---|---:|\n')
     for (a, b), count in outcome_counts.items():
         f.write(f'| {a} | {b} | {count} |\n')
 
-# PART 9: V1_2_PROVIDER_VS_ABSTENTION_ANALYSIS_V2.md
-with open('V1_2_PROVIDER_VS_ABSTENTION_ANALYSIS_V2.md', 'w', encoding='utf-8') as f:
+# PART 9: docs/archive/real_llm_v1_2_v1_3/V1_2_PROVIDER_VS_ABSTENTION_ANALYSIS_V2.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_PROVIDER_VS_ABSTENTION_ANALYSIS_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 PROVIDER VS ABSTENTION ANALYSIS V2\n\n')
     f.write('Arm B produced 72 pre-generation abstentions and 8 provider failures, whereas Arm A produced 72 provider failures and 8 successful generations. The observed data therefore show a substantially different execution-path distribution between the two arms. The current experiment does not isolate whether this distribution should be attributed solely to the evidence eligibility policy because provider availability and pre-generation gating interact in the observed run.\n')
 
-# PART 10: V1_2_GENERATED_CASE_FORENSICS.csv
+# PART 10: docs/archive/real_llm_v1_2_v1_3/V1_2_GENERATED_CASE_FORENSICS.csv
 gen_csv = []
 for r in records:
     if r['status'] == 'SUCCESS':
@@ -106,14 +106,14 @@ for r in records:
             'valid_citation_count': m.get('valid_citations', 0) # Estimated
         })
 
-with open('V1_2_GENERATED_CASE_FORENSICS.csv', 'w', newline='', encoding='utf-8') as f:
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_GENERATED_CASE_FORENSICS.csv', 'w', newline='', encoding='utf-8') as f:
     if gen_csv:
         writer = csv.DictWriter(f, fieldnames=gen_csv[0].keys())
         writer.writeheader()
         writer.writerows(gen_csv)
 
-# PART 14: V1_2_METRIC_DEFINITION_AUDIT_V2.md
-with open('V1_2_METRIC_DEFINITION_AUDIT_V2.md', 'w', encoding='utf-8') as f:
+# PART 14: docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_DEFINITION_AUDIT_V2.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_DEFINITION_AUDIT_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 METRIC DEFINITION AUDIT V2\n\n')
     f.write('## claim_support_rate\n- Numerator: count of supported claims\n- Denominator: count of total claims in generated answers\n- Protocol/Impl Source: Evaluator\n- Raw Recalculation: 0.00\n- Limitation: Denominator is zero for Arm B, non-comparable.\n\n')
     f.write('## citation_validation_rate\n- Numerator: count of valid citations\n- Denominator: count of total citations\n- Protocol/Impl Source: Evaluator\n- Limitation: Zero for Arm B.\n\n')
@@ -121,13 +121,13 @@ with open('V1_2_METRIC_DEFINITION_AUDIT_V2.md', 'w', encoding='utf-8') as f:
     f.write('## provider_failure_rate\n- Numerator: count of provider failures\n- Denominator: total requests\n\n')
     f.write('## abstention_rate\n- Numerator: count of abstentions\n- Denominator: total requests\n\n')
 
-# PART 15: V1_2_METRIC_RECOMPUTATION_V2.md
-with open('V1_2_METRIC_RECOMPUTATION_V2.md', 'w', encoding='utf-8') as f:
+# PART 15: docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION_V2.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_METRIC_RECOMPUTATION_V2.md', 'w', encoding='utf-8') as f:
     f.write('# V1.2 METRIC RECOMPUTATION V2\n\n')
     f.write('Matches metrics.json exactly. PASS.\n')
 
-# PART 18: V1_2_FORMAL_RESULTS_ANALYSIS_V2.md
-with open('V1_2_FORMAL_RESULTS_ANALYSIS_V2.md', 'w', encoding='utf-8') as f:
+# PART 18: docs/archive/real_llm_v1_2_v1_3/V1_2_FORMAL_RESULTS_ANALYSIS_V2.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_FORMAL_RESULTS_ANALYSIS_V2.md', 'w', encoding='utf-8') as f:
     f.write('''# V1.2 Formal Results Analysis V2
 
 ## 1. Research Question
@@ -195,8 +195,8 @@ V1.2 successfully established a structurally complete paired real-LLM run and re
 Draft protocol amendment to manage provider rate limits.
 ''')
 
-# PART 19: REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT.md
-with open('REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT.md', 'w', encoding='utf-8') as f:
+# PART 19: docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT.md
+with open('docs/archive/real_llm_v1_2_v1_3/REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT.md', 'w', encoding='utf-8') as f:
     f.write('''# REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT
 
 ## 1. Provider Selection & Readiness
@@ -218,8 +218,8 @@ with open('REAL_LLM_EVALUATION_PROTOCOL_V1_3_DRAFT.md', 'w', encoding='utf-8') a
 - Prompt, dataset, and retrieval must remain strictly identical to V1.2.
 ''')
 
-# PART 22: V1_2_RESEARCH_STATUS_AND_NEXT_STEPS.md
-with open('V1_2_RESEARCH_STATUS_AND_NEXT_STEPS.md', 'w', encoding='utf-8') as f:
+# PART 22: docs/archive/real_llm_v1_2_v1_3/V1_2_RESEARCH_STATUS_AND_NEXT_STEPS.md
+with open('docs/archive/real_llm_v1_2_v1_3/V1_2_RESEARCH_STATUS_AND_NEXT_STEPS.md', 'w', encoding='utf-8') as f:
     f.write('''# V1_2 RESEARCH STATUS AND NEXT STEPS
 
 PHASE V1.2:

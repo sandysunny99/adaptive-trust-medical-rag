@@ -27,7 +27,7 @@ FROZEN = [
     # TRACK_A_LLM_FINAL_SCHEMA_HASHES_V1.json
     ("track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt", "374351cf42f177484b26962f92ffdca3ed1d6862a73211d714816b958610cab4"),
     ("track_a_annotation/decision_batches/TRACK_A_LLM_SYSTEM_PROMPT_V2.txt", "f6433f2c57a830088c3cf70340349c271d6b03df17935d862dfb318483604bd3"),
-    # V1_2_PROMPT_INSTANTIATION_REMEDIATION.md
+    # docs/archive/real_llm_v1_2_v1_3/V1_2_PROMPT_INSTANTIATION_REMEDIATION.md
     ("experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt", "e5aeb4fa105d30f9df23c6d3815a45d4d63c7e83b82ab30e5fbb9f4721e4301c"),
 ]
 
