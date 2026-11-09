@@ -18,10 +18,13 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \usepackage{url}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,fit,backgrounds,shapes.geometric,calc,patterns}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+\usepgfplotslibrary{groupplots}
 \usepackage[hidelinks]{hyperref}
 
 \begin{document}
@@ -342,12 +345,58 @@ not confirm. The release predicate is
 \end{equation}
 where $s$ is the final support state, $g$ the gate decision and $m$ the guard message. The predicate reads the gate and
 guard records directly, so no later stage can restore a rejected claim, and a claim without a gate record fails.
-Withheld claims produce a structured abstention with the stage and reason. Every check records its result even when
-an earlier one has already failed, so the release decision under any subset of the checks can be recomputed from
-stored runs (Section~\ref{sec:contrib}).
+Withheld claims produce a structured abstention with the stage and reason.
 
 
 
+
+%% =====================================================================================================================
+\section{Algorithms}
+\label{sec:algo}
+
+Algorithms~\ref{alg:admit} and~\ref{alg:verify} give the two stages as implemented. Admission applies every
+exclusion before the trust score, so a chunk that fails one is never scored, and an empty evidence pack ends the
+request with an abstention before any model is called. Verification runs the verifier and the identity gate on every
+claim, and the strength, citation-alignment and guard checks on every claim the verifier passes, and records each
+result even when an earlier check has already failed; release requires all of them~\eqref{eq:release}. Because the
+results are recorded separately, the release decision under any subset of the checks can be recomputed from stored
+runs (Section~\ref{sec:contrib}).
+
+\begin{algorithm}[!t]
+\caption{Evidence admission (pre-generation)}
+\label{alg:admit}
+\begin{algorithmic}[1]
+\Require query $Q$, confirmed medications $D$; tier thresholds $\tau$
+\Ensure numbered evidence pack $\mathcal{P}$ or abstention
+\State screen and sanitise $Q$; resolve $D$ in the pinned lexicon
+\State $\mathcal{E} \gets$ RRF of BM25, dense and graph rankings \eqref{eq:rrf}; drop poisoning score $> 0.4$
+\State $r \gets$ risk tier of $Q$; $\mathcal{P} \gets \emptyset$
+\For{each $e_i \in \mathcal{E}$ in fused order}
+  \If{provenance blocked \textbf{or} hash mismatch \textbf{or} carries instructions} \textbf{continue} \EndIf
+  \If{$e_i$ names no medication in $D$ \textbf{or} identity unverified} \textbf{continue} \EndIf
+  \If{text already in $\mathcal{P}$} \textbf{continue} \EndIf
+  \State $T_i \gets$ \eqref{eq:trust} with missing factors set to 0
+  \If{$T_i \ge \tau_r$ \textbf{and} $A_i \ge 0.3$} $\mathcal{P} \gets \mathcal{P} \cup \{e_i\}$ \EndIf
+\EndFor
+\If{$\mathcal{P} = \emptyset$} \Return abstention (no eligible evidence) \EndIf
+\State \Return $\mathcal{P}$ numbered as [Source 1..N]
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[!t]
+\caption{Claim verification and release (post-generation)}
+\label{alg:verify}
+\begin{algorithmic}[1]
+\Require answer $y$ generated from $\mathcal{P}$; confirmed medications $D$
+\Ensure released claims and abstentions with reasons
+\For{each claim $c$ in $y$}
+  \State $s(c) \gets$ clause-level NLI on cited chunks, aggregate check, pair identity, citation and strength checks
+  \State $g(c) \gets$ identity gate on drug-role names vs.\ cited text and titles
+  \State $m(c) \gets$ guard: medications named but not in $D$
+  \If{\eqref{eq:release} holds} release $c$ \Else\ withhold $c$ and record the first failing stage \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 
 %% =====================================================================================================================
 \section{Data and Evidence Management}
@@ -389,6 +438,68 @@ withholds, fixed before any new confirmation set, is a point estimate of at most
 \section{Results}
 \label{sec:results}
 
+\begin{figure*}[!t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=3 by 2, horizontal sep=1.55cm, vertical sep=1.75cm},
+  width=0.36\textwidth, height=4.1cm, tick label style={font=\scriptsize}, label style={font=\scriptsize},
+  title style={font=\footnotesize\bfseries, yshift=-1mm}, legend style={font=\tiny, draw=none, fill=none}]
+% (a) gate misses and identity false withholds
+\nextgroupplot[ybar, bar width=3.5pt, ymin=0, ymax=5.6, ylabel={\% of rows}, title={(a) Identity gate (C2h)},
+  symbolic x coords={V2,V3,V4,V5,V6,V7,V8}, xtick=data, enlarge x limits=0.1,
+  legend style={at={(0.02,0.98)}, anchor=north west}]
+\addplot+[fill=black!70, draw=black] coordinates {(V2,0) (V3,0) (V4,0) (V5,0) (V6,1.64) (V7,0) (V8,0)};
+\addplot+[fill=black!25, draw=black] coordinates {(V2,0) (V3,3.08) (V4,0) (V5,0) (V6,1.54) (V7,0) (V8,3.39)};
+\legend{gate miss, false withhold}
+% (b) stop points of valid statements
+\nextgroupplot[ybar stacked, bar width=7pt, ymin=0, ymax=112, ylabel={valid rows}, title={(b) Where valid rows stop},
+  symbolic x coords={V2,V3,V4,V5,V6,V7,V8}, xtick=data, enlarge x limits=0.1, legend columns=3,
+  legend style={at={(0.5,0.98)}, anchor=north}]
+\addplot+[fill=black!75, draw=black] coordinates {(V2,45) (V3,40) (V4,31) (V5,26) (V6,34) (V7,13) (V8,17)};
+\addplot+[fill=black!35, draw=black] coordinates {(V2,0) (V3,2) (V4,0) (V5,0) (V6,1) (V7,0) (V8,2)};
+\addplot+[fill=white, draw=black] coordinates {(V2,34) (V3,23) (V4,13) (V5,22) (V6,30) (V7,42) (V8,40)};
+\legend{released, gate, after gate}
+% (c) three code versions on V8
+\nextgroupplot[ybar, bar width=4pt, ymin=0, ymax=21, ylabel={V8 rows}, title={(c) V8: C2g, C2h, C2i},
+  symbolic x coords={miss,rel,fw,cov}, xtick=data, xticklabels={gate miss, unsup. rel., false w/h, valid rel.},
+  x tick label style={font=\tiny}, enlarge x limits=0.18, legend columns=3, legend style={at={(0.02,0.98)}, anchor=north west}]
+\addplot+[fill=black!15, draw=black] coordinates {(miss,4) (rel,1) (fw,8) (cov,15)};
+\addplot+[fill=black!50, draw=black] coordinates {(miss,0) (rel,0) (fw,2) (cov,17)};
+\addplot+[fill=black!85, draw=black] coordinates {(miss,0) (rel,0) (fw,1) (cov,17)};
+\legend{C2g, C2h, C2i}
+% (d) security tests by group
+\nextgroupplot[xbar, bar width=4pt, xmin=0, xmax=140, xlabel={tests passed (0 failed)}, title={(d) Security tests (509)},
+  symbolic y coords={Trust/elig.,Gate bypass,Entity subst.,Citation,Poisoning,Injection}, ytick=data,
+  nodes near coords, nodes near coords style={font=\tiny}, enlarge y limits=0.12]
+\addplot+[fill=black!40, draw=black] coordinates {(97,Trust/elig.) (110,Gate bypass) (65,Entity subst.) (50,Citation) (120,Poisoning) (67,Injection)};
+% (e) retrieval scaling
+\nextgroupplot[xmode=log, xmin=10, xmax=8000, ymin=0, ymax=650, xlabel={corpus size (chunks)},
+  ylabel={retrieval (ms)}, title={(e) Retrieval scaling}, grid=major, grid style={black!10},
+  legend style={at={(0.02,0.98)}, anchor=north west}]
+\addplot+[mark=*, black, thick] coordinates {(17,21.046) (200,42.606) (1000,99.303) (5000,496.249)};
+\addplot+[mark=square*, black!50, thick, dashed] coordinates {(17,59.449) (200,72.521) (1000,156.842) (5000,608.75)};
+\legend{p50, p95}
+% (f) real-LLM pilot outcomes
+\nextgroupplot[xbar stacked, bar width=8pt, xmin=0, xmax=30, xlabel={medication sets (of 30)},
+  title={(f) Real-LLM pilot}, symbolic y coords={Nemotron,Llama}, ytick=data, enlarge y limits=0.6,
+  legend columns=2, legend style={at={(0.5,-0.42)}, anchor=north}]
+\addplot+[fill=white, draw=black] coordinates {(9,Llama) (9,Nemotron)};
+\addplot+[fill=black!30, draw=black] coordinates {(20,Llama) (18,Nemotron)};
+\addplot+[fill=black!85, draw=black] coordinates {(1,Llama) (2,Nemotron)};
+\addplot+[pattern=north east lines, draw=black] coordinates {(0,Llama) (1,Nemotron)};
+\legend{no evidence, withheld, released, error}
+\end{groupplot}
+\end{tikzpicture}}
+\caption{Results at a glance. (a) Gate misses and identity false withholds per development set (C2h; exact intervals
+in Table~\ref{tab:gate}). (b) Where valid statements stop (\texttt{OFFLINE\_METRICS\_01}). (c) Three code versions on
+the same V8 statements (\texttt{V8\_PAIRED\_C2G\_C2H\_01}, \texttt{C2H\_VS\_C2I\_02}; V8 is author-known). (d) Scoped
+security tests by threat group, all passing on C2h, C2i and C2j. (e) Hybrid retrieval latency on synthetic corpora
+(\texttt{PF01\_SCALING\_01}). (f) Terminal outcome per medication set in the real-LLM pilot (\texttt{LIVE\_TEXT\_01},
+\texttt{\_03}).}
+\label{fig:results}
+\end{figure*}
+
 \subsection{Reproducibility}
 
 A clean offline rerun of the frozen candidate produced 15 of 15 result files byte-identical to the stored reference, and
@@ -397,7 +508,7 @@ network-blocked modes (run \texttt{C2H\_REPRO\_01}).
 
 \subsection{Identity gate}
 
-Table~\ref{tab:gate} gives the per-set results. No REJECT row was released in any set. Among REJECT
+Table~\ref{tab:gate} and Fig.~\ref{fig:results}a give the per-set results. No REJECT row was released in any set. Among REJECT
 rows that reached the gate, the gate passed one (V6-IND-03, a row whose label is a recorded error). One REJECT row
 (V7-SRC-02) never reached the gate: its cited section names neither requested medication, so the pipeline abstained
 before generation. On V8 the two false withholds came from the ordinary words ``nudge'' and ``oozing'', which the gate's
@@ -429,7 +540,7 @@ V8 & 0/54 (0, 6.6) & 0 & 2/59 (0.9, 11.5) & 17/59 \\
 
 \subsection{Where valid statements stop}
 
-Coverage is low. Across V2 to V8, 206 valid statements were released, 5 were rejected by the
+Coverage is low (Fig.~\ref{fig:results}b). Across V2 to V8, 206 valid statements were released, 5 were rejected by the
 identity gate and 204 passed the gate and were withheld later (run \texttt{STOP\_DIAGNOSTICS\_C2H\_01}). The first
 stage to withhold them was NLI in 129 (entailment below 0.10 in 101), pair identity in 52, the verifier's aggregate
 check in 18 and the medication guard in 5. The pair-identity stops follow from
@@ -487,7 +598,7 @@ labels AI-written; sets development-informed.}
 
 \subsection{Candidate comparison and remediation}
 
-On the same 113 V8 statements, the previous candidate's code (C2g) had 4 gate misses, 1 unsupported release, 8 false
+On the same 113 V8 statements (Fig.~\ref{fig:results}c), the previous candidate's code (C2g) had 4 gate misses, 1 unsupported release, 8 false
 withholds and 15 valid releases; C2h had 0, 0, 2 and 17. C2h fixed 10 decisions and broke none (exact McNemar
 $p=0.002$; runs \texttt{V8\_PAIRED\_C2G\_C2H\_01}, \texttt{V8\_RISK\_COVERAGE\_01}); since V8 is author-known,
 this is exploratory.
@@ -511,7 +622,7 @@ V2 to V8 informed these changes, so these are development-set results.
 
 \subsection{Security regression}
 
-We grouped 509 existing tests by threat and ran them with the network blocked: prompt injection 67, poisoning and
+We grouped 509 existing tests by threat and ran them with the network blocked (Fig.~\ref{fig:results}d): prompt injection 67, poisoning and
 provenance 120, citation manipulation 50, entity substitution 65, gate bypass and fallback 110, trust and
 eligibility 97. All passed on C2h, on C2i and on C2j (runs \texttt{SECURITY\_REGRESSION\_01},
 \texttt{C2J\_PORT\_CANCELLATION\_01}). The tests check specified behaviours with inputs written by the developers; they are not an attack-success rate,
@@ -527,7 +638,7 @@ figures exclude any language-model call. On C2j (\texttt{PF01\_C2J\_SUPPLEMENT\_
 (median; p95 478.9~ms), local OCR 1.05~s per image, grounding under 2~ms and name normalisation 0.03~ms.
 
 To see how retrieval scales, we built the unmodified hybrid retriever over synthetic, fictional corpora of 17, 200,
-1{,}000 and 5{,}000 chunks and timed the same 30 queries after 5 warm-up queries (run \texttt{PF01\_SCALING\_01}). Median latency grew from 21.0~ms to 42.6, 99.3 and 496.2~ms, roughly linearly with corpus
+1{,}000 and 5{,}000 chunks and timed the same 30 queries after 5 warm-up queries (run \texttt{PF01\_SCALING\_01}; Fig.~\ref{fig:results}e). Median latency grew from 21.0~ms to 42.6, 99.3 and 496.2~ms, roughly linearly with corpus
 size, because the dense channel scores every chunk by brute-force cosine similarity; building the index (tokenising and
 embedding) took 1.2~s, 7.7~s, 39.1~s and 183.7~s, and peak working set reached 980~MB at 5{,}000 chunks. This harness
 encodes each query with the sentence-transformer directly, so its 17-chunk figure is not comparable with the 7.9~ms
@@ -545,7 +656,7 @@ and 10 control sets with no evidence in the corpus. Only synthetic inputs and th
 sent, and the NLI model ran locally. NVIDIA's Nemotron~3 Super 120B and Llama~3.1 Nemotron 70B were not available to
 the project's account (\texttt{LIVE\_TEXT\_01}, \texttt{\_02}).
 
-Table~\ref{tab:live} gives the outcomes. Nine control sets per model stopped before generation; the tenth (sertraline
+Table~\ref{tab:live} and Fig.~\ref{fig:results}f give the outcomes. Nine control sets per model stopped before generation; the tenth (sertraline
 with omeprazole) reached both models because the warfarin section names sertraline, and both answers were withheld for
 claiming that the two drugs do not interact. The release rule is all or nothing, so one failing claim withholds the
 whole answer. Llama~3.3 had one answer released (10 claims, lisinopril with metformin) and Nemotron two (one claim
