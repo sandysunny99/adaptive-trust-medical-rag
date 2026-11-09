@@ -512,7 +512,7 @@ Table~\ref{tab:gate} and Fig.~\ref{fig:results}a give the per-set results. No RE
 rows that reached the gate, the gate passed one (V6-IND-03, a row whose label is a recorded error). One REJECT row
 (V7-SRC-02) never reached the gate: its cited section names neither requested medication, so the pipeline abstained
 before generation. On V8 the two false withholds came from the ordinary words ``nudge'' and ``oozing'', which the gate's
-word list did not contain.
+word list did not contain (Fig.~\ref{fig:compare}b).
 
 \begin{table}[!t]
 \caption{Identity gate per development set (C2h; runs \texttt{STOP\_POINTS\_SUPPLEMENTARY\_01}, \texttt{OFFLINE\_METRICS\_01})}
@@ -557,7 +557,7 @@ periodically''), and ``sodium'' occurs in ``a low-sodium diet''.
 \label{sec:contrib}
 
 Because every check result is recorded, we recomputed the release decision of every
-development row under subsets of the checks (Table~\ref{tab:contrib}; run \texttt{CHECK\_COUNTERFACTUAL\_01}).
+development row under subsets of the checks (Table~\ref{tab:contrib} and Fig.~\ref{fig:compare}a; run \texttt{CHECK\_COUNTERFACTUAL\_01}).
 Recomputing the full rule reproduced the recorded outcome on all 731 rows. A conventional pipeline~\eqref{eq:baseline}
 fed the same scripted statements shows all of them, including every REJECT row. With every check except the
 identity gate, 3 to 19 identity-unsupported statements per set would have been released (75 rows in the seven sets).
@@ -595,6 +595,40 @@ V8 & 54/54 & 0 & 10 & 0 & 59 & 57 & 17 \\
 labels AI-written; sets development-informed.}
 \end{tabular}
 \end{table}
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar, width=\columnwidth, height=4.2cm, bar width=4.5pt, ymin=0, ymax=88,
+  ylabel={REJECT rows released}, ylabel style={font=\scriptsize}, tick label style={font=\scriptsize},
+  symbolic x coords={V2,V3,V4,V5,V6,V7,V8}, xtick=data, enlarge x limits=0.08,
+  legend style={font=\tiny, at={(0.5,0.97)}, anchor=north, legend columns=3, draw=none},
+  title={(a) Unsupported statements released}, title style={font=\footnotesize\bfseries}]
+\addplot+[fill=white, draw=black] coordinates {(V2,40) (V3,36) (V4,28) (V5,36) (V6,61) (V7,61) (V8,54)};
+\addplot+[fill=black!40, draw=black] coordinates {(V2,14) (V3,14) (V4,5) (V5,3) (V6,19) (V7,10) (V8,10)};
+\addplot+[fill=black!90, draw=black] coordinates {(V2,0) (V3,0) (V4,0) (V5,0) (V6,0) (V7,0) (V8,0)};
+\legend{conventional (no checks), all checks but gate, full rule}
+\end{axis}
+\end{tikzpicture}
+
+\vspace{2mm}
+\begin{tikzpicture}[cell/.style={draw, minimum width=2.1cm, minimum height=0.85cm, align=center, font=\footnotesize},
+  hd/.style={font=\scriptsize, align=center}]
+\node[font=\footnotesize\bfseries] at (2.1,1.55) {(b) Identity gate on V8 (C2h)};
+\node[hd] at (1.05,0.9) {gate: PASS}; \node[hd] at (3.15,0.9) {gate: REJECT};
+\node[hd, anchor=east] at (-0.05,0) {label PASS}; \node[hd, anchor=east] at (-0.05,-0.85) {label REJECT};
+\node[cell, fill=black!65, text=white] at (1.05,0) {57\\correctly passed};
+\node[cell, fill=black!8] at (3.15,0) {2\\false withhold};
+\node[cell, fill=black!0] at (1.05,-0.85) {0\\gate miss};
+\node[cell, fill=black!65, text=white] at (3.15,-0.85) {54\\correctly rejected};
+\end{tikzpicture}
+\caption{(a) Unsupported (REJECT) statements released per development set by a conventional pipeline, by every check
+except the identity gate, and by the full release rule, recomputed from recorded results (C2h;
+\texttt{CHECK\_COUNTERFACTUAL\_01}; Table~\ref{tab:contrib}). (b) Confusion matrix of the identity gate on the 113 V8
+statements (Table~\ref{tab:gate}); the two false withholds are the words ``nudge'' and ``oozing''. Labels are
+AI-written and V8 is author-known.}
+\label{fig:compare}
+\end{figure}
 
 \subsection{Candidate comparison and remediation}
 
