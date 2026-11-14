@@ -6,7 +6,8 @@ class FakeEventSource {
   listeners: Record<string, ((e: MessageEvent) => void)[]> = {};
   onerror: ((e: Event) => void) | null = null;
   closed = false;
-  constructor(public url: string) { FakeEventSource.last = this; }
+  url: string;
+  constructor(url: string) { this.url = url; FakeEventSource.last = this; }
   addEventListener(type: string, fn: (e: MessageEvent) => void) { (this.listeners[type] ||= []).push(fn); }
   close() { this.closed = true; }
   // Mirrors the browser: a named event runs its listeners, and an 'error' one also runs onerror.
