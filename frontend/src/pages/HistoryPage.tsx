@@ -25,20 +25,14 @@ export function HistoryPage() {
   const [selectedEntry, setSelectedEntry] = useState<HistoryEntry | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const loadHistory = async () => {
-    setIsLoading(true);
-    try {
-      const data = await getAllAnalyses();
-      setEntries(data);
-    } catch (err) {
-      console.error('Failed to load history:', err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+  // Loads once on mount (isLoading starts true); state is set only from the async result.
   useEffect(() => {
-    loadHistory();
+    let cancelled = false;
+    getAllAnalyses()
+      .then(data => { if (!cancelled) setEntries(data); })
+      .catch(err => console.error('Failed to load history:', err))
+      .finally(() => { if (!cancelled) setIsLoading(false); });
+    return () => { cancelled = true; };
   }, []);
 
   const handleDelete = async (id: string) => {

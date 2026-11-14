@@ -55,7 +55,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
   const [currentMeds, setCurrentMeds] = useState<string>('');
 
   useEffect(() => {
-    setIsLoadingModels(true);
+    // isLoadingModels starts true; it is cleared only when the request settles.
     fetchModelCatalog()
       .then(catalog => {
         setModels(catalog);
@@ -84,7 +84,9 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     runInputMode,
   } = useAnalysis();
 
-  const [savedToHistory, setSavedToHistory] = useState(false);
+  // "Saved" belongs to the result that was saved, so a new result shows the button again.
+  const [savedResult, setSavedResult] = useState<AnalysisResult | null>(null);
+  const savedToHistory = result !== null && savedResult === result;
   const submitHintId = useId();
   const modelSelectId = useId();
 
@@ -92,7 +94,6 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     if (result && onResultComplete) {
       onResultComplete(result);
     }
-    setSavedToHistory(false);
   }, [result, onResultComplete]);
 
   const handleSaveToHistory = async () => {
@@ -105,7 +106,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       gateDecision: result.gate_decision || 'unknown',
       result,
     });
-    setSavedToHistory(true);
+    setSavedResult(result);
   };
 
   // Clears the result (inputs are kept so they can be adjusted) and returns to the form.
