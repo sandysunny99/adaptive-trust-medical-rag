@@ -129,12 +129,17 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, war
                     value={editValue}
                     onChange={(e) => setEditValue(e.target.value)}
                     className="px-3 py-1.5 border border-input rounded text-sm w-full max-w-xs"
+                    aria-label={`Edit name for ${c.normalized_text || c.raw_text}`}
                     autoFocus
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSaveEdit(c.id);
+                      else if (e.key === 'Escape') setEditingId(null);
+                    }}
                   />
-                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90" aria-label="Save edited name" title="Save">
                     <Icons.pass size={14} />
                   </button>
-                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground">
+                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground" aria-label="Cancel editing" title="Cancel">
                     <Icons.remove size={14} />
                   </button>
                 </div>
@@ -230,6 +235,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, war
               value={newMedName}
               onChange={(e) => setNewMedName(e.target.value)}
               placeholder="Enter medication name"
+              aria-label="New medication name"
               className="px-3 py-2 border border-input rounded text-sm w-full max-w-xs"
               autoFocus
               onKeyDown={(e) => e.key === 'Enter' && handleAdd()}

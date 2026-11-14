@@ -80,6 +80,31 @@ describe('MedicationConfirmationPanel', () => {
     expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
   });
 
+  it('edit mode has named controls and supports Enter to save and Escape to cancel', async () => {
+    render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Edit warfarin' }));
+    const input = screen.getByRole('textbox', { name: 'Edit name for warfarin' });
+    expect(screen.getByRole('button', { name: 'Save edited name' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Cancel editing' })).toBeInTheDocument();
+
+    await userEvent.clear(input);
+    await userEvent.type(input, 'warfarin sodium{Enter}');
+    expect(screen.getByText('warfarin sodium')).toBeInTheDocument();
+    expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Edit aspirin' }));
+    const second = screen.getByRole('textbox', { name: 'Edit name for aspirin' });
+    await userEvent.type(second, 'X{Escape}');
+    expect(screen.queryByRole('textbox', { name: 'Edit name for aspirin' })).not.toBeInTheDocument();
+    expect(screen.getByText('aspirin')).toBeInTheDocument();
+  });
+
+  it('the add-medication field has an accessible name', () => {
+    render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: /Add medication manually/i }));
+    expect(screen.getByRole('textbox', { name: 'New medication name' })).toBeInTheDocument();
+  });
+
   it('TEST 6: Candidate can be removed', () => {
     render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
     const removeButtons = screen.getAllByTitle('Remove');
