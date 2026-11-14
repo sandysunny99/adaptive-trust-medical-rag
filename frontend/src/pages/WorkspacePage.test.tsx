@@ -353,6 +353,32 @@ describe('WorkspacePage prescription confirmation', () => {
     return user;
   }
 
+  it('cancels a run while it waits for confirmation: stream closed, form back, late events ignored', async () => {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    expect(screen.queryByRole('button', { name: 'Cancel analysis' })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', {
+        candidates: [{ id: 'ocr-0', raw_text: 'Simvastatin 40 mg', normalized_text: 'Simvastatin', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' }],
+      });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByRole('heading', { name: 'Review Detected Medications' })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('heading', { name: 'Review Detected Medications' })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Analyze Medications' })).toBeEnabled();
+    expect(screen.queryByRole('button', { name: 'Cancel analysis' })).not.toBeInTheDocument();
+
+    act(() => emit('abstention', { reason: 'late event from the cancelled run' }));
+    expect(screen.queryByText('late event from the cancelled run')).not.toBeInTheDocument();
+  });
+
   it('sends the reviewed candidates as objects to the same request', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();

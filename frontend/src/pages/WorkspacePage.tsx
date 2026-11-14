@@ -355,6 +355,16 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                   : <Icons.runAnalysis size={16} aria-hidden="true" />}
                 {isProcessing ? 'Analyzing…' : 'Analyze Medications'}
               </button>
+              {isProcessing && (
+                // Stops waiting for this run (closes the stream; later events are ignored) and keeps the inputs.
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="px-4 py-2 text-sm font-medium rounded-lg border border-border text-foreground hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Cancel analysis
+                </button>
+              )}
               {submitHint && (
                 <p id={submitHintId} className="text-xs text-muted-foreground sm:text-right">
                   {submitHint}
