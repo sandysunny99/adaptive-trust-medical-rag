@@ -222,6 +222,9 @@ export function connectStream(
   }
 
   eventSource.onerror = (event) => {
+    // The backend's own `event: error` also reaches onerror as a MessageEvent with data; the 'error'
+    // listener above has already handled it, so only a real connection failure (no data) goes on.
+    if (event instanceof MessageEvent && event.data !== undefined) return;
     console.error('SSE connection error:', event);
     onError?.(event);
     eventSource.close();

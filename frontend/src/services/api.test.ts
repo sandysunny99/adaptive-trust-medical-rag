@@ -1,5 +1,43 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { confirmMedications } from './api';
+import { confirmMedications, connectStream } from './api';
+
+class FakeEventSource {
+  static last: FakeEventSource;
+  listeners: Record<string, ((e: MessageEvent) => void)[]> = {};
+  onerror: ((e: Event) => void) | null = null;
+  closed = false;
+  constructor(public url: string) { FakeEventSource.last = this; }
+  addEventListener(type: string, fn: (e: MessageEvent) => void) { (this.listeners[type] ||= []).push(fn); }
+  close() { this.closed = true; }
+  // Mirrors the browser: a named event runs its listeners, and an 'error' one also runs onerror.
+  dispatch(e: Event) {
+    for (const fn of this.listeners[e.type] || []) fn(e as MessageEvent);
+    if (e.type === 'error') this.onerror?.(e);
+  }
+}
+
+describe('connectStream', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it("does not report the server's own error event as a dropped connection", () => {
+    vi.stubGlobal('EventSource', FakeEventSource);
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const onEvent = vi.fn();
+    const onError = vi.fn();
+    connectStream('/api/v1/stream/r1', onEvent, onError);
+
+    FakeEventSource.last.dispatch(new MessageEvent('error', { data: '{"code":"INPUT_REJECTED","message":"x"}' }));
+    expect(onEvent).toHaveBeenCalledWith('error', { code: 'INPUT_REJECTED', message: 'x' });
+    expect(onError).not.toHaveBeenCalled();
+    expect(consoleError).not.toHaveBeenCalled();
+
+    // A real connection failure (a plain Event) is still reported and closes the stream.
+    FakeEventSource.last.dispatch(new Event('error'));
+    expect(onError).toHaveBeenCalledTimes(1);
+    expect(FakeEventSource.last.closed).toBe(true);
+    consoleError.mockRestore();
+  });
+});
 import type { ConfirmedMedication } from '../types';
 
 const CONFIRMED: ConfirmedMedication[] = [
