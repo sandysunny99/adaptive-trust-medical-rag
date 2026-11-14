@@ -506,6 +506,18 @@ describe('WorkspacePage prescription confirmation', () => {
     expect(screen.getByText('No evidence passed the eligibility checks for this analysis.')).toBeInTheDocument();
   });
 
+  it('says the server is unreachable instead of showing the raw fetch error', async () => {
+    vi.mocked(api.submitPrescriptionImage).mockRejectedValue(new TypeError('Failed to fetch'));
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    expect(await screen.findByText(/Could not reach the analysis server/)).toBeInTheDocument();
+    expect(screen.queryByText('Failed to fetch')).not.toBeInTheDocument();
+    expect(api.connectStream).not.toHaveBeenCalled();
+  });
+
   it('still reports a stream that drops before any terminal event', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();

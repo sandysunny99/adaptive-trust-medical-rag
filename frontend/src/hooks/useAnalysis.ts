@@ -209,7 +209,10 @@ export function useAnalysis() {
       );
     } catch (err: any) {
       if (!isCurrent()) return;
-      setError(err.message || String(err));
+      // fetch rejects with a TypeError only when the server cannot be reached at all.
+      setError(err instanceof TypeError
+        ? 'Could not reach the analysis server. Check that the backend is running, then retry.'
+        : err.message || String(err));
       setCurrentStage('error');
       setIsProcessing(false);
       cleanup();
