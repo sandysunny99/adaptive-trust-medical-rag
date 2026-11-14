@@ -271,6 +271,11 @@ def test_all_datasets_reach_retrieval_and_each_links_to_its_own_source(tmp_path,
                                            for e in state.relationship_store.evidence}
 
 
-def test_the_live_folder_holds_no_v2_dataset():
-    assert not (LIVE_DIR / "v2").exists()
+def test_the_live_folder_holds_only_the_approved_food_0001_dataset():
+    # FOOD-0001 was approved by the researcher on 2026-11-14; no other V2 dataset is live.
+    assert sorted(p.name for p in (LIVE_DIR / "v2").iterdir()) == ["food_0001"]
+    manifest = json.loads((LIVE_DIR / "v2" / "food_0001" / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json")
+                          .read_text(encoding="utf-8"))
+    assert manifest["status"] == "APPROVED" and manifest["candidate_id"] == "FOOD-0001"
+    assert manifest["approval"]["approved_by"] and manifest["approval"]["approved_at"]
     assert not (LIVE_DIR / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").exists()

@@ -115,7 +115,8 @@ def test_the_production_resolver_loads_no_pending_record():
     store = live_relationships.load_relationship_store([], directory=str(REL_DIR))
     assert all(r.record_id != "REL-LIVE-0003" for r in store.records)
     assert store.between(["29046", "9997"]) == []
-    assert store.evidence == ()
+    # The only live evidence is the approved FOOD-0001 chunk (§5.5), never REL-LIVE-0003's §7.1.
+    assert [c["chunk_id"] for c in store.evidence] == ["DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"]
 
 
 def test_the_candidate_evidence_hash_matches_its_text_and_record():

@@ -157,9 +157,11 @@ def approved_candidate(tmp_path, monkeypatch):
 def test_the_shipped_rel_live_0003_candidate_is_not_loaded(monkeypatch):
     state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
     _lazy_init_models(state)
-    assert state.relationship_store.evidence == ()
+    # Only the approved FOOD-0001 chunk (lisinopril §5.5) is live; nothing of REL-LIVE-0003 (§7.1).
+    assert [c["chunk_id"] for c in state.relationship_store.evidence] == ["DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"]
+    assert all(r.record_id != "REL-LIVE-0003" for r in state.relationship_store.records)
     assert not (REL_DIR / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").exists()  # not in the live data folder
-    assert state.verified_source_links == {}
+    assert set(state.verified_source_links) == {"DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"}
     manifest = json.loads((CANDIDATE_DIR / "LIVE_RELATIONSHIP_RECORDS_V2_MANIFEST.json").read_text(encoding="utf-8"))
     assert manifest["status"] == "CANDIDATE_PENDING_RESEARCHER_APPROVAL" and manifest["approval"] is None
 

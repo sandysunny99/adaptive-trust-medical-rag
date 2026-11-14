@@ -1,0 +1,42 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "candidate_id": "FOOD-0001",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V2.json",
+  "records_sha256": "2b76128cc0135e9e534f431dfff6bbc97e0769d2008bd03f4c46ea51f6c5cdec",
+  "evidence_file": "LIVE_RELATIONSHIP_EVIDENCE_V2.json",
+  "evidence_sha256": "fcfb217345ae0ab1a190e766033803d804c5473f69e4e51fbdec0820676d7ac3",
+  "standalone_evidence_chunks": [
+    "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"
+  ],
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "status": "APPROVED",
+  "approval": {
+    "approved_by": "Mummuluri Sandeep Sunny",
+    "approved_at": "2026-11-14",
+    "approval_basis": "Approved by the researcher in project chat on 2026-11-14 (message 'approve'); the DailyMed label was checked as current (lisinopril v12, 9 Oct 2026) by Claude, who also confirmed the label XML served on 2026-11-14 is byte-identical to the capture (SHA-256 351409a1...a7e6) and that section 5.5 re-extracted from it equals the evidence text; record prepared by Claude."
+  },
+  "claim_category": "FOOD_DRUG_INTERACTION",
+  "food_entity": "potassium-containing salt substitutes",
+  "medication": {
+    "name": "lisinopril",
+    "rxcui": "29046"
+  },
+  "supported_claim": "Potassium-containing salt substitutes are listed as a risk factor for hyperkalemia in patients receiving lisinopril, and the label advises periodic serum potassium monitoring.",
+  "patient_context_relevance": "The passage also lists renal insufficiency and diabetes mellitus as hyperkalemia risk factors; it sets no potassium limit and no diet.",
+  "not_supported": [
+    "avoiding all potassium-containing foods",
+    "any daily potassium limit or diet plan",
+    "any severity grade",
+    "stopping or changing a medicine"
+  ],
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-22",
+    "script": "scripts/build_food_0001_candidate.py"
+  },
+  "verification_required_before_approval": [
+    "Open https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34ebeea1-6812-4697-84c4-b2ae4f39e55f and confirm section 5.5 Hyperkalemia reads as the evidence text.",
+    "Confirm generated food guidance stays within supported_claim (a risk factor with monitoring, not an instruction to avoid)."
+  ],
+  "how_to_approve": "Copy the three files into data/live_medical/relationships/v2/food_0001/ (each approved V2 dataset has its own folder; never copy over another dataset's files), and set status to APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}."
+}

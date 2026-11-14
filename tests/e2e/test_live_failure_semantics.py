@@ -290,9 +290,11 @@ def test_claim_verifier_failure_does_not_skip_retrieval(monkeypatch):
     assert state.retrieval_engine is not None
     assert "retrieval" not in state.model_init_errors
     # Under TESTING the query encoder is a stub; it is labelled so, never as real retrieval.
+    # 14 frozen chunks plus the one chunk of the approved FOOD-0001 dataset (2026-11-14).
     assert state.retrieval_info == {
-        "corpus": "LIVE_MEDICAL_CORPUS_V2", "chunk_count": 14,
+        "corpus": "LIVE_MEDICAL_CORPUS_V2", "chunk_count": 15,
         "embedding_model": "all-MiniLM-L6-v2", "embedding_mode": "testing_stub",
+        "relationship_evidence_chunks": ["DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"],
     }
 
 

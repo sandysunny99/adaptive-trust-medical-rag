@@ -296,9 +296,12 @@ def test_without_a_v2_manifest_the_store_is_v1_alone(tmp_path):
         f"{RELATIONSHIP_DATASET} manifest not found"
 
 
-def test_the_shipped_data_has_no_v2_dataset():
+def test_the_shipped_data_has_only_the_approved_food_0001_evidence():
     assert not os.path.exists(os.path.join(live_relationships.RELATIONSHIP_DIR, f"{RELATIONSHIP_DATASET_V2}_MANIFEST.json"))
-    assert load_relationship_store(CORPUS).evidence == ()
+    store = load_relationship_store(CORPUS)
+    # FOOD-0001 (approved 2026-11-14) is standalone label evidence: one chunk, no relationship record.
+    assert [c["chunk_id"] for c in store.evidence] == ["DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"]
+    assert all(r.dataset != "v2/food_0001" for r in store.records)
 
 
 def test_a_v2_mixed_with_a_good_chunk_and_a_stale_one_keeps_only_the_good_one(tmp_path):
