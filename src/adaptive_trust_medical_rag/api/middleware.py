@@ -92,6 +92,12 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         return await call_next(request)
 
 
+PAGE_CSP = (
+    "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; "
+    "font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+)
+
+
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     """Add OWASP-recommended security response headers."""
 
@@ -101,5 +107,8 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
         response.headers["Cache-Control"] = "no-store"
-        response.headers["Content-Security-Policy"] = "default-src 'none'"
+        # An HTML page (the built frontend, served from / in a deployment) needs its own scripts,
+        # styles and API calls; every other response keeps the deny-all policy.
+        is_page = response.headers.get("content-type", "").startswith("text/html")
+        response.headers["Content-Security-Policy"] = PAGE_CSP if is_page else "default-src 'none'"
         return response

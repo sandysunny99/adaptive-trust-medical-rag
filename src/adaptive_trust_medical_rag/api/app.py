@@ -366,6 +366,13 @@ def create_app(
     # Live application route (separate from research evaluation)
     app.include_router(analyze_route.router)
 
+    # In a deployment the built frontend (frontend/dist) is served from the same origin, after the
+    # API routes, so the browser needs no CORS and the SSE stream stays on one host.
+    frontend_dist = REPO_ROOT / "frontend" / "dist"
+    if frontend_dist.is_dir() and os.getenv("SERVE_FRONTEND", "true").lower() != "false":
+        from fastapi.staticfiles import StaticFiles
+        app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+
     # ── Global exception handlers ─────────────────────────────────────────────
     @app.exception_handler(ValueError)
     async def value_error_handler(request: Request, exc: ValueError) -> JSONResponse:
