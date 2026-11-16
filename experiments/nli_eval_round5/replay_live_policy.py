@@ -129,8 +129,10 @@ class LLM:
 def replay(example: dict, loaded: SimpleNamespace, verifier) -> dict:
     section = example["section"]
     by_id = {e["chunk_id"]: e for e in loaded.relationship_store.evidence}
-    # Every retrieved section of the label, as the live app would retrieve them; the claim cites its own.
-    retrieved = [SEC["5.5"], SEC["7.1"]] if section in ("5.5", "7.1") else [SEC["7.3"]]
+    # Every retrieved section of the label, as the live app would retrieve them; the claim cites its own. A probe
+    # may name its retrieved sections instead (round 6: one section, so no uncited section's neutral score counts).
+    retrieved = ([SEC[s] for s in example["retrieved"]] if "retrieved" in example
+                 else [SEC["5.5"], SEC["7.1"]] if section in ("5.5", "7.1") else [SEC["7.3"]])
     cite = retrieved.index(SEC[section]) + 1
     named = [d for d in RXCUI if re.search(rf"\b{d}\b", example["hypothesis"], re.I) and d != LABEL_DRUG[section]]
     drugs = [LABEL_DRUG[section].capitalize()] + [d.capitalize() for d in named]
