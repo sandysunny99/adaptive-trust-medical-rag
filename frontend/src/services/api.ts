@@ -65,8 +65,7 @@ export async function submitAnalysis(
   });
 
   if (!response.ok) {
-    const errBody = await response.text();
-    throw new Error(`Analysis request failed (${response.status}): ${errBody}`);
+    throw new Error(await requestErrorMessage('Analysis request failed', response));
   }
 
   return response.json();
@@ -96,8 +95,7 @@ export async function submitPrescriptionImage(
   });
 
   if (!response.ok) {
-    const errBody = await response.text();
-    throw new Error(`Image upload failed (${response.status}): ${errBody}`);
+    throw new Error(await requestErrorMessage('Image upload failed', response));
   }
 
   return response.json();
@@ -121,6 +119,21 @@ export async function confirmMedications(
   }
 
   return response.json();
+}
+
+/** A readable error: the API's own `detail`, never a proxy's HTML error page. */
+export async function requestErrorMessage(prefix: string, response: Response): Promise<string> {
+  const body = await response.text().catch(() => '');
+  try {
+    const detail = JSON.parse(body)?.detail;
+    if (typeof detail === 'string' && detail) return `${prefix} (${response.status}): ${detail}`;
+  } catch {
+    // Not JSON: a gateway or proxy page.
+  }
+  if (response.status === 502 || response.status === 503 || response.status === 504) {
+    return `${prefix} (${response.status}): the server is starting or restarting. Wait a minute and try again.`;
+  }
+  return `${prefix} (${response.status}). Try again.`;
 }
 
 export function confirmationErrorMessage(status: number): string {
