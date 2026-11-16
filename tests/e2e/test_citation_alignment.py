@@ -286,10 +286,19 @@ def test_controlled_attribution_cases(loaded, statement, s55, s71, released, gat
 # "Enalapril ..." cited to the lisinopril section was released with entailment 0.997 before round 5's guard.
 CHANGED_FACTS = [
     ("medication not confirmed (P01)", "Enalapril can cause hyperkalemia in patients with renal insufficiency [Source 1].",
-     ("Lisinopril",), "medication_identity", "enalapril"),
+     ("Lisinopril",), "medication_identity", "did not confirm: Enalapril"),
+    # P06, released through this path with the real model in round 5 (cited 7.1 entailment 0.999): "furosemide" is
+    # recognised only by the RxNorm lexicon (round 6); no recogniser before it covered the name.
+    ("unrecognised medication before the lexicon (P06)",
+     "Furosemide can cause hyperkalemia in patients with renal insufficiency [Source 2].",
+     ("Lisinopril",), "medication_identity", "did not confirm: Furosemide"),
+    ("brand cited to a generic label", "Zestril can cause hyperkalemia in patients with renal insufficiency [Source 1].",
+     ("Lisinopril",), "medication_identity", "did not confirm: Zestril"),
+    ("drug-name suffix outside the lexicon", "Zorbipril can cause hyperkalemia in patients with renal insufficiency [Source 1].",
+     ("Lisinopril",), "medication_identity", "could not be resolved: zorbipril"),
     ("confirmed medication its cited source does not name",
      "Spironolactone can cause hyperkalemia in patients with renal insufficiency [Source 1].",
-     ("Lisinopril", "Spironolactone"), "medication_identity", "spironolactone"),
+     ("Lisinopril", "Spironolactone"), "medication_identity", "do not mention: Spironolactone"),
     ("population", "Lisinopril can cause hyperkalemia in pediatric patients with renal insufficiency [Source 1].",
      ("Lisinopril",), "strength_check", "PEDIATRIC"),
     ("severity", "Lisinopril causes fatal hyperkalemia in patients with renal insufficiency [Source 1].",
@@ -325,11 +334,32 @@ def test_a_supported_class_or_contextual_mention_is_not_withheld_by_the_medicati
     assert kind == "answer" and "medication_identity" not in claim, claim
 
 
-# BLOCKING residual, not fixed: a medication name the application cannot recognise (no RxNorm lookup per claim
-# word, no offline drug lexicon beyond the request's names, a fixed list and seven suffixes) is not seen by the
-# guard. With the real pinned model this exact claim was released (round-5 replay probe P06: cited section 7.1
-# entailment 0.999). Remove the xfail only when the full path withholds it.
-@pytest.mark.xfail(strict=True, reason="BLOCKING: unrecognised medication names are not detected (replay P06 released)")
-def test_known_gap_an_unrecognised_medication_name_is_withheld(loaded):
-    kind, _, _ = analyse(loaded, "Furosemide can cause hyperkalemia in patients with renal insufficiency [Source 2].")
+def test_without_a_verified_medication_lexicon_every_statement_is_withheld(loaded, monkeypatch):
+    from adaptive_trust_medical_rag.normalization.medication_lexicon import LexiconUnavailable
+    from adaptive_trust_medical_rag.services import live_application
+
+    def unavailable():
+        raise LexiconUnavailable("test: lexicon removed")
+
+    monkeypatch.setattr(live_application, "default_lexicon", unavailable)
+    kind, data, _ = analyse(loaded, f"{E25} [Source 1].")  # released when the lexicon is present
+    (claim,) = data["claims"]
+    assert kind == "abstention" and claim["medication_identity"].startswith("medication lexicon unavailable"), claim
+
+
+def test_the_claim_record_names_each_medication_identity(loaded):
+    _, data, _ = analyse(loaded, "Furosemide can cause hyperkalemia in patients with renal insufficiency [Source 2].")
+    (claim,) = data["claims"]
+    assert claim["medication_mentions"] == [{"text": "Furosemide", "rxcui": "4603", "rxnorm_name": "furosemide",
+                                             "tty": "IN", "status": "unconfirmed", "named_by_cited_source": False}]
+
+
+# BLOCKING residual: a medication name absent from the lexicon and without a drug-name suffix is not recognised, so
+# only the NLI stands between it and release. "Metamizole" is the international name of dipyrone; the lexicon holds
+# RxNorm's normalised names only (dipyrone, acetaminophen), not synonyms (metamizole, paracetamol). With the real
+# pinned model, this claim cited to section 7.1 retrieved alone was released (round-6 replay P07-single, entailment
+# 0.98), as was an invented name (P08-single). Remove the xfail only when the full path withholds it.
+@pytest.mark.xfail(strict=True, reason="BLOCKING: medication names outside the RxNorm prescribable subset are not detected")
+def test_known_gap_a_medication_outside_the_lexicon_is_withheld(loaded):
+    kind, _, _ = analyse(loaded, "Metamizole can cause hyperkalemia in patients with renal insufficiency [Source 2].")
     assert kind == "abstention"

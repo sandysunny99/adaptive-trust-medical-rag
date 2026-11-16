@@ -40,6 +40,7 @@ from adaptive_trust_medical_rag.services.live_relationships import (
 )
 from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
 from adaptive_trust_medical_rag.services.vision_screening import screen_extraction
+from adaptive_trust_medical_rag.normalization.medication_lexicon import LexiconUnavailable, default_lexicon
 from adaptive_trust_medical_rag.services.citation_alignment import citation_alignment_violation
 from adaptive_trust_medical_rag.services.claim_strength import (
     reviewed_claims,
@@ -63,6 +64,7 @@ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
 from adaptive_trust_medical_rag.verification.canonical_identity import (
     RequestDrugMap,
     drug_mentions,
+    medication_findings,
     medication_identity_violation,
     extract_claim_identity,
 )
@@ -1346,6 +1348,11 @@ class LiveMedicalRAGService:
 
             if verifier and statements:
                 rxcuis = [str(m["rxcui"]) for m in medications if m.get("rxcui")]
+                try:
+                    lexicon = default_lexicon()
+                except LexiconUnavailable as e:
+                    lexicon = None  # fail closed: medication_identity_violation rejects every statement
+                    log.error("Medication lexicon unavailable; no statement can pass medication identity: %s", e)
 
                 def cited_metadata(text: str) -> dict[int, dict[str, Any]]:
                     """[Source N] number -> metadata of that eligible chunk, for the numbers the text cites."""
@@ -1447,10 +1454,14 @@ class LiveMedicalRAGService:
                                 claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
                                               "citation_alignment": misaligned})
                             # Nor medication identity for a one-drug statement (no pair check runs):
-                            # "Enalapril ..." cited to the lisinopril label was released (probe P01).
-                            drug_problem = medication_identity_violation(statement.text, drug_rxcui_map, [
-                                t for n in cited for cand in [eligible_candidates[n - 1][0].candidate]
-                                for t in (cand.text, (cand.metadata.get("source_identity") or {}).get("title") or "")])
+                            # "Enalapril ..." / "Furosemide ..." cited to lisinopril sections were
+                            # released (probes P01, P06). Every named medication must be in a cited source.
+                            cited_texts = [t for n in cited for cand in [eligible_candidates[n - 1][0].candidate]
+                                           for t in (cand.text, (cand.metadata.get("source_identity") or {}).get("title") or "")]
+                            drug_problem = medication_identity_violation(statement.text, drug_rxcui_map, cited_texts, lexicon)
+                            if lexicon is not None:
+                                claim["medication_mentions"] = medication_findings(
+                                    statement.text, drug_rxcui_map, cited_texts, lexicon)
                             if drug_problem:
                                 claim.update({"support_state": FinalSupportState.UNSUPPORTED.value,
                                               "medication_identity": drug_problem})

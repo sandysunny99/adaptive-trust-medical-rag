@@ -14,6 +14,8 @@ import re
 from dataclasses import dataclass
 from enum import Enum
 
+from adaptive_trust_medical_rag.normalization.medication_lexicon import MedicationLexicon
+
 
 class CanonicalDirection(str, Enum):
     """Directional semantics for a drug-drug relationship."""
@@ -179,24 +181,70 @@ def drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
     return list(dict.fromkeys(m.lower() for m in pattern.findall(claim_text)))
 
 
-def medication_identity_violation(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str]) -> str | None:
-    """Why a statement's medications are not this analysis's confirmed ones named by its cited sources, or None.
+_SOURCE_MARKER = re.compile(r"\[Source\s+\d+\]", re.IGNORECASE)
+_TOKEN = re.compile(r"[^\W_]+")
+
+
+def _folded_tokens(text: str) -> list[str]:
+    return [t.lower() for t in _TOKEN.findall(text)]
+
+
+def _named_in(tokens: list[str], sources: list[list[str]]) -> bool:
+    n = len(tokens)
+    return any(src[i:i + n] == tokens for src in sources for i in range(len(src) - n + 1))
+
+
+def medication_findings(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str],
+                        lexicon: MedicationLexicon) -> list[dict]:
+    """Each medication the statement names, with its identity and whether a cited source names it.
+
+    Mentions come from the pinned RxNorm lexicon and from drug_mentions (the request's names, a fixed list and
+    drug-name suffixes), merged by text. ``status`` is "confirmed" (a medication of this analysis, by name or
+    RxCUI), "unconfirmed" (a resolved RxNorm concept the analysis did not confirm) or "unresolved" (a suffix
+    match absent from the lexicon, or an ambiguous span).
+    """
+    text = _SOURCE_MARKER.sub(" ", statement)
+    sources = [_folded_tokens(t) for t in cited_texts]
+    confirmed_rxcuis = set(drug_rxcui_map.values())
+    findings: dict[tuple[str, ...], dict] = {}
+    for m in lexicon.mentions(text):
+        findings.setdefault(tuple(_folded_tokens(m.text)), {
+            "text": m.text, "rxcui": m.rxcui, "rxnorm_name": m.name, "tty": m.tty,
+            "status": "unresolved" if m.ambiguous else (
+                "confirmed" if m.text.lower() in drug_rxcui_map or m.rxcui in confirmed_rxcuis else "unconfirmed")})
+    for name in drug_mentions(text, drug_rxcui_map):
+        findings.setdefault(tuple(_folded_tokens(name)), {
+            "text": name, "rxcui": drug_rxcui_map.get(name), "rxnorm_name": None, "tty": None,
+            "status": "confirmed" if name in drug_rxcui_map else "unresolved"})
+    for key, f in findings.items():
+        f["named_by_cited_source"] = _named_in(list(key), sources)
+    return list(findings.values())
+
+
+def medication_identity_violation(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str],
+                                  lexicon: MedicationLexicon | None) -> str | None:
+    """Why the statement names a medication its cited sources do not name, or None.
 
     The pair identity check runs only for statements naming two or more drugs, so "Enalapril can cause
-    hyperkalemia" cited to the lisinopril label had no identity check at all (round-5 probe P01). Each medication
-    the statement names must be a confirmed medication (a key of the request map, set from the normaliser) and
-    be named by a cited source's text or title. Exact names only: a brand is not its generic's label.
+    hyperkalemia" cited to the lisinopril label (round-5 probe P01) and "Furosemide can cause hyperkalemia" cited to
+    its diuretics section (probe P06) had no identity check. Every medication a statement names must be named by a
+    cited source's text or title, whatever its status: a confirmed drug the source does not name is attributed to
+    the wrong evidence; an unconfirmed one ("potassium", "spironolactone" in a lisinopril section) is allowed only
+    as the source's own context. Exact names: a brand is not its generic's label, a salt not its base.
+    Without a verified lexicon (``None``) no statement can be checked, so every one fails.
 
-    shortcut: a medication outside drug_mentions' recognition (the request's names, a fixed list, seven suffixes)
-    is not seen; recognising any name needs an RxNorm lookup per claim word or a reviewed drug lexicon.
+    shortcut: a name outside the lexicon and the drug-name suffixes (foreign, withdrawn or invented) is not seen.
     """
-    mentions = drug_mentions(statement, drug_rxcui_map)
-    unconfirmed = [m for m in mentions if m not in drug_rxcui_map]
-    if unconfirmed:
-        return "names a medication this analysis did not confirm: " + ", ".join(unconfirmed)
-    uncited = [m for m in mentions if not any(re.search(rf"\b{re.escape(m)}\b", t, re.IGNORECASE) for t in cited_texts)]
-    if uncited:
-        return "names a medication its cited sources do not mention: " + ", ".join(uncited)
+    if lexicon is None:
+        return "medication lexicon unavailable, so medication identity cannot be checked"
+    ungrounded = [f for f in medication_findings(statement, drug_rxcui_map, cited_texts, lexicon)
+                  if not f["named_by_cited_source"]]
+    for status, reason in (("unresolved", "names a medication whose identity could not be resolved: "),
+                           ("unconfirmed", "names a medication this analysis did not confirm: "),
+                           ("confirmed", "names a medication its cited sources do not mention: ")):
+        names = [f["text"] for f in ungrounded if f["status"] == status]
+        if names:
+            return reason + ", ".join(names)
     return None
 
 
