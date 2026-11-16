@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icons } from '../ui/icons';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 import type { ConfirmedMedication, MedicationCandidate } from '../types';
 
 interface Props {
   candidates: MedicationCandidate[];
+  /** Warnings about the extraction, shown above the list (e.g. instruction-like text in the image). */
+  warnings?: string[];
   onConfirm: (confirmed: ConfirmedMedication[]) => void;
 }
 
@@ -19,7 +22,7 @@ function toConfirmedMedication(c: MedicationCandidate): ConfirmedMedication {
   return { name, status: 'CONFIRMED', source: c.source === 'OCR' ? 'OCR' : 'VISION', raw_detected_name: c.raw_text };
 }
 
-export function MedicationConfirmationPanel({ candidates: initialCandidates, onConfirm }: Props) {
+export function MedicationConfirmationPanel({ candidates: initialCandidates, warnings = [], onConfirm }: Props) {
   const [candidates, setCandidates] = useState<MedicationCandidate[]>(
     initialCandidates.map(c => ({ ...c }))
   );
@@ -29,6 +32,13 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   
   const [newMedName, setNewMedName] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+
+  // The analysis waits on this panel (and times out after 300 s), so bring it into view when it appears.
+  const panelRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = usePrefersReducedMotion();
+  useEffect(() => {
+    panelRef.current?.scrollIntoView?.({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+  }, [reducedMotion]);
 
   const handleToggleStatus = (id: string) => {
     setCandidates(prev => prev.map(c => {
@@ -84,7 +94,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
   const hasConfirmed = activeCandidates.length > 0 && !hasUncertain;
 
   return (
-    <div className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
+    <div ref={panelRef} className="bg-card rounded-lg border border-border shadow-sm overflow-hidden">
       <div className="p-5 border-b border-border bg-muted">
         <h2 className="text-base font-semibold text-foreground">Review Detected Medications</h2>
         <p className="text-sm text-muted-foreground mt-1">
@@ -94,6 +104,11 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
       </div>
 
       <div className="p-5 space-y-4">
+        {warnings.length > 0 && (
+          <div role="alert" className="rounded-lg border border-warning/30 bg-warning-soft p-3 text-sm text-foreground space-y-1">
+            {warnings.map((w, i) => <p key={i}>{w}</p>)}
+          </div>
+        )}
         {activeCandidates.length === 0 && (
           <div className="text-sm text-muted-foreground text-center py-4">
             No medications detected.
@@ -114,12 +129,17 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                     value={editValue}
                     onChange={(e) => setEditValue(e.target.value)}
                     className="px-3 py-1.5 border border-input rounded text-sm w-full max-w-xs"
+                    aria-label={`Edit name for ${c.normalized_text || c.raw_text}`}
                     autoFocus
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSaveEdit(c.id);
+                      else if (e.key === 'Escape') setEditingId(null);
+                    }}
                   />
-                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90">
+                  <button onClick={() => handleSaveEdit(c.id)} className="p-1.5 bg-primary text-primary-foreground rounded hover:bg-primary/90" aria-label="Save edited name" title="Save">
                     <Icons.pass size={14} />
                   </button>
-                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground">
+                  <button onClick={() => setEditingId(null)} className="p-1.5 text-muted-foreground hover:text-foreground" aria-label="Cancel editing" title="Cancel">
                     <Icons.remove size={14} />
                   </button>
                 </div>
@@ -156,6 +176,14 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
                   </span>
                 )}
                 
+                {(c.screening_flags || []).length > 0 && (
+                  <span className="px-2 py-0.5 rounded-full bg-destructive-soft text-destructive">
+                    Flagged: {(c.screening_flags || []).includes('FROM_INSTRUCTION_LIKE_LINE')
+                      ? 'read from text that looks like instructions to the system'
+                      : 'not found in the clean text of the prescription'}
+                  </span>
+                )}
+
                 <span className={`px-2 py-0.5 rounded-full ${
                   c.status === 'CONFIRMED' || c.status === 'USER_ADDED' || c.status === 'EDITED' 
                     ? 'bg-success-soft text-success' 
@@ -207,6 +235,7 @@ export function MedicationConfirmationPanel({ candidates: initialCandidates, onC
               value={newMedName}
               onChange={(e) => setNewMedName(e.target.value)}
               placeholder="Enter medication name"
+              aria-label="New medication name"
               className="px-3 py-2 border border-input rounded text-sm w-full max-w-xs"
               autoFocus
               onKeyDown={(e) => e.key === 'Enter' && handleAdd()}

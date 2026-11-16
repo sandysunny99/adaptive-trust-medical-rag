@@ -184,6 +184,10 @@ export function PrescriptionDropzone({ file, onFileChange, disabled = false }: P
         <p id={hintId} className="mt-2 text-xs text-muted-foreground">
           One JPEG, PNG or WEBP image • Max 5 MB
         </p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          The image is sent to the configured vision provider, and to its configured backup provider if
+          the first is unavailable. Use synthetic or de-identified images only.
+        </p>
       </div>
       <input
         ref={inputRef}

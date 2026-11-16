@@ -1,0 +1,139 @@
+{
+ "manifest_top": {
+  "purpose": "Exact source capture for live relationship candidate REL-LIVE-0001 (simvastatin, clarithromycin)",
+  "captured_at": "2026-10-14T16:42:46.608171+00:00",
+  "status": "COMPLETE",
+  "failed": 0,
+  "note": "Raw bytes only. Nothing here is approved evidence; approval is a separate researcher decision."
+ },
+ "files": [
+  {
+   "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+   "kind": "spl_xml",
+   "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+   "http_status": 200,
+   "manifest_sha256": "20a97640ddc74981ca41f3c0696d8a23ca3f3473236801fcc31b43825413bedb",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "20a97640ddc74981ca41f3c0696d8a23ca3f3473236801fcc31b43825413bedb",
+   "actual_size": 222351,
+   "match": false
+  },
+  {
+   "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9_history.json",
+   "kind": "spl_history",
+   "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/8f55d5de-5a4f-4a39-8c84-c53976dd6af9/history.json",
+   "http_status": 200,
+   "manifest_sha256": "4a5da835b3e8f4f500efd568d303f0ec0ed054e866aff10b316ccf2d733c1f8e",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "4a5da835b3e8f4f500efd568d303f0ec0ed054e866aff10b316ccf2d733c1f8e",
+   "actual_size": 954,
+   "match": false
+  },
+  {
+   "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+   "kind": "spl_xml",
+   "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+   "http_status": 200,
+   "manifest_sha256": "628e25c7b3f433bf7be856c32c5eaa9e1179ae7069d1313571ff2ac320f7b04c",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "628e25c7b3f433bf7be856c32c5eaa9e1179ae7069d1313571ff2ac320f7b04c",
+   "actual_size": 353750,
+   "match": false
+  },
+  {
+   "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9_history.json",
+   "kind": "spl_history",
+   "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9aaffb41-408c-4372-8fd5-1d649450c0e9/history.json",
+   "http_status": 200,
+   "manifest_sha256": "0b56df14d456a25d6c15b6a2c7d64857f16165c70cdb48cca51fba183a5be19c",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "0b56df14d456a25d6c15b6a2c7d64857f16165c70cdb48cca51fba183a5be19c",
+   "actual_size": 1459,
+   "match": false
+  },
+  {
+   "file": "rxnav_36567_properties.json",
+   "kind": "rxnav_properties",
+   "url": "https://rxnav.nlm.nih.gov/REST/rxcui/36567/properties.json",
+   "http_status": 200,
+   "manifest_sha256": "da6e8725bf624cf882cb6c44ac0faa99965d19a0e4c16ee482daaa051e7f0910",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "da6e8725bf624cf882cb6c44ac0faa99965d19a0e4c16ee482daaa051e7f0910",
+   "actual_size": 122,
+   "match": false
+  },
+  {
+   "file": "rxnav_21212_properties.json",
+   "kind": "rxnav_properties",
+   "url": "https://rxnav.nlm.nih.gov/REST/rxcui/21212/properties.json",
+   "http_status": 200,
+   "manifest_sha256": "3ee1e690c54c4cff82ea0dd30e1e64bfb1fd32dbd4015dd78bf7c5983ec49c15",
+   "manifest_size": null,
+   "captured_at": null,
+   "actual_sha256": "3ee1e690c54c4cff82ea0dd30e1e64bfb1fd32dbd4015dd78bf7c5983ec49c15",
+   "actual_size": 125,
+   "match": false
+  }
+ ],
+ "manifest_item_keys": [
+  "bytes",
+  "content_type",
+  "drug",
+  "fetched_at",
+  "file",
+  "http_status",
+  "id",
+  "kind",
+  "label_seen",
+  "sha256",
+  "status",
+  "url"
+ ],
+ "rxnav_36567": {
+  "rxcui": "36567",
+  "name": "simvastatin",
+  "tty": "IN"
+ },
+ "rxnav_21212": {
+  "rxcui": "21212",
+  "name": "clarithromycin",
+  "tty": "IN"
+ },
+ "spl_clarithromycin": {
+  "setId": "9aaffb41-408c-4372-8fd5-1d649450c0e9",
+  "versionNumber": "21",
+  "effectiveTime": "20231010",
+  "title": "These highlights do not include all the information needed to use CLARITHROMYCIN TABLETS safely and effectively. See full prescribing information for CLARITHROMYCIN TABLETS. CLARITHROMYCIN tablets, for oral use Initial U.S. Approval: 1991"
+ },
+ "spl_zocor": {
+  "setId": "8f55d5de-5a4f-4a39-8c84-c53976dd6af9",
+  "versionNumber": "11",
+  "effectiveTime": "20250328",
+  "title": "These highlights do not include all the information needed to use ZOCOR safely and effectively. See full prescribing information for ZOCOR. ZOCOR® (simvastatin) tablets, for oral useInitial U.S. Approval: 1991"
+ },
+ "clarithromycin_4_5": {
+  "section_found": true,
+  "section_heading_offset_chars": 75050,
+  "element": "paragraph",
+  "byte_start": 75723,
+  "byte_end": 76181,
+  "raw_xml": "<paragraph>Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis <content styleCode=\"italics\">[see <linkHtml href=\"#Section_5.4\">Warnings and Precautions (5.4)</linkHtml> and <linkHtml href=\"#Section_7\">Drug Interactions (7)</linkHtml>]</content>.</paragraph>",
+  "plain_text": "Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)].",
+  "raw_sha256": "1bc9541f93d8836b01c1032df2794ab719b8064aa34abf38a22ee2fb7ecce874"
+ },
+ "zocor_table2_row": {
+  "section_found": true,
+  "section_heading_offset_chars": 88357,
+  "element": "tr",
+  "byte_start": 89155,
+  "byte_end": 89784,
+  "raw_xml": "<tr styleCode=\"Botrule\">\n                                 <td styleCode=\"Lrule Rrule\" valign=\"middle\">\n                                    <content styleCode=\"italics\">Intervention:   </content>\n                                 </td>\n                                 <td styleCode=\"Rrule\">Concomitant use of strong CYP3A4 inhibitors with ZOCOR is contraindicated <content styleCode=\"italics\">[see <linkHtml href=\"#S4\">Contraindications (4)</linkHtml>]</content>. If treatment with a CYP3A4 inhibitor is unavoidable, suspend ZOCOR during the course of strong CYP3A4 inhibitor treatment.</td>\n                              </tr>",
+  "plain_text": "Intervention: Concomitant use of strong CYP3A4 inhibitors with ZOCOR is contraindicated [see Contraindications (4)]. If treatment with a CYP3A4 inhibitor is unavoidable, suspend ZOCOR during the course of strong CYP3A4 inhibitor treatment.",
+  "raw_sha256": "799fc0fd0b76268fd4084ed69cc517d663884270138ae677eec61372b5122721"
+ }
+}

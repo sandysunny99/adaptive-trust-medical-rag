@@ -1,0 +1,23 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "records": [
+    {
+      "record_id": "REL-LIVE-0003",
+      "subject": {
+        "name": "lisinopril",
+        "rxcui": "29046"
+      },
+      "object": {
+        "name": "spironolactone",
+        "rxcui": "9997"
+      },
+      "predicate": "INTERACTION",
+      "direction": "BIDIRECTIONAL",
+      "severity": "UNGRADED",
+      "source_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+      "source_content_hash": "8a9bde7f5d847b0fe92953f76c270ccaa86b9120d937950f95ac2e1e61aa81c4",
+      "evidence_span": "7.1 Diuretics Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure. The possibility of hypotensive effects with lisinopril can be minimized by either decreasing or discontinuing the diuretic or increasing the salt intake prior to initiation of treatment with lisinopril. If this is not possible, reduce the starting dose of lisinopril tablets [see DOSAGE AND ADMINISTRATION ( 2.2) and WARNINGS AND PRECAUTIONS ( 5.4)] . Lisinopril attenuates potassium loss caused by thiazide-type diuretics. Potassium-sparing diuretics (spironolactone, amiloride, triamterene, and others) can increase the risk of hyperkalemia. Therefore, if concomitant use of such agents is indicated, monitor the patient's serum potassium frequently."
+    }
+  ]
+}

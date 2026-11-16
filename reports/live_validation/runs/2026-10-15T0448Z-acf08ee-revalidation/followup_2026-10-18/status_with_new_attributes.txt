@@ -1,0 +1,30 @@
+ M .env.example
+ M .gitattributes
+ M experiments/runs/live-smoke-v1/case_results.jsonl
+ M experiments/runs/live-smoke-v1/manifest.json
+ M experiments/runs/live-smoke-v1/summary.json
+ M reports/audit/ablation_runtime_integrity_smoke.md
+ M reports/audit/blocked_issue_register.md
+ M reports/audit/canonical_r1_verification.md
+ M reports/audit/five_case_validation.md
+ M reports/audit/live_smoke_integrity.md
+ M src/adaptive_trust_medical_rag/api/app.py
+ M src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+ M src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+ M tests/providers/test_vision_backend.py
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md
+?? CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+?? CI_MODEL_SELECTOR_FINAL_AUDIT.md
+?? claude-incoming/
+?? cognee_service/
+?? continue-blockers.bundle
+?? redesign-fixes.bundle
+?? redesign-upload-fix.bundle
+?? reports/junit.xml
+?? reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+?? reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+?? reports/live_validation/runs/
+?? track_a_annotation/ai_assisted/

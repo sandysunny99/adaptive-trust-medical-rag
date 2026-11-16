@@ -1,0 +1,5 @@
+[A-image] requests: [{"m":"POST","p":"/api/v1/analyze/prescription","s":200}]
+[A-image] events captured in page: 2; over the network: 3
+[A-image] retrieval: null
+[A-image] terminal: [{"event":"error","code":"VISION_EXTRACTION_ERROR","reason":"Vision extraction failed: Vision provider failed to return valid JSON"}]
+rc=0

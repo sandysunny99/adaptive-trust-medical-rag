@@ -1,0 +1,27 @@
+warning: in the working copy of '.githooks/pre-commit', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.githooks/pre_commit_secret_scan.py', LF will be replaced by CRLF the next time Git touches it
+init commit ok
+warning: in the working copy of 'leak.py', LF will be replaced by CRLF the next time Git touches it
+== commit with a staged fake token
+SECRET SCAN FAILED, commit blocked:
+  - leak.py: GitHub PAT (ghp_) (line 1) (line numbers are within the added lines)
+  - gitleaks found secrets in staged changes:
+Finding:     REDACTED
+Secret:      REDACTED
+RuleID:      github-pat
+Entropy:     4.765312
+File:        leak.py
+Line:        1
+Fingerprint: leak.py:github-pat:1
+
+12:31PM INF 0 commits scanned.
+12:31PM INF scanned ~48 bytes (48 bytes) in 384ms
+12:31PM WRN leaks found: 1
+Use environment variables instead of hard-coded credentials (AGENTS.md section 3).
+commit rc=1
+1
+warning: in the working copy of 'leak.py', LF will be replaced by CRLF the next time Git touches it
+== commit with clean content
+commit rc=0
+2
+temp repo removed: yes

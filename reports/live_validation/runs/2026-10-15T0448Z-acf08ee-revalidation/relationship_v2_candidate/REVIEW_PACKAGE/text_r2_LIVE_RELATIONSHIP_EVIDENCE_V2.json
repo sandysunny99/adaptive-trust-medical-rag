@@ -1,0 +1,33 @@
+[
+  {
+    "chunk_id": "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+    "document_id": "SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21",
+    "document_title": "CLARITHROMYCIN tablet, film coated (Aurobindo Pharma Limited), SPL v21, section 4.5 Lomitapide, Lovastatin, and Simvastatin",
+    "document_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9aaffb41-408c-4372-8fd5-1d649450c0e9",
+    "source_type": "DAILYMED",
+    "text": "Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)].",
+    "content_hash": "056d80091398a42518561703a00569d99f21bbe0c52352b00b049b4dac5ded23",
+    "embedding": "<ABBREVIATED: 384 float values (JSON numbers, float32 model output), sha256 of json.dumps(vector) 0bcb0ce1bf0d054c0a2989ac4875899f759a9d1e36b3fe3d785f3e5d35d5d1f5>",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "provenance": {
+      "source": "DAILYMED",
+      "spl_set_id": "9aaffb41-408c-4372-8fd5-1d649450c0e9",
+      "spl_version": "21",
+      "spl_effective_time": "20231010",
+      "section": "4.5 Lomitapide, Lovastatin, and Simvastatin",
+      "capture_url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+      "captured_at": "2026-10-14T16:42:44.520645+00:00",
+      "capture_file_sha256": "628e25c7b3f433bf7be856c32c5eaa9e1179ae7069d1313571ff2ac320f7b04c",
+      "capture_file_bytes": 353750,
+      "byte_start": 75723,
+      "byte_end": 76181,
+      "raw_span_sha256": "1bc9541f93d8836b01c1032df2794ab719b8064aa34abf38a22ee2fb7ecce874",
+      "text_derivation": "XML tags removed, HTML entities unescaped, each whitespace run (incl. U+00A0) replaced by one space, trimmed",
+      "content_hash": "056d80091398a42518561703a00569d99f21bbe0c52352b00b049b4dac5ded23",
+      "chunk_id": "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+      "document_id": "SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21"
+    },
+    "authority": 0.95,
+    "freshness": 0.9
+  }
+]

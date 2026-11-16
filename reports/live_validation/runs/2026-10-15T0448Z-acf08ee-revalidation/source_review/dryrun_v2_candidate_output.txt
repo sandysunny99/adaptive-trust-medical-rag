@@ -1,0 +1,244 @@
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 3300.09it/s]
+[1mBertForSequenceClassification LOAD REPORT[0m from: pritamdeka/PubMedBERT-MNLI-MedNLI
+Key                          | Status     |  | 
+-----------------------------+------------+--+-
+bert.embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3338.10it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "pending-as-is",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2 is CANDIDATE_PENDING_RESEARCHER_APPROVAL, not approved",
+ "retrieval": {
+  "evidence_count": 14,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": []
+ },
+ "trust": {
+  "risk_class": "R2",
+  "threshold": 0.6,
+  "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Simvastatin with clarithromycin is contraindicated [Source 1].",
+ "claims": [
+  [
+   "UNSUPPORTED",
+   "UNAVAILABLE",
+   1.0
+  ]
+ ],
+ "terminal": "abstention",
+ "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6225.87it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "approved-copy",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2: 1 approved record(s), 1 evidence chunk(s) loaded",
+ "retrieval": {
+  "evidence_count": 15,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": [
+   "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1"
+  ]
+ },
+ "trust": {
+  "risk_class": "R3",
+  "threshold": 0.75,
+  "risk_basis": "approved relationship record REL-LIVE-0002: simvastatin and clarithromycin contraindicated (source DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1)",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Simvastatin with clarithromycin is contraindicated [Source 1].",
+ "claims": [
+  [
+   "SUPPORTED",
+   "MATCH",
+   1.0
+  ]
+ ],
+ "terminal": "answer",
+ "reason": null
+}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 11392.16it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "approved-copy-reversed-order",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2: 1 approved record(s), 1 evidence chunk(s) loaded",
+ "retrieval": {
+  "evidence_count": 15,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": [
+   "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1"
+  ]
+ },
+ "trust": {
+  "risk_class": "R3",
+  "threshold": 0.75,
+  "risk_basis": "approved relationship record REL-LIVE-0002: simvastatin and clarithromycin contraindicated (source DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1)",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Clarithromycin with simvastatin is contraindicated [Source 1].",
+ "claims": [
+  [
+   "SUPPORTED",
+   "MATCH",
+   1.0
+  ]
+ ],
+ "terminal": "answer",
+ "reason": null
+}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 4460.87it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "approved-copy-wrong-predicate",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2: 1 approved record(s), 1 evidence chunk(s) loaded",
+ "retrieval": {
+  "evidence_count": 15,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": [
+   "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1"
+  ]
+ },
+ "trust": {
+  "risk_class": "R3",
+  "threshold": 0.75,
+  "risk_basis": "approved relationship record REL-LIVE-0002: simvastatin and clarithromycin contraindicated (source DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1)",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Simvastatin inhibits clarithromycin [Source 1].",
+ "claims": [
+  [
+   "UNSUPPORTED",
+   "MISMATCH",
+   0.987
+  ]
+ ],
+ "terminal": "abstention",
+ "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 11416.24it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "approved-copy-unsupported-detail",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2: 1 approved record(s), 1 evidence chunk(s) loaded",
+ "retrieval": {
+  "evidence_count": 15,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": [
+   "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1"
+  ]
+ },
+ "trust": {
+  "risk_class": "R3",
+  "threshold": 0.75,
+  "risk_basis": "approved relationship record REL-LIVE-0002: simvastatin and clarithromycin contraindicated (source DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1)",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Simvastatin with clarithromycin causes liver failure [Source 1].",
+ "claims": [
+  [
+   "UNSUPPORTED",
+   "UNAVAILABLE",
+   0.001
+  ]
+ ],
+ "terminal": "abstention",
+ "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+}
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 2800.19it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/all-MiniLM-L6-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+{
+ "case": "approved-copy-tampered-evidence",
+ "store": "LIVE_RELATIONSHIP_RECORDS_V1 manifest not found; LIVE_RELATIONSHIP_RECORDS_V2 evidence file does not match the manifest SHA-256",
+ "retrieval": {
+  "evidence_count": 14,
+  "embedding_mode": "real",
+  "relationship_evidence_chunks": []
+ },
+ "trust": {
+  "risk_class": "R2",
+  "threshold": 0.6,
+  "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+  "is_eligible": true,
+  "unrelated_excluded": 13
+ },
+ "eligible_evidence": [
+  "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"
+ ],
+ "claim": "Simvastatin with clarithromycin is contraindicated [Source 1].",
+ "claims": [
+  [
+   "UNSUPPORTED",
+   "UNAVAILABLE",
+   1.0
+  ]
+ ],
+ "terminal": "abstention",
+ "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+}
+temporary directory removed: True

@@ -76,6 +76,9 @@ class EntityCache:
             "rxcui": entity.rxcui,
             "brand_name": entity.brand_name,
             "formulation": entity.formulation,
+            # How the entry was first resolved, so a cache hit never reads as more certain than that.
+            "resolved_by": entity.source,
+            "confidence": entity.confidence,
         }
 
     def __len__(self) -> int:

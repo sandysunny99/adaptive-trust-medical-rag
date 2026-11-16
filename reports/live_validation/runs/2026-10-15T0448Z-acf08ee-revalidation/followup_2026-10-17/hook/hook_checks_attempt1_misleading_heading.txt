@@ -1,0 +1,28 @@
+== pytest tests/test_ci_secret_scan_gitleaks.py tests/test_secret_scanner.py
+.......                                                                  [100%]
+7 passed in 3.42s
+== real gitleaks: fake token / clean / env-var reference
+PASS  fake GitHub-token-shaped string: gitleaks=['GITLEAKS DETECTED SECRETS — run `gitleaks detect` for details']  regex=['GitHub PAT (ghp_) (line 1)']
+PASS  clean code: gitleaks=clean  regex=clean
+PASS  env-var reference: gitleaks=clean  regex=clean
+rc=0
+== check_secret_scan_allow local
+OK - secret_scan hook: allow for clean code
+rc=0
+== check_secret_scan_allow CI=1
+OK - secret_scan hook: allow for clean code
+rc=0
+== check_secret_scan_deny local
+OK - secret_scan hook: deny for code with fake token
+rc=0
+== check_secret_scan_deny CI=1
+OK - secret_scan hook: deny for code with fake token
+rc=0
+== gitleaks that cannot run (fake gitleaks.bat exiting 126 first on PATH)
+which: C:\Users\sunny\AppData\Local\Microsoft\WinGet\Packages\Gitleaks.Gitleaks_Microsoft.Winget.Source_8wekyb3d8bbwe\gitleaks.EXE
+[]
+== rerun: gitleaks that cannot run (fake gitleaks.bat exiting 126 first on PATH)
+which: C:\Users\sunny\AppData\Local\Temp\claude\C--Users-sunny-Downloads-CASE-STUDY\0c5a3902-bf07-45b4-b0ee-70a68edea51f\scratchpad\fake_gitleaks\gitleaks.BAT
+scan_with_gitleaks: ['GITLEAKS COULD NOT RUN (exit 126) — the content was not scanned']
+== full hook decision with the failing gitleaks (clean content)
+{"decision": "deny", "reason": "SECRET DETECTED \u2014 file write blocked. Findings: GITLEAKS COULD NOT RUN (exit 126) \u2014 the content was not scanned. Use environment variables instead of hard\u2011coded credentials. See AGENTS.md security rules. The file has NOT been written."}

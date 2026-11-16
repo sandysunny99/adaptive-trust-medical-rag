@@ -1,0 +1,38 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V2.json",
+  "records_sha256": "541f5d35ba7d2f11325f6a1b18188c8df43cf9d154590d654c93443a2c801f61",
+  "evidence_file": "LIVE_RELATIONSHIP_EVIDENCE_V2.json",
+  "evidence_sha256": "f84f304e3cd11702d209b0cda9196f9724160de957447121a7772e5e789fe511",
+  "hash_note": "SHA-256 with CRLF normalised to LF, as for V1.",
+  "status": "CANDIDATE_PENDING_RESEARCHER_APPROVAL",
+  "approval": null,
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-15",
+    "revision": 2,
+    "method": "Revision 1 converted to the V2 loader layout; record, text, content hash and embedding unchanged; authority 0.95 and freshness 0.9 added to match the frozen corpus's DailyMed chunks."
+  },
+  "rxnav": {
+    "36567": {
+      "rxcui": "36567",
+      "name": "simvastatin",
+      "tty": "IN",
+      "suppress": "N"
+    },
+    "21212": {
+      "rxcui": "21212",
+      "name": "clarithromycin",
+      "tty": "IN",
+      "suppress": "N"
+    }
+  },
+  "use_in_application": "None while pending. Once APPROVED with approved_by and approved_at, and placed in data/live_medical/relationships/, the V2 loader accepts the record, adds the evidence chunk to retrieval and gives it the record's identity; the frozen corpus is not changed.",
+  "review_points": [
+    "Confirm the plain-text evidence span against section 4.5 of the clarithromycin label (setid above, version and effective date above).",
+    "Confirm direction BIDIRECTIONAL: the span is the clarithromycin label contraindicating co-administration with simvastatin; the ZOCOR label (setid 8f55d5de-..., captured v11, effectiveTime 20250328) contraindicates strong CYP3A4 inhibitors and names clarithromycin only in the Table 2 Examples row.",
+    "Decide whether the label version captured (v21, 20231010) is the one to cite.",
+    "Confirm authority 0.95 and freshness 0.9 for this label (the frozen corpus uses these values for DailyMed).",
+    "The record states a contraindication of co-administration only; it does not verify any mechanism or adverse-effect claim beyond the span."
+  ]
+}

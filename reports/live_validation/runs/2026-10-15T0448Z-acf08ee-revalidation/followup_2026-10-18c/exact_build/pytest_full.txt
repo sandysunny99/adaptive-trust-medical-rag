@@ -1,0 +1,54 @@
+........................................................................ [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 19%]
+........................................................................ [ 24%]
+........................................................................ [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 43%]
+........................................................................ [ 48%]
+........................................................................ [ 53%]
+........................................................................ [ 58%]
+........................................................................ [ 63%]
+............................................................sss.s....... [ 68%]
+........................................................................ [ 73%]
+........................................................................ [ 78%]
+........................................................................ [ 83%]
+........................................................................ [ 87%]
+........................................................................ [ 92%]
+........................................................................ [ 97%]
+..................................                                       [100%]
+============================== warnings summary ===============================
+..\Downloads\CASE STUDY\.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\sunny\Downloads\CASE STUDY\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/api/test_v6_checkpoint4.py: 15 warnings
+tests/e2e/test_additional_instructions.py: 99 warnings
+tests/e2e/test_live_failure_semantics.py: 84 warnings
+tests/e2e/test_live_relationship_evidence_v2.py: 16 warnings
+tests/e2e/test_live_risk_and_eligibility.py: 81 warnings
+tests/e2e/test_v6_c6_image_confirmation_rxnorm.py: 5 warnings
+tests/e2e/test_v6_c7_image_full_medical_rag.py: 58 warnings
+tests/e2e/test_v6_c8_multimodal_claim_citation_safety.py: 9 warnings
+tests/e2e/test_v6_c9_multimodal_full_e2e_audit.py: 7 warnings
+tests/security/test_phase14_integration.py: 98 warnings
+tests/test_cli.py: 164 warnings
+tests/test_live_variants.py: 81 warnings
+tests/test_rag_orchestrator.py: 43 warnings
+tests/test_security_evaluation.py: 9 warnings
+tests/test_security_extensions.py: 12 warnings
+tests/test_v2_provenance.py: 10 warnings
+  C:\Users\sunny\freeze-verify-9bae325\src\adaptive_trust_medical_rag\security\security_context.py:27: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+
+tests/test_groq_backend.py::test_groq_rate_limit_parsing
+  C:\Users\sunny\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py:2217: RuntimeWarning: coroutine 'test_gemini_backend_strict_timeout.<locals>.mock_generate_content' was never awaited
+    def __init__(self, name, parent):
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1470 passed, 4 skipped, 793 warnings in 387.76s (0:06:27)
+rc=0 secs=396

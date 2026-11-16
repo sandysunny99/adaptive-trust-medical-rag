@@ -1,0 +1,6 @@
+== /health :8010
+{"status":"unhealthy","database":false,"pgvector":false,"version":"1.0.0","uptime_seconds":13.0,"details":{"mode":"test"}}
+HTTP 200
+== models via :5180 proxy
+{"models":[{"id":"nvidia/nemotron-3-super-120b-a12b","provider":"nvidia","name":"NVIDIA Nemotron-3 Super 120B","description":"High-capacity biomedical-reasoning LLM hosted on NVIDIA NIM.","is_available":true},{"id":"openai/gpt-oss-120b","provider":"groq","name":"Groq GPT-OSS 120B","description":"Open-weights model inference hosted on Groq.","is_available":true},{"id":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","provider":"cloudflare","name":"Cloudflare Llama-3.3 70B Instruct","description":"Serverless Workers AI instance with edge compliance.","is_available":true},{"id":"mock-llm","provider":"mock","name":"Deterministic Mock LLM (Testing)","description":"Deterministic testbed model for CI and offline evaluation.","is_available":false}],"default_mode":"auto"}
+HTTP 200

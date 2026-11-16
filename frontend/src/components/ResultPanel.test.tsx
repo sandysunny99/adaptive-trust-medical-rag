@@ -170,3 +170,101 @@ describe('ResultPanel evidence and security sections', () => {
     expect(row).toHaveTextContent('FLAG');
   });
 });
+
+describe('ResultPanel food and diet guidance', () => {
+  const LABEL = 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34ebeea1-6812-4697-84c4-b2ae4f39e55f';
+  const food = {
+    drug: 'Lisinopril', administration: '', food_relationship: 'SPECIFIC FOOD/DRINK INTERACTION', timing: null,
+    food_interactions: ['Potassium-containing salt substitutes are a risk factor for hyperkalemia [Source 1].'],
+    evidence_status: 'VERIFIED', source: '[Source 1]',
+  } as unknown as AnalysisResult['food_guidance'][number];
+
+  it('shows each food statement with a link to the exact verified source', () => {
+    const verified = { ...evidence('DAILYMED-SPL-x', 'label text'), url: LABEL, source_link_status: 'VERIFIED',
+      source_identity_status: 'VERIFIED', source_title: 'LISINOPRIL TABLETS' } as EvidenceItem;
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [verified] })} />);
+    expect(screen.getByText(/salt substitutes are a risk factor/)).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /Source 1: LISINOPRIL TABLETS/ });
+    expect(link).toHaveAttribute('href', LABEL);
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
+
+  it('never links a cited source that is not verified', () => {
+    render(<ResultPanel result={makeResult({ food_guidance: [food], evidence: [evidence('SPL-PLACEHOLDER', 'x')] })} />);
+    expect(screen.queryByRole('link', { name: /Source 1/ })).not.toBeInTheDocument();
+    expect(screen.getByText('Source 1: not a verified link')).toBeInTheDocument();
+  });
+
+  it('says no food guidance was verified, and that this is not a finding of safety', () => {
+    render(<ResultPanel result={makeResult({ gate_decision: 'abstain' })} />);
+    expect(screen.getByText(/No food or dietary guidance could be verified/)).toHaveTextContent(
+      'This does not mean there are no food or dietary issues');
+  });
+});
+
+// 2026-10-26 audit round 2: food outcomes are named, and a withheld answer lists which statements failed.
+describe('ResultPanel food status and claim list', () => {
+  it.each([
+    ['NOT_RUN', 'was not assessed'],
+    ['NONE_FOUND', 'contains no food or dietary guidance'],
+    ['NOT_VERIFIED', 'could not be verified against the sources'],
+    ['WITHHELD', 'The answer was withheld'],
+  ] as const)('explains %s instead of one generic message', (status, text) => {
+    render(<ResultPanel result={makeResult({ food_guidance_status: status, gate_decision: 'abstain' })} />);
+    expect(screen.getByText(new RegExp(text))).toBeInTheDocument();
+    expect(screen.getByText(/does not mean there are no food or dietary issues/)).toBeInTheDocument();
+  });
+
+  it('lists each statement with its verification result and why it failed', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [
+        { claim_id: 0, field: 'conclusion', text: 'Lisinopril can cause hyperkalemia [Source 1].', support_state: 'SUPPORTED',
+          entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+          best_evidence_chunk: null, canonical_identity_status: null },
+        { claim_id: 1, field: 'warnings', text: 'Avoid all diuretics.', support_state: 'UNSUPPORTED',
+          entailment: 0.9, contradiction: 0, citation_present: false, citation_resolves: false,
+          best_evidence_chunk: null, canonical_identity_status: null },
+      ],
+    })} />);
+    expect(screen.getByText('Claim verification (1 of 2 verified)')).toBeInTheDocument();
+    expect(screen.getByText('Avoid all diuretics.')).toBeInTheDocument();
+    expect(screen.getByText('Cites no source')).toBeInTheDocument();
+  });
+
+  it('says when a statement was withheld because its citation attribution was not verified', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ claim_id: 0, field: 'conclusion', text: 'Lisinopril can cause hyperkalemia in renal insufficiency [Source 2].',
+        support_state: 'UNSUPPORTED', entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+        best_evidence_chunk: null, canonical_identity_status: null,
+        citation_alignment: 'attribution not verified: the cited source does not mention, though another retrieved source does: renal' }],
+    })} />);
+    expect(screen.getByText(/^Citation attribution not verified: .*renal$/)).toBeInTheDocument();
+  });
+
+  it('says when a statement names a medication the analysis did not confirm, and does not mark it verified', () => {
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ claim_id: 0, field: 'conclusion', text: 'Enalapril can cause hyperkalemia [Source 1].',
+        support_state: 'UNSUPPORTED', entailment: 0.99, contradiction: 0, citation_present: true, citation_resolves: true,
+        best_evidence_chunk: null, canonical_identity_status: null,
+        medication_identity: 'names a medication this analysis did not confirm: enalapril' }],
+    })} />);
+    expect(screen.getByText('Medication check: statement names a medication this analysis did not confirm: enalapril'))
+      .toBeInTheDocument();
+    expect(screen.getByText('Claim verification (0 of 1 verified)')).toBeInTheDocument();
+  });
+
+  it('says when the cited source itself does not support a statement, and stays silent when the field is absent', () => {
+    const base = { field: 'conclusion', support_state: 'UNSUPPORTED' as const, entailment: 0.99, contradiction: 0,
+      citation_present: true, citation_resolves: true, best_evidence_chunk: null, canonical_identity_status: null };
+    render(<ResultPanel result={makeResult({
+      gate_decision: 'abstain',
+      claims: [{ ...base, claim_id: 0, text: 'Serum potassium should be monitored periodically [Source 1].',
+        citation_supports_claim: false },
+        { ...base, claim_id: 1, text: 'An older result without the field [Source 1].' }],
+    })} />);
+    expect(screen.getAllByText('The cited source does not support this statement')).toHaveLength(1);
+  });
+});

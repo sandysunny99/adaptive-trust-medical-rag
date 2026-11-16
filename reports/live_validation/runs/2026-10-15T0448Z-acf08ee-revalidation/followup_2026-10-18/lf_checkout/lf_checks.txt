@@ -1,0 +1,17 @@
+== LF-checkout worktree a70c40e
+i/lf    w/lf    attr/text eol=lf      	experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt
+i/lf    w/lf    attr/text eol=lf      	experiments/runs/retrieval-diagnostic-phase2f5-real-reproduced/runner_real_hardened.py
+i/lf    w/lf    attr/                 	src/adaptive_trust_medical_rag/cli.py
+i/lf    w/crlf  attr/text eol=crlf    	track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt
+== frozen-hash, prompt-hash, annotation and CLI tests
+72 passed, 164 warnings in 74.70s (0:01:14)
+== audit --check
+311 file(s) recorded in CRLF form, 0 not pinned to eol=crlf
+rc=0
+== verify_v3_1_integrity
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== verify_v3_confirmed_separation
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== status (LF config): []

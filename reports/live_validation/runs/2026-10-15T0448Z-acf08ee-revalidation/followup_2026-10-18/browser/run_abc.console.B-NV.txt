@@ -1,0 +1,5 @@
+[B-direct-nvidia] requests: [{"m":"POST","p":"/api/v1/analyze","s":200,"sel":{"mode":"manual","model_id":"nvidia/nemotron-3-super-120b-a12b"}}]
+[B-direct-nvidia] events captured in page: 20; over the network: 20
+[B-direct-nvidia] retrieval: {"evidence_count":14,"sources":["DAILYMED","OPENFDA","PUBMED"],"corpus":"LIVE_MEDICAL_CORPUS_V2","relationship_evidence_chunks":[],"embedding_model":"all-MiniLM-L6-v2","embedding_mode":"real"}
+[B-direct-nvidia] terminal: [{"event":"abstention","served_by":{"provider":"nvidia","model_id":"nvidia/nemotron-3-super-120b-a12b","reported_model":"nvidia/nemotron-3-super-120b-a12b","finish_reason":"stop","output_length":1321},"reason":"6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."}]
+rc=0

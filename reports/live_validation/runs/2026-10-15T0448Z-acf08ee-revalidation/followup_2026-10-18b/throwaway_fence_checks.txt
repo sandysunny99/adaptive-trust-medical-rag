@@ -1,0 +1,18 @@
+test_throwaway_vision_fence_checks.py::test_parser_rejects[malformed_json_in_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[nested_fences] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[prose_in_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[schema_invalid_in_fence_candidate_name] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[schema_invalid_in_fence_list_type] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[schema_invalid_in_fence_missing_field] PASSED
+test_throwaway_vision_fence_checks.py::test_parser_rejects[unclosed_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[malformed_json_in_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[nested_fences] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[prose_in_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[schema_invalid_in_fence_candidate_name] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[schema_invalid_in_fence_list_type] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[schema_invalid_in_fence_missing_field] PASSED
+test_throwaway_vision_fence_checks.py::test_backend_rejects[unclosed_fence] PASSED
+test_throwaway_vision_fence_checks.py::test_good_shapes_parse_to_the_schema[{"raw_text": "Rx: Simvastatin 40 mg; Clarithromycin 500 mg", "candidate_medications": [{"raw_text": "Simvastatin", "normalized_text": "simvastatin", "confidence": "HIGH"}], "warnings": []}] PASSED
+test_throwaway_vision_fence_checks.py::test_good_shapes_parse_to_the_schema[```json\n{"raw_text": "Rx: Simvastatin 40 mg; Clarithromycin 500 mg", "candidate_medications": [{"raw_text": "Simvastatin", "normalized_text": "simvastatin", "confidence": "HIGH"}], "warnings": []}\n```] PASSED
+test_throwaway_vision_fence_checks.py::test_good_shapes_parse_to_the_schema[```\n{"raw_text": "Rx: Simvastatin 40 mg; Clarithromycin 500 mg", "candidate_medications": [{"raw_text": "Simvastatin", "normalized_text": "simvastatin", "confidence": "HIGH"}], "warnings": []}\n```] PASSED
+============================= 17 passed in 7.66s ==============================

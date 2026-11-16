@@ -1,6 +1,7 @@
 import { Icons } from '../../ui/icons';
 import { SecurityStatusPill } from '../ui/StatusPill';
 import type { AnalysisResult } from '../../types';
+import { trustScoreText } from '../../services/evidenceDisplay';
 
 /**
  * The three security gates as compact rows: icon, name, status pill, detail. Gate logic unchanged.
@@ -16,8 +17,8 @@ export function SecurityChecks({ result, ended = false }: { result: AnalysisResu
       status: security?.injection_status || 'NO_DATA',
       detail: security ? (
         (security.injection_markers || []).length > 0
-          ? `Detected: ${security.injection_markers.join(', ')}`
-          : 'No injection markers detected'
+          ? `Detected: ${(security.injection_markers || []).join(', ')}`
+          : security.injection_reason || 'No injection markers detected'
       ) : null,
     },
     {
@@ -32,7 +33,7 @@ export function SecurityChecks({ result, ended = false }: { result: AnalysisResu
       // Without a trust result the evidence was never scored, which is not a flag.
       status: result?.trust ? (result.trust.is_eligible ? 'ALLOW' : 'FLAG') : 'NO_DATA',
       detail: result?.trust
-        ? `Trust: ${result.trust.overall_score.toFixed(2)} / threshold ${result.trust.threshold.toFixed(2)} (${result.trust.risk_class})`
+        ? `Trust: ${trustScoreText(result.trust)} / threshold ${result.trust.threshold.toFixed(2)} (${result.trust.risk_class})`
         : null,
     },
   ];

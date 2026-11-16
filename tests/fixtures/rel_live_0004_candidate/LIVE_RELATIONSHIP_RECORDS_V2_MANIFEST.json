@@ -1,0 +1,47 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "candidate_id": "REL-LIVE-0004",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V2.json",
+  "records_sha256": "954dbe58374d48b1e4406429c7f2a2d37f191d5830e0586d09351a7aa0674bf9",
+  "evidence_file": "LIVE_RELATIONSHIP_EVIDENCE_V2.json",
+  "evidence_sha256": "cc0b88511ded097fc1c257ffabd7867c4008df3662fc11f74cb87431e1553c45",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2",
+  "status": "CANDIDATE_PENDING_RESEARCHER_APPROVAL",
+  "approval": null,
+  "supported_claim": "Ibuprofen is listed among drugs that can increase the risk of bleeding when used with warfarin, and the label advises closely monitoring patients who receive it with warfarin.",
+  "not_supported": [
+    "any severity grade",
+    "a numerical risk",
+    "avoiding the combination",
+    "stopping or changing either medicine"
+  ],
+  "source_capture": {
+    "spl_setid": "884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+    "spl_version": "8",
+    "spl_sha256": "665b524087e3727bd3c2f47edb69c6b234cca595e16f79b5749e7783bc94122a",
+    "rxnav": {
+      "warfarin": {
+        "rxcui": "11289",
+        "name": "warfarin",
+        "tty": "IN"
+      },
+      "ibuprofen": {
+        "rxcui": "5640",
+        "name": "ibuprofen",
+        "tty": "IN"
+      }
+    },
+    "captured_at": "2026-10-22T13:48:24.276194+00:00"
+  },
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-22",
+    "script": "scripts/build_rel_live_0004_candidate.py"
+  },
+  "verification_required_before_approval": [
+    "Open https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=884cdbf6-0a52-4126-8e14-b0d7c9367e33 and confirm section 7.3 Drugs that Increase Bleeding Risk reads as the evidence text.",
+    "Grade the severity with the project's documented method (it is UNGRADED, so the loader rejects it).",
+    "Confirm the reviewed wording (MONITOR) and predicate INTERACTION, direction BIDIRECTIONAL."
+  ],
+  "how_to_approve": "Grade the severity and recompute records_sha256 for the edited records file, then copy the three files into data/live_medical/relationships/v2/rel_live_0004/ (each approved V2 dataset has its own folder; never copy over another dataset's files), and set status to APPROVED and approval to {\"approved_by\": \"<name>\", \"approved_at\": \"<YYYY-MM-DD>\"}."
+}

@@ -1,0 +1,3 @@
+ .agents/scripts/ci/pre_commit_secret_scan.py | 19 +++++-
+ tests/test_ci_secret_scan_gitleaks.py        | 96 ++++++++++++++++++++++++++++
+ 2 files changed, 112 insertions(+), 3 deletions(-)

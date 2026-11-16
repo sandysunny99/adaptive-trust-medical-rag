@@ -1,0 +1,25 @@
+branch: ui/3d-redesign
+origin tip: 9bae325f9a476eab628465d875b6acb741caa5d6
+local HEAD: baf6c93d066fbdb6b0c8a698fd878294ddd9f8bd
+fast-forward possible
+== unpublished commits
+baf6c93 docs: restore the README and architecture sections the doc tests require
+6b1695d docs: describe the current live application, setup and tests; update the blocker register
+== files in range
+M	README.md
+M	docs/ARCHITECTURE.md
+A	docs/CONFIGURATION.md
+A	docs/TESTING.md
+M	docs/architecture/INTEGRATION_ROADMAP.md
+M	reports/audit/blocked_issue_register.md
+== gitleaks over range
+[90m11:55AM[0m [32mINF[0m [1mno leaks found[0m
+staged: 0
+remote before: 9bae325f9a476eab628465d875b6acb741caa5d6	refs/heads/ui/3d-redesign
+To https://github.com/sandysunny99/adaptive-trust-medical-rag.git
+   9bae325..baf6c93  ui/3d-redesign -> ui/3d-redesign
+push rc=0
+remote after: baf6c93d066fbdb6b0c8a698fd878294ddd9f8bd	refs/heads/ui/3d-redesign
+REMOTE == LOCAL HEAD
+tags at HEAD: []
+## ui/3d-redesign...origin/ui/3d-redesign

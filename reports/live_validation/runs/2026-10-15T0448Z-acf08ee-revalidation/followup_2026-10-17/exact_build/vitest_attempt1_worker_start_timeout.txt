@@ -1,0 +1,193 @@
+
+ RUN  v4.1.11 C:/Users/sunny/Downloads/CASE STUDY/frontend
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 13 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/pages/WorkspacePage.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/App.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/MedicationConfirmationPanel.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/ResultPanel.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/ui/primitives.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/ui/accessibleNames.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/PipelineProgress.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/routing/routes.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/pages/AuditPage.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/results/EvidenceList.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/components/ui/StatusPill.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/pages/HistoryPage.test.tsx.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ runNextTicks node:internal/process/task_queues:64:5
+ ❯ listOnTimeout node:internal/timers:567:9
+ ❯ processTimers node:internal/timers:541:7
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+
+⎯⎯⎯⎯⎯⎯ Unhandled Error ⎯⎯⎯⎯⎯⎯⎯
+Error: [vitest-pool]: Failed to start threads worker for test files C:/Users/sunny/Downloads/CASE STUDY/frontend/src/services/api.test.ts.
+ ❯ ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:94
+ ❯ Pool.schedule ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3532:5
+
+Caused by: Error: [vitest-pool-runner]: Timeout waiting for worker to respond
+ ❯ Timeout.<anonymous> ../../CASE%20STUDY/frontend/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:3108:58
+ ❯ listOnTimeout node:internal/timers:605:17
+ ❯ processTimers node:internal/timers:541:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+     Errors  13 errors
+   Start at  22:45:15
+   Duration  88.11s (transform 1.86s, setup 26.45s, import 2.30s, tests 45ms, environment 23.38s)
+
+rc=1

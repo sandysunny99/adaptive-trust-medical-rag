@@ -117,6 +117,8 @@ export function Layout({ children, currentPage, onNavigate, showResearchTabs = f
           >
             Methodology and full disclaimer
           </a>
+          {/* Required by the RxNav terms of service; drug names come from RxNorm (data/terminology/). */}
+          {' '}This product uses publicly available data from the U.S. National Library of Medicine (NLM).
         </div>
       </footer>
     </div>

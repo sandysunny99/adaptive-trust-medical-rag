@@ -1,0 +1,239 @@
+diff --git a/README.md b/README.md
+index 5fd9052..26be0ea 100644
+--- a/README.md
++++ b/README.md
+@@ -2,13 +2,13 @@
+ 
+ **Research testbed for evidence-grounded pharmacology question answering — not a clinical decision system.**
+ 
+-> **Non-clinical disclaimer.** This software is a research prototype. It is not an FDA-approved or otherwise certified medical device and must not be used for diagnosis, prescribing or any patient care. Every output is a research artifact that may be wrong or incomplete, and the system is designed to abstain rather than guess.
++> **Non-Clinical Disclaimer.** This software is a research prototype. It is not an FDA-approved or otherwise certified medical device and must not be used for diagnosis, prescribing or any patient care. Every output is a research artifact that may be wrong or incomplete, and the system is designed to abstain rather than guess.
+ 
+ Status as of commit `9bae325` (2026-10-18): the live application runs end to end with real providers and real embeddings and abstains safely on the synthetic test cases. It does **not** yet release evidence-backed answers, because no drug-relationship record has been approved by the researcher. See [Project status](#project-status).
+ 
+ ---
+ 
+-## Research question
++## Research Question
+ 
+ Does adaptive trust-aware retrieval — with entity attribution, source validation, contradiction detection, prompt-injection defense, retrieval-poisoning defense, claim-level verification and controlled abstention — reduce hallucinated or misattributed pharmacological evidence compared with conventional semantic-similarity medical RAG?
+ 
+@@ -16,7 +16,9 @@ The domain is evidence-based pharmacology, in particular adverse drug interactio
+ 
+ ---
+ 
+-## What the application does today
++## Architecture & Dual Safety Gates
++
++The system bounds the model on both sides: an **Evidence Eligibility Gate** before generation (only provenance-checked, drug-relevant chunks above the risk-tier trust threshold reach the model) and an **Answer Safety Gate** after it (every statement must be verified against its cited evidence, or the system abstains). Trust thresholds: R0 0.30, R1 0.45, R2 0.60, R3 0.75.
+ 
+ The live application (`POST /api/v1/analyze*`, streamed over Server-Sent Events) runs this pipeline for each request. Details, modules and event schemas are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+ 
+@@ -72,7 +74,7 @@ In automatic mode the configured providers are tried in order NVIDIA, Groq, Clou
+ 
+ ---
+ 
+-## Quick start (local)
++## Installation & Setup
+ 
+ Requirements: Python 3.12, [uv](https://docs.astral.sh/uv/), Node.js with npm. Full details and troubleshooting: [docs/CONFIGURATION.md](docs/CONFIGURATION.md).
+ 
+@@ -105,11 +107,69 @@ cd frontend && npm test && npm run build && npm run lint
+ 
+ ---
+ 
+-## Research harness and ablation variants (A–F)
++## Security & Threat Model
++
++- **Prompt injection:** input sanitizer and injection detector; *Additional Instructions* with an instruction aimed at the system are rejected (`INPUT_REJECTED`); evidence and notes are passed to the model as delimited data. Text inside a prescription image is transcribed literally, never obeyed.
++- **Retrieval poisoning and tampering:** SHA-256 provenance check per chunk and a poisoning detector; chunks naming none of the requested drugs are excluded.
++- **Hallucinated or misattributed claims:** claim-level NLI verification, citation checks and relationship identity from approved records only; unverified statements are never released.
++- **Secrets:** environment variables only; `.githooks/pre-commit` runs a regex scan and `gitleaks git --staged`; a CI hook scans file writes.
++- **Privacy:** synthetic data only; logs record identifiers, lengths and hashes, not raw content.
++
++Details: [docs/THREAT_MODEL.md](docs/THREAT_MODEL.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#6-threat-model--security-mitigations).
++
++---
++
++## FastAPI REST API
++
++| Endpoint | Purpose |
++|---|---|
++| `GET /api/v1/llm/models` | Answer-model catalog and availability |
++| `POST /api/v1/analyze` | Analyse drug names (live pipeline) |
++| `POST /api/v1/analyze/prescription` | Analyse a prescription image |
++| `POST /api/v1/analyze/{request_id}/confirm` | Confirm extracted medications (medication objects) |
++| `GET /api/v1/stream/{request_id}` | Server-Sent Events stream of the analysis |
++| `POST /query`, `POST /ingest` | Research-harness query and document ingestion |
++| `GET /health`, `GET /research-state`, `GET /audit/{session_id}` | Health, research state, audit (query hashes only) |
++
++---
++
++## Command Line Interface (CLI) Usage
++
++The `medical-rag` command (installed with the package; otherwise use `PYTHONPATH=src python -m adaptive_trust_medical_rag.cli`) drives the research harness. A global `--format {text,json}` goes before the subcommand.
++
++```bash
++medical-rag query "What is the mechanism of action of Metformin?" --risk-tier R1
++medical-rag ingest data/sample_paper.pdf --tier tier_1_peer_reviewed
++medical-rag eval --split smoke --quick
++medical-rag report --bootstrap-n 1000 --output reports/statistical_report.md
++medical-rag db check
++medical-rag health
++medical-rag --format json health
++medical-rag research-run --mode simulation --dataset smoke --audit-dir /tmp/audit --run-dir /tmp/run
++```
++
++`research-run` writes to `reports/audit/` and `experiments/runs/live-smoke-v1/` unless `--audit-dir` and `--run-dir` are given; tests always pass temporary directories so committed evidence is never overwritten.
++
++---
++
++## Ablation Study Variants
++
++| Variant | Name | Description |
++|---|---|---|
++| A | Vanilla LLM | Direct LLM prompting without retrieval |
++| B | Standard Semantic RAG | Dense vector retrieval, no trust scoring or gates |
++| C | Hybrid RAG | BM25 + dense retrieval with reciprocal rank fusion |
++| D | Entity-Attributed RAG | Entity normalization (RxCUI) and attribution, pre-generation gate |
++| E | Trust-Scored RAG | Multi-factor trust scoring, pre-generation gate |
++| F | Full Architecture | Hybrid + graph retrieval, multi-factor trust, dual safety gates and abstention |
++
++Protocol: [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
++
++---
+ 
+-The `medical-rag` CLI (`query`, `ingest`, `eval`, `report`, `db`, `health`, `research-run`) runs the research harness across six variants: A vanilla LLM, B dense RAG, C hybrid RAG, D entity-attributed RAG, E trust-scored RAG, F full architecture with dual gates. See [docs/EVALUATION_PROTOCOL.md](docs/EVALUATION_PROTOCOL.md).
++## Experimental Evaluation Scorecard
+ 
+-> **Results caveat.** The A–F metric tables in `reports/results/` and earlier versions of this README come from a **simulation profile** (`MockVariantPipeline`), not from live model runs or human-labelled data. They are not evidence for the research question. The human relevance labels and claim-evidence benchmark needed for a real evaluation are still blocked (see the register).
++**No empirical scorecard is published yet.** The A–F metric tables in `reports/results/` and in earlier versions of this README come from a **simulation profile** (`MockVariantPipeline`), not from live model runs or human-labelled data, so they are not evidence for the research question. A real evaluation needs the human relevance labels and the claim-evidence benchmark, which are still blocked (see the [register](reports/audit/blocked_issue_register.md)). Software tests and safe abstention on synthetic cases measure correctness of the implementation, not clinical or research effectiveness.
+ 
+ ---
+ 
+@@ -140,6 +200,7 @@ The authoritative status of every open item is [reports/audit/blocked_issue_regi
+ | [reports/audit/blocked_issue_register.md](reports/audit/blocked_issue_register.md) | Current blockers and decisions |
+ | [AGENTS.md](AGENTS.md) | Operating rules for contributors and agents |
+ 
+-## License
++## License & Attestation
+ 
+-MIT, as declared in `pyproject.toml` (no separate LICENSE file is included).
++- License: MIT, as declared in `pyproject.toml` (no separate LICENSE file is included).
++- Research integrity: evaluation splits are segregated and the 500+ case test set is frozen and held out; no human labels, metrics or approvals are fabricated; simulation results are labelled as such.
+diff --git a/docs/ARCHITECTURE.md b/docs/ARCHITECTURE.md
+index 45da995..ccb97af 100644
+--- a/docs/ARCHITECTURE.md
++++ b/docs/ARCHITECTURE.md
+@@ -1,6 +1,6 @@
+ # Architecture
+ 
+-This document describes the code as of commit `9bae325` (2026-10-18). Section 1 is the live application that the browser frontend uses. Section 4 is the research harness (CLI, ablation variants, database schema), which is a separate path. Section 6 lists where this document differs from its earlier version.
++This document describes the code as of commit `9bae325` (2026-10-18). Section 1 is the live application that the browser frontend uses and section 2 its two safety gates. Section 5 is the research harness (CLI, ablation variants, database schema), a separate path. Section 8 lists where this document differs from its earlier version.
+ 
+ ## 1. Live application pipeline
+ 
+@@ -62,7 +62,7 @@ The pipeline runs in `services/live_application.py` (`LiveMedicalRAGService.exec
+ 4. **Drug identity.** `DrugNormalizer` resolves each name to an RxCUI and generic name (local cache first, then `https://rxnav.nlm.nih.gov/REST`). Each entity reports `rxnorm_source` (`cache`, `rxnorm_exact`, `rxnorm_approx`).
+ 5. **Retrieval.** `HybridRetrievalEngine` fuses BM25, dense vectors (`all-MiniLM-L6-v2`, 384 dimensions; corpus vectors come from the corpus file) and a graph channel with reciprocal rank fusion, over `data/live_medical/LIVE_MEDICAL_CORPUS_V2.json` (14 chunks). Chunks of an approved V2 relationship dataset are added only when an accepted record cites them. The `retrieval` event reports `embedding_mode` (`real`, or `testing_stub` under `TESTING=1`) and `relationship_evidence_chunks`.
+ 6. **Provenance and poisoning.** Each chunk's SHA-256 must equal its provenance `content_hash`; chunks failing that or the poisoning detector are blocked.
+-7. **Risk tier and eligibility.** `live_risk_tier`: a multi-drug question is R2 ("a multi-drug interaction question with no approved severe relationship record"); R3 only when an approved CONTRAINDICATED or MAJOR record links the pair. A chunk naming none of the requested drugs (whole-word canonical name match) is excluded before scoring (`unrelated_excluded`). A chunk is eligible if its trust score meets the tier threshold (R0 0.30, R1 0.45, R2 0.60, R3 0.75) and its source authority is at least 0.30. Trust factors and weights: `trust_scoring/trust_scorer.py`.
++7. **Risk tier and eligibility** (section 2.1). `live_risk_tier`: a multi-drug question is R2 ("a multi-drug interaction question with no approved severe relationship record"); R3 only when an approved CONTRAINDICATED or MAJOR record links the pair. A chunk naming none of the requested drugs (whole-word canonical name match) is excluded before scoring (`unrelated_excluded`). A chunk is eligible if its trust score meets the tier threshold (R0 0.30, R1 0.45, R2 0.60, R3 0.75) and its source authority is at least 0.30. Trust factors and weights: `trust_scoring/trust_scorer.py`.
+ 8. **Generation.** The prompt contains only the eligible evidence, numbered `[Source N]`, and treats patient context and notes as data. Automatic mode tries the registered providers in order NVIDIA, Groq, Cloudflare (`LLM_PROVIDER` moves one to the front) with failover; a manually selected model has no failover. Cloudflare gets `max_tokens=4096`. A JSON parse failure logs provider, model, finish reason and length, never the content.
+ 9. **Claim verification.** `ClaimVerifierV2` (NLI model `pritamdeka/PubMedBERT-MNLI-MedNLI`, pinned revision) checks each statement against its cited chunks. A pairwise drug claim also needs a canonical relationship identity, which a chunk carries only from an approved, hash-matched relationship record; predicates must match exactly (a symmetric `BIDIRECTIONAL` record matches either drug order). Model-written research disclaimers are removed from the conclusion rather than verified, when recognised.
+ 10. **Safety gate.** The answer is released only if a verifier ran, there is at least one statement, and every statement is SUPPORTED. Otherwise the result is an abstention listing each claim's support state and identity status.
+@@ -72,7 +72,46 @@ The pipeline runs in `services/live_application.py` (`LiveMedicalRAGService.exec
+ 
+ `stage_update`, `medication_candidates_extracted`, `confirmation_required`, `rxnorm`, `retrieval`, `security`, `trust`, `answer`, `abstention`, `error`, `complete`. Stage names: `uploading`, `extracting`, `normalizing`, `retrieving`, `security_checking`, `trust_evaluating`, `generating`, `claim_verifying`, `safety_gating`, `complete`. Error codes include `INPUT_REJECTED`, `VISION_EXTRACTION_ERROR`, `RETRIEVAL_UNAVAILABLE`, `RETRIEVAL_ERROR`, `LLM_ERROR`, `LLM_OUTPUT_VALIDATION_FAILURE`.
+ 
+-## 2. Relationship records
++## 2. Dual safety gates
++
++### 2.1 Evidence Eligibility Gate (pre-generation)
++
++Applied after retrieval and the provenance/poisoning screen, before anything reaches the LLM. A chunk that names none of the requested drugs is excluded first. Each remaining chunk gets a trust score and is eligible only if the score meets the risk-tier threshold and its source authority is at least 0.30. If no chunk is eligible, the request abstains without calling a model.
++
++#### Source Authority Score
++
++A per-chunk value stored in the corpus (`authority` in `LIVE_MEDICAL_CORPUS_V2.json`): DailyMed labels 0.95, openFDA 0.88, PubMed 0.85–0.90. The live pipeline also uses it for the `evidence_quality` factor. There is no runtime authority-tier lookup on the live path.
++
++#### Freshness Score
++
++A per-chunk value stored in the corpus (`freshness`): DailyMed 0.90, openFDA 0.85, PubMed 0.80 (default 0.8 if absent). The live pipeline does not recompute a time decay at query time.
++
++#### Multi-Factor Trust Score Calculation
++
++`trust_scoring/trust_scorer.py` computes `TrustScore = Σ w_i(R) · S_i / Σ w_i(R)` over nine factors `S_i ∈ [0, 1]`; factors without a value are excluded and the remaining weights renormalised. Weights per risk tier come from `config/trust.yaml` (each row sums to 1.0):
++
++| Factor | R0 | R1 | R2 | R3 | Live-pipeline value |
++|---|---|---|---|---|---|
++| source_authority | 0.15 | 0.20 | 0.25 | 0.30 | corpus `authority` |
++| query_relevance | 0.20 | 0.20 | 0.15 | 0.10 | retrieval score (clamped to [0, 1]) |
++| evidence_quality | 0.10 | 0.15 | 0.20 | 0.25 | corpus `authority` |
++| freshness | 0.10 | 0.10 | 0.10 | 0.10 | corpus `freshness` |
++| consistency | 0.15 | 0.10 | 0.10 | 0.10 | 1 − poisoning score |
++| entity_match | 0.10 | 0.10 | 0.10 | 0.10 | 1.0 for a chunk naming a requested drug (others are excluded) |
++| population_match | 0.05 | 0.05 | 0.05 | 0.03 | 0.8 default |
++| anti_poisoning | 0.10 | 0.05 | 0.03 | 0.01 | 1 − poisoning score |
++| anti_injection | 0.05 | 0.05 | 0.02 | 0.01 | 1.0 |
++
++Thresholds: R0 0.30, R1 0.45, R2 0.60, R3 0.75. Live risk tier: R2 for a multi-drug question, R3 only from an approved CONTRAINDICATED or MAJOR relationship record.
++
++### 2.2 Answer Safety Gate (post-generation)
++
++1. The structured answer is split into statements (conclusion, interactions, adverse reactions, warnings, food guidance, patient considerations), with item keys and status labels enforced; an answer that does not match the schema is an `LLM_OUTPUT_VALIDATION_FAILURE`.
++2. Each statement's `[Source N]` references must point to retrieved, eligible chunks; any other source makes the statement UNSUPPORTED.
++3. `ClaimVerifierV2` checks each statement against its cited chunks with NLI, and a pairwise drug claim must also match the canonical relationship identity of an approved record on the cited chunk.
++4. The answer is released only if every statement is SUPPORTED; otherwise the request abstains, listing each claim's support state and the checked evidence.
++
++## 3. Relationship records
+ 
+ `services/live_relationships.py` loads:
+ 
+@@ -81,18 +120,20 @@ The pipeline runs in `services/live_application.py` (`LiveMedicalRAGService.exec
+ 
+ A dataset loads only if its manifest is `APPROVED` with `approved_by` and `approved_at` and the file hashes (LF-normalised) match. Each record must be complete, use a bounded predicate and severity, quote its evidence span verbatim from a chunk with a matching content hash, and name both drugs. Records only ever raise the risk tier. Current state: REL-LIVE-0001 (V1) and REL-LIVE-0002 (V2 candidate, in a run folder) are both pending researcher approval, so no record is loaded.
+ 
+-## 3. Frontend
++## 4. Frontend
+ 
+ `frontend/` (Vite, React, TypeScript, Tailwind). `npm run dev` serves on port 5173 and proxies `/api`, `/query`, `/health` and `/research-state` to `http://localhost:8000` (`frontend/vite.config.ts`). `frontend/src/services/api.ts` subscribes to the SSE events above.
+ 
+-## 4. Research harness (separate from the live app)
++## 5. Research harness (separate from the live app)
+ 
+ - `POST /query` (`api/routes/query.py`) and the `medical-rag` CLI (`cli.py`: `query`, `ingest`, `eval`, `report`, `db`, `health`, `research-run`) run the orchestrator in `orchestrator/rag_orchestrator.py` and the evaluation code in `evaluation/`.
+ - Ablation variants: A vanilla LLM, B dense RAG, C hybrid RAG, D entity-attributed RAG, E trust-scored RAG, F full architecture with dual gates. The published A–F tables come from a simulation profile (`MockVariantPipeline`), not live runs.
+ - `research-run` writes audit and run artifacts to `--audit-dir` and `--run-dir` (defaults `reports/audit`, `experiments/runs/live-smoke-v1`); tests point these at temporary directories.
+-- Optional database (PostgreSQL + pgvector; models in `src/adaptive_trust_medical_rag/database/`, Alembic migrations in `alembic/`): tables `evidence_sources`, `documents`, `evidence_chunks`, `evidence_provenance`, `audit_events` (audit stores query hashes, not raw queries). The live application does not need it; `/health` reports `database: false` when it is absent.
++### Database Entity-Relationship Schema
+ 
+-## 5. Threat model summary
++Optional PostgreSQL + pgvector database used by the research harness (models in `src/adaptive_trust_medical_rag/database/`, Alembic migrations in `alembic/`): `evidence_sources` → `documents` → `evidence_chunks` (with embeddings), plus `evidence_provenance` (hash log) and `audit_events` (query hashes, risk tier, gate decision and trust scores; no raw queries). The live application does not need it; `/health` reports `database: false` when it is absent.
++
++## 6. Threat Model & Security Mitigations
+ 
+ | Threat | Mitigation in the code |
+ |---|---|
+@@ -106,9 +147,19 @@ A dataset loads only if its manifest is `APPROVED` with `approved_by` and `appro
+ 
+ Full threat model: [THREAT_MODEL.md](THREAT_MODEL.md).
+ 
+-## 6. Differences from the earlier version of this document
++## 7. Research Integrity Policy
++
++From [AGENTS.md](../AGENTS.md) and the code:
++
++- Evaluation splits stay segregated (smoke 20, dev 100, val 200, test 500+); the frozen test set is never used for prompt work, threshold tuning or indexing.
++- Frozen artifacts (corpus, prompts, manifests) are never edited; their recorded SHA-256 values are checked by tests and `scripts/audit_frozen_hash_line_endings.py`, with line endings pinned in `.gitattributes` so checkouts reproduce the recorded bytes.
++- Relationship records and human labels count only with a named approver and date; nothing is approved on a researcher's behalf.
++- Results produced by simulation profiles are labelled as such and are not evidence for the research question.
++- Only synthetic data is used; no real patient information.
++
++## 8. Differences from the earlier version of this document
+ 
+ - The earlier diagram placed the eligibility gate before retrieval; the live code retrieves first, then screens provenance, then applies eligibility.
+ - The live app retrieves in memory from the frozen JSON corpus with 384-dimensional MiniLM vectors; the earlier text described PostgreSQL/pgvector with 768-dimensional vectors as the retrieval store. pgvector belongs to the optional research-harness database.
+-- The earlier trust-weight and authority-tier numbers are not repeated here because they were not re-verified against `trust_scoring/trust_scorer.py`; the thresholds (R0–R3) are verified.
++- The earlier trust formula used four factors with fixed weights (authority, freshness, entity, reputation), authority tiers and a five-year freshness half-life; the code uses nine factors with per-tier weights from `config/trust.yaml`, and on the live path authority and freshness are stored per chunk (section 2.1). The thresholds R0–R3 are unchanged.
+ - Image extraction, medication confirmation, relationship records, verified-only links and provider tracing did not exist in the earlier version.

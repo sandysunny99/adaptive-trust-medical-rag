@@ -1,0 +1,82 @@
+== toplevel
+C:/Users/sunny/Downloads/CASE STUDY
+== status
+## ui/3d-redesign...origin/ui/3d-redesign [ahead 11]
+ M .env.example
+ M experiments/runs/live-smoke-v1/case_results.jsonl
+ M experiments/runs/live-smoke-v1/manifest.json
+ M experiments/runs/live-smoke-v1/summary.json
+ M reports/audit/ablation_runtime_integrity_smoke.md
+ M reports/audit/blocked_issue_register.md
+ M reports/audit/canonical_r1_verification.md
+ M reports/audit/five_case_validation.md
+ M reports/audit/live_smoke_integrity.md
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md
+?? CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+?? CI_MODEL_SELECTOR_FINAL_AUDIT.md
+?? claude-incoming/
+?? cognee_service/
+?? continue-blockers.bundle
+?? redesign-fixes.bundle
+?? redesign-upload-fix.bundle
+?? reports/junit.xml
+?? reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+?? reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+?? reports/live_validation/runs/
+?? track_a_annotation/ai_assisted/
+== branch
+ui/3d-redesign
+== log
+9bae325 (HEAD -> ui/3d-redesign) test(vision): reject invalid content inside a code fence
+a0321d8 feat(nvidia): separate NVIDIA LLM and vision credentials; parse vision output strictly
+a70c40e fix: pin the LF-hashed Phase 2f5 runner so its frozen hash reproduces on Windows
+c71ed1f fix: make frozen artifact hashes reproduce on LF checkouts
+bafc083 fix(annotation): verify frozen Track A prompts against their raw bytes
+f58e8a8 feat(annotation): add the Track A AI-assisted annotation package, scripts and tests
+5704c33 fix(cli): stop test and simulation runs overwriting committed run evidence
+bf29fe8 feat(live): load approved V2 relationship records with their own versioned evidence
+8d7f21e fix(ci): run the secret-scan hook's gitleaks step with flags gitleaks 8.30 accepts
+b5474ce feat(live): name the provider and model that served every outcome
+2947976 fix(live): link only verified evidence sources; stop Cloudflare answers being cut off
+c490393 (origin/ui/3d-redesign) docs(live): record the source verification, verifier wording follow-up and local-run checklist
+42f1676 fix(live): verify contraindication wording, symmetric records and disclaimers narrowly
+7a73f21 docs(live): record the risk-tier and eligibility fix and update the blocker register
+82c128f fix(live): justify R3 from approved relationship records and exclude unrelated evidence
+2d37ed1 fix(ui): show security checks that never ran as NOT RUN, not PENDING or FLAG
+ecb7fb9 fix(live): show the evidence behind an abstention and send only provided patient context
+6b97907 feat(analyze): accept additional_instructions as screened, delimited untrusted data
+988203a (claude/redesign-fixes) fix(pipeline): show the failed stage and the stages that never ran after an error
+8dca217 fix(live): report retrieval failures as errors and release only verified answers
+== show 9bae325
+9bae325 test(vision): reject invalid content inside a code fence
+ tests/providers/test_vision_backend.py | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+== HEAD vs 9bae325
+9bae325f9a476eab628465d875b6acb741caa5d6
+9bae325 is HEAD or ancestor
+== remotes
+origin	https://github.com/sandysunny99/adaptive-trust-medical-rag.git (fetch)
+origin	https://github.com/sandysunny99/adaptive-trust-medical-rag.git (push)
+== worktrees
+C:/Users/sunny/Downloads/CASE STUDY                                                           9bae325 [ui/3d-redesign]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/copilot-prewarm-refactored-system  91c8537 (detached HEAD)
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-bookish-meme          45359d8 [sandysunny99-implement-request]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-cautious-chainsaw     f26d392 [sandysunny99-free-replication-preflight]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-potential-system      f26d392 [sandysunny99-claim-evidence-infrastructure]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-probable-waddle       f26d392 [sandysunny99-human-relevance-tooling]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-scaling-spork         f26d392 [sandysunny99-live-e2e-security-fixes]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-studious-umbrella     f26d392 [sandysunny99-cognee-comparison-readiness]
+C:/Users/sunny/acf08ee-fullsuite-wt                                                           c490393 (detached HEAD)
+C:/Users/sunny/acf08ee-fullsuite-wt2                                                          b5474ce (detached HEAD)
+C:/Users/sunny/acf08ee-fullsuite-wt3                                                          bf29fe8 (detached HEAD)
+C:/Users/sunny/freeze-verify-9bae325                                                          9bae325 (detached HEAD)
+C:/Users/sunny/freeze-verify-a0321d8                                                          a0321d8 (detached HEAD)
+C:/Users/sunny/freeze-verify-a70c40e                                                          a70c40e (detached HEAD)
+C:/Users/sunny/freeze-verify-a70c40e-lf                                                       a70c40e (detached HEAD)
+C:/Users/sunny/freeze-verify-bafc083                                                          bafc083 (detached HEAD)
+== ls-remote
+c490393b6d4fffc5c322e0e5274344d8c6e1cf6d	refs/heads/ui/3d-redesign
+== staged

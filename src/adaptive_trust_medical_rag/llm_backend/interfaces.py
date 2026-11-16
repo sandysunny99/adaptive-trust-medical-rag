@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any, Dict, Optional, Protocol
 
 from adaptive_trust_medical_rag.common.model_result import ModelExecutionError
@@ -18,6 +18,8 @@ class ProviderResponse:
     finish_reason: str
     transport_status: int
     raw_metadata: Dict[str, Any]
+    # Router attempts that led to this response (provider, model, class, decision); no content.
+    attempts: list[Dict[str, Any]] = field(default_factory=list)
 
 class ProviderAdapter(Protocol):
     def initialize(self) -> None:

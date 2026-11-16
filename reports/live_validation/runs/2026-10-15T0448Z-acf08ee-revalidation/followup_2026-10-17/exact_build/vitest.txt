@@ -1,0 +1,18 @@
+
+ RUN  v4.1.11 C:/Users/sunny/Downloads/CASE STUDY/frontend
+
+(node:21496) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+(node:21496) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:21496) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ Test Files  15 passed (15)
+      Tests  93 passed (93)
+   Start at  22:47:47
+   Duration  55.71s (transform 3.11s, setup 7.65s, import 21.09s, tests 27.69s, environment 46.44s)
+
+rc=0

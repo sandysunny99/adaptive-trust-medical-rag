@@ -1,0 +1,37 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2_CANDIDATE",
+  "records_file": "LIVE_RELATIONSHIP_RECORDS_V2_CANDIDATE.json",
+  "records_sha256": "aefc2c837d5d1b2306e45c755f9b16e9bfa4bd10b764738fc9cda1e6be8e8a26",
+  "evidence_supplement_file": "LIVE_EVIDENCE_SUPPLEMENT_V2_CANDIDATE.json",
+  "status": "CANDIDATE_PENDING_RESEARCHER_APPROVAL",
+  "approval": null,
+  "prepared": {
+    "by": "Claude (AI-prepared candidate; not a reviewer)",
+    "on": "2026-10-15",
+    "method": "Evidence span read from the byte-exact DailyMed SPL capture at the recorded offsets; content hash and embedding recomputed locally."
+  },
+  "rxnav": {
+    "36567": {
+      "rxcui": "36567",
+      "name": "simvastatin",
+      "tty": "IN",
+      "suppress": "N"
+    },
+    "21212": {
+      "rxcui": "21212",
+      "name": "clarithromycin",
+      "tty": "IN",
+      "suppress": "N"
+    }
+  },
+  "validation": {
+    "validate_record_against_supplement_chunk": "valid",
+    "validate_record_against_frozen_corpus_only": "source chunk DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1 is not in the live corpus"
+  },
+  "not_active": "Not under data/live_medical/relationships/. The production loader reads only LIVE_RELATIONSHIP_RECORDS_V1 and requires the source chunk to be in LIVE_MEDICAL_CORPUS_V2, so this candidate cannot load. Activating it needs the researcher's approval and a separate, reviewed decision on how the supplement chunk enters retrieval without changing the frozen corpus.",
+  "review_points": [
+    "Confirm the plain-text evidence span against section 4.5 of the clarithromycin label (setid above, version and effective date above).",
+    "Confirm direction BIDIRECTIONAL: the span is the clarithromycin label contraindicating co-administration with simvastatin; the ZOCOR label (setid 8f55d5de-..., captured v11, effectiveTime 20250328) contraindicates strong CYP3A4 inhibitors and names clarithromycin only in the Table 2 Examples row.",
+    "Decide whether the label version captured (v21, 20231010) is the one to cite."
+  ]
+}

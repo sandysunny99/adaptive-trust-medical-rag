@@ -22,7 +22,7 @@ export type PipelineStage =
   | 'blocked'
   | 'error';
 
-export type RxNormStatus = 'MATCHED' | 'AMBIGUOUS' | 'NOT_FOUND' | 'UNAVAILABLE';
+export type RxNormStatus = 'MATCHED' | 'AMBIGUOUS' | 'NOT_FOUND' | 'UNAVAILABLE' | 'SERVICE_UNAVAILABLE' | 'ERROR';
 
 export type ExtractionConfidence = 'HIGH' | 'MEDIUM' | 'LOW' | 'UNCERTAIN';
 
@@ -37,6 +37,8 @@ export interface MedicationCandidate {
   source: 'VISION' | 'OCR' | 'USER';
   source_region?: any;
   warnings?: string[];
+  /** Set by the backend's transcription screen (e.g. FROM_INSTRUCTION_LIKE_LINE); [] when not flagged. */
+  screening_flags?: string[];
 }
 
 /**
@@ -77,6 +79,10 @@ export interface MedicationInfo {
   route: string | null;
   confidence: number;
   source: 'cache' | 'rxnorm_exact' | 'rxnorm_approx' | 'unresolved';
+  /** How the drug identity was resolved (for a cache hit, how the entry was first resolved). */
+  identity_method?: 'rxnorm_exact' | 'rxnorm_approx' | 'seed_cache' | string;
+  /** RxNorm ingredient(s) of a salt or brand concept; informational, never used for evidence matching. */
+  rxnorm_ingredients?: { rxcui: string; name: string }[] | null;
   status: RxNormStatus;
 }
 
@@ -105,7 +111,9 @@ export interface TrustFactors {
 }
 
 export interface TrustInfo {
-  overall_score: number;
+  /** Null when no evidence reached scoring: there is no score, which is not a computed 0. */
+  overall_score: number | null;
+  score_status?: 'COMPUTED' | 'NO_ELIGIBLE_EVIDENCE';
   threshold: number;
   risk_class: string;
   /** Why the backend chose this risk tier. */
@@ -113,11 +121,28 @@ export interface TrustInfo {
   is_eligible: boolean;
   /** Retrieved chunks that named none of the requested medications and were left out. */
   unrelated_excluded?: number;
+  /** Retrieved chunks left out because their source identity is not verified. */
+  unverified_source_excluded?: number;
   factors: TrustFactors;
   missing_factors: string[];
+  /** How the backend filled the trust factors (e.g. LIVE_TRUST_FACTORS_V2: measured or missing). */
+  factor_policy?: string;
 }
 
 export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
+/** Whether the text is known to come from the document it names; only VERIFIED text is evidence. */
+export type SourceIdentityStatus = 'VERIFIED' | 'UNVERIFIED' | 'REJECTED_SOURCE_IDENTITY';
+
+/** A retrieved chunk left out before generation because its source identity is not verified. */
+export interface ExcludedSource {
+  chunk_id: string;
+  document_id: string;
+  source_type?: string | null;
+  source_name?: string | null;
+  source_link_status: SourceLinkStatus;
+  source_identity_status: SourceIdentityStatus;
+  reason: string;
+}
 
 export interface EvidenceItem {
   chunk_id: string;
@@ -134,9 +159,16 @@ export interface EvidenceItem {
   source_link_note?: string;
   source_authority: number;
   trust_score: number;
-  freshness: number;
+  /** Null when the evidence record carries no freshness (it is then a missing trust factor). */
+  freshness: number | null;
   retrieval_method: string;
   provenance_status: string;
+  source_identity_status?: SourceIdentityStatus;
+  /** Title, external ID and version of the verified source document, when known. */
+  source_title?: string | null;
+  external_id?: string | null;
+  source_version?: string | null;
+  claim_support_status?: 'SUPPORTS_VERIFIED_CLAIM' | 'NO_VERIFIED_CLAIM' | 'NOT_YET_VERIFIED';
 }
 
 export interface DrugInteraction {
@@ -183,6 +215,9 @@ export interface PatientConsideration {
 
 export interface ClaimInfo {
   claim_id: number;
+  /** The answer field the statement came from (conclusion, warnings, food_guidance, ...). */
+  field?: string;
+  item_index?: number | null;
   text: string;
   support_state: SupportState;
   entailment: number;
@@ -191,12 +226,26 @@ export interface ClaimInfo {
   citation_resolves: boolean;
   best_evidence_chunk: string | null;
   canonical_identity_status: CanonicalMatchStatus | null;
+  canonical_identity_reason?: string | null;
+  strength_check?: string;
+  /** Why the cited source's attribution was not verified (a word screen; withholds, never re-attributes). */
+  citation_alignment?: string;
+  /** Why a named medication is not a confirmed one named by the cited sources (withholds the statement). */
+  medication_identity?: string;
+  /** The verifier's cited-chunk gate on its own: false when the cited source does not entail the statement. */
+  citation_supports_claim?: boolean;
+  invalid_source_references?: string[];
 }
+
+/** What happened to food and diet guidance in this analysis (backend food_guidance_status). */
+export type FoodGuidanceStatus = 'VERIFIED' | 'NONE_FOUND' | 'NOT_VERIFIED' | 'WITHHELD' | 'NOT_RUN';
 
 export interface SecurityInfo {
   injection_status: SecurityState;
   poisoning_status: SecurityState;
-  injection_markers: string[];
+  injection_markers?: string[];
+  // Why retrieved evidence was excluded by the injection screen, when it was.
+  injection_reason?: string | null;
   poisoning_reason: string | null;
 }
 
@@ -216,11 +265,14 @@ export interface AnalysisResult {
   adverse_reactions: AdverseDrugReaction[];
   warnings: string[];
   food_guidance: FoodGuidance[];
+  food_guidance_status?: FoodGuidanceStatus;
   patient_considerations: PatientConsideration[];
   trust: TrustInfo | null;
   security: SecurityInfo | null;
   claims: ClaimInfo[];
   evidence: EvidenceItem[];
+  /** Chunks excluded before generation for an unverified source identity (abstentions only). */
+  excluded_sources?: ExcludedSource[];
   provenance: ProvenanceStep[];
   conclusion: string;
   gate_decision: GateDecision;

@@ -1,0 +1,503 @@
+{
+  "lexicon": {
+    "release": "05-Oct-2026",
+    "sha256": "bcf0d184579664578b4c1c38612bd096e871e451f8ae7417a4508c89de491789",
+    "counts": {
+      "IN": 5874,
+      "PIN": 1955,
+      "MIN": 960,
+      "BN": 4140,
+      "entries": 12929,
+      "distinct_rxcui": 12929
+    },
+    "ambiguous_spans": [
+      [
+        "alpha bisabolol",
+        [
+          [
+            "1306126",
+            "alpha-bisabolol, (+-)-",
+            "PIN"
+          ],
+          [
+            "1487162",
+            "alpha-bisabolol, (+)-",
+            "IN"
+          ]
+        ]
+      ],
+      [
+        "butylphenyl methylpropional",
+        [
+          [
+            "1307156",
+            "butylphenyl methylpropional",
+            "IN"
+          ],
+          [
+            "1664338",
+            "butylphenyl methylpropional, (+)-",
+            "PIN"
+          ]
+        ]
+      ],
+      [
+        "camphor",
+        [
+          [
+            "1648124",
+            "camphor, (-)-",
+            "IN"
+          ],
+          [
+            "1952",
+            "camphor",
+            "IN"
+          ]
+        ]
+      ],
+      [
+        "carvone",
+        [
+          [
+            "1427074",
+            "carvone, (+-)-",
+            "PIN"
+          ],
+          [
+            "1747726",
+            "carvone, (+)-",
+            "PIN"
+          ]
+        ]
+      ],
+      [
+        "limonene",
+        [
+          [
+            "1426476",
+            "limonene, (+)-",
+            "PIN"
+          ],
+          [
+            "1426477",
+            "limonene, (+/-)-",
+            "PIN"
+          ],
+          [
+            "1426777",
+            "limonene, (-)-",
+            "PIN"
+          ]
+        ]
+      ],
+      [
+        "linalool",
+        [
+          [
+            "1368896",
+            "linalool, (+-)-",
+            "PIN"
+          ],
+          [
+            "1430254",
+            "linalool, (+)-",
+            "PIN"
+          ],
+          [
+            "1800669",
+            "linalool, (-)-",
+            "PIN"
+          ]
+        ]
+      ],
+      [
+        "menthol",
+        [
+          [
+            "1648123",
+            "menthol, (+)-",
+            "PIN"
+          ],
+          [
+            "6750",
+            "menthol",
+            "IN"
+          ]
+        ]
+      ]
+    ]
+  },
+  "curated_medications": {
+    "total": 26,
+    "recognised_whole": 25,
+    "same_rxcui_as_cache": 12,
+    "rows": [
+      {
+        "name": "warfarin",
+        "cache_rxcui": "11289",
+        "lexicon": [
+          [
+            "warfarin",
+            "11289",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Coumadin",
+        "cache_rxcui": "11289",
+        "lexicon": [],
+        "recognised_whole": false,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "ibuprofen",
+        "cache_rxcui": "5640",
+        "lexicon": [
+          [
+            "ibuprofen",
+            "5640",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Advil",
+        "cache_rxcui": "5640",
+        "lexicon": [
+          [
+            "Advil",
+            "153010",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "metoprolol tartrate",
+        "cache_rxcui": "866514",
+        "lexicon": [
+          [
+            "metoprolol tartrate",
+            "203191",
+            "PIN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "metoprolol succinate",
+        "cache_rxcui": "866508",
+        "lexicon": [
+          [
+            "metoprolol succinate",
+            "221124",
+            "PIN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "Lopressor",
+        "cache_rxcui": "866514",
+        "lexicon": [
+          [
+            "Lopressor",
+            "203344",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "lisinopril",
+        "cache_rxcui": "29046",
+        "lexicon": [
+          [
+            "lisinopril",
+            "29046",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Prinivil",
+        "cache_rxcui": "29046",
+        "lexicon": [
+          [
+            "Prinivil",
+            "203644",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "atorvastatin",
+        "cache_rxcui": "83367",
+        "lexicon": [
+          [
+            "atorvastatin",
+            "83367",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Lipitor",
+        "cache_rxcui": "83367",
+        "lexicon": [
+          [
+            "Lipitor",
+            "153165",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "amoxicillin",
+        "cache_rxcui": "723",
+        "lexicon": [
+          [
+            "amoxicillin",
+            "723",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "metformin",
+        "cache_rxcui": "6809",
+        "lexicon": [
+          [
+            "metformin",
+            "6809",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Glucophage",
+        "cache_rxcui": "6809",
+        "lexicon": [
+          [
+            "Glucophage",
+            "151827",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "aspirin",
+        "cache_rxcui": "1191",
+        "lexicon": [
+          [
+            "aspirin",
+            "1191",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "clopidogrel",
+        "cache_rxcui": "32968",
+        "lexicon": [
+          [
+            "clopidogrel",
+            "32968",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Plavix",
+        "cache_rxcui": "32968",
+        "lexicon": [
+          [
+            "Plavix",
+            "174742",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "levothyroxine",
+        "cache_rxcui": "10582",
+        "lexicon": [
+          [
+            "levothyroxine",
+            "10582",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Synthroid",
+        "cache_rxcui": "10582",
+        "lexicon": [
+          [
+            "Synthroid",
+            "224920",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "omeprazole",
+        "cache_rxcui": "7646",
+        "lexicon": [
+          [
+            "omeprazole",
+            "7646",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Prilosec",
+        "cache_rxcui": "7646",
+        "lexicon": [
+          [
+            "Prilosec",
+            "203345",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "amlodipine",
+        "cache_rxcui": "17767",
+        "lexicon": [
+          [
+            "amlodipine",
+            "17767",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Norvasc",
+        "cache_rxcui": "17767",
+        "lexicon": [
+          [
+            "Norvasc",
+            "58927",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "sertraline",
+        "cache_rxcui": "36437",
+        "lexicon": [
+          [
+            "sertraline",
+            "36437",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": true
+      },
+      {
+        "name": "Zoloft",
+        "cache_rxcui": "36437",
+        "lexicon": [
+          [
+            "Zoloft",
+            "82728",
+            "BN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      },
+      {
+        "name": "methotrexate",
+        "cache_rxcui": "7052",
+        "lexicon": [
+          [
+            "methotrexate",
+            "6851",
+            "IN"
+          ]
+        ],
+        "recognised_whole": true,
+        "same_rxcui_as_cache": false
+      }
+    ]
+  },
+  "fixed_list_names_missing_from_lexicon": [
+    "insulin"
+  ],
+  "live_corpus_v2_names_recognised": [
+    "acetaminophen",
+    "aspirin",
+    "atorvastatin",
+    "atorvastatin calcium",
+    "carbamazepine",
+    "cholesterol",
+    "clarithromycin",
+    "clopidogrel",
+    "erythromycin",
+    "esomeprazole",
+    "fluoxetine",
+    "ibuprofen",
+    "itraconazole",
+    "ketoconazole",
+    "lisinopril",
+    "metformin",
+    "naproxen",
+    "nilotinib",
+    "omeprazole",
+    "pazopanib",
+    "posaconazole",
+    "potassium",
+    "protease",
+    "simvastatin",
+    "voriconazole",
+    "warfarin",
+    "warfarin sodium"
+  ],
+  "note": "Recognition is of RxNorm normalised names in the Current Prescribable Content subset (US prescribable and many OTC drugs, active only). Synonyms (paracetamol, metamizole), foreign-only, withdrawn and invented names are not recognised; brand names match only as RxNorm writes them."
+}

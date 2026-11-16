@@ -1,0 +1,11 @@
+﻿
+
+ProcessId   : 26772
+CommandLine : "C:\Users\sunny\AppData\Local\Programs\Python\Python312\python.exe" -m uvicorn --app-dir src adaptive_trust_medical_rag.api.app:app --host 0.0.0.0 --port 8000
+
+ProcessId   : 27236
+CommandLine : "node"   "C:\Users\sunny\Downloads\CASE STUDY\frontend\node_modules\.bin\\..\vite\bin\vite.js" 
+
+
+
+

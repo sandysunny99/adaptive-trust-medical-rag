@@ -1,0 +1,300 @@
+{
+  "recorded_at": "2026-10-26T13:42:15.100221+00:00",
+  "method": "public Hugging Face API and README at each revision",
+  "note": "Declarations only; no legal determination. Training-data terms are not assessed.",
+  "models": [
+    {
+      "role": "live default",
+      "repository": "pritamdeka/PubMedBERT-MNLI-MedNLI",
+      "revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+      "resolved_sha": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+      "gated": false,
+      "card_license": null,
+      "license_tags": [],
+      "readme_license_at_revision": null,
+      "license_files_at_revision": [],
+      "weights_sha256": {
+        "model.safetensors": "3a1322282c824743e07f8bf7df2c145dd18cc26c692e75d29aa2e4dbfceaf3ed",
+        "pytorch_model.bin": "3f968f011daa586c8b88ad58d0f42dc39649575be953a1e2cc062d4f0a4668d5",
+        "training_args.bin": "8ab6ae881fab3cf4b233bb4f4dcf88116bb87b0c7c3f589b0f1144e459932a1e"
+      },
+      "readme_license_history": [
+        {
+          "revision": "f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+          "date": "2024-03-01T02:58:46",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "a438ed9a947a88d86d977134c997bedd4c1489f1",
+          "date": "2023-12-30T21:25:49",
+          "title": "Librarian Bot: Add base_model information to model (#3)",
+          "readme_license": null
+        },
+        {
+          "revision": "9516b870feb84e4c1a2e1fc2e2efd87d24c3558c",
+          "date": "2023-07-13T20:45:33",
+          "title": "Adding `safetensors` variant of this model (#2)",
+          "readme_license": null
+        },
+        {
+          "revision": "52f25c57637d110fe52468a5a61199ae0abd0180",
+          "date": "2023-07-10T10:22:24",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "42a2a72538212c117adad41a182063f6ad02a9e0",
+          "date": "2023-06-01T12:03:07",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "bcbee56dc61ed0bcce9de4ef16b58fcdbbb344ae",
+          "date": "2023-06-01T12:02:36",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "1cf4bd8899ef63e9f80e7d89425df0b936134b15",
+          "date": "2023-05-29T22:47:50",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "122e499772c36fe994859cc795417f9f8493fff1",
+          "date": "2023-05-29T22:46:35",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "3653b0d32c4b32f80435b6312daeea8e87202513",
+          "date": "2023-05-29T22:40:08",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "fffc6fbde2198c6df87019616bd0138dfcfc2cee",
+          "date": "2023-05-29T22:39:16",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "44683bbda82ae54c7f2ec1d1e5df48ea5d6f3a88",
+          "date": "2023-05-29T22:38:11",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "8f0d5978f888a029772ea880691354ae851f768e",
+          "date": "2023-05-29T22:28:19",
+          "title": "commit",
+          "readme_license": null
+        },
+        {
+          "revision": "9e5b4cc976d2e75e97cfa9db59745241c0be6daa",
+          "date": "2023-05-29T22:24:09",
+          "title": "initial commit",
+          "readme_license": "README not readable (HTTP 404)"
+        }
+      ],
+      "base_model": {
+        "requested": "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext",
+        "resolves_to": "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext",
+        "current_card_license": "mit",
+        "note": "current card; the base revision used for fine-tuning is not recorded"
+      }
+    },
+    {
+      "role": "candidate",
+      "repository": "cnut1648/biolinkbert-mednli",
+      "revision": "f9f4a9d1e046a0e6574feef938f1308cecaebbd5",
+      "resolved_sha": "f9f4a9d1e046a0e6574feef938f1308cecaebbd5",
+      "gated": false,
+      "card_license": "apache-2.0",
+      "license_tags": [
+        "license:apache-2.0"
+      ],
+      "readme_license_at_revision": "apache-2.0",
+      "license_files_at_revision": [],
+      "weights_sha256": {
+        "pytorch_model.bin": "5fadc0dafd7509bdd583d0015a2ab49c65d8d5d9193cbb49ed46c88c313bbd55",
+        "training_args.bin": "0ea15d6303962ae9b87417fbe4aab77643595fe4a029f0cd5fa0e02e1b735d4b"
+      },
+      "readme_license_history": [
+        {
+          "revision": "f9f4a9d1e046a0e6574feef938f1308cecaebbd5",
+          "date": "2023-03-18T18:37:02",
+          "title": "Update README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "c635b3876619ad21fa2d54a2c560165c6a70e2bd",
+          "date": "2023-03-18T18:36:10",
+          "title": "Create mednli.py",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "ce7510e74697f676530e5cc9e3b586ea14e790fe",
+          "date": "2022-12-07T17:50:44",
+          "title": "Update README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "88dbb8e8e29756ec1084e3d31610d560e71c14b5",
+          "date": "2022-12-07T17:33:03",
+          "title": "Update README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "3523cd91fcc796a8ea4948289b3061d710e674f3",
+          "date": "2022-12-05T04:29:13",
+          "title": "Update README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "fab3b74f493dc4a7bc87945aafd0d783cef5b6f5",
+          "date": "2022-12-05T04:25:04",
+          "title": "update model card README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "501a929ae9877d6b6405242e4cb0af15c1658591",
+          "date": "2022-12-05T04:22:52",
+          "title": "End of training",
+          "readme_license": "README not readable (HTTP 404)"
+        },
+        {
+          "revision": "c8a740d2d90b9eea13f667b85f2548e4d1a9181c",
+          "date": "2022-12-04T20:18:10",
+          "title": "initial commit",
+          "readme_license": "README not readable (HTTP 404)"
+        }
+      ],
+      "base_model": {
+        "requested": "michiyasunaga/BioLinkBERT-large",
+        "resolves_to": "michiyasunaga/BioLinkBERT-large",
+        "current_card_license": "apache-2.0",
+        "note": "current card; the base revision used for fine-tuning is not recorded"
+      }
+    },
+    {
+      "role": "candidate",
+      "repository": "cnut1648/biolinkbert-large-mnli-snli",
+      "revision": "89029f481c3c6f49bae0ba0cdb148d9b21847ae6",
+      "resolved_sha": "89029f481c3c6f49bae0ba0cdb148d9b21847ae6",
+      "gated": false,
+      "card_license": null,
+      "license_tags": [],
+      "readme_license_at_revision": null,
+      "license_files_at_revision": [],
+      "weights_sha256": {
+        "pytorch_model.bin": "8a03ea8bcd23143a893b1d2a1fbf098d46d14ea5499e5a3010b96f69bded5797",
+        "training_args.bin": "1fb2f0266e5756227b6eb7a07ed4c815222b870c2cf9682ce31f560b8c38554b"
+      },
+      "readme_license_history": [
+        {
+          "revision": "89029f481c3c6f49bae0ba0cdb148d9b21847ae6",
+          "date": "2023-03-18T22:31:02",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "5392ce4969e34e1847a60168c912ad05e20ec1c2",
+          "date": "2023-03-18T22:05:08",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "7167dfb352908b674284afc154d0b60252daa725",
+          "date": "2023-03-18T18:49:45",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "0b5de44bede5cfe2698ec0e741462efe37a772b2",
+          "date": "2023-03-18T18:48:51",
+          "title": "Create mnli.py",
+          "readme_license": null
+        },
+        {
+          "revision": "1bd61ae15206b5d2228f56e8358c9e24961fb38e",
+          "date": "2023-03-18T18:38:47",
+          "title": "Delete mednli.py",
+          "readme_license": null
+        },
+        {
+          "revision": "6efc4175f9969dd0823fe78eabf69b429094e456",
+          "date": "2023-03-18T18:35:14",
+          "title": "Create mednli.py",
+          "readme_license": null
+        },
+        {
+          "revision": "5b9f6bdd5eaf92aa8ac932ee07468826aaa0d956",
+          "date": "2022-11-01T06:19:31",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "c544e81eba8a68e7c9aff9a69df435a3b92b00ac",
+          "date": "2022-10-09T18:30:31",
+          "title": "Update README.md",
+          "readme_license": null
+        },
+        {
+          "revision": "031e7497835b9ed640053fa1aaf7949ce13fa4f4",
+          "date": "2022-10-09T18:29:13",
+          "title": "update model card README.md",
+          "readme_license": "apache-2.0"
+        },
+        {
+          "revision": "baad2b44c0b28d19dc55970e9cea9be8b7fae5a8",
+          "date": "2022-10-09T18:26:35",
+          "title": "End of training",
+          "readme_license": "README not readable (HTTP 404)"
+        },
+        {
+          "revision": "00d245472627a7676845ffdc809faf61cb839533",
+          "date": "2022-10-09T18:26:11",
+          "title": "initial commit",
+          "readme_license": "README not readable (HTTP 404)"
+        }
+      ],
+      "base_model": {
+        "requested": "michiyasunaga/BioLinkBERT-large",
+        "resolves_to": "michiyasunaga/BioLinkBERT-large",
+        "current_card_license": "apache-2.0",
+        "note": "current card; the base revision used for fine-tuning is not recorded"
+      }
+    },
+    {
+      "role": "blocked candidate",
+      "repository": "ygivenx/modernbert-base-mednli",
+      "revision": "7b0ef2489b155f8a53bdd7d56e4ecc9ad9c7b174",
+      "resolved_sha": "7b0ef2489b155f8a53bdd7d56e4ecc9ad9c7b174",
+      "gated": "auto",
+      "card_license": "apache-2.0",
+      "license_tags": [
+        "license:apache-2.0"
+      ],
+      "readme_license_at_revision": "README not readable (HTTP 401)",
+      "license_files_at_revision": [],
+      "weights_sha256": {
+        "model.safetensors": "865233d4f74e5039c91b07e17d685384671c11b031d1174a03b1a184791b384f",
+        "training_args.bin": "4758e705fc79194a342ff1fe96e642e71fd45ce875b2f8b4fb9d5700e9d030b5"
+      },
+      "readme_license_history": [
+        {
+          "revision": null,
+          "readme_license": "history not readable without access (HTTP 401)"
+        }
+      ],
+      "base_model": {
+        "requested": "answerdotai/ModernBERT-base",
+        "resolves_to": "answerdotai/ModernBERT-base",
+        "current_card_license": "apache-2.0",
+        "note": "current card; the base revision used for fine-tuning is not recorded"
+      }
+    }
+  ]
+}

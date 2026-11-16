@@ -1,0 +1,82 @@
+{
+  "scenario": "A-image",
+  "frontend_url": "http://localhost:5173",
+  "started_at": "2026-10-14T16:35:46.759Z",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze/prescription",
+      "content_type": "multipart/form-data",
+      "body": {
+        "multipart_fields": []
+      },
+      "at": "2026-10-14T16:35:50.952Z",
+      "status": 200,
+      "response": {
+        "request_id": "2d556ea2-ed73-4ae4-b6de-5cc018aeaf12",
+        "stream_url": "/api/v1/stream/2d556ea2-ed73-4ae4-b6de-5cc018aeaf12",
+        "validation": {
+          "valid": true,
+          "original_image_sha256": "aad8f52271613f25b397ebe0b2ebd2b7c6343517cd33d050d7d145ed962c2f38",
+          "format": "PNG",
+          "width": 900,
+          "height": 500,
+          "size_bytes": 23213,
+          "mime_type": "image/png"
+        }
+      }
+    }
+  ],
+  "stream": [
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "extracting",
+        "status": "running",
+        "message": "Extracting medications from prescription image via NVIDIA Vision...",
+        "timestamp": "2026-10-14T16:37:09.204752+00:00"
+      }
+    },
+    {
+      "event": "error",
+      "data": {
+        "code": "VISION_EXTRACTION_ERROR",
+        "message": "Vision extraction failed: Vision Provider Timeout"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "extracting",
+        "status": "failed",
+        "timestamp": "2026-10-14T16:38:10.179916+00:00"
+      }
+    }
+  ],
+  "console_errors": [
+    "SSE connection error: MessageEvent"
+  ],
+  "screen": {
+    "failed": true,
+    "error": "Vision extraction failed: Vision Provider Timeout",
+    "abstained": false,
+    "abstention_reason": "",
+    "pipeline": [
+      "Input Processing\nNot run",
+      "Medication Extraction\n(failed)",
+      "User Confirmation",
+      "RxNorm Canonicalization\nNot run",
+      "Evidence Retrieval\nNot run",
+      "Trust Evaluation\nNot run",
+      "Security Checks\nNot run",
+      "Relationship Verification\nNot run",
+      "LLM Analysis\nNot run",
+      "Claim Verification\nNot run",
+      "Safety Gate\nNot run"
+    ]
+  },
+  "stream_path": "/api/v1/stream/2d556ea2-ed73-4ae4-b6de-5cc018aeaf12",
+  "stream_status": 200,
+  "step_error": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Review Detected Medications') to be visible\u001b[22m\n",
+  "finished_at": "2026-10-14T16:38:55.345Z"
+}

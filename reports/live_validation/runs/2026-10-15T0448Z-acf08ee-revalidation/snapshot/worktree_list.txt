@@ -1,0 +1,8 @@
+C:/Users/sunny/Downloads/CASE STUDY                                                           c490393 [ui/3d-redesign]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/copilot-prewarm-refactored-system  91c8537 (detached HEAD)
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-bookish-meme          45359d8 [sandysunny99-implement-request]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-cautious-chainsaw     f26d392 [sandysunny99-free-replication-preflight]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-potential-system      f26d392 [sandysunny99-claim-evidence-infrastructure]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-probable-waddle       f26d392 [sandysunny99-human-relevance-tooling]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-scaling-spork         f26d392 [sandysunny99-live-e2e-security-fixes]
+C:/Users/sunny/.copilot/repos/copilot-worktrees/CASE STUDY/sandysunny99-studious-umbrella     f26d392 [sandysunny99-cognee-comparison-readiness]

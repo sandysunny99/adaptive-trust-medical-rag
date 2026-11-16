@@ -1,0 +1,83 @@
+{
+  "scenario": "A-image",
+  "frontend_url": "http://localhost:5173",
+  "started_at": "2026-10-14T16:41:06.360Z",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze/prescription",
+      "content_type": "multipart/form-data",
+      "body": {
+        "multipart_fields": []
+      },
+      "at": "2026-10-14T16:41:08.296Z",
+      "status": 200,
+      "response": {
+        "request_id": "b85ccd62-7cd6-4ff5-b6a1-7c4be48e0400",
+        "stream_url": "/api/v1/stream/b85ccd62-7cd6-4ff5-b6a1-7c4be48e0400",
+        "validation": {
+          "valid": true,
+          "original_image_sha256": "aad8f52271613f25b397ebe0b2ebd2b7c6343517cd33d050d7d145ed962c2f38",
+          "format": "PNG",
+          "width": 900,
+          "height": 500,
+          "size_bytes": 23213,
+          "mime_type": "image/png"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze/b85ccd62-7cd6-4ff5-b6a1-7c4be48e0400/confirm",
+      "content_type": "application/json",
+      "body": {
+        "confirmed_medications": [
+          {
+            "name": "Simvastatin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Simvastatin"
+          },
+          {
+            "name": "Clarithromycin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Clarithromycin"
+          }
+        ]
+      },
+      "at": "2026-10-14T16:41:12.567Z",
+      "status": 200,
+      "response": {
+        "status": "success",
+        "confirmed": [
+          {
+            "name": "Simvastatin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Simvastatin"
+          },
+          {
+            "name": "Clarithromycin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Clarithromycin"
+          }
+        ]
+      }
+    }
+  ],
+  "stream": [],
+  "console_errors": [],
+  "screen": {
+    "failed": false,
+    "error": "",
+    "abstained": true,
+    "abstention_reason": "6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.",
+    "pipeline": []
+  },
+  "stream_path": "/api/v1/stream/b85ccd62-7cd6-4ff5-b6a1-7c4be48e0400",
+  "stream_status": 200,
+  "stream_error": "Error: response.text: Protocol error (Network.getResponseBody): No data found for resource with given identifier\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+  "finished_at": "2026-10-14T16:41:33.205Z"
+}

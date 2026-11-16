@@ -1,0 +1,5 @@
+ src/adaptive_trust_medical_rag/api/app.py          |  39 ++-
+ .../llm_backend/model_registry.py                  |  14 +-
+ .../llm_backend/openai_vision_backend.py           | 313 +++++++++++++++++----
+ tests/providers/test_vision_backend.py             | 266 ++++++++++++++++-
+ 4 files changed, 567 insertions(+), 65 deletions(-)

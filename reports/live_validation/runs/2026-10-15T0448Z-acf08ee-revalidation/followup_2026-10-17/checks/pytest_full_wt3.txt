@@ -1,0 +1,228 @@
+.............................F.FF....................................... [  4%]
+........................................................................ [  9%]
+........................................................................ [ 14%]
+........................................................................ [ 19%]
+........................................................................ [ 24%]
+........................................................................ [ 29%]
+........................................................................ [ 34%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+........................................................................ [ 49%]
+........................................................................ [ 54%]
+........................................................................ [ 59%]
+........................................................................ [ 64%]
+........................................sss.s........................... [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 79%]
+........................................................................ [ 84%]
+........................................................................ [ 89%]
+........................................................................ [ 94%]
+........................................................................ [ 99%]
+..............                                                           [100%]
+================================== FAILURES ===================================
+___________ TestEngineModule.test_engine_initialization_and_hashes ____________
+
+self = <tests.annotation.test_annotation_schemas.TestEngineModule object at 0x000001316C4A4530>
+
+    def test_engine_initialization_and_hashes(self):
+        cfg = AnnotationSessionConfig(provider="mock")
+>       engine = AIAnnotationEngine(config=cfg, workspace_dir=WORKSPACE_ROOT)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\annotation\test_annotation_schemas.py:675: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\adaptive_trust_medical_rag\annotation\engine.py:83: in __init__
+    self._verify_hashes()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <adaptive_trust_medical_rag.annotation.engine.AIAnnotationEngine object at 0x000001313843B0B0>
+
+    def _verify_hashes(self) -> None:
+        """Verify prompt hashes against the frozen hash specification."""
+        if not self.frozen_hashes_path.exists():
+            logger.warning(f"Frozen prompt hash manifest not found at: {self.frozen_hashes_path}")
+            return
+    
+        frozen = self._load_json(self.frozen_hashes_path)
+        for key, expected_hash in frozen.items():
+            if key in self.prompt_hashes:
+                actual_hash = self.prompt_hashes[key]
+                if actual_hash != expected_hash:
+>                   raise PromptHashMismatchError(
+                        f"Cryptographic hash mismatch for '{key}': expected {expected_hash}, got {actual_hash}. "
+                        "Prompt or schema may have been modified from frozen baseline."
+                    )
+E                   adaptive_trust_medical_rag.annotation.engine.PromptHashMismatchError: Cryptographic hash mismatch for 'adjudication_prompt_sha256': expected 374351cf42f177484b26962f92ffdca3ed1d6862a73211d714816b958610cab4, got 5805c9398687e5415f94cd2006fe652ac6fa8b81eb28bb9eb47e1cc70350bd6f. Prompt or schema may have been modified from frozen baseline.
+
+src\adaptive_trust_medical_rag\annotation\engine.py:136: PromptHashMismatchError
+__________ TestEngineModule.test_annotate_position_with_mock_backend __________
+
+self = <tests.annotation.test_annotation_schemas.TestEngineModule object at 0x000001316C4A5A00>
+
+    @pytest.mark.asyncio
+    async def test_annotate_position_with_mock_backend(self):
+        # Define mock callback that returns valid 21-field JSON
+        mock_response = {
+            "query_entities": ["lisinopril"],
+            "requested_property": "clearance pathway",
+            "requested_relation": None,
+            "requested_outcome": None,
+            "entity_alignment": "EXACT",
+            "relationship_alignment": "EXACT",
+            "relationship_polarity": "POSITIVE",
+            "outcome_alignment": "NOT_APPLICABLE",
+            "outcome_polarity": "NOT_APPLICABLE",
+            "evidence_claims": [
+                {
+                    "claim_text": "Lisinopril is eliminated unchanged by renal excretion.",
+                    "evidence_span": "eliminated unchanged by renal excretion",
+                    "claim_type": "PHARMACOKINETIC",
+                    "polarity": "POSITIVE",
+                }
+            ],
+            "supported_claims": ["Lisinopril renal excretion."],
+            "unsupported_claims": [],
+            "missing_information": [],
+            "counterevidence": [],
+            "uncertainties": [],
+            "best_supporting_span": "eliminated unchanged by renal excretion",
+            "proposed_label": "RELEVANT",
+            "proposed_grade": 2,
+            "proposed_rationale": "Directly explains elimination mechanism.",
+            "confidence": "HIGH",
+            "alternative_label_considered": None,
+        }
+    
+        cfg = AnnotationSessionConfig(provider="mock")
+>       engine = AIAnnotationEngine(
+            config=cfg,
+            llm_backend=lambda sys_p, usr_p, schema: mock_response,
+            workspace_dir=WORKSPACE_ROOT,
+        )
+
+tests\annotation\test_annotation_schemas.py:736: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\adaptive_trust_medical_rag\annotation\engine.py:83: in __init__
+    self._verify_hashes()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <adaptive_trust_medical_rag.annotation.engine.AIAnnotationEngine object at 0x00000131372FDD90>
+
+    def _verify_hashes(self) -> None:
+        """Verify prompt hashes against the frozen hash specification."""
+        if not self.frozen_hashes_path.exists():
+            logger.warning(f"Frozen prompt hash manifest not found at: {self.frozen_hashes_path}")
+            return
+    
+        frozen = self._load_json(self.frozen_hashes_path)
+        for key, expected_hash in frozen.items():
+            if key in self.prompt_hashes:
+                actual_hash = self.prompt_hashes[key]
+                if actual_hash != expected_hash:
+>                   raise PromptHashMismatchError(
+                        f"Cryptographic hash mismatch for '{key}': expected {expected_hash}, got {actual_hash}. "
+                        "Prompt or schema may have been modified from frozen baseline."
+                    )
+E                   adaptive_trust_medical_rag.annotation.engine.PromptHashMismatchError: Cryptographic hash mismatch for 'adjudication_prompt_sha256': expected 374351cf42f177484b26962f92ffdca3ed1d6862a73211d714816b958610cab4, got 5805c9398687e5415f94cd2006fe652ac6fa8b81eb28bb9eb47e1cc70350bd6f. Prompt or schema may have been modified from frozen baseline.
+
+src\adaptive_trust_medical_rag\annotation\engine.py:136: PromptHashMismatchError
+_____________ TestEngineModule.test_annotate_batch_with_progress ______________
+
+self = <tests.annotation.test_annotation_schemas.TestEngineModule object at 0x000001316C4A5E80>
+
+    @pytest.mark.asyncio
+    async def test_annotate_batch_with_progress(self):
+        mock_response = {
+            "query_entities": [],
+            "requested_property": None,
+            "requested_relation": None,
+            "requested_outcome": None,
+            "entity_alignment": "MISMATCH",
+            "relationship_alignment": "NOT_APPLICABLE",
+            "relationship_polarity": "NOT_APPLICABLE",
+            "outcome_alignment": "NOT_APPLICABLE",
+            "outcome_polarity": "NOT_APPLICABLE",
+            "evidence_claims": [],
+            "supported_claims": [],
+            "unsupported_claims": [],
+            "missing_information": ["everything"],
+            "counterevidence": [],
+            "uncertainties": [],
+            "best_supporting_span": "",
+            "proposed_label": "IRRELEVANT",
+            "proposed_grade": 0,
+            "proposed_rationale": "Irrelevant text.",
+            "confidence": "HIGH",
+            "alternative_label_considered": None,
+        }
+    
+        cfg = AnnotationSessionConfig(provider="mock")
+>       engine = AIAnnotationEngine(
+            config=cfg,
+            llm_backend=lambda sys_p, usr_p, schema: mock_response,
+            workspace_dir=WORKSPACE_ROOT,
+        )
+
+tests\annotation\test_annotation_schemas.py:783: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\adaptive_trust_medical_rag\annotation\engine.py:83: in __init__
+    self._verify_hashes()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <adaptive_trust_medical_rag.annotation.engine.AIAnnotationEngine object at 0x00000131372FEE70>
+
+    def _verify_hashes(self) -> None:
+        """Verify prompt hashes against the frozen hash specification."""
+        if not self.frozen_hashes_path.exists():
+            logger.warning(f"Frozen prompt hash manifest not found at: {self.frozen_hashes_path}")
+            return
+    
+        frozen = self._load_json(self.frozen_hashes_path)
+        for key, expected_hash in frozen.items():
+            if key in self.prompt_hashes:
+                actual_hash = self.prompt_hashes[key]
+                if actual_hash != expected_hash:
+>                   raise PromptHashMismatchError(
+                        f"Cryptographic hash mismatch for '{key}': expected {expected_hash}, got {actual_hash}. "
+                        "Prompt or schema may have been modified from frozen baseline."
+                    )
+E                   adaptive_trust_medical_rag.annotation.engine.PromptHashMismatchError: Cryptographic hash mismatch for 'adjudication_prompt_sha256': expected 374351cf42f177484b26962f92ffdca3ed1d6862a73211d714816b958610cab4, got 5805c9398687e5415f94cd2006fe652ac6fa8b81eb28bb9eb47e1cc70350bd6f. Prompt or schema may have been modified from frozen baseline.
+
+src\adaptive_trust_medical_rag\annotation\engine.py:136: PromptHashMismatchError
+============================== warnings summary ===============================
+..\Downloads\CASE STUDY\.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\sunny\Downloads\CASE STUDY\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/api/test_v6_checkpoint4.py: 15 warnings
+tests/e2e/test_additional_instructions.py: 99 warnings
+tests/e2e/test_live_failure_semantics.py: 84 warnings
+tests/e2e/test_live_relationship_evidence_v2.py: 16 warnings
+tests/e2e/test_live_risk_and_eligibility.py: 81 warnings
+tests/e2e/test_v6_c6_image_confirmation_rxnorm.py: 5 warnings
+tests/e2e/test_v6_c7_image_full_medical_rag.py: 58 warnings
+tests/e2e/test_v6_c8_multimodal_claim_citation_safety.py: 9 warnings
+tests/e2e/test_v6_c9_multimodal_full_e2e_audit.py: 7 warnings
+tests/security/test_phase14_integration.py: 98 warnings
+tests/test_cli.py: 164 warnings
+tests/test_live_variants.py: 81 warnings
+tests/test_rag_orchestrator.py: 43 warnings
+tests/test_security_evaluation.py: 9 warnings
+tests/test_security_extensions.py: 12 warnings
+tests/test_v2_provenance.py: 10 warnings
+  C:\Users\sunny\acf08ee-fullsuite-wt3\src\adaptive_trust_medical_rag\security\security_context.py:27: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+
+tests/test_hybrid_retrieval.py::TestVectorRetriever::test_scores_bounded_minus1_to_1
+  C:\Users\sunny\acf08ee-fullsuite-wt3\tests\test_hybrid_retrieval.py:59: RuntimeWarning: coroutine 'test_gemini_backend_strict_timeout.<locals>.mock_generate_content' was never awaited
+    norm = math.sqrt(sum(x * x for x in vec)) or 1.0
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_engine_initialization_and_hashes
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_annotate_position_with_mock_backend
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_annotate_batch_with_progress
+3 failed, 1447 passed, 4 skipped, 793 warnings in 114.42s (0:01:54)
+rc=1 secs=118

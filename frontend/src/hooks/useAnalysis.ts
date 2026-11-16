@@ -16,12 +16,19 @@ export function useAnalysis() {
   const [currentStage, setCurrentStage] = useState<PipelineStage>('idle');
   const [stageUpdates, setStageUpdates] = useState<StageUpdate[]>([]);
   const [result, setResult] = useState<AnalysisResult | null>(null);
+  // The input mode of the run in progress, so its stages are labelled for that run, not the form.
+  const [runInputMode, setRunInputMode] = useState<InputMode | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [extractedCandidates, setExtractedCandidates] = useState<MedicationCandidate[]>([]);
+  // Warnings about the extraction itself (e.g. instruction-like text in the image).
+  const [extractionWarnings, setExtractionWarnings] = useState<string[]>([]);
   const [currentRequestId, setCurrentRequestId] = useState<string | null>(null);
   
   // Keep track of the active connection
   const disconnectRef = useRef<(() => void) | null>(null);
+  // Each analysis gets a number; a submission or stream event from an older one is ignored, so a
+  // slow earlier request can never show its result in place of the current one.
+  const generationRef = useRef(0);
 
   const cleanup = useCallback(() => {
     if (disconnectRef.current) {
@@ -54,6 +61,7 @@ export function useAnalysis() {
 
       case 'medication_candidates_extracted':
         setExtractedCandidates(data.candidates || []);
+        setExtractionWarnings(data.warnings || []);
         break;
 
       case 'confirmation_required':
@@ -99,10 +107,12 @@ export function useAnalysis() {
           ...partialResult,
           gate_decision: 'abstain',
           abstention_reason: data.reason,
+          food_guidance_status: data.food_guidance_status ?? partialResult.food_guidance_status,
           // The abstention's trust fields win; the trust event's details (factors, exclusions) stay.
           trust: { ...partialResult.trust, ...data.trust },
           claims: data.claims ?? partialResult.claims,
           evidence: data.evidence ?? partialResult.evidence,
+          excluded_sources: data.excluded_sources ?? partialResult.excluded_sources,
         };
         setResult(partialResult as AnalysisResult);
         setCurrentStage('abstained');
@@ -136,12 +146,16 @@ export function useAnalysis() {
     }
   ) => {
     cleanup();
+    const generation = ++generationRef.current;
+    const isCurrent = () => generation === generationRef.current;
     setIsProcessing(true);
     setCurrentStage('uploading');
     setStageUpdates([]);
     setResult(null);
     setError(null);
+    setRunInputMode(payload.inputMode);
     setExtractedCandidates([]);
+    setExtractionWarnings([]);
     setCurrentRequestId(null);
 
     let partialResult: Partial<AnalysisResult> = {
@@ -173,6 +187,7 @@ export function useAnalysis() {
         throw new Error("Invalid payload for analysis");
       }
       
+      if (!isCurrent()) return;  // a newer analysis started while this one was being submitted
       setCurrentRequestId(req_id);
 
       // Once a terminal event arrives, the stream closing is expected, not a failure.
@@ -180,11 +195,12 @@ export function useAnalysis() {
       disconnectRef.current = connectStream(
         stream_url,
         (event, data: any) => {
+          if (!isCurrent()) return;
           partialResult = handleStreamEvent(event, data, partialResult);
           if (event === 'abstention' || event === 'complete' || event === 'error') ended = true;
         },
         (err) => {
-          if (ended) return;
+          if (ended || !isCurrent()) return;
           console.error("Stream error", err);
           setError(prev => prev || "Analysis stream disconnected unexpectedly. Check the backend server status.");
           setCurrentStage('error');
@@ -192,7 +208,11 @@ export function useAnalysis() {
         }
       );
     } catch (err: any) {
-      setError(err.message || String(err));
+      if (!isCurrent()) return;
+      // fetch rejects with a TypeError only when the server cannot be reached at all.
+      setError(err instanceof TypeError
+        ? 'Could not reach the analysis server. Check that the backend is running, then retry.'
+        : err.message || String(err));
       setCurrentStage('error');
       setIsProcessing(false);
       cleanup();
@@ -214,6 +234,7 @@ export function useAnalysis() {
   }, [currentRequestId, cleanup]);
 
   const reset = useCallback(() => {
+    generationRef.current++;
     cleanup();
     setIsProcessing(false);
     setCurrentStage('idle');
@@ -222,6 +243,7 @@ export function useAnalysis() {
     setError(null);
     setExtractedCandidates([]);
     setCurrentRequestId(null);
+    setRunInputMode(null);
   }, [cleanup]);
 
   return {
@@ -234,6 +256,8 @@ export function useAnalysis() {
     result,
     error,
     extractedCandidates,
+    extractionWarnings,
+    runInputMode,
     cancel: cleanup
   };
 }

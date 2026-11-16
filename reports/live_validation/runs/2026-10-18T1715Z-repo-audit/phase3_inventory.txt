@@ -1,0 +1,99 @@
+== ignored (directory level, top 60)
+.env
+.env.local
+.playwright-mcp/
+.pytest_cache/
+.ruff_cache/
+.ruff_cache/.gitignore
+.ruff_cache/0.16.3/
+.ruff_cache/CACHEDIR.TAG
+.venv/
+cognee_service/model_cache/huggingface/models--pritamdeka--PubMedBERT-MNLI-MedNLI/snapshots/f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab/model.safetensors
+experiments/__pycache__/
+experiments/logs/
+experiments/real_llm_evaluation/__pycache__/
+experiments/real_llm_evaluation/tests/__pycache__/
+experiments/runs/f0-f1-v1/f0/
+experiments/runs/f0-f1-v1/f0/logs/
+experiments/runs/f0-f1-v1/f1/
+experiments/runs/f0-f1-v1/f1/logs/
+frontend/dist/
+frontend/node_modules/
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/backend.log
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/frontend.log
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/.gitignore
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/CAPTURE_MANIFEST.json
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/rxnav_21212_properties.json
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/rxnav_36567_properties.json
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9_history.json
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml
+reports/live_validation/runs/2026-10-14T1633Z-local-abc/source_capture/spl_9aaffb41-408c-4372-8fd5-1d649450c0e9_history.json
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/backend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/checks/pytest_focused2_attempt1_retrieval_info_key.txt
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18/browser/backend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18/browser/backend_attempt1_port_in_use.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18/browser/frontend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18b/browser/backend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18b/browser/frontend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18c/browser/backend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-18c/browser/frontend.log
+reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/frontend.log
+scratch/
+scripts/annotation/__pycache__/
+src/adaptive_trust_medical_rag/__pycache__/
+src/adaptive_trust_medical_rag/api/__pycache__/
+src/adaptive_trust_medical_rag/api/routes/__pycache__/
+src/adaptive_trust_medical_rag/common/__pycache__/
+src/adaptive_trust_medical_rag/context_engine/__pycache__/
+src/adaptive_trust_medical_rag/core/__pycache__/
+src/adaptive_trust_medical_rag/database/__pycache__/
+src/adaptive_trust_medical_rag/evaluation/__pycache__/
+src/adaptive_trust_medical_rag/evidence_sources/__pycache__/
+src/adaptive_trust_medical_rag/ingestion/__pycache__/
+src/adaptive_trust_medical_rag/llm_backend/__pycache__/
+src/adaptive_trust_medical_rag/llm_routing/__pycache__/
+src/adaptive_trust_medical_rag/normalization/__pycache__/
+src/adaptive_trust_medical_rag/orchestrator/__pycache__/
+src/adaptive_trust_medical_rag/research_harness/__pycache__/
+src/adaptive_trust_medical_rag/research_memory/__pycache__/
+src/adaptive_trust_medical_rag/retrieval/__pycache__/
+== ignored count: 82
+== untracked (directory level)
+.cursor/
+.ruff_cache/
+CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+CI_MODEL_SELECTOR_FINAL_AUDIT.md
+claude-incoming/
+cognee_service/
+continue-blockers.bundle
+experiments/annotations/v3_1_human/completed/
+experiments/annotations/v3_1_human/pilot/completed/
+experiments/annotations/v3_1_human/pilot/expansion_v1/submissions/
+experiments/annotations/v3_1_human/raw/
+experiments/runs/f0-f1-v1/f0/
+experiments/runs/f0-f1-v1/f1/
+experiments/runs/f0-f1-v2/f0/
+experiments/runs/f0-f1-v2/f1/
+experiments/runs/f0-f1-v2/responses/
+redesign-fixes.bundle
+redesign-upload-fix.bundle
+reports/junit.xml
+reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+reports/live_validation/runs/
+reports/phase2f5b/
+track_a_annotation/ai_assisted/
+track_a_annotation/docs/
+track_a_annotation/snapshots/
+== sizes of notable items
+127K  .pytest_cache
+277K  .ruff_cache
+532K  frontend/dist
+207M  frontend/node_modules
+  .venv
+      0 [main] bash 669 dofork: child -1 - forked process 15416 died unexpectedly, retry 0, exit code 0xC000026B, errno 11
+/usr/bin/bash: fork: retry: Resource temporarily unavailable

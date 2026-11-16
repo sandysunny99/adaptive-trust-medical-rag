@@ -8,6 +8,8 @@ Covers: query, ingest, health, audit endpoints + middleware.
 
 from __future__ import annotations
 
+import subprocess
+import sys
 from typing import Any
 
 from fastapi.testclient import TestClient
@@ -77,8 +79,9 @@ class ErrorPipeline:
 def _make_client(
     pipeline: Any = None,
     rate_limit: int = 1000,
+    ingester: Any = None,
 ) -> TestClient:
-    app = create_app(pipeline=pipeline, rate_limit=rate_limit, rate_window=60)
+    app = create_app(pipeline=pipeline, rate_limit=rate_limit, rate_window=60, ingester=ingester)
     return TestClient(app, raise_server_exceptions=False)
 
 
@@ -210,31 +213,34 @@ class TestIngestEndpoint:
             "publication_year": 2023,
         }
 
-    def test_valid_ingest_returns_200(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        assert resp.status_code == 200
+    @staticmethod
+    def _recording_ingester(seen: list):
+        def ingest(body, content_hash):
+            seen.append(content_hash)
+            return {"document_id": "doc-1", "content_hash": content_hash, "chunk_count": 3,
+                    "status": "validated", "anomaly_score": 0.1, "poisoning_score": 0.0,
+                    "quarantined": False, "message": "ingested"}
+        return ingest
 
-    def test_response_has_document_id(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        data = resp.json()
-        assert "document_id" in data
-        assert len(data["document_id"]) > 0
+    def test_without_an_ingester_nothing_is_reported_as_ingested(self) -> None:
+        resp = _make_client().post("/ingest", json=self._ingest_body())
+        assert resp.status_code == 503
+        assert "document_id" not in resp.json() and "poisoning_score" not in resp.json()
 
-    def test_response_has_content_hash(self) -> None:
-        client = _make_client()
-        resp = client.post("/ingest", json=self._ingest_body())
-        data = resp.json()
-        assert "content_hash" in data
-        assert len(data["content_hash"]) == 64  # SHA-256 hex
-
-    def test_same_content_same_hash(self) -> None:
-        client = _make_client()
+    def test_the_ingester_result_is_returned_with_the_content_hash(self) -> None:
+        seen: list = []
+        client = _make_client(ingester=self._recording_ingester(seen))
         body = self._ingest_body()
-        r1 = client.post("/ingest", json=body).json()
-        r2 = client.post("/ingest", json=body).json()
-        assert r1["content_hash"] == r2["content_hash"]
+        r1 = client.post("/ingest", json=body)
+        r2 = client.post("/ingest", json=body)
+        assert r1.status_code == 200 and r1.json()["document_id"] == "doc-1"
+        assert len(seen[0]) == 64 and seen[0] == seen[1] == r1.json()["content_hash"]
+
+    def test_an_ingester_failure_is_a_500_not_a_success(self) -> None:
+        def broken(body, content_hash):
+            raise RuntimeError("store down")
+        resp = _make_client(ingester=broken).post("/ingest", json=self._ingest_body())
+        assert resp.status_code == 500
 
     def test_missing_title_returns_422(self) -> None:
         client = _make_client()
@@ -393,3 +399,56 @@ class TestRateLimiting:
         for _ in range(10):
             resp = client.get("/health")
             assert resp.status_code == 200
+
+
+# ── Liveness, readiness and one app per process (2026-10-26 audit, round 3, phase 7) ────────────
+# /health keeps its contract (it reports the research database, which the live app does not use, so
+# it reads "unhealthy" without one). /health/live and /health/ready describe the live application.
+
+class TestLiveAndReady:
+    def test_liveness_is_ok_while_the_process_serves(self) -> None:
+        data = _make_client().get("/health/live")
+        assert data.status_code == 200 and data.json() == {"status": "alive"}
+
+    def test_readiness_is_503_until_retrieval_and_the_verifier_are_loaded(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = None
+        app.state.claim_verifier = None
+        app.state.llm_backend = object()  # set explicitly: a checkout without provider keys has none
+        app.state.model_init_errors = {"retrieval": "live corpus file X not found"}
+        resp = TestClient(app).get("/health/ready")
+        assert resp.status_code == 503
+        body = resp.json()
+        assert body["status"] == "not_ready"
+        assert set(body["missing"]) == {"retrieval", "claim_verifier"}
+        assert body["errors"] == {"retrieval": "live corpus file X not found"}
+        assert body["database"] == "not used by the live application"
+
+    def test_readiness_is_200_when_the_live_components_are_loaded(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = object()
+        app.state.claim_verifier = object()
+        app.state.llm_backend = object()
+        resp = TestClient(app).get("/health/ready")
+        assert resp.status_code == 200 and resp.json()["status"] == "ready"
+
+    def test_readiness_names_a_missing_llm_provider(self) -> None:
+        app = create_app()
+        app.state.retrieval_engine = object()
+        app.state.claim_verifier = object()
+        app.state.llm_backend = None
+        body = TestClient(app).get("/health/ready").json()
+        assert body["missing"] == ["llm_provider"]
+
+
+def test_importing_the_app_module_does_not_build_an_app() -> None:
+    """uvicorn --factory imported the module, which built an app at import, then built another."""
+    script = ("import adaptive_trust_medical_rag.api.app as m\n"
+              "assert 'app' not in vars(m), 'built at import'\n"
+              "a = m.app\n"
+              "assert m.app is a\n"
+              "print('PASS')\n")
+    import os
+    result = subprocess.run([sys.executable, "-c", script], capture_output=True, text=True,
+                            env={**os.environ, "TESTING": "1", "PYTHONPATH": "src"})
+    assert "PASS" in result.stdout, result.stderr[-800:]

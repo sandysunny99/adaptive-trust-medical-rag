@@ -1,0 +1,650 @@
+diff --git a/frontend/src/components/results/EvidenceList.test.tsx b/frontend/src/components/results/EvidenceList.test.tsx
+new file mode 100644
+index 0000000..5cc07bf
+--- /dev/null
++++ b/frontend/src/components/results/EvidenceList.test.tsx
+@@ -0,0 +1,56 @@
++import { describe, it, expect } from 'vitest';
++import { render, screen } from '@testing-library/react';
++import '@testing-library/jest-dom';
++import { EvidenceList } from './EvidenceList';
++import type { EvidenceItem } from '../../types';
++
++// Synthetic fixture only; no patient data.
++const LABEL = 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9aaffb41-408c-4372-8fd5-1d649450c0e9';
++const PLACEHOLDER = 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-simvastatin';
++
++function item(overrides: Partial<EvidenceItem> = {}): EvidenceItem {
++  return {
++    chunk_id: 'c1',
++    document_id: 'SPL-SYNTHETIC-001',
++    source_type: 'DAILYMED',
++    source_name: PLACEHOLDER,
++    source_link_status: 'PLACEHOLDER',
++    source_link_note: 'Placeholder link in the frozen corpus; it does not identify the original document.',
++    title: 'Evidence [Source 1]',
++    text: 'Synthetic evidence text.',
++    source_authority: 0.95,
++    trust_score: 0.9,
++    freshness: 0.9,
++    retrieval_method: 'hybrid-rrf',
++    provenance_status: 'RETRIEVED',
++    ...overrides,
++  };
++}
++
++describe('EvidenceList source links', () => {
++  it('links a verified source to the original document in a new tab', () => {
++    render(<EvidenceList evidence={[item({
++      source_name: LABEL, url: LABEL, source_link_status: 'VERIFIED',
++      source_link_note: 'Verified link to the original document.',
++    })]} />);
++    const link = screen.getByRole('link', { name: LABEL });
++    expect(link).toHaveAttribute('href', LABEL);
++    expect(link).toHaveAttribute('target', '_blank');
++    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
++    expect(screen.getByRole('link', { name: 'Open source 1 (opens in new tab)' })).toHaveAttribute('href', LABEL);
++    expect(screen.queryByText('Not linked:')).not.toBeInTheDocument();
++  });
++
++  it('shows an unverified source as text with the reason, never as a link', () => {
++    render(<EvidenceList evidence={[item()]} />);
++    expect(screen.queryByRole('link')).not.toBeInTheDocument();
++    expect(screen.getByText(PLACEHOLDER)).toBeInTheDocument();
++    expect(screen.getByText('Not linked:')).toBeInTheDocument();
++    expect(screen.getByText(/does not identify the original document/)).toBeInTheDocument();
++  });
++
++  it.each(['http://dailymed.nlm.nih.gov/x', 'javascript:alert(1)'])('never links %s', url => {
++    render(<EvidenceList evidence={[item({ url, source_link_status: 'VERIFIED' })]} />);
++    expect(screen.queryByRole('link')).not.toBeInTheDocument();
++  });
++});
+diff --git a/frontend/src/components/results/EvidenceList.tsx b/frontend/src/components/results/EvidenceList.tsx
+index cf477a0..b8e95d3 100644
+--- a/frontend/src/components/results/EvidenceList.tsx
++++ b/frontend/src/components/results/EvidenceList.tsx
+@@ -9,6 +9,11 @@ function SourceTypeIcon({ sourceType }: { sourceType: string }) {
+   return <Icon size={12} />;
+ }
+ 
++/** The backend sets url only when it is verified for this chunk; only https is ever linked. */
++function verifiedHref(url?: string): string | undefined {
++  return url && /^https:\/\//i.test(url) ? url : undefined;
++}
++
+ /** Text long enough that it may exceed three lines when layout can't be measured (e.g. tests). */
+ const LONG_TEXT_CHARS = 180;
+ 
+@@ -92,55 +97,76 @@ export function EvidenceList({ evidence }: { evidence: EvidenceItem[] }) {
+         </button>
+       </div>
+       <ol className="divide-y divide-border">
+-        {evidence.map((ev, i) => (
+-          <li key={`${ev.chunk_id || 'chunk'}-${i}`} className="py-3 first:pt-0 last:pb-0">
+-            <div className="flex items-start justify-between gap-3">
+-              <div className="min-w-0 flex-1">
+-                <div className="flex flex-wrap items-center gap-2">
+-                  <span className="text-xs font-bold text-muted-foreground">[{i + 1}]</span>
+-                  {ev.document_id && (
+-                    <span className="rounded border border-primary/30 bg-primary-soft px-1.5 py-0.5 font-mono text-[11px] font-medium text-foreground">
+-                      Document: {ev.document_id}
+-                    </span>
+-                  )}
+-                  {ev.source_type && (
+-                    <span className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
+-                      <SourceTypeIcon sourceType={ev.source_type} />
+-                      {ev.source_type}
+-                    </span>
++        {evidence.map((ev, i) => {
++          const href = verifiedHref(ev.url);
++          return (
++            <li key={`${ev.chunk_id || 'chunk'}-${i}`} className="py-3 first:pt-0 last:pb-0">
++              <div className="flex items-start justify-between gap-3">
++                <div className="min-w-0 flex-1">
++                  <div className="flex flex-wrap items-center gap-2">
++                    <span className="text-xs font-bold text-muted-foreground">[{i + 1}]</span>
++                    {ev.document_id && (
++                      <span className="rounded border border-primary/30 bg-primary-soft px-1.5 py-0.5 font-mono text-[11px] font-medium text-foreground">
++                        Document: {ev.document_id}
++                      </span>
++                    )}
++                    {ev.source_type && (
++                      <span className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-[11px] text-foreground">
++                        <SourceTypeIcon sourceType={ev.source_type} />
++                        {ev.source_type}
++                      </span>
++                    )}
++                    {ev.provenance_status && (
++                      <span className="rounded bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground">
++                        {ev.provenance_status}
++                      </span>
++                    )}
++                  </div>
++                  {href ? (
++                    <a
++                      href={href}
++                      target="_blank"
++                      rel="noopener noreferrer"
++                      className="mt-1 block break-all rounded text-xs text-primary hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
++                    >
++                      {ev.source_name || href}
++                    </a>
++                  ) : (
++                    <>
++                      <p className="mt-1 break-all text-xs text-muted-foreground">{ev.source_name || ev.title}</p>
++                      {ev.source_link_note && (
++                        <p className="mt-0.5 text-[11px] text-muted-foreground">
++                          <span className="font-medium text-foreground">Not linked:</span> {ev.source_link_note}
++                        </p>
++                      )}
++                    </>
+                   )}
+-                  {ev.provenance_status && (
+-                    <span className="rounded bg-muted px-1.5 py-0.5 text-[11px] text-muted-foreground">
+-                      {ev.provenance_status}
+-                    </span>
+-                  )}
+-                </div>
+-                <p className="mt-1 break-all text-xs text-muted-foreground">{ev.source_name || ev.title}</p>
+-                <EvidenceText id={`${baseId}-text-${i}`} text={ev.text} index={i} expanded={expanded.has(i)} onToggle={() => toggle(i)} />
+-                <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+-                  {ev.pmid && <span>PMID: {ev.pmid}</span>}
+-                  {ev.doi && <span>DOI: {ev.doi}</span>}
+-                  <span>Authority: {typeof ev.source_authority === 'number' ? ev.source_authority.toFixed(2) : 'Not available'}</span>
+-                  <span>Trust: {typeof ev.trust_score === 'number' ? ev.trust_score.toFixed(2) : 'Not available'}</span>
+-                  <span>Freshness: {typeof ev.freshness === 'number' ? ev.freshness.toFixed(2) : 'Not available'}</span>
+-                  {ev.retrieval_method && <span>Method: {ev.retrieval_method}</span>}
++                  <EvidenceText id={`${baseId}-text-${i}`} text={ev.text} index={i} expanded={expanded.has(i)} onToggle={() => toggle(i)} />
++                  <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
++                    {ev.pmid && <span>PMID: {ev.pmid}</span>}
++                    {ev.doi && <span>DOI: {ev.doi}</span>}
++                    <span>Authority: {typeof ev.source_authority === 'number' ? ev.source_authority.toFixed(2) : 'Not available'}</span>
++                    <span>Trust: {typeof ev.trust_score === 'number' ? ev.trust_score.toFixed(2) : 'Not available'}</span>
++                    <span>Freshness: {typeof ev.freshness === 'number' ? ev.freshness.toFixed(2) : 'Not available'}</span>
++                    {ev.retrieval_method && <span>Method: {ev.retrieval_method}</span>}
++                  </div>
+                 </div>
++                {href && (
++                  <a
++                    href={href}
++                    target="_blank"
++                    rel="noopener noreferrer"
++                    aria-label={`Open source ${i + 1} (opens in new tab)`}
++                    title="Opens in new tab"
++                    className="shrink-0 rounded p-1.5 text-muted-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
++                  >
++                    <Icons.externalLink size={14} />
++                  </a>
++                )}
+               </div>
+-              {ev.url && (
+-                <a
+-                  href={ev.url}
+-                  target="_blank"
+-                  rel="noopener noreferrer"
+-                  aria-label={`Open source ${i + 1} (opens in new tab)`}
+-                  title="Opens in new tab"
+-                  className="shrink-0 rounded p-1.5 text-muted-foreground hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+-                >
+-                  <Icons.externalLink size={14} />
+-                </a>
+-              )}
+-            </div>
+-          </li>
+-        ))}
++            </li>
++          );
++        })}
+       </ol>
+     </div>
+   );
+diff --git a/frontend/src/services/exportService.test.ts b/frontend/src/services/exportService.test.ts
+index 1ccfe84..5b1a7a5 100644
+--- a/frontend/src/services/exportService.test.ts
++++ b/frontend/src/services/exportService.test.ts
+@@ -79,3 +79,19 @@ describe('exports leave patient context out', () => {
+     expect(JSON.stringify(e.result)).toContain('SYNTHETIC-CONDITION-TEST');
+   });
+ });
++
++describe('exported evidence sources', () => {
++  it('says when a source is not a verified link', () => {
++    const e = entry();
++    e.result.evidence = [{
++      chunk_id: 'c1', document_id: 'SPL-SYNTHETIC-001', source_type: 'DAILYMED',
++      source_name: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-synthetic',
++      source_link_status: 'PLACEHOLDER',
++      source_link_note: 'Placeholder link in the frozen corpus; it does not identify the original document.',
++      title: 'Evidence [Source 1]', text: 'Synthetic evidence.', source_authority: 0.95, trust_score: 0.9,
++      freshness: 0.9, retrieval_method: 'hybrid-rrf', provenance_status: 'RETRIEVED',
++    }];
++    expect(exportAsMarkdown(e)).toContain(
++      'not a verified link: Placeholder link in the frozen corpus; it does not identify the original document.');
++  });
++});
+diff --git a/frontend/src/services/exportService.ts b/frontend/src/services/exportService.ts
+index c0452d1..4101143 100644
+--- a/frontend/src/services/exportService.ts
++++ b/frontend/src/services/exportService.ts
+@@ -61,7 +61,8 @@ export function exportAsMarkdown(entry: HistoryEntry, _includePatientContext = f
+   if ((r.evidence || []).length > 0) {
+     lines.push('', '## Evidence Sources', '');
+     for (const [i, ev] of r.evidence.entries()) {
+-      lines.push(`${i + 1}. **${ev.source_name}** — Trust: ${ev.trust_score?.toFixed(2) || 'N/A'}, Authority: ${ev.source_authority?.toFixed(2) || 'N/A'}${ev.pmid ? ` (PMID: ${ev.pmid})` : ''}`);
++      const link = ev.source_link_status && ev.source_link_status !== 'VERIFIED' ? ` — not a verified link: ${ev.source_link_note ?? ev.source_link_status}` : '';
++      lines.push(`${i + 1}. **${ev.source_name}** — Trust: ${ev.trust_score?.toFixed(2) || 'N/A'}, Authority: ${ev.source_authority?.toFixed(2) || 'N/A'}${ev.pmid ? ` (PMID: ${ev.pmid})` : ''}${link}`);
+     }
+   }
+ 
+diff --git a/frontend/src/types/index.ts b/frontend/src/types/index.ts
+index 2db5eba..5d8cca8 100644
+--- a/frontend/src/types/index.ts
++++ b/frontend/src/types/index.ts
+@@ -117,6 +117,8 @@ export interface TrustInfo {
+   missing_factors: string[];
+ }
+ 
++export type SourceLinkStatus = 'VERIFIED' | 'PLACEHOLDER' | 'SHARED' | 'UNVERIFIED' | 'MISSING';
++
+ export interface EvidenceItem {
+   chunk_id: string;
+   document_id: string;
+@@ -126,7 +128,10 @@ export interface EvidenceItem {
+   text: string;
+   pmid?: string;
+   doi?: string;
++  /** Set only when the source URL is verified for this chunk; only then is it a link. */
+   url?: string;
++  source_link_status?: SourceLinkStatus;
++  source_link_note?: string;
+   source_authority: number;
+   trust_score: number;
+   freshness: number;
+diff --git a/src/adaptive_trust_medical_rag/api/app.py b/src/adaptive_trust_medical_rag/api/app.py
+index 7d1fd6b..d17889f 100644
+--- a/src/adaptive_trust_medical_rag/api/app.py
++++ b/src/adaptive_trust_medical_rag/api/app.py
+@@ -36,6 +36,8 @@ from adaptive_trust_medical_rag.api.schemas import ErrorResponse
+ log = logging.getLogger(__name__)
+ 
+ _APP_VERSION = "1.0.0"
++# Workers AI stops at 256 output tokens by default, which cuts the JSON answer off.
++CLOUDFLARE_MAX_TOKENS = 4096
+ _APP_TITLE = "Adaptive Trust Medical RAG API"
+ _APP_DESCRIPTION = (
+     "Research API for evidence-grounded pharmacological question answering. "
+@@ -172,7 +174,8 @@ def create_app(
+             provider_name="cloudflare",
+             base_url=f"https://api.cloudflare.com/client/v4/accounts/{os.environ['CLOUDFLARE_ACCOUNT_ID']}/ai/v1",
+             api_key=os.environ["CLOUDFLARE_API_TOKEN"],
+-            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast"
++            model_name="@cf/meta/llama-3.3-70b-instruct-fp8-fast",
++            max_tokens=CLOUDFLARE_MAX_TOKENS,
+         )
+         router.register_provider("cloudflare", cf_backend)
+ 
+diff --git a/src/adaptive_trust_medical_rag/services/live_application.py b/src/adaptive_trust_medical_rag/services/live_application.py
+index ca88f89..62ff21b 100644
+--- a/src/adaptive_trust_medical_rag/services/live_application.py
++++ b/src/adaptive_trust_medical_rag/services/live_application.py
+@@ -36,6 +36,8 @@ from adaptive_trust_medical_rag.services.live_relationships import (
+     live_risk_tier,
+     load_relationship_store,
+ )
++from adaptive_trust_medical_rag.services.live_source_links import VERIFIED as LINK_VERIFIED
++from adaptive_trust_medical_rag.services.live_source_links import shared_urls, source_link
+ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import ClaimVerifierV2
+ from adaptive_trust_medical_rag.verification.claim_verifier_v2 import (
+     EvidenceChunk,
+@@ -879,11 +881,19 @@ class LiveMedicalRAGService:
+                 cand = sc.candidate
+                 evidence_lines.append(f"[Source {i}]\n{cand.text.strip()}")
+ 
+-                evidence_items.append({
++                # The page links a source only when its URL is verified for this chunk.
++                link = source_link(
++                    cand.chunk_id, cand.source_url,
++                    verified_links=getattr(self.app_state, "verified_source_links", None),
++                    shared=getattr(self.app_state, "shared_source_urls", frozenset()),
++                )
++                item = {
+                     "chunk_id": cand.chunk_id,
+                     "document_id": cand.document_id,
+                     "source_type": cand.metadata.get("source_type", "BIOMEDICAL_LITERATURE"),
+                     "source_name": cand.source_url or "Retrieved",
++                    "source_link_status": link["status"],
++                    "source_link_note": link["note"],
+                     "title": f"Evidence [Source {i}]",
+                     "text": cand.text,
+                     "source_authority": cand.source_authority,
+@@ -891,7 +901,10 @@ class LiveMedicalRAGService:
+                     "freshness": float(cand.metadata.get("freshness_score", 0.8)),
+                     "retrieval_method": "hybrid-rrf",
+                     "provenance_status": "RETRIEVED"
+-                })
++                }
++                if link["status"] == LINK_VERIFIED:
++                    item["url"] = cand.source_url
++                evidence_items.append(item)
+ 
+             evidence_block = "\n\n".join(evidence_lines)
+ 
+@@ -975,8 +988,25 @@ class LiveMedicalRAGService:
+                 try:
+                     structured_result = json.loads(raw_text)
+                 except json.JSONDecodeError:
+-                    log.error("LLM Output Validation Failure: output is not valid JSON")
+-                    yield _sse("error", {"code": "LLM_OUTPUT_VALIDATION_FAILURE", "message": "Failed to parse LLM structured output."})
++                    # Record why, never the content: a "length" stop means the answer was cut off.
++                    finish_reason = getattr(gen_result, "finish_reason", None) or None
++                    log.error(
++                        "LLM Output Validation Failure: output is not valid JSON "
++                        "(provider=%s model=%s finish_reason=%s length=%d)",
++                        used_model_info["provider"], used_model_info["model_id"], finish_reason, len(raw_text),
++                    )
++                    message = "Failed to parse LLM structured output."
++                    if finish_reason == "length":
++                        message += (" The model stopped at its output token limit before the answer was "
++                                    "complete, so nothing could be verified.")
++                    yield _sse("stage_update", {"stage": "generating", "status": "failed", "timestamp": _ts()})
++                    yield _sse("error", {
++                        "code": "LLM_OUTPUT_VALIDATION_FAILURE",
++                        "message": message,
++                        "finish_reason": finish_reason,
++                        "provider": used_model_info["provider"],
++                        "model_id": used_model_info["model_id"],
++                    })
+                     return
+ 
+             except Exception as e:
+@@ -1347,6 +1377,8 @@ def _lazy_init_models(app_state):
+ 
+     # Approved relationship records are checked against this corpus; none load unless approved.
+     app_state.relationship_store = load_relationship_store(data)
++    # A URL the corpus gives to several documents cannot identify any one of them.
++    app_state.shared_source_urls = shared_urls(data)
+     log.info("Relationship records: %s", app_state.relationship_store.reason)
+ 
+     log.info("Lazy loading embedding model %s for live retrieval", LIVE_EMBEDDING_MODEL)
+diff --git a/src/adaptive_trust_medical_rag/services/live_source_links.py b/src/adaptive_trust_medical_rag/services/live_source_links.py
+new file mode 100644
+index 0000000..a876fcc
+--- /dev/null
++++ b/src/adaptive_trust_medical_rag/services/live_source_links.py
+@@ -0,0 +1,74 @@
++"""Whether an evidence chunk's recorded URL may be offered as a link to its original document.
++
++The frozen live corpus records a URL for every chunk, but none of them was checked against the
++document it names. Most DailyMed entries carry a placeholder set ID (``setid=example-...``), and
++one PubMed ID is attached to two unrelated documents. A link that opens the wrong page would
++misattribute the evidence, so a URL is offered as a link only when it is VERIFIED: listed for
++that exact chunk in ``verified_links``, which only a researcher-approved source record may fill.
++None is approved yet. Every other URL is still shown, as text, with the reason it is not a link.
++"""
++
++from __future__ import annotations
++
++import re
++from collections import defaultdict
++from collections.abc import Iterable, Mapping
++from typing import Any
++from urllib.parse import urlsplit
++
++VERIFIED = "VERIFIED"
++PLACEHOLDER = "PLACEHOLDER"
++SHARED = "SHARED"
++UNVERIFIED = "UNVERIFIED"
++MISSING = "MISSING"
++
++NOTES = {
++    VERIFIED: "Verified link to the original document.",
++    PLACEHOLDER: "Placeholder link in the frozen corpus; it does not identify the original document.",
++    SHARED: "The corpus attaches this link to more than one document, so it cannot identify this one.",
++    UNVERIFIED: "This link has not been verified to open the original document.",
++    MISSING: "No source link is recorded for this evidence.",
++}
++
++_PLACEHOLDER_RE = re.compile(
++    r"[?&]setid=example-|^https?://(?:[\w-]+\.)*example\.(?:com|org|net|test)(?:[/:?#]|$)",
++    re.IGNORECASE,
++)
++
++
++def normalise_url(url: str) -> str:
++    """The URL without case differences in scheme and host or a trailing slash."""
++    parts = urlsplit(url.strip())
++    query = f"?{parts.query}" if parts.query else ""
++    return f"{parts.scheme.lower()}://{parts.netloc.lower()}{parts.path.rstrip('/')}{query}"
++
++
++def shared_urls(corpus_items: Iterable[Mapping[str, Any]]) -> frozenset[str]:
++    """Normalised URLs that the corpus attaches to more than one document ID."""
++    documents: dict[str, set[Any]] = defaultdict(set)
++    for item in corpus_items:
++        url = item.get("document_url")
++        if url:
++            documents[normalise_url(url)].add(item.get("document_id"))
++    return frozenset(url for url, docs in documents.items() if len(docs) > 1)
++
++
++def source_link(
++    chunk_id: str,
++    url: str | None,
++    *,
++    verified_links: Mapping[str, str] | None = None,
++    shared: frozenset[str] = frozenset(),
++) -> dict[str, str]:
++    """The link status of one chunk's URL and the note shown with it."""
++    if not url:
++        status = MISSING
++    elif (verified_links or {}).get(chunk_id) == url and url.lower().startswith("https://"):
++        status = VERIFIED
++    elif _PLACEHOLDER_RE.search(url):
++        status = PLACEHOLDER
++    elif normalise_url(url) in shared:
++        status = SHARED
++    else:
++        status = UNVERIFIED
++    return {"status": status, "note": NOTES[status]}
+diff --git a/tests/e2e/test_live_failure_semantics.py b/tests/e2e/test_live_failure_semantics.py
+index 5706d97..0821399 100644
+--- a/tests/e2e/test_live_failure_semantics.py
++++ b/tests/e2e/test_live_failure_semantics.py
+@@ -99,6 +99,17 @@ def report(text: str, *states: FinalSupportState) -> VerificationReportV2:
+     return VerificationReportV2([claim], judgments, 1.0, decision, "scripted")
+ 
+ 
++class RawLLM:
++    """Returns text exactly as a provider sent it, with the provider's stop reason."""
++
++    def __init__(self, content: str, finish_reason: str):
++        self.content, self.finish_reason = content, finish_reason
++
++    async def generate_structured(self, prompt, response_format, provider_name=None):
++        return SimpleNamespace(content=self.content, provider="cloudflare", model="cf-model",
++                               finish_reason=self.finish_reason)
++
++
+ class ScriptedVerifier:
+     """SUPPORTED for every statement except those containing UNVERIFIED_MARK."""
+ 
+@@ -155,13 +166,14 @@ NO_VERIFIER = object()
+ 
+ 
+ def run(answer: dict | None = None, *, retrieval=None, verifier=None, monkeypatch=None,
+-        init_errors: dict | None = None, retrieval_info: dict | None = None):
++        init_errors: dict | None = None, retrieval_info: dict | None = None, llm=None, **state_extra):
+     state = SimpleNamespace(
+         drug_normalizer=OfflineNormalizer(),
+         retrieval_engine=StubRetrieval() if retrieval is None else retrieval,
+-        llm_backend=StubLLM(ANSWER if answer is None else answer),
++        llm_backend=llm or StubLLM(ANSWER if answer is None else answer),
+         claim_verifier=None if verifier is NO_VERIFIER else (verifier or ScriptedVerifier()),
+         model_init_errors=init_errors or {},
++        **state_extra,
+     )
+     if retrieval_info is not None:
+         state.retrieval_info = retrieval_info
+@@ -377,6 +389,27 @@ def test_unknown_status_label_is_an_output_validation_failure():
+     assert last_status(events, "generating") == "failed"
+ 
+ 
++def test_answer_cut_off_at_the_token_limit_says_so_and_logs_no_content(caplog):
++    truncated = json.dumps(ANSWER)[:200]
++    events, _ = run(llm=RawLLM(truncated, "length"))
++    kind, data = outcome(events)
++    assert (kind, data["code"]) == ("error", "LLM_OUTPUT_VALIDATION_FAILURE")
++    assert data["message"].startswith("Failed to parse LLM structured output.")
++    assert "output token limit" in data["message"]
++    assert (data["finish_reason"], data["provider"], data["model_id"]) == ("length", "cloudflare", "cf-model")
++    assert last_status(events, "generating") == "failed"
++    assert "finish_reason=length length=200" in caplog.text
++    assert truncated[20:60] not in caplog.text
++
++
++def test_answer_that_is_not_json_keeps_the_plain_parse_message():
++    events, _ = run(llm=RawLLM("Here is the analysis you asked for.", "stop"))
++    kind, data = outcome(events)
++    assert (kind, data["code"]) == ("error", "LLM_OUTPUT_VALIDATION_FAILURE")
++    assert data["message"] == "Failed to parse LLM structured output."
++    assert data["finish_reason"] == "stop"
++
++
+ def test_source_that_is_not_a_retrieved_chunk_cannot_be_released():
+     answer = json.loads(json.dumps(ANSWER))
+     answer["interactions"][0]["sources"] = ["PMID 12345678"]
+@@ -413,6 +446,23 @@ def test_abstention_after_generation_carries_the_checked_evidence():
+     assert data["trust"]["is_eligible"] is True
+ 
+ 
++def test_evidence_with_an_unverified_url_is_not_offered_as_a_link():
++    events, _ = run(verifier=QualifyVerifier())
++    kind, data = outcome(events)
++    (item,) = data["evidence"]
++    assert item["source_name"] == "https://example.org/c1"
++    assert item["source_link_status"] == "PLACEHOLDER"
++    assert "does not identify the original document" in item["source_link_note"]
++    assert "url" not in item
++
++
++def test_evidence_with_a_verified_url_is_offered_as_a_link():
++    events, _ = run(verifier=QualifyVerifier(), verified_source_links={"c1": "https://example.org/c1"})
++    kind, data = outcome(events)
++    (item,) = data["evidence"]
++    assert (item["source_link_status"], item["url"]) == ("VERIFIED", "https://example.org/c1")
++
++
+ def test_abstention_before_generation_marks_the_evidence_ineligible():
+     events, _ = run(retrieval=StubRetrieval(chunks=[chunk(authority=0.2)]))
+     kind, data = outcome(events)
+diff --git a/tests/e2e/test_live_source_links.py b/tests/e2e/test_live_source_links.py
+new file mode 100644
+index 0000000..968e8d1
+--- /dev/null
++++ b/tests/e2e/test_live_source_links.py
+@@ -0,0 +1,83 @@
++"""An evidence URL is offered as a link only when it is verified for that chunk.
++
++The frozen live corpus URLs were never checked against the documents they name, so every one
++of them must be shown as text with the reason, never as a link to a possibly wrong page.
++"""
++
++from __future__ import annotations
++
++import json
++from collections import Counter
++from pathlib import Path
++
++import pytest
++
++from adaptive_trust_medical_rag.services.live_source_links import (
++    MISSING,
++    PLACEHOLDER,
++    SHARED,
++    UNVERIFIED,
++    VERIFIED,
++    normalise_url,
++    shared_urls,
++    source_link,
++)
++
++CORPUS = Path(__file__).resolve().parents[2] / "data" / "live_medical" / "LIVE_MEDICAL_CORPUS_V2.json"
++
++
++def corpus_statuses() -> dict[str, str]:
++    data = json.loads(CORPUS.read_text(encoding="utf-8"))
++    shared = shared_urls(data)
++    return {item["chunk_id"]: source_link(item["chunk_id"], item.get("document_url"), shared=shared)["status"]
++            for item in data}
++
++
++def test_no_frozen_corpus_url_is_offered_as_a_link():
++    statuses = corpus_statuses()
++    assert len(statuses) == 14
++    assert VERIFIED not in statuses.values()
++    assert Counter(statuses.values()) == {PLACEHOLDER: 11, SHARED: 2, UNVERIFIED: 1}
++
++
++def test_the_pubmed_id_given_to_two_unrelated_documents_is_shared():
++    statuses = corpus_statuses()
++    assert statuses["PUBMED-PMID-31234567-CHUNK-01"] == SHARED
++    assert statuses["PUBMED-PUBMED-31234567-001-CHUNK-01"] == SHARED
++    assert statuses["DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01"] == PLACEHOLDER
++    assert statuses["OPENFDA-FDA-AE-9991-CHUNK-01"] == UNVERIFIED
++
++
++def test_a_url_verified_for_the_chunk_is_a_link():
++    url = "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9aaffb41-408c-4372-8fd5-1d649450c0e9"
++    assert source_link("c1", url, verified_links={"c1": url}) == {
++        "status": VERIFIED, "note": "Verified link to the original document."}
++
++
++@pytest.mark.parametrize(("verified", "url"), [
++    ({"other": "https://dailymed.nlm.nih.gov/x"}, "https://dailymed.nlm.nih.gov/x"),   # verified for another chunk
++    ({"c1": "https://dailymed.nlm.nih.gov/x"}, "https://dailymed.nlm.nih.gov/y"),      # a different URL
++    ({"c1": "http://dailymed.nlm.nih.gov/x"}, "http://dailymed.nlm.nih.gov/x"),        # not https
++])
++def test_a_url_not_verified_for_this_chunk_is_not_a_link(verified, url):
++    assert source_link("c1", url, verified_links=verified)["status"] == UNVERIFIED
++
++
++@pytest.mark.parametrize("url", [
++    "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-simvastatin",
++    "https://example.org/c1",
++    "https://www.example.com/paper",
++])
++def test_placeholder_urls_are_named_as_placeholders(url):
++    assert source_link("c1", url)["status"] == PLACEHOLDER
++
++
++def test_missing_url():
++    assert source_link("c1", None)["status"] == source_link("c1", "")["status"] == MISSING
++
++
++def test_trailing_slash_and_host_case_do_not_hide_a_shared_url():
++    items = [{"document_id": "a", "document_url": "https://PubMed.ncbi.nlm.nih.gov/1/"},
++             {"document_id": "b", "document_url": "https://pubmed.ncbi.nlm.nih.gov/1"},
++             {"document_id": "c", "document_url": "https://pubmed.ncbi.nlm.nih.gov/2"}]
++    assert shared_urls(items) == {normalise_url("https://pubmed.ncbi.nlm.nih.gov/1")}
+diff --git a/tests/test_model_selector.py b/tests/test_model_selector.py
+index 8299586..2dd482e 100644
+--- a/tests/test_model_selector.py
++++ b/tests/test_model_selector.py
+@@ -430,6 +430,16 @@ def test_provider_availability_requires_live_router_registration(monkeypatch):
+     assert "not configured on registered provider 'groq'" in err
+ 
+ 
++def test_cloudflare_answer_model_gets_an_explicit_output_token_limit(monkeypatch):
++    """Workers AI stops at 256 output tokens by default, which cuts the JSON answer off."""
++    from adaptive_trust_medical_rag.api.app import CLOUDFLARE_MAX_TOKENS, create_app
++
++    monkeypatch.setenv("CLOUDFLARE_API_TOKEN", "mock_dummy_token")
++    monkeypatch.setenv("CLOUDFLARE_ACCOUNT_ID", "mock_dummy_account")
++    adapter = create_app().state.llm_backend.providers["cloudflare"]
++    assert adapter.max_tokens == CLOUDFLARE_MAX_TOKENS > 256
++
++
+ def test_vision_backend_initialization_decoupling(monkeypatch):
+     """Verify NVIDIA Vision backend initializes independently of Cloudflare credentials."""
+     from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import OpenAIVisionBackend

@@ -87,6 +87,15 @@ def meds(*names: str) -> list[dict]:
 
 # ── Harness ──────────────────────────────────────────────────────────────────
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+# Fixture assumption: the evidence record carries an evidence-quality grade of 0.95. No live record
+# carries one yet, and without it no chunk reaches the R3 threshold of 0.75 (see the audit report).
+FIXTURE_EVIDENCE_QUALITY = 0.95
+
+
 def corpus_chunk(chunk_id: str, *, text: str | None = None, authority: float | None = None,
                  retrieval_score: float | None = None) -> ScoredCandidate:
     item = BY_ID.get(chunk_id, {})
@@ -95,16 +104,17 @@ def corpus_chunk(chunk_id: str, *, text: str | None = None, authority: float | N
         chunk_id=chunk_id,
         document_id=item.get("document_id", f"doc-{chunk_id}"),
         text=body,
-        source_url=item.get("document_url", "https://example.org"),
+        source_url=item.get("document_url", f"https://example.org/{chunk_id}"),
         source_authority=float(item.get("authority", 0.95)) if authority is None else authority,
         metadata={
+            "evidence_quality": FIXTURE_EVIDENCE_QUALITY,
             "provenance": {"source": "DAILYMED", "chunk_id": chunk_id, "content_hash": sha(body)},
             "source_type": item.get("source_type", "DAILYMED"),
             "freshness_score": float(item.get("freshness", 0.9)),
         },
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
     if retrieval_score is not None:
-        sc.score = retrieval_score
+        sc.vector_similarity = retrieval_score
     return sc
 
 
@@ -133,7 +143,7 @@ class CountingLLM:
 
 
 def run(chunks, *, store: RelationshipStore | None = None, answer: dict | None = None,
-        drugs=("Simvastatin", "Clarithromycin")):
+        drugs=("Simvastatin", "Clarithromycin"), identity_verified: bool = True):
     llm = CountingLLM(answer or {"conclusion": CLAIM})
     state = SimpleNamespace(
         drug_normalizer=OfflineNormalizer(),
@@ -142,6 +152,10 @@ def run(chunks, *, store: RelationshipStore | None = None, answer: dict | None =
         claim_verifier=ClaimVerifierV2(),
         model_init_errors={},
         relationship_store=store,
+        # Fixture assumption: these synthetic chunks stand in for identity-verified sources, so the
+        # stages after the source-identity gate are what these tests exercise.
+        verified_source_links=({sc.candidate.chunk_id: sc.candidate.source_url for sc in chunks}
+                               if identity_verified else {}),
     )
 
     async def collect():
@@ -286,7 +300,8 @@ def test_unrelated_high_authority_chunks_alone_cannot_pass_eligibility():
     assert kind == "abstention" and llm.calls == 0
     assert trust["is_eligible"] is False
     assert trust["unrelated_excluded"] == 3
-    assert trust["overall_score"] == 0.0
+    # Nothing reached scoring, so there is no trust score (not a computed 0).
+    assert trust["overall_score"] is None and trust["score_status"] == "NO_ELIGIBLE_EVIDENCE"
     assert data["reason"] == ("3 evidence chunk(s) passed security checks, but none names a requested "
                               "medication (simvastatin, clarithromycin), so none can support this analysis.")
 
@@ -518,7 +533,9 @@ def test_a_symmetric_record_keeps_the_predicate_exact(tmp_path):
     kind, data, _, _ = run([corpus_chunk(SIMVA_CHUNK)], store=store, answer={
         "conclusion": "Clarithromycin with simvastatin increases the risk of myopathy and rhabdomyolysis [Source 1]."})
     assert kind == "abstention"
-    assert data["claims"][0]["canonical_identity_reason"] == "Predicate mismatch: source=CONTRAINDICATION claim=INCREASES"
+    # A raised risk of an effect is read as an interaction for live claims (2026-10-26 audit), and an
+    # interaction is still not the recorded contraindication.
+    assert data["claims"][0]["canonical_identity_reason"] == "Predicate mismatch: source=CONTRAINDICATION claim=INTERACTION"
 
 
 def test_a_symmetric_record_does_not_cover_another_pair(tmp_path):

@@ -1,0 +1,16 @@
+ .env.example                                       |  17 +-
+ experiments/runs/live-smoke-v1/case_results.jsonl  |  80 +++---
+ experiments/runs/live-smoke-v1/manifest.json       |   2 +-
+ experiments/runs/live-smoke-v1/summary.json        |   6 +-
+ reports/audit/ablation_runtime_integrity_smoke.md  |   2 +-
+ reports/audit/canonical_r1_verification.md         |   2 +-
+ reports/audit/five_case_validation.md              |   2 +-
+ reports/audit/live_smoke_integrity.md              |   2 +-
+ src/adaptive_trust_medical_rag/api/app.py          |  39 ++-
+ .../llm_backend/model_registry.py                  |  14 +-
+ .../llm_backend/openai_vision_backend.py           | 313 +++++++++++++++++----
+ .../services/live_application.py                   |  37 ++-
+ tests/providers/test_vision_backend.py             | 266 ++++++++++++++++-
+ .../qa/TRACK_A_ANNOTATION_QA_V1.json               | 102 ++++++-
+ track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md  | 100 ++++++-
+ 15 files changed, 857 insertions(+), 127 deletions(-)

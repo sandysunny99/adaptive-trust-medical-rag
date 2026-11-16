@@ -1,0 +1,35 @@
+PASS  manifest status is CANDIDATE_PENDING_RESEARCHER_APPROVAL  [CANDIDATE_PENDING_RESEARCHER_APPROVAL]
+PASS  manifest approval is null (no reviewer, no time)
+PASS  records_sha256 (LF-normalised) matches the records file  [aefc2c837d5d]
+PASS  exactly one record and one chunk
+PASS  capture spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml bytes+sha256 match CAPTURE_MANIFEST
+PASS  capture spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9_history.json bytes+sha256 match CAPTURE_MANIFEST
+PASS  capture spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml bytes+sha256 match CAPTURE_MANIFEST
+PASS  capture spl_9aaffb41-408c-4372-8fd5-1d649450c0e9_history.json bytes+sha256 match CAPTURE_MANIFEST
+PASS  capture rxnav_36567_properties.json bytes+sha256 match CAPTURE_MANIFEST
+PASS  capture rxnav_21212_properties.json bytes+sha256 match CAPTURE_MANIFEST
+PASS  chunk provenance capture sha256 = captured XML
+PASS  chunk provenance capture URL = captured URL
+PASS  setId = 9aaffb41-408c-4372-8fd5-1d649450c0e9  [9aaffb41-408c-4372-8fd5-1d649450c0e9]
+PASS  SPL version 21 recorded  [21]
+PASS  effectiveTime 20231010 recorded  [20231010]
+PASS  document URL is the official DailyMed page for that setid (https)
+PASS  byte offsets 75723-76181
+PASS  raw span sha256 recorded correctly  [1bc9541f93d8]
+PASS  raw span is exactly one <paragraph> element
+PASS  section 4.5 found by XML parse  [4.5 Lomitapide, Lovastatin, and Simvastatin]
+PASS  plain text (independent XML-parser extraction) == chunk text
+PASS  record evidence_span == chunk text
+PASS  chunk content_hash = sha256(text)  [056d80091398]
+PASS  record source_chunk_id = chunk_id
+PASS  span names simvastatin and clarithromycin as whole words
+PASS  span states the combination is contraindicated
+PASS  RxNav 36567 = simvastatin, IN, not suppressed
+PASS  RxNav 21212 = clarithromycin, IN, not suppressed
+PASS  record subject 36567 simvastatin / object 21212 clarithromycin
+PASS  predicate CONTRAINDICATION, severity CONTRAINDICATED, direction BIDIRECTIONAL
+PASS  embedding has 384 dimensions, model all-MiniLM-L6-v2
+PASS  embedding reproduces (cosine >= 0.9999)  [cosine 1.000000]
+PASS  chunk_id not already in the frozen corpus
+PASS  no V2 candidate file under data/live_medical/
+34 of 34 checks passed

@@ -1,0 +1,36 @@
+{
+  "lexicon": "MEDICATION_LEXICON_V1.json",
+  "lexicon_sha256": "bcf0d184579664578b4c1c38612bd096e871e451f8ae7417a4508c89de491789",
+  "format": "rxnorm-prescribable-lexicon/1",
+  "release": "05-Oct-2026",
+  "publisher": "U.S. National Library of Medicine (NLM)",
+  "subset": "RxNorm Current Prescribable Content (SAB=RXNORM; active concepts)",
+  "subset_documentation": "https://www.nlm.nih.gov/research/umls/rxnorm/docs/prescribe.html",
+  "retrieved_via": "https://rxnav.nlm.nih.gov/REST/Prescribe/allconcepts.json?tty=<TTY>; release from https://rxnav.nlm.nih.gov/REST/version.json",
+  "retrieved_at": "2026-10-26T19:20:03+00:00",
+  "term_types": {
+    "IN": "ingredient",
+    "PIN": "precise ingredient (salt or other form)",
+    "MIN": "multiple ingredients",
+    "BN": "brand name"
+  },
+  "counts": {
+    "IN": 5874,
+    "PIN": 1955,
+    "MIN": 960,
+    "BN": 4140,
+    "entries": 12929,
+    "distinct_rxcui": 12929
+  },
+  "source_files_sha256": {
+    "source/version.json": "f8155f29c123d26e71c9e4aed23750e5df462150440e29b43b9b148c09dd3445",
+    "source/allconcepts_IN.json": "07faefc9c8dc1dbdd6a73270a3c13837eba1a2e095458f61dfd114daf525c0a5",
+    "source/allconcepts_PIN.json": "e7f85516528eb629787a76e16dbdc340a9be99fe74b4c35d3644b17aa50f3780",
+    "source/allconcepts_MIN.json": "dd818f3796d0829c51e184f47378a80b75e6259a02c7fa7c8318ac8991be2228",
+    "source/allconcepts_BN.json": "c66b1288a242a326b205edcaa1f386f367188ad7c927e2b046eebfaec0961ae7"
+  },
+  "terms": "NLM: no licence required for the Current Prescribable Content subset; RxNav APIs are subject to https://lhncbc.nlm.nih.gov/RxNav/TermsofService.html (at most 20 requests/s; attribution; the NLM name and logo may not be used).",
+  "attribution": "This product uses publicly available data from the U.S. National Library of Medicine (NLM).",
+  "scope_limits": "US prescribable and many OTC drugs; excludes suppressed, obsolete, foreign-only and veterinary-only drugs. Not every medication name is present.",
+  "generator": "scripts/build_rxnorm_prescribable_lexicon.py"
+}

@@ -1,0 +1,55 @@
+diff --git a/src/adaptive_trust_medical_rag/services/live_application.py b/src/adaptive_trust_medical_rag/services/live_application.py
+index ca88f89..0f5b95b 100644
+--- a/src/adaptive_trust_medical_rag/services/live_application.py
++++ b/src/adaptive_trust_medical_rag/services/live_application.py
+@@ -59,6 +59,37 @@ def _sse(event: str, data: dict[str, Any]) -> dict[str, Any]:
+     return {"event": event, "data": data}
+ 
+ 
++def _extract_json_payload(raw_text: str) -> dict[str, Any]:
++    """Parse JSON from LLM generation, handling Markdown fences and surrounding text."""
++    if not raw_text or not raw_text.strip():
++        raise json.JSONDecodeError("Empty LLM response", raw_text, 0)
++    cleaned = raw_text.strip()
++    if cleaned.startswith("```json"):
++        cleaned = cleaned[7:].strip()
++    elif cleaned.startswith("```"):
++        cleaned = cleaned[3:].strip()
++    if cleaned.endswith("```"):
++        cleaned = cleaned[:-3].strip()
++
++    try:
++        parsed = json.loads(cleaned)
++        if isinstance(parsed, dict):
++            return parsed
++    except json.JSONDecodeError:
++        pass
++
++    # Find outermost JSON object
++    start = cleaned.find("{")
++    end = cleaned.rfind("}")
++    if start != -1 and end != -1 and end > start:
++        candidate = cleaned[start : end + 1]
++        parsed = json.loads(candidate)
++        if isinstance(parsed, dict):
++            return parsed
++
++    raise json.JSONDecodeError("Could not extract a valid JSON object", raw_text, 0)
++
++
+ # ── Verification representation of the generated answer ─────────────────────
+ # Every field of LIVE_APP_PROMPT_V1.txt that reaches the answer event becomes one
+ # or more statements for ClaimVerifierV2; claims_for_verification is checked too,
+@@ -973,9 +1004,9 @@ class LiveMedicalRAGService:
+                     used_model_info["model_id"] = gen_result.model
+ 
+                 try:
+-                    structured_result = json.loads(raw_text)
+-                except json.JSONDecodeError:
+-                    log.error("LLM Output Validation Failure: output is not valid JSON")
++                    structured_result = gen_result.structured_output if isinstance(gen_result.structured_output, dict) else _extract_json_payload(raw_text)
++                except (json.JSONDecodeError, ValueError) as err:
++                    log.error("LLM Output Validation Failure: output is not valid JSON (%s)", err)
+                     yield _sse("error", {"code": "LLM_OUTPUT_VALIDATION_FAILURE", "message": "Failed to parse LLM structured output."})
+                     return
+ 

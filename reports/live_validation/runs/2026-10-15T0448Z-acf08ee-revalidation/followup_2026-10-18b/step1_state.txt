@@ -1,0 +1,50 @@
+ui/3d-redesign
+a70c40e2b0815c793ad8b6a6a525c09c05b6cb1c
+staged: 0
+ M .env.example
+ M experiments/runs/live-smoke-v1/case_results.jsonl
+ M experiments/runs/live-smoke-v1/manifest.json
+ M experiments/runs/live-smoke-v1/summary.json
+ M reports/audit/ablation_runtime_integrity_smoke.md
+ M reports/audit/blocked_issue_register.md
+ M reports/audit/canonical_r1_verification.md
+ M reports/audit/five_case_validation.md
+ M reports/audit/live_smoke_integrity.md
+ M src/adaptive_trust_medical_rag/api/app.py
+ M src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+ M src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+ M tests/providers/test_vision_backend.py
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md
+?? CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+?? CI_MODEL_SELECTOR_FINAL_AUDIT.md
+?? claude-incoming/
+?? cognee_service/
+?? continue-blockers.bundle
+?? redesign-fixes.bundle
+?? redesign-upload-fix.bundle
+?? reports/junit.xml
+?? reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+?? reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+?? reports/live_validation/runs/
+?? track_a_annotation/ai_assisted/
+== diff stat (ignore-cr)
+warning: in the working copy of 'tests/providers/test_vision_backend.py', LF will be replaced by CRLF the next time Git touches it
+ .env.example                                       |  17 +-
+ experiments/runs/live-smoke-v1/case_results.jsonl  |  80 +++---
+ experiments/runs/live-smoke-v1/manifest.json       |   2 +-
+ experiments/runs/live-smoke-v1/summary.json        |   6 +-
+ reports/audit/ablation_runtime_integrity_smoke.md  |   2 +-
+ reports/audit/blocked_issue_register.md            |  33 ++-
+ reports/audit/canonical_r1_verification.md         |   2 +-
+ reports/audit/five_case_validation.md              |   2 +-
+ reports/audit/live_smoke_integrity.md              |   2 +-
+ src/adaptive_trust_medical_rag/api/app.py          |  39 ++-
+ .../llm_backend/model_registry.py                  |  14 +-
+ .../llm_backend/openai_vision_backend.py           | 313 +++++++++++++++++----
+ tests/providers/test_vision_backend.py             | 266 ++++++++++++++++-
+ .../qa/TRACK_A_ANNOTATION_QA_V1.json               | 102 ++++++-
+ track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md  | 100 ++++++-
+ 15 files changed, 848 insertions(+), 132 deletions(-)

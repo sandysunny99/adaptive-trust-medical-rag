@@ -1,0 +1,13 @@
+[36mvite v8.3.2 [32mbuilding client environment for production...[36m[39m
+transforming...
+✓ 2349 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                          1.07 kB │ gzip:   0.59 kB
+dist/assets/index-C226fHEA.css          31.38 kB │ gzip:   6.56 kB
+dist/assets/ParticleField-BKAjJin1.js    3.82 kB │ gzip:   1.74 kB
+dist/assets/HowItWorks-CdbZ090E.js     129.66 kB │ gzip:  42.50 kB
+dist/assets/index-D1pvvcBF.js          346.25 kB │ gzip: 104.91 kB
+
+[32m✓ built in 1.33s[39m
+exit=0

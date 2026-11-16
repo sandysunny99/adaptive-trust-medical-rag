@@ -54,6 +54,23 @@ describe('WorkspacePage Model Selector & Catalog Error Handling', () => {
     expect(screen.getByText('Automatic selection (recommended)')).toBeInTheDocument();
   });
 
+  it('Retries the catalog after a failure, so models appear once the backend is up', async () => {
+    vi.mocked(api.fetchModelCatalog)
+      .mockRejectedValueOnce(new Error('Failed to fetch model catalog: HTTP 502'))
+      .mockResolvedValueOnce([{
+        id: 'openai/gpt-oss-120b', provider: 'groq', name: 'Groq GPT-OSS 120B',
+        description: 'Open-weights model on Groq', is_available: true,
+      }]);
+
+    render(<WorkspacePage />);
+    await openAdvancedSettings();
+
+    await waitFor(() => {
+      expect(screen.getByText('Groq GPT-OSS 120B (groq)')).toBeInTheDocument();
+    }, { timeout: 8000 });
+    expect(screen.queryByText(/Could not load remote model catalog/)).not.toBeInTheDocument();
+  }, 10000);
+
   it('TEST 2: Successfully renders models with unconfigured options disabled', async () => {
     const mockModels: LLMModelInfo[] = [
       {
@@ -353,6 +370,32 @@ describe('WorkspacePage prescription confirmation', () => {
     return user;
   }
 
+  it('cancels a run while it waits for confirmation: stream closed, form back, late events ignored', async () => {
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    expect(screen.queryByRole('button', { name: 'Cancel analysis' })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', {
+        candidates: [{ id: 'ocr-0', raw_text: 'Simvastatin 40 mg', normalized_text: 'Simvastatin', confidence: 'HIGH', status: 'DETECTED', source: 'VISION' }],
+      });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByRole('heading', { name: 'Review Detected Medications' })).toBeInTheDocument();
+
+    await user.click(screen.getByRole('button', { name: 'Cancel analysis' }));
+    expect(disconnect).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('heading', { name: 'Review Detected Medications' })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Analyze Medications' })).toBeEnabled();
+    expect(screen.queryByRole('button', { name: 'Cancel analysis' })).not.toBeInTheDocument();
+
+    act(() => emit('abstention', { reason: 'late event from the cancelled run' }));
+    expect(screen.queryByText('late event from the cancelled run')).not.toBeInTheDocument();
+  });
+
   it('sends the reviewed candidates as objects to the same request', async () => {
     vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
     await reachConfirmation();
@@ -363,6 +406,30 @@ describe('WorkspacePage prescription confirmation', () => {
     ]);
     // A 200 from /confirm is not a finished analysis: the page waits for the stream.
     expect(screen.getByText('Analyzing…')).toBeInTheDocument();
+  });
+
+  it('shows the review panel when the image yields no medications, so one can be added by hand', async () => {
+    // Without the panel the backend waits for a confirmation that can never be sent (CONFIRMATION_TIMEOUT).
+    vi.mocked(api.confirmMedications).mockResolvedValue({ status: 'success' });
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    await waitFor(() => expect(api.connectStream).toHaveBeenCalled());
+    act(() => {
+      emit('medication_candidates_extracted', { candidates: [] });
+      emit('confirmation_required', {});
+    });
+    expect(screen.getByText('No medications detected.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Confirm Medications & Analyze/i })).toBeDisabled();
+    await user.click(screen.getByRole('button', { name: /Add medication manually/i }));
+    await user.type(screen.getByPlaceholderText('Enter medication name'), 'Lisinopril');
+    await user.click(screen.getByRole('button', { name: 'Add' }));
+    await user.click(screen.getByRole('button', { name: /Confirm Medications & Analyze/i }));
+    expect(api.confirmMedications).toHaveBeenCalledWith('req-7', [
+      expect.objectContaining({ name: 'Lisinopril', source: 'USER' }),
+    ]);
   });
 
   it('shows an abstention after confirmation as a result, not a disconnected stream', async () => {
@@ -454,6 +521,18 @@ describe('WorkspacePage prescription confirmation', () => {
     });
     act(() => streamClosed());
     expect(screen.getByText('No evidence passed the eligibility checks for this analysis.')).toBeInTheDocument();
+  });
+
+  it('says the server is unreachable instead of showing the raw fetch error', async () => {
+    vi.mocked(api.submitPrescriptionImage).mockRejectedValue(new TypeError('Failed to fetch'));
+    const user = userEvent.setup();
+    render(<WorkspacePage />);
+    await user.click(screen.getByRole('tab', { name: 'Upload Prescription' }));
+    await user.upload(screen.getByLabelText('Prescription image file'), new File(['png'], 'rx.png', { type: 'image/png' }));
+    await user.click(screen.getByRole('button', { name: 'Analyze Medications' }));
+    expect(await screen.findByText(/Could not reach the analysis server/)).toBeInTheDocument();
+    expect(screen.queryByText('Failed to fetch')).not.toBeInTheDocument();
+    expect(api.connectStream).not.toHaveBeenCalled();
   });
 
   it('still reports a stream that drops before any terminal event', async () => {

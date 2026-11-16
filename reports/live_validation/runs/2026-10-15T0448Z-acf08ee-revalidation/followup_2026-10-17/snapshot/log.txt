@@ -1,0 +1,10 @@
+b5474ce feat(live): name the provider and model that served every outcome
+2947976 fix(live): link only verified evidence sources; stop Cloudflare answers being cut off
+c490393 docs(live): record the source verification, verifier wording follow-up and local-run checklist
+42f1676 fix(live): verify contraindication wording, symmetric records and disclaimers narrowly
+7a73f21 docs(live): record the risk-tier and eligibility fix and update the blocker register
+82c128f fix(live): justify R3 from approved relationship records and exclude unrelated evidence
+2d37ed1 fix(ui): show security checks that never ran as NOT RUN, not PENDING or FLAG
+ecb7fb9 fix(live): show the evidence behind an abstention and send only provided patient context
+6b97907 feat(analyze): accept additional_instructions as screened, delimited untrusted data
+988203a fix(pipeline): show the failed stage and the stages that never ran after an error

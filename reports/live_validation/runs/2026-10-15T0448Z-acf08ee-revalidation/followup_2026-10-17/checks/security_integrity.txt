@@ -1,0 +1,22 @@
+== gitleaks git over the 4 local commits (c490393..HEAD)
+[90m6:11PM[0m [32mINF[0m [1m4 commits scanned.[0m
+[90m6:11PM[0m [32mINF[0m [1mscanned ~54366 bytes (54.37 KB) in 295ms[0m
+[90m6:11PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== gitleaks dir over the uncommitted files changed in this follow-up
+[90m6:11PM[0m [32mINF[0m [1mscanned ~60117 bytes (60.12 KB) in 25.8ms[0m
+[90m6:11PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== CI hook on those files
+allow src/adaptive_trust_medical_rag/cli.py 
+allow tests/test_cli.py 
+allow src/adaptive_trust_medical_rag/annotation/engine.py 
+allow tests/test_annotation_engine_backend_init.py 
+files 4 denied 0
+rc=0
+== protected hashes vs 2026-10-14
+src/adaptive_trust_medical_rag/api/app.py: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+19
+== data/, prompts, verification vs HEAD
+(empty above = unchanged)

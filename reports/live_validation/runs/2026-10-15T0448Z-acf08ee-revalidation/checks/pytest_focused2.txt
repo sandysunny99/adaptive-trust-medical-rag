@@ -1,0 +1,20 @@
+........................................................................ [ 25%]
+........................................................................ [ 51%]
+........................................................................ [ 77%]
+..............................................................           [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\sunny\Downloads\CASE STUDY\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/e2e/test_live_relationship_evidence_v2.py: 16 warnings
+tests/e2e/test_live_failure_semantics.py: 84 warnings
+tests/e2e/test_live_risk_and_eligibility.py: 81 warnings
+tests/e2e/test_additional_instructions.py: 99 warnings
+tests/e2e/test_v6_c6_image_confirmation_rxnorm.py: 5 warnings
+  C:\Users\sunny\Downloads\CASE STUDY\src\adaptive_trust_medical_rag\security\security_context.py:27: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp: str = Field(default_factory=lambda: datetime.utcnow().isoformat())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+278 passed, 286 warnings in 35.30s
+rc=0 secs=38

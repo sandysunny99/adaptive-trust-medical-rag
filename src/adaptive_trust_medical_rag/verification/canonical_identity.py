@@ -14,6 +14,8 @@ import re
 from dataclasses import dataclass
 from enum import Enum
 
+from adaptive_trust_medical_rag.normalization.medication_lexicon import MedicationLexicon
+
 
 class CanonicalDirection(str, Enum):
     """Directional semantics for a drug-drug relationship."""
@@ -148,6 +150,104 @@ _PREDICATE_PATTERN = re.compile(
 )
 
 
+# "increases the risk of", "raise the risk of", "increase hyperkalemia risk": a change in an effect's risk.
+_RISK_OF_EFFECT = re.compile(
+    r"\b(?:increase[sd]?|decrease[sd]?|reduce[sd]?|raise[sd]?|lower(?:s|ed)?)\s+(?:the\s+)?(?:[\w-]+\s+){0,2}?risks?\b",
+    re.IGNORECASE,
+)
+
+
+class RequestDrugMap(dict):
+    """A drug name -> RxCUI map whose names are also recognised as drug mentions in claims.
+
+    The fixed drug pattern does not know every medication (spironolactone, for example), so a
+    claim naming one could never be given an identity. The live application passes the request's
+    normalised names in this map; a plain dict (every research caller) keeps the fixed pattern only,
+    so research results do not change.
+    """
+
+
+def drug_mentions(claim_text: str, drug_rxcui_map: dict[str, str]) -> list[str]:
+    """Drug mentions in text order: the fixed pattern, plus a RequestDrugMap's own names."""
+    pattern = _DRUG_PATTERN
+    if isinstance(drug_rxcui_map, RequestDrugMap):
+        names = sorted((n for n in drug_rxcui_map if n and n.strip()), key=len, reverse=True)
+        if names:
+            # Longer names first, so a name is never matched by a shorter one it contains.
+            pattern = re.compile(
+                r"\b(?:" + "|".join(re.escape(n) for n in names) + r"|" + _KNOWN_DRUGS + r"|" + _SUFFIX_PATTERN + r")\b",
+                re.IGNORECASE,
+            )
+    return list(dict.fromkeys(m.lower() for m in pattern.findall(claim_text)))
+
+
+_SOURCE_MARKER = re.compile(r"\[Source\s+\d+\]", re.IGNORECASE)
+_TOKEN = re.compile(r"[^\W_]+")
+
+
+def _folded_tokens(text: str) -> list[str]:
+    return [t.lower() for t in _TOKEN.findall(text)]
+
+
+def _named_in(tokens: list[str], sources: list[list[str]]) -> bool:
+    n = len(tokens)
+    return any(src[i:i + n] == tokens for src in sources for i in range(len(src) - n + 1))
+
+
+def medication_findings(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str],
+                        lexicon: MedicationLexicon) -> list[dict]:
+    """Each medication the statement names, with its identity and whether a cited source names it.
+
+    Mentions come from the pinned RxNorm lexicon and from drug_mentions (the request's names, a fixed list and
+    drug-name suffixes), merged by text. ``status`` is "confirmed" (a medication of this analysis, by name or
+    RxCUI), "unconfirmed" (a resolved RxNorm concept the analysis did not confirm) or "unresolved" (a suffix
+    match absent from the lexicon, or an ambiguous span).
+    """
+    text = _SOURCE_MARKER.sub(" ", statement)
+    sources = [_folded_tokens(t) for t in cited_texts]
+    confirmed_rxcuis = set(drug_rxcui_map.values())
+    findings: dict[tuple[str, ...], dict] = {}
+    for m in lexicon.mentions(text):
+        findings.setdefault(tuple(_folded_tokens(m.text)), {
+            "text": m.text, "rxcui": m.rxcui, "rxnorm_name": m.name, "tty": m.tty,
+            "status": "unresolved" if m.ambiguous else (
+                "confirmed" if m.text.lower() in drug_rxcui_map or m.rxcui in confirmed_rxcuis else "unconfirmed")})
+    for name in drug_mentions(text, drug_rxcui_map):
+        findings.setdefault(tuple(_folded_tokens(name)), {
+            "text": name, "rxcui": drug_rxcui_map.get(name), "rxnorm_name": None, "tty": None,
+            "status": "confirmed" if name in drug_rxcui_map else "unresolved"})
+    for key, f in findings.items():
+        f["named_by_cited_source"] = _named_in(list(key), sources)
+    return list(findings.values())
+
+
+def medication_identity_violation(statement: str, drug_rxcui_map: RequestDrugMap, cited_texts: list[str],
+                                  lexicon: MedicationLexicon | None) -> str | None:
+    """Why the statement names a medication its cited sources do not name, or None.
+
+    The pair identity check runs only for statements naming two or more drugs, so "Enalapril can cause
+    hyperkalemia" cited to the lisinopril label (round-5 probe P01) and "Furosemide can cause hyperkalemia" cited to
+    its diuretics section (probe P06) had no identity check. Every medication a statement names must be named by a
+    cited source's text or title, whatever its status: a confirmed drug the source does not name is attributed to
+    the wrong evidence; an unconfirmed one ("potassium", "spironolactone" in a lisinopril section) is allowed only
+    as the source's own context. Exact names: a brand is not its generic's label, a salt not its base.
+    Without a verified lexicon (``None``) no statement can be checked, so every one fails.
+
+    shortcut: a name outside the lexicon and the drug-name suffixes (foreign, withdrawn or invented) is not seen.
+    """
+    if lexicon is None:
+        return "medication lexicon unavailable, so medication identity cannot be checked"
+    ungrounded = [f for f in medication_findings(statement, drug_rxcui_map, cited_texts, lexicon)
+                  if not f["named_by_cited_source"]]
+    for status, reason in (("unresolved", "names a medication whose identity could not be resolved: "),
+                           ("unconfirmed", "names a medication this analysis did not confirm: "),
+                           ("confirmed", "names a medication its cited sources do not mention: ")):
+        names = [f["text"] for f in ungrounded if f["status"] == status]
+        if names:
+            return reason + ", ".join(names)
+    return None
+
+
 def extract_claim_identity(
     claim_text: str,
     drug_rxcui_map: dict[str, str],
@@ -162,8 +262,17 @@ def extract_claim_identity(
         drug_rxcui_map: Mapping of lowercased drug name -> RxCUI (from DrugNormalizer).
     """
     # Deduplicate while preserving text-order (first occurrence wins)
-    drugs_found = list(dict.fromkeys(m.lower() for m in _DRUG_PATTERN.findall(claim_text)))
+    drugs_found = drug_mentions(claim_text, drug_rxcui_map)
     predicates_found = _PREDICATE_PATTERN.findall(claim_text)
+    if isinstance(drug_rxcui_map, RequestDrugMap):
+        # Live claims only (see RequestDrugMap): "increase the risk of <effect>" says the two drugs
+        # together raise an effect's risk, not that one drug raises the other, so it names an
+        # interaction. Predicates inside such a phrase are dropped; research callers are unchanged.
+        risk_spans = [m.span() for m in _RISK_OF_EFFECT.finditer(claim_text)]
+        predicates_found = [m.group(1) for m in _PREDICATE_PATTERN.finditer(claim_text)
+                            if not any(s <= m.start() < e for s, e in risk_spans)]
+        if not predicates_found and risk_spans:
+            predicates_found = ["interaction"]
 
     if len(drugs_found) < 2 or not predicates_found:
         return None

@@ -1,0 +1,8 @@
+CAPTURED  spl_xml           8f55d5de-5a4f-4a39-8c84-c53976dd6af9  20a97640ddc74981ca41f3c0696d8a23ca3f3473236801fcc31b43825413bedb
+CAPTURED  spl_history       8f55d5de-5a4f-4a39-8c84-c53976dd6af9  4a5da835b3e8f4f500efd568d303f0ec0ed054e866aff10b316ccf2d733c1f8e
+CAPTURED  spl_xml           9aaffb41-408c-4372-8fd5-1d649450c0e9  628e25c7b3f433bf7be856c32c5eaa9e1179ae7069d1313571ff2ac320f7b04c
+CAPTURED  spl_history       9aaffb41-408c-4372-8fd5-1d649450c0e9  0b56df14d456a25d6c15b6a2c7d64857f16165c70cdb48cca51fba183a5be19c
+CAPTURED  rxnav_properties  36567  da6e8725bf624cf882cb6c44ac0faa99965d19a0e4c16ee482daaa051e7f0910
+CAPTURED  rxnav_properties  21212  3ee1e690c54c4cff82ea0dd30e1e64bfb1fd32dbd4015dd78bf7c5983ec49c15
+COMPLETE: reports\live_validation\runs\2026-10-14T1633Z-local-abc\source_capture
+exit=0

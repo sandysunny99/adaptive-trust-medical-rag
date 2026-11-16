@@ -1,0 +1,4608 @@
+{
+  "dataset": "NLI_EVAL_SET_V1",
+  "dataset_sha256": "bd23fe488df4be20bfdb9273ba8c8942c3043955dcd4254d06b0cee3d335f4ff",
+  "model": "pritamdeka/PubMedBERT-MNLI-MedNLI@f1b6ce2e0d49f295b4cbcdc56c01b5fab6d068ab",
+  "labels": "UNREVIEWED",
+  "summary": {
+    "with_alignment": {
+      "released": 9,
+      "false_releases": [],
+      "false_withholds": [
+        "D02",
+        "E06",
+        "E07",
+        "E09",
+        "E10"
+      ]
+    },
+    "without_alignment": {
+      "released": 11,
+      "false_releases": [
+        "E24",
+        "E25"
+      ],
+      "false_withholds": [
+        "D02",
+        "E06",
+        "E07",
+        "E09",
+        "E10"
+      ]
+    },
+    "changed_by_alignment": [
+      "E24",
+      "E25"
+    ]
+  },
+  "examples": [
+    {
+      "id": "D01",
+      "split": "dev",
+      "category": "A_true_support_pair",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen can increase the risk of bleeding when used with warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9993,
+              "neutral": 0.0006,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9993126392364502,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen can increase the risk of bleeding when used with warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9993,
+              "neutral": 0.0006,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9993126392364502,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "D02",
+      "split": "dev",
+      "category": "A_true_support_paraphrase",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Aspirin"
+        ],
+        "claim": "Patients receiving aspirin with warfarin should be closely monitored [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.974,
+              "neutral": 0.0256,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9739900231361389,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Aspirin"
+        ],
+        "claim": "Patients receiving aspirin with warfarin should be closely monitored [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.974,
+              "neutral": 0.0256,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9739900231361389,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      }
+    },
+    {
+      "id": "D03",
+      "split": "dev",
+      "category": "C_overstatement_mandatory",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Warfarin should never be used with ibuprofen [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9992,
+              "entailment": 0.0005,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0004550066660158336,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Warfarin should never be used with ibuprofen [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9992,
+              "entailment": 0.0005,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0004550066660158336,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      }
+    },
+    {
+      "id": "D04",
+      "split": "dev",
+      "category": "C_overstatement_universal",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen always causes bleeding in patients taking warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.999,
+              "entailment": 0.0009,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0008731191628612578,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen always causes bleeding in patients taking warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.999,
+              "entailment": 0.0009,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0008731191628612578,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      }
+    },
+    {
+      "id": "D05",
+      "split": "dev",
+      "category": "B_absent_claim",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Acetaminophen"
+        ],
+        "claim": "Acetaminophen increases the risk of bleeding with warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0004276077961549163,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Acetaminophen"
+        ],
+        "claim": "Acetaminophen increases the risk of bleeding with warfarin [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0004276077961549163,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      }
+    },
+    {
+      "id": "D06",
+      "split": "dev",
+      "category": "B_other_outcome",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen causes stomach ulcers [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9996,
+              "contradiction": 0.0004,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 7.822779298294336e-05,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Ibuprofen"
+        ],
+        "claim": "Ibuprofen causes stomach ulcers [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9996,
+              "contradiction": 0.0004,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 7.822779298294336e-05,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "D07",
+      "split": "dev",
+      "category": "C_contradiction",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Naproxen"
+        ],
+        "claim": "Bleeding risk is decreased when warfarin is used with naproxen [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9994,
+              "entailment": 0.0003,
+              "neutral": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0003008187923114747,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Naproxen"
+        ],
+        "claim": "Bleeding risk is decreased when warfarin is used with naproxen [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9994,
+              "entailment": 0.0003,
+              "neutral": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0003008187923114747,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      }
+    },
+    {
+      "id": "D08",
+      "split": "dev",
+      "category": "C_overstatement_action",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Sertraline"
+        ],
+        "claim": "Warfarin should be stopped in all patients taking sertraline [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9982,
+              "entailment": 0.0017,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0016967395786195993,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Warfarin",
+          "Sertraline"
+        ],
+        "claim": "Warfarin should be stopped in all patients taking sertraline [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "cited_document": "DAILYMED-SPL-884cdbf6-0a52-4126-8e14-b0d7c9367e33",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+            "section": "7.3",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9982,
+              "entailment": 0.0017,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0016967395786195993,
+        "entailment_chunk_id": "DAILYMED-884CDBF6-SPL-V8-SEC-7.3",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      }
+    },
+    {
+      "id": "E01",
+      "split": "frozen_eval",
+      "category": "A_true_support_direct",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored periodically in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9996,
+              "contradiction": 0.0002,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0003,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996904134750366,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored periodically in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9996,
+              "contradiction": 0.0002,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0003,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996904134750366,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E02",
+      "split": "frozen_eval",
+      "category": "A_true_support_paraphrase",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril can cause hyperkalemia [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "neutral": 0.0001,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9996,
+              "neutral": 0.0002,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9998013377189636,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril can cause hyperkalemia [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "neutral": 0.0001,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9996,
+              "neutral": 0.0002,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9998013377189636,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E03",
+      "split": "frozen_eval",
+      "category": "A_true_support_direct",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Diabetes mellitus is a risk factor for hyperkalemia in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "neutral": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.8806,
+              "entailment": 0.1191,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997490048408508,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Diabetes mellitus is a risk factor for hyperkalemia in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "neutral": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.8806,
+              "entailment": 0.1191,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997490048408508,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E04",
+      "split": "frozen_eval",
+      "category": "A_true_support_direct",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9104,
+              "entailment": 0.0531,
+              "contradiction": 0.0365
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9996,
+              "contradiction": 0.0003,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9995699524879456,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9104,
+              "entailment": 0.0531,
+              "contradiction": 0.0365
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9996,
+              "contradiction": 0.0003,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9995699524879456,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E05",
+      "split": "frozen_eval",
+      "category": "A_true_support_pair",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Potassium-sparing diuretics such as spironolactone can increase the risk of hyperkalemia with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9746,
+              "entailment": 0.0251,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996851682662964,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Potassium-sparing diuretics such as spironolactone can increase the risk of hyperkalemia with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9746,
+              "entailment": 0.0251,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996851682662964,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E06",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_withholding",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Lisinopril interacts with spironolactone, increasing risk of hyperkalemia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9996,
+              "entailment": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9986,
+              "neutral": 0.0011,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9985872507095337,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Lisinopril interacts with spironolactone, increasing risk of hyperkalemia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9996,
+              "entailment": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9986,
+              "neutral": 0.0011,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9985872507095337,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E07",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_withholding",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril attenuates potassium loss caused by thiazide-type diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.8836,
+              "neutral": 0.1031,
+              "entailment": 0.0133
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "contradiction": 0.0005,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "AMBIGUOUS",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": true,
+        "entailment": 0.9993765950202942,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state AMBIGUOUS over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril attenuates potassium loss caused by thiazide-type diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.8836,
+              "neutral": 0.1031,
+              "entailment": 0.0133
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "contradiction": 0.0005,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "AMBIGUOUS",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": true,
+        "entailment": 0.9993765950202942,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state AMBIGUOUS over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E08",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_contradiction",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril attenuates potassium loss caused by thiazide-type diuretics [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9919,
+              "entailment": 0.0051,
+              "neutral": 0.003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9995,
+              "contradiction": 0.0004,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.9994996786117554,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril attenuates potassium loss caused by thiazide-type diuretics [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9919,
+              "entailment": 0.0051,
+              "neutral": 0.003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9995,
+              "contradiction": 0.0004,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.9994996786117554,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E09",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_withholding",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Excessive reduction of blood pressure when lisinopril is initiated in patients on diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "contradiction": 0.0003,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "neutral": 0.0004,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9994012117385864,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Excessive reduction of blood pressure when lisinopril is initiated in patients on diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "contradiction": 0.0003,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "neutral": 0.0004,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9994012117385864,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E10",
+      "split": "frozen_eval",
+      "category": "A_true_support_paraphrase",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "The hypotensive effect of starting lisinopril can be minimized by increasing salt intake before treatment [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0003,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "contradiction": 0.0004,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.999405026435852,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "The hypotensive effect of starting lisinopril can be minimized by increasing salt intake before treatment [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0003,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9994,
+              "contradiction": 0.0004,
+              "neutral": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.999405026435852,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E11",
+      "split": "frozen_eval",
+      "category": "A_true_support_paraphrase",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored frequently when potassium-sparing diuretics are used with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.7576,
+              "neutral": 0.2399,
+              "contradiction": 0.0025
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.999779999256134,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored frequently when potassium-sparing diuretics are used with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.7576,
+              "neutral": 0.2399,
+              "contradiction": 0.0025
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.999779999256134,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E12",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_acceptance",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be stopped immediately in all patients [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0003,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.5947,
+              "entailment": 0.4031,
+              "contradiction": 0.0022
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.4031328558921814,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be stopped immediately in all patients [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0003,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.5947,
+              "entailment": 0.4031,
+              "contradiction": 0.0022
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.4031328558921814,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E13",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_acceptance",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be stopped immediately in all patients [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.7848,
+              "neutral": 0.2122,
+              "contradiction": 0.003
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.7847514748573303,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be stopped immediately in all patients [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.7848,
+              "neutral": 0.2122,
+              "contradiction": 0.003
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.7847514748573303,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E14",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_acceptance",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril causes kidney failure in all patients [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9648,
+              "entailment": 0.0348,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.03477529436349869,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril causes kidney failure in all patients [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9648,
+              "entailment": 0.0348,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.03477529436349869,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E15",
+      "split": "frozen_eval",
+      "category": "D_known_r3_false_acceptance",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Thiazide diuretics should be stopped in all patients taking lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9983,
+              "neutral": 0.0013,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9982537627220154,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Thiazide diuretics should be stopped in all patients taking lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9995,
+              "entailment": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9983,
+              "neutral": 0.0013,
+              "contradiction": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "INSUFFICIENT_EVIDENCE",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9982537627220154,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: aggregate state INSUFFICIENT_EVIDENCE over all retrieved chunks"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E16",
+      "split": "frozen_eval",
+      "category": "C_overstatement_mandatory",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone is contraindicated with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9984,
+              "contradiction": 0.0013,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.5368,
+              "contradiction": 0.3826,
+              "neutral": 0.0806
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.5367909073829651,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MISMATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity MISMATCH"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone is contraindicated with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9984,
+              "contradiction": 0.0013,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.5368,
+              "contradiction": 0.3826,
+              "neutral": 0.0806
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.5367909073829651,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "MISMATCH",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity MISMATCH"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      }
+    },
+    {
+      "id": "E17",
+      "split": "frozen_eval",
+      "category": "C_contradiction",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril reduces the risk of hyperkalemia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9989,
+              "neutral": 0.0009,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9938,
+              "entailment": 0.0058,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.005802295170724392,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril reduces the risk of hyperkalemia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9989,
+              "neutral": 0.0009,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9938,
+              "entailment": 0.0058,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.005802295170724392,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E18",
+      "split": "frozen_eval",
+      "category": "C_overstatement_universal",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril must never be combined with any diuretic [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9995,
+              "entailment": 0.0004,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9988,
+              "entailment": 0.0011,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.0010679000988602638,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril must never be combined with any diuretic [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9995,
+              "entailment": 0.0004,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9988,
+              "entailment": 0.0011,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.0010679000988602638,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E19",
+      "split": "frozen_eval",
+      "category": "C_may_to_always",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics will always cause excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9965,
+              "neutral": 0.0032,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9955,
+              "contradiction": 0.0025,
+              "entailment": 0.0019
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0019386104540899396,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics will always cause excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9965,
+              "neutral": 0.0032,
+              "entailment": 0.0003
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9955,
+              "contradiction": 0.0025,
+              "entailment": 0.0019
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0019386104540899396,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E20",
+      "split": "frozen_eval",
+      "category": "C_overstatement_action",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone must always be stopped before lisinopril is started [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.98,
+              "neutral": 0.0159,
+              "contradiction": 0.0041
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9800178408622742,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone must always be stopped before lisinopril is started [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.98,
+              "neutral": 0.0159,
+              "contradiction": 0.0041
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9800178408622742,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      }
+    },
+    {
+      "id": "E21",
+      "split": "frozen_eval",
+      "category": "B_absent_claim",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be taken with grapefruit juice [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9993,
+              "contradiction": 0.0005,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.00019758263078983873,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril should be taken with grapefruit juice [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9993,
+              "contradiction": 0.0005,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.00019758263078983873,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E22",
+      "split": "frozen_eval",
+      "category": "B_absent_claim",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril is safe with potassium supplements [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9679,
+              "neutral": 0.0314,
+              "entailment": 0.0008
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.5943,
+              "contradiction": 0.3986,
+              "entailment": 0.0071
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.007094670087099075,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril is safe with potassium supplements [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "contradiction": 0.9679,
+              "neutral": 0.0314,
+              "entailment": 0.0008
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.5943,
+              "contradiction": 0.3986,
+              "entailment": 0.0071
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.007094670087099075,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E23",
+      "split": "frozen_eval",
+      "category": "C_contradiction",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril is safe with potassium supplements [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9989,
+              "neutral": 0.0009,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.7363,
+              "contradiction": 0.2559,
+              "entailment": 0.0077
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.007711463142186403,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril is safe with potassium supplements [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.9989,
+              "neutral": 0.0009,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "contradiction"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.7363,
+              "contradiction": 0.2559,
+              "entailment": 0.0077
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.007711463142186403,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E24",
+      "split": "frozen_eval",
+      "category": "A_wrong_section",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.8857,
+              "neutral": 0.0878,
+              "contradiction": 0.0265
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996926784515381,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": "attribution not verified: the cited source does not mention, though another retrieved source does: blood, excessive, initiation, pressure, reduction",
+        "medication_identity": null,
+        "withheld_by": [
+          "citation alignment screen"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Initiation of lisinopril in patients on diuretics may result in excessive reduction of blood pressure [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.8857,
+              "neutral": 0.0878,
+              "contradiction": 0.0265
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9996926784515381,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E25",
+      "split": "frozen_eval",
+      "category": "A_wrong_section",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril can cause hyperkalemia in patients with renal insufficiency [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9554,
+              "neutral": 0.0443,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9984,
+              "neutral": 0.0014,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9984416365623474,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": "attribution not verified: the cited source does not mention, though another retrieved source does: insufficiency, renal",
+        "medication_identity": null,
+        "withheld_by": [
+          "citation alignment screen"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril can cause hyperkalemia in patients with renal insufficiency [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9554,
+              "neutral": 0.0443,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9984,
+              "neutral": 0.0014,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9984416365623474,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E26",
+      "split": "frozen_eval",
+      "category": "B_other_outcome",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone causes gynecomastia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0003,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9988,
+              "contradiction": 0.0007,
+              "entailment": 0.0005
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0005226118955761194,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Spironolactone causes gynecomastia [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "contradiction": 0.0003,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9988,
+              "contradiction": 0.0007,
+              "entailment": 0.0005
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.0005226118955761194,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E27",
+      "split": "frozen_eval",
+      "category": "B_other_pair",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Amlodipine"
+        ],
+        "claim": "Amlodipine increases the risk of hyperkalemia with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "entailment": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.972,
+              "entailment": 0.0275,
+              "contradiction": 0.0005
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.02749594859778881,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Amlodipine"
+        ],
+        "claim": "Amlodipine increases the risk of hyperkalemia with lisinopril [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9997,
+              "entailment": 0.0002,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.972,
+              "entailment": 0.0275,
+              "contradiction": 0.0005
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.02749594859778881,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."
+      }
+    },
+    {
+      "id": "E28",
+      "split": "frozen_eval",
+      "category": "B_class_to_specific",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Initiating lisinopril in patients taking spironolactone may cause excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9985,
+              "entailment": 0.0008,
+              "contradiction": 0.0007
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9996762275695801,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril",
+          "Spironolactone"
+        ],
+        "claim": "Initiating lisinopril in patients taking spironolactone may cause excessive reduction of blood pressure [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9985,
+              "entailment": 0.0008,
+              "contradiction": 0.0007
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0002,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": true,
+        "entailment": 0.9996762275695801,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": "UNAVAILABLE",
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: pair identity UNAVAILABLE"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification. 1 of them did not match an approved relationship record (a different drug pair, relation or direction, or no drug pair named)."
+      }
+    },
+    {
+      "id": "E29",
+      "split": "frozen_eval",
+      "category": "A_true_support_direct",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Potassium-containing salt substitutes are a risk factor for hyperkalemia in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "contradiction": 0.0001,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9995,
+              "neutral": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997617602348328,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Potassium-containing salt substitutes are a risk factor for hyperkalemia in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9998,
+              "contradiction": 0.0001,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9995,
+              "neutral": 0.0004,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997617602348328,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E30",
+      "split": "frozen_eval",
+      "category": "C_overstatement_mandatory",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Patients receiving lisinopril must avoid all potassium-containing salt substitutes [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9973,
+              "contradiction": 0.0024,
+              "neutral": 0.0003
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9989,
+              "contradiction": 0.0007,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9989035129547119,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": "claims AVOID but the source's reviewed wording supports at most level 1",
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "strength / source-text check"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Patients receiving lisinopril must avoid all potassium-containing salt substitutes [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9973,
+              "contradiction": 0.0024,
+              "neutral": 0.0003
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9989,
+              "contradiction": 0.0007,
+              "neutral": 0.0004
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9989035129547119,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": "claims AVOID but the source's reviewed wording supports at most level 1",
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "strength / source-text check"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E31",
+      "split": "frozen_eval",
+      "category": "C_timing_change",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored daily in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9967,
+              "neutral": 0.0024,
+              "contradiction": 0.0009
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0001,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997043013572693,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": "adds QUANTITY that the source's reviewed wording does not state",
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "strength / source-text check"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Serum potassium should be monitored daily in patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9967,
+              "neutral": 0.0024,
+              "contradiction": 0.0009
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9997,
+              "contradiction": 0.0001,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9997043013572693,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": "adds QUANTITY that the source's reviewed wording does not state",
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "strength / source-text check"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E32",
+      "split": "frozen_eval",
+      "category": "C_overstatement_universal",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Hyperkalemia occurs in all patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9994,
+              "entailment": 0.0003,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9447,
+              "neutral": 0.055,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.9447302222251892,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Hyperkalemia occurs in all patients receiving lisinopril [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9994,
+              "entailment": 0.0003,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9447,
+              "neutral": 0.055,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.9447302222251892,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "E33",
+      "split": "frozen_eval",
+      "category": "A_true_support_paraphrase",
+      "expected_app_outcome": "RELEASE",
+      "with_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Reducing the starting dose of lisinopril tablets is an option when the diuretic cannot be decreased or discontinued [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9505,
+              "entailment": 0.0466,
+              "contradiction": 0.0029
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9984,
+              "contradiction": 0.0015,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9984428286552429,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      },
+      "without_alignment": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Reducing the starting dose of lisinopril tablets is an option when the diuretic cannot be decreased or discontinued [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9505,
+              "entailment": 0.0466,
+              "contradiction": 0.0029
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9984,
+              "contradiction": 0.0015,
+              "neutral": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9984428286552429,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    },
+    {
+      "id": "E34",
+      "split": "frozen_eval",
+      "category": "C_quantity_change",
+      "expected_app_outcome": "WITHHOLD",
+      "with_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "The starting dose of lisinopril should always be 2.5 mg in patients on diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9994,
+              "contradiction": 0.0004,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.3446,
+              "neutral": 0.3395,
+              "entailment": 0.3158
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.3158223032951355,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      },
+      "without_alignment": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "The starting dose of lisinopril should always be 2.5 mg in patients on diuretics [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9994,
+              "contradiction": 0.0004,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "contradiction": 0.3446,
+              "neutral": 0.3395,
+              "entailment": 0.3158
+            },
+            "nli_verdict": "contradiction"
+          }
+        ],
+        "support_state": "CONTRADICTED",
+        "verifier_decision": "abstain",
+        "citation_supports_claim": false,
+        "entailment": 0.3158223032951355,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    }
+  ],
+  "probes_note": "diagnostic probes, not part of NLI_EVAL_SET_V1 and not labels",
+  "probes": [
+    {
+      "id": "P01",
+      "result": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Enalapril can cause hyperkalemia in patients with renal insufficiency [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.9869,
+              "neutral": 0.013,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9987,
+              "neutral": 0.0011,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.9987167119979858,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": "names a medication this analysis did not confirm: enalapril",
+        "withheld_by": [
+          "medication identity guard"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "P02",
+      "result": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril can cause hyperkalemia in pediatric patients with renal insufficiency [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9996,
+              "entailment": 0.0003,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9523,
+              "entailment": 0.0473,
+              "contradiction": 0.0005
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.04725319892168045,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "P03",
+      "result": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril causes fatal hyperkalemia in patients with renal insufficiency [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9996,
+              "contradiction": 0.0002,
+              "entailment": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.989,
+              "entailment": 0.0102,
+              "contradiction": 0.0007
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.010227903723716736,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "P04",
+      "result": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Lisinopril causes hyperkalemia within 24 hours in patients with renal insufficiency [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.9995,
+              "contradiction": 0.0003,
+              "entailment": 0.0002
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.8179,
+              "entailment": 0.1806,
+              "contradiction": 0.0015
+            },
+            "nli_verdict": "neutral"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.18057774007320404,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "P05",
+      "result": {
+        "outcome": "WITHHOLD",
+        "terminal": "abstention",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Furosemide can cause hyperkalemia in patients with renal insufficiency [Source 1].",
+        "citation_marker": "[Source 1]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "neutral": 0.7454,
+              "entailment": 0.2544,
+              "contradiction": 0.0003
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "entailment": 0.9996,
+              "neutral": 0.0003,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "UNSUPPORTED",
+        "verifier_decision": "qualify",
+        "citation_supports_claim": false,
+        "entailment": 0.9995846152305603,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [
+          "verifier: cited chunk does not entail"
+        ],
+        "reason": "1 of 1 generated claims failed post-generation verification."
+      }
+    },
+    {
+      "id": "P06",
+      "result": {
+        "outcome": "RELEASE",
+        "terminal": "answer",
+        "drugs": [
+          "Lisinopril"
+        ],
+        "claim": "Furosemide can cause hyperkalemia in patients with renal insufficiency [Source 2].",
+        "citation_marker": "[Source 2]",
+        "cited_chunk": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "cited_document": "DAILYMED-SPL-34ebeea1-6812-4697-84c4-b2ae4f39e55f",
+        "chunks": [
+          {
+            "source": "Source 1",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-5.5",
+            "section": "5.5",
+            "role": "uncited (diagnostic only)",
+            "nli": {
+              "neutral": 0.9978,
+              "entailment": 0.0021,
+              "contradiction": 0.0001
+            },
+            "nli_verdict": "neutral"
+          },
+          {
+            "source": "Source 2",
+            "chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+            "section": "7.1",
+            "role": "cited (supporting candidate)",
+            "nli": {
+              "entailment": 0.999,
+              "neutral": 0.0008,
+              "contradiction": 0.0002
+            },
+            "nli_verdict": "entailment"
+          }
+        ],
+        "support_state": "SUPPORTED",
+        "verifier_decision": "release",
+        "citation_supports_claim": true,
+        "entailment": 0.999004065990448,
+        "entailment_chunk_id": "DAILYMED-34EBEEA1-SPL-V12-SEC-7.1",
+        "canonical_identity_status": null,
+        "strength_check": null,
+        "citation_alignment": null,
+        "medication_identity": null,
+        "withheld_by": [],
+        "reason": ""
+      }
+    }
+  ]
+}

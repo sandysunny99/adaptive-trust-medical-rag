@@ -1,0 +1,6 @@
+event: stage_update
+data: {"stage": "uploading", "status": "failed", "timestamp": "2026-10-15T05:05:59.288489+00:00"}
+
+event: error
+data: {"code": "INPUT_REJECTED", "field": "additional_instructions", "message": "The additional instructions did not pass security checks. Remove instructions aimed at the system, markup or personal identifiers and retry."}
+

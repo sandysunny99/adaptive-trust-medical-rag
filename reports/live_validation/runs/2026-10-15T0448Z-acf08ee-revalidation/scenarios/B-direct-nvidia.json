@@ -1,0 +1,540 @@
+{
+  "scenario": "B-direct-nvidia",
+  "runner": "run_abc.mjs v2 (browser, in-page stream capture)",
+  "frontend_url": "http://localhost:5173",
+  "started_at": "2026-10-15T05:03:53.876Z",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze",
+      "content_type": "application/json",
+      "body": {
+        "input_mode": "direct_drugs",
+        "drug_names": [
+          "Simvastatin",
+          "Clarithromycin"
+        ],
+        "patient_context": {},
+        "llm_selection": {
+          "mode": "manual",
+          "model_id": "nvidia/nemotron-3-super-120b-a12b"
+        },
+        "additional_instructions": null
+      },
+      "at": "2026-10-15T05:03:55.030Z",
+      "status": 200,
+      "response": {
+        "request_id": "85e7b816-46c2-4815-8c96-00efb0ac2192",
+        "stream_url": "/api/v1/stream/85e7b816-46c2-4815-8c96-00efb0ac2192"
+      }
+    }
+  ],
+  "stream": [
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "uploading",
+        "status": "running",
+        "message": "Sanitizing input...",
+        "timestamp": "2026-10-15T05:03:55.040643+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.047Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "uploading",
+        "status": "complete",
+        "message": "2 drug(s) accepted",
+        "timestamp": "2026-10-15T05:03:55.041653+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.047Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "normalizing",
+        "status": "running",
+        "message": "Resolving drug entities via RxNorm...",
+        "timestamp": "2026-10-15T05:03:55.041653+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.047Z"
+    },
+    {
+      "event": "rxnorm",
+      "data": {
+        "entities": [
+          {
+            "raw_text": "Simvastatin",
+            "canonical_name": "simvastatin",
+            "rxcui": "36567",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "cache",
+            "rxnorm_source": "cache",
+            "confirmation_status": null,
+            "raw_detected_name": null,
+            "status": "MATCHED"
+          },
+          {
+            "raw_text": "Clarithromycin",
+            "canonical_name": "clarithromycin",
+            "rxcui": "21212",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "cache",
+            "rxnorm_source": "cache",
+            "confirmation_status": null,
+            "raw_detected_name": null,
+            "status": "MATCHED"
+          }
+        ],
+        "overall_status": "RESOLVED"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.047Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "normalizing",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.043176+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.047Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "retrieving",
+        "status": "running",
+        "message": "Retrieving evidence...",
+        "timestamp": "2026-10-15T05:03:55.043176+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "retrieval",
+      "data": {
+        "evidence_count": 14,
+        "sources": [
+          "OPENFDA",
+          "PUBMED",
+          "DAILYMED"
+        ],
+        "corpus": "LIVE_MEDICAL_CORPUS_V2",
+        "embedding_model": "all-MiniLM-L6-v2",
+        "embedding_mode": "real"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "retrieving",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.062103+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "security_checking",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.062103+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "security",
+      "data": {
+        "injection_status": "ALLOW",
+        "poisoning_status": "ALLOW",
+        "poisoning_reason": null
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "security_checking",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.063110+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "trust_evaluating",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.063110+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "trust",
+      "data": {
+        "overall_score": 0.935,
+        "threshold": 0.6,
+        "risk_class": "R2",
+        "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+        "is_eligible": true,
+        "unrelated_excluded": 13,
+        "factors": {
+          "source_authority": 0.95,
+          "query_relevance": 0.85,
+          "evidence_quality": 0.95,
+          "freshness": 0.9,
+          "consistency": 1,
+          "entity_match": 1,
+          "population_match": 0.8,
+          "anti_poisoning": 1,
+          "anti_injection": 1
+        },
+        "missing_factors": []
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.081Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "trust_evaluating",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.063616+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.275Z"
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "generating",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.063616+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-15T05:03:55.287Z"
+    },
+    {
+      "event": "error",
+      "data": {
+        "code": "LLM_ERROR",
+        "message": "nvidia timeout: ",
+        "served_by": null,
+        "requested_model": {
+          "mode": "manual",
+          "provider": "nvidia",
+          "model_id": "nvidia/nemotron-3-super-120b-a12b"
+        }
+      },
+      "source": 0,
+      "at": "2026-10-15T05:04:25.348Z"
+    }
+  ],
+  "stream_network": [
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "uploading",
+        "status": "running",
+        "message": "Sanitizing input...",
+        "timestamp": "2026-10-15T05:03:55.040643+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "uploading",
+        "status": "complete",
+        "message": "2 drug(s) accepted",
+        "timestamp": "2026-10-15T05:03:55.041653+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "normalizing",
+        "status": "running",
+        "message": "Resolving drug entities via RxNorm...",
+        "timestamp": "2026-10-15T05:03:55.041653+00:00"
+      }
+    },
+    {
+      "event": "rxnorm",
+      "data": {
+        "entities": [
+          {
+            "raw_text": "Simvastatin",
+            "canonical_name": "simvastatin",
+            "rxcui": "36567",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "cache",
+            "rxnorm_source": "cache",
+            "confirmation_status": null,
+            "raw_detected_name": null,
+            "status": "MATCHED"
+          },
+          {
+            "raw_text": "Clarithromycin",
+            "canonical_name": "clarithromycin",
+            "rxcui": "21212",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "cache",
+            "rxnorm_source": "cache",
+            "confirmation_status": null,
+            "raw_detected_name": null,
+            "status": "MATCHED"
+          }
+        ],
+        "overall_status": "RESOLVED"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "normalizing",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.043176+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "retrieving",
+        "status": "running",
+        "message": "Retrieving evidence...",
+        "timestamp": "2026-10-15T05:03:55.043176+00:00"
+      }
+    },
+    {
+      "event": "retrieval",
+      "data": {
+        "evidence_count": 14,
+        "sources": [
+          "OPENFDA",
+          "PUBMED",
+          "DAILYMED"
+        ],
+        "corpus": "LIVE_MEDICAL_CORPUS_V2",
+        "embedding_model": "all-MiniLM-L6-v2",
+        "embedding_mode": "real"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "retrieving",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.062103+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "security_checking",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.062103+00:00"
+      }
+    },
+    {
+      "event": "security",
+      "data": {
+        "injection_status": "ALLOW",
+        "poisoning_status": "ALLOW",
+        "poisoning_reason": null
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "security_checking",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.063110+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "trust_evaluating",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.063110+00:00"
+      }
+    },
+    {
+      "event": "trust",
+      "data": {
+        "overall_score": 0.935,
+        "threshold": 0.6,
+        "risk_class": "R2",
+        "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+        "is_eligible": true,
+        "unrelated_excluded": 13,
+        "factors": {
+          "source_authority": 0.95,
+          "query_relevance": 0.85,
+          "evidence_quality": 0.95,
+          "freshness": 0.9,
+          "consistency": 1,
+          "entity_match": 1,
+          "population_match": 0.8,
+          "anti_poisoning": 1,
+          "anti_injection": 1
+        },
+        "missing_factors": []
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "trust_evaluating",
+        "status": "complete",
+        "timestamp": "2026-10-15T05:03:55.063616+00:00"
+      }
+    },
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "generating",
+        "status": "running",
+        "timestamp": "2026-10-15T05:03:55.063616+00:00"
+      }
+    },
+    {
+      "event": "error",
+      "data": {
+        "code": "LLM_ERROR",
+        "message": "nvidia timeout: ",
+        "served_by": null,
+        "requested_model": {
+          "mode": "manual",
+          "provider": "nvidia",
+          "model_id": "nvidia/nemotron-3-super-120b-a12b"
+        }
+      }
+    }
+  ],
+  "console_errors": [
+    "SSE connection error: MessageEvent"
+  ],
+  "screen": {
+    "failed": true,
+    "error": "nvidia timeout:",
+    "abstained": false,
+    "abstention_reason": "",
+    "pipeline": [
+      "Input Processing",
+      "Medication Extraction\nNot run",
+      "User Confirmation\nNot run",
+      "RxNorm Canonicalization",
+      "Evidence Retrieval",
+      "Trust Evaluation",
+      "Security Checks",
+      "Relationship Verification\nNot run",
+      "LLM Analysis\n(failed)",
+      "Claim Verification\nNot run",
+      "Safety Gate\nNot run"
+    ]
+  },
+  "model_catalog": {
+    "models": [
+      {
+        "id": "nvidia/nemotron-3-super-120b-a12b",
+        "provider": "nvidia",
+        "name": "NVIDIA Nemotron-3 Super 120B",
+        "description": "High-capacity biomedical-reasoning LLM hosted on NVIDIA NIM.",
+        "is_available": true
+      },
+      {
+        "id": "openai/gpt-oss-120b",
+        "provider": "groq",
+        "name": "Groq GPT-OSS 120B",
+        "description": "Open-weights model inference hosted on Groq.",
+        "is_available": true
+      },
+      {
+        "id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "provider": "cloudflare",
+        "name": "Cloudflare Llama-3.3 70B Instruct",
+        "description": "Serverless Workers AI instance with edge compliance.",
+        "is_available": true
+      },
+      {
+        "id": "mock-llm",
+        "provider": "mock",
+        "name": "Deterministic Mock LLM (Testing)",
+        "description": "Deterministic testbed model for CI and offline evaluation.",
+        "is_available": false
+      }
+    ],
+    "default_mode": "auto"
+  },
+  "model_options": [
+    {
+      "value": "auto",
+      "text": "Automatic selection (recommended)",
+      "disabled": false
+    },
+    {
+      "value": "nvidia/nemotron-3-super-120b-a12b",
+      "text": "NVIDIA Nemotron-3 Super 120B (nvidia)",
+      "disabled": false
+    },
+    {
+      "value": "openai/gpt-oss-120b",
+      "text": "Groq GPT-OSS 120B (groq)",
+      "disabled": false
+    },
+    {
+      "value": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "text": "Cloudflare Llama-3.3 70B Instruct (cloudflare)",
+      "disabled": false
+    },
+    {
+      "value": "mock-llm",
+      "text": "Deterministic Mock LLM (Testing) (mock) — Not configured",
+      "disabled": true
+    }
+  ],
+  "selected_model": {
+    "provider": "nvidia",
+    "model_id": "nvidia/nemotron-3-super-120b-a12b",
+    "label": "NVIDIA Nemotron-3 Super 120B (nvidia)"
+  },
+  "stream_path": "/api/v1/stream/85e7b816-46c2-4815-8c96-00efb0ac2192",
+  "stream_status": 200,
+  "stream_connection_events": [
+    {
+      "source": 0,
+      "url": "/api/v1/stream/85e7b816-46c2-4815-8c96-00efb0ac2192",
+      "event": "__connection_error",
+      "raw": null,
+      "readyState": 1,
+      "at": "2026-10-15T05:04:25.348Z"
+    }
+  ],
+  "stream_sources": [
+    "/api/v1/stream/85e7b816-46c2-4815-8c96-00efb0ac2192"
+  ],
+  "finished_at": "2026-10-15T05:04:29.199Z",
+  "stream_complete": true
+}

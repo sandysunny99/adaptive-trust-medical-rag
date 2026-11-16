@@ -31,6 +31,19 @@ logger = logging.getLogger(__name__)
 
 RXNORM_BASE_URL = "https://rxnav.nlm.nih.gov/REST"
 _REQUEST_TIMEOUT = 5.0  # seconds
+# Minimum similarity between the text asked for and an approximate match's RxNorm name.
+# "warfrin" -> "warfarin" scores 0.93; "approxdrug" -> "approximatedrug" 0.80.
+APPROX_MIN_SIMILARITY = 0.75
+
+
+def _name_similarity(a: str, b: str) -> float:
+    """Similarity of two drug names, ignoring case, spaces and punctuation."""
+    from difflib import SequenceMatcher
+
+    def norm(s: str) -> str:
+        return "".join(ch for ch in s.lower() if ch.isalnum())
+
+    return SequenceMatcher(None, norm(a), norm(b)).ratio()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -80,8 +93,16 @@ class DrugEntity:
 # ─────────────────────────────────────────────────────────────────────────────
 
 
+class RxNavUnavailableError(RuntimeError):
+    """RxNav could not be reached or answered with an HTTP error: no conclusion about the name."""
+
+
 class RxNormClient:
-    """Thin async wrapper around the NLM RxNorm REST API."""
+    """Thin async wrapper around the NLM RxNorm REST API.
+
+    A transport or HTTP failure raises RxNavUnavailableError; "no match" is only ever a successful
+    answer without a concept, so an outage is never reported as an unknown medication.
+    """
 
     def __init__(self, timeout: float = _REQUEST_TIMEOUT) -> None:
         self._timeout = timeout
@@ -99,7 +120,7 @@ class RxNormClient:
                 return rxcui[0] if rxcui else None
         except httpx.HTTPError as exc:
             logger.warning("RxNorm exact lookup failed for '%s': %s", drug_name, exc)
-            return None
+            raise RxNavUnavailableError(type(exc).__name__) from exc
 
     async def get_rxcui_approximate(self, drug_name: str) -> tuple[str | None, str | None]:
         """Query /approximateTerm.json for fuzzy matching.
@@ -120,7 +141,7 @@ class RxNormClient:
                 return None, None
         except httpx.HTTPError as exc:
             logger.warning("RxNorm approx lookup failed for '%s': %s", drug_name, exc)
-            return None, None
+            raise RxNavUnavailableError(type(exc).__name__) from exc
 
     async def get_generic_name(self, rxcui: str) -> str | None:
         """Resolve generic (INN) name from RxCUI via /rxconcept/{rxcui}/allProperties."""
@@ -138,7 +159,22 @@ class RxNormClient:
                 return None
         except httpx.HTTPError as exc:
             logger.warning("RxNorm name resolution failed for rxcui '%s': %s", rxcui, exc)
-            return None
+            raise RxNavUnavailableError(type(exc).__name__) from exc
+
+    async def get_ingredients(self, rxcui: str) -> list[dict[str, str]]:
+        """The concept's RxNorm ingredients (TTY IN) via /rxcui/{rxcui}/related.json?tty=IN."""
+        url = f"{RXNORM_BASE_URL}/rxcui/{rxcui}/related.json"
+        try:
+            async with httpx.AsyncClient(timeout=self._timeout) as client:
+                resp = await client.get(url, params={"tty": "IN"})
+                resp.raise_for_status()
+                data = resp.json()
+        except httpx.HTTPError as exc:
+            logger.warning("RxNorm ingredient lookup failed for rxcui '%s': %s", rxcui, exc)
+            raise RxNavUnavailableError(type(exc).__name__) from exc
+        groups = (data.get("relatedGroup") or {}).get("conceptGroup") or []
+        return [{"rxcui": p["rxcui"], "name": p["name"]} for g in groups for p in g.get("conceptProperties") or []
+                if p.get("tty") == "IN"]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -161,6 +197,24 @@ class DrugNormalizer:
         self._cache = cache or EntityCache.load_default()
         self._rxnorm = rxnorm_client or RxNormClient()
         self._use_api = use_api
+        self._ingredients: dict[str, list[dict[str, str]]] = {}
+
+    async def ingredients_of(self, rxcui: str) -> list[dict[str, str]] | None:
+        """RxNorm's ingredient concepts for an RxCUI, or None when RxNav could not be asked.
+
+        Informational: a salt (PIN) or brand (BN) concept keeps its own RxCUI for evidence matching
+        (medical-safety.md: no attribution across salt forms unless the evidence says so).
+        """
+        lookup = getattr(self._rxnorm, "get_ingredients", None)
+        if not self._use_api or lookup is None:
+            return None
+        if rxcui not in self._ingredients:
+            try:
+                self._ingredients[rxcui] = await lookup(rxcui)
+            except Exception as exc:  # informational only: never let it fail the identity
+                logger.warning("RxNorm ingredient lookup skipped for rxcui '%s': %s", rxcui, type(exc).__name__)
+                return None
+        return self._ingredients[rxcui]
 
     def _extract_formulation(self, text: str) -> str | None:
         """Detect salt / formulation qualifiers in the drug text string."""
@@ -195,50 +249,70 @@ class DrugNormalizer:
         # Step 1: Local cache
         cached = self._cache.lookup(text)
         if cached:
+            # Entries in data/drug_entity_cache.json are curated seed mappings; entries added at
+            # runtime keep the resolver and confidence they came from (an approximate match stays one).
             return DrugEntity(
                 raw_text=raw_text,
                 generic_name=cached.get("generic_name"),
                 rxcui=cached.get("rxcui"),
                 brand_name=cached.get("brand_name"),
                 formulation=formulation or cached.get("formulation"),
-                confidence=1.0,
+                confidence=float(cached.get("confidence", 1.0)),
                 source="cache",
-                metadata={"cache_key": text},
+                metadata={"cache_key": text, "resolved_by": cached.get("resolved_by", "seed_cache")},
             )
 
         if not self._use_api:
             return DrugEntity(raw_text=raw_text, formulation=formulation, confidence=0.0)
 
-        # Step 2: RxNorm exact
-        rxcui = await self._rxnorm.get_rxcui_exact(text)
-        if rxcui:
-            generic_name = await self._rxnorm.get_generic_name(rxcui)
-            entity = DrugEntity(
-                raw_text=raw_text,
-                rxcui=rxcui,
-                generic_name=generic_name or text,
-                formulation=formulation,
-                confidence=1.0,
-                source="rxnorm_exact",
-            )
-            self._cache.store(text, entity)
-            return entity
+        try:
+            # Step 2: RxNorm exact
+            rxcui = await self._rxnorm.get_rxcui_exact(text)
+            if rxcui:
+                generic_name = await self._rxnorm.get_generic_name(rxcui)
+                entity = DrugEntity(
+                    raw_text=raw_text,
+                    rxcui=rxcui,
+                    generic_name=generic_name or text,
+                    formulation=formulation,
+                    confidence=1.0,
+                    source="rxnorm_exact",
+                )
+                self._cache.store(text, entity)
+                return entity
 
-        # Step 3: RxNorm approximate
-        approx_rxcui, approx_name = await self._rxnorm.get_rxcui_approximate(text)
-        if approx_rxcui:
-            generic_name = await self._rxnorm.get_generic_name(approx_rxcui)
-            entity = DrugEntity(
-                raw_text=raw_text,
-                rxcui=approx_rxcui,
-                generic_name=generic_name or approx_name or text,
-                formulation=formulation,
-                confidence=0.8,
-                source="rxnorm_approx",
-                metadata={"matched_name": approx_name},
-            )
-            self._cache.store(text, entity)
-            return entity
+            # Step 3: RxNorm approximate
+            approx_rxcui, approx_name = await self._rxnorm.get_rxcui_approximate(text)
+            if approx_rxcui:
+                generic_name = await self._rxnorm.get_generic_name(approx_rxcui)
+                # approximateTerm always returns a best candidate, even for a nonsense string (observed
+                # 2026-10-26: "zzqxv-not-a-drug" -> 835748, a concept with no RxNorm name), and its score
+                # does not tell a misspelling from noise. A candidate is an identity only when it has an
+                # RxNorm name close to the text asked for; anything else stays unresolved and uncached.
+                similarity = _name_similarity(text, generic_name) if generic_name else 0.0
+                if similarity < APPROX_MIN_SIMILARITY:
+                    logger.warning("Approximate RxNorm match %s rejected for '%s' (RxNorm name %s, similarity %.2f)",
+                                   approx_rxcui, text, "found" if generic_name else "missing", similarity)
+                    return DrugEntity(raw_text=raw_text, formulation=formulation, confidence=0.0,
+                                      metadata={"rejected_approximate_rxcui": approx_rxcui,
+                                                "approximate_similarity": round(similarity, 2)})
+                entity = DrugEntity(
+                    raw_text=raw_text,
+                    rxcui=approx_rxcui,
+                    generic_name=generic_name or approx_name or text,
+                    formulation=formulation,
+                    confidence=0.8,
+                    source="rxnorm_approx",
+                    metadata={"matched_name": approx_name},
+                )
+                self._cache.store(text, entity)
+                return entity
+
+        except RxNavUnavailableError as exc:
+            # Not cached: the next request asks RxNav again.
+            logger.warning("RxNav unavailable while resolving '%s' (%s)", text, exc)
+            return DrugEntity(raw_text=raw_text, formulation=formulation, confidence=0.0,
+                              source="rxnav_unavailable", metadata={"rxnav_error": str(exc)})
 
         # Step 4: Unresolved fallback
         logger.warning("Could not resolve drug entity: '%s'", text)

@@ -1,0 +1,36 @@
+## GET http://127.0.0.1:8000/health
+{"status":"unhealthy","database":false,"pgvector":false,"version":"1.0.0","uptime_seconds":9.9,"details":{"mode":"test"}}
+HTTP 200
+## GET http://localhost:5173/api/v1/llm/models (via Vite proxy)
+{"models":[{"id":"nvidia/nemotron-3-super-120b-a12b","provider":"nvidia","name":"NVIDIA Nemotron-3 Super 120B","description":"High-capacity biomedical-reasoning LLM hosted on NVIDIA NIM.","is_available":true},{"id":"openai/gpt-oss-120b","provider":"groq","name":"Groq GPT-OSS 120B","description":"Open-weights model inference hosted on Groq.","is_available":true},{"id":"@cf/meta/llama-3.3-70b-instruct-fp8-fast","provider":"cloudflare","name":"Cloudflare Llama-3.3 70B Instruct","description":"Serverless Workers AI instance with edge compliance.","is_available":true},{"id":"mock-llm","provider":"mock","name":"Deterministic Mock LLM (Testing)","description":"Deterministic testbed model for CI and offline evaluation.","is_available":false}],"default_mode":"auto"}
+HTTP 200
+## GET http://localhost:5173/ (first lines)
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Research prototype for evidence-grounded medication safety analysis." />
+    <title>Medical RAG · Medication Safety Research Prototype</title>
+    <script>
+      // Apply the stored or system theme before first paint (mirrors src/theme/theme.ts).
+      (function () {
+        var stored = null;
+        try { stored = localStorage.getItem('medrag-theme'); } catch (e) {}
+## GET http://localhost:5173/src/main.tsx (first lines)
+const StrictMode = __vite__cjsImport0_react["StrictMode"];const createRoot = __vite__cjsImport1_reactDom_client["createRoot"];const _jsxDEV = __vite__cjsImport4_react_jsxDevRuntime["jsxDEV"];import __vite__cjsImport0_react from "/node_modules/.vite/deps/react.js?v=332c212a";
+import __vite__cjsImport1_reactDom_client from "/node_modules/.vite/deps/react-dom_client.js?v=332c212a";
+import "/src/index.css";
+import App from "/src/App.tsx";
+var _jsxFileName = "C:/Users/sunny/Downloads/CASE STUDY/frontend/src/main.tsx";
+import __vite__cjsImport4_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=332c212a";
+createRoot(document.getElementById("root")).render(/* @__PURE__ */ _jsxDEV(StrictMode, { children: /* @__PURE__ */ _jsxDEV(App, {}, void 0, false, {
+	fileName: _jsxFileName,

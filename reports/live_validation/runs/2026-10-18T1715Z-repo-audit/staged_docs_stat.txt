@@ -1,0 +1,7 @@
+ README.md                                | 224 +++++++++++++------------------
+ docs/ARCHITECTURE.md                     | 213 +++++++++++++----------------
+ docs/CONFIGURATION.md                    |  73 ++++++++++
+ docs/TESTING.md                          | 101 ++++++++++++++
+ docs/architecture/INTEGRATION_ROADMAP.md |   2 +
+ reports/audit/blocked_issue_register.md  |  39 ++++--
+ 6 files changed, 394 insertions(+), 258 deletions(-)

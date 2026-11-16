@@ -1,0 +1,4 @@
+src/adaptive_trust_medical_rag/api/app.py
+src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+tests/providers/test_vision_backend.py

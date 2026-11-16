@@ -1,0 +1,6 @@
+== LF worktree 6b1695d
+102 passed, 164 warnings in 107.89s (0:01:47)
+311 file(s) recorded in CRLF form, 0 not pinned to eol=crlf
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+status: []

@@ -1,0 +1,33 @@
+# A/B/C run summary
+
+Every value below is read from the saved events of this run.
+
+| Scenario | Served by | Embedding | Retrieved | Eligible | Unrelated excluded | Risk | Threshold | Terminal |
+|---|---|---|---|---|---|---|---|---|
+| A-image | nvidia / nvidia/nemotron-3-super-120b-a12b (reported nvidia/nemotron-3-super-120b-a12b, stop stop) | real (all-MiniLM-L6-v2) | 14 | 1 | 13 | R2 | 0.6 | abstention  |
+
+## A-image
+
+- Requests: POST /api/v1/analyze/prescription -> 200, POST /api/v1/analyze/58cc2f09-5101-411e-b4b1-773d1184944e/confirm -> 200
+- Patient context sent: `null`
+- Risk basis: a multi-drug interaction question with no approved severe relationship record
+- Terminal reason: 6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.
+- Removed disclaimers: []
+- Model selection sent: `null`; selected in page: `null`
+- Requested model on a provider failure: `null`
+- Stream: 24 events recorded in the page, 24 over the network; terminal event captured: True
+- Vision provider/model: nvidia_vision / meta/llama-3.2-11b-vision-instruct
+- Confirmation (200): `{"confirmed_medications": [{"name": "Simvastatin", "status": "CONFIRMED", "source": "VISION", "raw_detected_name": "Simvastatin"}, {"name": "Clarithromycin", "status": "CONFIRMED", "source": "VISION", "raw_detected_name": "Clarithromycin"}]}`
+- RxNorm (name, RxCUI, name source, resolved by, status): [('Simvastatin', '36567', 'VISION', 'rxnorm_exact', 'MATCHED'), ('Clarithromycin', '21212', 'VISION', 'rxnorm_exact', 'MATCHED')] overall RESOLVED
+- Eligible chunks given to the model that name neither drug: none
+  - Claim 0: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "Evidence indicates that clarithromycin, a strong CYP3A4 inhibitor, is contraindicated with simvastatin due to increased risk of myopathy and rhabdomyolysis. No patient-specific data were provided. Clinicians should avoid concomitant use and consider alternative antibiotics or lipid-lowering therapy if needed."
+  - Claim 1: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "simvastatin interacts with clarithromycin; CYP3A4 inhibition leading to increased simvastatin exposure; Increased risk of myopathy and rhabdomyolysis; severity serious [Source 1]."
+  - Claim 2: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "Concomitant use of simvastatin with strong CYP3A4 inhibitors such as clarithromycin is contraindicated due to increased risk of myopathy and rhabdomyolysis [Source 1]"
+  - Claim 3: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "Simvastatin is a cholesterol-lowering medication."
+  - Claim 4: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "Clarithromycin is a strong CYP3A4 inhibitor."
+  - Claim 5: UNSUPPORTED / identity UNAVAILABLE (Source canonical identity not available): "Concomitant administration of clarithromycin with simvastatin is contraindicated due to increased risk of myopathy and rhabdomyolysis."
+
+## Credential-shaped strings
+
+None found.
+

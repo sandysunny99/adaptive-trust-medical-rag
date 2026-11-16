@@ -52,6 +52,16 @@ def evidence(**overrides) -> dict:
         "freshness": 0.9,
         "embedding": [0.0] * 383 + [1.0],
         "provenance": {"source": "DAILYMED", "chunk_id": CHUNK_ID, "content_hash": sha(text)},
+        "source_identity": {
+            "provider": "DAILYMED",
+            "external_id": "00000000-0000-0000-0000-000000000000",
+            "canonical_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=00000000-0000-0000-0000-000000000000",
+            "title": "TEST LABEL (synthetic fixture)",
+            "source_version": "1",
+            "captured_at": "2026-10-15T00:00:00Z",
+            "capture_sha256": "0" * 64,
+            "verification_method": "synthetic test fixture",
+        },
     }
     item.update(overrides)
     return item
@@ -93,13 +103,22 @@ def write_v2(tmp_path: Path, records=None, chunks=None, *, status="APPROVED", ap
     return load_relationship_store(CORPUS, directory=str(tmp_path))
 
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+# Fixture assumption: the evidence record carries an evidence-quality grade of 0.95. No live record
+# carries one yet, and without it no chunk reaches the R3 threshold of 0.75 (see the audit report).
+FIXTURE_EVIDENCE_QUALITY = 0.95
+
+
 def evidence_candidate(item: dict) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id=item["chunk_id"], document_id=item["document_id"], text=item["text"],
         source_url=item["document_url"], source_authority=item["authority"],
-        metadata={"provenance": item["provenance"], "source_type": item["source_type"],
+        metadata={"evidence_quality": FIXTURE_EVIDENCE_QUALITY, "provenance": item["provenance"], "source_type": item["source_type"],
                   "freshness_score": item["freshness"]},
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 def loads_nothing(store) -> bool:
@@ -143,6 +162,24 @@ def test_approved_v2_evidence_joins_retrieval_without_changing_the_frozen_corpus
                                             query_drugs=["simvastatin", "clarithromycin"], top_k=20)
     assert CHUNK_ID in {sc.candidate.chunk_id for sc in found}
     assert CHUNK_ID not in {item["chunk_id"] for item in CORPUS}
+
+
+def test_approved_v2_evidence_with_a_source_identity_record_is_identity_verified(tmp_path, monkeypatch):
+    write_v2(tmp_path)
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {CHUNK_ID: evidence()["document_url"]}
+
+
+def test_approved_v2_evidence_without_a_source_identity_record_is_not_verified(tmp_path, monkeypatch):
+    item = evidence()
+    del item["source_identity"]
+    write_v2(tmp_path, chunks=[item])
+    monkeypatch.setattr(live_relationships, "RELATIONSHIP_DIR", str(tmp_path))
+    state = SimpleNamespace(claim_verifier=object(), model_init_errors={})
+    _lazy_init_models(state)
+    assert state.verified_source_links == {}
 
 
 # ── Everything short of an approved, intact dataset fails closed ─────────────
@@ -259,9 +296,12 @@ def test_without_a_v2_manifest_the_store_is_v1_alone(tmp_path):
         f"{RELATIONSHIP_DATASET} manifest not found"
 
 
-def test_the_shipped_data_has_no_v2_dataset():
+def test_the_shipped_data_has_only_the_approved_food_0001_evidence():
     assert not os.path.exists(os.path.join(live_relationships.RELATIONSHIP_DIR, f"{RELATIONSHIP_DATASET_V2}_MANIFEST.json"))
-    assert load_relationship_store(CORPUS).evidence == ()
+    store = load_relationship_store(CORPUS)
+    # FOOD-0001 (approved 2026-11-14) is standalone label evidence: one chunk, no relationship record.
+    assert [c["chunk_id"] for c in store.evidence] == ["DAILYMED-34EBEEA1-SPL-V12-SEC-5.5"]
+    assert all(r.dataset != "v2/food_0001" for r in store.records)
 
 
 def test_a_v2_mixed_with_a_good_chunk_and_a_stale_one_keeps_only_the_good_one(tmp_path):

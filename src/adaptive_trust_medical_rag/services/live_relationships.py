@@ -18,13 +18,15 @@ V1 records must cite a chunk of the frozen live corpus. V2 records may also cite
 their own versioned evidence file (for example exact label text captured from DailyMed), so a
 source can be added without changing the frozen corpus. V2 has its own manifest, which must be
 APPROVED by a named person and must match the SHA-256 of both the records file and the evidence
-file. An evidence chunk becomes retrievable only when an accepted V2 record cites it, and it then
-goes through the same provenance-hash, trust, eligibility and claim-verification gates as a
-corpus chunk.
+file. An evidence chunk becomes retrievable only when an accepted V2 record cites it or the approved
+manifest lists it in ``standalone_evidence_chunks`` (single-drug evidence, such as a food passage),
+and it then goes through the same provenance-hash, trust, eligibility and claim-verification gates
+as a corpus chunk.
 """
 
 from __future__ import annotations
 
+import dataclasses
 import hashlib
 import json
 import logging
@@ -68,6 +70,8 @@ class RelationshipRecord:
     source_chunk_id: str
     source_content_hash: str
     evidence_span: str
+    # The approved dataset the record came from ("v2", or "v2/<folder>" for a per-dataset folder).
+    dataset: str = ""
 
     def links(self, a: str, b: str) -> bool:
         return {self.subject_rxcui, self.object_rxcui} == {a, b}
@@ -199,7 +203,7 @@ def load_relationship_store(corpus_items: list[dict[str, Any]], directory: str |
     """
     directory = RELATIONSHIP_DIR if directory is None else directory
     v1 = _load_v1(corpus_items, directory)
-    v2 = _load_v2(corpus_items, directory)
+    v2 = _load_v2_all(corpus_items, directory)
     if v2 is None:
         return v1
     return RelationshipStore(
@@ -275,8 +279,63 @@ def validate_evidence_chunk(item: Any, frozen_ids: set[Any], embedding_dims: set
     return "valid"
 
 
-def _load_v2(corpus_items: list[dict[str, Any]], directory: str) -> RelationshipStore | None:
-    """Load approved V2 records and the evidence chunks they cite; None when no V2 manifest exists."""
+V2_DATASETS_DIR = "v2"
+
+
+def _load_v2_all(corpus_items: list[dict[str, Any]], directory: str) -> RelationshipStore | None:
+    """Load every V2 dataset: the one at the top of ``directory`` and each ``v2/<folder>``.
+
+    Each dataset is checked on its own (manifest approval, file hashes, records, evidence), so a
+    rejected dataset never affects another, and approving one never means copying its files over
+    another's. Folders are read in sorted order, so a restart loads the same result. A dataset that
+    repeats a chunk or record ID of one loaded before it is rejected whole, with the reason.
+    None when there is no V2 dataset at all.
+    """
+    found = [("v2", directory)] if os.path.exists(
+        os.path.join(directory, f"{RELATIONSHIP_DATASET_V2}_MANIFEST.json")) else []
+    root = os.path.join(directory, V2_DATASETS_DIR)
+    if os.path.isdir(root):
+        found += [(f"v2/{d}", os.path.join(root, d)) for d in sorted(os.listdir(root))
+                  if os.path.isdir(os.path.join(root, d))]
+    if not found:
+        return None
+    records: list[RelationshipRecord] = []
+    evidence: list[dict[str, Any]] = []
+    rejected: list[tuple[str, str]] = []
+    owner: dict[str, str] = {}  # record or chunk ID -> the dataset that loaded it
+    reasons, approved, status = [], False, "NOT_LOADED"
+    for label, path in found:
+        st = _load_v2(corpus_items, path, label)
+        if st is None:  # only a v2/<folder>: the root is listed only when its manifest exists
+            why = f"{label} has no {RELATIONSHIP_DATASET_V2}_MANIFEST.json, so nothing in it was loaded"
+            rejected.append((label, why))
+            reasons.append(why)
+            log.warning("V2 dataset %s", why)
+            continue
+        status = st.status if status == "NOT_LOADED" else status
+        # An approved store's reason already starts with its label; a failed one names only the file.
+        reasons.append(st.reason if st.status == "APPROVED" else f"{label}: {st.reason}")
+        # Record and chunk rejections keep their ID and name the dataset in the reason.
+        rejected += [(who, f"{label}: {why}") for who, why in st.rejected]
+        ids = [r.record_id for r in st.records] + [e["chunk_id"] for e in st.evidence]
+        clash = sorted(f"{i} (in {owner[i]})" for i in set(ids) if i in owner)
+        if clash:
+            # The whole dataset is dropped before anything of it is added, so nothing loads partially.
+            why = f"{label} repeats IDs already loaded from another dataset: {', '.join(clash)}"
+            rejected.append((label, why))
+            reasons.append(f"{label} rejected: duplicate IDs")
+            log.warning("V2 dataset %s", why)
+            continue
+        owner |= dict.fromkeys(ids, label)
+        records += list(st.records)
+        evidence += list(st.evidence)
+        approved = approved or st.status == "APPROVED"
+    return RelationshipStore(records=tuple(records), status="APPROVED" if approved else status,
+                             reason="; ".join(reasons), rejected=tuple(rejected), evidence=tuple(evidence))
+
+
+def _load_v2(corpus_items: list[dict[str, Any]], directory: str, label: str = "v2") -> RelationshipStore | None:
+    """Load one approved V2 dataset and the evidence chunks it uses; None when it has no manifest."""
     name = RELATIONSHIP_DATASET_V2
     manifest_path = os.path.join(directory, f"{name}_MANIFEST.json")
     if not os.path.exists(manifest_path):
@@ -286,8 +345,11 @@ def _load_v2(corpus_items: list[dict[str, Any]], directory: str) -> Relationship
             manifest = json.load(f)
         approval = manifest.get("approval") or {}
         status = str(manifest.get("status", "UNKNOWN"))
-        if status != "APPROVED" or not approval.get("approved_by") or not approval.get("approved_at"):
+        if status != "APPROVED":
             return RelationshipStore(status=status, reason=f"{name} is {status}, not approved")
+        if not approval.get("approved_by") or not approval.get("approved_at"):
+            return RelationshipStore(status="INCOMPLETE_APPROVAL",
+                                     reason=f"{name} approval is missing approved_by or approved_at")
         with open(os.path.join(directory, manifest["records_file"]), "rb") as f:
             records_raw = f.read()
         with open(os.path.join(directory, manifest["evidence_file"]), "rb") as f:
@@ -312,7 +374,7 @@ def _load_v2(corpus_items: list[dict[str, Any]], directory: str) -> Relationship
         if why != "valid" or chunk_id in evidence:
             why = why if why != "valid" else "duplicate evidence chunk id"
             rejected.append((f"evidence {chunk_id}", why))
-            log.warning("%s evidence chunk %s rejected: %s", name, chunk_id, why)
+            log.warning("%s evidence chunk %s rejected: %s", label, chunk_id, why)
         else:
             evidence[chunk_id] = item
 
@@ -322,13 +384,19 @@ def _load_v2(corpus_items: list[dict[str, Any]], directory: str) -> Relationship
         record, why = validate_record(raw_record, chunks_by_id)
         if record is None:
             rejected.append((str(raw_record.get("record_id", "?")), why))
-            log.warning("Relationship record %s rejected: %s", raw_record.get("record_id", "?"), why)
+            log.warning("%s relationship record %s rejected: %s", label, raw_record.get("record_id", "?"), why)
         else:
             accepted.append(record)
     cited = {r.source_chunk_id for r in accepted}
-    usable = tuple(item for chunk_id, item in evidence.items() if chunk_id in cited)
+    # The approved manifest may also name standalone chunks: single-drug label evidence (a food or
+    # warning passage) that no drug-pair record cites. They pass the same validation and hashes.
+    standalone = {str(c) for c in manifest.get("standalone_evidence_chunks") or []}
+    # Every loaded record and chunk names the dataset and approval it came from.
+    provenance = {"dataset": label, "dataset_approval": {k: approval.get(k) for k in ("approved_by", "approved_at")}}
+    usable = tuple({**item, **provenance} for chunk_id, item in evidence.items() if chunk_id in cited | standalone)
+    accepted = [dataclasses.replace(r, dataset=label) for r in accepted]
     return RelationshipStore(records=tuple(accepted), status="APPROVED",
-                             reason=f"{name}: {len(accepted)} approved record(s), {len(usable)} evidence chunk(s) loaded",
+                             reason=f"{label}: {len(accepted)} approved record(s), {len(usable)} evidence chunk(s) loaded",
                              rejected=tuple(rejected), evidence=usable)
 
 

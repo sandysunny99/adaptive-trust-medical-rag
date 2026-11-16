@@ -49,6 +49,26 @@ async def get_llm_models(request: Request) -> LLMModelsResponse:
     )
 
 
+# A submitted analysis whose stream is never opened is dropped after this long (the frontend opens
+# it immediately). An analysis with an open stream is never dropped here: its stream removes it.
+PENDING_TTL_S = 600.0
+# Image uploads wait in memory (up to 5 MB each) until streamed; beyond this many waiting, new
+# uploads are refused (503) rather than growing memory without bound.
+MAX_PENDING_ANALYSES = 100
+
+
+def _pending_analyses(request: Request) -> dict[str, dict[str, Any]]:
+    """The pending-analysis store, with unstreamed entries older than PENDING_TTL_S removed."""
+    pending = getattr(request.app.state, "pending_analyses", None)
+    if pending is None:
+        request.app.state.pending_analyses = pending = {}
+    cutoff = time.time() - PENDING_TTL_S
+    for key in [k for k, a in pending.items()
+                if not a.get("stream_started") and a.get("created_at", cutoff) < cutoff]:
+        pending.pop(key, None)
+    return pending
+
+
 async def _sse_event(event: str, data: dict[str, Any]) -> str:
     """Format a Server-Sent Event."""
     payload = json.dumps(data, default=str)
@@ -78,10 +98,7 @@ async def post_analyze(body: AnalyzeRequest, request: Request) -> AnalyzeAccepte
     request_id = str(uuid.uuid4())
 
     # Store the pending analysis request in app state
-    pending = getattr(request.app.state, "pending_analyses", None)
-    if pending is None:
-        request.app.state.pending_analyses = {}
-        pending = request.app.state.pending_analyses
+    pending = _pending_analyses(request)
 
     pending[request_id] = {
         "body": body,
@@ -132,10 +149,9 @@ async def post_analyze_prescription(
 
     request_id = str(uuid.uuid4())
 
-    pending = getattr(request.app.state, "pending_analyses", None)
-    if pending is None:
-        request.app.state.pending_analyses = {}
-        pending = request.app.state.pending_analyses
+    pending = _pending_analyses(request)
+    if sum(1 for a in pending.values() if not a.get("stream_started")) >= MAX_PENDING_ANALYSES:
+        raise HTTPException(status_code=503, detail="Too many analyses are waiting to start; retry shortly.")
 
     # Parse patient context if provided
     context_data = None
@@ -182,16 +198,26 @@ async def post_analyze_prescription(
         "validation": validation_meta
     }
 
-from typing import Optional
+from typing import Literal, Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, field_validator
 
 
 class ConfirmedMedicationItem(BaseModel):
-    name: str
-    status: str
+    name: str = Field(..., max_length=200)
+    # Only the statuses the confirmation panel sends for a reviewed medication. A rejected,
+    # uncertain or merely detected candidate is not confirmed, so it is refused (422), never analyzed.
+    status: Literal["CONFIRMED", "EDITED", "USER_ADDED"]
     source: str = "VISION"
     raw_detected_name: Optional[str] = None
+
+    @field_validator("name")
+    @classmethod
+    def _non_blank_name(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("medication name is empty")
+        return v
 
 class ConfirmMedicationsRequest(BaseModel):
     confirmed_medications: list[ConfirmedMedicationItem]
@@ -206,6 +232,11 @@ async def confirm_medications(request_id: str, body: ConfirmMedicationsRequest, 
 
     if not analysis:
         raise HTTPException(status_code=404, detail="Analysis request not found or expired")
+    if analysis.get("confirmation_taken"):
+        # The running analysis already took a list; a later one would be accepted but never used.
+        raise HTTPException(status_code=409, detail="The medications for this analysis were already "
+                                                    "confirmed and are being analyzed. Upload the image "
+                                                    "again to analyze a different list.")
 
     analysis["confirmed_medications"] = body.confirmed_medications
     if "confirmation_event" in analysis:
@@ -234,6 +265,18 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
             })
 
         return StreamingResponse(error_stream(), media_type="text/event-stream")
+
+    if analysis.get("stream_started"):
+        # One stream per analysis: a second request (a reconnect, a duplicate tab) would run the
+        # pipeline, and its provider calls, again. Set before any await, so two requests cannot both pass.
+        async def busy_stream():
+            yield await _sse_event("error", {
+                "code": "STREAM_ALREADY_ACTIVE",
+                "message": "This analysis is already being streamed to another connection.",
+            })
+
+        return StreamingResponse(busy_stream(), media_type="text/event-stream")
+    analysis["stream_started"] = True
 
     async def pipeline_stream():
         """Execute the analysis pipeline and emit SSE events."""
@@ -295,9 +338,9 @@ async def stream_analysis(request_id: str, request: Request) -> StreamingRespons
                 "message": str(e),
             })
         finally:
-            # Clean up completed or terminated pending analysis
-            if analysis.get("finished", False):
-                pending.pop(request_id, None)
+            # Every exit ends the analysis (confirmation waits inside this stream), so the entry and
+            # any uploaded image are dropped, and a second stream request cannot re-run the pipeline.
+            pending.pop(request_id, None)
 
     return StreamingResponse(
         pipeline_stream(),

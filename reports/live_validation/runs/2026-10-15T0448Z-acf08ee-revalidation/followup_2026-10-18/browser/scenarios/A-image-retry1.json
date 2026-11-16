@@ -1,0 +1,130 @@
+{
+  "scenario": "A-image-retry1",
+  "runner": "run_abc.mjs v2 (browser, in-page stream capture)",
+  "frontend_url": "http://127.0.0.1:5180",
+  "started_at": "2026-10-18T09:55:03.596Z",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze/prescription",
+      "content_type": "multipart/form-data",
+      "body": {
+        "multipart_fields": []
+      },
+      "at": "2026-10-18T09:55:06.224Z",
+      "status": 200,
+      "response": {
+        "request_id": "fa058f2d-20dd-4bec-b59a-20125884a32f",
+        "stream_url": "/api/v1/stream/fa058f2d-20dd-4bec-b59a-20125884a32f",
+        "validation": {
+          "valid": true,
+          "original_image_sha256": "aad8f52271613f25b397ebe0b2ebd2b7c6343517cd33d050d7d145ed962c2f38",
+          "format": "PNG",
+          "width": 900,
+          "height": 500,
+          "size_bytes": 23213,
+          "mime_type": "image/png"
+        }
+      }
+    }
+  ],
+  "stream": [
+    {
+      "event": "stage_update",
+      "data": {
+        "stage": "extracting",
+        "status": "running",
+        "message": "Extracting medications from prescription image via NVIDIA Vision...",
+        "timestamp": "2026-10-18T09:55:06.525985+00:00"
+      },
+      "source": 0,
+      "at": "2026-10-18T09:55:07.713Z"
+    },
+    {
+      "event": "error",
+      "data": {
+        "code": "VISION_EXTRACTION_ERROR",
+        "message": "Vision extraction failed: Vision provider failed to return valid JSON",
+        "vision_provider": "nvidia_vision",
+        "vision_model": "meta/llama-3.2-11b-vision-instruct"
+      },
+      "source": 0,
+      "at": "2026-10-18T09:55:11.753Z"
+    }
+  ],
+  "stream_network": [],
+  "console_errors": [
+    "SSE connection error: MessageEvent"
+  ],
+  "screen": {
+    "failed": true,
+    "error": "Vision extraction failed: Vision provider failed to return valid JSON",
+    "abstained": false,
+    "abstention_reason": "",
+    "pipeline": [
+      "Input Processing\nNot run",
+      "Medication Extraction\n(failed)",
+      "User Confirmation",
+      "RxNorm Canonicalization\nNot run",
+      "Evidence Retrieval\nNot run",
+      "Trust Evaluation\nNot run",
+      "Security Checks\nNot run",
+      "Relationship Verification\nNot run",
+      "LLM Analysis\nNot run",
+      "Claim Verification\nNot run",
+      "Safety Gate\nNot run"
+    ]
+  },
+  "model_catalog": {
+    "models": [
+      {
+        "id": "nvidia/nemotron-3-super-120b-a12b",
+        "provider": "nvidia",
+        "name": "NVIDIA Nemotron-3 Super 120B",
+        "description": "High-capacity biomedical-reasoning LLM hosted on NVIDIA NIM.",
+        "is_available": true
+      },
+      {
+        "id": "openai/gpt-oss-120b",
+        "provider": "groq",
+        "name": "Groq GPT-OSS 120B",
+        "description": "Open-weights model inference hosted on Groq.",
+        "is_available": true
+      },
+      {
+        "id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+        "provider": "cloudflare",
+        "name": "Cloudflare Llama-3.3 70B Instruct",
+        "description": "Serverless Workers AI instance with edge compliance.",
+        "is_available": true
+      },
+      {
+        "id": "mock-llm",
+        "provider": "mock",
+        "name": "Deterministic Mock LLM (Testing)",
+        "description": "Deterministic testbed model for CI and offline evaluation.",
+        "is_available": false
+      }
+    ],
+    "default_mode": "auto"
+  },
+  "stream_path": "/api/v1/stream/fa058f2d-20dd-4bec-b59a-20125884a32f",
+  "stream_status": 200,
+  "stream_network_error": "Error: response.text: Protocol error (Network.getResponseBody): No data found for resource with given identifier\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+  "step_error": "TimeoutError: locator.waitFor: Timeout 180000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByText('Review Detected Medications') to be visible\u001b[22m\n",
+  "stream_connection_events": [
+    {
+      "source": 0,
+      "url": "/api/v1/stream/fa058f2d-20dd-4bec-b59a-20125884a32f",
+      "event": "__connection_error",
+      "raw": null,
+      "readyState": 1,
+      "at": "2026-10-18T09:55:11.753Z"
+    }
+  ],
+  "stream_sources": [
+    "/api/v1/stream/fa058f2d-20dd-4bec-b59a-20125884a32f"
+  ],
+  "finished_at": "2026-10-18T09:58:07.775Z",
+  "stream_complete": true
+}

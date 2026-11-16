@@ -1,0 +1,55 @@
+[
+ {
+  "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+  "label": "clarithromycin section 4.5 title",
+  "byte_start": 75208,
+  "byte_end": 75266,
+  "raw_xml": "<title>4.5 Lomitapide, Lovastatin, and Simvastatin</title>",
+  "plain_text": "4.5 Lomitapide, Lovastatin, and Simvastatin"
+ },
+ {
+  "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+  "label": "clarithromycin 4.5 contraindication paragraph",
+  "byte_start": 75723,
+  "byte_end": 76181,
+  "sha256": "1bc9541f93d8836b01c1032df2794ab719b8064aa34abf38a22ee2fb7ecce874",
+  "raw_xml": "<paragraph>Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis <content styleCode=\"italics\">[see <linkHtml href=\"#Section_5.4\">Warnings and Precautions (5.4)</linkHtml> and <linkHtml href=\"#Section_7\">Drug Interactions (7)</linkHtml>]</content>.</paragraph>",
+  "plain_text": "Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)]."
+ },
+ {
+  "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+  "label": "ZOCOR Table 2 Strong CYP3A4 inhibitors heading row",
+  "byte_start": 88294,
+  "byte_end": 88467,
+  "sha256": "ebb9a9f0e49abae6f416bb23857072d9136962dd1abb3dbe98e3ce5eb249b81b",
+  "raw_xml": "<tr>\n                                 <th styleCode=\"Lrule Rrule\" align=\"left\" valign=\"top\" colspan=\"2\">  Strong CYP3A4 inhibitors</th>\n                              </tr>",
+  "plain_text": "Strong CYP3A4 inhibitors"
+ },
+ {
+  "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+  "label": "ZOCOR Table 2 Strong CYP3A4 inhibitors Clinical Impact row",
+  "byte_start": 88569,
+  "byte_end": 89124,
+  "sha256": "723a4b37c33de6db62137847fbc04cb2eb7728d3ba259681c16172db95824b4d",
+  "raw_xml": "<tr styleCode=\"Botrule\">\n                                 <td styleCode=\"Lrule Rrule\" valign=\"middle\">\n                                    <content styleCode=\"italics\">Clinical Impact:   </content>\n                                 </td>\n                                 <td styleCode=\"Rrule\">Simvastatin is a substrate of CYP3A4. Concomitant use of strong CYP3A4 inhibitors with ZOCOR increases simvastatin exposure and increases the risk of myopathy and rhabdomyolysis, particularly with higher ZOCOR dosages. </td>\n                              </tr>",
+  "plain_text": "Clinical Impact: Simvastatin is a substrate of CYP3A4. Concomitant use of strong CYP3A4 inhibitors with ZOCOR increases simvastatin exposure and increases the risk of myopathy and rhabdomyolysis, particularly with higher ZOCOR dosages."
+ },
+ {
+  "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+  "label": "ZOCOR Table 2 Strong CYP3A4 inhibitors Intervention row",
+  "byte_start": 89155,
+  "byte_end": 89784,
+  "sha256": "799fc0fd0b76268fd4084ed69cc517d663884270138ae677eec61372b5122721",
+  "raw_xml": "<tr styleCode=\"Botrule\">\n                                 <td styleCode=\"Lrule Rrule\" valign=\"middle\">\n                                    <content styleCode=\"italics\">Intervention:   </content>\n                                 </td>\n                                 <td styleCode=\"Rrule\">Concomitant use of strong CYP3A4 inhibitors with ZOCOR is contraindicated <content styleCode=\"italics\">[see <linkHtml href=\"#S4\">Contraindications (4)</linkHtml>]</content>. If treatment with a CYP3A4 inhibitor is unavoidable, suspend ZOCOR during the course of strong CYP3A4 inhibitor treatment.</td>\n                              </tr>",
+  "plain_text": "Intervention: Concomitant use of strong CYP3A4 inhibitors with ZOCOR is contraindicated [see Contraindications (4)]. If treatment with a CYP3A4 inhibitor is unavoidable, suspend ZOCOR during the course of strong CYP3A4 inhibitor treatment."
+ },
+ {
+  "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+  "label": "ZOCOR Table 2 Strong CYP3A4 inhibitors Examples row",
+  "byte_start": 89815,
+  "byte_end": 90508,
+  "sha256": "7ed084e60c3558585d1494838ef2920087225e6d40fa8edc93203f90bc43e508",
+  "raw_xml": "<tr styleCode=\"Botrule\">\n                                 <td styleCode=\"Lrule Rrule\" valign=\"middle\">\n                                    <content styleCode=\"italics\">Examples:   </content>\n                                 </td>\n                                 <td styleCode=\"Rrule\">Select azole anti-fungals (e.g., itraconazole, ketoconazole, posaconazole, and voriconazole), select macrolide antibiotics (e.g., erythromycin and clarithromycin), select HIV protease inhibitors (e.g., nelfinavir, ritonavir, and darunavir/ritonavir), select HCV protease inhibitors (e.g., boceprevir and telaprevir), cobicistat-containing products, and nefazodone.</td>\n                              </tr>",
+  "plain_text": "Examples: Select azole anti-fungals (e.g., itraconazole, ketoconazole, posaconazole, and voriconazole), select macrolide antibiotics (e.g., erythromycin and clarithromycin), select HIV protease inhibitors (e.g., nelfinavir, ritonavir, and darunavir/ritonavir), select HCV protease inhibitors (e.g., boceprevir and telaprevir), cobicistat-containing products, and nefazodone."
+ }
+]

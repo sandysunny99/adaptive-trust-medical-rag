@@ -1,0 +1,6 @@
+event: stage_update
+data: {"stage": "extracting", "status": "running", "message": "Extracting medications from prescription image via NVIDIA Vision...", "timestamp": "2026-10-18T09:55:06.525985+00:00"}
+
+event: error
+data: {"code": "VISION_EXTRACTION_ERROR", "message": "Vision extraction failed: Vision provider failed to return valid JSON", "vision_provider": "nvidia_vision", "vision_model": "meta/llama-3.2-11b-vision-instruct"}
+

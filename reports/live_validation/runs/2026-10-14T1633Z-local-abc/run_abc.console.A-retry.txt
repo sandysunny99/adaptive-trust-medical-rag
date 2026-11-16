@@ -1,0 +1,4 @@
+[A-image] requests: [{"m":"POST","p":"/api/v1/analyze/prescription","s":200},{"m":"POST","p":"/api/v1/analyze/b85ccd62-7cd6-4ff5-b6a1-7c4be48e0400/confirm","s":200}]
+[A-image] retrieval: null
+[A-image] terminal: []
+exit=0

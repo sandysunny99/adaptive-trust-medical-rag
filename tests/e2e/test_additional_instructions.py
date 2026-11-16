@@ -61,6 +61,12 @@ REJECTED = [
 ]
 
 
+# Fixture assumption (2026-10-26 audit, LIVE_TRUST_FACTORS_V2): the vector channel returned this chunk
+# at cosine 0.6; the real lisinopril label section 7.1 measured 0.57 for its pair query. Without a
+# measured relevance a chunk scores below the R2 threshold, which these tests do not exercise.
+FIXTURE_RELEVANCE = 0.6
+
+
 def chunk(authority: float = 0.9) -> ScoredCandidate:
     return ScoredCandidate(Candidate(
         chunk_id="c1", document_id="doc-c1", text=EVIDENCE, source_url="https://example.org/c1",
@@ -70,7 +76,7 @@ def chunk(authority: float = 0.9) -> ScoredCandidate:
                            "content_hash": hashlib.sha256(EVIDENCE.encode("utf-8")).hexdigest()},
             "source_type": "DAILYMED", "freshness_score": 0.9,
         },
-    ))
+    ), vector_similarity=FIXTURE_RELEVANCE)
 
 
 class RecordingRetrieval:
@@ -124,6 +130,8 @@ def run(note, *, supported=True, authority=0.9):
         retrieval_engine=RecordingRetrieval([chunk(authority)]),
         llm_backend=RecordingLLM(),
         claim_verifier=FixedVerifier(FinalSupportState.SUPPORTED if supported else FinalSupportState.UNSUPPORTED),
+        # Fixture assumption: the synthetic chunk c1 stands in for an identity-verified source.
+        verified_source_links={"c1": "https://example.org/c1"},
     )
 
     async def collect():
@@ -270,8 +278,11 @@ class CountingVision:
 
 @pytest.fixture
 def live_state():
-    names = ("drug_normalizer", "retrieval_engine", "llm_backend", "claim_verifier", "vision_backend")
+    names = ("drug_normalizer", "retrieval_engine", "llm_backend", "claim_verifier", "vision_backend",
+             "verified_source_links")
     saved = {n: getattr(app.state, n, None) for n in names}
+    # Fixture assumption: the synthetic chunk c1 stands in for an identity-verified source.
+    app.state.verified_source_links = {"c1": "https://example.org/c1"}
     app.state.drug_normalizer = OfflineNormalizer()
     app.state.retrieval_engine = RecordingRetrieval([chunk()])
     app.state.llm_backend = RecordingLLM()
@@ -340,3 +351,12 @@ def test_image_route_screens_the_note_before_vision_runs(live_state, note):
     assert (kind, data["code"], data["field"]) == ("error", "INPUT_REJECTED", "additional_instructions")
     assert live_state.vision_backend.calls == 0
     assert live_state.llm_backend.prompts == []
+
+
+def test_a_finished_stream_leaves_nothing_in_memory_and_cannot_be_re_run(live_state):
+    request_id = client.post("/api/v1/analyze", json={"drug_names": ["Simvastatin", "Clarithromycin"]}).json()["request_id"]
+    assert outcome(stream_events(request_id))[0] == "answer"
+    assert request_id not in live_state.pending_analyses
+    (again,) = [e for e in stream_events(request_id) if e["event"] == "error"]
+    assert again["data"]["code"] == "NOT_FOUND"
+    assert len(live_state.llm_backend.prompts) == 1  # the pipeline did not run a second time

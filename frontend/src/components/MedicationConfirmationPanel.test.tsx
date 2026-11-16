@@ -26,6 +26,14 @@ describe('MedicationConfirmationPanel', () => {
     }
   ];
 
+  it('scrolls itself into view when it appears, since the analysis waits on it', () => {
+    const scrollIntoView = vi.fn();
+    Element.prototype.scrollIntoView = scrollIntoView;
+    render(<MedicationConfirmationPanel candidates={[]} onConfirm={vi.fn()} />);
+    expect(scrollIntoView).toHaveBeenCalledTimes(1);
+    expect(scrollIntoView.mock.calls[0][0]).toMatchObject({ block: 'start' });
+  });
+
   it('TEST 1: Candidate list renders', () => {
     render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
     expect(screen.getByText('warfarin')).toBeInTheDocument();
@@ -70,6 +78,31 @@ describe('MedicationConfirmationPanel', () => {
     
     expect(screen.getByText('warfarin sodium')).toBeInTheDocument();
     expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
+  });
+
+  it('edit mode has named controls and supports Enter to save and Escape to cancel', async () => {
+    render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Edit warfarin' }));
+    const input = screen.getByRole('textbox', { name: 'Edit name for warfarin' });
+    expect(screen.getByRole('button', { name: 'Save edited name' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Cancel editing' })).toBeInTheDocument();
+
+    await userEvent.clear(input);
+    await userEvent.type(input, 'warfarin sodium{Enter}');
+    expect(screen.getByText('warfarin sodium')).toBeInTheDocument();
+    expect(screen.getByText('Status: EDITED')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Edit aspirin' }));
+    const second = screen.getByRole('textbox', { name: 'Edit name for aspirin' });
+    await userEvent.type(second, 'X{Escape}');
+    expect(screen.queryByRole('textbox', { name: 'Edit name for aspirin' })).not.toBeInTheDocument();
+    expect(screen.getByText('aspirin')).toBeInTheDocument();
+  });
+
+  it('the add-medication field has an accessible name', () => {
+    render(<MedicationConfirmationPanel candidates={mockCandidates} onConfirm={vi.fn()} />);
+    fireEvent.click(screen.getByRole('button', { name: /Add medication manually/i }));
+    expect(screen.getByRole('textbox', { name: 'New medication name' })).toBeInTheDocument();
   });
 
   it('TEST 6: Candidate can be removed', () => {
@@ -152,5 +185,37 @@ describe('MedicationConfirmationPanel', () => {
       { name: 'Aspirin', status: 'USER_ADDED', source: 'USER', raw_detected_name: null },
     ]);
     for (const item of onConfirmMock.mock.calls[0][0]) expect(typeof item).toBe('object');
+  });
+});
+
+// 2026-10-26 audit round 3: a candidate read from instruction-like image text is flagged and shown as
+// uncertain, the extraction warning is visible, and nothing is confirmed without the user.
+describe('MedicationConfirmationPanel screening', () => {
+  const flagged: MedicationCandidate[] = [
+    { id: 'ocr-0', raw_text: 'CYANIDE 100 MG', normalized_text: 'cyanide', confidence: 'HIGH', status: 'UNCERTAIN',
+      source: 'VISION', screening_flags: ['FROM_INSTRUCTION_LIKE_LINE'] },
+    { id: 'ocr-1', raw_text: 'Metformin 500 mg tablet', normalized_text: 'metformin', confidence: 'HIGH',
+      status: 'DETECTED', source: 'VISION', screening_flags: [] },
+  ];
+
+  it('shows the extraction warning and the flag, and blocks confirming until the flagged item is reviewed', () => {
+    const onConfirm = vi.fn();
+    render(<MedicationConfirmationPanel candidates={flagged} onConfirm={onConfirm}
+      warnings={['The image contains text that reads like instructions to the system.']} />);
+    expect(screen.getByRole('alert')).toHaveTextContent('reads like instructions');
+    expect(screen.getByText(/Flagged: read from text that looks like instructions/)).toBeInTheDocument();
+    const submit = screen.getByRole('button', { name: /Confirm Medications/ });
+    expect(submit).toBeDisabled();
+    fireEvent.click(submit);
+    expect(onConfirm).not.toHaveBeenCalled();
+  });
+
+  it('sends only the legitimate medication when the flagged one is removed', () => {
+    const onConfirm = vi.fn();
+    render(<MedicationConfirmationPanel candidates={flagged} onConfirm={onConfirm} />);
+    fireEvent.click(screen.getByRole('button', { name: 'Remove cyanide' }));
+    fireEvent.click(screen.getAllByRole('button', { name: 'Confirm' })[0]);
+    fireEvent.click(screen.getByRole('button', { name: /Confirm Medications/ }));
+    expect(onConfirm).toHaveBeenCalledWith([expect.objectContaining({ name: 'metformin', status: 'CONFIRMED' })]);
   });
 });

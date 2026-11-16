@@ -1,0 +1,16 @@
+[A-image] requests: [{"m":"POST","p":"/api/v1/analyze/prescription","s":200}]
+[A-image] retrieval: null
+[A-image] terminal: [{"event":"error","code":"VISION_EXTRACTION_ERROR","reason":"Vision extraction failed: Vision Provider Timeout"}]
+[B-direct] requests: [{"m":"POST","p":"/api/v1/analyze","s":200}]
+[B-direct] retrieval: {"evidence_count":14,"sources":["PUBMED","OPENFDA","DAILYMED"],"corpus":"LIVE_MEDICAL_CORPUS_V2","embedding_model":"all-MiniLM-L6-v2","embedding_mode":"real"}
+[B-direct] terminal: [{"event":"abstention","reason":"6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."}]
+[C-context] requests: [{"m":"POST","p":"/api/v1/analyze","s":200}]
+[C-context] retrieval: {"evidence_count":14,"sources":["PUBMED","OPENFDA","DAILYMED"],"corpus":"LIVE_MEDICAL_CORPUS_V2","embedding_model":"all-MiniLM-L6-v2","embedding_mode":"real"}
+[C-context] terminal: [{"event":"abstention","reason":"6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."}]
+[N1-note-policy] requests: [{"m":"POST","p":"/api/v1/analyze","s":200}]
+[N1-note-policy] retrieval: null
+[N1-note-policy] terminal: []
+[N2-note-injection] requests: [{"m":"POST","p":"/api/v1/analyze","s":200}]
+[N2-note-injection] retrieval: null
+[N2-note-injection] terminal: [{"event":"error","code":"INPUT_REJECTED","reason":"The additional instructions did not pass security checks. Remove instructions aimed at the system, markup or personal identifiers and retry."}]
+exit=0

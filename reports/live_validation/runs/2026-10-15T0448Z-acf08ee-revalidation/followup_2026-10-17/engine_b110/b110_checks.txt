@@ -1,0 +1,34 @@
+== engine.py diff
+--- reports/live_validation/runs/2026-10-15T0448Z-acf08ee-revalidation/followup_2026-10-17/engine_b110/engine.py.before	2026-10-13 19:05:56.866376200 +0530
++++ src/adaptive_trust_medical_rag/annotation/engine.py	2026-10-17 18:05:17.397151300 +0530
+@@ -217,8 +217,13 @@
+                     model=self.config.model,
+                     structured_output_method=self.config.structured_output_method,
+                 )
+-        except Exception:
+-            pass
++        except Exception as exc:
++            # Only the provider and the exception type: a message can carry a key or a URL.
++            # Returning None keeps the safe failure in annotate_position.
++            logger.warning(
++                "LLM adapter initialization failed for provider %s (%s); no backend configured",
++                provider, type(exc).__name__,
++            )
+ 
+         return None
+ 
+671b19c10ca7ffaa1612f55655167e1589548ce7c5077d1eebc59247f1ccf886 *src/adaptive_trust_medical_rag/annotation/engine.py
+== pytest
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_annotate_batch_with_progress
+3 failed, 35 passed in 1.81s
+== bandit engine.py
+[main]	INFO	Using ini file for skipped tests
+[main]	INFO	Using command line arg for selected targets
+rc=0
+== run_bandit.py (full src/)
+
+OK - Bandit: no medium/high severity issues
+rc=0
+== ruff
+All checks passed!
+rc=0

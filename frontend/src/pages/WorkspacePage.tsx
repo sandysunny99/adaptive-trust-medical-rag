@@ -15,6 +15,8 @@ import { cn } from '../utils/cn';
 
 const FIELD_CLASS = 'px-3 py-2 bg-card text-foreground placeholder:text-muted-foreground border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring';
 
+const CATALOG_RETRY_MS = 5000;
+
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
   { key: 'extracting', label: 'Medication Extraction' },
@@ -55,19 +57,33 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
   const [currentMeds, setCurrentMeds] = useState<string>('');
 
   useEffect(() => {
-    setIsLoadingModels(true);
-    fetchModelCatalog()
-      .then(catalog => {
-        setModels(catalog);
-        setModelCatalogError(null);
-      })
-      .catch(err => {
-        console.error('Failed to fetch LLM models:', err);
-        setModelCatalogError('Could not load remote model catalog. Defaulting to automatic routing.');
-      })
-      .finally(() => {
-        setIsLoadingModels(false);
-      });
+    // isLoadingModels starts true; it is cleared only when the request settles.
+    // A failed fetch is retried: after a restart the backend needs about a minute before it
+    // answers, and one failed request would otherwise leave the model list empty until a reload.
+    let cancelled = false;
+    let retryTimer: ReturnType<typeof setTimeout> | undefined;
+    const load = () => {
+      fetchModelCatalog()
+        .then(catalog => {
+          if (cancelled) return;
+          setModels(catalog);
+          setModelCatalogError(null);
+        })
+        .catch(err => {
+          if (cancelled) return;
+          console.error('Failed to fetch LLM models:', err);
+          setModelCatalogError('Could not load remote model catalog. Defaulting to automatic routing.');
+          retryTimer = setTimeout(load, CATALOG_RETRY_MS);
+        })
+        .finally(() => {
+          if (!cancelled) setIsLoadingModels(false);
+        });
+    };
+    load();
+    return () => {
+      cancelled = true;
+      clearTimeout(retryTimer);
+    };
   }, []);
 
   const { 
@@ -79,10 +95,14 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     stageUpdates, 
     result, 
     error,
-    extractedCandidates
+    extractedCandidates,
+    extractionWarnings,
+    runInputMode,
   } = useAnalysis();
 
-  const [savedToHistory, setSavedToHistory] = useState(false);
+  // "Saved" belongs to the result that was saved, so a new result shows the button again.
+  const [savedResult, setSavedResult] = useState<AnalysisResult | null>(null);
+  const savedToHistory = result !== null && savedResult === result;
   const submitHintId = useId();
   const modelSelectId = useId();
 
@@ -90,7 +110,6 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
     if (result && onResultComplete) {
       onResultComplete(result);
     }
-    setSavedToHistory(false);
   }, [result, onResultComplete]);
 
   const handleSaveToHistory = async () => {
@@ -103,7 +122,7 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
       gateDecision: result.gate_decision || 'unknown',
       result,
     });
-    setSavedToHistory(true);
+    setSavedResult(result);
   };
 
   // Clears the result (inputs are kept so they can be adjusted) and returns to the form.
@@ -352,6 +371,16 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
                   : <Icons.runAnalysis size={16} aria-hidden="true" />}
                 {isProcessing ? 'Analyzing…' : 'Analyze Medications'}
               </button>
+              {isProcessing && (
+                // Stops waiting for this run (closes the stream; later events are ignored) and keeps the inputs.
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="px-4 py-2 text-sm font-medium rounded-lg border border-border text-foreground hover:bg-muted focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Cancel analysis
+                </button>
+              )}
               {submitHint && (
                 <p id={submitHintId} className="text-xs text-muted-foreground sm:text-right">
                   {submitHint}
@@ -369,13 +398,16 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
           currentStage={currentStage}
           updates={stageUpdates}
           processingTimeMs={result?.processing_time_ms}
+          inputMode={runInputMode ?? undefined}
         />
       )}
 
       {/* Confirmation Panel */}
-      {currentStage === 'confirming' && extractedCandidates && extractedCandidates.length > 0 && (
+      {/* Shown even with no candidates: the backend waits for a confirmation, and medications can be added by hand. */}
+      {currentStage === 'confirming' && (
         <MedicationConfirmationPanel 
           candidates={extractedCandidates}
+          warnings={extractionWarnings}
           onConfirm={confirm}
         />
       )}

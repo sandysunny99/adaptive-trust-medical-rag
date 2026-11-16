@@ -1,0 +1,9 @@
+ ✓ src/services/exportService.test.ts > exports leave patient context out > JSON export contains no patient input 2ms
+ ✓ src/services/exportService.test.ts > exports leave patient context out > Markdown export contains no patient input 1ms
+ ✓ src/services/exportService.test.ts > exports leave patient context out > does not mutate the stored entry 0ms
+ ✓ src/services/exportService.test.ts > exported evidence sources > says when a source is not a verified link 0ms
+ ✓ src/components/results/EvidenceList.test.tsx > EvidenceList source links > links a verified source to the original document in a new tab 103ms
+ ✓ src/components/results/EvidenceList.test.tsx > EvidenceList source links > shows an unverified source as text with the reason, never as a link 6ms
+ ✓ src/components/results/EvidenceList.test.tsx > EvidenceList source links > never links http://dailymed.nlm.nih.gov/x 3ms
+ ✓ src/components/results/EvidenceList.test.tsx > EvidenceList source links > never links javascript:alert(1) 2ms
+      Tests  8 passed (8)

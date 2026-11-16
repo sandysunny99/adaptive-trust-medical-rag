@@ -1,0 +1,91 @@
+== HEAD tree vs EXPECTED_BLOBS (after both patches)
+MATCH frontend/src/components/results/EvidenceList.test.tsx
+MATCH frontend/src/components/results/EvidenceList.tsx
+MATCH frontend/src/services/exportService.test.ts
+MATCH frontend/src/services/exportService.ts
+MATCH frontend/src/types/index.ts
+MATCH src/adaptive_trust_medical_rag/api/app.py
+MATCH src/adaptive_trust_medical_rag/services/live_application.py
+MATCH src/adaptive_trust_medical_rag/services/live_source_links.py
+MATCH tests/e2e/test_live_failure_semantics.py
+MATCH tests/e2e/test_live_source_links.py
+MATCH tests/e2e/test_v6_c6_image_confirmation_rxnorm.py
+MATCH tests/test_model_selector.py
+== files in the two commits
+frontend/src/components/results/EvidenceList.test.tsx
+frontend/src/components/results/EvidenceList.tsx
+frontend/src/services/exportService.test.ts
+frontend/src/services/exportService.ts
+frontend/src/types/index.ts
+src/adaptive_trust_medical_rag/api/app.py
+src/adaptive_trust_medical_rag/services/live_application.py
+src/adaptive_trust_medical_rag/services/live_source_links.py
+tests/e2e/test_live_failure_semantics.py
+tests/e2e/test_live_source_links.py
+tests/e2e/test_v6_c6_image_confirmation_rxnorm.py
+tests/test_model_selector.py
+== git log
+b5474ce feat(live): name the provider and model that served every outcome
+2947976 fix(live): link only verified evidence sources; stop Cloudflare answers being cut off
+c490393 docs(live): record the source verification, verifier wording follow-up and local-run checklist
+b5474cea2ff561ecc1df2326769ef67bb6339431 sandysunny99 <sandysunny99@users.noreply.github.com> feat(live): name the provider and model that served every outcome
+2947976e0f2b71e6b7fd48ebe3a8fb5dc04f8401 sandysunny99 <sandysunny99@users.noreply.github.com> fix(live): link only verified evidence sources; stop Cloudflare answers being cut off
+== working tree vs HEAD (ignore-cr)
+warning: in the working copy of 'reports/audit/blocked_issue_register.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'tests/providers/test_vision_backend.py', LF will be replaced by CRLF the next time Git touches it
+ .env.example                                       |  17 +-
+ experiments/runs/live-smoke-v1/case_results.jsonl  |  80 +++---
+ experiments/runs/live-smoke-v1/manifest.json       |   2 +-
+ experiments/runs/live-smoke-v1/summary.json        |   6 +-
+ reports/audit/ablation_runtime_integrity_smoke.md  |   2 +-
+ reports/audit/blocked_issue_register.md            |  22 +-
+ reports/audit/canonical_r1_verification.md         |   2 +-
+ reports/audit/five_case_validation.md              |   2 +-
+ reports/audit/live_smoke_integrity.md              |   2 +-
+ src/adaptive_trust_medical_rag/api/app.py          |  39 ++-
+ .../llm_backend/model_registry.py                  |  14 +-
+ .../llm_backend/openai_vision_backend.py           | 313 +++++++++++++++++----
+ tests/providers/test_vision_backend.py             | 266 ++++++++++++++++-
+ .../qa/TRACK_A_ANNOTATION_QA_V1.json               | 102 ++++++-
+ track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md  | 100 ++++++-
+ 15 files changed, 838 insertions(+), 131 deletions(-)
+== status
+ M .env.example
+ M experiments/runs/live-smoke-v1/case_results.jsonl
+ M experiments/runs/live-smoke-v1/manifest.json
+ M experiments/runs/live-smoke-v1/summary.json
+ M reports/audit/ablation_runtime_integrity_smoke.md
+ M reports/audit/blocked_issue_register.md
+ M reports/audit/canonical_r1_verification.md
+ M reports/audit/five_case_validation.md
+ M reports/audit/live_smoke_integrity.md
+ M src/adaptive_trust_medical_rag/api/app.py
+ M src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+ M src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+ M tests/providers/test_vision_backend.py
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md
+?? CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+?? CI_MODEL_SELECTOR_FINAL_AUDIT.md
+?? claude-incoming/
+?? cognee_service/
+?? continue-blockers.bundle
+?? redesign-fixes.bundle
+?? redesign-upload-fix.bundle
+?? reports/junit.xml
+?? reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+?? reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+?? reports/live_validation/runs/
+?? scripts/annotation/
+?? src/adaptive_trust_medical_rag/annotation/
+?? tests/annotation/
+?? track_a_annotation/ai_assisted/
+== remote
+c490393b6d4fffc5c322e0e5274344d8c6e1cf6d
+c490393b6d4fffc5c322e0e5274344d8c6e1cf6d	refs/heads/ui/3d-redesign
+== tags at HEAD
+(none above = no tag)
+== staged
+0
