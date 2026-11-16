@@ -54,6 +54,23 @@ describe('WorkspacePage Model Selector & Catalog Error Handling', () => {
     expect(screen.getByText('Automatic selection (recommended)')).toBeInTheDocument();
   });
 
+  it('Retries the catalog after a failure, so models appear once the backend is up', async () => {
+    vi.mocked(api.fetchModelCatalog)
+      .mockRejectedValueOnce(new Error('Failed to fetch model catalog: HTTP 502'))
+      .mockResolvedValueOnce([{
+        id: 'openai/gpt-oss-120b', provider: 'groq', name: 'Groq GPT-OSS 120B',
+        description: 'Open-weights model on Groq', is_available: true,
+      }]);
+
+    render(<WorkspacePage />);
+    await openAdvancedSettings();
+
+    await waitFor(() => {
+      expect(screen.getByText('Groq GPT-OSS 120B (groq)')).toBeInTheDocument();
+    }, { timeout: 8000 });
+    expect(screen.queryByText(/Could not load remote model catalog/)).not.toBeInTheDocument();
+  }, 10000);
+
   it('TEST 2: Successfully renders models with unconfigured options disabled', async () => {
     const mockModels: LLMModelInfo[] = [
       {

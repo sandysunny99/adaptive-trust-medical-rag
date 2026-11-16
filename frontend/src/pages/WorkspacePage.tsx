@@ -15,6 +15,8 @@ import { cn } from '../utils/cn';
 
 const FIELD_CLASS = 'px-3 py-2 bg-card text-foreground placeholder:text-muted-foreground border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring';
 
+const CATALOG_RETRY_MS = 5000;
+
 const PIPELINE_STAGES: { key: PipelineStage; label: string }[] = [
   { key: 'uploading', label: 'Input Processing' },
   { key: 'extracting', label: 'Medication Extraction' },
@@ -56,18 +58,32 @@ export function WorkspacePage({ onResultComplete }: WorkspacePageProps = {}) {
 
   useEffect(() => {
     // isLoadingModels starts true; it is cleared only when the request settles.
-    fetchModelCatalog()
-      .then(catalog => {
-        setModels(catalog);
-        setModelCatalogError(null);
-      })
-      .catch(err => {
-        console.error('Failed to fetch LLM models:', err);
-        setModelCatalogError('Could not load remote model catalog. Defaulting to automatic routing.');
-      })
-      .finally(() => {
-        setIsLoadingModels(false);
-      });
+    // A failed fetch is retried: after a restart the backend needs about a minute before it
+    // answers, and one failed request would otherwise leave the model list empty until a reload.
+    let cancelled = false;
+    let retryTimer: ReturnType<typeof setTimeout> | undefined;
+    const load = () => {
+      fetchModelCatalog()
+        .then(catalog => {
+          if (cancelled) return;
+          setModels(catalog);
+          setModelCatalogError(null);
+        })
+        .catch(err => {
+          if (cancelled) return;
+          console.error('Failed to fetch LLM models:', err);
+          setModelCatalogError('Could not load remote model catalog. Defaulting to automatic routing.');
+          retryTimer = setTimeout(load, CATALOG_RETRY_MS);
+        })
+        .finally(() => {
+          if (!cancelled) setIsLoadingModels(false);
+        });
+    };
+    load();
+    return () => {
+      cancelled = true;
+      clearTimeout(retryTimer);
+    };
   }, []);
 
   const { 
