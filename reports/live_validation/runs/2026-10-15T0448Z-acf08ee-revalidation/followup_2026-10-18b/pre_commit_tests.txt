@@ -1,0 +1,4 @@
+85 passed, 90 warnings in 184.76s (0:03:04)
+All checks passed!
+[main]	INFO	Using command line arg for selected targets
+bandit rc=0

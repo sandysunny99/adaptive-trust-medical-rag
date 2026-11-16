@@ -1,0 +1,26 @@
+{
+  "dataset_version": "LIVE_RELATIONSHIP_RECORDS_V2",
+  "corpus_version": "LIVE_MEDICAL_CORPUS_V2 + LIVE_RELATIONSHIP_EVIDENCE_V2",
+  "records": [
+    {
+      "record_id": "REL-LIVE-0002",
+      "supersedes_candidate": "REL-LIVE-0001",
+      "subject": {
+        "name": "simvastatin",
+        "rxcui": "36567"
+      },
+      "object": {
+        "name": "clarithromycin",
+        "rxcui": "21212"
+      },
+      "predicate": "CONTRAINDICATION",
+      "direction": "BIDIRECTIONAL",
+      "severity": "CONTRAINDICATED",
+      "source_chunk_id": "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+      "source_document_id": "SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21",
+      "source_document_url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9aaffb41-408c-4372-8fd5-1d649450c0e9",
+      "source_content_hash": "056d80091398a42518561703a00569d99f21bbe0c52352b00b049b4dac5ded23",
+      "evidence_span": "Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)]."
+    }
+  ]
+}

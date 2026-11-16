@@ -1,0 +1,4 @@
+ README.md                                          |  4 +-
+ reports/audit/blocked_issue_register.md            |  2 +
+ .../APPLICATION_FREEZE_2026-10-19.md               | 82 ++++++++++++++++++++++
+ 3 files changed, 86 insertions(+), 2 deletions(-)

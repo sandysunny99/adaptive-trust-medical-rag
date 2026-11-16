@@ -1,0 +1,2 @@
+backend start 2026-10-18T05:20:15Z commit a70c40e worktree C:/Users/sunny/freeze-verify-a70c40e port 8010
+backend restart 2026-10-18T05:22:42Z (attempt 1: momentary bind conflict on 8010)

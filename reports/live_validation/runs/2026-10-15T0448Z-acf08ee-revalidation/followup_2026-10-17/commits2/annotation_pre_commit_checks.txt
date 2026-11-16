@@ -1,0 +1,5 @@
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_engine_initialization_and_hashes
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_annotate_position_with_mock_backend
+FAILED tests/annotation/test_annotation_schemas.py::TestEngineModule::test_annotate_batch_with_progress
+3 failed, 35 passed in 6.46s
+All checks passed!

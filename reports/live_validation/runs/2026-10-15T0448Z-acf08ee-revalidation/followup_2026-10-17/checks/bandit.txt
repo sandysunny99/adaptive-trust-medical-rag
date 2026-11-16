@@ -1,0 +1,3 @@
+
+OK - Bandit: no medium/high severity issues
+rc=0

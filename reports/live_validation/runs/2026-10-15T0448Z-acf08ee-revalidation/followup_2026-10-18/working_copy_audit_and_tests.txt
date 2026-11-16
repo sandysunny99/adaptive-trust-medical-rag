@@ -1,0 +1,9 @@
+== audit --check (working copy)
+pinned   track_a_annotation/reconciliation/canonical_v2/TRACK_A_CANONICAL_REGISTRY_V2.json
+pinned   track_a_annotation/reconciliation/canonical_v2/TRACK_A_CANONICAL_STATE_V2.jsonl
+310 file(s) recorded in CRLF form, 0 not pinned to eol=crlf
+rc=0
+== frozen-hash tests (working copy)
+FAILED tests/test_frozen_hash_reproducibility.py::test_frozen_artifact_hash_reproduces[experiments/architecture_baseline/FREE_REPLICATION_V1_MANIFEST.json]
+FAILED tests/test_frozen_hash_reproducibility.py::test_frozen_artifact_hash_reproduces[experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt]
+2 failed, 17 passed in 4.60s

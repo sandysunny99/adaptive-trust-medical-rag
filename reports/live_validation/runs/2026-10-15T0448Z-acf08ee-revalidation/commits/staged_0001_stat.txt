@@ -1,0 +1,12 @@
+ .../src/components/results/EvidenceList.test.tsx   |  56 ++++++++++
+ frontend/src/components/results/EvidenceList.tsx   | 118 +++++++++++++--------
+ frontend/src/services/exportService.test.ts        |  16 +++
+ frontend/src/services/exportService.ts             |   3 +-
+ frontend/src/types/index.ts                        |   5 +
+ src/adaptive_trust_medical_rag/api/app.py          |   5 +-
+ .../services/live_application.py                   |  40 ++++++-
+ .../services/live_source_links.py                  |  74 +++++++++++++
+ tests/e2e/test_live_failure_semantics.py           |  54 +++++++++-
+ tests/e2e/test_live_source_links.py                |  83 +++++++++++++++
+ tests/test_model_selector.py                       |  10 ++
+ 11 files changed, 410 insertions(+), 54 deletions(-)

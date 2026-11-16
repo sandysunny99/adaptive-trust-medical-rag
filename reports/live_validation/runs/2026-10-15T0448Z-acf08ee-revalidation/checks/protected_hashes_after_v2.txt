@@ -1,0 +1,21 @@
+.env.example: OK
+experiments/runs/live-smoke-v1/case_results.jsonl: OK
+experiments/runs/live-smoke-v1/manifest.json: OK
+experiments/runs/live-smoke-v1/summary.json: OK
+reports/audit/ablation_runtime_integrity_smoke.md: OK
+reports/audit/canonical_r1_verification.md: OK
+reports/audit/five_case_validation.md: OK
+reports/audit/live_smoke_integrity.md: OK
+src/adaptive_trust_medical_rag/api/app.py: FAILED
+src/adaptive_trust_medical_rag/llm_backend/model_registry.py: OK
+src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py: OK
+tests/providers/test_vision_backend.py: OK
+track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json: OK
+track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md: OK
+data/live_medical/LIVE_MEDICAL_CORPUS_V2.json: OK
+data/live_medical/LIVE_MEDICAL_CORPUS_MANIFEST_V2.json: OK
+data/live_medical/relationships/LIVE_RELATIONSHIP_RECORDS_V1.json: OK
+data/live_medical/relationships/LIVE_RELATIONSHIP_RECORDS_V1_MANIFEST.json: OK
+src/adaptive_trust_medical_rag/verification/canonical_identity.py: OK
+src/adaptive_trust_medical_rag/verification/claim_verifier_v2.py: OK
+sha256sum: WARNING: 1 computed checksum did NOT match

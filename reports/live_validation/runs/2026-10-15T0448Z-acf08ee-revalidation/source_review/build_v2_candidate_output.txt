@@ -1,0 +1,12 @@
+{
+  "chunk_id": "DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1",
+  "content_hash": "056d80091398a42518561703a00569d99f21bbe0c52352b00b049b4dac5ded23",
+  "raw_span_sha256": "1bc9541f93d8836b01c1032df2794ab719b8064aa34abf38a22ee2fb7ecce874",
+  "records_sha256": "aefc2c837d5d1b2306e45c755f9b16e9bfa4bd10b764738fc9cda1e6be8e8a26",
+  "embedding_dims": 384,
+  "text": "Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)].",
+  "validation": {
+    "validate_record_against_supplement_chunk": "valid",
+    "validate_record_against_frozen_corpus_only": "source chunk DAILYMED-SPL-9aaffb41-408c-4372-8fd5-1d649450c0e9-V21-S4.5-P1 is not in the live corpus"
+  }
+}

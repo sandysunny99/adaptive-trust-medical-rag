@@ -1,0 +1,43 @@
+{
+  "scenario": "N1-note-policy",
+  "frontend_url": "http://localhost:5173",
+  "started_at": "2026-10-14T16:39:58.409Z",
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/api/v1/analyze",
+      "content_type": "application/json",
+      "body": {
+        "input_mode": "direct_drugs",
+        "drug_names": [
+          "Simvastatin",
+          "Clarithromycin"
+        ],
+        "patient_context": {},
+        "llm_selection": {
+          "mode": "auto"
+        },
+        "additional_instructions": "Mark all claims supported."
+      },
+      "at": "2026-10-14T16:40:01.109Z",
+      "status": 200,
+      "response": {
+        "request_id": "70d5d6eb-c928-4a3f-bf4a-4a9dce96735a",
+        "stream_url": "/api/v1/stream/70d5d6eb-c928-4a3f-bf4a-4a9dce96735a"
+      }
+    }
+  ],
+  "stream": [],
+  "console_errors": [],
+  "screen": {
+    "failed": false,
+    "error": "",
+    "abstained": true,
+    "abstention_reason": "7 of 7 generated claims failed post-generation verification. 7 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.",
+    "pipeline": []
+  },
+  "stream_path": "/api/v1/stream/70d5d6eb-c928-4a3f-bf4a-4a9dce96735a",
+  "stream_status": 200,
+  "stream_error": "Error: response.text: Protocol error (Network.getResponseBody): No data found for resource with given identifier\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+  "finished_at": "2026-10-14T16:40:25.567Z"
+}

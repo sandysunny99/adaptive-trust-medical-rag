@@ -1,0 +1,9 @@
+== variant: -text
+i/lf    w/crlf  attr/-text            	experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt
+(empty status line = unmodified)
+== variant: text eol=lf
+i/lf    w/crlf  attr/text eol=lf      	experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt
+(empty status line = unmodified)
+index blob: 45026b54b538f3a6564e027d35587eb2f14d36cf
+variant '-text': working file through attributes -> edafeaf2c696b5116cbacdbb45d34061615e27ef  DIFFERS (would show modified)
+variant 'text eol=lf': working file through attributes -> 45026b54b538f3a6564e027d35587eb2f14d36cf  EQUALS blob (unmodified)

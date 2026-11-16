@@ -1,0 +1,25 @@
+spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml bytes_ok True sha_ok True
+spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9_history.json bytes_ok True sha_ok True
+spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml bytes_ok True sha_ok True
+spl_9aaffb41-408c-4372-8fd5-1d649450c0e9_history.json bytes_ok True sha_ok True
+rxnav_36567_properties.json bytes_ok True sha_ok True
+rxnav_21212_properties.json bytes_ok True sha_ok True
+span_sha256 1bc9541f93d8836b01c1032df2794ab719b8064aa34abf38a22ee2fb7ecce874 len 458
+raw_has_tags True
+SPAN_TEXT: Concomitant administration of clarithromycin tablets with HMG-CoA reductase inhibitors (statins) that are extensively metabolized by CYP3A4 (lovastatin or simvastatin) is contraindicated, due to the increased risk of myopathy, including rhabdomyolysis [see Warnings and Precautions (5.4) and Drug Interactions (7)].
+BEFORE: b'raph>\n                        <br/>\n                        '
+AFTER: b'\n                     </text>\n          '
+b'<setId root="9aaffb41-408c-4372-8fd5-1d649450c0e9"/>\n   <versionNumber value="21"/>\n   <au'
+b'<versionNumber value="21"/>\n   <author>\n      <time/>\n      <assignedEntity>\n         <rep'
+b'<effectiveTime value="20231010"/>\n   <setId root="9aaffb41-408c-4372-8fd5-1d649450c0e9"/>\n'
+preceding_title: 4.5 Lomitapide, Lovastatin, and Simvastatin
+                     
+                        Concomitant administration of 
+preceding_title: 4.4 Colchicine
+                     
+                        Concomitant administration of clarithromycin tablets and co
+preceding_title: 4.3 Cholestatic Jaundice/Hepatic Dysfunction
+                     
+                        Clarithromycin tablets are co
+{"properties":{"rxcui":"36567","name":"simvastatin","synonym":"","tty":"IN","language":"ENG","suppress":"N","umlscui":""}}
+{"properties":{"rxcui":"21212","name":"clarithromycin","synonym":"","tty":"IN","language":"ENG","suppress":"N","umlscui":""}}

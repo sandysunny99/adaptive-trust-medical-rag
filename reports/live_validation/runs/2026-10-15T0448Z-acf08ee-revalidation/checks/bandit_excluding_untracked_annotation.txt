@@ -1,0 +1,3 @@
+[main]	INFO	Using ini file for skipped tests
+[main]	INFO	Using command line arg for selected targets
+rc=0

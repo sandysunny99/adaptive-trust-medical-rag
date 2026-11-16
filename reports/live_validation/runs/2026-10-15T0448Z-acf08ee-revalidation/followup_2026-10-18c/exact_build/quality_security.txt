@@ -1,0 +1,19 @@
+== ruff
+All checks passed!
+rc=0
+== run_bandit.py
+OK - Bandit: no medium/high severity issues
+rc=0
+== verify_v3_1_integrity
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== verify_v3_confirmed_separation
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== audit --check
+311 file(s) recorded in CRLF form, 0 not pinned to eol=crlf
+rc=0
+== gitleaks over a0321d8..9bae325
+[90m10:25PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== status after checks: []

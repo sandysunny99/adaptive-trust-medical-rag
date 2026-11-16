@@ -1,0 +1,10 @@
+== /c/Users/sunny/freeze-verify-c71ed1f c71ed1f
+i/lf    w/crlf  attr/text eol=crlf    	experiments/architecture_baseline/FREE_REPLICATION_V1_MANIFEST.json
+i/lf    w/lf    attr/text eol=lf      	experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt
+i/lf    w/crlf  attr/                 	src/adaptive_trust_medical_rag/cli.py
+i/lf    w/crlf  attr/text eol=crlf    	track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt
+== /c/Users/sunny/freeze-verify-c71ed1f-lf c71ed1f
+i/lf    w/crlf  attr/text eol=crlf    	experiments/architecture_baseline/FREE_REPLICATION_V1_MANIFEST.json
+i/lf    w/lf    attr/text eol=lf      	experiments/prompts/REAL_LLM_EVALUATION_PROMPT_V1_2.txt
+i/lf    w/lf    attr/                 	src/adaptive_trust_medical_rag/cli.py
+i/lf    w/crlf  attr/text eol=crlf    	track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt

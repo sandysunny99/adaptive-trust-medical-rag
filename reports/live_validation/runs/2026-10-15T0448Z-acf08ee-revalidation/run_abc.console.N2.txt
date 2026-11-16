@@ -1,0 +1,5 @@
+[N2-note-injection] requests: [{"m":"POST","p":"/api/v1/analyze","s":200,"sel":{"mode":"auto"}}]
+[N2-note-injection] events captured in page: 2; over the network: 2
+[N2-note-injection] retrieval: null
+[N2-note-injection] terminal: [{"event":"error","code":"INPUT_REJECTED","reason":"The additional instructions did not pass security checks. Remove instructions aimed at the system, markup or personal identifiers and retry."}]
+rc=0

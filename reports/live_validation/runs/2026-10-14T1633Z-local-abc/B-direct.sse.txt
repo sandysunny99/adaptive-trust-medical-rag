@@ -1,0 +1,60 @@
+event: stage_update
+data: {"stage": "uploading", "status": "running", "message": "Sanitizing input...", "timestamp": "2026-10-14T16:38:58.758965+00:00"}
+
+event: stage_update
+data: {"stage": "uploading", "status": "complete", "message": "2 drug(s) accepted", "timestamp": "2026-10-14T16:38:58.761351+00:00"}
+
+event: stage_update
+data: {"stage": "normalizing", "status": "running", "message": "Resolving drug entities via RxNorm...", "timestamp": "2026-10-14T16:38:58.761945+00:00"}
+
+event: rxnorm
+data: {"entities": [{"raw_text": "Simvastatin", "canonical_name": "simvastatin", "rxcui": "36567", "brand_name": null, "formulation": null, "confidence": 1.0, "source": "rxnorm_exact", "confirmation_status": null, "raw_detected_name": null, "status": "MATCHED"}, {"raw_text": "Clarithromycin", "canonical_name": "clarithromycin", "rxcui": "21212", "brand_name": null, "formulation": null, "confidence": 1.0, "source": "rxnorm_exact", "confirmation_status": null, "raw_detected_name": null, "status": "MATCHED"}], "overall_status": "RESOLVED"}
+
+event: stage_update
+data: {"stage": "normalizing", "status": "complete", "timestamp": "2026-10-14T16:39:03.439993+00:00"}
+
+event: stage_update
+data: {"stage": "retrieving", "status": "running", "message": "Retrieving evidence...", "timestamp": "2026-10-14T16:39:03.440505+00:00"}
+
+event: retrieval
+data: {"evidence_count": 14, "sources": ["PUBMED", "OPENFDA", "DAILYMED"], "corpus": "LIVE_MEDICAL_CORPUS_V2", "embedding_model": "all-MiniLM-L6-v2", "embedding_mode": "real"}
+
+event: stage_update
+data: {"stage": "retrieving", "status": "complete", "timestamp": "2026-10-14T16:39:03.489644+00:00"}
+
+event: stage_update
+data: {"stage": "security_checking", "status": "running", "timestamp": "2026-10-14T16:39:03.491657+00:00"}
+
+event: security
+data: {"injection_status": "ALLOW", "poisoning_status": "ALLOW", "poisoning_reason": null}
+
+event: stage_update
+data: {"stage": "security_checking", "status": "complete", "timestamp": "2026-10-14T16:39:03.493170+00:00"}
+
+event: stage_update
+data: {"stage": "trust_evaluating", "status": "running", "timestamp": "2026-10-14T16:39:03.493170+00:00"}
+
+event: trust
+data: {"overall_score": 0.935, "threshold": 0.6, "risk_class": "R2", "risk_basis": "a multi-drug interaction question with no approved severe relationship record", "is_eligible": true, "unrelated_excluded": 13, "factors": {"source_authority": 0.95, "query_relevance": 0.85, "evidence_quality": 0.95, "freshness": 0.9, "consistency": 1.0, "entity_match": 1.0, "population_match": 0.8, "anti_poisoning": 1.0, "anti_injection": 1.0}, "missing_factors": []}
+
+event: stage_update
+data: {"stage": "trust_evaluating", "status": "complete", "timestamp": "2026-10-14T16:39:03.495182+00:00"}
+
+event: stage_update
+data: {"stage": "generating", "status": "running", "timestamp": "2026-10-14T16:39:03.495182+00:00"}
+
+event: stage_update
+data: {"stage": "generating", "status": "complete", "timestamp": "2026-10-14T16:39:18.688926+00:00"}
+
+event: stage_update
+data: {"stage": "claim_verifying", "status": "running", "timestamp": "2026-10-14T16:39:18.688926+00:00"}
+
+event: stage_update
+data: {"stage": "claim_verifying", "status": "complete", "timestamp": "2026-10-14T16:39:24.746902+00:00"}
+
+event: stage_update
+data: {"stage": "safety_gating", "status": "running", "timestamp": "2026-10-14T16:39:24.748921+00:00"}
+
+event: abstention
+data: {"reason": "6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.", "claims": [{"claim_id": 0, "field": "conclusion", "item_index": null, "text": "Verified evidence indicates that simvastatin is a cholesterol-lowering medication and that concomitant use with clarithromycin, a strong CYP3A4 inhibitor, is contraindicated due to increased risk of myopathy and rhabdomyolysis. No patient-specific data were provided. Clinicians should avoid co-prescribing these medications and consider alternative therapies or dosing adjustments, monitoring for signs of muscle toxicity if co-administration is unavoidable. This summary is based solely on the provided evidence and does not constitute medical advice. The information provided is for educational purposes only and should not be used as a substitute for professional medical judgment.", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9996470212936401, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}, {"claim_id": 1, "field": "interactions", "item_index": 0, "text": "simvastatin interacts with clarithromycin; CYP3A4 inhibition leading to increased simvastatin exposure; Increased risk of myopathy and rhabdomyolysis; severity serious [Source 1].", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9994719624519348, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}, {"claim_id": 2, "field": "warnings", "item_index": 0, "text": "Concomitant use of simvastatin with strong CYP3A4 inhibitors such as clarithromycin is contraindicated due to increased risk of myopathy and rhabdomyolysis [Source 1]", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9998273849487305, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}, {"claim_id": 3, "field": "claims_for_verification", "item_index": 0, "text": "Simvastatin is a cholesterol-lowering medication.", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9997956156730652, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}, {"claim_id": 4, "field": "claims_for_verification", "item_index": 1, "text": "Clarithromycin is a strong CYP3A4 inhibitor.", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9997920393943787, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}, {"claim_id": 5, "field": "claims_for_verification", "item_index": 2, "text": "Concomitant use of simvastatin with clarithromycin is contraindicated due to increased risk of myopathy and rhabdomyolysis.", "support_state": "UNSUPPORTED", "verifier_decision": "qualify", "citation_present": true, "entailment": 0.9998239874839783, "canonical_identity_status": "UNAVAILABLE", "canonical_identity_reason": "Source canonical identity not available"}], "removed_disclaimers": [], "evidence": [{"chunk_id": "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01", "document_id": "SPL-SIMVASTATIN-001", "source_type": "DAILYMED", "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-simvastatin", "title": "Evidence [Source 1]", "text": "Simvastatin is a cholesterol-lowering medication. CONTRAINDICATIONS: Concomitant administration of strong CYP3A4 inhibitors (e.g., itraconazole, ketoconazole, posaconazole, voriconazole, HIV protease inhibitors, boceprevir, telaprevir, erythromycin, clarithromycin, telithromycin) is contraindicated due to increased risk of myopathy and rhabdomyolysis.", "source_authority": 0.95, "trust_score": 0.935, "freshness": 0.9, "retrieval_method": "hybrid-rrf", "provenance_status": "RETRIEVED"}], "evidence_retrieved": 14, "trust": {"overall_score": 0.935, "threshold": 0.6, "risk_class": "R2", "risk_basis": "a multi-drug interaction question with no approved severe relationship record", "is_eligible": true}}
+

@@ -1,0 +1,5 @@
+[{"t":21.5,"type":"stage_update","stage":"extracting","status":"running"},
+ {"t":81.9,"type":"stage_update","stage":"extracting","status":"failed"},
+ {"t":81.9,"type":"error","code":"VISION_EXTRACTION_ERROR","model":"meta/llama-3.2-11b-vision-instruct",
+  "attempts":[{"model":"meta/llama-3.2-11b-vision-instruct","outcome":"failed","failure_class":"TIMEOUT","status_code":"TIMEOUT","elapsed_ms":30485},
+              {"model":"meta/llama-3.2-11b-vision-instruct","outcome":"failed","failure_class":"TIMEOUT","status_code":"TIMEOUT","elapsed_ms":30250}]}]

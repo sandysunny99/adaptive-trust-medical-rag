@@ -1,0 +1,13 @@
+== remove clean test worktrees (no --force)
+removed freeze-verify-bafc083
+removed freeze-verify-a70c40e
+removed freeze-verify-a70c40e-lf
+removed freeze-verify-a0321d8
+removed freeze-verify-9bae325
+== delete regenerable caches and build output (all git-ignored or untracked caches)
+deleted .pytest_cache
+deleted .ruff_cache
+deleted frontend/dist
+deleted 44 __pycache__ directories
+== status unchanged?
+25

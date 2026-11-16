@@ -1,0 +1,72 @@
+== origin tip after fetch: c490393b6d4fffc5c322e0e5274344d8c6e1cf6d
+origin/ui/3d-redesign is an ancestor of HEAD (fast-forward possible)
+== unpublished commits
+9bae325 sandysunny99 2026-10-18 test(vision): reject invalid content inside a code fence
+a0321d8 sandysunny99 2026-10-18 feat(nvidia): separate NVIDIA LLM and vision credentials; parse vision output strictly
+a70c40e sandysunny99 2026-10-18 fix: pin the LF-hashed Phase 2f5 runner so its frozen hash reproduces on Windows
+c71ed1f sandysunny99 2026-10-18 fix: make frozen artifact hashes reproduce on LF checkouts
+bafc083 sandysunny99 2026-10-17 fix(annotation): verify frozen Track A prompts against their raw bytes
+f58e8a8 sandysunny99 2026-10-17 feat(annotation): add the Track A AI-assisted annotation package, scripts and tests
+5704c33 sandysunny99 2026-10-17 fix(cli): stop test and simulation runs overwriting committed run evidence
+bf29fe8 sandysunny99 2026-10-17 feat(live): load approved V2 relationship records with their own versioned evidence
+8d7f21e sandysunny99 2026-10-17 fix(ci): run the secret-scan hook's gitleaks step with flags gitleaks 8.30 accepts
+b5474ce sandysunny99 2026-10-15 feat(live): name the provider and model that served every outcome
+2947976 sandysunny99 2026-10-15 fix(live): link only verified evidence sources; stop Cloudflare answers being cut off
+== files changed in the unpublished range (name-status)
+M	.agents/scripts/ci/pre_commit_secret_scan.py
+M	.gitattributes
+A	frontend/src/components/results/EvidenceList.test.tsx
+M	frontend/src/components/results/EvidenceList.tsx
+M	frontend/src/services/exportService.test.ts
+M	frontend/src/services/exportService.ts
+M	frontend/src/types/index.ts
+A	scripts/annotation/__init__.py
+A	scripts/annotation/commit_decisions.py
+A	scripts/annotation/common.py
+A	scripts/annotation/review_recommendations.py
+A	scripts/annotation/run_ai_annotation.py
+A	scripts/audit_frozen_hash_line_endings.py
+A	src/adaptive_trust_medical_rag/annotation/__init__.py
+A	src/adaptive_trust_medical_rag/annotation/commit.py
+A	src/adaptive_trust_medical_rag/annotation/engine.py
+A	src/adaptive_trust_medical_rag/annotation/loader.py
+A	src/adaptive_trust_medical_rag/annotation/reviewer.py
+A	src/adaptive_trust_medical_rag/annotation/schemas.py
+M	src/adaptive_trust_medical_rag/api/app.py
+M	src/adaptive_trust_medical_rag/cli.py
+M	src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+M	src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+M	src/adaptive_trust_medical_rag/services/live_application.py
+M	src/adaptive_trust_medical_rag/services/live_relationships.py
+A	src/adaptive_trust_medical_rag/services/live_source_links.py
+A	tests/annotation/__init__.py
+A	tests/annotation/test_annotation_schemas.py
+M	tests/e2e/test_live_failure_semantics.py
+A	tests/e2e/test_live_relationship_evidence_v2.py
+A	tests/e2e/test_live_source_links.py
+M	tests/e2e/test_v6_c6_image_confirmation_rxnorm.py
+M	tests/providers/test_vision_backend.py
+A	tests/test_annotation_engine_backend_init.py
+A	tests/test_annotation_prompt_hashes.py
+A	tests/test_ci_secret_scan_gitleaks.py
+M	tests/test_cli.py
+A	tests/test_frozen_hash_reproducibility.py
+M	tests/test_model_selector.py
+== diff stat
+ 39 files changed, 5908 insertions(+), 147 deletions(-)
+== env-like / secret-like paths in range
+.agents/scripts/ci/pre_commit_secret_scan.py
+tests/test_ci_secret_scan_gitleaks.py
+== protected paths changed in range
+ .../services/live_relationships.py                 | 120 ++++++++++++++++++++-
+ 1 file changed, 118 insertions(+), 2 deletions(-)
+== gitleaks over the full unpublished range
+[90m10:45PM[0m [32mINF[0m [1mscanned ~246143 bytes (246.14 KB) in 600ms[0m
+[90m10:45PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== gitleaks over the whole branch history (default rules + project config)
+[90m10:45PM[0m [32mINF[0m [1mscanned ~161721222 bytes (161.72 MB) in 19.3s[0m
+[90m10:45PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== tracked files that match .gitignore
+(end)

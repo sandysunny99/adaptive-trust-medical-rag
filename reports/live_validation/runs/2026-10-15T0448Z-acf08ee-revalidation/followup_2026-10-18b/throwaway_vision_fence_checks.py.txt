@@ -1,0 +1,62 @@
+"""Throwaway checks (not committed) for vision reply shapes the committed tests do not cover.
+
+Run against the committed code: PYTHONPATH=<worktree>/src python -m pytest -q this_file
+Each bad shape must raise ModelExecutionError with failure_class SCHEMA_ERROR, both from the
+parser and through OpenAIVisionBackend.extract_medications; good shapes must parse to the schema.
+"""
+import asyncio
+import json
+from unittest.mock import MagicMock, patch
+
+import pytest
+
+from adaptive_trust_medical_rag.llm_backend.openai_vision_backend import (
+    OpenAIVisionBackend,
+    _parse_and_validate_vision_response,
+)
+from adaptive_trust_medical_rag.llm_backend.provider_errors import ModelExecutionError
+from adaptive_trust_medical_rag.llm_routing.types import FailureClass
+
+GOOD = {"raw_text": "Rx: Simvastatin 40 mg; Clarithromycin 500 mg",
+        "candidate_medications": [{"raw_text": "Simvastatin", "normalized_text": "simvastatin", "confidence": "HIGH"}],
+        "warnings": []}
+
+BAD = {
+    "malformed_json_in_fence": '```json\n{"candidate_medications": [{"raw_text": "Simvastatin",}\n```',
+    "prose_in_fence": "```json\nThe image shows Simvastatin and Clarithromycin.\n```",
+    "nested_fences": '```json\n```json\n{"candidate_medications": []}\n```\n```',
+    "schema_invalid_in_fence_missing_field": '```json\n{"raw_text": "x", "warnings": []}\n```',
+    "schema_invalid_in_fence_list_type": '```json\n{"candidate_medications": "Simvastatin"}\n```',
+    "schema_invalid_in_fence_candidate_name": '```json\n{"candidate_medications": [{"raw_text": "", "confidence": "HIGH"}]}\n```',
+    "unclosed_fence": '```json\n{"candidate_medications": []}',
+}
+
+
+@pytest.mark.parametrize("name", sorted(BAD))
+def test_parser_rejects(name):
+    with pytest.raises(ModelExecutionError) as exc:
+        _parse_and_validate_vision_response(BAD[name])
+    assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
+
+
+def run_backend(content: str):
+    backend = OpenAIVisionBackend(base_url="https://example.invalid/v1", api_key="test-key", model_name="m")
+    resp = MagicMock(status_code=200)
+    resp.json.return_value = {"choices": [{"message": {"content": content}}]}
+    with patch("httpx.AsyncClient.post", return_value=resp):
+        return asyncio.run(backend.extract_medications(b"\x89PNG fake", "image/png"))
+
+
+@pytest.mark.parametrize("name", sorted(BAD))
+def test_backend_rejects(name):
+    with pytest.raises(ModelExecutionError) as exc:
+        run_backend(BAD[name])
+    assert exc.value.failure_class == FailureClass.SCHEMA_ERROR
+
+
+@pytest.mark.parametrize("content", [json.dumps(GOOD), f"```json\n{json.dumps(GOOD)}\n```", f"```\n{json.dumps(GOOD)}\n```"])
+def test_good_shapes_parse_to_the_schema(content):
+    result = run_backend(content)
+    assert [c.raw_text for c in result.candidate_medications] == ["Simvastatin"]
+    assert result.candidate_medications[0].normalized_text == "simvastatin"
+    assert result.raw_text.startswith("Rx:")

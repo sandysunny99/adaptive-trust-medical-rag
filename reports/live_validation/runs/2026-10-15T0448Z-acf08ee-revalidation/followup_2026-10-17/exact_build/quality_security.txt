@@ -1,0 +1,25 @@
+== ruff (worktree bafc083)
+All checks passed!
+rc=0
+== run_bandit.py (worktree bafc083)
+
+OK - Bandit: no medium/high severity issues
+rc=0
+== verify_v3_1_integrity
+Checking query separation for V3.1 True Confirmed...
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== verify_v3_confirmed_separation
+Checking query separation for V3.1 Confirmed...
+PASS: No exact query leakage detected. Acquisition and Evaluation sets are independent.
+rc=0
+== hook allow/deny (worktree)
+OK - secret_scan hook: allow for clean code
+rc=0
+OK - secret_scan hook: deny for code with fake token
+rc=0
+== gitleaks over c490393..bafc083
+[90m10:44PM[0m [32mINF[0m [1mscanned ~212131 bytes (212.13 KB) in 723ms[0m
+[90m10:44PM[0m [32mINF[0m [1mno leaks found[0m
+rc=0
+== status after checks: []

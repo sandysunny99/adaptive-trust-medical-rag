@@ -1,0 +1,5 @@
+[B-direct-nvidia] requests: [{"m":"POST","p":"/api/v1/analyze","s":200,"sel":{"mode":"manual","model_id":"nvidia/nemotron-3-super-120b-a12b"}}]
+[B-direct-nvidia] events captured in page: 16; over the network: 16
+[B-direct-nvidia] retrieval: {"evidence_count":14,"sources":["OPENFDA","PUBMED","DAILYMED"],"corpus":"LIVE_MEDICAL_CORPUS_V2","embedding_model":"all-MiniLM-L6-v2","embedding_mode":"real"}
+[B-direct-nvidia] terminal: [{"event":"error","code":"LLM_ERROR","served_by":null,"reason":"nvidia timeout: "}]
+rc=0

@@ -1,0 +1,44 @@
+ M .env.example
+ M experiments/runs/live-smoke-v1/case_results.jsonl
+ M experiments/runs/live-smoke-v1/manifest.json
+ M experiments/runs/live-smoke-v1/summary.json
+ M frontend/src/components/results/EvidenceList.tsx
+ M frontend/src/services/exportService.test.ts
+ M frontend/src/services/exportService.ts
+ M frontend/src/types/index.ts
+ M reports/audit/ablation_runtime_integrity_smoke.md
+ M reports/audit/canonical_r1_verification.md
+ M reports/audit/five_case_validation.md
+ M reports/audit/live_smoke_integrity.md
+ M src/adaptive_trust_medical_rag/api/app.py
+ M src/adaptive_trust_medical_rag/llm_backend/model_registry.py
+ M src/adaptive_trust_medical_rag/llm_backend/openai_vision_backend.py
+ M src/adaptive_trust_medical_rag/services/live_application.py
+ M tests/e2e/test_live_failure_semantics.py
+ M tests/e2e/test_v6_c6_image_confirmation_rxnorm.py
+ M tests/providers/test_vision_backend.py
+ M tests/test_model_selector.py
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.json
+ M track_a_annotation/qa/TRACK_A_ANNOTATION_QA_V1.md
+?? CI_FINAL_FORENSIC_AND_MODEL_SELECTION_REPORT.md
+?? CI_MODEL_SELECTOR_FINAL_AUDIT.md
+?? claude-incoming/
+?? cognee_service/
+?? continue-blockers.bundle
+?? frontend/src/components/results/EvidenceList.test.tsx
+?? redesign-fixes.bundle
+?? redesign-upload-fix.bundle
+?? reports/junit.xml
+?? reports/live_validation/FINAL_LIVE_INTEGRATION_VALIDATION_2026-10-12.md
+?? reports/live_validation/FINAL_UI_HISTORY_EXPORT_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_FINAL_SAFETY_AUDIT_2026-10-13.md
+?? reports/live_validation/NVIDIA_VISION_SCHEMA_REMEDIATION_2026-10-12.md
+?? reports/live_validation/runs/
+?? scripts/annotation/
+?? src/adaptive_trust_medical_rag/annotation/
+?? src/adaptive_trust_medical_rag/services/live_source_links.py
+?? tests/annotation/
+?? tests/e2e/test_live_source_links.py
+?? track_a_annotation/ai_assisted/
+c490393b6d4fffc5c322e0e5274344d8c6e1cf6d
+ui/3d-redesign

@@ -1,0 +1,10 @@
+== frozen hash file vs HEAD (empty = unchanged)
+3cbd7fad5ee52c54b62f0edbb6d598323436d4ed
+== audit script from 1ec75d1 (run from scratch with repo root as cwd)
+REPO_ROOT = Path(__file__).resolve().parent.parent
+== audit (report mode) on ui/3d-redesign working copy
+rc=0
+UNPINNED track_a_annotation/reconciliation/canonical_v2/TRACK_A_CANONICAL_STATE_V2.jsonl
+310 file(s) recorded in CRLF form, 309 not pinned to eol=crlf
+== Track A prompt lines in the report
+308:pinned   track_a_annotation/decision_batches/TRACK_A_LLM_ADJUDICATION_PROMPT_V2.txt

@@ -1,0 +1,15 @@
+ scripts/annotation/__init__.py                     |   4 +
+ scripts/annotation/commit_decisions.py             | 261 +++++++
+ scripts/annotation/common.py                       | 315 ++++++++
+ scripts/annotation/review_recommendations.py       | 445 ++++++++++++
+ scripts/annotation/run_ai_annotation.py            | 674 +++++++++++++++++
+ .../annotation/__init__.py                         |  73 ++
+ .../annotation/commit.py                           | 173 +++++
+ .../annotation/engine.py                           | 377 ++++++++++
+ .../annotation/loader.py                           | 131 ++++
+ .../annotation/reviewer.py                         | 237 ++++++
+ .../annotation/schemas.py                          | 335 +++++++++
+ tests/annotation/__init__.py                       |   1 +
+ tests/annotation/test_annotation_schemas.py        | 809 +++++++++++++++++++++
+ tests/test_annotation_engine_backend_init.py       |  84 +++
+ 14 files changed, 3919 insertions(+)

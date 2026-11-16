@@ -1,0 +1,257 @@
+{
+  "scenarios": [
+    {
+      "scenario": "A-image",
+      "runner": "run_abc.mjs v2 (browser, in-page stream capture)",
+      "started_at": "2026-10-18T10:57:07.353Z",
+      "input_mode": "prescription_image",
+      "requests": [
+        {
+          "method": "POST",
+          "path": "/api/v1/analyze/prescription",
+          "status": 200
+        },
+        {
+          "method": "POST",
+          "path": "/api/v1/analyze/58cc2f09-5101-411e-b4b1-773d1184944e/confirm",
+          "status": 200
+        }
+      ],
+      "patient_context_sent": null,
+      "additional_instructions_sent": null,
+      "confirm_payload": {
+        "confirmed_medications": [
+          {
+            "name": "Simvastatin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Simvastatin"
+          },
+          {
+            "name": "Clarithromycin",
+            "status": "CONFIRMED",
+            "source": "VISION",
+            "raw_detected_name": "Clarithromycin"
+          }
+        ]
+      },
+      "confirm_status": 200,
+      "candidates_extracted": [
+        {
+          "id": "ocr-0",
+          "raw_text": "Simvastatin",
+          "normalized_text": "Simvastatin",
+          "confidence": "HIGH",
+          "status": "DETECTED",
+          "source": "VISION"
+        },
+        {
+          "id": "ocr-1",
+          "raw_text": "Clarithromycin",
+          "normalized_text": "Clarithromycin",
+          "confidence": "HIGH",
+          "status": "DETECTED",
+          "source": "VISION"
+        }
+      ],
+      "vision": {
+        "vision_provider": "nvidia_vision",
+        "vision_model": "meta/llama-3.2-11b-vision-instruct"
+      },
+      "rxnorm": {
+        "entities": [
+          {
+            "raw_text": "Simvastatin",
+            "canonical_name": "simvastatin",
+            "rxcui": "36567",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "VISION",
+            "rxnorm_source": "rxnorm_exact",
+            "confirmation_status": "CONFIRMED",
+            "raw_detected_name": "Simvastatin",
+            "status": "MATCHED"
+          },
+          {
+            "raw_text": "Clarithromycin",
+            "canonical_name": "clarithromycin",
+            "rxcui": "21212",
+            "brand_name": null,
+            "formulation": null,
+            "confidence": 1,
+            "source": "VISION",
+            "rxnorm_source": "rxnorm_exact",
+            "confirmation_status": "CONFIRMED",
+            "raw_detected_name": "Clarithromycin",
+            "status": "MATCHED"
+          }
+        ],
+        "overall_status": "RESOLVED"
+      },
+      "retrieval": {
+        "evidence_count": 14,
+        "sources": [
+          "DAILYMED",
+          "PUBMED",
+          "OPENFDA"
+        ],
+        "corpus": "LIVE_MEDICAL_CORPUS_V2",
+        "relationship_evidence_chunks": [],
+        "embedding_model": "all-MiniLM-L6-v2",
+        "embedding_mode": "real"
+      },
+      "embedding_mode": "real",
+      "embedding_model": "all-MiniLM-L6-v2",
+      "retrieved_count": 14,
+      "security": {
+        "injection_status": "ALLOW",
+        "poisoning_status": "ALLOW",
+        "poisoning_reason": null
+      },
+      "risk_class": "R2",
+      "threshold": 0.6,
+      "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+      "trust_score": 0.935,
+      "is_eligible": true,
+      "unrelated_excluded": 13,
+      "eligible_count": 1,
+      "eligible_chunks": [
+        {
+          "chunk_id": "DAILYMED-SPL-SIMVASTATIN-001-CHUNK-01",
+          "names_requested_drug": true
+        }
+      ],
+      "claims": [
+        {
+          "claim_id": 0,
+          "field": "conclusion",
+          "text": "Evidence indicates that clarithromycin, a strong CYP3A4 inhibitor, is contraindicated with simvastatin due to increased risk of myopathy and rhabdomyolysis. No patient-specific data were provided. Clinicians should avoid concomitant use and consider alternative antibiotics or lipid-lowering therapy if needed.",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9997178912162781,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        },
+        {
+          "claim_id": 1,
+          "field": "interactions",
+          "text": "simvastatin interacts with clarithromycin; CYP3A4 inhibition leading to increased simvastatin exposure; Increased risk of myopathy and rhabdomyolysis; severity serious [Source 1].",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9994719624519348,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        },
+        {
+          "claim_id": 2,
+          "field": "warnings",
+          "text": "Concomitant use of simvastatin with strong CYP3A4 inhibitors such as clarithromycin is contraindicated due to increased risk of myopathy and rhabdomyolysis [Source 1]",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9998273849487305,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        },
+        {
+          "claim_id": 3,
+          "field": "claims_for_verification",
+          "text": "Simvastatin is a cholesterol-lowering medication.",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9997956156730652,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        },
+        {
+          "claim_id": 4,
+          "field": "claims_for_verification",
+          "text": "Clarithromycin is a strong CYP3A4 inhibitor.",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9997920393943787,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        },
+        {
+          "claim_id": 5,
+          "field": "claims_for_verification",
+          "text": "Concomitant administration of clarithromycin with simvastatin is contraindicated due to increased risk of myopathy and rhabdomyolysis.",
+          "support_state": "UNSUPPORTED",
+          "verifier_decision": "qualify",
+          "entailment": 0.9998099207878113,
+          "canonical_identity_status": "UNAVAILABLE",
+          "canonical_identity_reason": "Source canonical identity not available",
+          "invalid_source_references": null,
+          "verification_error": null
+        }
+      ],
+      "removed_disclaimers": [],
+      "terminal_event": "abstention",
+      "terminal_code": null,
+      "terminal_reason": "6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.",
+      "gate_decision": null,
+      "used_model": null,
+      "served_by": {
+        "provider": "nvidia",
+        "model_id": "nvidia/nemotron-3-super-120b-a12b",
+        "reported_model": "nvidia/nemotron-3-super-120b-a12b",
+        "finish_reason": "stop",
+        "output_length": 1202
+      },
+      "requested_model": null,
+      "llm_selection_sent": null,
+      "selected_in_page": null,
+      "stream_capture": "run_abc.mjs v2 (browser, in-page stream capture)",
+      "events_in_page": 24,
+      "events_over_network": 24,
+      "stream_complete": true,
+      "step_error": null,
+      "screen": {
+        "failed": false,
+        "error": "",
+        "abstained": true,
+        "abstention_reason": "6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity.",
+        "pipeline": []
+      },
+      "console_errors": [],
+      "event_names": [
+        "stage_update",
+        "medication_candidates_extracted",
+        "stage_update",
+        "confirmation_required",
+        "stage_update",
+        "stage_update",
+        "stage_update",
+        "rxnorm",
+        "stage_update",
+        "stage_update",
+        "retrieval",
+        "stage_update",
+        "stage_update",
+        "security",
+        "stage_update",
+        "stage_update",
+        "trust",
+        "stage_update",
+        "stage_update",
+        "stage_update",
+        "stage_update",
+        "stage_update",
+        "stage_update",
+        "abstention"
+      ]
+    }
+  ],
+  "credential_scan": []
+}

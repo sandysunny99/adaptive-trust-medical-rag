@@ -1,0 +1,9 @@
+event: stage_update
+data: {"stage": "extracting", "status": "running", "message": "Extracting medications from prescription image via NVIDIA Vision...", "timestamp": "2026-10-14T16:37:09.204752+00:00"}
+
+event: error
+data: {"code": "VISION_EXTRACTION_ERROR", "message": "Vision extraction failed: Vision Provider Timeout"}
+
+event: stage_update
+data: {"stage": "extracting", "status": "failed", "timestamp": "2026-10-14T16:38:10.179916+00:00"}
+

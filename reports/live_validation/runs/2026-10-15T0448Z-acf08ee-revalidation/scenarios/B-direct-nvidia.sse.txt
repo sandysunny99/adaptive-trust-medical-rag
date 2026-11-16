@@ -1,0 +1,48 @@
+event: stage_update
+data: {"stage": "uploading", "status": "running", "message": "Sanitizing input...", "timestamp": "2026-10-15T05:03:55.040643+00:00"}
+
+event: stage_update
+data: {"stage": "uploading", "status": "complete", "message": "2 drug(s) accepted", "timestamp": "2026-10-15T05:03:55.041653+00:00"}
+
+event: stage_update
+data: {"stage": "normalizing", "status": "running", "message": "Resolving drug entities via RxNorm...", "timestamp": "2026-10-15T05:03:55.041653+00:00"}
+
+event: rxnorm
+data: {"entities": [{"raw_text": "Simvastatin", "canonical_name": "simvastatin", "rxcui": "36567", "brand_name": null, "formulation": null, "confidence": 1.0, "source": "cache", "rxnorm_source": "cache", "confirmation_status": null, "raw_detected_name": null, "status": "MATCHED"}, {"raw_text": "Clarithromycin", "canonical_name": "clarithromycin", "rxcui": "21212", "brand_name": null, "formulation": null, "confidence": 1.0, "source": "cache", "rxnorm_source": "cache", "confirmation_status": null, "raw_detected_name": null, "status": "MATCHED"}], "overall_status": "RESOLVED"}
+
+event: stage_update
+data: {"stage": "normalizing", "status": "complete", "timestamp": "2026-10-15T05:03:55.043176+00:00"}
+
+event: stage_update
+data: {"stage": "retrieving", "status": "running", "message": "Retrieving evidence...", "timestamp": "2026-10-15T05:03:55.043176+00:00"}
+
+event: retrieval
+data: {"evidence_count": 14, "sources": ["OPENFDA", "PUBMED", "DAILYMED"], "corpus": "LIVE_MEDICAL_CORPUS_V2", "embedding_model": "all-MiniLM-L6-v2", "embedding_mode": "real"}
+
+event: stage_update
+data: {"stage": "retrieving", "status": "complete", "timestamp": "2026-10-15T05:03:55.062103+00:00"}
+
+event: stage_update
+data: {"stage": "security_checking", "status": "running", "timestamp": "2026-10-15T05:03:55.062103+00:00"}
+
+event: security
+data: {"injection_status": "ALLOW", "poisoning_status": "ALLOW", "poisoning_reason": null}
+
+event: stage_update
+data: {"stage": "security_checking", "status": "complete", "timestamp": "2026-10-15T05:03:55.063110+00:00"}
+
+event: stage_update
+data: {"stage": "trust_evaluating", "status": "running", "timestamp": "2026-10-15T05:03:55.063110+00:00"}
+
+event: trust
+data: {"overall_score": 0.935, "threshold": 0.6, "risk_class": "R2", "risk_basis": "a multi-drug interaction question with no approved severe relationship record", "is_eligible": true, "unrelated_excluded": 13, "factors": {"source_authority": 0.95, "query_relevance": 0.85, "evidence_quality": 0.95, "freshness": 0.9, "consistency": 1.0, "entity_match": 1.0, "population_match": 0.8, "anti_poisoning": 1.0, "anti_injection": 1.0}, "missing_factors": []}
+
+event: stage_update
+data: {"stage": "trust_evaluating", "status": "complete", "timestamp": "2026-10-15T05:03:55.063616+00:00"}
+
+event: stage_update
+data: {"stage": "generating", "status": "running", "timestamp": "2026-10-15T05:03:55.063616+00:00"}
+
+event: error
+data: {"code": "LLM_ERROR", "message": "nvidia timeout: ", "served_by": null, "requested_model": {"mode": "manual", "provider": "nvidia", "model_id": "nvidia/nemotron-3-super-120b-a12b"}}
+

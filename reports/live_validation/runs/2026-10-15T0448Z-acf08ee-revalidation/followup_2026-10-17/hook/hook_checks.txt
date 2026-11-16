@@ -1,0 +1,23 @@
+== pytest
+10 passed in 3.90s
+== real gitleaks: fake token / clean / env-var reference
+PASS  fake GitHub-token-shaped string: gitleaks=['GITLEAKS DETECTED SECRETS — run `gitleaks detect` for details']  regex=['GitHub PAT (ghp_) (line 1)']
+PASS  clean code: gitleaks=clean  regex=clean
+PASS  env-var reference: gitleaks=clean  regex=clean
+rc=0
+== check_secret_scan_allow local
+OK - secret_scan hook: allow for clean code
+rc=0
+== check_secret_scan_allow CI=1
+OK - secret_scan hook: allow for clean code
+rc=0
+== check_secret_scan_deny local
+OK - secret_scan hook: deny for code with fake token
+rc=0
+== check_secret_scan_deny CI=1
+OK - secret_scan hook: deny for code with fake token
+rc=0
+== real hook, gitleaks replaced by a .bat that exits 126 (clean content)
+{"decision": "deny", "reason": "SECRET SCAN COULD NOT RUN \u2014 file write blocked. Findings: GITLEAKS COULD NOT RUN (exit 126) \u2014 the content was not scanned. Use environment variables instead of hard\u2011coded credentials. See AGENTS.md security rules. The file has NOT been written."}
+== detection coverage: the same fake token through the old flag set minus --quiet and the new flag set
+exit codes old-minus-quiet 1 new 1 (1 = leak found)

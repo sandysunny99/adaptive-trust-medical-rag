@@ -1,0 +1,12 @@
+== protected modules vs HEAD (empty = unchanged)
+52:TRUST_THRESHOLDS = {"R0": 0.30, "R1": 0.45, "R2": 0.60, "R3": 0.75}
+53-
+54-
+55-def _ts() -> str:
+56-    from datetime import UTC, datetime
+57-    return datetime.now(UTC).isoformat()
+58-
+== tests
+235 passed, 286 warnings in 63.26s (0:01:03)
+== V2 test count
+35 tests collected in 9.31s

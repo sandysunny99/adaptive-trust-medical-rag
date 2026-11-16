@@ -1,0 +1,5 @@
+[A-image] requests: [{"m":"POST","p":"/api/v1/analyze/prescription","s":200},{"m":"POST","p":"/api/v1/analyze/9870b408-1f9e-4e09-b418-6549b330599d/confirm","s":200}]
+[A-image] events captured in page: 24; over the network: 24
+[A-image] retrieval: {"evidence_count":14,"sources":["OPENFDA","PUBMED","DAILYMED"],"corpus":"LIVE_MEDICAL_CORPUS_V2","embedding_model":"all-MiniLM-L6-v2","embedding_mode":"real"}
+[A-image] terminal: [{"event":"abstention","served_by":{"provider":"groq","model_id":"openai/gpt-oss-120b","reported_model":"openai/gpt-oss-120b","finish_reason":"stop","output_length":1466},"reason":"6 of 6 generated claims failed post-generation verification. 6 of them could not be matched to a drug relationship because the evidence records carry no relationship identity."}]
+rc=0

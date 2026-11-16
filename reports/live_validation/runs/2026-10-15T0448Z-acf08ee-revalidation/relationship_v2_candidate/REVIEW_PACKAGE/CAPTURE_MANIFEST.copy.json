@@ -1,0 +1,87 @@
+{
+  "purpose": "Exact source capture for live relationship candidate REL-LIVE-0001 (simvastatin, clarithromycin)",
+  "captured_at": "2026-10-14T16:42:46.608171+00:00",
+  "status": "COMPLETE",
+  "failed": 0,
+  "items": [
+    {
+      "kind": "spl_xml",
+      "id": "8f55d5de-5a4f-4a39-8c84-c53976dd6af9",
+      "drug": "simvastatin",
+      "label_seen": "ZOCOR- simvastatin tablet, film coated (Organon LLC), Revised 8/2023",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+      "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9.xml",
+      "fetched_at": "2026-10-14T16:42:42.008594+00:00",
+      "http_status": 200,
+      "bytes": 222351,
+      "sha256": "20a97640ddc74981ca41f3c0696d8a23ca3f3473236801fcc31b43825413bedb",
+      "content_type": "application/xml",
+      "status": "CAPTURED"
+    },
+    {
+      "kind": "spl_history",
+      "id": "8f55d5de-5a4f-4a39-8c84-c53976dd6af9",
+      "drug": "simvastatin",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/8f55d5de-5a4f-4a39-8c84-c53976dd6af9/history.json",
+      "file": "spl_8f55d5de-5a4f-4a39-8c84-c53976dd6af9_history.json",
+      "fetched_at": "2026-10-14T16:42:44.242208+00:00",
+      "http_status": 200,
+      "bytes": 954,
+      "sha256": "4a5da835b3e8f4f500efd568d303f0ec0ed054e866aff10b316ccf2d733c1f8e",
+      "content_type": "application/json",
+      "status": "CAPTURED"
+    },
+    {
+      "kind": "spl_xml",
+      "id": "9aaffb41-408c-4372-8fd5-1d649450c0e9",
+      "drug": "clarithromycin",
+      "label_seen": "CLARITHROMYCIN tablet, film coated (Aurobindo Pharma Limited), Revised 10/2023",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+      "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9.xml",
+      "fetched_at": "2026-10-14T16:42:44.520645+00:00",
+      "http_status": 200,
+      "bytes": 353750,
+      "sha256": "628e25c7b3f433bf7be856c32c5eaa9e1179ae7069d1313571ff2ac320f7b04c",
+      "content_type": "application/xml",
+      "status": "CAPTURED"
+    },
+    {
+      "kind": "spl_history",
+      "id": "9aaffb41-408c-4372-8fd5-1d649450c0e9",
+      "drug": "clarithromycin",
+      "url": "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls/9aaffb41-408c-4372-8fd5-1d649450c0e9/history.json",
+      "file": "spl_9aaffb41-408c-4372-8fd5-1d649450c0e9_history.json",
+      "fetched_at": "2026-10-14T16:42:45.057979+00:00",
+      "http_status": 200,
+      "bytes": 1459,
+      "sha256": "0b56df14d456a25d6c15b6a2c7d64857f16165c70cdb48cca51fba183a5be19c",
+      "content_type": "application/json",
+      "status": "CAPTURED"
+    },
+    {
+      "kind": "rxnav_properties",
+      "id": "36567",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/36567/properties.json",
+      "file": "rxnav_36567_properties.json",
+      "fetched_at": "2026-10-14T16:42:45.340598+00:00",
+      "http_status": 200,
+      "bytes": 122,
+      "sha256": "da6e8725bf624cf882cb6c44ac0faa99965d19a0e4c16ee482daaa051e7f0910",
+      "content_type": "application/json;charset=utf-8",
+      "status": "CAPTURED"
+    },
+    {
+      "kind": "rxnav_properties",
+      "id": "21212",
+      "url": "https://rxnav.nlm.nih.gov/REST/rxcui/21212/properties.json",
+      "file": "rxnav_21212_properties.json",
+      "fetched_at": "2026-10-14T16:42:46.352587+00:00",
+      "http_status": 200,
+      "bytes": 125,
+      "sha256": "3ee1e690c54c4cff82ea0dd30e1e64bfb1fd32dbd4015dd78bf7c5983ec49c15",
+      "content_type": "application/json;charset=utf-8",
+      "status": "CAPTURED"
+    }
+  ],
+  "note": "Raw bytes only. Nothing here is approved evidence; approval is a separate researcher decision."
+}

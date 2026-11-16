@@ -1,0 +1,223 @@
+[
+ {
+  "t": 18.6,
+  "event": "stage_update",
+  "data": {
+   "stage": "uploading",
+   "status": "running",
+   "message": "Sanitizing input...",
+   "timestamp": "2026-10-22T08:40:36.096346+00:00"
+  }
+ },
+ {
+  "t": 18.6,
+  "event": "stage_update",
+  "data": {
+   "stage": "uploading",
+   "status": "complete",
+   "message": "2 drug(s) accepted",
+   "timestamp": "2026-10-22T08:40:36.096346+00:00"
+  }
+ },
+ {
+  "t": 18.8,
+  "event": "stage_update",
+  "data": {
+   "stage": "normalizing",
+   "status": "running",
+   "message": "Resolving drug entities via RxNorm...",
+   "timestamp": "2026-10-22T08:40:36.096346+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "rxnorm",
+  "data": {
+   "entities": [
+    {
+     "raw_text": "Lisinopril",
+     "canonical_name": "lisinopril",
+     "rxcui": "29046",
+     "brand_name": "Prinivil",
+     "formulation": null,
+     "confidence": 1.0,
+     "source": "cache",
+     "rxnorm_source": "cache",
+     "identity_method": "seed_cache",
+     "confirmation_status": null,
+     "raw_detected_name": null,
+     "status": "MATCHED"
+    },
+    {
+     "raw_text": "Spironolactone",
+     "canonical_name": "spironolactone",
+     "rxcui": "9997",
+     "brand_name": null,
+     "formulation": null,
+     "confidence": 1.0,
+     "source": "rxnorm_exact",
+     "rxnorm_source": "rxnorm_exact",
+     "identity_method": "rxnorm_exact",
+     "confirmation_status": null,
+     "raw_detected_name": null,
+     "status": "MATCHED"
+    }
+   ],
+   "overall_status": "RESOLVED"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "normalizing",
+   "status": "complete",
+   "timestamp": "2026-10-22T08:40:41.432628+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "retrieving",
+   "status": "running",
+   "message": "Retrieving evidence...",
+   "timestamp": "2026-10-22T08:40:41.432628+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "retrieval",
+  "data": {
+   "evidence_count": 14,
+   "sources": [
+    "OPENFDA",
+    "DAILYMED",
+    "PUBMED"
+   ],
+   "corpus": "LIVE_MEDICAL_CORPUS_V2",
+   "corpus_chunk_count": 14,
+   "top_k": 20,
+   "relationship_evidence_chunks": [],
+   "embedding_model": "all-MiniLM-L6-v2",
+   "embedding_mode": "real"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "retrieving",
+   "status": "complete",
+   "timestamp": "2026-10-22T08:40:41.464771+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "security_checking",
+   "status": "running",
+   "timestamp": "2026-10-22T08:40:41.465770+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "security",
+  "data": {
+   "injection_status": "ALLOW",
+   "poisoning_status": "ALLOW",
+   "poisoning_reason": null
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "security_checking",
+   "status": "complete",
+   "timestamp": "2026-10-22T08:40:41.465770+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "trust_evaluating",
+   "status": "running",
+   "timestamp": "2026-10-22T08:40:41.465770+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "trust",
+  "data": {
+   "overall_score": null,
+   "score_status": "NO_ELIGIBLE_EVIDENCE",
+   "scored_chunks": 0,
+   "threshold": 0.6,
+   "risk_class": "R2",
+   "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+   "is_eligible": false,
+   "unrelated_excluded": 11,
+   "unverified_source_excluded": 3,
+   "factors": {},
+   "missing_factors": []
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "stage_update",
+  "data": {
+   "stage": "trust_evaluating",
+   "status": "complete",
+   "timestamp": "2026-10-22T08:40:41.466772+00:00"
+  }
+ },
+ {
+  "t": 24.0,
+  "event": "abstention",
+  "data": {
+   "reason": "3 evidence chunk(s) about these medications were retrieved, but none has a verified source identity (placeholder, shared or unverified source links), so none can be used as evidence. This is a limit of the evidence corpus, not a finding that the medications are safe together. No trust score was computed, because no evidence reached scoring.",
+   "evidence_retrieved": 14,
+   "excluded_sources": [
+    {
+     "chunk_id": "DAILYMED-SPL-LISINOPRIL-001-CHUNK-01",
+     "document_id": "SPL-LISINOPRIL-001",
+     "source_type": "DAILYMED",
+     "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-lisinopril",
+     "source_link_status": "PLACEHOLDER",
+     "source_identity_status": "REJECTED_SOURCE_IDENTITY",
+     "reason": "Source identity rejected: the recorded link cannot identify the original document. Placeholder link in the frozen corpus; it does not identify the original document."
+    },
+    {
+     "chunk_id": "DAILYMED-SPL-LISINOPRIL-002-CHUNK-01",
+     "document_id": "SPL-LISINOPRIL-002",
+     "source_type": "DAILYMED",
+     "source_name": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=example-lisinopril",
+     "source_link_status": "PLACEHOLDER",
+     "source_identity_status": "REJECTED_SOURCE_IDENTITY",
+     "reason": "Source identity rejected: the recorded link cannot identify the original document. Placeholder link in the frozen corpus; it does not identify the original document."
+    },
+    {
+     "chunk_id": "PUBMED-PMID-31234567-CHUNK-01",
+     "document_id": "PMID-31234567",
+     "source_type": "PUBMED",
+     "source_name": "https://pubmed.ncbi.nlm.nih.gov/31234567",
+     "source_link_status": "SHARED",
+     "source_identity_status": "REJECTED_SOURCE_IDENTITY",
+     "reason": "Source identity rejected: the recorded link cannot identify the original document. The corpus attaches this link to more than one document, so it cannot identify this one."
+    }
+   ],
+   "served_by": null,
+   "trust": {
+    "overall_score": null,
+    "score_status": "NO_ELIGIBLE_EVIDENCE",
+    "threshold": 0.6,
+    "risk_class": "R2",
+    "risk_basis": "a multi-drug interaction question with no approved severe relationship record",
+    "is_eligible": false
+   }
+  }
+ }
+]
